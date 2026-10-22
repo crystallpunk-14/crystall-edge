@@ -9,6 +9,11 @@
         <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" HorizontalExpand="False" MaxWidth="200" Margin="10">
             <!-- Secret role + faction, only visible for players with an assigned secret role -->
             <BoxContainer Name="SecretRoleContainer" Orientation="Vertical" HorizontalExpand="True" Visible="False" Access="Public">
+                <!-- Original role, faded - only visible once the secret role changed mid-round -->
+                <BoxContainer Name="OriginalRoleContainer" Orientation="Horizontal" HorizontalAlignment="Center" Visible="False" Access="Public">
+                    <TextureRect Name="OriginalRoleIcon" Access="Public" Stretch="KeepAspectCentered" SetSize="20 20" Margin="0 0 6 0" Modulate="#FFFFFF80" />
+                    <Label Name="OriginalRoleLabel" Access="Public" FontColorOverride="#999999" />
+                </BoxContainer>
                 <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextureRect Name="SecretRoleIcon" Access="Public" Stretch="KeepAspectCentered" SetSize="24 24" Margin="0 0 6 0" />
                     <Label Name="SecretRoleLabel" Access="Public" StyleClasses="LabelHeading" />

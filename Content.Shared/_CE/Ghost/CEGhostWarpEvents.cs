@@ -25,13 +25,15 @@ public struct CEGhostWarp
         string displayName,
         bool isWarpPoint,
         ProtoId<JobPrototype>? job = null,
-        ProtoId<CESecretRolePrototype>? secretRole = null)
+        ProtoId<CESecretRolePrototype>? secretRole = null,
+        ProtoId<CESecretRolePrototype>? originalSecretRole = null)
     {
         Entity = entity;
         DisplayName = displayName;
         IsWarpPoint = isWarpPoint;
         Job = job;
         SecretRole = secretRole;
+        OriginalSecretRole = originalSecretRole;
     }
 
     /// <summary>
@@ -61,6 +63,12 @@ public struct CEGhostWarp
     /// Only sent to ghosts that can see meta information - see CEGhostMetaSystem.
     /// </summary>
     public ProtoId<CESecretRolePrototype>? SecretRole { get; }
+
+    /// <summary>
+    /// The first secret role the target was granted - equal to <see cref="SecretRole"/> unless it
+    /// changed since. Sent under the same rules as <see cref="SecretRole"/>.
+    /// </summary>
+    public ProtoId<CESecretRolePrototype>? OriginalSecretRole { get; }
 }
 
 /// <summary>

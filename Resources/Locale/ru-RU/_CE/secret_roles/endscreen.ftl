@@ -1,4 +1,5 @@
-ce-secretrole-examine-fmt = Скрытая роль: [color={$color}]{$role}[/color]
+ce-secretrole-examine-fmt = Скрытая роль: {$role}
+ce-secret-role-history-fmt = {$original} → {$current}
 
 ce-roundend-secret-role-column = Скрытая роль
 ce-roundend-secret-role-factions-header = [font size=18][bold]Фракции этого раунда[/bold][/font]
@@ -7,7 +8,7 @@ ce-roundend-secret-role-objective-fmt = {"    "}{$text}
 
 ce-roundend-secret-role-player-summary-header = [font size=18][bold]Роли игроков в этом раунде[/bold][/font]
 ce-roundend-secret-role-player-group = [font size=14][color={$color}][bold]{$name}[/bold][/color][/font]
-ce-roundend-secret-role-player-summary = {"    "}{$name} [color=gray]({$username})[/color] играл за [color={$color}][bold]{$role}[/bold][/color]{$objCount ->
+ce-roundend-secret-role-player-summary = {"    "}{$name} [color=gray]({$username})[/color] играл за [bold]{$role}[/bold]{$objCount ->
     [0] {""}
     *[other] {" "}со следующими целями:
 }

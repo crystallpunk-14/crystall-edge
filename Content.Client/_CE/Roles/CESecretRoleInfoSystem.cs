@@ -12,7 +12,10 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
 {
     [Dependency] private IPlayerManager _players = default!;
 
-    public event Action<EntityUid, ProtoId<CESecretRolePrototype>?>? OnSecretRoleUpdate;
+    /// <summary>
+    /// Raised with the entity, its current secret role and its original one.
+    /// </summary>
+    public event Action<EntityUid, ProtoId<CESecretRolePrototype>?, ProtoId<CESecretRolePrototype>?>? OnSecretRoleUpdate;
 
     public override void Initialize()
     {
@@ -32,6 +35,6 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
 
     private void OnSecretRoleInfoEvent(CESecretRoleInfoEvent msg, EntitySessionEventArgs args)
     {
-        OnSecretRoleUpdate?.Invoke(GetEntity(msg.NetEntity), msg.SecretRole);
+        OnSecretRoleUpdate?.Invoke(GetEntity(msg.NetEntity), msg.SecretRole, msg.OriginalSecretRole);
     }
 }

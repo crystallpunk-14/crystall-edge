@@ -52,7 +52,10 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         Texture? SecretRoleIcon,
         Color? SecretRoleColor,
         string? SecretRoleFactionName,
-        string SecretRoleDepartmentSearchText);
+        string SecretRoleDepartmentSearchText,
+        string? OriginalSecretRoleName,
+        Texture? OriginalSecretRoleIcon,
+        string? SecretRoleTooltip);
 
     private sealed record LocationRow(NetEntity Entity, string Name);
 
@@ -125,16 +128,40 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
             Color? secretRoleColor = null;
             string? secretRoleFactionName = null;
             var secretRoleDepartmentSearchText = string.Empty;
+            string? originalSecretRoleName = null;
+            Texture? originalSecretRoleIcon = null;
+            string? secretRoleTooltip = null;
             if (warp.SecretRole is { } secretRoleId && _prototype.TryIndex(secretRoleId, out var secretRoleProto))
             {
                 secretRoleName = secretRoleProto.LocalizedName;
-                secretRoleIcon = _prototype.TryIndex(secretRoleProto.Icon, out JobIconPrototype? secretRoleIconProto)
-                    ? Sprite.Frame0(secretRoleIconProto.Icon)
-                    : null;
+                secretRoleIcon = GetRoleIcon(secretRoleProto);
 
                 (var secretDepartment, secretRoleDepartmentSearchText) = CEDepartmentResolver.ResolveSecretDepartment(_prototype, secretRoleId);
                 secretRoleColor = secretDepartment?.Color;
                 secretRoleFactionName = secretDepartment != null ? Loc.GetString(secretDepartment.Name) : null;
+                secretRoleTooltip = secretRoleFactionName;
+
+                // A changed role keeps its original searchable, and named in the tooltip.
+                if (warp.OriginalSecretRole is { } originalId &&
+                    originalId != secretRoleId &&
+                    _prototype.TryIndex(originalId, out var originalRoleProto))
+                {
+                    originalSecretRoleName = originalRoleProto.LocalizedName;
+                    originalSecretRoleIcon = GetRoleIcon(originalRoleProto);
+
+                    var (originalDepartment, originalSearchText) = CEDepartmentResolver.ResolveSecretDepartment(_prototype, originalId);
+                    secretRoleDepartmentSearchText += $" {originalSecretRoleName} {originalSearchText}";
+
+                    var originalText = originalDepartment != null
+                        ? $"{originalSecretRoleName} ({Loc.GetString(originalDepartment.Name)})"
+                        : originalSecretRoleName;
+                    var currentText = secretRoleFactionName != null
+                        ? $"{secretRoleName} ({secretRoleFactionName})"
+                        : secretRoleName;
+                    secretRoleTooltip = Loc.GetString("ce-secret-role-history-fmt",
+                        ("original", originalText),
+                        ("current", currentText));
+                }
             }
 
             _allPlayers.Add(new PlayerRow(
@@ -149,8 +176,16 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 secretRoleIcon,
                 secretRoleColor,
                 secretRoleFactionName,
-                secretRoleDepartmentSearchText));
+                secretRoleDepartmentSearchText,
+                originalSecretRoleName,
+                originalSecretRoleIcon,
+                secretRoleTooltip));
         }
+    }
+
+    private Texture? GetRoleIcon(CESecretRolePrototype role)
+    {
+        return _prototype.TryIndex(role.Icon, out JobIconPrototype? icon) ? Sprite.Frame0(icon.Icon) : null;
     }
 
     public void Populate()
@@ -185,7 +220,8 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 row.SecretRoleName,
                 row.SecretRoleIcon,
                 row.SecretRoleColor,
-                row.SecretRoleFactionName,
+                row.SecretRoleTooltip,
+                row.OriginalSecretRoleIcon,
                 _canSeeMeta);
             control.PanelOverride = new StyleBoxFlat(i % 2 == 0 ? AltColor : DefaultColor);
 
@@ -238,7 +274,9 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
             row.SecretRoleName,
             row.SecretRoleIcon,
             row.SecretRoleColor,
-            row.SecretRoleFactionName);
+            row.SecretRoleFactionName,
+            row.OriginalSecretRoleName,
+            row.OriginalSecretRoleIcon);
     }
 
     private IEnumerable<LocationRow> FilterLocations()

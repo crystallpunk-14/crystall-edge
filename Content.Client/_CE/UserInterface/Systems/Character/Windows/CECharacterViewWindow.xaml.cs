@@ -92,7 +92,9 @@ public sealed partial class CECharacterViewWindow : DefaultWindow
         string? secretRoleName,
         Texture? secretRoleIcon,
         Color? secretRoleColor,
-        string? secretRoleFactionName)
+        string? secretRoleFactionName,
+        string? originalSecretRoleName,
+        Texture? originalSecretRoleIcon)
     {
         _target = target;
         var entity = _ent.GetEntity(target);
@@ -112,6 +114,10 @@ public sealed partial class CECharacterViewWindow : DefaultWindow
             SecretRoleLabel.FontColorOverride = secretRoleColor;
             SecretRoleIcon.Texture = secretRoleIcon;
             SecretRoleIcon.Visible = secretRoleIcon != null;
+
+            OriginalRoleContainer.Visible = originalSecretRoleName != null;
+            OriginalRoleLabel.Text = originalSecretRoleName;
+            OriginalRoleIcon.Texture = originalSecretRoleIcon;
 
             FactionLabel.Clear();
             if (secretRoleFactionName != null)

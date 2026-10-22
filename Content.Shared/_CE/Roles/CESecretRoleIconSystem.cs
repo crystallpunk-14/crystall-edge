@@ -2,7 +2,6 @@ using Content.Shared._CE.Ghost;
 using Content.Shared.Examine;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
-using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
@@ -21,6 +20,12 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
 
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CESecretRoleIconComponent> ent, ref ComponentStartup args)
+    {
+        DirtyAllRoleIcons();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnOriginalStartup(Entity<CESecretRoleOriginalIconComponent> ent, ref ComponentStartup args)
     {
         DirtyAllRoleIcons();
     }
@@ -47,6 +52,12 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         {
             Dirty(uid, comp);
         }
+
+        var originalQuery = EntityQueryEnumerator<CESecretRoleOriginalIconComponent>();
+        while (originalQuery.MoveNext(out var uid, out var comp))
+        {
+            Dirty(uid, comp);
+        }
     }
 
     [SubscribeLocalEvent]
@@ -55,52 +66,115 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         if (args.Player?.AttachedEntity is not { } viewer)
             return;
 
-        args.Cancelled = !CanRecognize(ent, viewer);
+        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnOriginalGetStateAttempt(Entity<CESecretRoleOriginalIconComponent> ent, ref ComponentGetStateAttemptEvent args)
+    {
+        if (args.Player?.AttachedEntity is not { } viewer)
+            return;
+
+        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer);
     }
 
     [SubscribeLocalEvent]
     private void OnGetStatusIcons(Entity<CESecretRoleIconComponent> ent, ref GetStatusIconsEvent args)
     {
-        if (_player.LocalEntity is not { } viewer || !CanRecognize(ent, viewer))
+        if (_player.LocalEntity is not { } viewer || !CanRecognize(ent, ent.Comp.Role, viewer))
             return;
 
-        if (_proto.TryIndex(ent.Comp.Role, out var role) && _proto.TryIndex(role.Icon, out var icon))
+        AddStatusIcon(ent.Comp.Role, ref args);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnOriginalGetStatusIcons(Entity<CESecretRoleOriginalIconComponent> ent, ref GetStatusIconsEvent args)
+    {
+        // A single icon above the head - the current role wins whenever the viewer recognizes it.
+        if (_player.LocalEntity is not { } viewer ||
+            !TryGetVisibleRoles(ent, viewer, out var original, out var current) ||
+            current is not null ||
+            original is not { } originalRole)
+        {
+            return;
+        }
+
+        AddStatusIcon(originalRole, ref args);
+    }
+
+    private void AddStatusIcon(ProtoId<CESecretRolePrototype> roleId, ref GetStatusIconsEvent args)
+    {
+        if (_proto.TryIndex(roleId, out var role) && _proto.TryIndex(role.Icon, out var icon))
             args.StatusIcons.Add(icon);
     }
 
     [SubscribeLocalEvent]
     private void OnExamined(Entity<CESecretRoleIconComponent> ent, ref ExaminedEvent args)
     {
-        if (args.Examiner == ent.Owner)
+        PushExamineText(ent, args);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnOriginalExamined(Entity<CESecretRoleOriginalIconComponent> ent, ref ExaminedEvent args)
+    {
+        // Both roles share one line, written by the current role's handler whenever it exists.
+        if (HasComp<CESecretRoleIconComponent>(ent))
             return;
 
-        if (!CanRecognize(ent, args.Examiner))
-            return;
+        PushExamineText(ent, args);
+    }
 
-        if (!_proto.TryIndex(ent.Comp.Role, out var role))
+    private void PushExamineText(EntityUid target, ExaminedEvent args)
+    {
+        if (!TryGetVisibleRoles(target, args.Examiner, out var original, out var current))
             return;
-
-        var color = TryGetDepartment(ent.Comp.Role, out var department) ? department.Color : Color.White;
 
         // Leading blank line, and the lowest possible priority, to always land as the very last
         // line of the examine text, no matter what else contributed to it.
         var message = new FormattedMessage();
         message.PushNewline();
         message.AddMessage(FormattedMessage.FromMarkupOrThrow(
-            Loc.GetString("ce-secretrole-examine-fmt", ("role", role.LocalizedName), ("color", color))));
+            Loc.GetString("ce-secretrole-examine-fmt", ("role", GetRolesMarkup(original, current)))));
 
         args.PushMessage(message, int.MinValue);
     }
 
     /// <summary>
-    /// Whether <paramref name="viewer"/> is allowed to see the icon/examine text carried by
-    /// <paramref name="ent"/> - the single source of truth used both server-side (to decide whether
-    /// the component's state is even networked to that viewer) and for the examine text.
+    /// Which of <paramref name="target"/>'s roles <paramref name="viewer"/> recognizes, read off the
+    /// icon components - so on the client it only ever sees roles the server networked to it.
     /// </summary>
-    private bool CanRecognize(Entity<CESecretRoleIconComponent> ent, EntityUid viewer)
+    /// <param name="original">The original role - null if unrecognized or never changed.</param>
+    /// <returns>Whether at least one role is recognized.</returns>
+    public bool TryGetVisibleRoles(EntityUid target,
+        EntityUid viewer,
+        out ProtoId<CESecretRolePrototype>? original,
+        out ProtoId<CESecretRolePrototype>? current)
+    {
+        original = null;
+        current = null;
+
+        if (TryComp<CESecretRoleIconComponent>(target, out var icon) && CanRecognize(target, icon.Role, viewer))
+            current = icon.Role;
+
+        if (TryComp<CESecretRoleOriginalIconComponent>(target, out var originalIcon) &&
+            CanRecognize(target, originalIcon.Role, viewer))
+        {
+            original = originalIcon.Role;
+        }
+
+        return original is not null || current is not null;
+    }
+
+    /// <summary>
+    /// Whether <paramref name="viewer"/> is allowed to see <paramref name="role"/> held by
+    /// <paramref name="target"/> - the single source of truth used both server-side (to decide whether
+    /// an icon component's state is even networked to that viewer) and for the icon/examine text.
+    /// Each of the target's roles is checked on its own, against both of the viewer's roles.
+    /// </summary>
+    public bool CanRecognize(EntityUid target, ProtoId<CESecretRolePrototype> role, EntityUid viewer)
     {
         // Never your own icon above your own head.
-        if (viewer == ent.Owner)
+        if (viewer == target)
             return false;
 
         if (_ghostMeta.CanSeeMeta(viewer))
@@ -109,21 +183,25 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         if (!_mind.TryGetMind(viewer, out var mindId, out var mind))
             return false;
 
-        var recognizeEv = new CESecretRoleRecognizeEvent(ent.Owner);
+        var recognizeEv = new CESecretRoleRecognizeEvent(target);
         RaiseLocalEvent(mindId, ref recognizeEv);
         if (recognizeEv.Recognized)
             return true;
 
-        if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
-            roleEnt.Value.Comp2.Role is not { } viewerRole)
+        if (!TryGetDepartment(role, out var targetDepartment) ||
+            !targetDepartment.MembersRecognizeEachOther ||
+            !_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
         {
             return false;
         }
 
-        return TryGetDepartment(viewerRole, out var viewerDepartment) &&
-            viewerDepartment.MembersRecognizeEachOther &&
-            TryGetDepartment(ent.Comp.Role, out var targetDepartment) &&
-            targetDepartment.ID == viewerDepartment.ID;
+        return IsInDepartment(roleEnt.Value.Comp2.Role, targetDepartment) ||
+            IsInDepartment(roleEnt.Value.Comp2.OriginalRole, targetDepartment);
+    }
+
+    private static bool IsInDepartment(ProtoId<CESecretRolePrototype>? role, CESecretDepartmentPrototype department)
+    {
+        return role is { } roleId && department.Roles.Contains(roleId);
     }
 
     public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
@@ -140,11 +218,53 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         department = default!;
         return false;
     }
+
+    /// <summary>
+    /// "Original → Current" as markup, each role in its department's color. Collapses to a single
+    /// role when either is null or both are the same.
+    /// </summary>
+    public string GetRolesMarkup(ProtoId<CESecretRolePrototype>? original, ProtoId<CESecretRolePrototype>? current)
+    {
+        return JoinRoles(GetRoleMarkup(original), GetRoleMarkup(current), original == current);
+    }
+
+    /// <summary>
+    /// Plain-text <see cref="GetRolesMarkup"/>, for labels that carry a single color.
+    /// </summary>
+    public string GetRolesName(ProtoId<CESecretRolePrototype>? original, ProtoId<CESecretRolePrototype>? current)
+    {
+        return JoinRoles(GetRoleName(original), GetRoleName(current), original == current);
+    }
+
+    private string JoinRoles(string? original, string? current, bool same)
+    {
+        if (original is null || same)
+            return current ?? original ?? string.Empty;
+
+        if (current is null)
+            return original;
+
+        return Loc.GetString("ce-secret-role-history-fmt", ("original", original), ("current", current));
+    }
+
+    private string? GetRoleName(ProtoId<CESecretRolePrototype>? roleId)
+    {
+        return roleId is { } id && _proto.TryIndex(id, out var role) ? role.LocalizedName : null;
+    }
+
+    private string? GetRoleMarkup(ProtoId<CESecretRolePrototype>? roleId)
+    {
+        if (roleId is not { } id || GetRoleName(id) is not { } name)
+            return null;
+
+        var color = TryGetDepartment(id, out var department) ? department.Color : Color.White;
+        return $"[color={color.ToHex()}]{FormattedMessage.EscapeText(name)}[/color]";
+    }
 }
 
 /// <summary>
 /// Raised on the viewer's mind to let other systems grant recognition of <see cref="Target"/>'s
-/// secret role on top of the usual department rules.
+/// secret roles on top of the usual department rules.
 /// </summary>
 [ByRefEvent]
 public record struct CESecretRoleRecognizeEvent(EntityUid Target, bool Recognized = false);
