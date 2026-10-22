@@ -69,6 +69,7 @@
     components:
     - type: CEShadowRift
     - type: CETradeTable
+      slots: [] # required field, only the component type matters here
     - type: NpcFactionMember
     - type: CEMurkedSoulSpeech
   - type: CEGOAPSteering
