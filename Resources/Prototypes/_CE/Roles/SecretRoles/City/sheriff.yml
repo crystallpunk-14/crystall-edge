@@ -9,7 +9,7 @@
   skills:
   - MilitaryTraining
   - ImperialSalary200
-  - ShopEmpireSheriff
+  #- ShopEmpireSheriff
   objectives: !type:EntSelector
     id: CEObjectiveSheriffDestroyDarkness
 

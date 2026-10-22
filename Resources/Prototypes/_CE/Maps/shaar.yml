@@ -102,9 +102,9 @@
     - id: CEWildlandsModifierOreDiamondConstant10
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     # Cores
-    - id: CEWildlandsModifierCoreIronConstant15
-    - id: CEWildlandsModifierCoreCoalConstant15
-    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreIronRatio30
+    - id: CEWildlandsModifierCoreCoalRatio30
+    - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
   wildlandsModifiers: !type:AllSelector
     children:
