@@ -1,15 +1,12 @@
 using Content.Server._CE.Power.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.Construction;
-using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Power.NodeGroups;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared.Construction;
 using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
-using Content.Shared.NodeContainer;
 using Content.Shared.Tools.Systems;
 
 namespace Content.Server._CE.Power;
@@ -21,8 +18,7 @@ namespace Content.Server._CE.Power;
 public sealed partial class CEEnergizedInteractionSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
-    [Dependency] private EntityQuery<NodeContainerComponent> _nodeQuery = default!;
-    [Dependency] private EntityQuery<ApcPowerReceiverComponent> _receiverQuery = default!;
+    [Dependency] private CEPowerSystem _power = default!;
 
     [SubscribeLocalEvent]
     private void OnDamageChanged(Entity<CEEnergizedInteractionComponent> ent, ref DamageChangedEvent args)
@@ -30,7 +26,7 @@ public sealed partial class CEEnergizedInteractionSystem : EntitySystem
         if (!args.DamageIncreased || args.DamageDelta is null)
             return;
 
-        if (!IsPowered(ent))
+        if (!_power.IsPowered(ent))
             return;
 
         Discharge(ent);
@@ -72,7 +68,7 @@ public sealed partial class CEEnergizedInteractionSystem : EntitySystem
     /// </summary>
     private bool TryInteract(Entity<CEEnergizedInteractionComponent> ent, EntityUid user, string action)
     {
-        if (!IsPowered(ent))
+        if (!_power.IsPowered(ent))
             return true;
 
         var userArgs = new CEEntityEffectArgs(EntityManager, ent, null, Angle.Zero, 0f, user, null);
@@ -112,25 +108,5 @@ public sealed partial class CEEnergizedInteractionSystem : EntitySystem
         {
             effect.Effect(effectArgs);
         }
-    }
-
-    /// <summary>
-    /// Powered APC receivers (machines) or anything whose own power net has supply (pipes, batteries).
-    /// </summary>
-    private bool IsPowered(EntityUid uid)
-    {
-        if (_receiverQuery.TryComp(uid, out var receiver) && receiver.Powered)
-            return true;
-
-        if (!_nodeQuery.TryComp(uid, out var nodeContainer))
-            return false;
-
-        foreach (var node in nodeContainer.Nodes.Values)
-        {
-            if (node.NodeGroup is IBasePowerNet net && net.NetworkNode.LastCombinedMaxSupply > 0)
-                return true;
-        }
-
-        return false;
     }
 }

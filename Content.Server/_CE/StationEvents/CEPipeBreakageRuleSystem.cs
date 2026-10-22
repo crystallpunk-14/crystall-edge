@@ -1,3 +1,5 @@
+using Content.Server._CE.Murk;
+using Content.Server._CE.Power;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents.Events;
 using Content.Shared.GameTicking.Components;
@@ -10,8 +12,8 @@ using Robust.Shared.Random;
 namespace Content.Server._CE.StationEvents;
 
 /// <summary>
-/// Station event system that picks a random center pipe, always breaks it, then breaks every nearby pipe
-/// within a radius with an independent chance.
+/// Station event system that picks a random powered center pipe inside the safe zone, always breaks it,
+/// then breaks every nearby pipe within a radius with an independent chance.
 /// </summary>
 public sealed partial class CEPipeBreakageRuleSystem : StationEventSystem<CEPipeBreakageRuleComponent>
 {
@@ -21,7 +23,47 @@ public sealed partial class CEPipeBreakageRuleSystem : StationEventSystem<CEPipe
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
+    [Dependency] private CEPowerSystem _power = default!;
+    [Dependency] private CEMurkSystem _murk = default!;
+
     private readonly List<EntityUid> _anchoredEntities = new();
+
+    /// <summary>
+    /// Picks the center pipe before the announcement, so the event ends silently when nothing can break.
+    /// Only powered pipes inside the safe zone count - ruins in the wildlands stay untouched.
+    /// </summary>
+    protected override void Added(EntityUid uid,
+        CEPipeBreakageRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleAddedEvent args)
+    {
+        var centerCandidates = new List<EntityUid>();
+
+        var query = EntityQueryEnumerator<TransformComponent, MetaDataComponent>();
+        while (query.MoveNext(out var pipe, out var xform, out var meta))
+        {
+            if (meta.EntityPrototype is null || !component.CenterPrototype.Equals(meta.EntityPrototype))
+                continue;
+            if (HasOtherAnchoredEntities(pipe, xform))
+                continue;
+            if (!_power.IsPowered(pipe))
+                continue;
+            if (_murk.InMurk(xform.Coordinates))
+                continue;
+
+            centerCandidates.Add(pipe);
+        }
+
+        if (centerCandidates.Count == 0)
+        {
+            GameTicker.EndGameRule(uid, gameRule);
+            return;
+        }
+
+        component.Target = _random.Pick(centerCandidates);
+
+        base.Added(uid, component, gameRule, args);
+    }
 
     protected override void Started(EntityUid ruleUid,
         CEPipeBreakageRuleComponent component,
@@ -30,23 +72,9 @@ public sealed partial class CEPipeBreakageRuleSystem : StationEventSystem<CEPipe
     {
         base.Started(ruleUid, component, gameRule, args);
 
-        var centerCandidates = new List<EntityUid>();
-
-        var query = EntityQueryEnumerator<TransformComponent, MetaDataComponent>();
-        while (query.MoveNext(out var uid, out var xform, out var meta))
-        {
-            if (meta.EntityPrototype is null || !component.CenterPrototype.Equals(meta.EntityPrototype))
-                continue;
-            if (HasOtherAnchoredEntities(uid, xform))
-                continue;
-
-            centerCandidates.Add(uid);
-        }
-
-        if (centerCandidates.Count == 0)
+        if (component.Target is not { } center || TerminatingOrDeleted(center))
             return;
 
-        var center = _random.Pick(centerCandidates);
         var centerXform = Transform(center);
         var centerCoords = centerXform.Coordinates;
         var mapCoords = _transform.GetMapCoordinates(center, centerXform);
