@@ -63,9 +63,9 @@ public sealed partial class CEWildlandsSystem : EntitySystem
         var wildContext = CreateContext(seed, config.Center, new CEProceduralRegion(city, inside: false), points);
         var cityContext = wildContext with { Region = new CEProceduralRegion(city, inside: true) };
 
+        // Bottom-up, so a level's layers can mask against the finished level below (BelowMask).
         var depths = new List<int>(config.LayersByDepth.Keys);
         depths.Sort();
-        depths.Reverse();
         foreach (var depth in depths)
         {
             if (!levels.TryGetValue(depth, out var map))

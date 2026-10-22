@@ -12,7 +12,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Tools/keys.rsi
+    sprite: _CE/Objects/Tools/key.rsi
   - type: CEKey
   - type: EmitSoundOnLand
     sound:

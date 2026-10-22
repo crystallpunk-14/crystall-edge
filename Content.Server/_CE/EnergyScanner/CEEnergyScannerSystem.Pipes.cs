@@ -1,3 +1,4 @@
+using Content.Server._CE.Power;
 using Content.Server._CE.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.NodeGroups;
@@ -58,7 +59,7 @@ public sealed partial class CEEnergyScannerSystem
                         vertical |= CEPipeVerticalDirection.Down;
                 }
 
-                if (node.NodeGroup is IBasePowerNet net && IsPowered(net))
+                if (node.NodeGroup is IBasePowerNet net && CEPowerSystem.IsPowered(net))
                     powered = true;
             }
 

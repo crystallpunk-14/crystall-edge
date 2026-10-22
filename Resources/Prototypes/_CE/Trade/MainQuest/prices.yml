@@ -45,6 +45,14 @@
     count: 20
 
 - type: mainQuestPrice
+  id: MainQuestCarrotPatties
+  department: CETavern
+  cost:
+  - !type:FoodResource
+    recipe: CarrotPatties
+    count: 20
+
+- type: mainQuestPrice
   id: MainQuestCoins
   department: CECitizens
   pay: 500
