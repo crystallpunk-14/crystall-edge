@@ -8,7 +8,7 @@
   - type: Item
     storedRotation: -90
   - type: Sprite
-    sprite: _CE/Objects/Tools/keys.rsi
+    sprite: _CE/Objects/Tools/lockpick.rsi
     state: lockpick_iron
   - type: CELockpick
     health: 10
@@ -29,7 +29,7 @@
   - type: Item
     storedRotation: 45
   - type: Sprite
-    sprite: _CE/Objects/Tools/keys.rsi
+    sprite: _CE/Objects/Tools/lockpick.rsi
     state: file
   - type: CEKeyFile
   - type: UseDelay

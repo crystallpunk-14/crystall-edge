@@ -8,7 +8,7 @@
   components:
   - type: CEKeyRing
   - type: Sprite
-    sprite: _CE/Objects/Tools/keys.rsi
+    sprite: _CE/Objects/Storage/keyring.rsi
     layers:
     - state: keyring
     - state: ring-0

@@ -1,32 +1,20 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by viator1748 (discord)",
+  "copyright": "Created by viator1748 (discord), inhands by D1nazewwr",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
-    {
-      "name": "approved"
-    },
-    {
-      "name": "bank"
-    },
-    {
-      "name": "denied"
-    },
-    {
-      "name": "guard"
-    },
-    {
-      "name": "guildmaster"
-    },
-    {
-      "name": "academy"
-    },
-    {
-      "name": "engineering"
-    }
+    { "name": "approved" },
+    { "name": "bank" },
+    { "name": "denied" },
+    { "name": "guard" },
+    { "name": "guildmaster" },
+    { "name": "academy" },
+    { "name": "engineering" },
+    { "name": "inhand-left", "directions": 4 },
+    { "name": "inhand-right", "directions": 4 }
   ]
 }
