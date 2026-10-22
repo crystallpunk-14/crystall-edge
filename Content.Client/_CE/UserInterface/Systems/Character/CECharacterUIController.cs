@@ -23,6 +23,7 @@ using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
@@ -44,6 +45,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly CESecretRoleInfoSystem _secretRoleInfo = default!;
+    [UISystemDependency] private readonly CESecretRoleIconSystem _secretRoleIcon = default!;
     [UISystemDependency] private readonly CEClientSkillSystem _clientSkill = default!;
     [UISystemDependency] private readonly CEObjectiveSystem _ceObjectives = default!;
     [UISystemDependency] private readonly MindSystem _mind = default!;
@@ -166,7 +168,9 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         _window.Tabs.SetTabVisible(SkillsTabIndex, learned.Count > 0);
     }
 
-    private void SecretRoleUpdated(EntityUid entity, ProtoId<CESecretRolePrototype>? secretRoleId)
+    private void SecretRoleUpdated(EntityUid entity,
+        ProtoId<CESecretRolePrototype>? secretRoleId,
+        ProtoId<CESecretRolePrototype>? originalSecretRoleId)
     {
         if (_window == null)
             return;
@@ -180,25 +184,38 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         _window.SecretRoleContainer.Visible = true;
         _window.SecretRoleLabel.Text = secretRoleProto.LocalizedName;
         _window.SecretRoleLabel.FontColorOverride = null;
-        _window.SecretRoleIcon.Texture = _prototypeManager.TryIndex(secretRoleProto.Icon, out JobIconPrototype? secretRoleIcon)
-            ? _sprite.Frame0(secretRoleIcon.Icon)
-            : null;
+        _window.SecretRoleIcon.Texture = GetRoleIcon(secretRoleProto);
+
+        // The original role sits on its own faded line above - one line with both is too wide.
+        if (originalSecretRoleId is { } originalId &&
+            originalId != roleId &&
+            _prototypeManager.TryIndex(originalId, out var originalRoleProto))
+        {
+            _window.OriginalRoleContainer.Visible = true;
+            _window.OriginalRoleLabel.Text = originalRoleProto.LocalizedName;
+            _window.OriginalRoleIcon.Texture = GetRoleIcon(originalRoleProto);
+        }
+        else
+        {
+            _window.OriginalRoleContainer.Visible = false;
+        }
 
         _window.FactionLabel.Clear();
-        foreach (var secretDepartment in _prototypeManager.EnumeratePrototypes<CESecretDepartmentPrototype>())
-        {
-            if (!secretDepartment.Roles.Contains(roleId))
-                continue;
+        if (!_secretRoleIcon.TryGetDepartment(roleId, out var secretDepartment))
+            return;
 
-            _window.SecretRoleLabel.FontColorOverride = secretDepartment.Color;
+        _window.SecretRoleLabel.FontColorOverride = secretDepartment.Color;
 
-            var factionText = new FormattedMessage();
-            factionText.PushColor(secretDepartment.Color);
-            factionText.AddText(Loc.GetString(secretDepartment.Name));
-            factionText.Pop();
-            _window.FactionLabel.SetMessage(factionText);
-            break;
-        }
+        var factionText = new FormattedMessage();
+        factionText.PushColor(secretDepartment.Color);
+        factionText.AddText(Loc.GetString(secretDepartment.Name));
+        factionText.Pop();
+        _window.FactionLabel.SetMessage(factionText);
+    }
+
+    private Texture? GetRoleIcon(CESecretRolePrototype role)
+    {
+        return _prototypeManager.TryIndex(role.Icon, out JobIconPrototype? icon) ? _sprite.Frame0(icon.Icon) : null;
     }
 
     private void CharacterUpdated(CharacterData data)

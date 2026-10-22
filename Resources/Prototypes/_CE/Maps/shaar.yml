@@ -12,7 +12,6 @@
           mapNameTemplate: "Shaar"
         - type: StationJobs
           availableJobs:
-            #Army
             #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 3, 4 ]

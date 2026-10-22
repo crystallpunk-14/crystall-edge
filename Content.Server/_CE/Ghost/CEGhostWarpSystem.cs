@@ -84,13 +84,14 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
 
             _jobs.MindTryGetJobId(mind?.Mind, out var jobId);
             ProtoId<CESecretRolePrototype>? secretRole = null;
+            ProtoId<CESecretRolePrototype>? originalSecretRole = null;
             if (canSeeMeta)
-                _secretRoleInfo.TryGetSecretRole(attached, out secretRole);
+                _secretRoleInfo.TryGetSecretRole(attached, out secretRole, out originalSecretRole);
 
             var playerName = Comp<MetaDataComponent>(attached).EntityName;
 
             if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
-                yield return new CEGhostWarp(GetNetEntity(attached), playerName, false, jobId, secretRole);
+                yield return new CEGhostWarp(GetNetEntity(attached), playerName, false, jobId, secretRole, originalSecretRole);
         }
     }
 }

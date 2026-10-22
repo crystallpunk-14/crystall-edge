@@ -27,7 +27,8 @@ public sealed partial class CEGhostWarpPlayerRow : PanelContainer
         string? secretRoleName,
         Texture? secretRoleIcon,
         Color? secretRoleColor,
-        string? secretRoleFactionName,
+        string? secretRoleTooltip,
+        Texture? originalSecretRoleIcon,
         bool canShowInfo)
     {
         NameLabel.Text = name;
@@ -42,7 +43,11 @@ public sealed partial class CEGhostWarpPlayerRow : PanelContainer
         SecretRoleLabel.FontColorOverride = secretRoleColor;
         SecretRoleIcon.Texture = secretRoleIcon;
         SecretRoleIcon.Visible = secretRoleIcon != null;
-        SecretRoleCell.ToolTip = secretRoleFactionName;
+        // Only the current role is named - the original one is just a faded icon, named in the tooltip.
+        OriginalRoleIcon.Texture = originalSecretRoleIcon;
+        OriginalRoleIcon.Visible = originalSecretRoleIcon != null;
+        OriginalRoleArrow.Visible = originalSecretRoleIcon != null;
+        SecretRoleCell.ToolTip = secretRoleTooltip;
         InfoButton.Visible = canShowInfo;
 
         WarpButton.ToolTip = Loc.GetString("ce-ghost-target-window-warp-tooltip", ("name", name));

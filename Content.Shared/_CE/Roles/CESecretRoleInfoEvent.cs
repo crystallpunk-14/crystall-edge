@@ -24,10 +24,14 @@ public sealed class CESecretRoleInfoEvent : EntityEventArgs
 {
     public readonly NetEntity NetEntity;
     public readonly ProtoId<CESecretRolePrototype>? SecretRole;
+    public readonly ProtoId<CESecretRolePrototype>? OriginalSecretRole;
 
-    public CESecretRoleInfoEvent(NetEntity netEntity, ProtoId<CESecretRolePrototype>? secretRole)
+    public CESecretRoleInfoEvent(NetEntity netEntity,
+        ProtoId<CESecretRolePrototype>? secretRole,
+        ProtoId<CESecretRolePrototype>? originalSecretRole)
     {
         NetEntity = netEntity;
         SecretRole = secretRole;
+        OriginalSecretRole = originalSecretRole;
     }
 }

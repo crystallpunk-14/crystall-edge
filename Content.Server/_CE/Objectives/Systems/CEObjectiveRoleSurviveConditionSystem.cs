@@ -9,7 +9,7 @@ namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveRoleSurviveConditionComponent"/> - the average
-/// survival of every holder of the listed roles: alive = 1, critical = 0.5, dead or gone = 0.
+/// survival of every current or original holder of the listed roles: alive = 1, critical = 0.5, dead or gone = 0.
 /// </summary>
 public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
 {
@@ -26,9 +26,10 @@ public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindId, out var mind))
         {
+            // The original role counts too - a recruited priest is still a priest to hunt.
             if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
-                roleEnt.Value.Comp2.Role is not { } roleId ||
-                !ent.Comp.Roles.Contains(roleId))
+                !(roleEnt.Value.Comp2.Role is { } roleId && ent.Comp.Roles.Contains(roleId) ||
+                  roleEnt.Value.Comp2.OriginalRole is { } originalId && ent.Comp.Roles.Contains(originalId)))
             {
                 continue;
             }

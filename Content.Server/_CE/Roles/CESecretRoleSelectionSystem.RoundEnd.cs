@@ -5,29 +5,32 @@ using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Roles;
 
 public sealed partial class CESecretRoleSelectionSystem
 {
+    [Dependency] private CESecretRoleIconSystem _roleIcon = default!;
+
     /// <summary>
-    /// Looks up the display name and faction color for a mind's secret role, for the round-end
-    /// player manifest (see <c>GameTicker.RoundFlow.cs</c>'s <c>ShowRoundEndScoreboard</c>). False
-    /// if the mind never held a secret role.
+    /// Looks up a mind's current and original secret role, for the round-end player manifest (see
+    /// <c>GameTicker.RoundFlow.cs</c>'s <c>ShowRoundEndScoreboard</c>). False if the mind never
+    /// held a secret role.
     /// </summary>
-    public bool TryGetSecretRoleDisplay(EntityUid mindId, [NotNullWhen(true)] out string? roleName, out Color color)
+    public bool TryGetSecretRoles(EntityUid mindId,
+        [NotNullWhen(true)] out ProtoId<CESecretRolePrototype>? role,
+        out ProtoId<CESecretRolePrototype>? originalRole)
     {
-        roleName = null;
-        color = Color.White;
+        role = null;
+        originalRole = null;
 
         if (!_role.MindHasRole<CESecretRoleComponent>(mindId, out var roleEnt) ||
-            roleEnt.Value.Comp2.Role is not { } roleId ||
-            !_proto.TryIndex(roleId, out var role) ||
-            !TryGetDepartment(roleId, out var department))
+            roleEnt.Value.Comp2.Role is not { } roleId)
             return false;
 
-        roleName = role.Name;
-        color = department.Color;
+        role = roleId;
+        originalRole = roleEnt.Value.Comp2.OriginalRole;
         return true;
     }
 
@@ -73,7 +76,7 @@ public sealed partial class CESecretRoleSelectionSystem
                 ("name", Loc.GetString(department.Name)),
                 ("color", department.Color)));
 
-            foreach (var (mindId, mind, role) in members)
+            foreach (var (mindId, mind, role, originalRole) in members)
             {
                 var username = mind.OriginalOwnerUserId != null
                     ? _playerManager.GetPlayerData(mind.OriginalOwnerUserId.Value).UserName
@@ -86,8 +89,7 @@ public sealed partial class CESecretRoleSelectionSystem
                 args.AddLine(Loc.GetString("ce-roundend-secret-role-player-summary",
                     ("name", characterName),
                     ("username", username),
-                    ("role", role.LocalizedName),
-                    ("color", department.Color),
+                    ("role", _roleIcon.GetRolesMarkup(originalRole, role.ID)),
                     ("objCount", objectives.Count)));
 
                 foreach (var objectiveUid in objectives)
@@ -111,11 +113,11 @@ public sealed partial class CESecretRoleSelectionSystem
     /// <see cref="CESecretDepartmentPrototype.Weight"/> (highest first) - mirrors
     /// <c>ESSharedSecretIdentitySystem.GetOrderedOrganizations</c> upstream.
     /// </summary>
-    private List<(CESecretDepartmentPrototype Department, List<(EntityUid MindId, MindComponent Mind, CESecretRolePrototype Role)> Members)>
+    private List<(CESecretDepartmentPrototype Department, List<(EntityUid MindId, MindComponent Mind, CESecretRolePrototype Role, ProtoId<CESecretRolePrototype>? OriginalRole)> Members)>
         GetActiveDepartments()
     {
         var grouped =
-            new Dictionary<string, (CESecretDepartmentPrototype Department, List<(EntityUid, MindComponent, CESecretRolePrototype)> Members)>();
+            new Dictionary<string, (CESecretDepartmentPrototype Department, List<(EntityUid, MindComponent, CESecretRolePrototype, ProtoId<CESecretRolePrototype>?)> Members)>();
 
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindId, out var mindComp))
@@ -130,11 +132,11 @@ public sealed partial class CESecretRoleSelectionSystem
 
             if (!grouped.TryGetValue(department.ID, out var entry))
             {
-                entry = (department, new List<(EntityUid, MindComponent, CESecretRolePrototype)>());
+                entry = (department, new List<(EntityUid, MindComponent, CESecretRolePrototype, ProtoId<CESecretRolePrototype>?)>());
                 grouped[department.ID] = entry;
             }
 
-            entry.Members.Add((mindId, mindComp, role));
+            entry.Members.Add((mindId, mindComp, role, roleEnt.Value.Comp2.OriginalRole));
         }
 
         return grouped.Values.OrderByDescending(entry => entry.Department.Weight).ThenBy(entry => entry.Department.ID).ToList();

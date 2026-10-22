@@ -10,6 +10,8 @@
         </BoxContainer>
         <cc:VSeparator />
         <BoxContainer Name="SecretRoleCell" Orientation="Horizontal" SizeFlagsStretchRatio="2" HorizontalExpand="True" MouseFilter="Stop">
+            <TextureRect Name="OriginalRoleIcon" Stretch="KeepAspectCentered" SetSize="20 20" Modulate="#FFFFFF80" Visible="False" />
+            <Label Name="OriginalRoleArrow" Text="→" FontColorOverride="#999999" Margin="2 0 2 0" Visible="False" />
             <TextureRect Name="SecretRoleIcon" Stretch="KeepAspectCentered" SetSize="20 20" Margin="0 0 4 0" Visible="False" />
             <Label Name="SecretRoleLabel" HorizontalExpand="True" ClipText="True" />
         </BoxContainer>

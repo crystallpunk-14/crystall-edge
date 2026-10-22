@@ -14,7 +14,7 @@ namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveDepartmentSurviveConditionComponent"/> - the average
-/// of every department member's survival: alive = 1, critical = 0.5, dead or gone = 0.
+/// of every current or original department member's survival: alive = 1, critical = 0.5, dead or gone = 0.
 /// </summary>
 public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : EntitySystem
 {
@@ -38,9 +38,10 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindId, out var mind))
         {
+            // Members by their original role count too, so recruiting one away doesn't save them.
             if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
-                roleEnt.Value.Comp2.Role is not { } roleId ||
-                !department.Roles.Contains(roleId))
+                !(roleEnt.Value.Comp2.Role is { } roleId && department.Roles.Contains(roleId) ||
+                  roleEnt.Value.Comp2.OriginalRole is { } originalId && department.Roles.Contains(originalId)))
             {
                 continue;
             }
