@@ -59,7 +59,6 @@
     overlayEnabled: false
     soundEnabled: false
   - type: CEGOAP
-    dormant: false # keeps the shops stocked while nobody watches
     behaviors:
     - ShadowTrader
     - MurkSoulChatter
@@ -67,12 +66,11 @@
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
     memoryDuration: 600
-    whitelist:
-      components:
-      - CEShadowRift
-      - CETradeTable
-      - NpcFactionMember
-      - CEMurkedSoulSpeech
+    components:
+    - type: CEShadowRift
+    - type: CETradeTable
+    - type: NpcFactionMember
+    - type: CEMurkedSoulSpeech
   - type: CEGOAPSteering
     climb: false
     smash: false

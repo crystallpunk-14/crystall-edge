@@ -3,15 +3,16 @@ using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Maps;
-using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Perceptors;
 
 /// <summary>
-/// Vision-based perception. Periodically remembers entities passing <see cref="Whitelist"/>
+/// Vision-based perception. Periodically remembers entities having any of <see cref="Components"/>
 /// that are within radius and line of sight. Classification is the responsibility of higher layers.
 /// Optionally extends scanning to adjacent Z-levels via tile-transparency gating.
 /// </summary>
@@ -19,10 +20,11 @@ namespace Content.Server._CE.GOAP.Perceptors;
 public sealed partial class CEGOAPEyesPerceptorComponent : Component
 {
     /// <summary>
-    /// What the eyes can see.
+    /// What the eyes can see: entities having any of these components.
+    /// Looked up per component type, so keep the list to what the agent actually cares about.
     /// </summary>
     [DataField(required: true)]
-    public EntityWhitelist Whitelist = new();
+    public ComponentRegistry Components = new();
 
     /// <summary>
     /// Detection range in tiles.
@@ -42,7 +44,7 @@ public sealed partial class CEGOAPEyesPerceptorComponent : Component
     /// Entities on the map above are only seen while the agent stands under a transparent tile.
     /// </summary>
     [DataField]
-    public bool CrossZLevelVision = true;
+    public bool CrossZLevelVision;
 
     /// <summary>
     /// How long a seen entity is remembered. Falls back to the agent's memory duration if null.
@@ -57,6 +59,7 @@ public sealed partial class CEGOAPEyesPerceptorComponent : Component
 public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ITileDefinitionManager _tileDef = default!;
     [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -64,13 +67,20 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
-    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
 
+    private readonly HashSet<Entity<IComponent>> _lookupBuffer = new();
     private readonly HashSet<EntityUid> _nearbyBuffer = new();
+
+    [SubscribeLocalEvent]
+    private void OnMapInit(Entity<CEGOAPEyesPerceptorComponent> ent, ref MapInitEvent args)
+    {
+        // Spread scans over the interval so agents spawned together don't all scan on the same tick.
+        ent.Comp.NextUpdateTime = _timing.CurTime + ent.Comp.UpdateInterval * _random.NextDouble();
+    }
 
     public override void Update(float frameTime)
     {
@@ -92,7 +102,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
             return;
 
         var selfPos = _transform.GetWorldPosition(xform);
-        ScanMap(ent, xform.MapID, selfPos, xform.MapID, null);
+        ScanMap(ent, xform.MapID, selfPos, xform.MapID, null, true);
 
         if (!ent.Comp1.CrossZLevelVision || xform.MapUid is not { } currentMap)
             return;
@@ -101,7 +111,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
         if (_zLevels.TryMapDown((currentMap, null), out var mapBelow) &&
             _mapQuery.TryComp(mapBelow, out var belowMap))
         {
-            ScanMap(ent, belowMap.MapId, selfPos, xform.MapID, currentMap);
+            ScanMap(ent, belowMap.MapId, selfPos, xform.MapID, currentMap, false);
         }
 
         // Above: only while we stand under a transparent tile; line of sight is checked on the map above.
@@ -109,38 +119,47 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
             IsTileTransparentAt(mapAbove, selfPos) &&
             _mapQuery.TryComp(mapAbove, out var aboveMap))
         {
-            ScanMap(ent, aboveMap.MapId, selfPos, aboveMap.MapId, null);
+            ScanMap(ent, aboveMap.MapId, selfPos, aboveMap.MapId, null, false);
         }
     }
 
     /// <summary>
-    /// Remembers whitelisted entities on <paramref name="lookMap"/> around <paramref name="selfPos"/>
-    /// that are visible along a line of sight traced on <paramref name="losMap"/>.
+    /// Remembers entities on <paramref name="lookMap"/> around <paramref name="selfPos"/> having any of
+    /// <see cref="CEGOAPEyesPerceptorComponent.Components"/> that are visible along a line of sight traced on <paramref name="losMap"/>.
     /// </summary>
     /// <param name="ceilingMap">If set, a target is only seen through a transparent tile above it on this map.</param>
+    /// <param name="sameMap">True when <paramref name="lookMap"/> is the agent's own map.</param>
     private void ScanMap(
         Entity<CEGOAPEyesPerceptorComponent, CEGOAPComponent> ent,
         MapId lookMap,
         Vector2 selfPos,
         MapId losMap,
-        EntityUid? ceilingMap)
+        EntityUid? ceilingMap,
+        bool sameMap)
     {
         var (uid, eyes, goap) = ent;
-        var sameMap = _transform.GetMapId(uid) == lookMap;
+        var radiusSquared = eyes.VisionRadius * eyes.VisionRadius;
 
+        // Per-type lookups walk only entities with the component instead of everything in range.
         _nearbyBuffer.Clear();
-        _lookup.GetEntitiesInRange(lookMap, selfPos, eyes.VisionRadius, _nearbyBuffer);
+        foreach (var registration in eyes.Components.Values)
+        {
+            _lookupBuffer.Clear();
+            _lookup.GetEntitiesInRange(registration.Component.GetType(), lookMap, selfPos, eyes.VisionRadius, _lookupBuffer);
+
+            foreach (var found in _lookupBuffer)
+            {
+                _nearbyBuffer.Add(found.Owner);
+            }
+        }
 
         foreach (var target in _nearbyBuffer)
         {
-            if (target == uid || Terminating(target) || !_whitelist.IsValid(eyes.Whitelist, target))
-                continue;
-
-            if (!_xformQuery.TryGetComponent(target, out var targetXform))
+            if (target == uid || !_xformQuery.TryGetComponent(target, out var targetXform))
                 continue;
 
             var targetPos = _transform.GetWorldPosition(targetXform);
-            if (Vector2.Distance(selfPos, targetPos) > eyes.VisionRadius)
+            if (Vector2.DistanceSquared(selfPos, targetPos) > radiusSquared || Terminating(target))
                 continue;
 
             var visible = sameMap
