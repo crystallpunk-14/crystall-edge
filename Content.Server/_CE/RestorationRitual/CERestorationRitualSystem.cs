@@ -1,9 +1,11 @@
 using Content.Server._CE.GameTicking;
+using Content.Server.Chat.Managers;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.RestorationRitual;
 using Content.Shared._CE.RestorationRitual.Components;
 using Content.Shared._CE.Trade.MainQuest;
+using Content.Shared.Chat;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Destructible;
 using Robust.Shared.Containers;
@@ -12,6 +14,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server._CE.RestorationRitual;
 
@@ -23,11 +26,14 @@ namespace Content.Server._CE.RestorationRitual;
 public sealed partial class CERestorationRitualSystem : CESharedRestorationRitualSystem
 {
     [Dependency] private CEMurkConsumingRuleSystem _rule = default!;
+    [Dependency] private IChatManager _chat = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+
+    private static readonly Color AnnouncementColor = Color.FromHex("#5FB7FF");
 
     public override void Update(float frameTime)
     {
@@ -141,6 +147,24 @@ public sealed partial class CERestorationRitualSystem : CESharedRestorationRitua
     {
         ent.Comp.Accepted = true;
         ApplyEffects(ent, ent.Comp.AcceptEffects);
+        AnnounceShard(_transform.GetMapId(ent.Owner));
+    }
+
+    /// <summary>
+    /// Tells everyone in chat which shard was just accepted and how many are still missing.
+    /// </summary>
+    private void AnnounceShard(MapId map)
+    {
+        if (!TryCollectShards(map, out var missing) || !_rule.TryGetShardCount(out var shardCount))
+            return;
+
+        var title = Loc.GetString("ce-ritual-pedestal-accepted-title", ("count", shardCount - missing.Count));
+        var message = Loc.GetString("ce-ritual-pedestal-accepted-desc", ("remaining", missing.Count));
+        var wrapped = Loc.GetString("ce-ritual-pedestal-accepted-wrap",
+            ("title", FormattedMessage.EscapeText(title)),
+            ("message", FormattedMessage.EscapeText(message)));
+
+        _chat.ChatMessageToAll(ChatChannel.Radio, message, wrapped, default, false, true, AnnouncementColor);
     }
 
     private void RejectShard(Entity<CERitualPedestalComponent, ItemSlotsComponent> ent)

@@ -20,7 +20,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [Dependency] private RadiationSystem _radiation = default!;
     [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private NodeGroupSystem _nodeGroup = default!;
-    
+
     [Dependency] private EntityQuery<NodeContainerComponent> _nodeQuery = default!;
     [Dependency] private EntityQuery<ApcPowerReceiverComponent> _receiverQuery = default!;
 
