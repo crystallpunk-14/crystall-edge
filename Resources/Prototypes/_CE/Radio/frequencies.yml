@@ -7,9 +7,5 @@
   name: ce-radio-frequency-engineering
 
 - type: radioFrequency
-  id: Guard
-  name: ce-radio-frequency-guard
-
-- type: radioFrequency
   id: Tavern
   name: ce-radio-frequency-tavern

@@ -36,6 +36,22 @@
   layers:
     - !type:BiomeMetaLayer
       template: CESnowFill
+    - !type:BiomeTileLayer # Cobblestone patches
+      tile: CECobblestone
+      threshold: 0.3
+      noise:
+        seed: 27
+        noiseType: OpenSimplex2
+        fractalType: FBm
+        frequency: 0.2
+    - !type:BiomeTileLayer # Dirt patches
+      tile: CEDirt
+      threshold: 0.3
+      noise:
+        seed: 29
+        noiseType: OpenSimplex2
+        fractalType: FBm
+        frequency: 0.1
     - !type:BiomeEntityLayer # Snowdrifts
       threshold: 0.3
       noise:

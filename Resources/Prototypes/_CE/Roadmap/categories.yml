@@ -5,12 +5,6 @@
   priority: 6
 
 - type: roadmapCategory
-  id: Guard
-  title: ce-roadmap-category-guard
-  color: "#2f78d1"
-  priority: 5
-
-- type: roadmapCategory
   id: Engineering
   title: ce-roadmap-category-engineering
   color: "#c77629"

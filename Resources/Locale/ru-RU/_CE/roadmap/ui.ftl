@@ -4,7 +4,6 @@ ce-roadmap-header-in-progress = В процессе реализации
 ce-roadmap-header-backlogs = В будущих планах
 
 ce-roadmap-category-general = ОБЩЕЕ
-ce-roadmap-category-guard = СТРАЖА
 ce-roadmap-category-farming = ФЕРМЕРСТВО
 ce-roadmap-category-medical = МЕДИЦИНА
 ce-roadmap-category-adventures = ПРИКЛЮЧЕНИЯ

@@ -1,13 +1,7 @@
-# Guard
+# Sheriff
 
 - type: playTimeTracker
-  id: CEJobGuardCommander
-
-- type: playTimeTracker
-  id: CEJobGuard
-
-- type: playTimeTracker
-  id: CEJobInvestigator
+  id: CEJobSheriff
 
 # Tavern
 

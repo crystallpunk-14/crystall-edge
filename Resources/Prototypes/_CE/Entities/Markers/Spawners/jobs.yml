@@ -8,49 +8,21 @@
     sprite: _CE/Markers/jobs.rsi
     snapCardinals: true
 
-# Guards
+# Sheriff
 
 - type: entity
-  id: CESpawnPointGuardCommander
-  parent: CESpawnPointJobBase
-  name: commandant
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEGuardCommander
-  - type: Sprite
-    layers:
-      - state: green
-      - state: guard_commander
-
-- type: entity
-  id: CESpawnPointGuard
-  parent: CESpawnPointJobBase
-  name: soldier
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEGuard
-  - type: Sprite
-    layers:
-      - state: green
-      - state: guard
-
-- type: entity
-  id: CESpawnPointInvestigator
+  id: CESpawnPointSheriff
   parent: CESpawnPointJobBase
   name: sheriff
   categories:
   - Spawner
   components:
   - type: SpawnPoint
-    job_id: CEInvestigator
+    job_id: CESheriff
   - type: Sprite
     layers:
       - state: green
-      - state: investigator
+      - state: sheriff
 
 # Guild
 

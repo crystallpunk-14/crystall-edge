@@ -1,10 +1,10 @@
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadCapGuard
-  name: guard cap
-  description: Standard issue cap worn by city guards.
+  id: CEClothingHeadCapSheriff
+  name: sheriff's cap
+  description: Standard issue cap worn by the sheriff.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Guard/cap.rsi
+    sprite: _CE/Clothing/Head/Sheriff/cap.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Guard/cap.rsi
+    sprite: _CE/Clothing/Head/Sheriff/cap.rsi

@@ -17,13 +17,6 @@
   status: Backlog
 
 - type: roadmapItem
-  id: HardLabor
-  name: ce-roadmap-guard-hard-labor-name
-  desc: ce-roadmap-guard-hard-labor-desc
-  category: Guard
-  status: Backlog
-
-- type: roadmapItem
   id: Silvas
   name: ce-roadmap-farming-silvas-name
   desc: ce-roadmap-farming-silvas-desc

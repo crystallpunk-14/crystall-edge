@@ -22,22 +22,10 @@ ce-lock-shape-tavern-dorm-8 = комната таверны 8
 ce-lock-shape-tavern-dorm-9 = комната таверны 9
 ce-lock-shape-tavern-dorm-10 = комната таверны 10
 
-# Guard
+# Sheriff
 
-ce-lock-shape-guard-hall = прихожая казарм
-ce-lock-shape-guard-staff = внутренние помещения казарм
-ce-lock-shape-guard-head-room = кабинет коменданта
-
-ce-lock-shape-guard-cage-1 = тюремная клетка 1
-ce-lock-shape-guard-cage-2 = тюремная клетка 2
-ce-lock-shape-guard-cage-3 = тюремная клетка 3
-ce-lock-shape-guard-cage-4 = тюремная клетка 4
-ce-lock-shape-guard-cage-5 = тюремная клетка 5
-
-# Investigation
-
-ce-lock-shape-investigator-hall = прихожая участка шерифа
-ce-lock-shape-investigator-staff = внутренние помещения участка шерифа
+ce-lock-shape-sheriff-hall = прихожая участка шерифа
+ce-lock-shape-sheriff-staff = внутренние помещения участка шерифа
 
 # Engineering
 

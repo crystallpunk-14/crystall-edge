@@ -1,0 +1,16 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               SetSize="640 520"
+               MinSize="480 300">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <LineEdit Name="SearchBar" Margin="4" PlaceHolder="{Loc 'ce-trade-shop-search'}" HorizontalExpand="True" />
+            <OptionButton Name="OptionCategories" MinSize="130 0" Margin="4" />
+        </BoxContainer>
+        <BoxContainer Name="BalanceBox" Orientation="Horizontal" Margin="4">
+            <Label Text="{Loc 'ce-trade-shop-balance'}" Margin="0 0 5 0" />
+        </BoxContainer>
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+            <BoxContainer Name="OffersContainer" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Top" />
+        </ScrollContainer>
+    </BoxContainer>
+</DefaultWindow>

@@ -37,14 +37,14 @@
 - type: entity
   parent:
   - CEClothingShirtBase
-  id: CEClothingShirtSyurkoGuard
-  name: guard syurko
-  description: A syurko styled for guard uniforms.
+  id: CEClothingShirtSyurkoSheriff
+  name: sheriff's syurko
+  description: A syurko styled for the sheriff's uniform.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
+    sprite: _CE/Clothing/Shirt/Sheriff/syurko.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
+    sprite: _CE/Clothing/Shirt/Sheriff/syurko.rsi
 
 - type: entity
   parent:

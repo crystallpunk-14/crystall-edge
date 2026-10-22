@@ -20,8 +20,8 @@ public sealed class LoadoutTests : GameTest
 - type: loadout
   id: TestJumpsuit
   equipment: # CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
-    pants: CEClothingPantsGuard
-    shirt: CEClothingShirtGuard
+    pants: CEClothingPantsSheriff
+    shirt: CEClothingShirtSheriff
 
 - type: loadoutGroup
   id: LoadoutTesterJumpsuit
@@ -41,8 +41,8 @@ public sealed class LoadoutTests : GameTest
 
     private readonly Dictionary<string, EntProtoId> _expectedEquipment = new()
     {
-        ["pants"] = "CEClothingPantsGuard", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
-        ["shirt"] = "CEClothingShirtGuard", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
+        ["pants"] = "CEClothingPantsSheriff", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
+        ["shirt"] = "CEClothingShirtSheriff", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
     };
 
     public override PoolSettings PoolSettings => new()

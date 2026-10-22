@@ -18,6 +18,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
 {
     [Dependency] protected IPrototypeManager Proto = default!;
     [Dependency] protected CESharedCurrencySystem Currency = default!;
+    [Dependency] protected SharedUserInterfaceSystem Ui = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private CEEconomySystem _economy = default!;
@@ -219,6 +220,24 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (money is null)
             return 0;
 
+        var price = GetBasePrice(money, offer, pay);
+        price *= 1 + _random.NextFloat(-money.Variation, money.Variation);
+        return Math.Max(1, (int) Math.Round(price));
+    }
+
+    /// <summary>
+    /// Price of one side of the offer without the random variation; 0 when that side pays no coins.
+    /// </summary>
+    public int GetFixedPrice(CETradeMoney? money, CETradeOfferPrototype offer, bool pay)
+    {
+        if (money is null)
+            return 0;
+
+        return Math.Max(1, (int) Math.Round(GetBasePrice(money, offer, pay)));
+    }
+
+    private double GetBasePrice(CETradeMoney money, CETradeOfferPrototype offer, bool pay)
+    {
         double price;
         if (money.Amount is { } amount)
         {
@@ -245,8 +264,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
             price = price * money.Markup + money.Bonus;
         }
 
-        price *= 1 + _random.NextFloat(-money.Variation, money.Variation);
-        return Math.Max(1, (int) Math.Round(price));
+        return price;
     }
 
     /// <summary>

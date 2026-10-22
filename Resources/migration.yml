@@ -275,6 +275,76 @@ CEVialMediumChaosEssence: CEVialMedium
 # 2026-10-18
 CEWallLight: CEWallLightOrange
 
+# 2026-10-21
+# Army faction (soldier, commandant) removed
+CEIronDoorGuardHall: CEIronDoorWindowed
+CEIronDoorGuardHallMirrored: CEIronDoorWindowedMirrored
+CEIronDoorGuardStaff: CEIronDoor
+CEIronDoorGuardStaffMirrored: CEIronDoorMirrored
+CEIronDoorGuardHeadRoom: CEIronDoor
+CEIronDoorGuardCage1: CEFenceGateBigIron
+CEIronDoorGuardCage2: CEFenceGateBigIron
+CEIronDoorGuardCage3: CEFenceGateBigIron
+CEIronDoorGuardCage4: CEFenceGateBigIron
+CEIronDoorGuardCage5: CEFenceGateBigIron
+CEChestFilledGuard: CEWoodenChest
+CEChestFilledGuardCommander: CEGoldChest
+CEBedsideTableFilledGuard: CEBedsideTableWooden
+CEBedsideTableFilledGuardCommander: CEBedsideTableWooden
+CEKeyGuardHall: null
+CEKeyGuardStaff: null
+CEKeyGuardHeadRoom: null
+CEKeyGuardCage1: null
+CEKeyGuardCage2: null
+CEKeyGuardCage3: null
+CEKeyGuardCage4: null
+CEKeyGuardCage5: null
+CEKeyRingGuard: null
+CEKeyRingGuardCommander: null
+CEWalletFilledGuard: null
+CEWalletFilledGuardCommander: null
+CEPaperArmyOrders: null
+CERubberStampGuard: null
+CEClothingCloakGuardCommander: CEClothingCloakSheriff
+CESpawnPointGuard: null
+CESpawnPointGuardCommander: null
+
+# Investigator renamed to Sheriff
+CEBedsideTableFilledInvestigator: CEBedsideTableFilledSheriff
+CEChestFilledInvestigator: CEChestFilledSheriff
+CEClothingCloakMantleInvestigator: CEClothingCloakSheriff
+CEClothingMaskInvestigator: null
+CEIronDoorInvestigatorHall: CEIronDoorSheriffHall
+CEIronDoorInvestigatorHallMirrored: CEIronDoorSheriffHallMirrored
+CEIronDoorInvestigatorStaff: CEIronDoorSheriffStaff
+CEIronDoorInvestigatorStaffMirrored: CEIronDoorSheriffStaffMirrored
+CEKeyInvestigatorHall: CEKeySheriffHall
+CEKeyInvestigatorStaff: CEKeySheriffStaff
+CEKeyRingInvestigator: CEKeyRingSheriff
+CESpawnPointInvestigator: CESpawnPointSheriff
+CEWalletFilledInvestigator: CEWalletFilledSheriff
+
+# Guard clothing renamed to Sheriff
+CEClothingHeadCapGuard: CEClothingHeadCapSheriff
+CEClothingHeadFedoraGuard: CEClothingHeadFedoraSheriff
+CEClothingHeadHelmetGuard: CEClothingHeadHelmetSheriff
+CEClothingHeadHelmetGuardCorinthian: CEClothingHeadHelmetSheriffCorinthian
+CEClothingPantsGuard: CEClothingPantsSheriff
+CEClothingShirtGuard: CEClothingShirtSheriff
+CEClothingShirtSyurkoGuard: CEClothingShirtSyurkoSheriff
+
+# Remaining guard content renamed to Sheriff
+CEClothingCloakRaincoatGuard: CEClothingCloakRaincoatSheriff
+CEClothingHeadTriangularGuard: CEClothingHeadTriangularSheriff
+CEWeaponMaceTwoHandedGuardrail: CEWeaponMaceTwoHandedSheriff
+CEGuardMaceEnergyBall: CESheriffMaceEnergyBall
+CEActionGuardMaceCharge: CEActionSheriffMaceCharge
+CEGuardBola: CEBola
+CETradeTableEmpireGuard: null
+CEWallRadioSpeakerGuard: CEWallRadioSpeaker
+CERadioPostSpeakerGuard: CERadioPostSpeaker
+CETradeTableEmpireSheriff: null
+
 # 2026-10-22
 CEClothingCloakTavernmaster: null
 CEClothingHeadFedoraTavernmaster: null

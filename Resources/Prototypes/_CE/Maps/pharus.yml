@@ -13,8 +13,6 @@
         - type: StationJobs
           availableJobs:
             #Army
-            CEGuardCommander: [ 1, 1 ]
-            CEGuard: [ 2, 2 ]
             #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 2, 2 ]
@@ -26,7 +24,7 @@
             CEAdventurer: [ 3, 4 ]
             #Citizens
             CEBard: [ 1, 1 ]
-            CEInvestigator: [ 1, 1 ]
+            CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Pharus
@@ -96,9 +94,9 @@
     - id: CEWildlandsModifierOreDiamondConstant10
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     # Cores
-    - id: CEWildlandsModifierCoreIronConstant15
-    - id: CEWildlandsModifierCoreCoalConstant15
-    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreIronRatio30
+    - id: CEWildlandsModifierCoreCoalRatio30
+    - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
   wildlandsModifiers: !type:AllSelector
     children:
@@ -124,12 +122,12 @@
         width: 0.6
         blendWeight: 0.6
       mask:
-      - !type:BelowMask
+      - !type:BelowMask # only over land; a tile whitelist here would cut holes wherever the biome below repainted the floor
         masks: &onLand
         - !type:TileMask
+          inverted: true
           tiles:
-          - CESnow
-          - CEStone
+          - Space
       fill:
       - tile: CESnow
         threshold: 0.7
@@ -141,13 +139,33 @@
           lacunarity: 2
           gain: 0.5
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      seed: 6
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: &forestNoise
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          frequency: 0.03
+          octaves: 3
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       seed: 6
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
   #MARK: 1 Hills
     1:
     - !type:TileNoiseDistanceLayer
@@ -171,13 +189,29 @@
         threshold: 0.7
         noise: *islandNoise
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      seed: 3
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       seed: 3
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 2
@@ -227,12 +261,27 @@
         threshold: 0.6
         noise: *islandNoise
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 1

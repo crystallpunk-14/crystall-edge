@@ -1,0 +1,11 @@
+<Control xmlns="https://spacestation14.io">
+    <PanelContainer HorizontalExpand="True" Margin="2" MinHeight="88" StyleClasses="BackgroundDark">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="4">
+            <BoxContainer Name="GiveBox" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Center" />
+            <Label Text="→" Margin="8 0" VerticalAlignment="Center" />
+            <EntityPrototypeView Name="Preview" SetSize="64 64" Scale="2,2" Margin="0 0 4 0" VerticalAlignment="Center" />
+            <BoxContainer Name="GetBox" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Center" />
+            <Button Name="TradeButton" Text="{Loc 'ce-trade-shop-trade'}" MinWidth="90" VerticalAlignment="Center" />
+        </BoxContainer>
+    </PanelContainer>
+</Control>

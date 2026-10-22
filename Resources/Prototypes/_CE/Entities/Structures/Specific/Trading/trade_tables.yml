@@ -120,17 +120,6 @@
 
 - type: entity
   parent: CETradeCarpetBase
-  id: CETradeTableEmpireGuard
-  suffix: empire guard
-  categories: [ ForkFiltered ]
-  components:
-  - type: IconSmooth
-    key: trade_EmpireGuard
-  - type: CETradeShopTable
-    shop: EmpireGuard
-
-- type: entity
-  parent: CETradeCarpetBase
   id: CETradeTableHelsinWarHouse
   suffix: Helsin War House
   categories: [ ForkFiltered ]

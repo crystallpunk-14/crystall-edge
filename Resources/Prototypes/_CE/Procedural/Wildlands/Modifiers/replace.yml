@@ -1,6 +1,6 @@
 # Constant: exactly N walls replaced at random. Ratio: about one in N matching walls replaced.
 
-# Ore
+#MARK: Ore
 
 - type: entity
   id: CEWildlandsModifierOreCoalRatio10
@@ -46,10 +46,10 @@
       replacement: CEWallStoneOreDiamond
       count: 10
 
-# Cores
+#MARK: Cores
 
 - type: entity
-  id: CEWildlandsModifierCoreIronConstant15
+  id: CEWildlandsModifierCoreIronRatio30
   parent: CEBaseWildlandsModifier
   categories: [ HideSpawnMenu ]
   components:
@@ -60,10 +60,11 @@
         components:
         - CERockReplacementMarker
       replacement: CEWallIronCore
-      count: 15
+      entitiesPerReplacement: 50
+      entitiesPerReplacementStdDev: 6
 
 - type: entity
-  id: CEWildlandsModifierCoreCoalConstant15
+  id: CEWildlandsModifierCoreCoalRatio30
   parent: CEBaseWildlandsModifier
   categories: [ HideSpawnMenu ]
   components:
@@ -74,10 +75,11 @@
         components:
         - CERockReplacementMarker
       replacement: CEWallCoalCore
-      count: 15
+      entitiesPerReplacement: 50
+      entitiesPerReplacementStdDev: 6
 
 - type: entity
-  id: CEWildlandsModifierCoreCrystalConstant15
+  id: CEWildlandsModifierCoreCrystalRatio30
   parent: CEBaseWildlandsModifier
   categories: [ HideSpawnMenu ]
   components:
@@ -88,7 +90,8 @@
         components:
         - CERockReplacementMarker
       replacement: CEWallCrystalCore
-      count: 15
+      entitiesPerReplacement: 50
+      entitiesPerReplacementStdDev: 6
 
 - type: entity
   id: CEWildlandsModifierCoreDiamondConstant1
@@ -104,7 +107,7 @@
       replacement: CEWallDiamondCore
       count: 1
 
-# Decay
+#MARK: Decay
 
 - type: entity
   id: CEWildlandsModifierDamagedWoodenWallsRatio50

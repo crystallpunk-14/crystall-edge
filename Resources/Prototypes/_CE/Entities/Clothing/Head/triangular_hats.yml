@@ -1,13 +1,13 @@
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadTriangularGuard
-  name: guard triangular hat
-  description: A distinctive triangular hat worn by guards. Its unique shape makes it easy to identify guard personnel from a distance.
+  id: CEClothingHeadTriangularSheriff
+  name: sheriff's triangular hat
+  description: A distinctive triangular hat worn by the sheriff. Its unique shape makes it easy to identify the sheriff from a distance.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Generic/triangular_guard.rsi
+    sprite: _CE/Clothing/Head/Generic/triangular_sheriff.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Generic/triangular_guard.rsi
+    sprite: _CE/Clothing/Head/Generic/triangular_sheriff.rsi
 
 - type: entity
   parent: CEClothingHeadBase

@@ -13,18 +13,6 @@
 - type: entity
   parent:
   - CEClothingCloakBase
-  id: CEClothingCloakMantleInvestigator
-  name: investigator's mantle
-  description: A practical mantle favored by investigators for its discreet appearance.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Cloak/Guard/investigator.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Cloak/Guard/investigator.rsi
-
-- type: entity
-  parent:
-  - CEClothingCloakBase
   id: CEClothingCloakMantleThaumaturge
   name: thaumaturge's mantle
   description: A formal mantle worn by thaumaturges of the Academy, with an attachable ceremonial hood.

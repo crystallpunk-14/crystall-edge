@@ -23,13 +23,7 @@
       "name": "farmer"
     },
     {
-      "name": "guard"
-    },
-    {
-      "name": "guard_commander"
-    },
-    {
-      "name": "investigator"
+      "name": "sheriff"
     },
     {
       "name": "tavernmaster"
