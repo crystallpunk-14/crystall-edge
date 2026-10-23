@@ -1537,3 +1537,14 @@
   id: 1131
   time: '2026-10-23T16:11:42.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/555
+- author: TheShuEd
+  changes:
+  - message: 'Added new adventurers quest: lumishroom collection.'
+    type: Add
+  - message: Lumishrooms added into game.
+    type: Add
+  - message: 3 new shrooms soup recipe was added.
+    type: Add
+  id: 1132
+  time: '2026-10-23T19:13:36.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/556
