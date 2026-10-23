@@ -77,27 +77,6 @@
     spread: 15
 
 - type: entity
-  parent: BaseBulletPractice
-  id: PelletShotgunPractice
-  categories: [ HideSpawnMenu ]
-  name: pellet (.50 practice)
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Blunt: 1
-
-- type: entity
-  parent: PelletShotgunPractice
-  id: PelletShotgunPracticeSpread
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: ProjectileSpread
-    proto: PelletShotgunPractice
-    count: 6
-    spread: 15
-
-- type: entity
   parent: [ SolutionAmmo, SolutionToolVeryTiny, BaseBulletPractice ]
   id: PelletShotgunTranquilizer
   categories: [ HideSpawnMenu ]

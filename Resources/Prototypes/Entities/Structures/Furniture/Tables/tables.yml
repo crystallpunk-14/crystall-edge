@@ -481,42 +481,6 @@
 
 - type: entity
   parent: [ TableBase, StructureHealthFurniture ]
-  id: TableWeb
-  name: web table
-  description: Really smooth and surprisingly durable.
-  components:
-  - type: Damageable
-    damageModifierSet: ThreadMod
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/web.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/web.rsi
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageFurnitureNormal
-      behaviors:
-      - *SoundWoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWebSilk1:
-            min: 0
-            max: 2
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        path:
-          "/Audio/Weapons/slash.ogg"
-  - type: IconSmooth
-    key: webtable
-  - type: Construction
-    graph: WebStructures
-    node: table
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepCarpet
-
-- type: entity
-  parent: [ TableBase, StructureHealthFurniture ]
   id: TableXeno
   name: xeno table
   description: I wouldn't put the silverware on it.

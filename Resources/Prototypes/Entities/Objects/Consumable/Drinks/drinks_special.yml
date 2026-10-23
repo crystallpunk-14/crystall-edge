@@ -122,21 +122,3 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 20
-
-- type: entity
-  parent: [DrinkBaseMaterialStrongMetal, SolutionNormal, DrinkBase, DrinkVisualsFill]
-  id: Pitcher
-  name: metal pitcher
-  description: A stainless steel insulated pitcher. Everyone's best friend in the morning.
-  components:
-  - type: Item
-    size: Normal
-  - type: Sprite
-    sprite: Objects/Consumable/Drinks/pitcher.rsi
-  - type: SolutionContainerVisuals
-    maxFillLevels: 6
-    inHandsMaxFillLevels: 2
-  - type: FitsInDispenser
-    solution: drink
-
-# Weird empty shakes

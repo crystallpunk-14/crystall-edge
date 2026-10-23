@@ -114,21 +114,3 @@
   flavor: bitter
   color: "#E6E6DA"
   physicalDesc: reagent-physical-desc-crystalline
-
-- type: reagent
-  id: Rororium
-  name: reagent-name-rororium
-  desc: reagent-desc-rororium
-  group: Biological
-  flavor: tingly
-  physicalDesc: reagent-physical-desc-refreshing
-  color: "#bf1365"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:EvenHealthChange
-        damage:
-          Brute: -4
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectAdrenaline
-        time: 120

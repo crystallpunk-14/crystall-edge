@@ -151,21 +151,6 @@
         Nutriment: 0.2
 
 - type: reagent
-  id: OilOlive
-  name: reagent-name-oil-olive
-  group: Foods
-  desc: reagent-desc-oil-olive
-  physicalDesc: reagent-physical-desc-oily
-  flavor: oily
-  flavorMinimum: 0.05
-  color: olive
-  recognizable: true
-  metabolisms:
-    Digestion:
-      metabolites:
-        Nutriment: 1.5
-
-- type: reagent
   id: Oil
   name: reagent-name-oil
   group: Foods
