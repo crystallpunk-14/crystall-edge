@@ -940,6 +940,9 @@
   name: fly agaric
   description: A bright red mushroom with white spots. Very pretty, and very poisonous.
   components:
+  - type: CEFoodTag
+    tags:
+    - FlyAgaric
   - type: Item
     size: Tiny
   - type: FlavorProfile
@@ -979,6 +982,9 @@
   name: lumishroom
   description: A glowing cave mushroom. It ferments right in the cap, so eating a few goes straight to your head.
   components:
+  - type: CEFoodTag
+    tags:
+    - Lumishroom
   - type: Item
     size: Tiny
   - type: FlavorProfile

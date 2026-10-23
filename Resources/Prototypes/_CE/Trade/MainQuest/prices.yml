@@ -72,6 +72,14 @@
 #MARK: General
 
 - type: mainQuestPrice
+  id: MainQuestLumishroomCreamSoup
+  department: CETavern
+  cost:
+  - !type:FoodResource
+    recipe: LumishroomCreamSoup
+    count: 20
+
+- type: mainQuestPrice
   id: MainQuestCoins
   department: CECitizens
   pay: 500

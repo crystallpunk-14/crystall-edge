@@ -84,3 +84,11 @@
 - type: foodTag
   id: Cucumber
   name: ce-cooking-tag-cucumber
+
+- type: foodTag
+  id: FlyAgaric
+  name: ce-cooking-tag-fly-agaric
+
+- type: foodTag
+  id: Lumishroom
+  name: ce-cooking-tag-lumishroom
