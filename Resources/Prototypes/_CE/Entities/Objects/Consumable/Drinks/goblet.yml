@@ -16,6 +16,8 @@
   name: iron goblet
   categories: [ ForkFiltered ]
   components:
+  - type: Item
+    heldPrefix: iron_goblet
   - type: Sprite
     sprite: _CE/Objects/Consumable/Drinks/goblet.rsi
     layers:
@@ -33,6 +35,8 @@
   name: copper goblet
   categories: [ ForkFiltered ]
   components:
+  - type: Item
+    heldPrefix: copper_goblet
   - type: Sprite
     sprite: _CE/Objects/Consumable/Drinks/goblet.rsi
     layers:
@@ -50,6 +54,8 @@
   description: A goblet made of solid gold to show how rich its owner is.
   categories: [ ForkFiltered ]
   components:
+  - type: Item
+    heldPrefix: gold_goblet
   - type: Sprite
     sprite: _CE/Objects/Consumable/Drinks/goblet.rsi
     layers:
@@ -68,6 +74,8 @@
   categories: [ DoNotMap ]
   suffix: Artifact
   components:
+  - type: Item
+    heldPrefix: bottomless_goblet
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: bottomless-fill-

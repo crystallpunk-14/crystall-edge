@@ -4,7 +4,7 @@
   id: JobCETavernmaster
   groups:
   - CEGeneralBag
-  - CEGeneralEyes
+  - CETavernEyes
   - CETavernmasterCloak
   - CETavernShirt
   - CETavernPants
@@ -16,7 +16,7 @@
   groups:
   - CEGeneralBag
   - CEChefHead 
-  - CEGeneralEyes
+  - CETavernEyes
   - CETavernCloak
   - CETavernShirt
   - CETavernPants
