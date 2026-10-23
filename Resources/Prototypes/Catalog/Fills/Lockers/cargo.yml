@@ -1,8 +1,0 @@
-- type: entityTable
-  id: FillSalvageSpecialistHardsuitSpatio
-  table: !type:AllSelector
-    children:
-    - id: OxygenTankFilled
-    - id: ClothingShoesBootsMag
-    - id: ClothingOuterHardsuitSpatio
-    - id: ClothingMaskGasExplorer

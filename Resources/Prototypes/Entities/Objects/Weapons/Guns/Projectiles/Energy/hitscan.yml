@@ -97,17 +97,6 @@
       state: impact_beam_heavy
 
 - type: entity
-  parent: LaserHitscanBase
-  id: RedLaserPractice
-  name: red practice laser ray
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: HitscanBasicDamage
-    damage:
-      types:
-        Heat: 1
-
-- type: entity
   parent: BasicHitscan
   id: XrayLaser
   name: X-ray pulse beam

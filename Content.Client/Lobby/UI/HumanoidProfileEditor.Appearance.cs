@@ -19,7 +19,6 @@ public sealed partial class HumanoidProfileEditor
     private ColorSelectorSliders _rgbSkinColorSelector;
     private List<SpeciesPrototype> _species = new();
     private List<EmoteSoundsPrototype> _voices = new();
-    private static readonly ProtoId<GuideEntryPrototype> DefaultSpeciesGuidebook = "Species";
 
     public void UpdateSpeciesGuidebookIcon()
     {
@@ -283,17 +282,14 @@ public sealed partial class HumanoidProfileEditor
 
         var guidebookController = UserInterfaceManager.GetUIController<GuidebookUIController>();
         var species = Profile?.Species ?? HumanoidCharacterProfile.DefaultSpecies;
-        var page = DefaultSpeciesGuidebook;
-        if (_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-            page = new ProtoId<GuideEntryPrototype>(species.Id); // Gross. See above todo comment.
+        // CrystallEdge: upstream "Species" guide root deleted, open the species page itself
+        if (!_prototypeManager.HasIndex<GuideEntryPrototype>(species))
+            return;
 
-        if (_prototypeManager.Resolve(DefaultSpeciesGuidebook, out var guideRoot))
-        {
-            var dict = new Dictionary<ProtoId<GuideEntryPrototype>, GuideEntry>();
-            dict.Add(DefaultSpeciesGuidebook, guideRoot);
-            //TODO: Don't close the guidebook if its already open, just go to the correct page
-            guidebookController.OpenGuidebook(dict, includeChildren: true, selected: page);
-        }
+        var page = new ProtoId<GuideEntryPrototype>(species.Id); // Gross. See above todo comment.
+        //TODO: Don't close the guidebook if its already open, just go to the correct page
+        guidebookController.OpenGuidebook(new List<ProtoId<GuideEntryPrototype>> { page }, selected: page);
+        // CrystallEdge end
     }
 
     private void OnSkinColorOnValueChanged()

@@ -286,34 +286,6 @@
           MaterialSheetMeat1: *Min0Max1
 
 - type: entity
-  parent: [ UnanchoredChairBase, StructureHealthFurniture ]
-  id: ChairWeb
-  name: web chair
-  description: For true web developers.
-  components:
-  - type: Sprite
-    sprite: Structures/Web/chair.rsi
-    state: icon
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        path:
-          "/Audio/Weapons/slash.ogg"
-  - type: Damageable
-    damageModifierSet: ThreadMod
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageFurnitureNormal
-      behaviors:
-      - *SoundWoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWebSilk1: *Min0Max1
-  - type: Construction
-    graph: WebStructures
-    node: chair
-
-- type: entity
   parent: [SeatBase, BaseDeployFoldable, StructureHealthFurniture]
   id: ChairFolding
   name: folding chair

@@ -222,14 +222,6 @@
 #Nuclear Operative/Special implanters
 
 - type: entity
-  id: MacroBombImplanter
-  name: macro-bomb implanter
-  parent: BaseImplantOnlyImplanterSyndi
-  components:
-  - type: Implanter
-    implant: MacroBombImplant
-
-- type: entity
   id: DeathAcidifierImplanter
   name: death acidifier implanter
   parent: BaseImplantOnlyImplanterSyndi

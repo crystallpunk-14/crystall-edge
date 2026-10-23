@@ -1,32 +1,8 @@
 - type: localizedDataset
-  id: BoozeOMatAds
-  values:
-    prefix: advertisement-boozeomat-
-    count: 19
-
-- type: localizedDataset
-  id: ChefvendAds
-  values:
-    prefix: advertisement-chefvend-
-    count: 9
-
-- type: localizedDataset
-  id: DinnerwareAds
-  values:
-    prefix: advertisement-dinnerware-
-    count: 10
-
-- type: localizedDataset
   id: FatExtractorFacts
   values:
     prefix: fat-extractor-fact-
     count: 6
-
-- type: localizedDataset
-  id: NanoMedAds
-  values:
-    prefix: advertisement-nanomed-
-    count: 9
 
 - type: localizedDataset
   id: SmartFridgeAds

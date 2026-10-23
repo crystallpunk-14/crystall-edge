@@ -2,45 +2,6 @@
 # Base
 
 - type: entity
-  parent: [SolutionVeryTiny, FoodInjectableBase]
-  id: FoodFrozenBase
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: Objects/Consumable/Food/frozen.rsi
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 10
-
-# Ice-cream
-
-- type: entity
-  parent: FoodFrozenBase
-  id: FoodFrozenSandwich
-  name: ice-cream sandwich
-  description: Portable ice-cream in its own packaging.
-  components:
-  - type: Item
-    shape:
-    - 0,0,1,0
-  - type: Sprite
-    state: sandwich
-
-- type: entity
-  parent: FoodFrozenBase
-  id: FoodFrozenSandwichStrawberry
-  name: strawberry ice-cream sandwich
-  description: Portable ice-cream in its own packaging of the strawberry variety.
-  components:
-  - type: Item
-    shape:
-    - 0,0,1,0
-  - type: Sprite
-    state: sandwich-strawberry
-
-- type: entity
   name: popsicle stick
   parent: BaseItem
   id: FoodFrozenPopsicleTrash

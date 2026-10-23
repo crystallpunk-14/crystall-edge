@@ -311,25 +311,6 @@
   - type: Stack
     count: 1
 
-- type: entity
-  name: aloe cream
-  description: A topical cream for burns.
-  parent: Ointment ##Yes it's a direct reskin
-  id: AloeCream
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/aloe.rsi
-    state: cream
-  - type: Stack
-    stackType: AloeCream
-    count: 10
-  - type: Item
-    storedRotation: 90
-    storedOffset: 4, 0
-    storedSprite:
-      state: cream
-      sprite: Objects/Specific/Hydroponics/aloe.rsi
-
 # Pills
 - type: entity
   name: pill
@@ -632,24 +613,6 @@
 
 - type: entity
   name: pill
-  suffix: Bicaridine 20u
-  parent: Pill
-  id: PillBicaridine
-  components:
-  - type: Pill
-    pillType: 4
-  - type: Sprite
-    state: pill5
-  - type: Label
-    localizedLabel: pill-label-bicaridine-20u
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Bicaridine
-        Quantity: 20
-
-- type: entity
-  name: pill
   suffix: Charcoal 20u
   parent: Pill
   id: PillCharcoal
@@ -679,44 +642,6 @@
       storagebase:
         id: PillCharcoal
         amount: 3
-
-- type: entity
-  parent: PillCanister
-  id: PillCanisterRandom
-  suffix: Random
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:GroupSelector
-        children:
-        - id: PillDexalin
-          amount: 1, 6
-        - id: PillDylovene
-          amount: 1, 6
-        - id: PillHyronalin
-          amount: 1, 6
-        - id: PillPotassiumIodide
-          amount: 1, 6
-        - id: PillIron
-          amount: 1, 6
-        - id: PillCopper
-          amount: 1, 6
-        - id: PillKelotane
-          amount: 1, 6
-        - id: PillDermaline
-          amount: 1, 6
-        - id: PillTricordrazine
-          amount: 1, 6
-        - id: PillBicaridine
-          amount: 1, 6
-        - id: PillCharcoal
-          amount: 1, 6
-        - id: PillSpaceDrugs
-          weight: 0.75
-          amount: 1, 6
-        - id: StrangePill
-          weight: 0.75
-          amount: 1, 6
 
 # Syringes
 - type: entity

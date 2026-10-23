@@ -44,27 +44,10 @@
     containers:
       brain_slot: !type:ContainerSlot
   - type: Appearance
-  - type: GuideHelp
-    guides:
-    - Cyborgs
-    - Robotics
   - type: ChangeVoiceInContainer
     whitelist:
       components:
       - SecretStash
-
-- type: entity
-  parent: MMI
-  id: MMIFilled
-  suffix: Filled
-  components:
-  - type: MMI
-    brainSlot:
-      name: positronic-brain-slot-component-slot-name-brain
-      startingItem: OrganHumanBrain
-      whitelist:
-        components:
-        - Brain
 
 - type: entity
   parent: BaseItem
@@ -129,10 +112,6 @@
             Off: { state: posibrain }
             Searching: { state: posibrain-searching }
             On: { state: posibrain-occupied }
-    - type: GuideHelp
-      guides:
-      - Cyborgs
-      - Robotics
     - type: ChangeVoiceInContainer
       whitelist:
         components:
