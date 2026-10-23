@@ -163,3 +163,20 @@
   id: CEClothingPantsTavernSkirt
   equipment:
     pants: CEClothingPantsTavernSkirt
+
+# Eyes
+
+- type: loadoutGroup
+  id: CETavernEyes
+  name: ce-loadout-goggles
+  minLimit: 0
+  loadouts:
+  - CEClothingEyesBarGlasses
+  - CEClothingEyesMonocle
+  - CEClothingEyesGlasses
+  - CEClothingEyesEyePatch
+
+- type: loadout
+  id: CEClothingEyesBarGlasses
+  equipment:
+    eyes: CEClothingEyesBarGlasses
