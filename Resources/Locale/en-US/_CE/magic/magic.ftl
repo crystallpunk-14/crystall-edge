@@ -3,6 +3,13 @@ ce-energy-deficit-popup = Not enough mana!
 
 ce-magic-manacost = Mana cost
 ce-magic-cooldown = Cooldown
+ce-magic-cooldown-time = { $minutes ->
+    [0] { $seconds }s
+   *[other] { $minutes }min{ $seconds ->
+        [0] {""}
+       *[other] {" "}{ $seconds }s
+    }
+}
 
 ce-magic-spell-not-enough-mana = Not enough mana!
 ce-magic-spell-no-mana-component = You're not using magical energy.

@@ -20,4 +20,11 @@ public sealed partial class CEObjectiveRoleSurviveConditionComponent : Component
     /// </summary>
     [DataField]
     public bool Invert;
+
+    /// <summary>
+    /// Every body that ever held one of <see cref="Roles"/> this round - see
+    /// <see cref="CEObjectiveDepartmentSurviveConditionComponent.Bodies"/>.
+    /// </summary>
+    [DataField]
+    public HashSet<EntityUid> Bodies = new();
 }

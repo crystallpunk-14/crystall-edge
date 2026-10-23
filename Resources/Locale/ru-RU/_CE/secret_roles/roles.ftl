@@ -11,8 +11,8 @@ ce-secret-role-description-sheriff = Вы — защитник этого гор
 ce-secret-role-name-civilian = Мирный гражданин
 ce-secret-role-description-civilian = Ничего примечательного! Вы просто хотите чтобы город выжил!
 
-ce-secret-role-name-murkwalker = Мракоходец
-ce-secret-role-description-murkwalker = Редкий случай, когда человек невосприимчив к мраку. Несмотря на то что это полезная способность, у многих она вызывает огромные подозрения.
+ce-secret-role-name-dark-vessel = Тёмный сосуд
+ce-secret-role-description-dark-vessel = Вы не совсем человек - лишь сосуд, которого не касается мрак, и он почти износился. Найдите новое тело, займите его жизнь и закончите то, что начал его хозяин.
 
 ce-secret-role-name-thief = Вор
 ce-secret-role-description-thief = Угроза городского масштаба? Отличная возможность подзаработать деньжат и прикарманить чужие ценности, пока все в панике.
