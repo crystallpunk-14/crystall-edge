@@ -47,6 +47,29 @@
         maxDistance: 5
 
 - type: entity
+  name: captain's rubber stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampCaptain
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-captain
+    stampedColor: "#3681bb"
+    stampState: "paper_stamp-cap"
+  - type: Sprite
+    state: stamp-cap
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: stamp-inhand-left
+      - state: handle-inhand-left
+        color: "#3681bb"
+      right:
+      - state: stamp-inhand-right
+      - state: handle-inhand-right
+        color: "#3681bb"
+
+- type: entity
   name: chaplain's rubber stamp
   parent: RubberStampBase
   id: RubberStampChaplain

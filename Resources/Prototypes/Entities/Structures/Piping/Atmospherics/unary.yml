@@ -287,6 +287,15 @@
       stealGroup: FreezerHeater
 
 - type: entity
+  parent: GasThermoMachineFreezer
+  id: GasThermoMachineFreezerEnabled
+  suffix: Enabled
+  components:
+  - type: GasThermoMachine
+  - type: ApcPowerReceiver
+    powerDisabled: false
+
+- type: entity
   parent: BaseGasThermoMachine
   id: GasThermoMachineHeater
   name: heater

@@ -1,0 +1,17 @@
+- type: localizedDataset
+  id: BoozeOMatGoodbyes
+  values:
+    prefix: thankyou-boozeomat-
+    count: 3
+
+- type: localizedDataset
+  id: ChefvendGoodbyes
+  values:
+    prefix: thankyou-chefvend-
+    count: 4
+
+- type: localizedDataset
+  id: GenericVendGoodbyes
+  values:
+    prefix: vending-machine-thanks-
+    count: 1

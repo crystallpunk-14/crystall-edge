@@ -16,6 +16,11 @@
   - /Audio/Effects/packetrip.ogg
 
 - type: soundCollection
+  id: pop
+  files:
+  - /Audio/Items/pop.ogg
+
+- type: soundCollection
   id: flaskOpenSounds
   files:
   - /Audio/Items/flask_open1.ogg

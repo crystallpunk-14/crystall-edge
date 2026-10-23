@@ -116,3 +116,217 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineBooze
+  name: Booze-O-Mat
+  description: A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one.
+  components:
+  - type: VendingMachine
+    pack: BoozeOMatInventory
+  - type: VendingMachineVisuals
+    denyState: deny-unshaded
+    loopDenyAnimation: false
+  - type: DatasetVocalizer
+    dataset: BoozeOMatAds
+  - type: SpeakOnUIClosed
+    pack: BoozeOMatGoodbyes
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Bar"]]
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineChefvend
+  name: ChefVend
+  description: An ingredient vendor for all your cheffin needs.
+  components:
+  - type: VendingMachine
+    pack: ChefvendInventory
+  - type: VendingMachineVisuals
+    ejectState: eject-unshaded
+  - type: DatasetVocalizer
+    dataset: ChefvendAds
+  - type: SpeakOnUIClosed
+    pack: ChefvendGoodbyes
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/chefvend.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Service"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineDinnerware
+  name: Plasteel Chef's Dinnerware Vendor
+  description: A kitchen and restaurant equipment vendor.
+  components:
+  - type: VendingMachine
+    pack: DinnerwareInventory
+  - type: VendingMachineVisuals
+    ejectState: eject-unshaded
+  - type: DatasetVocalizer
+    dataset: DinnerwareAds
+  - type: SpeakOnUIClosed
+    pack: GenericVendGoodbyes
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/dinnerware.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Kitchen"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineEngivend
+  name: Engi-Vend
+  description: Spare tool vending. What? Did you expect some witty description?
+  components:
+  - type: VendingMachine
+    pack: EngiVendInventory
+  - type: VendingMachineVisuals
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/engivend.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Engineering"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#b89e2a"
+  - type: AmbientMusicMarkerEngineering
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineMedicalBase
+  name: NanoMed Civilian
+  description: It's a medical drug dispenser. Natural chemicals only!
+  components:
+  - type: VendingMachine
+    pack: NanoMedCivilianInventory
+  - type: VendingMachineEject
+    ejectDelay: 0.6
+  - type: VendingMachineVisuals
+    offState: off-civilian
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: DatasetVocalizer
+    dataset: NanoMedAds
+  - type: SpeakOnUIClosed
+    pack: GenericVendGoodbyes
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/medical.rsi
+    layers:
+    - state: "off-civilian"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off-civilian"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#9dc5c9"
+  - type: AmbientMusicMarkerMedical
+
+- type: entity
+  parent: VendingMachineMedicalBase
+  id: VendingMachineMedical
+  name: NanoMed Plus
+  components:
+  - type: VendingMachine
+    pack: NanoMedPlusInventory
+  - type: VendingMachineVisuals
+    offState: off
+  - type: Sprite
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Medical"]]
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineSalvage
+  name: Salvage Vendor
+  description: A dwarf's best friend!
+  components:
+  - type: VendingMachine
+    pack: SalvageEquipmentInventory
+  - type: VendingMachineVisuals
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/mining.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Salvage"]]
+
+- type: entity
+  parent: BaseVendingMachine
+  id: VendingMachineTankDispenserEVA
+  suffix: EVA [O2, N2]
+  name: gas tank dispenser
+  description: A vendor for dispensing gas tanks.
+  components:
+  - type: VendingMachine
+    pack: TankDispenserEVAInventory
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
+    state: dispenser

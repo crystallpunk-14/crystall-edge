@@ -78,6 +78,23 @@
       Glass: 1
 
 - type: entity
+  id: SecurityTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: security techfab machine board
+  description: A machine printed circuit board for a security techfab.
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: SecurityTechFab
+      stackRequirements:
+        Manipulator: 4
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: entity
   id: AmmoTechFabCircuitboard
   parent: BaseMachineCircuitboard
   name: ammo techfab circuit board
@@ -89,6 +106,25 @@
       prototype: AmmoTechFab
       stackRequirements:
         Manipulator: 2
+
+- type: entity
+  id: MedicalTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: medical techfab machine board
+  description: A machine printed circuit board for a medical techfab.
+  components:
+    - type: Sprite
+      state: medical
+    - type: MachineBoard
+      prototype: MedicalTechFab
+      stackRequirements:
+        Manipulator: 4
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+    - type: StealTarget
+      stealGroup: MedicalTechFabCircuitboard
 
 - type: entity
   id: CircuitImprinterMachineCircuitboard

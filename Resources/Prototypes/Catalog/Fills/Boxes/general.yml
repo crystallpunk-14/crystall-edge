@@ -76,6 +76,24 @@
         amount: 12
 
 - type: entity
+  name: mixed lights box
+  parent: BoxLightbulb
+  id: BoxLightMixed
+  components:
+  - type: Sprite
+    layers:
+      - state: box
+      - state: lightmixed
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: LightTube
+          amount: 6
+        - id: LightBulb
+          amount: 6
+
+- type: entity
   name: inflatable wall box
   parent: BoxCardboard
   id: BoxInflatable

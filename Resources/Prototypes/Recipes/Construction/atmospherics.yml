@@ -29,6 +29,30 @@
   graph: GasBinary
   placementMode: AlignAtmosPipeLayers # most binary devices support layers
 
+- type: construction
+  parent: BaseAtmos
+  id: GasPipeSensor
+  placementMode: AlignAtmosPipeLayers
+  graph: GasPipeSensor
+  targetNode: sensor
+  alternativePrototypes:
+  - GasPipeSensor
+  - GasPipeSensorAlt1
+  - GasPipeSensorAlt2
+
+- type: construction
+  parent: GasPipeSensor
+  id: GasPipeSensorAlt1
+  hide: true
+  targetNode: sensorAlt1
+
+- type: construction
+  parent: GasPipeSensor
+  id: GasPipeSensorAlt2
+  hide: true
+  targetNode: sensorAlt2
+# endregion Machines
+
 # region Pipes
 - type: construction
   parent: BaseGasPipe

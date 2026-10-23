@@ -118,12 +118,30 @@
 
 - type: entity
   parent: DrinkBaseMug
+  id: DrinkMugBlack
+  name: black mug
+  description: A sleek black mug.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_black.rsi
+
+- type: entity
+  parent: DrinkBaseMug
   id: DrinkMugBlue
   name: blue mug
   description: A blue and black mug.
   components:
   - type: Sprite
     sprite: Objects/Consumable/Drinks/mug_blue.rsi
+
+- type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugGreen
+  name: green mug
+  description: A pale green and pink mug.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_green.rsi
 
 - type: entity
   parent: DrinkBaseMug
@@ -135,6 +153,15 @@
     sprite: Objects/Consumable/Drinks/mug_dog.rsi
 
 - type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugHeart
+  name: heart mug
+  description: A white mug, it prominently features a red heart.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_heart.rsi
+
+- type: entity
   parent: [DrinkBaseMaterialMetal, DrinkBaseMug]
   id: DrinkMugMetal
   name: metal mug
@@ -142,6 +169,44 @@
   components:
   - type: Sprite
     sprite: Objects/Consumable/Drinks/mug_metal.rsi
+
+- type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugMoebius
+  name: moebius mug
+  description: A mug with a Moebius Laboratories logo on it. Not even your morning coffee is safe from corporate advertising.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_moebius.rsi
+
+- type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugOne
+  name: "#1 mug"
+  description: "A white mug, it prominently features a #1."
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_one.rsi
+
+- type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugRainbow
+  name: rainbow mug
+  description: A rainbow mug. The colors are almost as blinding as a welder.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_rainbow.rsi
+
+- type: entity
+  parent: DrinkBaseMug
+  id: DrinkMugRed
+  name: red mug
+  description: A red and black mug.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug_red.rsi
+
+## Filled
 
 - type: entity
   parent: DrinkBaseMug

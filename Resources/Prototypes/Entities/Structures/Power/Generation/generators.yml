@@ -73,12 +73,123 @@
 # Base Wallmount Generator
 
 - type: entity
+  abstract: true
+  id: BaseGeneratorWallmount
+  parent: [ BaseGenerator, BaseWallmount ]
+  name: wallmount generator
+  description: A high efficiency thermoelectric generator stuffed in a wall cabinet.
+  components:
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -15
+    range: 2
+    sound:
+      path: /Audio/Ambience/Objects/hdd_buzz.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 3.0
+    color: "#3db83b"
+    castShadows: false
+    netsync: false
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Structures/Power/Generation/wallmount_generator.rsi
+    layers:
+    - state: panel
+    - state: on
+      shader: unshaded
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: PowerMonitoringDevice
+    group: Generator
+    loadNode: output
+    sprite: Structures/Power/Generation/wallmount_generator.rsi
+    state: static
+  - type: PowerSupplier
+    supplyRate: 3000
+    supplyRampRate: 500
+    supplyRampTolerance: 500
+
+# Construction Frames
+
+- type: entity
+  parent: [ BaseWallmountMetallic, StructureHealthMachineFlimsy ]
+  categories: [ HideSpawnMenu ]
+  id: BaseGeneratorWallmountFrame
+  name: wallmount generator frame
+  description: A construction frame for a wallmount generator.
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Structures/Power/Generation/wallmount_generator.rsi
+    layers:
+    - state: panel
+  - type: Construction
+    graph: WallmountGenerator
+    node: frame
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+# Generators in use
+
+- type: entity
   parent: BaseGenerator
   id: GeneratorBasic15kW
   suffix: Basic, 15kW
   components:
     - type: PowerSupplier
       supplyRate: 15000
+
+- type: entity
+  parent: BaseGeneratorWallmount
+  id: GeneratorWallmountBasic
+  suffix: Basic, 3kW
+  components:
+  - type: PowerSupplier
+    supplyRate: 3000
+  - type: Construction
+    graph: WallmountGenerator
+    node: generator
+  - type: StaticPrice
+    price: 14
+  - type: ContainerFill
+    containers:
+      board: [ WallmountGeneratorElectronics ]
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+
+- type: entity
+  parent: BaseGeneratorWallmount
+  id: GeneratorWallmountAPU
+  name: shuttle APU
+  description: An auxiliary power unit for a shuttle - 6kW.
+  suffix: APU, 6kW
+  components:
+  - type: PowerSupplier
+    supplyRate: 6000
+  - type: Construction
+    graph: WallmountGenerator
+    node: APU
+  - type: StaticPrice
+    price: 38
+  - type: ContainerFill
+    containers:
+      board: [ WallmountGeneratorAPUElectronics ]
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
 
 - type: entity
   abstract: true

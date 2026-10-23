@@ -268,6 +268,14 @@
         color: "#f7e574"
 
 - type: entity
+  parent: Paper
+  id: NukeCodePaper
+  name: nuclear authentication codes
+  components:
+  - type: NukeCodePaper
+    allNukesAvailable: true
+
+- type: entity
   parent: [Paper, BaseSyndicateContraband] # eat or burn your damn piece of paper damn thieves
   id: TraitorCodePaper
   name: syndicate codeword

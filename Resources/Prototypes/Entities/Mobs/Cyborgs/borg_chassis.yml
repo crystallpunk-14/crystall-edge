@@ -42,6 +42,78 @@
     selectedBorgType: generic
 
 - type: entity
+  id: BorgChassisMining
+  parent: BorgChassisSelectable
+  name: salvage cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: mining
+
+- type: entity
+  id: BorgChassisEngineer
+  parent: BorgChassisSelectable
+  name: engineer cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: engineering
+
+- type: entity
+  id: BorgChassisJanitor
+  parent: BorgChassisSelectable
+  name: janitor cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: janitor
+
+- type: entity
+  id: BorgChassisMedical
+  parent: BorgChassisSelectable
+  name: medical cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: medical
+
+- type: entity
+  id: BorgChassisService
+  parent: BorgChassisSelectable
+  name: service cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: service
+
+- type: entity
+  id: BorgChassisSyndicateAssault
+  parent: BaseBorgChassisSyndicate
+  name: syndicate assault cyborg
+  description: A lean, mean killing machine with access to a variety of deadly modules.
+  components:
+    - type: Sprite
+      layers:
+        - state: synd_sec
+        - state: synd_sec_e
+          map: ["enum.BorgVisualLayers.Light"]
+          shader: unshaded
+          visible: false
+        - state: synd_sec_l
+          shader: unshaded
+          map: ["light"]
+          visible: false
+    - type: BorgChassis
+      maxModules: 3
+      moduleWhitelist:
+        tags:
+          - BorgModuleGeneric
+          - BorgModuleSyndicate
+          - BorgModuleSyndicateAssault
+      hasMindState: synd_sec_e
+      noMindState: synd_sec
+    - type: InteractionPopup
+      interactSuccessString: petting-success-syndicate-cyborg
+      interactFailureString: petting-failure-syndicate-cyborg
+      interactSuccessSound:
+        path: /Audio/Ambience/Objects/periodic_beep.ogg
+
+- type: entity
   id: BorgChassisDerelict
   parent: BaseBorgChassisDerelict
   name: derelict cyborg

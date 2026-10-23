@@ -1,0 +1,12 @@
+#Salvage hardsuit
+- type: entity
+  id: SuitStorageSalv
+  parent: SuitStorageBase
+  suffix: Salvage
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSalvageSpecialistHardsuitSpatio
+  - type: AccessReader
+    access: [["Salvage"]]

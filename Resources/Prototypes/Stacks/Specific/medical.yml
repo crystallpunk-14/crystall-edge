@@ -9,6 +9,13 @@
 
 - type: stack
   parent: BaseSmallStack
+  id: AloeCream
+  name: stack-aloe-cream
+  icon: { sprite: "/Textures/Objects/Specific/Hydroponics/aloe.rsi", state: cream }
+  spawn: AloeCream
+
+- type: stack
+  parent: BaseSmallStack
   id: Gauze
   name: stack-gauze
   icon: { sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: gauze }
@@ -41,3 +48,4 @@
   name: stack-regenerative-mesh
   icon: {sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: regenerative-mesh}
   spawn: RegenerativeMesh
+

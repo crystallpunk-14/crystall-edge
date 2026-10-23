@@ -448,7 +448,7 @@ VendingMachineSmartFridge: SmartFridge
 
 # 2023-12-18
 ReagentContainerMilk: DrinkMilkCarton
-ReagentContainerMilkSoy: null
+ReagentContainerMilkSoy: DrinkSoyMilkCarton
 ReagentContainerMilkOat: null
 
 # 2023-12-20
@@ -567,7 +567,7 @@ Onestar: null # I dont think this is even mapped, but just in case
 
 # 2024-02-22
 SolarAssemblyPart: SolarAssemblyFlatpack
-AmePart: null
+AmePart: AmePartFlatpack
 AmePartStealObjective: AmePartFlatpackStealObjective
 Observationskit: null
 
@@ -588,10 +588,10 @@ BookFishing: BookRandomStory
 BookDetective: BookRandomStory
 
 # 2024-03-07
-AirlockExternalEasyPry: null
+AirlockExternalEasyPry: AirlockExternal
 AirlockExternalGlassEasyPry: null
-AirlockGlassShuttleEasyPry: null
-AirlockShuttleEasyPry: null
+AirlockGlassShuttleEasyPry: AirlockGlassShuttle
+AirlockShuttleEasyPry: AirlockShuttle
 AirlockExternalEasyPryLocked: null
 AirlockExternalGlassEasyPryLocked: null
 AirlockGlassShuttleEasyPryLocked: null
@@ -682,7 +682,7 @@ ReinforcementRadioSyndicateMonkeyNukeops: null
 DrinkBottleGoldschlager: DrinkBottleGildlager
 
 # 2024-05-14
-soda_dispenser: null
+soda_dispenser: SodaDispenser
 chem_master: ChemMaster
 
 # 2024-05-21
@@ -726,8 +726,8 @@ SignCourt: null
 SignAtmosMinsky: null
 SignDrones: null
 SignShield: null # what was this even for?
-SignHydro2: null
-SignHydro3: null
+SignHydro2: SignHydro1
+SignHydro3: SignHydro1
 
 # 2024-07-27
 LogicGate: null
@@ -961,8 +961,8 @@ AirlockMaintCommonLocked: AirlockMaintLocked
 AirlockMaintIntLocked: AirlockMaintLocked
 
 # 2025-04-26
-ComputerCargoShuttle: null
-CargoShuttleComputerCircuitboard: null
+ComputerCargoShuttle: ComputerShuttleCargo
+CargoShuttleComputerCircuitboard: CargoShuttleConsoleCircuitboard
 
 # 2025-05-02
 CigPackMixedNasty: null
@@ -1097,7 +1097,7 @@ DefaultStationBeaconGhost: null
 # 2025-11-08
 DebugSMES: SMESBasicEmpty
 DebugSubstation: SubstationBasicEmpty
-DebugSubstationWall: null
+DebugSubstationWall: BaseSubstationWall
 DebugAPC: BaseAPC
 MagazineCaselessRifle: MagazinePistolCaselessRifle
 MagazineCaselessRiflePractice: null
@@ -1207,8 +1207,8 @@ ClockworkGrilleDiagonal: null
 ClockworkWindow: Window
 ClockworkWindowDiagonal: null
 WindowClockworkDirectional: WindowDirectional
-WindoorClockwork: null
-WindoorAssemblyClockwork: null
+WindoorClockwork: Windoor
+WindoorAssemblyClockwork: WindoorAssembly
 PinionAirlock: Airlock
 PinionAirlockGlass: AirlockGlass
 PinionAirlockAssembly: AirlockAssembly
@@ -1321,10 +1321,10 @@ FloorBananiumEntity: null
 FloorTileItemMono: FloorTileItemSteel
 
 # 2026-07-23
-AirAlarmAssemblyXeno: null
-AirAlarmXeno: null
-FireAlarmAssemblyXeno: null
-FireAlarmXeno: null
+AirAlarmAssemblyXeno: AirAlarmAssembly
+AirAlarmXeno: AirAlarm
+FireAlarmAssemblyXeno: FireAlarmAssembly
+FireAlarmXeno: FireAlarm
 
 # 2026-07-26
 IronsandStepConvexCorner: null
@@ -1410,9 +1410,9 @@ BaseAsteroidRock: AsteroidRock
 ButtonFrameExit: null
 
 # 2026-08-12
-WindoorSecure: null
-WindoorSecurePlasma: null
-WindoorSecureUranium: null
+WindoorSecure: Windoor
+WindoorSecurePlasma: WindoorPlasma
+WindoorSecureUranium: WindoorUranium
 WindoorSecureArmoryLocked: null
 PlasmaWindoorSecureArmoryLocked: null
 WindoorSecureEngineeringLocked: null
@@ -1452,9 +1452,9 @@ UraniumWindoorSecureSyndicateLocked: null
 WindoorSecureNukeopLocked: null
 PlasmaWindoorSecureNukeopLocked: null
 UraniumWindoorSecureNukeopLocked: null
-WindoorAssemblySecure: null
-WindoorAssemblySecurePlasma: null
-WindoorAssemblySecureUranium: null
+WindoorAssemblySecure: WindoorAssembly
+WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
+WindoorAssemblySecureUranium: WindoorAssemblyUranium
 LightReplacer: LightReplacerFilled
 
 #2026-08-14

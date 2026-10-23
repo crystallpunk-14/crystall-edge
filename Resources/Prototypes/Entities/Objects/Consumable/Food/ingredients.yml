@@ -36,6 +36,44 @@
 
 - type: entity
   abstract: true
+  parent: ReagentContainerBase
+  id: ReagentPacketBase
+  components:
+  - type: Openable
+    sound:
+      collection: packetOpenSounds
+  # packet can be broken open
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  # packet contents can be splashed when open
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    damage:
+      types:
+        Blunt: 0
+
+- type: entity
+  abstract: true
+  parent: [SolutionNormal, ReagentPacketBase]
+  id: ReagentPacket
+  components:
+  - type: Item
+    size: Normal
+
+- type: entity
+  abstract: true
   id: ItemHeftyBase
   components:
   - type: DamageOnLand
@@ -46,6 +84,153 @@
     damage:
       types:
         Blunt: 1
+
+- type: entity
+  parent: [ReagentPacket, ItemHeftyBase]
+  id: ReagentContainerFlour
+  name: flour bag
+  description: A big bag of flour. Good for baking!
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "flour-big_open"} # open
+          False: {state: "flour-big"} # closed
+  - type: Sprite
+    layers:
+    - state: flour-big
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Flour
+        Quantity: 120 # About a pound of flour
+
+- type: entity
+  parent: [ReagentPacket, ItemHeftyBase]
+  id: ReagentContainerCornmeal
+  name: cornmeal bag
+  description: A big bag of cornmeal. Good for cooking!
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "cornmeal-big_open"} # open
+          False: {state: "cornmeal-big"} # closed
+  - type: Sprite
+    layers:
+    - state: cornmeal-big
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Cornmeal
+        Quantity: 120
+
+- type: entity
+  parent: [ReagentPacket, ItemHeftyBase]
+  id: ReagentContainerRice
+  name: rice bag
+  description: A big bag of rice. Good for cooking!
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "rice-big_open"} # open
+          False: {state: "rice-big"} # closed
+  - type: Sprite
+    layers:
+    - state: rice-big
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Rice
+        Quantity: 120
+
+- type: entity
+  parent: [ReagentPacket, ItemHeftyBase]
+  id: ReagentContainerSugar
+  name: sugar bag
+  description: A big bag of tasty spacey sugar.
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "sugar-big_open"} # open
+          False: {state: "sugar-big"} # closed
+  - type: Sprite
+    layers:
+    - state: sugar-big
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 120
+
+- type: entity
+  parent: ReagentPacketBase # TODO Move to condiments.yml and parent off of BaseFoodCondimentBottle
+  id: ReagentContainerOliveoil
+  name: olive oil
+  description: Olive oil. From space olives presumably.
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "oliveoil_open"} # open
+          False: {state: "oliveoil"} # closed
+  - type: Sprite
+    layers:
+    - state: oliveoil
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: OilOlive
+        Quantity: 50
+  - type: Edible
+    edible: Drink # slurping sounds!
+
+- type: entity
+  parent: ReagentPacketBase # TODO Move to condiments.yml and parent off of BaseFoodCondimentBottle
+  id: ReagentContainerMayo
+  name: mayonnaise
+  description: Bottle of mayonnaise.
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "mayo_open"} # open
+          False: {state: "mayo"} # closed
+  - type: Sprite
+    layers:
+    - state: mayo
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: Mayo
+        Quantity: 50
+  - type: Tag
+    tags:
+      - Mayo
+
+# Baking
 
 - type: entity
   abstract: true
@@ -177,6 +362,50 @@
     refineResult:
     - id: FoodCroissantRaw
       amount: 4
+
+- type: entity
+  parent: [SolutionSmall, FoodBakingMixableBase, BaseSlicingRefinableFood]
+  id: FoodButter
+  name: stick of butter
+  description: A stick of delicious, golden, fatty goodness.
+  components:
+  - type: Item
+    shape:
+    - 0,0,1,0
+  - type: Sprite
+    state: butter
+  - type: Slippery
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: CollisionWake
+    enabled: false
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.2,0.3,0.2"
+        layer:
+        - SlipLayer
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.2,0.3,0.2"
+        density: 10
+        mask:
+        - ItemMask
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Butter
+        Quantity: 30
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodButterSlice
+      amount: 12
 
 - type: entity
   parent: [SolutionVeryTiny, FoodBakingMixableBase]

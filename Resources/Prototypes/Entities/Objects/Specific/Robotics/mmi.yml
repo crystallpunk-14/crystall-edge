@@ -50,6 +50,19 @@
       - SecretStash
 
 - type: entity
+  parent: MMI
+  id: MMIFilled
+  suffix: Filled
+  components:
+  - type: MMI
+    brainSlot:
+      name: positronic-brain-slot-component-slot-name-brain
+      startingItem: OrganHumanBrain
+      whitelist:
+        components:
+        - Brain
+
+- type: entity
   parent: BaseItem
   id: PositronicBrain
   name: positronic brain

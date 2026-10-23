@@ -312,6 +312,44 @@
       path: /Audio/Ambience/Objects/periodic_beep.ogg
 
 - type: entity
+  id: BaseBorgChassisSyndicate
+  parent: BaseBorgChassis
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Access
+    tags:
+    - NuclearOperative
+    - SyndicateAgent
+  - type: AccessReader
+    access: [["SyndicateAgent"], ["NuclearOperative"]]
+  - type: SiliconLawProvider
+    laws: SyndicateStatic
+    subverted: true
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Syndicate
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Syndicate
+  - type: ShowSyndicateIcons
+  - type: MovementAlwaysTouching
+  - type: Speech
+    speechSounds: SyndieBorg
+    allowedEmotes:
+    - Laugh
+  - type: Vocal
+    emoteSounds: UnisexSiliconSyndicate
+  - type: PointLight
+    color: "#dd200b"
+  - type: BypassLock
+    bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
+
+- type: entity
   id: BaseBorgChassisDerelict
   parent: BaseBorgChassis
   abstract: true
@@ -370,3 +408,4 @@
     color: "#dd200b"
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
+

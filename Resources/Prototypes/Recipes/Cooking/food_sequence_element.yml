@@ -84,6 +84,28 @@
 # Fried Chicken meat
 
 - type: foodSequenceElement
+  id: MeatGoliath
+  name: food-sequence-content-goliath
+  sprites:
+  - sprite: Objects/Consumable/Food/meat.rsi
+    state: goliath-cooked
+  tags:
+  - Cooked
+  - Meat
+
+- type: foodSequenceElement
+  id: MeatGoliathBurger
+  name: food-sequence-burger-content-goliath
+  sprites:
+  - sprite: Objects/Consumable/Food/meat.rsi
+    state: goliath-cooked
+  tags:
+  - Cooked
+  - Meat
+
+# Xeno meat
+
+- type: foodSequenceElement
   id: MeatLizard
   name: food-sequence-content-lizard
   sprites:
@@ -410,6 +432,28 @@
   - Vegetable
 
 # Apple
+
+- type: foodSequenceElement
+  id: Apple
+  name: food-sequence-content-apple
+  sprites:
+  - sprite: Objects/Specific/Hydroponics/apple.rsi
+    state: produce
+  tags:
+  - Fruit
+
+# Golden Apple
+
+- type: foodSequenceElement
+  id: GoldenApple
+  name: food-sequence-content-apple
+  sprites:
+  - sprite: Objects/Specific/Hydroponics/golden_apple.rsi
+    state: produce
+  tags:
+  - Fruit
+
+# Pineapple
 
 - type: foodSequenceElement
   id: OnionSliceBurger

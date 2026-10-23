@@ -26,3 +26,12 @@
     lifetime: 10
 
 # guidebook dummy
+
+- type: entity
+  id: ParadoxCloneDummy
+  categories: [ HideSpawnMenu ]
+  name: Paradox Clone
+  components:
+  - type: Sprite
+    sprite: Mobs/Aliens/paradox_clone.rsi
+    state: preview

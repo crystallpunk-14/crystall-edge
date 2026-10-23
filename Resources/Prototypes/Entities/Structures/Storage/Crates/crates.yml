@@ -138,6 +138,53 @@
     sprite: Structures/Storage/Crates/surgery.rsi
 
 - type: entity
+  parent: [ BaseCrate, StructureHealthContainerFlimsy ]
+  id: CrateWeb
+  name: web crate
+  components:
+  - type: Icon
+    sprite: Structures/Storage/Crates/web.rsi
+    state: icon
+  - type: Sprite
+    sprite: Structures/Storage/Crates/web.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: Construction
+    graph: WebStructures
+    node: crate
+    containers:
+    - entity_storage
+  - type: Damageable
+    damageModifierSet: ThreadMod
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWebSilk:
+            min: 3
+            max: 5
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/rustle1.ogg
+    openSound:
+      path: /Audio/Effects/rustle2.ogg
+
+# Secure Crates
+
+- type: entity
   parent: [ CrateBaseSecure, BaseSecurityContraband ]
   id: CrateSecgear
   name: secgear crate

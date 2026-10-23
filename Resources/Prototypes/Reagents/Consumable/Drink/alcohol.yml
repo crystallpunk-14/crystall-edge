@@ -489,6 +489,22 @@
         Ethanol: 0.4
 
 - type: reagent
+  id: Mead
+  name: reagent-name-mead
+  parent: BaseAlcohol
+  desc: reagent-desc-mead
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: mead
+  color: "#664300"
+  metamorphicSprite:
+    sprite: Objects/Consumable/Drinks/beerstein.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: true
+  fizziness: 0.4
+
+- type: reagent
   id: Patron
   name: reagent-name-patron
   parent: BaseAlcohol

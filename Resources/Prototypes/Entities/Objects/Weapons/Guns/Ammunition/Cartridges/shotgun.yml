@@ -100,6 +100,21 @@
     state: "incendiary"
 
 - type: entity
+  parent: [ BaseShellShotgun, BaseSecurityContraband ]
+  id: ShellShotgunPractice
+  name: shell (.50 practice)
+  description: The standard cartridge used by most modern shotguns. Practice ammunition fires chalk pellets that sting a little, but otherwise cause no lasting damage.
+  components:
+  - type: Sprite
+    layers:
+      - state: practice
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: CartridgeAmmo
+    proto: PelletShotgunPracticeSpread
+  - type: SpentAmmoVisuals
+    state: "practice"
+
+- type: entity
   parent: [ SolutionAmmo, SolutionToolVeryTiny, BaseShellShotgun, BaseSecurityContraband ]
   id: ShellTranquilizer
   name: shell (.50 tranquilizer)

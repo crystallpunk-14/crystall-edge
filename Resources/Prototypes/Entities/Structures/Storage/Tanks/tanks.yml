@@ -99,6 +99,17 @@
     solution: tank
 
 - type: entity
+  parent: WaterTank
+  id: WaterTankFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 960
+
+- type: entity
   parent: [SolutionHuge, StorageTank]
   id: WaterCooler
   name: water cooler

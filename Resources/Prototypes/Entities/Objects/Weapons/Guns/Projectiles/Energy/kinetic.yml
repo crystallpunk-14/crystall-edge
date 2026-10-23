@@ -51,3 +51,37 @@
     color: white
     energy: 0.5
   - type: GatheringProjectile
+
+- type: entity
+  parent: BaseBullet
+  id: BulletCharge
+  categories: [ HideSpawnMenu ]
+  name: charge bolt
+  description: Marks a target for additional damage.
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Reflective
+    reflective:
+    - NonEnergy
+  - type: GatheringProjectile
+  - type: DamageMarkerOnCollide
+    whitelist:
+      components:
+      - MobState
+    damage:
+      types:
+        Blunt: 18
+        Slash: 4
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 0
+  # Short lifespan
+  - type: TimedDespawn
+    lifetime: 0.4

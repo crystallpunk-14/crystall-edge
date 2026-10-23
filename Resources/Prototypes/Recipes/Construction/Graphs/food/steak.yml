@@ -52,6 +52,24 @@
   - node: lizard steak
     entity: FoodMeatLizardCooked
 
+# goliath steak
+- type: constructionGraph
+  id: GoliathSteak
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: goliath steak
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 345 #I dunno what this is but I don't want whatever parasites are inside
+
+  - node: goliath steak
+    entity: FoodMeatGoliathCooked
+
 - type: constructionGraph
   id: DragonSteak
   start: start

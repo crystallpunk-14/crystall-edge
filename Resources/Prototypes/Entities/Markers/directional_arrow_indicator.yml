@@ -9,3 +9,15 @@
   - type: Tag
     tags:
     - HideContextMenu
+
+- type: entity
+  id: BlueDirectionalArrowIndicator
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Markers/directional_arrow_indicator.rsi
+    layers:
+    - state: blue_arrow
+  - type: Tag
+    tags:
+    - HideContextMenu

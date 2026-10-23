@@ -107,6 +107,15 @@
     path: /Audio/Voice/Talk/arachnid_exclaim.ogg
 
 - type: speechSounds
+  id: Dog
+  saySound:
+    path: /Audio/Animals/dog_bark1.ogg
+  askSound:
+    path: /Audio/Animals/dog_bark3.ogg
+  exclaimSound:
+    path: /Audio/Animals/dog_bark2.ogg
+
+- type: speechSounds
   id: Goat
   saySound:
     path: /Audio/Animals/goat_bah.ogg

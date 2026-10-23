@@ -10,6 +10,17 @@
         Piercing: 19
 
 - type: entity
+  parent: BaseBulletPractice
+  id: BulletLightRiflePractice
+  categories: [ HideSpawnMenu ]
+  name: bullet (.30 rifle practice)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 2
+
+- type: entity
   parent: BaseBulletIncendiary
   id: BulletLightRifleIncendiary
   categories: [ HideSpawnMenu ]
