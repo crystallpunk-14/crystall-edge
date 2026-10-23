@@ -98,28 +98,3 @@
       festive: Objects/Weapons/Bombs/c4gift.rsi
   - type: StaticPrice
     price: 625 # 5000 for a bundle of 8
-
-- type: entity
-  parent: [ BasePlasticExplosive, BaseSecurityCargoContraband ]
-  id: SeismicCharge
-  name: seismic charge
-  description: Concussion based explosive designed to destroy large amounts of rock.
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Bombs/seismic.rsi
-    state: icon
-    layers:
-    - state: icon
-      map: ["base"]
-  - type: TimerTrigger
-    delay: 5
-    delayOptions: [5, 10, 15, 20]
-    beepSound:
-      path: /Audio/Effects/Cargo/buzz_two.ogg
-      params:
-        volume: -6
-  - type: Explosive
-    explosionType: Cryo
-    totalIntensity: 120
-    maxIntensity: 30
-    canCreateVacuum: false

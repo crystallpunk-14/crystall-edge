@@ -1,13 +1,3 @@
-- type: htnCompound
-  id: CleanbotCompound
-  branches:
-    - tasks:
-        - !type:HTNCompoundTask
-          task: BufferNearbyPuddlesCompound
-    - tasks:
-        - !type:HTNCompoundTask
-          task: IdleCompound
-
 # Picks a random puddle in range to move to and idle
 - type: htnCompound
   id: BufferNearbyPuddlesCompound

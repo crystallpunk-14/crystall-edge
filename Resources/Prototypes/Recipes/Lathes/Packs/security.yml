@@ -1,34 +1,5 @@
 ## Static recipes
 
-- type: latheRecipePack
-  id: SecurityEquipmentStatic
-  recipes:
-  - ClothingEyesHudSecurity
-  - ForensicPad
-  - Handcuffs
-  - TargetHuman
-  - TargetSyndicate
-  - Zipties
-  - SecurityBola
-
-# Practice ammo/mags and practice weapons
-- type: latheRecipePack
-  id: SecurityPracticeStatic
-  recipes:
-  - BoxShotgunPractice
-  - MagazineBoxLightRiflePractice
-  - MagazineBoxMagnumPractice
-  - MagazineBoxPistolPractice
-  - MagazineBoxRiflePractice
-  - WeaponDisablerPractice
-  - WeaponLaserCarbinePractice
-  - MagazineLightRiflePractice
-  - MagazineRiflePractice
-  - MagazinePistolPractice
-  - SpeedLoaderMagnumPractice
-  - MagazinePistolSubMachineGunPractice
-  - WeaponFlareGunSecurity
-
 # Shared between secfab and emagged autolathe
 - type: latheRecipePack
   id: SecurityAmmoStatic
@@ -51,16 +22,6 @@
   - MagazineRifleEmpty
   - SpeedLoaderMagnum
   - SpeedLoaderMagnumEmpty
-
-- type: latheRecipePack
-  id: SecurityWeaponsStatic
-  recipes:
-  - Flash
-  - Stunbaton
-  - CombatKnife
-  - RiotShield
-
-## Dynamic recipes
 
 - type: latheRecipePack
   id: SecurityEquipment
@@ -133,9 +94,3 @@
   - WeaponLaserCarbine
   - WeaponXrayCannon
   - WeaponTemperatureGun
-
-- type: latheRecipePack
-  id: SecurityDisablers
-  recipes:
-  - WeaponDisabler
-  - WeaponDisablerSMG

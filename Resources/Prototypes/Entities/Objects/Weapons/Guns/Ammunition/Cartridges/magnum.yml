@@ -28,22 +28,6 @@
 
 - type: entity
   parent: BaseCartridgeMagnum
-  id: CartridgeMagnumPractice
-  name: cartridge (.45 magnum practice)
-  description: Heavy magnum cartridge mostly used by revolvers. Practice ammunition fires a chalk projectile that stings a little, but otherwise causes no lasting damage.
-  components:
-  - type: CartridgeAmmo
-    proto: BulletMagnumPractice
-  - type: Sprite
-    layers:
-      - state: base
-        map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#dbdbdb"
-
-- type: entity
-  parent: BaseCartridgeMagnum
   id: CartridgeMagnumIncendiary
   name: cartridge (.45 magnum incendiary)
   description: Heavy magnum cartridge mostly used by revolvers. Incendiary ammunition contains a self-igniting compound that sets targets ablaze.

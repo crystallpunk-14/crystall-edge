@@ -305,46 +305,6 @@
 # GasPipeSensor
 
 - type: entity
-  parent: [GasPipeLayerAlt1, GasPipeSensor]
-  id: GasPipeSensorAlt1
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: Structures/Piping/Atmospherics/gas_pipe_sensor_alt1.rsi
-    layers:
-    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
-      map: [ "enum.PipeVisualLayers.Pipe" ]
-      state: pipeStraight
-    - map: ["base"]
-      state: base
-    - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-      state: lights
-      shader: unshaded
-  - type: Construction
-    node: sensorAlt1
-
-- type: entity
-  parent: [GasPipeLayerAlt2, GasPipeSensor]
-  id: GasPipeSensorAlt2
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: Structures/Piping/Atmospherics/gas_pipe_sensor_alt2.rsi
-    layers:
-    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
-      map: [ "enum.PipeVisualLayers.Pipe" ]
-      state: pipeStraight
-    - map: ["base"]
-      state: base
-    - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-      state: lights
-      shader: unshaded
-  - type: Construction
-    node: sensorAlt2
-
-# GasPipeSensorDistribution
-
-- type: entity
   parent: [GasPipeLayerAlt1, GasPressureRegulator]
   id: GasPressureRegulatorAlt1
   categories: [ HideSpawnMenu ]

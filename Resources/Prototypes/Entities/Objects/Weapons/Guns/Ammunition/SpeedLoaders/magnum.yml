@@ -85,39 +85,6 @@
 
 - type: entity
   parent: BaseSpeedLoaderMagnum
-  id: SpeedLoaderMagnumPractice
-  name: "speed loader (.45 magnum practice)"
-  description: Designed to quickly load up to six rounds of .45 magnum into an empty revolver. Intended to hold harmless practice ammunition.
-  components:
-  - type: BallisticAmmoProvider
-    proto: CartridgeMagnumPractice
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
-    layers:
-      - state: base
-        map: [ "enum.GunVisualLayers.Base" ]
-      - state: practice-6
-        map: [ "enum.GunVisualLayers.Mag" ]
-  - type: MagazineVisuals
-    magState: practice
-    steps: 7
-    zeroVisible: false
-  - type: Appearance
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left-mag
-      - state: inhand-left-ammo
-      - state: inhand-left-stripe
-        color: "#ea5800"
-      right:
-      - state: inhand-right-mag
-      - state: inhand-right-ammo
-      - state: inhand-right-stripe
-        color: "#ea5800"
-
-- type: entity
-  parent: BaseSpeedLoaderMagnum
   id: SpeedLoaderMagnumAP
   name: "speed loader (.45 magnum armor-piercing)"
   description: Designed to quickly load up to six rounds of .45 magnum into an empty revolver. Intended to hold specialized armor-piercing ammunition.

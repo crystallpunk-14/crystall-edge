@@ -200,14 +200,6 @@
     mode: SnapgridCenter
 
 - type: entity
-  id: AirlockRCDResistant
-  parent: Airlock
-  abstract: true
-  components:
-  - type: RCDDeconstructable
-    deconstructable: false
-
-- type: entity
   id: AirlockGlass
   parent: Airlock
   name: glass airlock

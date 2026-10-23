@@ -28,22 +28,6 @@
 
 - type: entity
   parent: BaseCartridgePistol
-  id: CartridgePistolPractice
-  name: cartridge (.35 auto practice)
-  description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Practice ammunition fires a chalk projectile that stings a little, but otherwise causes no lasting damage.
-  components:
-  - type: CartridgeAmmo
-    proto: BulletPistolPractice
-  -  type: Sprite
-     layers:
-       - state: base
-         map: [ "enum.AmmoVisualLayers.Base" ]
-       - state: tip
-         map: [ "enum.AmmoVisualLayers.Tip" ]
-         color: "#dbdbdb"
-
-- type: entity
-  parent: BaseCartridgePistol
   id: CartridgePistolIncendiary
   name: cartridge (.35 auto incendiary)
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Incendiary ammunition contains a self-igniting compound that sets targets ablaze.

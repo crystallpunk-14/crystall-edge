@@ -130,9 +130,6 @@
   id: BorgModuleScience # Cyborg module category for scientists
 
 - type: Tag
-  id: BorgModuleService # Cyborg module category for bartenders, botanists, and more
-
-- type: Tag
   id: BorgModuleSyndicate # Cyborg module category for evil red robots
 
 - type: Tag
@@ -651,9 +648,6 @@
   id: Hardsuit # Used by SolutionInjectOnCollideSystem to guard from injection. Copied TODO replace with a cancellable event
 
 - type: Tag
-  id: HardsuitSpatio # ConstructionGraph: HardsuitGoliath
-
-- type: Tag
   id: Head # ConstructionGraph: RitualSeat
 
 - type: Tag
@@ -661,9 +655,6 @@
 
 - type: Tag
   id: HideContextMenu # Used by client VerbSystem to exclude tagged entities from the right click menu.
-
-- type: Tag
-  id: HideCorgi # corgi hide for crafting, not for making corgis invisible
 
 - type: Tag
   id: HidesHair # Used by MagicMirrorSystem to prevent haircuts if a tagged entity is worn.
@@ -1205,9 +1196,6 @@
   id: StationAi # Storage whitelist: AiHolder
 
 - type: Tag
-  id: StationAiCoreElectronics # ConstructionGraph: StationAiCore
-
-- type: Tag
   id: StationMapElectronics # ConstructionGraph: StationMap
 
 - type: Tag
@@ -1340,19 +1328,7 @@
 ## W ##
 
 - type: Tag
-  id: WallmountGeneratorAPUElectronics # ConstructionGraph: WallmountGenerator
-
-- type: Tag
-  id: WallmountGeneratorElectronics # ConstructionGraph: WallmountGenerator
-
-- type: Tag
   id: WallmountSubstationElectronics # ConstructionGraph: WallmountSubstation
-
-- type: Tag
-  id: WeaponAntiqueLaser # Storage whitelist: GlassBoxLaser
-
-- type: Tag
-  id: WeaponShotgunKammerer # Storage whitelist: ShotGunCabinet
 
 - type: Tag
   id: WeldingMask # Storage whitelist: BaseClothingBeltEngineering
@@ -1371,15 +1347,6 @@
 
 - type: Tag
   id: WhitelistChameleonPDA # Chameleon key for ChameleonPDA
-
-- type: Tag
-  id: Windoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
-
-- type: Tag
-  id: WindoorPlasma # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
-
-- type: Tag
-  id: WindoorUranium # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
 
 - type: Tag
   id: Window # Tagged entity is a window. Several systems care about this.

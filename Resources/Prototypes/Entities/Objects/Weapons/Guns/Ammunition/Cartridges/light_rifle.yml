@@ -28,22 +28,6 @@
 
 - type: entity
   parent: BaseCartridgeLightRifle
-  id: CartridgeLightRiflePractice
-  name: cartridge (.30 rifle practice)
-  description: A classic intermediate cartridge used by many combat rifles and LMGs. Practice ammunition fires a chalk projectile that stings a little, but otherwise causes no lasting damage.
-  components:
-  - type: CartridgeAmmo
-    proto: BulletLightRiflePractice
-  - type: Sprite
-    layers:
-      - state: base
-        map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#dbdbdb"
-
-- type: entity
-  parent: BaseCartridgeLightRifle
   id: CartridgeLightRifleIncendiary
   name: cartridge (.30 rifle incendiary)
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Incendiary ammunition contains a self-igniting compound that sets targets ablaze.
