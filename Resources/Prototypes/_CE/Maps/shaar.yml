@@ -118,6 +118,7 @@
     - id: CEWildlandsModifierCaveEntrances
     - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
+    - id: CEWildlandsModifierLumishrooms
   # Flat floating islands: the autumn archipelago is flat with caves underneath; only the ice island has caves on the surface and hills above.
   layersByDepth:
   #MARK: 0 Surface

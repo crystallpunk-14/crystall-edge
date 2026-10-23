@@ -12,6 +12,7 @@
     - 0,0,2,0
   - type: Tag
     tags:
+    - CESharp # the list replaces CEBaseWeaponSharp's tags instead of merging
     - CEWeaponSword
   - type: CEWeapon
     range: 0.7

@@ -8,6 +8,7 @@
   children:
   - CEGuideGoldEN
   - CEGuideDiamondsEN
+  - CEGuideLumishroomsEN
 
 - type: guideEntry
   hidden: false
@@ -19,6 +20,7 @@
   children:
   - CEGuideGoldRU
   - CEGuideDiamondsRU
+  - CEGuideLumishroomsRU
 
 - type: guideEntry
   hidden: false
@@ -53,5 +55,23 @@
   id: CEGuideDiamondsRU
   name: Алмазы
   text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/Diamonds.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEGuideLumishroomsEN
+  name: Lumishrooms
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/Lumishrooms.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEGuideLumishroomsRU
+  name: Люмигрибы
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/Lumishrooms.xml"
   filterEnabled: True
   children: []

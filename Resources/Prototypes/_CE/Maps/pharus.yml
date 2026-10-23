@@ -110,6 +110,7 @@
     - id: CEWildlandsModifierCaveEntrances
     - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
+    - id: CEWildlandsModifierLumishrooms
   layersByDepth:
   #MARK: 2 Hills top
     2:
