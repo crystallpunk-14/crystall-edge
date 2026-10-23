@@ -42,3 +42,12 @@ ce-porridge-recipe-meat-desc = Сытная каша, томлёная с кус
 
 ce-porridge-recipe-pumpkin-name = овсянка с тыквой
 ce-porridge-recipe-pumpkin-desc = Нежная каша с тыквенным пюре.
+
+ce-soup-recipe-lumishroom-cream-name = свето-крем суп
+ce-soup-recipe-lumishroom-cream-desc = Густой суп-пюре из светящихся грибов. Сочно, с жилистыми пьянящими кусочками, от которых ваши зубы начинают светиться зелёным.
+
+ce-soup-recipe-fly-agaric-name = мухоморная похлёбка
+ce-soup-recipe-fly-agaric-desc = Очень красиво, но очень ядовито. Передайте шеф-повару своё почтение и больше не ходите в эту таверну.
+
+ce-soup-recipe-fly-agaric-lumishroom-name = не только мухоморная похлёбка
+ce-soup-recipe-fly-agaric-lumishroom-desc = Очень красиво, светится, но кусочки мухомора так и говорят о ядовитости этого блюда. Зато, благодаря люмигрибам, съев это, вы умрёте пьяными и весёлыми!

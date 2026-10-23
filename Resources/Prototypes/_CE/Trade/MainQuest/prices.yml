@@ -1,3 +1,5 @@
+#MARK: Engineering
+
 - type: mainQuestPrice
   id: MainQuestDiamonds
   department: CEEngineering
@@ -8,6 +10,16 @@
   guidebook:
   - CEGuideDiamondsEN
   - CEGuideDiamondsRU
+
+- type: mainQuestPrice
+  id: MainQuestCrystalCell
+  department: CEEngineering
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 10
+
+#MARK: Adventurers
 
 - type: mainQuestPrice
   id: MainQuestGoldBars
@@ -21,12 +33,17 @@
   - CEGuideGoldRU
 
 - type: mainQuestPrice
-  id: MainQuestCrystalCell
-  department: CEEngineering
+  id: MainQuestLumishrooms
+  department: CEGuild
   cost:
   - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 10
+    protoId: CEFoodLumishroom
+    count: 30
+  guidebook:
+  - CEGuideLumishroomsEN
+  - CEGuideLumishroomsRU
+
+#MARK: Tavern
 
 - type: mainQuestPrice
   id: MainQuestCornPorridge
@@ -50,6 +67,16 @@
   cost:
   - !type:FoodResource
     recipe: CarrotPatties
+    count: 20
+
+#MARK: General
+
+- type: mainQuestPrice
+  id: MainQuestLumishroomCreamSoup
+  department: CETavern
+  cost:
+  - !type:FoodResource
+    recipe: LumishroomCreamSoup
     count: 20
 
 - type: mainQuestPrice

@@ -940,6 +940,9 @@
   name: fly agaric
   description: A bright red mushroom with white spots. Very pretty, and very poisonous.
   components:
+  - type: CEFoodTag
+    tags:
+    - FlyAgaric
   - type: Item
     size: Tiny
   - type: FlavorProfile
@@ -967,6 +970,50 @@
         Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
   - type: CESeed
     plantProto: CEPlantAgaric
+  - type: Temperature
+    temperature: 290
+    heatCapacity: 15000
+  - type: InternalTemperature
+
+- type: entity
+  id: CEFoodLumishroom
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: lumishroom
+  description: A glowing cave mushroom. It ferments right in the cap, so eating a few goes straight to your head.
+  components:
+  - type: CEFoodTag
+    tags:
+    - Lumishroom
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - alcohol
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/lumishroom.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+          base4: ""
+          base5: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 11
+      reagents:
+      - ReagentId: Ethanol
+        Quantity: 5
+      - ReagentId: CENutriment
+        Quantity: 2
+  - type: CESeed
+    plantProto: CEPlantLumishroom
   - type: Temperature
     temperature: 290
     heatCapacity: 15000

@@ -276,6 +276,51 @@
     tags:
     - Cucumber
 
+- type: cookingRecipe
+  id: FlyAgaricStew
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-fly-agaric-name
+    desc: ce-soup-recipe-fly-agaric-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: flyagaric
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - FlyAgaric
+  - !type:TagRequired
+    tags:
+    - Salad
+
+- type: cookingRecipe
+  id: FlyAgaricLumishroomStew
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-fly-agaric-lumishroom-name
+    desc: ce-soup-recipe-fly-agaric-lumishroom-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: flylumish
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - FlyAgaric
+  - !type:TagRequired
+    tags:
+    - Lumishroom
+  - !type:TagRequired
+    tags:
+    - Salad
+
 # 4 req
 
 - type: cookingRecipe
@@ -302,9 +347,30 @@
     tags:
     - Salad
 
+- type: cookingRecipe
+  id: LumishroomCreamSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-lumishroom-cream-name
+    desc: ce-soup-recipe-lumishroom-cream-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: lumish
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Lumishroom
+  - !type:TagRequired
+    tags:
+    - Wheat
+  - !type:TagRequired
+    tags:
+    - Salad
+
 # Unused soup.rsi states lacking recipes:
-# - flyagaric
-# - flylumish
-# - lumish
 # - fish
 # - kharcho

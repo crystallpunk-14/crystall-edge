@@ -21,3 +21,6 @@ ce-cooking-tag-corn = Corn
 
 ce-cooking-tag-carrot = Carrot
 ce-cooking-tag-cucumber = Cucumber
+
+ce-cooking-tag-fly-agaric = Fly agaric
+ce-cooking-tag-lumishroom = Lumishroom

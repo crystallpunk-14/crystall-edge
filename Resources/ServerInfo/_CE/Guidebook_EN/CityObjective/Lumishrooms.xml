@@ -1,0 +1,16 @@
+<Document>
+
+# Lumishrooms
+
+<Box>
+  <GuideEntityEmbed Entity="CEPlantLumishroomGrown" Caption=""/>
+  <GuideEntityEmbed Entity="CEFoodLumishroom" Caption=""/>
+</Box>
+
+Lumishrooms grow alone, deep in the dark under a roof: look for them in the caves below the surface. Their caps give off a soft green glow, so the easiest way to spot one is to put out your light.
+
+A lumishroom is also its own seed. Plant it on dirt or mycelium and water it: mushrooms grow only on water, and a watered, fully grown lumishroom spreads to the neighbouring tiles, roughly one new mushroom per watering. Left dry, it just waits.
+
+A lumishroom ferments right in the cap. Eat a couple and you will feel it.
+
+</Document>
