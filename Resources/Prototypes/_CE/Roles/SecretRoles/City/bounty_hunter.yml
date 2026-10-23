@@ -16,16 +16,6 @@
     back:
     - CECoinGold5
     - CEWeaponGunJustice
-    - CEPaperBountyHunterContract
-
-- type: entity
-  parent: CEPaper
-  id: CEPaperBountyHunterContract
-  name: contract
-  description: A short letter with no return address.
-  components:
-  - type: Paper
-    content: ce-paper-text-bounty-hunter-contract
 
 - type: entity
   id: CEObjectiveBountyHunterEliminate

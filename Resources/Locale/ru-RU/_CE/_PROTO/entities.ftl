@@ -4043,44 +4043,6 @@ ent-CEPipeBrassMediumBroken = { ent-CEPipeBrassMedium }
     .desc = Повреждённая латунная труба. Магическая энергия, протекающая через неё, будет вытекать здесь и может представлять серьёзную опасность для существ, восприимчивых к магии.
     .suffix = Сломана
 
-ent-CEWallRadioSpeakerBase = громкоговоритель
-    .desc = Устройство удалённого радиовещания.
-
-ent-CEWallRadioSpeaker = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common
-
-ent-CEWallRadioSpeakerAcademy = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Academy
-
-ent-CEWallRadioSpeakerEngineering = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Engineering
-
-ent-CEWallRadioSpeakerTavern = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Tavern
-
-ent-CERadioPostSpeakerBase = стойка с громкоговорителем
-    .desc = Устройство удалённого радиовещания.
-
-ent-CERadioPostSpeaker = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common
-
-ent-CERadioPostSpeakerAcademy = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Academy
-
-ent-CERadioPostSpeakerEngineering = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Engineering
-
-ent-CERadioPostSpeakerTavern = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Tavern
-
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
     .suffix = Случайный рост
@@ -4477,9 +4439,6 @@ ent-CEObjectiveBrotherhoodPatronage = Покровительство
 
 ent-CEObjectiveBrotherhoodDebt = Должок
     .desc = Этот человек в прошлом перешёл дорогу братству. Сделайте его жизнь невыносимой. Он должен оказаться в критическом состоянии 3 раза, но при этом выжить, чтобы выучить свой урок.
-
-ent-CEPaperBountyHunterContract = заказ
-    .desc = Короткое письмо без обратного адреса.
 
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
@@ -5562,9 +5521,6 @@ ent-CEGeneratorMagicCapacitor = воздушный конденсатор
 
 ent-CEPipeBrassBigBase = { "" }
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
-
-ent-CERadioStation = радиорубка
-    .desc = Вещательная консоль. Когда она включена, всё сказанное рядом с ней повторяется громкоговорителями на её частотах.
 
 ent-CEHighBush = куст
     .desc = Толстый быстрорастущий сорняк

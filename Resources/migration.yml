@@ -236,8 +236,8 @@ CEBedsideTableFilledAcademyStudent: CEBedsideTableWooden
 CEBedsideTableFilledAcademyProfessor: CEBedsideTableWooden
 CEBedsideTableFilledAcademyRector: CEBedsideTableWooden
 CEResearchTable: CETableWooden
-CEWallRadioSpeakerAcademy: CEWallRadioSpeaker
-CERadioPostSpeakerAcademy: CERadioPostSpeaker
+CEWallRadioSpeakerAcademy: null
+CERadioPostSpeakerAcademy: null
 CEKeyAcademyHall: null
 CEKeyAcademyTechnical: null
 CEKeyAcademyLab: null
@@ -341,14 +341,23 @@ CEGuardMaceEnergyBall: CESheriffMaceEnergyBall
 CEActionGuardMaceCharge: CEActionSheriffMaceCharge
 CEGuardBola: CEBola
 CETradeTableEmpireGuard: null
-CEWallRadioSpeakerGuard: CEWallRadioSpeaker
-CERadioPostSpeakerGuard: CERadioPostSpeaker
+CEWallRadioSpeakerGuard: null
+CERadioPostSpeakerGuard: null
 CETradeTableEmpireSheriff: null
 
 # 2026-10-22
 CEClothingCloakTavernmaster: null
 CEClothingHeadFedoraTavernmaster: null
 CEClothingHeadBeretGuildGreen: null
+
+# 2026-10-23
+CEWallRadioSpeaker: null
+CEWallRadioSpeakerEngineering: null
+CEWallRadioSpeakerTavern: null
+CERadioPostSpeaker: null
+CERadioPostSpeakerEngineering: null
+CERadioPostSpeakerTavern: null
+CERadioStation: null
 
 # CrystallEdge migration zone end
 
