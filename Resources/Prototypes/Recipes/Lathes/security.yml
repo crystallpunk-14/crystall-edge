@@ -25,12 +25,6 @@
   id: BaseWeaponRecipeLong
   completetime: 5
 
-- type: latheRecipe
-  abstract: true
-  parent: BaseWeaponRecipe
-  id: BaseWeaponRecipeSidearm
-  completetime: 6
-
 ## Recipes
 
 # Clothing
@@ -197,22 +191,3 @@
     Glass: 500
     Plastic: 500
     Gold: 500
-
-# Sidearms
-- type: latheRecipe
-  parent: BaseWeaponRecipeSidearm
-  id: WeaponDisabler
-  result: WeaponDisabler
-  materials:
-    Steel: 300
-    Glass: 200
-    Plastic: 200
-
-- type: latheRecipe
-  parent: BaseWeaponRecipeSidearm
-  id: WeaponDisablerSMG
-  result: WeaponDisablerSMG
-  materials:
-    Steel: 1000
-    Glass: 500
-    Plastic: 500
