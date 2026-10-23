@@ -9,7 +9,6 @@
   - Thief
   - Recruiter
   - Recruit
-  - Vandal
   objectives: !type:AllSelector
     children:
     - id: CEObjectiveBrotherhoodSurvive

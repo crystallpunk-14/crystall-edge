@@ -4469,9 +4469,6 @@ ent-CEObjectiveRecruiterRecruit = Завербуйте людей
 ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
     .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
-ent-CEObjectiveVandalSabotageRadio = Саботаж радиосвязи
-    .desc = Никакой пропаганды в моём городе. Все радиостанции должны быть уничтожены.
-
 ent-CEObjectiveBrotherhoodSurvive = Сохранить братство
     .desc = Все члены братства должны выжить.
 
@@ -4534,9 +4531,6 @@ ent-CEStatusEffectSoftLanding = мягкая посадка
 
 ent-CEStatusEffectTimeSense = чувство времени
     .desc = Вы интуитивно чувствуете, какое сейчас время дня.
-
-ent-CEStatusEffectVandalCrushing = крушение
-    .desc = { "" }
 
 ent-CEActionRecruit = Вербовка
     .desc = Пригласите кого-то рядом вступить в братство. Он может отказаться.
