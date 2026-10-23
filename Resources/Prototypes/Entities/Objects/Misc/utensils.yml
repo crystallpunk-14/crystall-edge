@@ -95,27 +95,6 @@
 
 - type: entity
   parent: UtensilBasePlastic
-  id: SpoonPlastic
-  name: plastic spoon
-  description: There is no spoon.
-  components:
-  - type: Sprite
-    state: plastic_spoon
-  - type: Item
-    heldPrefix: spoon
-  - type: Utensil
-    types:
-    - Spoon
-  - type: Shovel
-    speedModifier: 0.1 # you can try
-  - type: ReactionMixer
-    mixMessage: "spoon-mixing-success"
-    timeToMix: 0.5
-    reactionTypes:
-    - Stir
-
-- type: entity
-  parent: UtensilBasePlastic
   id: KnifePlastic
   name: plastic knife
   description: That's not a knife. This is a knife.

@@ -4,11 +4,6 @@
   frequency: 2450
 
 - type: deviceFrequency
-  id: ArrivalsShuttleTimer
-  name: device-frequency-prototype-name-arrivals-shuttle-timer
-  frequency: 2451
-
-- type: deviceFrequency
   id: SurveillanceCamera
   name: device-frequency-prototype-name-surveillance-camera
   frequency: 1926 # i only have so many of these, y'know?
@@ -87,30 +82,6 @@
   name: device-frequency-prototype-name-cyborg-control
   frequency: 1292
 
-# Turret controllers send data to their turrets on this frequency
-- type: deviceFrequency
-  id: TurretControl
-  name: device-frequency-prototype-name-turret-control
-  frequency: 2151
-
-# Turrets send data to their controllers on this frequency
-- type: deviceFrequency
-  id: Turret
-  name: device-frequency-prototype-name-turret
-  frequency: 2152
-  
-# AI turret controllers send data to their turrets on this frequency
-- type: deviceFrequency
-  id: TurretControlAI
-  name: device-frequency-prototype-name-turret-control
-  frequency: 2153
-
-# AI turrets send data to their controllers on this frequency
-- type: deviceFrequency
-  id: TurretAI
-  name: device-frequency-prototype-name-turret
-  frequency: 2154
-
 # This frequency will likely have a LARGE number of listening entities. Please don't broadcast on this frequency.
 - type: deviceFrequency
   id: SmartLight #used by powered lights.
@@ -126,11 +97,6 @@
   id: PDA
   name: device-frequency-prototype-name-pdas
   frequency: 2202
-
-- type: deviceFrequency
-  id: Fax
-  name: device-frequency-prototype-name-fax
-  frequency: 2640
 
 - type: deviceFrequency
   id: BasicDevice

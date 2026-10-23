@@ -5,6 +5,9 @@ ce-secret-role-description-werewolf = Превращайтесь в волка �
 
 # City
 
+ce-secret-role-name-sheriff = Шериф
+ce-secret-role-description-sheriff = Вы — защитник этого города на пороге тьмы. Среди его жителей прячутся тёмные твари. Вычислите и уничтожьте их всех до единого.
+
 ce-secret-role-name-civilian = Мирный гражданин
 ce-secret-role-description-civilian = Ничего примечательного! Вы просто хотите чтобы город выжил!
 
@@ -16,9 +19,6 @@ ce-secret-role-description-thief = Угроза городского масшт�
 
 ce-secret-role-name-lover = Влюблённый
 ce-secret-role-description-lover = Вы одержимы одним особенным человеком. Вы готовы на все чтобы помочь ему.
-
-ce-secret-role-name-tormentor = Мучитель
-ce-secret-role-description-tormentor = Вы пойдете на все, чтобы видеть как ваша цель страдает всю свою оставшуюся жизнь, из-за постоянных поражений. И вы постараетесь, чтобы её поражения были гарантированны.
 
 ce-secret-role-name-recruiter = Вербовщик
 ce-secret-role-description-recruiter = Вы умеете замечать тех, кого подвёл город. Приведите их в братство - чем больше рук, тем безопаснее всем.
@@ -36,7 +36,7 @@ ce-secret-role-name-immortal = Бессмертный
 ce-secret-role-description-immortal = Вас невероятно тяжело убить. Можно сказать, почти невозможно.
 
 ce-secret-role-name-vandal = Вандал
-ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля стражи над городом. Устроим немного погрома.
+ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля шерифа над городом. Устроим немного погрома.
 
 # Ковен
 

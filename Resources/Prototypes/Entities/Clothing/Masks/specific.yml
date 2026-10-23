@@ -21,28 +21,6 @@
       - Snout
 
 - type: entity
-  parent: ClothingMaskGasChameleon
-  id: ClothingMaskGasVoiceChameleon
-  suffix: Voice Mask, Chameleon
-  components:
-    - type: VoiceMask
-    - type: UIRequiresLock
-      userInterfaceKeys:
-        - enum.ChameleonUiKey.Key
-        - enum.VoiceMaskUIKey.Key
-      accessDeniedSound: null
-      popup: null
-    - type: HideLayerClothing
-      slots:
-      - Snout
-    - type: UserInterface
-      interfaces:
-        enum.ChameleonUiKey.Key:
-          type: ChameleonBoundUserInterface
-        enum.VoiceMaskUIKey.Key:
-          type: VoiceMaskBoundUserInterface
-
-- type: entity
   parent: ClothingMaskBase
   id: ClothingMaskGoldenCursed
   name: golden mask

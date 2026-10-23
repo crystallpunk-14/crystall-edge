@@ -1,14 +1,4 @@
 - type: cargoProduct
-  id: EmergencyExplosive
-  icon:
-    sprite: Clothing/Head/Helmets/bombsuit.rsi
-    state: icon
-  product: CrateEmergencyExplosive
-  cost: 1000
-  category: cargoproduct-category-name-emergency
-  group: market
-
-- type: cargoProduct
   id: EmergencyFire
   icon:
     sprite: Objects/Misc/fire_extinguisher.rsi
@@ -29,16 +19,6 @@
   group: market
 
 - type: cargoProduct
-  id: EmergencyRadiation
-  icon:
-    sprite: Structures/Wallmounts/signs.rsi
-    state: radiation
-  product: CrateEmergencyRadiation
-  cost: 1000
-  category: cargoproduct-category-name-emergency
-  group: market
-
-- type: cargoProduct
   id: EmergencyInflatablewall
   description: cargoproduct-description-emergencyinflatablewall
   icon:
@@ -49,15 +29,5 @@
     entity: WrappedParcel
     containerId: contents
   cost: 500
-  category: cargoproduct-category-name-emergency
-  group: market
-
-- type: cargoProduct
-  id: EmergencyBiosuit
-  icon:
-    sprite: Clothing/Head/Hoods/Bio/general.rsi
-    state: icon
-  product: CrateGenericBiosuit
-  cost: 800
   category: cargoproduct-category-name-emergency
   group: market

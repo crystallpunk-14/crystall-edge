@@ -452,14 +452,6 @@
     Plasma: 160
     Silver: 80
 
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
-  id: BoxShotgunFlare
-  result: BoxShotgunFlare
-  materials:
-    Steel: 80
-    Plastic: 80
-
 # .60 anti-materiel
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe

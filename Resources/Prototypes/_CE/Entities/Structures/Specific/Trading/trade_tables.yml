@@ -52,6 +52,7 @@
   components:
   - type: Sprite
     state: postament
+    noRot: true
   - type: Icon
     sprite: _CE/Structures/Furniture/Carpets/murk.rsi
     state: postament
@@ -116,17 +117,6 @@
     key: trade_Alcohol
   - type: CETradeShopTable
     shop: Alcohol
-
-- type: entity
-  parent: CETradeCarpetBase
-  id: CETradeTableEmpireGuard
-  suffix: empire guard
-  categories: [ ForkFiltered ]
-  components:
-  - type: IconSmooth
-    key: trade_EmpireGuard
-  - type: CETradeShopTable
-    shop: EmpireGuard
 
 - type: entity
   parent: CETradeCarpetBase

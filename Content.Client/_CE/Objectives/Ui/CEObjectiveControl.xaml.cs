@@ -109,7 +109,8 @@ public sealed partial class CEObjectiveControl : BoxContainer
             BackgroundColor = progress >= 1f ? StyleNano.GoodGreenFore : StyleNano.ConcerningOrangeFore,
         };
 
-        if (_ent.TryGetComponent<CEObjectiveDescriptorComponent>(objective, out var descriptor))
+        if (_ent.TryGetComponent<CEObjectiveDescriptorComponent>(objective, out var descriptor) &&
+            descriptor.Name.Id is not null)
         {
             OwnerPanel.Visible = true;
             OwnerPanel.ModulateSelfOverride = descriptor.Color;

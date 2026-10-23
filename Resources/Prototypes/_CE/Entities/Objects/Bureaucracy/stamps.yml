@@ -58,19 +58,6 @@
     state: bank
 
 - type: entity
-  name: guard commander's stamp
-  parent: CERubberStampBase
-  id: CERubberStampGuard
-  description: A rubber stamp bearing the seal of the guard commander.
-  components:
-  - type: Stamp
-    stampedName: ce-stamp-component-stamped-name-guard
-    stampedColor: "#576384"
-    stampState: "guard_on_paper"
-  - type: Sprite
-    state: guard
-
-- type: entity
   name: guildmaster's stamp
   parent: CERubberStampBase
   id: CERubberStampGuildmaster

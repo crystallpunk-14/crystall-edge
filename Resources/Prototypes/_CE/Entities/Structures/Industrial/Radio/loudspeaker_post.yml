@@ -92,16 +92,6 @@
 
 - type: entity
   parent: CERadioPostSpeakerBase
-  id: CERadioPostSpeakerGuard
-  suffix: Common, Guard
-  components:
-  - type: CERadioSpeaker
-    frequencies:
-    - Common
-    - Guard
-
-- type: entity
-  parent: CERadioPostSpeakerBase
   id: CERadioPostSpeakerTavern
   suffix: Common, Tavern
   components:

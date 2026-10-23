@@ -26,18 +26,6 @@
         - id: WireBrush
 
 - type: entity
-  parent: CratePlastic
-  id: CrateJanitorialCleanerGrenades
-  name: bulk cleanades crate
-  description: Contains two boxes of cleaner grenades, for those deeply-entrenched stains.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: BoxCleanerGrenades
-        amount: 2
-
-- type: entity
   parent: CrateGenericSteel
   id: CrateJanitorialReplacementLights
   name: replacement lights crate
@@ -62,29 +50,6 @@
         children:
         - id: BoxLightbulbColorfulMixed
         - id: BoxLighttubeColorfulMixed
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateJanitorialHolidayLights
-  name: holiday lights crate
-  description: Deck the halls with these festive holiday lights! Contains twelve red light tubes and twelve green light tubes.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: BoxLighttubeHoliday
-        amount: 2
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateJanitorialMousetraps
-  name: mousetraps crate
-  description: Mousetraps, for when all of service is being haunted by an entire horde of rats. Use sparingly... or not.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: BoxMousetrap
 
 - type: entity
   parent: CratePlastic

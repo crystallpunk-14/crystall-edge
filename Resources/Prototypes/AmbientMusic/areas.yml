@@ -1,19 +1,4 @@
 - type: ambientMusic
-  id: Morgue
-  sound:
-    params:
-      volume: -12
-    collection: AmbienceSpooky
-  priority: 4
-  conditions:
-  - !type:NearbyComponentsCondition
-    anchored: true
-    count: 2
-    components:
-    - type: Morgue
-    range: 3
-
-- type: ambientMusic
   id: Maintenance
   sound:
     params:
@@ -44,15 +29,3 @@
     range: 3
   - !type:IsGhostCondition
     inverted: true
-
-- type: ambientMusic
-  id: Mining
-  sound:
-    params:
-      volume: -12
-    collection: AmbienceMining
-  fadeIn: true
-  interruptable: true
-  priority: 1
-  conditions:
-  - !type:OnMapGridCondition

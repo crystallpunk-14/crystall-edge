@@ -1428,3 +1428,85 @@
   id: 1122
   time: '2026-10-17T12:07:03.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/538
+- author: TheShuEd
+  changes:
+  - message: Removed Tormentor secret role, because too boring
+    type: Remove
+  - message: Shadow traders are now opening their shops at night instead of during
+      the day
+    type: Tweak
+  - message: When you buy items in a store, the purchased items will now attempt to
+      be placed in your inventory, or will visibly scatter on the ground if there
+      is no space in your inventory, instead of appearing unnoticed at your feet.
+    type: Fix
+  - message: The Brotherhood can no longer receive the objective of helping the werewolf
+      achieve his goals.
+    type: Tweak
+  id: 1123
+  time: '2026-10-20T14:47:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/544
+- author: TheShuEd
+  changes:
+  - message: Added new "Pharus" map for 0-20 players count.
+    type: Add
+  - message: Shaar map player count is now 20-40.
+    type: Tweak
+  id: 1124
+  time: '2026-10-19T20:54:52.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/542
+- author: TheShuEd
+  changes:
+  - message: Any light source, including wall lamps or lanterns, is now sufficient
+      for plant growth. The rate of plant growth is proportional to the light intensity.
+    type: Tweak
+  - message: Fixed bugs where weather effects could be visible on tiles under roofs
+    type: Fix
+  id: 1125
+  time: '2026-10-21T11:59:04.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/547
+- author: TheShuEd, D1nazewwr, Omsoyk
+  changes:
+  - message: 'Added 2 new dishes from carrot: Carrot garlic salad and carrot petties
+      with cheese! carrot petties is new main quest variation.'
+    type: Add
+  - message: 'D1nazewwr added a set of in-hand sprites for items that are most commonly
+      stolen: wallets, keys, passports, and the like.'
+    type: Add
+  - message: Omsoyk added a 21 clothing items for the tavern roles, full tavern resprite.
+    type: Add
+  - message: Fixed pipe breakage event can break pipes in random generation around
+      city.
+    type: Fix
+  id: 1126
+  time: '2026-10-22T16:05:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/549
+- author: TheShuEd
+  changes:
+  - message: The Guard (Army) deparment has been removed from the game
+    type: Remove
+  - message: "A new hidden role, the Sheriff, has been added. It\u2019s not really\
+      \ that \u201Chidden,\u201D though, since the new single Sheriff job is guaranteed\
+      \ to have it. The Sheriff has been tasked with destroying the Nightmare faction."
+    type: Add
+  - message: Sheriff get salary back! 2 gold coin per day.
+    type: Add
+  - message: All ore cores except gold was removed from procedural generation around
+      the city.
+    type: Tweak
+  id: 1127
+  time: '2026-10-22T20:04:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/548
+- author: TheShuEd
+  changes:
+  - message: A character's profile now stores their original role if they change it
+      for any reason.
+    type: Add
+  - message: Fixed a bug where recruiting a priest into the Brotherhood caused the
+      game to treat him as dead to the werewolf and indicate that he had completed
+      his objective.
+    type: Fix
+  - message: Bounty hunter now have military training active skill
+    type: Tweak
+  id: 1128
+  time: '2026-10-22T21:48:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/550

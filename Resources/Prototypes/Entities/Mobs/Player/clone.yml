@@ -125,18 +125,6 @@
   components:
   - Forensics # This is so hugging data is copied to the clone, so you can't hug metagame them
 
-# spawner
-- type: entity
-  id: RandomCloneSpawner
-  name: Random Clone
-  suffix: Non-Antag
-  components:
-  - type: Sprite
-    sprite: Mobs/Aliens/paradox_clone.rsi
-    state: preview
-  - type: RandomCloneSpawner
-    settings: BaseClone
-
 # for plant clones
 - type: cloningSettings
   id: PlantClone

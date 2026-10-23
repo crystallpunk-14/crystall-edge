@@ -465,15 +465,6 @@
 
 - type: entity
   parent: PlushieLizard
-  id: PlushieLizardMirrored
-  suffix: Mirrored
-  components:
-  - type: Sprite
-    state: icon
-    scale: -1, 1
-
-- type: entity
-  parent: PlushieLizard
   id: PlushieSpaceLizard #ᵂᵉʰ!
   name: space lizard plushie
   description: An adorable stuffed toy that resembles a lizardperson in an EVA suit. Made by CentComm as a token initiative to combat speciesism in space environments. "Welcome your new colleagues as you do this plush, with open arms!"

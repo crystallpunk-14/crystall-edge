@@ -10,7 +10,7 @@ Every city has a camp of shadow traders, where they offer their goods.
 
 ## Day and night cycle
 
-Traders work according to the time of day: at dawn they emerge from the rift and lay out their goods. At sunset they pack up the shop and leave until the next dawn.
+Traders work according to the time of day: at sunset they emerge from the rift and lay out their goods. At dawn they pack up the shop and leave until the next sunset.
 This rotates the goods on sale, even if players don't buy anything.
 
 ## Orders

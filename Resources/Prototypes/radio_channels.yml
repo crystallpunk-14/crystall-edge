@@ -86,12 +86,3 @@
   color: "#5ed7aa"
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
   longRange: true
-
-- type: radioChannel
-  id: Freelance
-  name: chat-radio-freelance
-  keycode: 'f'
-  frequency: 198.4
-  color: "#f6ce64"
-  # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
-  longRange: true

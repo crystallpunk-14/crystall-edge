@@ -51,7 +51,11 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingHeadBeretGuildGreen
+        - id: CEClothingHeadChefHat1
+        - id: CEClothingHeadChefHat2
+        - id: CEClothingHeadBeretChef
+        - id: CEClothingCloakChefApron1
+        - id: CEClothingCloakChefApron2
 
 - type: entity
   id: CEKeyRingChef

@@ -63,17 +63,3 @@
       layers:
         - state: basalt5
           shader: unshaded
-
-- type: entity
-  id: ShadowBasaltRandom
-  parent: ShadowBasaltOne
-  suffix: Random
-  components:
-    - type: RandomSprite
-      available:
-        - 0:
-            basalt1: ""
-            basalt2: ""
-            basalt3: ""
-            basalt4: ""
-            basalt5: ""

@@ -8419,13 +8419,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -10.5,6.5
-- proto: CESpawnPointGuard
-  entities:
-  - uid: 874
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-12.5
 - proto: CESpawnPointInvestigator
   entities:
   - uid: 942

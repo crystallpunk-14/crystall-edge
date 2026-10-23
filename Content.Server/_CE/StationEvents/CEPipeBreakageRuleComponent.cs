@@ -26,4 +26,10 @@ public sealed partial class CEPipeBreakageRuleComponent : Component
 
     [DataField]
     public SoundSpecifier? BreakSound;
+
+    /// <summary>
+    /// Center pipe picked when the event is added, broken when it starts.
+    /// </summary>
+    [DataField]
+    public EntityUid? Target;
 }

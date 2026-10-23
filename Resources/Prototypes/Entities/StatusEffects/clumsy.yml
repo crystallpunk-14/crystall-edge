@@ -58,22 +58,6 @@
 #endregion
 #region Debuffs
 
-# A terribler fate
-- type: entity
-  parent: [ StatusEffectClumsyAll, MobStatusEffectDebuff ]
-  id: StatusEffectClumsyGuaranteed
-  components:
-  - type: ClumsyCatchStatusEffect
-    clumsyChance: &Chance100 1
-  - type: ClumsyDefibStatusEffect
-    clumsyChance: *Chance100
-  - type: ClumsyGunStatusEffect
-    clumsyChance: *Chance100
-  - type: ClumsyInjectorStatusEffect
-    clumsyChance: *Chance100
-  - type: ClumsyVaultStatusEffect
-    clumsyChance: *Chance100
-
 # =^_^= nya!
 - type: entity
   parent: [ StatusEffectClumsyAll, MobStatusEffectDebuff ]

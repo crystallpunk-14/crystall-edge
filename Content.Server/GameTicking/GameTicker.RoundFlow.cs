@@ -585,12 +585,16 @@ namespace Content.Server.GameTicking
                     Connected = connected
                 };
 
-                // CrystallEdge: reveal secret role + faction color in the round-end manifest
-                if (_secretRoles.TryGetSecretRoleDisplay(mindId, out var secretRole, out var secretRoleColor))
+                // CrystallEdge: job icon + secret roles in the round-end manifest
+                if (_jobs.MindTryGetJobId(mindId, out var jobId))
+                    playerEndRoundInfo.Job = jobId;
+
+                if (_secretRoles.TryGetSecretRoles(mindId, out var secretRole, out var originalSecretRole))
                 {
                     playerEndRoundInfo.SecretRole = secretRole;
-                    playerEndRoundInfo.SecretRoleColor = secretRoleColor;
+                    playerEndRoundInfo.OriginalSecretRole = originalSecretRole;
                 }
+                // CrystallEdge end
 
                 listOfPlayerInfo.Add(playerEndRoundInfo);
             }

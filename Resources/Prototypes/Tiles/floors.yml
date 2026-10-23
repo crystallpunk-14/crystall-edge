@@ -6,7 +6,6 @@
   footstepSounds:
     collection: FootstepFloor
   heatCapacity: 10000
-  weather: false
   baseTurf: Plating
   baseWhitelist:
   - FloorAsteroidIronsand
@@ -75,22 +74,6 @@
     collection: FootstepHull
   itemDrop: FloorTileItemMetalDiamond
 
-- type: tile
-  id: FloorBlue
-  parent: BaseStationTile
-  name: tiles-blue-tile
-  sprite: /Textures/Tiles/blue.png
-  footstepSounds:
-    collection: FootstepTile
-  itemDrop: FloorTileItemBlue
-
-- type: tile
-  id: FloorSteelLime
-  parent: BaseStationTile
-  name: tiles-lime-floor
-  sprite: /Textures/Tiles/lime.png
-  itemDrop: FloorTileItemLime
-
 # Departmental
 - type: tile
   id: FloorFreezer
@@ -100,45 +83,6 @@
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemFreezer
-
-- type: tile
-  id: FloorBar
-  parent: BaseStationTile
-  name: tiles-bar-floor
-  sprite: /Textures/Tiles/Checker/checker-bar.png
-  itemDrop: FloorTileItemBar
-
-- type: tile
-  id: FloorClown
-  parent: BaseStationTile
-  name: tiles-clown-floor
-  sprite: /Textures/Tiles/Checker/checker-clown.png
-  itemDrop: FloorTileItemClown
-
-- type: tile
-  id: FloorMime
-  parent: BaseStationTile
-  name: tiles-mime-floor
-  sprite: /Textures/Tiles/Checker/checker-mime.png
-  itemDrop: FloorTileItemMime
-
-- type: tile
-  id: FloorKitchen
-  parent: BaseStationTile
-  name: tiles-kitchen-floor
-  sprite: /Textures/Tiles/Checker/checker-kitchen.png
-  footstepSounds:
-    collection: FootstepTile
-  itemDrop: FloorTileItemKitchen
-
-- type: tile
-  id: FloorLaundry
-  parent: BaseStationTile
-  name: tiles-laundry-floor
-  sprite: /Textures/Tiles/Checker/checker-laundry.png
-  footstepSounds:
-    collection: FootstepTile
-  itemDrop: FloorTileItemLaundry
 
 # Carpets (non smoothing)
 - type: tile
@@ -288,18 +232,6 @@
   itemDrop: FloorTileItemWoodPattern
 
 - type: tile
-  id: FloorBrokenWood
-  parent: BaseStationTile
-  name: tiles-wood3
-  sprite: /Textures/Tiles/Wood/wood-broken.png
-  variants: 7
-  footstepSounds:
-    collection: FootstepWood
-  barestepSounds:
-    collection: BarestepWood
-  itemDrop: MaterialWoodPlank1
-
-- type: tile
   id: FloorWoodLarge
   parent: BaseStationTile
   name: tiles-wood-large
@@ -340,23 +272,3 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-
-#Hull tiles
-- type: tile
-  id: FloorHull
-  parent: BaseStationTile
-  name: tiles-hull
-  sprite: /Textures/Tiles/hull.png
-  footstepSounds:
-    collection: FootstepHull
-  itemDrop: FloorTileItemSteel #probably should not be normally obtainable, but the game shits itself and dies when you try to put null here
-
-- type: tile
-  id: FloorReinforcedHardened
-  parent: BaseStationTile
-  name: tiles-super-reinforced-floor
-  sprite: /Textures/Tiles/super_reinforced.png
-  footstepSounds:
-    collection: FootstepHull
-  itemDrop: PartRodMetal1 #same case as FloorHull
-

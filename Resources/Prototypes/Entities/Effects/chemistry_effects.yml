@@ -139,15 +139,6 @@
     animationState: m_foam-dissolve
 
 - type: entity
-  id: IronMetalFoam
-  name: iron metal foam
-  categories: [ HideSpawnMenu ]
-  parent: MetalFoam
-  components:
-  - type: SpawnOnDespawn
-    prototype: FoamedIronMetal
-
-- type: entity
   id: AluminiumMetalFoam
   name: aluminium metal foam
   categories: [ HideSpawnMenu ]
@@ -199,28 +190,6 @@
     - Lattice
     replacementTiles:
     - FloorMetalFoam
-
-- type: entity
-  id: FoamedIronMetal
-  name: foamed iron metal
-  description: "For sealing hull breaches."
-  parent: BaseFoamedMetal
-  components:
-  - type: Sprite
-    drawdepth: Effects
-    color: "#ffffffcc"
-    sprite: Effects/foam.rsi
-    layers:
-    - state: iron_foam
-      map: ["enum.FoamVisualLayers.Base"]
-    - map: [ "enum.EdgeLayer.South" ]
-      state: iron_foam-south
-    - map: [ "enum.EdgeLayer.East" ]
-      state: iron_foam-east
-    - map: [ "enum.EdgeLayer.North" ]
-      state: iron_foam-north
-    - map: [ "enum.EdgeLayer.West" ]
-      state: iron_foam-west
 
 - type: entity
   parent: BaseFoamedMetal

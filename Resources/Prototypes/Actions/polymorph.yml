@@ -27,36 +27,6 @@
 
 - type: entity
   parent: BaseActionPolymorph
-  id: ActionPolymorphWizardSpider
-  name: Spider Polymorph
-  description: Polymorphs you into a Spider.
-  components:
-  - type: Action
-  - type: Sprite
-    sprite: Mobs/Animals/spider.rsi
-    layers:
-    - state: tarantula
-  - type: InstantAction
-    event: !type:PolymorphActionEvent
-      protoId: WizardSpider
-
-- type: entity
-  parent: BaseActionPolymorph
-  id: ActionPolymorphWizardRod
-  name: Rod Form
-  description: CLANG!
-  components:
-  - type: Action
-  - type: Sprite
-    sprite: Objects/Fun/immovable_rod.rsi
-    layers:
-    - state: icon
-  - type: InstantAction
-    event: !type:PolymorphActionEvent
-      protoId: WizardRod
-
-- type: entity
-  parent: BaseActionPolymorph
   id: ActionPolymorphJaunt
   name: Ethereal Jaunt
   description: Melt into the Ethereal Plane for a quick getaway!

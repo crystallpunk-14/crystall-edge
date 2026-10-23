@@ -98,46 +98,6 @@
     graph: Grille
     node: grille
 
-### DIAGONAL
-- type: entity
-  parent: Grille
-  id: GrilleDiagonal
-  name: diagonal grille
-  components:
-  - type: Sprite
-    sprite: Structures/Walls/grille-diagonal.rsi
-    layers:
-    - state: state0
-    - state: electrified_diagonal
-      sprite: Effects/electricity.rsi
-      map: ["enum.ElectrifiedLayers.Sparks"]
-      shader: unshaded
-      visible: false
-  - type: Icon
-    sprite: Structures/Walls/grille-diagonal.rsi
-    state: state0
-  - type: IconSmooth
-    index: 0
-    mode: Diagonal
-    key: grilles
-    base: state
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PolygonShape
-          vertices:
-          - "-0.5,-0.5"
-          - "0.5,0.5"
-          - "0.5,-0.5"
-        mask:
-        - FullTileMask
-        layer:
-        - GlassLayer
-  - type: Construction
-    graph: GrilleDiagonal
-    node: grilleDiagonal
-
 ### BROKEN
 - type: entity
   parent: [ BaseStructure, StructureHealthFurnitureWeak ]

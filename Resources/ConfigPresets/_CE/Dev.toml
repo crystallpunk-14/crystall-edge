@@ -72,3 +72,6 @@ enable_during_round = true
 
 [movement]
 mob_pushing = true
+
+[lookup]
+enable_server_light_tree = true

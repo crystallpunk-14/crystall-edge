@@ -163,11 +163,3 @@
     anchored: true
   - type: Physics
     bodyType: Static
-
-- type: entity
-  parent: SpaceHeaterAnchored
-  id: SpaceHeaterEnabled
-  suffix: Anchored, Enabled
-  components:
-  - type: ApcPowerReceiver
-    powerDisabled: false

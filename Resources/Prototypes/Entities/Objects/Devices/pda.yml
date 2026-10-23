@@ -353,17 +353,6 @@
     state: pda-chaplain
 
 - type: entity
-  parent: ChaplainPDA
-  id: VisitorChaplainPDA
-  suffix: Visitor
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
-
-- type: entity
   name: quartermaster PDA
   parent: BasePDA
   id: QuartermasterPDA
@@ -480,17 +469,6 @@
     state: pda-library
 
 - type: entity
-  parent: LibrarianPDA
-  id: VisitorLibrarianPDA
-  suffix: Visitor
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
-
-- type: entity
   parent: BaseSecurityPDA
   id: LawyerPDA
   name: lawyer PDA
@@ -513,17 +491,6 @@
     borderColor: "#6f6192"
   - type: Icon
     state: pda-lawyer
-
-- type: entity
-  parent: LawyerPDA
-  id: VisitorLawyerPDA
-  suffix: Visitor
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
 
 - type: entity
   parent: BasePDA
@@ -671,17 +638,6 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
-
-- type: entity
-  parent: MedicalPDA
-  id: VisitorMedicalPDA
-  suffix: Visitor
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
 
 - type: entity
   parent: BaseMedicalPDA
@@ -928,17 +884,6 @@
     bank: 100 # Defined in space-station-14.sf2
 
 - type: entity
-  parent: MusicianPDA
-  id: VisitorMusicianPDA
-  suffix: Visitor
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
-
-- type: entity
   parent: BasePDA
   id: AtmosPDA
   name: atmos PDA
@@ -956,34 +901,6 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-atmos
-
-- type: entity
-  parent: BasePDA
-  id: ClearPDA
-  name: clear PDA
-  description: 99 and 44/100ths percent pure plastic.
-  components:
-  - type: Pda
-    id: PassengerIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-clear
-  - type: PdaBorderColor
-    borderColor: "#288e4d"
-  - type: Icon
-    state: pda-clear
-
-- type: entity
-  parent: ClearPDA
-  id: VisitorPDA
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
 
 - type: entity
   parent: [ BasePDA, BaseSyndicateContraband ]
@@ -1223,43 +1140,6 @@
     state: pda-reporter
 
 - type: entity
-  parent: BasePDA
-  id: ZookeeperPDA
-  name: zookeeper PDA
-  description: Made with genuine synthetic leather. Crikey!
-  components:
-  - type: Pda
-    id: ZookeeperIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-zookeeper
-  - type: PdaBorderColor
-    borderColor: "#ffe685"
-  - type: Icon
-    state: pda-zookeeper
-
-- type: entity
-  parent: BasePDA
-  id: BoxerPDA
-  name: boxer PDA
-  description: Float like a butterfly, ringtone like a bee.
-  components:
-  - type: Pda
-    id: BoxerIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-boxer
-  - type: PdaBorderColor
-    borderColor: "#333333"
-    accentVColor: "#390504"
-  - type: Icon
-    state: pda-boxer
-
-- type: entity
   parent: BaseSecurityPDA
   id: DetectivePDA
   name: detective PDA
@@ -1286,36 +1166,6 @@
         - id: NewsReaderCartridge
         - id: WantedListCartridge
         - id: LogProbeCartridge
-
-- type: entity
-  parent: BaseMedicalPDA
-  id: BrigmedicPDA
-  name: brigmedic PDA
-  description: I wonder whose pulse is on the screen? I hope it doesn't stop...
-  components:
-  - type: Pda
-    id: BrigmedicIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-brigmedic
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentHColor: "#d7d7d0"
-    accentVColor: "#d7d7d0"
-  - type: Icon
-    state: pda-brigmedic
-  - type: EntityTableContainerFill
-    containers:
-      preinstalled-program-container: !type:AllSelector
-        children:
-        - id: CrewManifestCartridge
-        - id: NotekeeperCartridge
-        - id: NanoTaskCartridge
-        - id: NewsReaderCartridge
-        - id: WantedListCartridge
-        - id: MedTekCartridge
 
 - type: entity
   parent: BasePDA
@@ -1508,14 +1358,3 @@
     borderColor: "#7F3300"
   - type: Icon
     state: pda-wizard
-
-- type: entity
-  parent: ClearPDA
-  id: ScurretPDA
-  description: A temporary PDA granted to scurret temps. Doesn't do much. Wawa!
-  components:
-  - type: Pda
-    id: VisitorIDCard
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener

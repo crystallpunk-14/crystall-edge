@@ -204,35 +204,6 @@
   - type: MultiHandedItem
 
 - type: entity
-  parent: [ BaseItemRecharger, BaseWallmount ]
-  id: WallWeaponCapacitorRecharger
-  name: wall recharger
-  description: A compact wall-mounted recharger. It can only recharge electronic devices and has no space for power cells.
-  components:
-  - type: Sprite
-    sprite: Structures/Power/wall_recharger.rsi
-    layers:
-    - map: ["enum.PowerChargerVisualLayers.Base"]
-      state: "empty"
-    - map: ["enum.PowerChargerVisualLayers.Light"]
-      state: "light-off"
-      shader: "unshaded"
-  - type: Charger
-    chargeRate: 25
-  - type: ItemSlots
-    slots:
-      charger_slot:
-        ejectOnInteract: true
-        whitelist:
-          tags:
-          - Stunbaton
-          components:
-          - BatteryAmmoProvider
-        blacklist:
-          tags:
-          - PotatoBattery
-
-- type: entity
   parent: [ BaseRecharger, BaseConstructibleMachineDestructible ]
   id: BorgCharger
   name: cyborg recharging station

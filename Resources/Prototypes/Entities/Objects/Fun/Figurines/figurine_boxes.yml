@@ -80,24 +80,3 @@
       - id: SpiderclanFlippo
         orGroup: Lighterbox
         weight: 0.15
-
-- type: entity
-  parent: MysteryLighterBox
-  id: UplinkLighterBox
-  suffix: Uplink
-  components:
-  - type: SpawnItemsOnUse
-    items:
-      - id: MysteryFigureBoxTrash
-      - id: CybersunFlippo
-        orGroup: Lighterbox
-      - id: InterdyneFlippo
-        orGroup: Lighterbox
-      - id: WaffleCoFlippo
-        orGroup: Lighterbox
-      - id: GorlexMatchbox
-        orGroup: Lighterbox
-      - id: DonkcoLighter
-        orGroup: Lighterbox
-      - id: SyndicateFlippo
-        orGroup: Lighterbox

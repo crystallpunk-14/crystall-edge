@@ -61,5 +61,11 @@ ce-meal-recipe-green-omelette-desc = A baked egg omelette generously sprinkled w
 ce-meal-recipe-garlic-bread-name = Garlic Bread
 ce-meal-recipe-garlic-bread-desc = Toasted bread with a spicy garlic aroma and a crispy crust. A little sharp. Crunchy.
 
+ce-meal-recipe-carrot-patties-name = Carrot patties with cheese
+ce-meal-recipe-carrot-patties-desc = Golden fried patties of carrot, egg and flour with melted cheese inside. Crispy outside, tender within.
+
+ce-meal-recipe-carrot-salad-name = Carrot Salad
+ce-meal-recipe-carrot-salad-desc = Juicy grated carrot seasoned with garlic. Sweet, crunchy, with a spicy kick.
+
 ce-meal-recipe-corn-pepper-meat-name = Corn & Pepper Stir-Fry
 ce-meal-recipe-corn-pepper-meat-desc = A hearty stir-fry featuring corn, bell pepper and savory meat.

@@ -1,15 +1,7 @@
-# Army
+# Sheriff
 
-ce-job-name-guard-commander = Commandant
-ce-job-desc-guard-commander = Head of the Imperial Army garrison. Only you command the army's soldiers and resources: decide when the city faces a threat worth fighting.
-
-ce-job-name-guard = Soldier
-ce-job-desc-guard = A soldier of the Imperial Army garrison. Defend the city from significant threats to its people. Keeping order is not your job.
-
-# Investigation
-
-ce-job-name-investigator = Sheriff
-ce-job-desc-investigator = Keep order in the city: thefts, break-ins, brawls. Detain offenders. You work alone, and the army does not answer to you.
+ce-job-name-sheriff = Sheriff
+ce-job-desc-sheriff = The most dangerous resident of the city, armed with heavy military weaponry, tasked with defending the city from dark creatures, and with absolutely no secret hidden identities behind their back. Die if you must, but protect this city.
 
 # Tavern
 

@@ -681,22 +681,6 @@
           amount: 6
 
 - type: reagent
-  id: Siderlac
-  name: reagent-name-siderlac
-  group: Medicine
-  desc: reagent-desc-siderlac
-  physicalDesc: reagent-physical-desc-milky
-  flavor: medicine
-  color: "#f4dab8"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Caustic: -5
-
-- type: reagent
   id: Stellibinin
   name: reagent-name-stellibinin
   group: Medicine
@@ -721,33 +705,6 @@
           min: 1
         reagent: Amatoxin
         amount: -3
-
-- type: reagent
-  id: Synaptizine
-  name: reagent-name-synaptizine
-  group: Medicine
-  desc: reagent-desc-synaptizine
-  physicalDesc: reagent-physical-desc-pungent
-  flavor: medicine
-  color: "#d49a2f"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 2
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectStunned
-        time: 3.0
-        type: Remove
-      - !type:ModifyKnockdown
-        time: 3.0
-        type: Remove
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectSeeingRainbow
-        time: 15.0
-        type: Remove
 
 - type: reagent
   id: TranexamicAcid
@@ -923,62 +880,6 @@
         - !type:ReagentCondition
           reagent: Cognizine
           min: 5
-
-- type: reagent
-  id: Ethyloxyephedrine
-  name: reagent-name-ethyloxyephedrine
-  desc: reagent-desc-ethyloxyephedrine
-  group: Medicine
-  physicalDesc: reagent-physical-desc-shiny
-  flavor: medicine
-  color: "#d5d5e4"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:Jitter
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: StutteringAccent
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDrowsiness
-        time: 10
-        type: Remove
-      - !type:ResetNarcolepsy
-        conditions:
-        - !type:ReagentCondition
-          reagent: Ethyloxyephedrine
-          min: 10
-      - !type:PopupMessage
-        visualType: Medium
-        messages: ["ethyloxyephedrine-effect-feeling-awake", "ethyloxyephedrine-effect-clear-mind"]
-        type: Local
-        probability: 0.1
-
-- type: reagent
-  id: Diphenylmethylamine
-  name: reagent-name-diphenylmethylamine
-  desc: reagent-desc-diphenylmethylamine
-  group: Medicine
-  physicalDesc: reagent-physical-desc-glowing
-  flavor: medicine
-  color: "#b0abaa"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDrowsiness
-        time: 10
-        type: Remove
-      - !type:ResetNarcolepsy
-        conditions:
-        - !type:ReagentCondition
-          reagent: Diphenylmethylamine
-          min: 5
-      - !type:PopupMessage
-        visualType: Medium
-        messages: ["ethyloxyephedrine-effect-feeling-awake", "ethyloxyephedrine-effect-clear-mind"]
-        type: Local
-        probability: 0.1
 
 - type: reagent
   id: Sigynate
@@ -1204,53 +1105,6 @@
         probability: 0.2
 
 - type: reagent
-  id: Insuzine
-  name: reagent-name-insuzine
-  group: Medicine
-  desc: reagent-desc-insuzine
-  physicalDesc: reagent-physical-desc-frosty
-  flavor: metallic
-  color: "#8147ff"
-  metabolisms:
-    Bloodstream:
-      metabolismRate: 0.25
-      effects:
-      # heals shocks and removes shock chems
-      - !type:HealthChange
-        damage:
-          types:
-            Shock: -1.5 # 6 per u
-      - !type:AdjustReagent
-        reagent: Licoxide
-        amount: -2
-      - !type:AdjustReagent
-        reagent:  Tazinide
-        amount: -2
-      # makes you a little chilly when not oding
-      - !type:AdjustTemperature
-        amount: -2500
-      # od makes you freeze to death
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: Insuzine
-          min: 12
-        damage:
-          types:
-            Cold: 1 # 4 per u
-      - !type:AdjustTemperature
-        conditions:
-        - !type:ReagentCondition
-          reagent: Insuzine
-          min: 12
-        amount: -30000
-      - !type:Jitter
-        conditions:
-        - !type:ReagentCondition
-          reagent: Insuzine
-          min: 12
-
-- type: reagent
   id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
   name: reagent-name-opporozidone
   group: Medicine
@@ -1451,27 +1305,3 @@
       - !type:AdjustReagent
         reagent: MindbreakerToxin
         amount: -3.0
-
-- type: reagent
-  id: Heparin
-  name: reagent-name-heparin
-  group: Medicine
-  desc: reagent-desc-heparin
-  physicalDesc: reagent-physical-desc-thin
-  allowedDepartments:
-  - Medical
-  flavor: medicine
-  color: "#d0e21b"
-  metabolisms:
-    Bloodstream:
-      effects: # One day this could be useful for treating blood clots, if we get those
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectAnticoagulant
-        time: 30 # 10 bleed ticks, you bleed every 3 seconds by default.
-        type: Update
-      - !type:ModifyBleed
-        conditions:
-        - !type:ReagentCondition
-          reagent: Heparin
-          min: 15
-        amount: 0.25

@@ -1,8 +1,8 @@
 - type: gameMap
   id: Shaar
   mapName: Shaar
-  minPlayers: 1
-  maxPlayers: 20
+  minPlayers: 20
+  maxPlayers: 40
   mapPath: /Maps/_CE/Shaar/Shaar0.yml
   stations:
     Shaar:
@@ -12,21 +12,18 @@
           mapNameTemplate: "Shaar"
         - type: StationJobs
           availableJobs:
-            #Army (4)
-            CEGuardCommander: [ 1, 1 ]
-            CEGuard: [ 3, 3 ]
-            #Engineering (4)
+            #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 3, 4 ]
-            #Tavern (4)
+            #Tavern
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 3, 3 ]
             #Guild
             CEGuildmaster: [ 1, 1 ]
-            CEAdventurer: [ 3, 4 ]
+            CEAdventurer: [ 4, 5 ]
             #Citizens
             CEBard: [ 2, 2 ]
-            CEInvestigator: [ 1, 1 ]
+            CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Shaar
@@ -104,9 +101,9 @@
     - id: CEWildlandsModifierOreDiamondConstant10
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     # Cores
-    - id: CEWildlandsModifierCoreIronConstant15
-    - id: CEWildlandsModifierCoreCoalConstant15
-    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreIronRatio30
+    - id: CEWildlandsModifierCoreCoalRatio30
+    - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
   wildlandsModifiers: !type:AllSelector
     children:

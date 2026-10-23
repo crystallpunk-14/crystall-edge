@@ -1,21 +1,4 @@
 - type: entity
-  parent: CrateSecgear
-  id: CrateEmergencyExplosive
-  name: bomb suit crate
-  description: Science gone bonkers? Beeping behind the airlock? Buy now and be the hero the station des... I mean needs! (time not included)
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingHeadHelmetBombSuit
-        - id: ClothingMaskGas
-        - id: Screwdriver
-        - id: Wirecutter
-        - id: Multitool
-        - id: ClothingOuterSuitBomb
-
-- type: entity
   parent: CrateGenericSteel
   id: CrateEmergencyFire
   name: firefighting crate
@@ -58,21 +41,6 @@
           amount: 6
 
 - type: entity
-  parent: CrateRadiation
-  id: CrateEmergencyRadiation
-  name: radiation protection crate
-  description: Survive the nuclear apocalypse! Or, the nuclear part, anyway. Contains two radiation suits and two Geiger counters.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterSuitRad
-          amount: 2
-        - id: GeigerCounter
-          amount: 2
-
-- type: entity
   parent: CratePlastic
   id: CrateEmergencyInflatablewall
   name: inflatable wall crate
@@ -82,19 +50,3 @@
     containers:
       entity_storage:
         id: BoxInflatable
-
-- type: entity
-  parent: CratePlastic
-  id: CrateGenericBiosuit
-  name: emergency bio suit crate
-  description: Contains 2 biohazard suits to ensure that no disease will distract you from what you're doing there.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - !type:NestedSelector
-          tableId: FillBiohazardGearGeneric
-          rolls: 2
-        - id: ClothingMaskGas
-          amount: 2

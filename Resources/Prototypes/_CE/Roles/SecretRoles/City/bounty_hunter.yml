@@ -5,6 +5,8 @@
   icon: CESecretRoleIconBountyHunter
   gear: CEBountyHunterGear
   victoryAchievement: BountyHunterWin
+  skills:
+  - MilitaryTraining
   objectives: !type:EntSelector
     id: CEObjectiveBountyHunterEliminate
 

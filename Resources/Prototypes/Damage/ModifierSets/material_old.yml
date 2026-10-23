@@ -67,17 +67,6 @@
     Heat: 10
 
 - type: damageModifierSet
-  id: PerforatedMetallic
-  coefficients:
-    Blunt: 2
-    Piercing: 0.2
-    Shock: 0.6
-  flatReductions:
-    Piercing: 10
-
-## Glass
-
-- type: damageModifierSet
   id: Glass
   coefficients:
     Blunt: 1.2
@@ -102,24 +91,6 @@
     Shock: 0 #glass is an insulator!
 
 - type: damageModifierSet
-  id: RGlass
-  coefficients:
-    Blunt: 0.5
-    Slash: 0.3
-    Piercing: 0.6
-    Heat: 0.5
-    Shock: 0
-    Structural: 0.5
-  flatReductions:
-    Blunt: 5
-    Slash: 5
-    Piercing: 5
-    Heat: 5
-    Structural: 10
-
-## Organic
-
-- type: damageModifierSet
   id: Wood
   coefficients:
     Blunt: 0.5
@@ -138,16 +109,6 @@
     Heat: 3.0
 
 - type: damageModifierSet
-  id: Web # Very flammable, can be easily hacked and slashed, but shooting or hitting it is another story.
-  coefficients:
-    Blunt: 0.7
-    Slash: 1.4
-    Piercing: 0.7
-    Heat: 2.0
-
-## Other
-
-- type: damageModifierSet
   id: Rock
   coefficients:
     Structural: 4
@@ -155,27 +116,5 @@
     Slash: 0.25
     Piercing: 0.75
     Heat: 0.9
-  flatReductions:
-    Blunt: 5
-
-# for fragile electronics like consoles or shuttle engines.
-- type: damageModifierSet
-  id: Electronic
-  coefficients:
-    Blunt: 0.7
-    Slash: 0.5
-    Piercing: 0.7
-    Shock: 2
-    Heat: 3
-    Structural: 0.5
-
-- type: damageModifierSet
-  id: Inflatable
-  coefficients:
-    Blunt: 0.5
-    Piercing: 2.0
-    Heat: 0.5
-    Shock: 0
-    Structural: 0.25
   flatReductions:
     Blunt: 5

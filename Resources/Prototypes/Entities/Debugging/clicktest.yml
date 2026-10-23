@@ -15,7 +15,6 @@
     noRot: false
     sprite: Effects/clicktest.rsi
 
-
 - type: entity
   id: ClickTestRotatingCornerVisible
   name: ClickTestRotatingCornerVisible
@@ -57,27 +56,3 @@
   components:
     - type: Sprite
       noRot: true
-
-
-- type: entity
-  id: ClickTestFixedCornerVisible
-  name: ClickTestFixedCornerVisible
-  parent: ClickTestBase
-  components:
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Sprite
-    state: fixed_corner
-
-- type: entity
-  id: ClickTestFixedCornerInvisible
-  name: ClickTestFixedCornerInvisible
-  parent: ClickTestBase
-  components:
-  - type: Clickable
-    bounds:
-      all: "0.125,0.125,0.375,0.375"
-
-  - type: InteractionOutline
-  - type: Sprite
-    state: invis_base

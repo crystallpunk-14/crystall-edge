@@ -82,11 +82,6 @@
 
 - type: entity
   parent: BaseBarrelChem
-  id: BarrelChemEmpty
-  suffix: Empty
-
-- type: entity
-  parent: BaseBarrelChem
   id: BarrelChemFilledIodine
   suffix: Iodine
   components:

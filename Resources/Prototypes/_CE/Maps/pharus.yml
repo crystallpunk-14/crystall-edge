@@ -1,7 +1,7 @@
 - type: gameMap
   id: Pharus
   mapName: Pharus
-  minPlayers: 1
+  minPlayers: 0
   maxPlayers: 20
   mapPath: /Maps/_CE/Pharus/Pharus0.yml
   stations:
@@ -12,20 +12,18 @@
           mapNameTemplate: "Pharus"
         - type: StationJobs
           availableJobs:
-            #Guard (5)
-            #CEGuardCommander: [ 1, 1 ]
-            #CEGuard: [ 4, 4 ]
-            ##Engineering (4)
-            #CEBrigadier: [ 1, 1 ]
-            #CETechnician: [ 3, 4 ]
-            ##Tavern (4)
-            #CETavernmaster: [ 1, 1 ]
-            #CEChef: [ 3, 3 ]
-            ##Guild
-            #CEGuildmaster: [ 1, 1 ]
-            #CEAdventurer: [ 3, 4 ]
-            ##Citizens
-            #CEBard: [ 2, 2 ]
+            #Engineering
+            CEBrigadier: [ 1, 1 ]
+            CETechnician: [ 2, 2 ]
+            #Tavern
+            CETavernmaster: [ 1, 1 ]
+            CEChef: [ 2, 2 ]
+            #Guild
+            CEGuildmaster: [ 1, 1 ]
+            CEAdventurer: [ 3, 4 ]
+            #Citizens
+            CEBard: [ 1, 1 ]
+            CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Pharus
@@ -81,7 +79,12 @@
 
 - type: wildlandsConfig
   id: Pharus
-  center: 12, -23 # Lucson sphere position
+  center: 14, -28 # Lucson sphere position
+  points:
+  - id: snowIsland
+    area: !type:RingArea
+      minRadius: 70
+      maxRadius: 100
   cityModifiers: !type:AllSelector
     children:
     # Ore veins
@@ -90,26 +93,40 @@
     - id: CEWildlandsModifierOreDiamondConstant10
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     # Cores
-    - id: CEWildlandsModifierCoreIronConstant15
-    - id: CEWildlandsModifierCoreCoalConstant15
-    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreIronRatio30
+    - id: CEWildlandsModifierCoreCoalRatio30
+    - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreIronNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreCrystalNoise
-      prob: 0.5
+    - id: CEWildlandsModifierDiamondVein
+    - id: CEWildlandsModifierBrassRuins
+    - id: CEWildlandsModifierDamagedWoodenWallsRatio50
+    - id: CEWildlandsModifierBoneyard
+    - id: CEWildlandsModifierGoldVein
+    - id: CEWildlandsModifierCaveEntrances
+    - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
   layersByDepth:
   #MARK: 2 Hills top
     2:
     - !type:TileNoiseDistanceLayer
-      size: &size 200, 200 # CEMurkLucsonSphere25 boundary diameter
-      distanceConfig: !type:EuclideanSquaredDistance
+      size: &size 340, 340
+      # Mountains ring the city instead of crowding it, thinning out again toward the shore.
+      distanceConfig: &mountainRing !type:RingDistance
+        radius: 0.7
+        width: 0.6
         blendWeight: 0.6
+      mask:
+      - !type:BelowMask # only over land; a tile whitelist here would cut holes wherever the biome below repainted the floor
+        masks: &onLand
+        - !type:TileMask
+          inverted: true
+          tiles:
+          - Space
       fill:
       - tile: CESnow
         threshold: 0.7
@@ -121,39 +138,79 @@
           lacunarity: 2
           gain: 0.5
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      seed: 6
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: &forestNoise
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          frequency: 0.03
+          octaves: 3
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       seed: 6
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
   #MARK: 1 Hills
     1:
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:BelowMask
+        masks: *onLand
       fill:
       - tile: CESnow
         threshold: 0.6
         noise: *islandNoise
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:BelowMask
+        masks: *onLand
       fill:
       - tile: CEStone
         threshold: 0.7
         noise: *islandNoise
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      seed: 3
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       seed: 3
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 2
@@ -193,19 +250,37 @@
           gain: 0.5
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
       fill:
       - tile: CEStone
         threshold: 0.6
         noise: *islandNoise
     #Biome fill
-    - !type:FillBiomeLayer
+    - !type:FillBiomeLayer # forest patches; the same noise lines them up across levels
+      biome: CESnowlandForest
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+    - !type:FillBiomeLayer # meadow = the inverted forest noise
       biome: CESnowland
       mask:
       - !type:TileMask
         tiles:
         - CESnow
+      - !type:NoiseMask
+        seed: 711
+        threshold: 0.1
+        noise: *forestNoise
+        inverted: true
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 1

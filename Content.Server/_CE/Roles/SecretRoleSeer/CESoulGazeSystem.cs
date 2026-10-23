@@ -10,7 +10,6 @@ using Content.Shared.Popups;
 using Content.Shared.Roles;
 using Robust.Server.Audio;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Roles.SecretRoleSeer;
@@ -25,7 +24,6 @@ public sealed partial class CESoulGazeSystem : EntitySystem
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private CESecretRoleIconSystem _roleIcon = default!;
     [Dependency] private IChatManager _chat = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedJitteringSystem _jitter = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -48,9 +46,10 @@ public sealed partial class CESoulGazeSystem : EntitySystem
 
         string message;
         if (_role.MindHasRole<CESecretRoleComponent>((targetMind, targetMindComp), out var roleEnt) &&
-            roleEnt.Value.Comp2.Role is { } roleId &&
-            _proto.Resolve(roleId, out var role))
+            roleEnt.Value.Comp2.Role is { } roleId)
         {
+            var originalRoleId = roleEnt.Value.Comp2.OriginalRole;
+
             var memory = EnsureComp<CESoulGazeMemoryComponent>(performerMind);
             memory.Minds.Add(targetMind);
             Dirty(performerMind, memory);
@@ -59,16 +58,18 @@ public sealed partial class CESoulGazeSystem : EntitySystem
             if (TryComp<CESecretRoleIconComponent>(target, out var icon))
                 Dirty(target, icon);
 
+            if (TryComp<CESecretRoleOriginalIconComponent>(target, out var originalIcon))
+                Dirty(target, originalIcon);
+
             _adminLog.Add(LogType.Action,
                 LogImpact.Medium,
-                $"{ToPrettyString(performer):player} used soul gaze on {ToPrettyString(target):target} and learned secret role {roleId}");
+                $"{ToPrettyString(performer):player} used soul gaze on {ToPrettyString(target):target} and learned secret role {roleId} (original {originalRoleId})");
 
-            var color = _roleIcon.TryGetDepartment(roleId, out var department) ? department.Color : Color.White;
+            // The whole soul is laid bare - the original role too.
             message = Loc.GetString("ce-soul-gaze-revealed",
                 ("name", Name(target)),
                 ("target", target),
-                ("role", role.LocalizedName),
-                ("color", color));
+                ("role", _roleIcon.GetRolesMarkup(originalRoleId, roleId)));
         }
         else
         {

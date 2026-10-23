@@ -178,19 +178,6 @@
     inHandsFillBaseName: -fill-
 
 - type: entity
-  suffix: cryoxadone
-  parent: Beaker
-  id: CryoxadoneBeakerSmall
-  components:
-  - type: Label
-    localizedLabel: reagent-name-cryoxadone
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Cryoxadone
-        Quantity: 60
-
-- type: entity
   parent: Beaker
   id: BeakerSmallArith
   suffix: arithrazine
@@ -214,19 +201,6 @@
     solution:
       reagents:
       - ReagentId: Sigynate
-        Quantity: 60
-
-- type: entity
-  parent: Beaker
-  id: BeakerSmallPhal
-  suffix: phalanximine
-  components:
-  - type: Label
-    localizedLabel: reagent-name-phalanximine
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Phalanximine
         Quantity: 60
 
 - type: entity

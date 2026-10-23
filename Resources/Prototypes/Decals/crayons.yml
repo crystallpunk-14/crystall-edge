@@ -279,16 +279,6 @@
     state: Waffle
 
 - type: decal
-  id: ampersand
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: ampersand
-
-- type: decal
   id: amyjon
   tags: ["crayon", "crayon-5-graffiti"]
   defaultCleanable: true
@@ -359,16 +349,6 @@
     state: bottle
 
 - type: decal
-  id: brush
-  tags: ["crayon", "crayon-1-brushes"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: brush
-
-- type: decal
   id: carp
   tags: ["crayon"]
   defaultCleanable: true
@@ -387,26 +367,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: cat
-
-- type: decal
-  id: chevron
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: chevron
-
-- type: decal
-  id: clawprint
-  tags: ["crayon"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: clawprint
 
 - type: decal
   id: clown
@@ -479,16 +439,6 @@
     state: disk
 
 - type: decal
-  id: dot
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: dot
-
-- type: decal
   id: dwarf
   tags: ["crayon"]
   defaultCleanable: true
@@ -497,16 +447,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: dwarf
-
-- type: decal
-  id: electricdanger
-  tags: ["crayon", "crayon-4-info"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: electricdanger
 
 - type: decal
   id: end
@@ -537,26 +477,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: equals
-
-- type: decal
-  id: evac
-  tags: ["crayon", "crayon-4-info"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: evac
-
-- type: decal
-  id: exclamationmark
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: exclamationmark
 
 - type: decal
   id: face
@@ -599,16 +519,6 @@
     state: food
 
 - type: decal
-  id: footprint
-  tags: ["crayon"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: footprint
-
-- type: decal
   id: ghost
   tags: ["crayon"]
   defaultCleanable: true
@@ -637,16 +547,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: heart
-
-- type: decal
-  id: largebrush
-  tags: ["crayon", "crayon-1-brushes"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: largebrush
 
 - type: decal
   id: like
@@ -679,46 +579,6 @@
     state: matt
 
 - type: decal
-  id: med
-  tags: ["crayon", "crayon-4-info"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: med
-
-- type: decal
-  id: minus
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: minus
-
-- type: decal
-  id: nay
-  tags: ["crayon", "crayon-4-info"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: nay
-
-- type: decal
-  id: pawprint
-  tags: ["crayon"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: pawprint
-
-- type: decal
   id: peace
   tags: ["crayon", "crayon-4-info"]
   defaultCleanable: true
@@ -749,16 +609,6 @@
     state: plus
 
 - type: decal
-  id: pound
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: pound
-
-- type: decal
   id: prolizard
   tags: ["crayon", "crayon-5-graffiti"]
   defaultCleanable: true
@@ -769,16 +619,6 @@
     state: prolizard
 
 - type: decal
-  id: questionmark
-  tags: ["crayon", "crayon-3-symbols"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: questionmark
-
-- type: decal
   id: radiation
   tags: ["crayon", "crayon-4-info"]
   defaultCleanable: true
@@ -787,66 +627,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: radiation
-
-- type: decal
-  id: rune1
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune1
-
-- type: decal
-  id: rune2
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune2
-
-- type: decal
-  id: rune3
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune3
-
-- type: decal
-  id: rune4
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune4
-
-- type: decal
-  id: rune5
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune5
-
-- type: decal
-  id: rune6
-  tags: ["crayon", "crayon-5-graffiti"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: rune6
 
 - type: decal
   id: safe
@@ -879,16 +659,6 @@
     state: shop
 
 - type: decal
-  id: shortline
-  tags: ["crayon", "crayon-1-brushes"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: shortline
-
-- type: decal
   id: shotgun
   tags: ["crayon"]
   defaultCleanable: true
@@ -919,16 +689,6 @@
     state: slash
 
 - type: decal
-  id: smallbrush
-  tags: ["crayon", "crayon-1-brushes"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: smallbrush
-
-- type: decal
   id: snake
   tags: ["crayon"]
   defaultCleanable: true
@@ -947,16 +707,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: space
-
-- type: decal
-  id: splatter
-  tags: ["crayon"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: splatter
 
 - type: decal
   id: star
@@ -989,16 +739,6 @@
     state: taser
 
 - type: decal
-  id: thinline
-  tags: ["crayon", "crayon-1-brushes"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: thinline
-
-- type: decal
   id: toilet
   tags: ["crayon"]
   defaultCleanable: true
@@ -1017,16 +757,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: toolbox
-
-- type: decal
-  id: trade
-  tags: ["crayon", "crayon-4-info"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: trade
 
 - type: decal
   id: uboa
@@ -1136,17 +866,6 @@
   sprite:
     sprite: Effects/crayondecals.rsi
     state: i
-
-- type: decal
-  id: j
-  tags: ["crayon", "CP14crayon", "crayon-2-alphanum"]
-  defaultCleanable: true
-  defaultCustomColor: true
-  defaultSnap: false
-  showMenu: true
-  sprite:
-    sprite: Effects/crayondecals.rsi
-    state: j
 
 - type: decal
   id: k

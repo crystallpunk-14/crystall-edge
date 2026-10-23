@@ -32,6 +32,7 @@ public sealed class StoreTests : GameTest
 ";
 
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: uplink listings and discount categories deleted with upstream content
     public async Task StoreDiscountAndRefund()
     {
         var pair = Pair;

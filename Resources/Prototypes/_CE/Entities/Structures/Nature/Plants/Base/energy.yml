@@ -4,8 +4,7 @@
   components:
   - type: CEPlantEnergyFromLight
     energy: 1
-    daytime: true
-    nighttime: false
+    minLevel: 0.3
 
 - type: entity
   abstract: true
@@ -13,5 +12,5 @@
   components:
   - type: CEPlantEnergyFromLight
     energy: 1
-    daytime: false
-    nighttime: true
+    inverted: true
+    maxLevel: 0.3

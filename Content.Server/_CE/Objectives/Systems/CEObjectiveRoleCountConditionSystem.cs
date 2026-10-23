@@ -43,7 +43,7 @@ public sealed partial class CEObjectiveRoleCountConditionSystem : EntitySystem
         while (query.MoveNext(out var mindId, out var mind))
         {
             if (_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) &&
-                roleEnt.Value.Comp2.Role == ent.Comp.Role)
+                (roleEnt.Value.Comp2.Role == ent.Comp.Role || roleEnt.Value.Comp2.OriginalRole == ent.Comp.Role))
             {
                 holders++;
             }

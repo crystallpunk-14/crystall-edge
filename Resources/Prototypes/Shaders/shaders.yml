@@ -83,16 +83,6 @@
     alphaCutoff: 0
     removeTransparency: false
 
-- type: shader
-  id: BlurryVisionX
-  kind: source
-  path: "/Textures/Shaders/blurryx.swsl"
-
-- type: shader
-  id: BlurryVisionY
-  kind: source
-  path: "/Textures/Shaders/blurryy.swsl"
-
 # cloaking distortion effect
 - type: shader
   id: Stealth

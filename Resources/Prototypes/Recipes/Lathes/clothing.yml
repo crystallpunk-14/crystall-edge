@@ -599,16 +599,6 @@
   id: ClothingUniformJumpsuitTramDriver
   result: ClothingUniformJumpsuitTramDriver
 
-- type: latheRecipe
-  parent: BaseCoatRecipe
-  id: ClothingOuterSuitTramDriver
-  result: ClothingOuterSuitTramDriver
-
-- type: latheRecipe
-  parent: BaseHatRecipe
-  id: ClothingHeadHatTramDriver
-  result: ClothingHeadHatTramDriver
-
 # Command winter coats
 - type: latheRecipe
   parent: BaseCommandCoatRecipe

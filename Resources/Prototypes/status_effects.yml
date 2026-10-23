@@ -22,14 +22,5 @@
   id: Electrocution
 
 - type: statusEffect
-  id: Drunk
-
-- type: statusEffect
-  id: SlurredSpeechr
-
-- type: statusEffect
   id: Corporeal
   alert: Corporeal
-
-- type: statusEffect
-  id: Pacified #cannot attack

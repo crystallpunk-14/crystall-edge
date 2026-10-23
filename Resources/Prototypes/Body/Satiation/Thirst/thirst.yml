@@ -38,11 +38,6 @@
     Dead: 0
 
 - type: satiation
-  id: MouseAdmemeThirst
-  parent: MouseThirst
-  baseChangeRate: -10
-
-- type: satiation
   id: SimpleMobBaseThirst
   parent: NormalSatiationThirst
   baseChangeRate: -0.04

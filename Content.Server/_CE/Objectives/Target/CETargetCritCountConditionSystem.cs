@@ -6,9 +6,6 @@ using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Objectives.Target;
 
-/// <summary>
-/// Handles <see cref="CETargetCritCountConditionComponent"/>.
-/// </summary>
 public sealed partial class CETargetCritCountConditionSystem : CEBaseTargetObjectiveSystem<CETargetCritCountConditionComponent>
 {
     public override Type[] TargetRelayComponents { get; } = [typeof(CETargetCritCountConditionMarkerComponent)];

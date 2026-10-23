@@ -113,16 +113,6 @@
   - type: FTLSmashImmune
 
 - type: entity
-  parent: NuclearBomb
-  id: NuclearBombUnanchored
-  suffix: unanchored
-  components:
-  - type: Transform
-    anchored: false
-  - type: Physics
-    bodyType: Dynamic
-
-- type: entity
   parent: StorageTankBig
   id: NuclearBombKeg
   name: nuclear fission explosive

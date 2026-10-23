@@ -97,13 +97,13 @@ namespace Content.IntegrationTests.Tests
             Assert.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the end of CreateSaveLoadSaveGrid");
         }
 
-        private new const string TestMap = "Maps/bagel.yml";
+        private new const string TestMap = "Maps/_CE/Dev/Dev0.yml";
 
         /// <summary>
         /// Loads the default map, runs it for 5 ticks, then assert that it did not change.
         /// </summary>
         [Test]
-        public async Task LoadSaveTicksSaveBagel()
+        public async Task LoadSaveTicksSaveDev()
         {
             var pair = Pair;
             var server = pair.Server;
@@ -112,7 +112,7 @@ namespace Content.IntegrationTests.Tests
             var testSystem = server.System<SaveLoadSaveTestSystem>();
             testSystem.Enabled = true;
 
-            Assume.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the start of LoadSaveTicksSaveBagel");
+            Assume.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the start of LoadSaveTicksSaveDev");
 
             var rp1 = new ResPath("/load save ticks save 1.yml");
             var rp2 = new ResPath("/load save ticks save 2.yml");
@@ -121,7 +121,7 @@ namespace Content.IntegrationTests.Tests
             var cfg = server.ResolveDependency<IConfigurationManager>();
             Assert.That(cfg.GetCVar(CCVars.GridFill), Is.False);
 
-            // Load bagel.yml as uninitialized map, and save it to ensure it's up to date.
+            // Load Dev0.yml as uninitialized map, and save it to ensure it's up to date.
             await server.WaitPost(() =>
             {
                 var path = new ResPath(TestMap);
@@ -177,7 +177,7 @@ namespace Content.IntegrationTests.Tests
 
             testSystem.Enabled = false;
             await server.WaitPost(() => mapSys.DeleteMap(mapId));
-            Assert.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the end of LoadSaveTicksSaveBagel");
+            Assert.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the end of LoadSaveTicksSaveDev");
         }
 
         /// <summary>
@@ -187,11 +187,11 @@ namespace Content.IntegrationTests.Tests
         /// <remarks>
         /// Should ensure that entities do not perform randomization prior to initialization and should prevents
         /// bugs like the one discussed in github.com/space-wizards/RobustToolbox/issues/3870. This test is somewhat
-        /// similar to <see cref="LoadSaveTicksSaveBagel"/> and <see cref="SaveLoadSave"/>, but neither of these
+        /// similar to <see cref="LoadSaveTicksSaveDev"/> and <see cref="SaveLoadSave"/>, but neither of these
         /// caught the mentioned bug.
         /// </remarks>
         [Test]
-        public async Task LoadTickLoadBagel()
+        public async Task LoadTickLoadDev()
         {
             var pair = Pair;
             var server = pair.Server;
@@ -204,7 +204,7 @@ namespace Content.IntegrationTests.Tests
             var testSystem = server.System<SaveLoadSaveTestSystem>();
             testSystem.Enabled = true;
 
-            Assume.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the start of LoadTickLoadBagel");
+            Assume.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the start of LoadTickLoadDev");
 
             MapId mapId1 = default;
             MapId mapId2 = default;
@@ -253,7 +253,7 @@ namespace Content.IntegrationTests.Tests
                 mapSys.DeleteMap(mapId1);
                 mapSys.DeleteMap(mapId2);
             });
-            Assert.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the end of LoadTickLoadBagel");
+            Assert.That(SEntMan.EntityCount.Equals(0), "Lingering entities at the end of LoadTickLoadDev");
         }
 
         /// <summary>

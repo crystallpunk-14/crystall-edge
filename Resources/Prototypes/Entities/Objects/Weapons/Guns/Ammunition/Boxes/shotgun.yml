@@ -89,26 +89,6 @@
 
 - type: entity
   parent: AmmoProviderShotgunShell
-  id: BoxShotgunFlare
-  name: ammunition box (.50 flare)
-  description: A cardboard box of .50 shotgun shells. Intended to hold illuminating flare ammunition.
-  components:
-    - type: BallisticAmmoProvider
-      proto: ShellShotgunFlare
-    - type: MagazineVisuals
-      magState: mag-flare
-      steps: 5
-      zeroVisible: false
-    - type: Sprite
-      layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-flare-1
-        map: ["enum.GunVisualLayers.Mag"]
-      - state: flare
-
-- type: entity
-  parent: AmmoProviderShotgunShell
   id: BoxShotgunIncendiary
   name: ammunition box (.50 incendiary)
   description: A cardboard box of .50 shotgun shells. Intended to hold self-igniting incendiary ammunition.

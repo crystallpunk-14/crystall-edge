@@ -118,11 +118,6 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     [DataField] public bool Sturdy { get; private set; } = true;
 
     /// <summary>
-    /// Can weather affect this tile.
-    /// </summary>
-    [DataField] public bool Weather = false;
-
-    /// <summary>
     /// Is this tile immune to RCD deconstruct.
     /// </summary>
     [DataField] public bool Indestructible = false;
@@ -137,6 +132,12 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     /// </summary>
     [DataField]
     public bool Transparent = false;
+
+    /// <summary>
+    /// CrystallEdge: shields everything on the zlevels below from weather (independent of <see cref="Transparent"/>)
+    /// </summary>
+    [DataField]
+    public bool BlocksWeather = true;
 
     /// <summary>
     /// CrystallEdge: Lip drawn below this tile's edge where it borders an opening into the z-level below.

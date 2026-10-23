@@ -3,7 +3,7 @@
   parent:
   - BaseWeaponBattery
   name: Justice Revolver
-  description: A fast and convenient guard revolver that can be easily fired with two hands.
+  description: A fast and convenient sheriff's revolver that can be easily fired with two hands.
   categories: [ ForkFiltered ]
   components:
   - type: Item

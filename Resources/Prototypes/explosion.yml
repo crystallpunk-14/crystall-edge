@@ -47,19 +47,6 @@
   temperature: 800
 
 - type: explosion
-  id: Radioactive
-  damagePerIntensity:
-    types:
-      Radiation: 5
-      Heat: 4
-      Blunt: 3
-      Piercing: 3
-  lightColor: Green
-  fireColor: Green
-  texturePath: /Textures/Effects/fire_greyscale.rsi
-  fireStates: 3
-
-- type: explosion
   id: Cryo # I'm assuming this is some kind of endothermic implosion explosive? Sci-Fi stuff so the values can be totally made up
   damagePerIntensity:
     types:
@@ -84,23 +71,6 @@
   tileBreakChance: [0, 0.5, 1]
   tileBreakIntensity: [0, 50, 75]
   tileBreakRerollReduction: 20
-  lightColor: Orange
-  texturePath: /Textures/Effects/fire.rsi
-  fireStates: 3
-  temperature: 800
-
-- type: explosion
-  id: PowerSink
-  damagePerIntensity:
-    types:
-      Heat: 12
-      Blunt: 12
-      Piercing: 12
-      Structural: 30
-  tileBreakChance: [ 0, 0.5, 1 ]
-  tileBreakIntensity: [ 1, 5, 10 ]
-  tileBreakRerollReduction: 3
-  intensityPerState: 20
   lightColor: Orange
   texturePath: /Textures/Effects/fire.rsi
   fireStates: 3

@@ -33,17 +33,6 @@
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadBeretGuildGreen
-  name: green guild worker's beret
-  description: A green beret worn by field operatives of the adventurer's guild.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Head/Tavern/guild_green.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Head/Tavern/guild_green.rsi
-
-- type: entity
-  parent: CEClothingHeadBase
   id: CEClothingHeadBeretGuildRed
   name: red guild worker's beret
   description: A red beret worn by combat specialists of the adventurer's guild.

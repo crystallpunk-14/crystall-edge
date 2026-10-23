@@ -1,3 +1,4 @@
+using Content.Shared._CE.Roles;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -195,16 +196,21 @@ namespace Content.Shared.GameTicking
 
             public bool Connected;
 
-            // CrystallEdge: secret role revealed in the round-end manifest
+            // CrystallEdge: job icon + secret roles revealed in the round-end manifest
             /// <summary>
-            /// LocId of the secret role's display name, or null if the player never held one.
+            /// The player's job, for its icon - null if they had none.
             /// </summary>
-            public string? SecretRole;
+            public ProtoId<JobPrototype>? Job;
 
             /// <summary>
-            /// The secret role's faction color. Meaningless when <see cref="SecretRole"/> is null.
+            /// The player's secret role, or null if they never held one.
             /// </summary>
-            public Color SecretRoleColor;
+            public ProtoId<CESecretRolePrototype>? SecretRole;
+
+            /// <summary>
+            /// The first secret role the player was granted - equal to <see cref="SecretRole"/> unless it changed.
+            /// </summary>
+            public ProtoId<CESecretRolePrototype>? OriginalSecretRole;
             // CrystallEdge end
         }
 

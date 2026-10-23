@@ -137,17 +137,6 @@
         type: Local
 
 - type: reagent
-  id: FoamingAgent
-  name: reagent-name-foaming-agent
-  parent: BasePyrotechnic
-  desc: reagent-desc-foaming-agent
-  physicalDesc: reagent-physical-desc-foamy
-  flavor: bitter
-  color: "#215263"
-  boilingPoint: 418.0 # I went with ammonium lauryl sulfate as the basis for this
-  meltingPoint: 7.4 # I made this up
-
-- type: reagent
   id: WeldingFuel
   name: reagent-name-welding-fuel
   parent: BasePyrotechnic

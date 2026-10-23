@@ -111,7 +111,7 @@ Options:
         Defaults to Resources/MapImages
     -f / --files
         This option tells the map renderer that you supplied a list of map file names instead of their ids.
-        Example: Content.MapRenderer -f /Maps/box.yml /Maps/bagel.yml
+        Example: Content.MapRenderer -f /Maps/_CE/Shaar/Shaar0.yml /Maps/_CE/Dev/Dev0.yml
     -m / --markers
         Show hidden markers on map render. Defaults to false.
     --parallax

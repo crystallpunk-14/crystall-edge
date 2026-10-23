@@ -115,17 +115,6 @@
             max: 5
 
 - type: entity
-  parent: Bed
-  id: Mattress
-  name: mattress
-  description: Better sleep in that then on the floor i guess.
-  components:
-  - type: Sprite
-    state: mattress
-  - type: Damageable
-    damageModifierSet: PlasticMod
-
-- type: entity
   parent: [ BaseBed, StructureHealthFurniture ]
   id: WebBed
   name: web bed
@@ -149,30 +138,3 @@
   - type: Construction
     graph: WebStructures
     node: bed
-
-- type: entity
-  parent: [ BaseBed,StructureHealthFurnitureStrong ]
-  id: PsychBed
-  name: psychologist bed
-  description: An upholstered bed for the psychological care of patients.
-  components:
-  - type: Sprite
-    state: psychbed
-  - type: HealOnBuckle
-    damage:
-      types:
-        Cold: -0.5
-  - type: Damageable
-    damageModifierSet: WoodMod
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 80
-      behaviors:
-      - *SoundWoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialWoodPlank:
-            min: 1
-            max: 2

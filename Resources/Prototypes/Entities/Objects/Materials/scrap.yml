@@ -415,22 +415,6 @@
 
 - type: entity
   parent: BaseScrap
-  id: ScrapTarget
-  name: bloodied target
-  description: Seems like something must have gotten in the way of its purpose.
-  components:
-  - type: Sprite
-    layers:
-    - state: junk-target
-  - type: Item
-    size: Huge
-    heldPrefix: "target"
-  - type: PhysicalComposition
-    materialComposition:
-      Wood: 1000 # 10 sheets
-
-- type: entity
-  parent: BaseScrap
   id: ScrapPAI
   name: personal ai device
   description: A buddy! You still in there? Hello? Buddy???

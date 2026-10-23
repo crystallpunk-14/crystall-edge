@@ -1,5 +1,5 @@
-using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Farming.Components;
+using Content.Shared._CE.Light;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
@@ -21,7 +21,7 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 {
     [Dependency] protected SharedMapSystem MapSystem = default!;
     [Dependency] protected TurfSystem Turf = default!;
-    [Dependency] protected CEDayCycleSystem DayCycle = default!;
+    [Dependency] protected CELightLevelSystem LightLevel = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private SharedPopupSystem _popup = default!;

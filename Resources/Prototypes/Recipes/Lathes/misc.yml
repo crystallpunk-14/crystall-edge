@@ -76,20 +76,6 @@
     Plastic: 100
 
 - type: latheRecipe
-  parent: BaseToolRecipe
-  id: FireExtinguisher
-  result: FireExtinguisher
-  materials:
-    Steel: 200
-
-- type: latheRecipe
-  id: Matchbox
-  result: Matchbox
-  completetime: 1
-  materials:
-    Wood: 100
-
-- type: latheRecipe
   id: SynthesizerInstrument
   result: SynthesizerInstrument
   completetime: 4
@@ -113,20 +99,6 @@
   completetime: 4
   materials:
     Steel: 400
-
-- type: latheRecipe
-  id: DoubleEmergencyOxygenTank
-  result: DoubleEmergencyOxygenTank
-  completetime: 4
-  materials:
-    Steel: 250
-
-- type: latheRecipe
-  id: DoubleEmergencyNitrogenTank
-  result: DoubleEmergencyNitrogenTank
-  completetime: 4
-  materials:
-    Steel: 250
 
 - type: latheRecipe
   id: ClothingShoesBootsMagSci

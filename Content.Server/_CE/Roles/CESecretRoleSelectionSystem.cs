@@ -72,7 +72,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         var activeRules = QueryActiveRules();
         while (activeRules.MoveNext(out var uid, out _, out var roleSelection, out _))
         {
-            if (!TryAssignLateJoinSecretRole((uid, roleSelection), args.Player, args.Profile, playerCount))
+            if (!TryAssignGuaranteedSecretRole((uid, roleSelection), args.Player)
+                && !TryAssignLateJoinSecretRole((uid, roleSelection), args.Player, args.Profile, playerCount))
                 continue;
 
             SendRolePopup(args.Player);
@@ -87,10 +88,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// Reused by admin tooling (<c>secretroleset</c>); round-start/late-join assignment calls
     /// <see cref="GrantSecretRole"/> directly since there's nothing to clear yet.
     /// </summary>
+    /// <param name="overwriteOriginal">Whether the new role also replaces
+    /// <see cref="CESecretRoleComponent.OriginalRole"/> - false keeps the first role ever granted.</param>
     public bool TrySetSecretRole(ICommonSession session,
         ProtoId<CESecretRolePrototype> roleId,
         [NotNullWhen(false)] out string? error,
-        bool removeSkills = true)
+        bool removeSkills = true,
+        bool overwriteOriginal = false)
     {
         error = null;
 
@@ -117,8 +121,12 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             return false;
         }
 
+        ProtoId<CESecretRolePrototype>? originalRole = null;
+        if (!overwriteOriginal && _role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var oldRoleEnt))
+            originalRole = oldRoleEnt.Value.Comp2.OriginalRole ?? oldRoleEnt.Value.Comp2.Role;
+
         ClearSecretRole(mindId, mind, removeSkills);
-        if (GrantSecretRole(targetRule.Value, session, role) is { } granted)
+        if (GrantSecretRole(targetRule.Value, session, role, originalRole) is { } granted)
             GrantSecretRoleObjectives(targetRule.Value, granted.MindId, granted.Mind, role);
 
         // A mid-round role change is always announced, cracked sphere or not.
@@ -153,6 +161,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                 // Always re-added fresh by GrantSecretRole, so its startup re-sends every other
                 // role icon to viewers whose department just changed.
                 RemComp<CESecretRoleIconComponent>(target);
+                RemComp<CESecretRoleOriginalIconComponent>(target);
             }
         }
 
@@ -186,18 +195,29 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     }
 
     /// <summary>
-    /// Grants every player their decided role (<see cref="DecideSecretRoles"/>), then creates
-    /// objectives for all of them - exposed (rather than private) so integration tests can drive
-    /// the whole round-start flow without needing a running GameRule/GameTicker.
+    /// Grants every player their job-guaranteed role (<see cref="CESecretRolePrototype.GuaranteedJobs"/>)
+    /// or, failing that, their decided role (<see cref="DecideSecretRoles"/>), then creates objectives
+    /// for all of them - exposed (rather than private) so integration tests can drive the whole
+    /// round-start flow without needing a running GameRule/GameTicker.
     /// </summary>
     public void AssignSecretRoles(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession[] players,
         IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles)
     {
-        var decisions = DecideSecretRoles(rule, players, profiles);
-
         var granted = new List<(EntityUid MindId, MindComponent Mind, CESecretRolePrototype Role)>();
+
+        // Guaranteed roles go first: holding a role is what keeps these players out of the draw below.
+        foreach (var session in players)
+        {
+            if (HasSecretRole(session) || !TryGetGuaranteedSecretRole(session, out var role))
+                continue;
+
+            if (GrantSecretRole(rule, session, role) is { } grantedMind)
+                granted.Add((grantedMind.MindId, grantedMind.Mind, role));
+        }
+
+        var decisions = DecideSecretRoles(rule, players, profiles);
 
         foreach (var session in players)
         {
@@ -248,6 +268,44 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Finds the role guaranteed to a job via <see cref="CESecretRolePrototype.GuaranteedJobs"/>, if any.
+    /// </summary>
+    public bool TryGetGuaranteedSecretRole(ProtoId<JobPrototype> job, [NotNullWhen(true)] out CESecretRolePrototype? role)
+    {
+        foreach (var candidate in _proto.EnumeratePrototypes<CESecretRolePrototype>())
+        {
+            if (!candidate.GuaranteedJobs.Contains(job))
+                continue;
+
+            role = candidate;
+            return true;
+        }
+
+        role = null;
+        return false;
+    }
+
+    private bool TryGetGuaranteedSecretRole(ICommonSession session, [NotNullWhen(true)] out CESecretRolePrototype? role)
+    {
+        role = null;
+        return _mind.TryGetMind(session, out var mindId, out _)
+               && _jobs.MindTryGetJobId(mindId, out var job)
+               && job is { } jobId
+               && TryGetGuaranteedSecretRole(jobId, out role);
+    }
+
+    private bool TryAssignGuaranteedSecretRole(Entity<CESecretRoleSelectionComponent> rule, ICommonSession session)
+    {
+        if (!TryGetGuaranteedSecretRole(session, out var role))
+            return false;
+
+        if (GrantSecretRole(rule, session, role) is { } granted)
+            GrantSecretRoleObjectives(rule, granted.MindId, granted.Mind, role);
+
+        return true;
     }
 
     private bool TryAssignLateJoinSecretRole(
@@ -374,10 +432,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// <summary>
     /// Grants the mind role and skills for a secret role - not objectives, callers create those separately.
     /// </summary>
+    /// <param name="originalRole">The role to keep as <see cref="CESecretRoleComponent.OriginalRole"/> -
+    /// null makes <paramref name="role"/> the original.</param>
     private (EntityUid MindId, MindComponent Mind)? GrantSecretRole(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession session,
-        CESecretRolePrototype role)
+        CESecretRolePrototype role,
+        ProtoId<CESecretRolePrototype>? originalRole = null)
     {
         if (!_mind.TryGetMind(session, out var mindId, out var mind))
             return null;
@@ -387,7 +448,9 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
             return null;
 
+        var original = originalRole ?? role.ID;
         roleEnt.Value.Comp2.Role = role.ID;
+        roleEnt.Value.Comp2.OriginalRole = original;
         Dirty(roleEnt.Value.Owner, roleEnt.Value.Comp2);
 
         _adminLog.Add(LogType.AntagSelection,
@@ -403,6 +466,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             var icon = EnsureComp<CESecretRoleIconComponent>(target);
             icon.Role = role.ID;
             Dirty(target, icon);
+
+            if (original != role.ID)
+            {
+                var originalIcon = EnsureComp<CESecretRoleOriginalIconComponent>(target);
+                originalIcon.Role = original;
+                Dirty(target, originalIcon);
+            }
         }
 
         return (mindId, mind);

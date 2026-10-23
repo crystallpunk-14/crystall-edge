@@ -5,10 +5,10 @@
   color: "#87b7ff"
   weight: 10
   roles:
+  - Sheriff
   - Civilian
   - Murkwalker
   - Lover
-  - Tormentor
   - BountyHunter
   - Priest
   - Immortal

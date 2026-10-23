@@ -140,29 +140,37 @@ public sealed partial class CEWeaponArcAttackEffectSystem : CEEntityEffectSystem
 
         var hitEntities = new HashSet<EntityUid>();
 
-        for (var i = 0; i < rayCount; i++)
+        // From inside a container every swing hits its walls; rays started inside it would miss them.
+        if (_melee.TryGetAttackerContainer(args.Args.Source, out var container))
         {
-            var castAngle = new Angle(baseAngle + increment * i);
-            var ray = new CollisionRay(entityCoords.Position, castAngle.ToVec(), ArcAttackMask);
-
-            foreach (var result in _physics.IntersectRay(
-                         entityCoords.MapId,
-                         ray,
-                         effectiveRange,
-                         args.Args.Source,
-                         false))
-            {
-                hitEntities.Add(result.HitEntity);
-            }
+            hitEntities.Add(container);
         }
-
-        // The entity under the cursor counts too if it lies inside the arc: rays skip non-hard fixtures
-        // (webs, crystals, tables), so they would be impossible to hit otherwise.
-        if (weapon?.CursorTarget is { } cursorTarget
-            && Exists(cursorTarget)
-            && CESharedWeaponSystem.IsInArc(entityCoords.Position, _transform.GetWorldPosition(cursorTarget), direction, arcWidthDeg))
+        else
         {
-            hitEntities.Add(cursorTarget);
+            for (var i = 0; i < rayCount; i++)
+            {
+                var castAngle = new Angle(baseAngle + increment * i);
+                var ray = new CollisionRay(entityCoords.Position, castAngle.ToVec(), ArcAttackMask);
+
+                foreach (var result in _physics.IntersectRay(
+                             entityCoords.MapId,
+                             ray,
+                             effectiveRange,
+                             args.Args.Source,
+                             false))
+                {
+                    hitEntities.Add(result.HitEntity);
+                }
+            }
+
+            // The entity under the cursor counts too if it lies inside the arc: rays skip non-hard fixtures
+            // (webs, crystals, tables), so they would be impossible to hit otherwise.
+            if (weapon?.CursorTarget is { } cursorTarget
+                && Exists(cursorTarget)
+                && CESharedWeaponSystem.IsInArc(entityCoords.Position, _transform.GetWorldPosition(cursorTarget), direction, arcWidthDeg))
+            {
+                hitEntities.Add(cursorTarget);
+            }
         }
 
         hitEntities.Remove(args.Args.Source);
@@ -177,6 +185,8 @@ public sealed partial class CEWeaponArcAttackEffectSystem : CEEntityEffectSystem
         var _args = args.Args;
         hitEntities.RemoveWhere(t =>
             !_interaction.InRangeUnobstructed(_args.Source, t, effectiveRange + 0.1f, overlapCheck: false));
+
+        hitEntities.RemoveWhere(t => !_melee.CanAttackTarget(_args.Source, t));
 
         var targets = new List<EntityUid>(hitEntities);
 

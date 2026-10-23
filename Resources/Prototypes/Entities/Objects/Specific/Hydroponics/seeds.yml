@@ -159,16 +159,6 @@
 
 - type: entity
   parent: SeedBase
-  name: packet of pineapple seeds
-  id: PineappleSeeds
-  components:
-    - type: Seed
-      plantId: PineapplePlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/pineapple.rsi
-
-- type: entity
-  parent: SeedBase
   name: packet of potato seeds
   id: PotatoSeeds
   components:
@@ -186,16 +176,6 @@
       plantId: SugarcanePlants
     - type: Sprite
       sprite: Objects/Specific/Hydroponics/sugarcane.rsi
-
-- type: entity
-  parent: SeedBase
-  name: packet of tea plant seeds
-  id: TeaPlantSeeds
-  components:
-    - type: Seed
-      plantId: TeaPlantPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/tea_plant.rsi
 
 - type: entity
   parent: SeedBase
@@ -608,26 +588,6 @@
 
 - type: entity
   parent: SeedBase
-  name: packet of cocoa seeds
-  id: CocoaSeeds
-  components:
-    - type: Seed
-      plantId: CocoaPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/cocoa.rsi
-
-- type: entity
-  parent: SeedBase
-  name: packet of berry seeds
-  id: BerrySeeds
-  components:
-    - type: Seed
-      plantId: BerryPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/berries.rsi
-
-- type: entity
-  parent: SeedBase
   name: packet of bungo seeds
   description: "Don't eat the pits."
   id: BungoSeeds
@@ -647,37 +607,6 @@
       plantId: PeaPlants
     - type: Sprite
       sprite: Objects/Specific/Hydroponics/pea.rsi
-
-- type: entity
-  parent: SeedBase
-  id: WorldPeaSeeds
-  name: packet of world pea seeds
-  description: "These rather large seeds give off a soothing blue glow."
-  components:
-    - type: Seed
-      plantId: WorldPeaPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/world_pea.rsi
-
-- type: entity
-  parent: SeedBase
-  name: packet of pumpkin seeds
-  id: PumpkinSeeds
-  components:
-    - type: Seed
-      plantId: PumpkinPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/pumpkin.rsi
-
-- type: entity
-  parent: SeedBase
-  name: packet of blue pumpkin seeds
-  id: BluePumpkinSeeds
-  components:
-    - type: Seed
-      plantId: BluePumpkinPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/blue_pumpkin.rsi
 
 - type: entity
   parent: SeedBase

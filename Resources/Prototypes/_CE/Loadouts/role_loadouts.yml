@@ -4,12 +4,10 @@
   id: JobCETavernmaster
   groups:
   - CEGeneralBag
-  - CETavernmasterHead #
   - CEGeneralEyes
-  - CETavernmasterCloak #
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CETavernmasterCloak
+  - CETavernShirt
+  - CETavernPants
   - CEGeneralShoes
   - CEGeneralInstruments
 
@@ -17,52 +15,26 @@
   id: JobCEChef
   groups:
   - CEGeneralBag
-  - CEChefHead
+  - CEChefHead 
   - CEGeneralEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CETavernCloak
+  - CETavernShirt
+  - CETavernPants
   - CEGeneralShoes
   - CEGeneralInstruments
 
-# Guard
+# Sheriff
 
 - type: roleLoadout
-  id: JobCEGuardCommander
+  id: JobCESheriff
   groups:
   - CEGeneralBag
-  - CEGuardHead
+  - CESheriffHead
   - CEGeneralEyes
-  - CEGuardCommanderCloak #
+  - CESheriffCloak #
   - CEGeneralGloves
-  - CEGuardShirt
-  - CEGuardPants
-  - CEGeneralShoes
-  - CEGeneralInstruments
-
-- type: roleLoadout
-  id: JobCEInvestigator
-  groups:
-  - CEGeneralBag
-  - CEInvestigatorMask
-  - CEGeneralEyes
-  - CEInvestigatorCloak #
-  - CEGeneralGloves
-  - CEGuardShirt
-  - CEGuardPants
-  - CEGeneralShoes
-  - CEGeneralInstruments
-
-- type: roleLoadout
-  id: JobCEGuard
-  groups:
-  - CEGeneralBag
-  - CEGuardHead
-  - CEGeneralEyes
-  - CEGuardCloak
-  - CEGeneralGloves
-  - CEGuardShirt
-  - CEGuardPants
+  - CESheriffShirt
+  - CESheriffPants
   - CEGeneralShoes
   - CEGeneralInstruments
 

@@ -163,9 +163,6 @@ ent-CEClothingHeadBeretGuild = берет гильдии приключенце�
 ent-CEClothingHeadBeretGuildBlue = синий берет рабочего гильдии
     .desc = Синий берет, носимый рабочими гильдии приключенцев.
 
-ent-CEClothingHeadBeretGuildGreen = зелёный берет рабочего гильдии
-    .desc = Зелёный берет, носимый полевыми оперативами гильдии приключенцев.
-
 ent-CEClothingHeadBeretGuildRed = красный берет рабочего гильдии
     .desc = Красный берет, носимый боевыми специалистами гильдии приключенцев.
 
@@ -175,14 +172,11 @@ ent-CEClothingHeadBeretGuildYellow = жёлтый берет рабочего г
 ent-CEClothingHeadBeretMercenary = берет наёмника
     .desc = Потёртый берет, носимый свободными наёмниками. Его изношенный вид говорит о бесчисленных битвах и контрактах.
 
-ent-CEClothingHeadCapGuard = кепка стражника
-    .desc = Стандартная кепка, носимая городскими стражниками.
+ent-CEClothingHeadCapSheriff = кепка шерифа
+    .desc = Стандартная кепка, которую носит шериф.
 
-ent-CEClothingHeadFedoraGuard = шляпа-федора стражника
-    .desc = Стильная шляпа-федора, носимая городскими стражниками.
-
-ent-CEClothingHeadFedoraTavernmaster = шляпа-федора хозяина трактира
-    .desc = Стильная шляпа-федора, носимая главным трактирщиком.
+ent-CEClothingHeadFedoraSheriff = шляпа шерифа
+    .desc = Стильная шляпа-федора, которую носит шериф.
 
 ent-CEClothingHeadFedoraGuildmaster = шляпа-федора гильдмастера
     .desc = Стильная алая федора, которую носит глава гильдии авантюристов.
@@ -202,11 +196,11 @@ ent-CEClothingHeadFedoraRed = красная федора
 ent-CEClothingHeadFedoraBrown = коричневая федора
     .desc = Яркая коричневая федора, которую носят охотники-ветераны.
 
-ent-CEClothingHeadHelmetGuard = шлем стражника
-    .desc = Прочный шлем, носимый городскими стражниками для защиты в опасных ситуациях.
+ent-CEClothingHeadHelmetSheriff = шлем шерифа
+    .desc = Прочный шлем, который шериф носит для защиты в опасных ситуациях.
 
-ent-CEClothingHeadHelmetGuardCorinthian = коринфский шлем стражника
-    .desc = Изукрашенный коринфский шлем, носимый элитными городскими стражниками. Его классический дизайн вызывает уважение и авторитет.
+ent-CEClothingHeadHelmetSheriffCorinthian = коринфский шлем шерифа
+    .desc = Изукрашенный коринфский шлем, который носит шериф. Его классический дизайн вызывает уважение и авторитет.
 
 ent-CEClothingHeadMetalHeadband = металлический обруч
     .desc = Простой, но эффективный металлический обруч, обеспечивающий минимальную защиту и порядок волос.
@@ -244,8 +238,8 @@ ent-CEClothingHeadWreath = венок
 ent-CEClothingHeadBowlerLeather = кожаный котелок
     .desc = Выглядит достаточно крепким, чтобы выдержать пару падающих на лоб камней. Но это не точно.
 
-ent-CEClothingHeadTriangularGuard = треугольная шляпа стражника
-    .desc = Отличительная треугольная шляпа, носимая стражниками. Её уникальная форма облегчает идентификацию персонала охраны издалека.
+ent-CEClothingHeadTriangularSheriff = треугольная шляпа шерифа
+    .desc = Отличительная треугольная шляпа, которую носит шериф. Её уникальная форма позволяет узнать шерифа издалека.
 
 ent-CEClothingHeadTriangularLeather = кожаная треугольная шляпа
     .desc = Практичная треугольная шляпа из качественной кожи. Прочная и устойчивая к погоде.
@@ -273,9 +267,6 @@ ent-CEClothingMaskBoneHornedMask = рогатая костяная маска
 
 ent-CEClothingMaskMime = маска молчания
     .desc = ...
-
-ent-CEClothingMaskInvestigator = маска дознавателя
-    .desc = Укреплённая маска с тауматургическими линзами, которую носят дознаватели. Позволяет видеть скрытый мир магии и суть предметов, защищая при этом лицо.
 
 ent-CEClothingMaskVampireVoiceDevourers = кровавая костяная маска
     .desc = { ent-CEClothingMaskVampireVoiceBase.desc }
@@ -310,8 +301,8 @@ ent-CEClothingPantsBrown = коричневые штаны
 ent-CEClothingPantsGreen = зелёные штаны
     .desc = Удобные зелёные штаны, хорошо гармонирующие с природным окружением.
 
-ent-CEClothingPantsGuard = штаны стражника
-    .desc = Стандартные штаны, носимые городскими стражниками.
+ent-CEClothingPantsSheriff = штаны шерифа
+    .desc = Стандартные штаны, которые носит шериф.
 
 ent-CEClothingPantsHakama = хакама
     .desc = Традиционные хакама, часто носимые с церемониальной одеждой.
@@ -469,8 +460,8 @@ ent-CEClothingShirtYellow = жёлтая рубашка
 ent-CEClothingShirtYellowCollar = жёлтая рубашка с воротником
     .desc = Яркая жёлтая рубашка с элегантным дизайном воротника.
 
-ent-CEClothingShirtGuard = рубашка стражника
-    .desc = Рубашка, носимая имперской охраной. Все идентичны в едином, строгом стиле.
+ent-CEClothingShirtSheriff = рубашка шерифа
+    .desc = Рубашка, которую носит шериф, в едином строгом стиле.
 
 ent-CEClothingShirtMerchant = рубашка купца
     .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
@@ -702,13 +693,7 @@ ent-CEBiomeSpawnerLeafMaze = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Leaf Maze
 
-ent-CESpawnPointGuardCommander = комендант
-    .desc = { "" }
-
-ent-CESpawnPointGuard = солдат
-    .desc = { "" }
-
-ent-CESpawnPointInvestigator = шериф
+ent-CESpawnPointSheriff = шериф
     .desc = { "" }
 
 ent-CESpawnPointGuildmaster = гильдмастер
@@ -803,9 +788,6 @@ ent-CERubberStampDenied = печать «ОТКАЗАНО»
 
 ent-CERubberStampBank = печать банка
     .desc = Резиновая печать с оттиском имперского банка.
-
-ent-CERubberStampGuard = печать командира стражи
-    .desc = Резиновая печать с оттиском командира стражи.
 
 ent-CERubberStampGuildmaster = печать гильдмастера
     .desc = Резиновая печать с оттиском гильдмастера гильдии авантюристов.
@@ -2443,7 +2425,7 @@ ent-CESafeFallingAmulet = амулет экстренной левитации
     .desc = Необходимая часть повседневного снаряжения жителей летающих островов, защищающая от случайного падения с острова. Наденьте на пояс, и если случайно упадёте с острова, у вас будет шанс спастись.
 
 ent-CEVoiceDistortionAmulet = амулет искажения голоса
-    .desc = Теневая безделушка из Мглы. Если надеть её на пояс, она искажает голос носителя до неузнаваемости.
+    .desc = Теневая безделушка из Мрака. Если надеть её на пояс, она искажает голос носителя до неузнаваемости.
 
 ent-CECrayonBase = мелок
     .desc = Разноцветный мелок.
@@ -2634,47 +2616,15 @@ ent-CEKeyEngineeringStorage = { ent-CEKeyEngineeringBase }
     .desc = { ent-CEKeyEngineeringBase.desc }
     .suffix = Engineering Storage
 
-ent-CEKeyGuardBase = { ent-CEKeyIronBlank }
+ent-CEKeySheriffBase = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
 
-ent-CEKeyGuardHall = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Зал охраны
-
-ent-CEKeyGuardStaff = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Персонал охраны
-
-ent-CEKeyGuardHeadRoom = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Кабинет главы охраны
-
-ent-CEKeyGuardCage1 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 1
-
-ent-CEKeyGuardCage2 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 2
-
-ent-CEKeyGuardCage3 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 3
-
-ent-CEKeyGuardCage4 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 4
-
-ent-CEKeyGuardCage5 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 5
-
-ent-CEKeyInvestigatorHall = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
+ent-CEKeySheriffHall = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
     .suffix = Зал шерифа
 
-ent-CEKeyInvestigatorStaff = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
+ent-CEKeySheriffStaff = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
     .suffix = Персонал шерифа
 
 ent-CEKeyGuildLobby = { ent-CEKeyIronBlank }
@@ -2786,14 +2736,14 @@ ent-CEWeaponDaggerSickle = серп
 ent-CEWeaponHammerIron = железный молот
     .desc = Стандартный молот из железа.
 
-ent-CEWeaponMaceTwoHandedGuardrail = булава стражи
-    .desc = Тяжёлая булава на мане, используемая стражей. При активации наносит мощный удар, отбрасывающий цели и истощающий их выносливость.
+ent-CEWeaponMaceTwoHandedSheriff = булава шерифа
+    .desc = Тяжёлая булава на мане, которой пользуется шериф. При активации наносит мощный удар, отбрасывающий цели и истощающий их выносливость.
 
-ent-CEGuardMaceEnergyBall = энергетический шар
+ent-CESheriffMaceEnergyBall = энергетический шар
     .desc = { "" }
 
-ent-CEActionGuardMaceCharge = активировать энергоядро
-    .desc = Переключает энергоядро булавы стражи, меняя режим атаки.
+ent-CEActionSheriffMaceCharge = активировать энергоядро
+    .desc = Переключает энергоядро булавы шерифа, меняя режим атаки.
 
 ent-CEWeaponMop = швабра
     .desc = Простая швабра для уборки луж и грязи.
@@ -2834,8 +2784,8 @@ ent-CEArrowIron = стрела
 ent-CECrossboltIron = арбалетный болт
     .desc = Стержень с острым железным наконечником. Без оперения, это не стрелы.
 
-ent-CEGuardBola = бола
-    .desc = Тактическая бола, выдаваемая страже: стальные якоря, соединённые прочной верёвкой. Надёжная и многоразовая.
+ent-CEBola = бола
+    .desc = Тактическая бола: стальные якоря, соединённые прочной верёвкой. Надёжная и многоразовая.
 
 ent-CEStatusEffectAirCaught = воздушная ловушка
     .desc = { "" }
@@ -2981,53 +2931,21 @@ ent-CEIronGrateEngineeringTunnels = { ent-CEFenceGateBigIron }
     .desc = { ent-CEFenceGateBigIron.desc }
     .suffix = Engineering Tunnels
 
-ent-CEIronDoorGuardHall = { ent-CEIronDoorWindowed }
-    .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Зал охраны
-
-ent-CEIronDoorGuardHallMirrored = { ent-CEIronDoorGuardHall }
-    .desc = { ent-CEIronDoorGuardHall.desc }
-    .suffix = Зал охраны, Отзеркалено
-
-ent-CEIronDoorGuardStaff = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Персонал охраны
-
-ent-CEIronDoorGuardHeadRoom = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Кабинет главы охраны
-
-ent-CEIronDoorGuardCage1 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 1
-
-ent-CEIronDoorGuardCage2 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 2
-
-ent-CEIronDoorGuardCage3 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 3
-
-ent-CEIronDoorGuardCage4 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 4
-
-ent-CEIronDoorGuardCage5 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 5
-
-ent-CEIronDoorInvestigatorHall = { ent-CEIronDoorWindowed }
+ent-CEIronDoorSheriffHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
     .suffix = Зал шерифа
 
-ent-CEIronDoorInvestigatorHallMirrored = { ent-CEIronDoorInvestigatorHall }
-    .desc = { ent-CEIronDoorInvestigatorHall.desc }
+ent-CEIronDoorSheriffHallMirrored = { ent-CEIronDoorSheriffHall }
+    .desc = { ent-CEIronDoorSheriffHall.desc }
     .suffix = Зал шерифа, Отзеркалено
 
-ent-CEIronDoorInvestigatorStaff = { ent-CEIronDoor }
+ent-CEIronDoorSheriffStaff = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
     .suffix = Персонал шерифа
+
+ent-CEIronDoorSheriffStaffMirrored = { ent-CEIronDoorMirrored }
+    .desc = { ent-CEIronDoorMirrored.desc }
+    .suffix = Персонал шерифа, Отзеркалено
 
 ent-CEWoodenDoorGuildLobby = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
@@ -4139,10 +4057,6 @@ ent-CEWallRadioSpeakerEngineering = { ent-CEWallRadioSpeakerBase }
     .desc = { ent-CEWallRadioSpeakerBase.desc }
     .suffix = Common, Engineering
 
-ent-CEWallRadioSpeakerGuard = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Guard
-
 ent-CEWallRadioSpeakerTavern = { ent-CEWallRadioSpeakerBase }
     .desc = { ent-CEWallRadioSpeakerBase.desc }
     .suffix = Common, Tavern
@@ -4161,10 +4075,6 @@ ent-CERadioPostSpeakerAcademy = { ent-CERadioPostSpeakerBase }
 ent-CERadioPostSpeakerEngineering = { ent-CERadioPostSpeakerBase }
     .desc = { ent-CERadioPostSpeakerBase.desc }
     .suffix = Common, Engineering
-
-ent-CERadioPostSpeakerGuard = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Guard
 
 ent-CERadioPostSpeakerTavern = { ent-CERadioPostSpeakerBase }
     .desc = { ent-CERadioPostSpeakerBase.desc }
@@ -4290,7 +4200,7 @@ ent-CENodeStabilizerSphere = сфера-стабилизатор ноды
     .desc = Большая стеклянная сфера в латунном кольце. Закреплённая и запитанная на ноде магической эссенции, она останавливает старение ноды, сохраняя её бесконечно, пока та продолжает вырабатывать эссенцию.
 
 ent-CEShadowRift = теневой разлом
-    .desc = Прореха в мироздании. На рассвете из неё выходят теневые торговцы, а с наступлением ночи ускользают обратно.
+    .desc = Прореха в мироздании. С наступлением ночи из неё выходят теневые торговцы, а на рассвете ускользают обратно.
     .suffix = Traders
 
 ent-CEActionEnterShadowRift = Войти в разлом
@@ -4324,10 +4234,6 @@ ent-CETradeTableDwarfMiners = { ent-CETradeCarpetBase }
 ent-CETradeTableAlcohol = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = alcohol
-
-ent-CETradeTableEmpireGuard = { ent-CETradeCarpetBase }
-    .desc = { ent-CETradeCarpetBase.desc }
-    .suffix = empire guard
 
 ent-CETradeTableHelsinWarHouse = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
@@ -4461,47 +4367,19 @@ ent-CEKeyRingTechnician = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEWalletFilledGuard = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
+ent-CEBedsideTableFilledSheriff = { ent-CEBedsideTableWooden }
+    .desc = { ent-CEBedsideTableWooden.desc }
+    .suffix = Filled, Sheriff
 
-ent-CEChestFilledGuard = { ent-CEWoodenChest }
+ent-CEChestFilledSheriff = { ent-CEWoodenChest }
     .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Guard
+    .suffix = Filled, Sheriff
 
-ent-CEChestFilledInvestigator = { ent-CEChestFilledGuard }
-    .desc = { ent-CEChestFilledGuard.desc }
-    .suffix = Filled, Investigator
-
-ent-CEBedsideTableFilledGuard = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Guard
-
-ent-CEKeyRingGuard = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
-ent-CEWalletFilledGuardCommander = { ent-CEWallet }
+ent-CEWalletFilledSheriff = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
     .suffix = Пусто
 
-ent-CEChestFilledGuardCommander = { ent-CEGoldChest }
-    .desc = { ent-CEGoldChest.desc }
-    .suffix = Filled, Guard Commander
-
-ent-CEBedsideTableFilledGuardCommander = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Guard Commander
-
-ent-CEKeyRingGuardCommander = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
-ent-CEWalletFilledInvestigator = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEKeyRingInvestigator = { ent-CEBaseKeyRing }
+ent-CEKeyRingSheriff = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
@@ -4605,11 +4483,11 @@ ent-CEObjectiveBrotherhoodDebt = Должок
 ent-CEPaperBountyHunterContract = заказ
     .desc = Короткое письмо без обратного адреса.
 
-ent-CEPaperArmyOrders = приказ
-    .desc = Приказ главнокомандующего Императорской армии гарнизону поселения.
-
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
+
+ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
+    .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
 
 ent-CEObjectiveLoverAssist = Помогите возлюбленному
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно любите, выполнил все свои личные цели.
@@ -4619,12 +4497,6 @@ ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жи
 
 ent-CEObjectivePriestSurvive = Выжить
     .desc = Среди этого города есть существа, жаждающие моей смерти.
-
-ent-CEObjectiveTormentorSpite = Сорвите планы цели
-    .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
-
-ent-CEObjectiveTormentorSurvive = Сохраните цели жизнь
-    .desc = Ваша цель должна жить под бременем осознания собственной ничтожности.
 
 ent-CEObjectiveCityRestoreLucsonSphere = Восстановите Сферу Люксона
     .desc = Купите у Каравана теней осколки светсердца и книгу восстановления сферы, затем проведите Ритуал восстановления у Сферы Люксона, пока мрак не поглотил город.
@@ -4642,7 +4514,13 @@ ent-CEStatusEffectManaDrain = расход маны
     .desc = Ваша мана постоянно расходуется.
 
 ent-CEActionMilitaryTraining = Военная подготовка
-    .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
+    .desc = Жёсткая муштра научила ваше тело преодолевать усталость и страх. Переведите дух, чтобы мгновенно восстановить выносливость и стряхнуть первобытный ужас.
+
+ent-CEActionImperialSalary200 = Жалование Империи
+    .desc = Империя платит своим слугам 2 золотых на каждом рассвете. Заберите накопившееся жалование.
+
+ent-CEActionShopEmpireSheriff = Имперское снабжение
+    .desc = Закажите снаряжение со складов Империи.
 
 ent-CEStatusEffectMurkwalker = иммунитет к мраку
     .desc = { "" }
@@ -5128,14 +5006,11 @@ ent-CEClothingCloakBlue = синий плащ
 ent-CEClothingCloakCommandant = плащ коменданта
     .desc = Величественный плащ, носимый высокопоставленными офицерами и комендантами.
 
-ent-CEClothingCloakGuardCommander = плащ командира стражи
-    .desc = Престижный плащ, носимый командиром стражи, обозначающий власть.
+ent-CEClothingCloakSheriff = плащ шерифа
+    .desc = Престижный плащ, который носит шериф, — знак его власти.
 
 ent-CEClothingCloakBrigadier = плащ бригадира
     .desc = Знак статуса, который разрешено носить только старшим бригадирам, отвечающим за целостность острова. Ткань прошита тонкими латунными нитями, обеспечивающими отличную защиту от магического излучения.
-
-ent-CEClothingCloakTavernmaster = плащ хозяина таверны
-    .desc = Церемониальный плащ, носимый хозяином таверны, символизирующий лидерство.
 
 ent-CEClothingCloakGuildmaster = плащ гильдмастера
     .desc = Церемониальный алый плащ, который носит глава гильдии авантюристов.
@@ -5161,9 +5036,6 @@ ent-CEClothingCloakCoatFurBrown = коричневая меховая шуба
 ent-CEClothingCloakMantleAlchemist = мантия алхимика
     .desc = Мантия, носимая алхимиками, часто используемая для защиты одежды от проливов и реагентов.
 
-ent-CEClothingCloakMantleInvestigator = мантия дознавателя
-    .desc = Практичная мантия, излюбленная дознавателями за её незаметный внешний вид.
-
 ent-CEClothingCloakMantleThaumaturge = мантия тауматурга
     .desc = Парадная мантия, которую носят тауматурги Академии, с пристёгивающимся церемониальным капюшоном.
 
@@ -5185,8 +5057,8 @@ ent-CEClothingCloakRaincoatAlchemist = плащ алхимика
 ent-CEClothingCloakRaincoatGreen = зелёный дождевик
     .desc = Водонепроницаемый зелёный дождевик на каждый день.
 
-ent-CEClothingCloakRaincoatGuard = дождевик стражи
-    .desc = Усиленный дождевик, выдаваемый страже для защиты от непогоды во время службы.
+ent-CEClothingCloakRaincoatSheriff = дождевик шерифа
+    .desc = Усиленный дождевик, выдаваемый шерифу для защиты от непогоды во время службы.
 
 ent-CEClothingCloakRaincoatWhite = белый дождевик
     .desc = Чистый белый дождевик, часто используемый профессионалами, которым нужен опрятный вид.
@@ -5204,8 +5076,8 @@ ent-CEClothingShirtSyurkoBlue = синее сюрко
 ent-CEClothingShirtSyurkoGreen = зелёное сюрко
     .desc = Зелёный плащ сюрко, часто используемый в церемониальной обстановке.
 
-ent-CEClothingShirtSyurkoGuard = сюрко стражника
-    .desc = Сюрко, стилизованное под форму стражников.
+ent-CEClothingShirtSyurkoSheriff = сюрко шерифа
+    .desc = Сюрко, стилизованное под форму шерифа.
 
 ent-CEClothingShirtSyurkoRed = красное сюрко
     .desc = Яркое красное сюрко, излюбленное в некоторых регионах.
@@ -5362,7 +5234,7 @@ ent-CESnowball = снежок
     .desc = Небольшая горсть снега, удобная для метания.
 
 ent-CEWeaponGunJustice = Револьвер "Справедливость"
-    .desc = Быстрый и удобный револьвер стражи, из которого можно легко стрелять двумя руками.
+    .desc = Быстрый и удобный револьвер шерифа, из которого можно легко стрелять двумя руками.
 
 ent-CEWeaponGunPeacekeeper = Миротворец
     .desc = Низкозарядная энергетическая винтовка, которая стреляет мощным отталкивающим лучом концентрированной маны.

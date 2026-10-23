@@ -215,22 +215,6 @@
     coverage: EYES
   - type: ShowJobIcons
 
-- type: entity
-  parent: ClothingEyesBase
-  id: ClothingEyesGlassesMercenary
-  name: mercenary glasses
-  description: Glasses made for combat, to protect the eyes from bright blinding flashes.
-  components:
-  - type: Sprite
-    sprite: Clothing/Eyes/Glasses/mercglasses.rsi
-  - type: Clothing
-    sprite: Clothing/Eyes/Glasses/mercglasses.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
-    protectionTime: 5
-  - type: IdentityBlocker
-    coverage: EYES
-
 #Make a scanner category when these actually function and we get the trayson
 - type: entity
   parent: ClothingEyesBase
@@ -280,24 +264,3 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
   - type: FlashImmunity
-
-- type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
-  id: ClothingEyesGlassesNoir
-  name: noir-tech glasses
-  description: A pair of glasses that simulate what the world looked like before the invention of color.
-  components:
-  - type: Sprite
-    sprite: Clothing/Eyes/Glasses/noir.rsi
-  - type: Clothing
-    sprite: Clothing/Eyes/Glasses/sunglasses.rsi
-  - type: IdentityBlocker
-    coverage: EYES
-  - type: FlashImmunity
-  - type: EyeProtection
-    protectionTime: 5
-  - type: NoirOverlay
-  - type: Tag
-    tags:
-    - HamsterWearable
-    - WhitelistChameleon

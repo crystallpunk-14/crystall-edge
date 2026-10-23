@@ -109,17 +109,6 @@
   - type: AmbientMusicMarkerEngineering
 
 - type: entity
-  categories: [ HideSpawnMenu ]
-  parent: AmeController
-  id: AmeControllerUnanchored
-  suffix: Unanchored
-  components:
-  - type: Transform
-    anchored: false
-  - type: Physics
-    bodyType: Dynamic
-
-- type: entity
   parent: StructureHealthMachineStrong
   id: AmeShielding
   name: AME shielding

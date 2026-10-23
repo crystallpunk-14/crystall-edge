@@ -64,11 +64,6 @@
   maximumValue: 35
 
 - type: satiation
-  id: MouseAdmemeHunger
-  parent: MouseHunger
-  baseChangeRate: -10 # always hungry
-
-- type: satiation
   id: HamsterHunger
   parent: SimpleMobBaseHunger
   baseChangeRate: -0.3
@@ -83,11 +78,6 @@
     Starving: 50
   baseChangeRate: -0.01666666666
   maximumValue: 200
-
-- type: satiation
-  id: ScurretHunger
-  parent: SimpleMobBaseHunger
-  baseChangeRate: -0.05 # They get a lil' hungy
 
 - type: satiation
   id: DionaHunger

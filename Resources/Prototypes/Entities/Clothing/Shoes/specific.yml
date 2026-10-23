@@ -58,17 +58,6 @@
 
 - type: entity
   parent: ClothingShoesBaseButcherable
-  id: ClothingShoesSwat
-  name: swat shoes
-  description: When you want to turn up the heat.
-  components:
-  - type: Sprite
-    sprite: Clothing/Shoes/Specific/swat.rsi
-  - type: Clothing
-    sprite: Clothing/Shoes/Specific/swat.rsi
-
-- type: entity
-  parent: ClothingShoesBaseButcherable
   id: ClothingShoesWizard
   name: wizard shoes
   description: A pair of magic shoes.
@@ -115,15 +104,6 @@
     - type: ChameleonClothing
       slot: [FEET]
       default: ClothingShoesColorBlack
-
-- type: entity
-  parent: ClothingShoesChameleon
-  id: ClothingShoesChameleonNoSlips
-  name: black shoes #actual name and description in wearables.yml
-  suffix: No-slip, Chameleon
-  description: Stylish black shoes.
-  components:
-  - type: NoSlip
 
 - type: entity
   parent: ClothingShoesBaseButcherable

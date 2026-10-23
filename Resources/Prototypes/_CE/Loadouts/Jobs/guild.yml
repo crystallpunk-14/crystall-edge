@@ -101,11 +101,8 @@
   - CEWeaponSwordIron
   - CEWeaponSkimitarIron
   - CEWeaponSpearIron
-  - CEWeaponDaggerIron
   - CEWeaponWarAxeIron
   - CEWeaponTwoHandedSwordIron
-  - CEWeaponClubWooden
-  - CEWeaponHammerIron
   - CEWeaponStaffWooden
   - CEAdventurerBow
   - CEAdventurerCrossbow
@@ -142,11 +139,6 @@
   - CEWeaponSpearIron
 
 - type: loadout
-  id: CEWeaponDaggerIron
-  inhand:
-  - CEWeaponDaggerIron
-
-- type: loadout
   id: CEWeaponWarAxeIron
   inhand:
   - CEWeaponWarAxeIron
@@ -155,16 +147,6 @@
   id: CEWeaponTwoHandedSwordIron
   inhand:
   - CEWeaponTwoHandedSwordIron
-
-- type: loadout
-  id: CEWeaponClubWooden
-  inhand:
-  - CEWeaponClubWooden
-
-- type: loadout
-  id: CEWeaponHammerIron
-  inhand:
-  - CEWeaponHammerIron
 
 - type: loadout
   id: CEWeaponStaffWooden

@@ -47,11 +47,14 @@
   - type: CETargetExcludeHolderDepartment
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
-      components: # avoid an infinite loop through e.g. a tormentor's spite objective
+      components: # avoid an infinite loop through e.g. a lover's assist objective
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
     - BountyHunter # helping the man hired to wipe us out complete his job makes no sense
+  - type: CETargetSecretDepartmentBlacklist
+    departments:
+    - Nightmares # the Brotherhood lives off the city, it won't help the murk swallow it
 
 - type: entity
   id: CEObjectiveBrotherhoodDebt

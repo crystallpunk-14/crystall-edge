@@ -204,20 +204,6 @@
     node: steeltile
 
 - type: entity
-  name: steel mono tile
-  parent: FloorTileItemSteel
-  id: FloorTileItemSteelMono
-  components:
-  - type: Sprite
-    state: steel-mono
-  - type: FloorTile
-    outputs:
-    - Plating
-    - FloorSteelMono
-  - type: Stack
-    stackType: FloorTileSteelMono
-
-- type: entity
   parent: FloorTileItemSteel
   id: FloorTileItemSteelVerticalSlatsBordered
   name: steel vertical bordered slat tile
@@ -534,38 +520,6 @@
   - type: Stack
     stackType: FloorTileLino
 
-- type: entity
-  name: blue tile
-  parent: FloorTileItemBase
-  id: FloorTileItemBlue
-  components:
-  - type: Sprite
-    state: blue
-  - type: Item
-    heldPrefix: carpet-blue
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorBlue
-  - type: Stack
-    stackType: FloorTileBlue
-
-- type: entity
-  name: lime tile
-  parent: FloorTileItemBase
-  id: FloorTileItemLime
-  components:
-  - type: Sprite
-    state: lime
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorSteelLime
-  - type: Stack
-    stackType: FloorTileLime
-
 # Departmental
 - type: entity
   name: freezer tile
@@ -582,86 +536,6 @@
       - FloorFreezer
   - type: Stack
     stackType: FloorTileFreezer
-
-- type: entity
-  name: bar tile
-  parent: FloorTileItemBase
-  id: FloorTileItemBar
-  components:
-  - type: Sprite
-    state: bar
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorBar
-  - type: Stack
-    stackType: FloorTileBar
-
-- type: entity
-  name: clown tile
-  parent: FloorTileItemBase
-  id: FloorTileItemClown
-  components:
-  - type: Sprite
-    state: clown
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorClown
-  - type: Stack
-    stackType: FloorTileClown
-
-- type: entity
-  name: mime tile
-  parent: FloorTileItemBase
-  id: FloorTileItemMime
-  components:
-  - type: Sprite
-    state: mime
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorMime
-  - type: Stack
-    stackType: FloorTileMime
-
-- type: entity
-  name: kitchen tile
-  parent: FloorTileItemBase
-  id: FloorTileItemKitchen
-  components:
-  - type: Sprite
-    state: kitchen
-  - type: Item
-    heldPrefix: dark
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorKitchen
-  - type: Stack
-    stackType: FloorTileKitchen
-
-- type: entity
-  name: laundry tile
-  parent: FloorTileItemBase
-  id: FloorTileItemLaundry
-  components:
-  - type: Sprite
-    state: laundry
-  - type: Item
-    heldPrefix: steel
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorLaundry
-  - type: Stack
-    stackType: FloorTileLaundry
 
 # Carpets
 - type: entity
@@ -825,22 +699,6 @@
       - FloorGrassJungle
   - type: Stack
     stackType: FloorTileGrassJungle
-
-- type: entity
-  name: snow tile
-  parent: FloorTileItemBase
-  id: FloorTileItemSnow
-  components:
-  - type: Sprite
-    state: snow
-  - type: Item
-    heldPrefix: snow
-  - type: FloorTile
-    outputs:
-      - Plating
-      - FloorSnow
-  - type: Stack
-    stackType: FloorTileSnow
 
 - type: entity
   name: wood pattern floor

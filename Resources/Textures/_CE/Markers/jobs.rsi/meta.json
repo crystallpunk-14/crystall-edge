@@ -26,16 +26,10 @@
       "name": "green"
     },
     {
-      "name": "guard"
-    },
-    {
-      "name": "guard_commander"
-    },
-    {
       "name": "guildmaster"
     },
     {
-      "name": "investigator"
+      "name": "sheriff"
     },
     {
       "name": "workman"

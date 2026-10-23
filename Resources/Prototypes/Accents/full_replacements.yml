@@ -1,17 +1,6 @@
 ﻿# Accents that work off of full replacements rather than word replacements.
 
 - type: accent
-  id: cat
-  fullReplacements:
-  - accent-words-cat-1
-  - accent-words-cat-2
-  - accent-words-cat-3
-  - accent-words-cat-4
-  - accent-words-cat-5
-  - accent-words-cat-6
-  - accent-words-cat-7
-
-- type: accent
   id: dog
   fullReplacements:
   - accent-words-dog-1
@@ -48,14 +37,6 @@
   - accent-words-mumble-3
 
 - type: accent
-  id: silicon
-  fullReplacements:
-  - accent-words-silicon-1
-  - accent-words-silicon-2
-  - accent-words-silicon-3
-  - accent-words-silicon-4
-
-- type: accent
   id: xeno
   fullReplacements:
   - accent-words-xeno-1
@@ -72,38 +53,6 @@
   - accent-words-generic-aggressive-4
 
 - type: accent
-  id: duck
-  fullReplacements:
-  - accent-words-duck-1
-  - accent-words-duck-2
-  - accent-words-duck-3
-  - accent-words-duck-4
-
-- type: accent
-  id: chicken
-  fullReplacements:
-  - accent-words-chicken-1
-  - accent-words-chicken-2
-  - accent-words-chicken-3
-  - accent-words-chicken-4
-
-- type: accent
-  id: pig
-  fullReplacements:
-  - accent-words-pig-1
-  - accent-words-pig-2
-  - accent-words-pig-3
-  - accent-words-pig-4
-
-- type: accent
-  id: kangaroo
-  fullReplacements:
-  - accent-words-kangaroo-1
-  - accent-words-kangaroo-2
-  - accent-words-kangaroo-3
-  - accent-words-kangaroo-4
-
-- type: accent
   id: slimes
   fullReplacements:
   - accent-words-slimes-1
@@ -111,16 +60,6 @@
   - accent-words-slimes-3
   - accent-words-slimes-4
   - accent-words-slimes-5
-
-- type: accent
-  id: crab
-  fullReplacements:
-  - accent-words-crab-1
-  - accent-words-crab-2
-  - accent-words-crab-3
-  - accent-words-crab-4
-  - accent-words-crab-5
-  - accent-words-crab-6
 
 - type: accent
   id: kobold
@@ -151,27 +90,3 @@
   - accent-words-tomato-3
   - accent-words-tomato-4
   - accent-words-tomato-5
-
-- type: accent
-  id: scurret
-  fullReplacements:
-  - accent-words-scurret-1
-  - accent-words-scurret-2
-  - accent-words-scurret-3
-  - accent-words-scurret-4
-  - accent-words-scurret-5
-  - accent-words-scurret-6
-  - accent-words-scurret-7
-  - accent-words-scurret-8
-  - accent-words-scurret-9
-  - accent-words-scurret-10
-  - accent-words-scurret-11
-  - accent-words-scurret-12
-  - accent-words-scurret-13
-  - accent-words-scurret-14
-  - accent-words-scurret-15
-  - accent-words-scurret-16
-  - accent-words-scurret-17
-  - accent-words-scurret-18
-  - accent-words-scurret-19
-  - accent-words-scurret-20

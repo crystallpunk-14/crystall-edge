@@ -288,14 +288,6 @@
 
 - type: latheRecipe
   parent: BaseWeaponRecipeSidearm
-  id: WeaponLaserSvalinn
-  result: WeaponLaserSvalinn
-  materials:
-    Steel: 2000
-    Gold: 500
-
-- type: latheRecipe
-  parent: BaseWeaponRecipeSidearm
   id: WeaponFlareGunSecurity
   result: WeaponFlareGunSecurity
   materials:

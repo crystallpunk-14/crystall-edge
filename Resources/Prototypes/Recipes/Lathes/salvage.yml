@@ -40,17 +40,6 @@
     # If they get spammed make it cost silver.
 
 - type: latheRecipe
-  id: SeismicCharge
-  result: SeismicCharge
-  categories:
-  - Tools
-  completetime: 1
-  materials:
-    Plastic: 1500
-    Steel: 100
-    Silver: 100
-
-- type: latheRecipe
   parent: BaseToolRecipe
   id: MiningDrill
   result: MiningDrill
@@ -101,4 +90,3 @@
     Steel: 1500
     Gold: 500
     Silver: 500
-

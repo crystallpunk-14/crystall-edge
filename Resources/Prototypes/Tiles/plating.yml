@@ -15,13 +15,6 @@
   sprite: /Textures/Tiles/plating.png
 
 - type: tile
-  id: PlatingDamaged
-  parent: BasePlating
-  name: tiles-plating
-  sprite: /Textures/Tiles/plating-damaged.png
-  variants: 4
-
-- type: tile
   id: PlatingRCD
   parent: Plating
   name: tiles-rcd-plating
@@ -68,7 +61,6 @@
   baseTurf: Space
   isSubfloor: true
   deconstructTools: [ Cutting ]
-  weather: true
   footstepSounds:
     collection: FootstepCatwalk
   friction: 1.5
