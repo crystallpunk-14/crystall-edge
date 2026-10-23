@@ -90,11 +90,16 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// </summary>
     /// <param name="overwriteOriginal">Whether the new role also replaces
     /// <see cref="CESecretRoleComponent.OriginalRole"/> - false keeps the first role ever granted.</param>
+    /// <param name="keepObjectives">Whether the objectives owned under the old role stay alongside
+    /// the new role's ones instead of being removed.</param>
+    /// <param name="giveGear">Whether the new role's starting gear is equipped.</param>
     public bool TrySetSecretRole(ICommonSession session,
         ProtoId<CESecretRolePrototype> roleId,
         [NotNullWhen(false)] out string? error,
         bool removeSkills = true,
-        bool overwriteOriginal = false)
+        bool overwriteOriginal = false,
+        bool keepObjectives = false,
+        bool giveGear = true)
     {
         error = null;
 
@@ -125,8 +130,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (!overwriteOriginal && _role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var oldRoleEnt))
             originalRole = oldRoleEnt.Value.Comp2.OriginalRole ?? oldRoleEnt.Value.Comp2.Role;
 
-        ClearSecretRole(mindId, mind, removeSkills);
-        if (GrantSecretRole(targetRule.Value, session, role, originalRole) is { } granted)
+        ClearSecretRole(mindId, mind, removeSkills, keepObjectives);
+        if (GrantSecretRole(targetRule.Value, session, role, originalRole, giveGear) is { } granted)
             GrantSecretRoleObjectives(targetRule.Value, granted.MindId, granted.Mind, role);
 
         // A mid-round role change is always announced, cracked sphere or not.
@@ -135,7 +140,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         return true;
     }
 
-    private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = true)
+    private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = true, bool keepObjectives = false)
     {
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
             return;
@@ -168,7 +173,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         // Only ever removes objectives this mind actually owns (its personal role-pool draw) -
         // the department's shared ones belong to the department's own holder entity and just drop
         // off this mind's list on the RegenerateObjectiveList call below.
-        if (TryComp<CEObjectiveHolderComponent>(mindId, out var holderComp))
+        if (!keepObjectives && TryComp<CEObjectiveHolderComponent>(mindId, out var holderComp))
         {
             foreach (var objective in holderComp.OwnedObjectives.ToList())
                 _objectives.TryRemoveObjective(mindId, objective);
@@ -434,11 +439,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// </summary>
     /// <param name="originalRole">The role to keep as <see cref="CESecretRoleComponent.OriginalRole"/> -
     /// null makes <paramref name="role"/> the original.</param>
+    /// <param name="giveGear">Whether the role's starting gear is equipped.</param>
     private (EntityUid MindId, MindComponent Mind)? GrantSecretRole(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession session,
         CESecretRolePrototype role,
-        ProtoId<CESecretRolePrototype>? originalRole = null)
+        ProtoId<CESecretRolePrototype>? originalRole = null,
+        bool giveGear = true)
     {
         if (!_mind.TryGetMind(session, out var mindId, out var mind))
             return null;
@@ -461,7 +468,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (session.AttachedEntity is { } target)
         {
             GrantSecretRoleSkills(target, role);
-            _stationSpawning.EquipStartingGear(target, role.Gear);
+            if (giveGear)
+                _stationSpawning.EquipStartingGear(target, role.Gear);
 
             var icon = EnsureComp<CESecretRoleIconComponent>(target);
             icon.Role = role.ID;
@@ -473,6 +481,9 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                 originalIcon.Role = original;
                 Dirty(target, originalIcon);
             }
+
+            var grantedEv = new CESecretRoleGrantedEvent(target, role.ID, original);
+            RaiseLocalEvent(ref grantedEv);
         }
 
         return (mindId, mind);
@@ -498,3 +509,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         return count;
     }
 }
+
+/// <summary>
+/// Broadcast whenever a body is granted a secret role - at round start, on late join or on a role change.
+/// </summary>
+/// <param name="Original">The original role kept through the change - equal to <paramref name="Role"/> if it never changed.</param>
+[ByRefEvent]
+public readonly record struct CESecretRoleGrantedEvent(
+    EntityUid Body,
+    ProtoId<CESecretRolePrototype> Role,
+    ProtoId<CESecretRolePrototype> Original);

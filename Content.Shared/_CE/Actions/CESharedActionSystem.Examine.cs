@@ -17,9 +17,11 @@ public abstract partial class CESharedActionSystem
     [SubscribeLocalEvent]
     private void OnActionExamined(Entity<ActionComponent> ent, ref ExaminedEvent args)
     {
-        if (ent.Comp.UseDelay is null)
+        if (ent.Comp.UseDelay is not { } delay)
             return;
-        args.PushMarkup($"{Loc.GetString("ce-magic-cooldown")}: [color=#5da9e8]{ent.Comp.UseDelay.Value.TotalSeconds}s[/color]", priority: 9);
+
+        var time = Loc.GetString("ce-magic-cooldown-time", ("minutes", (int) delay.TotalMinutes), ("seconds", delay.Seconds));
+        args.PushMarkup($"{Loc.GetString("ce-magic-cooldown")}: [color=#5da9e8]{time}[/color]", priority: 9);
     }
 
     [SubscribeLocalEvent]

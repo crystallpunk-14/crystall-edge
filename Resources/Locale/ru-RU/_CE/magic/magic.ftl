@@ -3,6 +3,13 @@ ce-energy-deficit-popup = Недостаточно маны!
 
 ce-magic-manacost = Затраты маны
 ce-magic-cooldown = Перезарядка
+ce-magic-cooldown-time = { $minutes ->
+    [0] { $seconds } с
+   *[other] { $minutes } мин{ $seconds ->
+        [0] {""}
+       *[other] {" "}{ $seconds } с
+    }
+}
 
 ce-magic-spell-not-enough-mana = Недостаточно маны!
 ce-magic-spell-no-mana-component = Вы не используете магическую энергию.

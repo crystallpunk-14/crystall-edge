@@ -27,6 +27,7 @@
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
     - Lover
+    - DarkVessel # its body is meant to die, which would fail the lover's survive objective
 
 - type: entity
   id: CEObjectiveLoverSurvive
