@@ -68,6 +68,3 @@
     enabled: false
     sound:
       collection: ServerFans
-  - type: GuideHelp
-    guides:
-    - Science

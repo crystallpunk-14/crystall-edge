@@ -183,9 +183,6 @@
   - type: ActionGrant
     actions:
     - ActionDragonsBreath
-  - type: GuideHelp
-    guides:
-    - MinorAntagonists
 
 - type: entity
   parent: BaseAction

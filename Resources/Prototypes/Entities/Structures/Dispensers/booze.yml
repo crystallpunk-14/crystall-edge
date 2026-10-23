@@ -19,10 +19,6 @@
     noRot: false
   - type: Machine
     board: BoozeDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
 

@@ -76,4 +76,5 @@
   - type: GuideHelp
     openOnActivation: true
     guides:
-    - SS14
+    - BaselineWelcomeEN
+    - BaselineWelcomeRU

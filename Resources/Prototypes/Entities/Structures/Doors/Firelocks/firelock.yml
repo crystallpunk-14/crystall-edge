@@ -145,11 +145,6 @@
     enabled: false
     castShadows: false
   - type: NavMapDoor
-  - type: GuideHelp
-    guides:
-    - FireAndGasControl
-    - Fires
-    - Spacing
   - type: SyncSprite
   - type: PlacementReplacement
     key: firelocks

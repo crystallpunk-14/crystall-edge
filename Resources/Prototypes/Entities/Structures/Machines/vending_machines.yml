@@ -144,10 +144,6 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Bar"]]
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
 
 - type: entity
   parent: VendingMachine
@@ -272,9 +268,6 @@
     radius: 1.5
     energy: 3.0
     color: "#9dc5c9"
-  - type: GuideHelp
-    guides:
-    - MedicalDoctor
   - type: AmbientMusicMarkerMedical
 
 - type: entity
@@ -324,9 +317,6 @@
     color: "#b89f25"
   - type: AccessReader
     access: [["Salvage"]]
-  - type: GuideHelp
-    guides:
-    - Salvage
 
 - type: entity
   parent: BaseVendingMachine

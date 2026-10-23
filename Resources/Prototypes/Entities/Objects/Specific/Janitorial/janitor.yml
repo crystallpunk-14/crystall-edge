@@ -48,9 +48,6 @@
     tags:
       - Mop
       - MopBasic
-  - type: GuideHelp
-    guides:
-    - Janitorial
   - type: DnaSubstanceTrace
 
 # There's a surprising amount of non-mop mops so we need to define these.
@@ -142,9 +139,6 @@
   - type: Item
     sprite: Objects/Specific/Janitorial/plunger.rsi
     heldPrefix: plunger
-  - type: GuideHelp
-    guides:
-    - Janitorial
   - type: Clothing
     sprite: Objects/Specific/Janitorial/plunger.rsi
     slots:

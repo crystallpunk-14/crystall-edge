@@ -69,9 +69,6 @@
     onBump: false
     requirePower: true
     highVoltageNode: output
-  - type: GuideHelp
-    guides:
-    - ShuttleCraft
 
 # Base Wallmount Generator
 
@@ -116,9 +113,6 @@
     supplyRate: 3000
     supplyRampRate: 500
     supplyRampTolerance: 500
-  - type: GuideHelp
-    guides:
-    - ShuttleCraft
 
 # Construction Frames
 
@@ -196,9 +190,6 @@
   - type: ContainerContainer
     containers:
       board: !type:Container
-  - type: GuideHelp
-    guides:
-    - ShuttleCraft
 
 - type: entity
   abstract: true
@@ -246,10 +237,6 @@
     onBump: false
     requirePower: true
     highVoltageNode: output
-  - type: GuideHelp
-    guides:
-    - RTG
-    - Power
 
 - type: entity
   parent: [ BaseRTG, StructureHealthMachineStrong ]

@@ -522,10 +522,6 @@
   - type: HTN
     rootTask:
       task: RuminantCompound
-  - type: GuideHelp
-    guides:
-    - Chef
-    - FoodRecipes
 
 - type: entity
   parent: SolutionLarge

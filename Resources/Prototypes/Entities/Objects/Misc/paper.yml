@@ -215,10 +215,6 @@
   - type: CargoBountyLabel
   - type: StaticPrice
     price: 0
-  - type: GuideHelp
-    guides:
-    - CargoBounties
-    - Cargo
   - type: Item
     inhandVisuals:
       left:

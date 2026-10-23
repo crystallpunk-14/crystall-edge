@@ -259,9 +259,6 @@
     sprite: /Textures/Objects/Misc/monkeycube.rsi
     state: cube
     color: "#8A9A5B"
-  - type: GuideHelp
-    guides:
-    - Cloning # Should remove this, we don't have cloning and don't want cloning
 
 - type: entity
   parent: MaterialBiomass
