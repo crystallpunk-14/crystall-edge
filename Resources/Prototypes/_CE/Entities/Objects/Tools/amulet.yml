@@ -7,6 +7,17 @@
   components:
   - type: Item
     size: Normal
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: unshaded-inhand-left
+        shader: unshaded
+        color: "#f9f28d"
+      right:
+      - state: inhand-right
+      - state: unshaded-inhand-right
+        shader: unshaded
+        color: "#f9f28d"
   - type: Sprite
     sprite: _CE/Objects/Tools/amulets.rsi
     layers:
@@ -34,6 +45,17 @@
   components:
   - type: Item
     size: Normal
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: unshaded-inhand-left
+        shader: unshaded
+        color: purple
+      right:
+      - state: inhand-right
+      - state: unshaded-inhand-right
+        shader: unshaded
+        color: purple
   - type: Sprite
     sprite: _CE/Objects/Tools/amulets.rsi
     layers:
