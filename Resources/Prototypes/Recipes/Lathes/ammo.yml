@@ -49,13 +49,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: MagazineRiflePractice
-  result: MagazineRiflePractice
-  materials:
-    Steel: 175
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
   id: MagazineRifleUranium
   result: MagazineRifleUranium
   materials:
@@ -76,13 +69,6 @@
   result: MagazineBoxRifleIncendiary
   materials:
     Plastic: 750
-
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
-  id: MagazineBoxRiflePractice
-  result: MagazineBoxRiflePractice
-  materials:
-    Steel: 250
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
@@ -125,13 +111,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: MagazineLightRiflePractice
-  result: MagazineLightRiflePractice
-  materials:
-    Steel: 205
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
   id: MagazineLightRifleUranium
   result: MagazineLightRifleUranium
   materials:
@@ -152,13 +131,6 @@
   result: MagazineBoxLightRifleIncendiary
   materials:
     Plastic: 900
-
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
-  id: MagazineBoxLightRiflePractice
-  result: MagazineBoxLightRiflePractice
-  materials:
-    Steel: 300
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
@@ -193,13 +165,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: MagazinePistolPractice
-  result: MagazinePistolPractice
-  materials:
-    Steel: 85
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
   id: MagazinePistolUranium
   result: MagazinePistolUranium
   materials:
@@ -228,13 +193,6 @@
   materials:
     Steel: 25
     Plastic: 275
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazinePistolSubMachineGunPractice
-  result: MagazinePistolSubMachineGunPractice
-  materials:
-    Steel: 150
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -275,13 +233,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
-  id: MagazineBoxPistolPractice
-  result: MagazineBoxPistolPractice
-  materials:
-    Steel: 300
-
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
   id: MagazineBoxPistolUranium
   result: MagazineBoxPistolUranium
   materials:
@@ -313,13 +264,6 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: SpeedLoaderMagnumPractice
-  result: SpeedLoaderMagnumPractice
-  materials:
-    Steel: 90
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
   id: SpeedLoaderMagnumUranium
   result: SpeedLoaderMagnumUranium
   materials:
@@ -340,13 +284,6 @@
   result: MagazineBoxMagnumIncendiary
   materials:
     Plastic: 240
-
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
-  id: MagazineBoxMagnumPractice
-  result: MagazineBoxMagnumPractice
-  materials:
-    Steel: 60
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
@@ -409,13 +346,6 @@
   materials:
     Steel: 80
     Plastic: 320
-
-- type: latheRecipe
-  parent: BaseAmmoBoxRecipe
-  id: BoxShotgunPractice
-  result: BoxShotgunPractice
-  materials:
-    Steel: 80
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe

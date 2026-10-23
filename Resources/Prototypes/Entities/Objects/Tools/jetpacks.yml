@@ -117,46 +117,6 @@
         Oxygen: 1.025689525 # oxygen
         Nitrogen: 1.025689525 # nitrogen
 
-#Empty captain
-- type: entity
-  id: JetpackCaptain
-  parent: [BaseJetpack, BaseGrandTheftContraband]
-  name: captain's jetpack
-  suffix: Empty
-  components:
-  - type: Sprite
-    sprite: Objects/Tanks/Jetpacks/captain.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/Jetpacks/captain.rsi
-    slots:
-      - Back
-      - SuitStorage
-  - type: Item
-    sprite: Objects/Tanks/Jetpacks/captain.rsi
-    size: Normal
-  - type: Tag
-    tags:
-    - HighRiskItem
-  - type: StealTarget
-    stealGroup: JetpackCaptainFilled
-
-# Filled captain
-- type: entity
-  id: JetpackCaptainFilled
-  parent: JetpackCaptain
-  name: captain's jetpack
-  suffix: Filled
-  components:
-  - type: GasTank
-    releasePressure: 42.6
-    air:
-      # 13 minutes of thrust
-      volume: 5
-      temperature: 293.15
-      moles:
-        Oxygen: 1.025689525 # oxygen
-        Nitrogen: 1.025689525 # nitrogen
-
 #Empty mini
 - type: entity
   id: JetpackMini

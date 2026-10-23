@@ -113,19 +113,6 @@
 # Medicine bottles
 
 - type: entity
-  id: ChemistryBottleBicaridine
-  suffix: bicaridine
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-bicaridine
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Bicaridine
-        Quantity: 30
-
-- type: entity
   id: ChemistryBottleCognizine
   suffix: cognizine
   parent: BaseChemistryBottleFilled
@@ -136,32 +123,6 @@
     solution:
       reagents:
       - ReagentId: Cognizine
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleDexalin
-  suffix: dex
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-dexalin
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Dexalin
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleDylovene
-  suffix: dylovene
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-dylovene
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Dylovene
         Quantity: 30
 
 - type: entity
@@ -178,84 +139,6 @@
         Quantity: 30
 
 - type: entity
-  id: ChemistryBottleEthylredoxrazine
-  suffix: ethylredoxrazine
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-ethylredoxrazine
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Ethylredoxrazine
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleHaloperidol
-  suffix: haloperidol
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-haloperidol
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Haloperidol
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleHyronalin
-  suffix: hyronalin
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-hyronalin
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Hyronalin
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleInaprovaline
-  suffix: inaprovaline
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-inaprovaline
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Inaprovaline
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleIpecac
-  suffix: ipecac
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-ipecac
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Ipecac
-        Quantity: 30
-
-- type: entity
-  id: ChemistryBottleKelotane
-  suffix: kelotane
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-kelotane
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Kelotane
-        Quantity: 30
-
-- type: entity
   id: ChemistryBottleOmnizine
   suffix: omnizine
   parent: BaseChemistryBottleFilled
@@ -267,34 +150,6 @@
       reagents:
       - ReagentId: Omnizine
         Quantity: 30
-
-- type: entity
-  id: ChemistryBottleSaline
-  suffix: saline
-  parent: BaseChemistryBottleFilled
-  components:
-  - type: Label
-    localizedLabel: reagent-name-saline
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Saline
-        Quantity: 30
-
-- type: entity
-  parent: BaseChemistryBottleFilled
-  id: ChemistryBottleCharcoal
-  suffix: charcoal
-  components:
-  - type: Label
-    localizedLabel: reagent-name-charcoal
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Charcoal
-        Quantity: 30
-
-# Other bottles
 
 - type: entity
   id: ChemistryBottleRobustHarvest

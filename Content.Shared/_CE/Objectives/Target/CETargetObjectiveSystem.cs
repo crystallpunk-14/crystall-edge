@@ -2,9 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Target.Components;
-using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Roles.Jobs;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
@@ -35,29 +33,8 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
         SetTarget(ent.AsNullable(), candidate);
     }
 
-    // Objectives follow the target's mind, not its body. Moving into another body (polymorph,
-    // borg, ...) drags the objective along; going to a ghost or nowhere at all - ghosting out of a
-    // living body, dissolving in the murk, the body getting deleted - means it left the round.
-    [SubscribeLocalEvent]
-    private void OnTargetMindRemoved(Entity<CETargetObjectiveMarkerComponent> ent, ref MindRemovedMessage args)
-    {
-        EntityUid? newBody = args.TransferEntity is { } transfer && !HasComp<GhostComponent>(transfer)
-            ? transfer
-            : null;
-
-        foreach (var objective in ent.Comp.Objectives.ToList())
-        {
-            if (!TryComp<CETargetObjectiveComponent>(objective, out var comp))
-                continue;
-
-            if (newBody is { } body)
-                SetTarget((objective, comp), body, updateTitle: false);
-            else
-                LoseTarget((objective, comp));
-        }
-    }
-
-    // Body deleted while still targeted - normally the mind leaving it already handled that above.
+    // Objectives follow the target's body, not its mind: whoever ends up controlling the body, it's
+    // the body's state that counts. Only the body getting deleted means the target left the round.
     [SubscribeLocalEvent]
     private void OnTargetShutdown(Entity<CETargetObjectiveMarkerComponent> ent, ref ComponentShutdown args)
     {
@@ -174,9 +151,7 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
     /// <summary>
     /// Sets the target for a given <see cref="CETargetObjectiveComponent"/>.
     /// </summary>
-    /// <param name="updateTitle">False when the same person just moved into another body - the
-    /// title keeps their original name instead of e.g. their polymorph's.</param>
-    public void SetTarget(Entity<CETargetObjectiveComponent?> ent, EntityUid? target, bool updateTitle = true)
+    public void SetTarget(Entity<CETargetObjectiveComponent?> ent, EntityUid? target)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -189,7 +164,7 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
 
         if (target is { } newTarget)
         {
-            if (updateTitle && ent.Comp.Title != null)
+            if (ent.Comp.Title != null)
             {
                 var name = Name(newTarget);
                 var job = string.Empty;

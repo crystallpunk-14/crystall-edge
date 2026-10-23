@@ -48,8 +48,3 @@
           collection: MetalBreak
       - !type:SpillBehavior
         solution: drainBuffer
-
-- type: entity
-  parent: [SolutionDrain, SolutionNormal]
-  id: SolutionDrainNormal
-  categories: [ HideSpawnMenu ]

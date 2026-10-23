@@ -112,6 +112,33 @@ ent-CEClothingBeltQuiverBolts = { ent-CEClothingBeltQuiver }
     .desc = { ent-CEClothingBeltQuiver.desc }
     .suffix = Filled, Crossbow bolts
 
+ent-CEClothingCloakBartenderVest1 = жилет бармена
+    .desc = Элегантный жилет для элегантного бармена.
+
+ent-CEClothingCloakBartenderVest2 = жилетка бармена
+    .desc = Тёмная жилетка, на которой не видно ни одной пролитой капли.
+
+ent-CEClothingCloakChefApron1 = фартук шеф-повара
+    .desc = Белый фартук, покрытый следами честного труда.
+
+ent-CEClothingCloakChefApron2 = кухонный фартук
+    .desc = Плотный фартук, защищающий от брызг и жира.
+
+ent-CEClothingCloakChefApron3 = фартук повара
+    .desc = Длинный фартук с глубокими карманами для ложек и специй.
+
+ent-CEClothingCloakFarmerOveralls1 = фермерский комбинезон
+    .desc = Прочный комбинезон для работы на ферме.
+
+ent-CEClothingCloakFarmerOveralls2 = полевой комбинезон
+    .desc = Комбинезон с заплатками на коленях от бесконечной прополки.
+
+ent-CEClothingCloakTavernmasterJacket1 = куртка трактирщика
+    .desc = Солидная куртка для хозяина заведения.
+
+ent-CEClothingCloakTavernmasterJacket2 = сюртук трактирщика
+    .desc = Добротный сюртук, который говорит, что гостям здесь всегда рады. Если они платят.
+
 ent-CEClothingEyesGlasses = очки
     .desc = Аристократично, изысканно.
 
@@ -238,6 +265,18 @@ ent-CEClothingHeadWreath = венок
 ent-CEClothingHeadBowlerLeather = кожаный котелок
     .desc = Выглядит достаточно крепким, чтобы выдержать пару падающих на лоб камней. Но это не точно.
 
+ent-CEClothingHeadBeretBartender = берет бармена
+    .desc = Аккуратный берет, который носят бармены таверн.
+
+ent-CEClothingHeadBeretChef = берет повара
+    .desc = Мягкий берет, не дающий волосам попасть в суп.
+
+ent-CEClothingHeadChefHat1 = поварской колпак
+    .desc = Высокий белый колпак. Говорят, чем он выше, тем лучше повар.
+
+ent-CEClothingHeadChefHat2 = поварская шапочка
+    .desc = Практичная кухонная шапочка, которую носят повара таверн.
+
 ent-CEClothingHeadTriangularSheriff = треугольная шляпа шерифа
     .desc = Отличительная треугольная шляпа, которую носит шериф. Её уникальная форма позволяет узнать шерифа издалека.
 
@@ -324,6 +363,12 @@ ent-CEClothingPantsMerchantsPantaloons = шаровары купца
 
 ent-CEClothingPantsEngineering = инженерные штаны
     .desc = Прочные штаны для выносливых людей.
+
+ent-CEClothingPantsTavern = штаны работника таверны
+    .desc = Простые штаны для тех, кто весь день на ногах.
+
+ent-CEClothingPantsTavernSkirt = юбка работницы таверны
+    .desc = Практичная юбка для работы в шумной таверне.
 
 ent-CEClothingShirtBase = { "" }
     .desc = Приятный на ощупь материал в удобной, свободной форме рубашки.
@@ -478,6 +523,24 @@ ent-CEClothingShirtAcademyRobe = мантия академии
 ent-CEClothingShirtAcademyRobe2 = мантия академии
     .desc = Парадная мантия, которую носят учёные Тауматургической академии.
 
+ent-CEClothingShirtBartender = рубашка бармена
+    .desc = Чистая рубашка, чтобы разливать напитки и выслушивать жалобы.
+
+ent-CEClothingShirtChef1 = рубашка повара
+    .desc = Прочная кухонная рубашка: легко стирается и плохо горит.
+
+ent-CEClothingShirtChef2 = рабочая рубашка повара
+    .desc = Кухонная рубашка с закатанными рукавами, готовая к оживлённому вечеру.
+
+ent-CEClothingShirtChef3 = поварская рубашка с фартуком
+    .desc = Лёгкая кухонная рубашка, в которой не жарко даже у плиты.
+
+ent-CEClothingShirtFarmer1 = рубашка фермера
+    .desc = Грубая рубашка для долгих дней в поле.
+
+ent-CEClothingShirtFarmer2 = рабочая рубашка фермера
+    .desc = Залатанная рубашка, повидавшая немало урожаев.
+
 ent-CEClothingShoesBlack = простые чёрные сапоги
     .desc = Они не будут задерживать влагу, но это лучше, чем ходить босиком.
 
@@ -594,10 +657,6 @@ ent-CETreasureSparkVFX = искра сокровища
     .suffix = VFX
 
 ent-CEEssenceConsumeVFX = essence consume effect
-    .desc = { "" }
-    .suffix = VFX
-
-ent-CEScientificInterestVFX = метка научного интереса
     .desc = { "" }
     .suffix = VFX
 
@@ -720,15 +779,6 @@ ent-CESpawnPointBard = бард
 ent-CESpawnPointTownfolk = безработный
     .desc = { "" }
 
-ent-CESpawnPointAcademyStudent = студент академии
-    .desc = { "" }
-
-ent-CESpawnPointAcademyProfessor = профессор академии
-    .desc = { "" }
-
-ent-CESpawnPointAcademyRector = ректор академии
-    .desc = { "" }
-
 ent-CESpawnPointBrigadier = бригадир
     .desc = { "" }
 
@@ -817,9 +867,8 @@ ent-CEBookPantheonGodsSileita = Пантеон богов Силеиты
 ent-CEBookPantheonGodsSileitaImitators = Пантеон богов Силеиты - Имитаторы богов
     .desc = Дополнение к основной части книги, которое они не желали включать в общее издание.
 
-ent-CEDebugKnowledgeBook = бесконечный тауманомикониум
-    .desc = Книга для админов, полная невозможных знаний обо всех аспектах сразу.
-    .suffix = Debug, All Aspects, 100
+ent-CEBookEmpty = пустая книга
+    .desc = Простая книга с белой пустой обложкой, готовая к заполнению.
 
 ent-CEGuidebookFarmingGuide = справочник фермера
     .desc = Руководство по уходу за растениями. Автор, конечно же, сильва.
@@ -828,22 +877,6 @@ ent-CEGuidebookFarmingGuide = справочник фермера
 ent-CEGuidebookCookingRecipes = кулинарная книга
     .desc = 1001 рецепт — так написано на обложке. Это наглая ложь.
     .suffix = Путеводитель
-
-ent-CEBookEmpty = пустая книга
-    .desc = Простая книга с белой пустой обложкой, готовая к заполнению.
-
-ent-CEBookAncient = древняя книга
-    .desc = Потрёпанная старая книга. Похоже, её стоит изучить.
-    .suffix = Random visual, scientific interest
-
-ent-CEBaseScienceBookUndefined = научная книга по магической инженерии
-    .desc = { ent-CEBookBase.desc }
-
-ent-CEBaseScienceBookArcaneEngineering = научная книга по магической инженерии
-    .desc = { ent-CEBookBase.desc }
-
-ent-CEBaseScienceBookSpellcasting = научная книга по колдовству
-    .desc = { ent-CEBookBase.desc }
 
 ent-CEDrinkBaseGoblet = кубок
     .desc = Металлический кубок для тех, кто хочет пить изысканно.
@@ -1106,6 +1139,9 @@ ent-CEFoodOnionSlice = кольцо лука
 
 ent-CEFoodChanterelle = лисичка
     .desc = Вкусный гриб.
+
+ent-CEFoodAgaric = мухомор
+    .desc = Ярко-красный гриб с белыми крапинками. Очень красивый и очень ядовитый.
 
 ent-CEBloodpack = пакет крови
     .desc = Содержит магическую кровь, которая определённо не из космоса.
@@ -1527,6 +1563,90 @@ ent-CEWallpaperItemBlack = { ent-CEWallpaperItemBase }
     .desc = { ent-CEWallpaperItemBase.desc }
     .suffix = Black
 
+ent-CEWallpaperItemPlainCrimsonWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Crimson, Wood
+
+ent-CEWallpaperItemPlainWineWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Wine, Wood
+
+ent-CEWallpaperItemOrnateRoseTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Rose, Tonal
+
+ent-CEWallpaperItemPlainTerracottaTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Terracotta, Tonal
+
+ent-CEWallpaperItemPlainOchreWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Ochre, Wood
+
+ent-CEWallpaperItemOrnateOliveTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Olive, Tonal
+
+ent-CEWallpaperItemPlainSageTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Sage, Tonal
+
+ent-CEWallpaperItemOrnateMossTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Moss, Tonal
+
+ent-CEWallpaperItemPlainEmeraldWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Emerald, Wood
+
+ent-CEWallpaperItemOrnatePineGold = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Pine, Gold
+
+ent-CEWallpaperItemPlainSeaWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Sea, Wood
+
+ent-CEWallpaperItemPlainPowderTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Powder, Tonal
+
+ent-CEWallpaperItemPlainAzureWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Azure, Wood
+
+ent-CEWallpaperItemOrnateRoyalTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Royal, Tonal
+
+ent-CEWallpaperItemOrnateIndigoTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Indigo, Tonal
+
+ent-CEWallpaperItemPlainChocolateTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Chocolate, Tonal
+
+ent-CEWallpaperItemPlainSandWood = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Sand, Wood
+
+ent-CEWallpaperItemOrnateIvoryTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Ornate, Ivory, Tonal
+
+ent-CEWallpaperItemPlainAshTonal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Plain, Ash, Tonal
+
+ent-CEWallpaperItemStripesSandTerracotta = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Stripes, Sand, Terracotta
+
+ent-CEWallpaperItemStripesAshTeal = { ent-CEWallpaperItemBase }
+    .desc = { ent-CEWallpaperItemBase.desc }
+    .suffix = Stripes, Ash, Teal
+
 ent-CEd20Dice = d20
     .desc = Каковы шансы, что я выпью вина, подавлюсь и уроню свечу дварфу на голову?
 
@@ -1671,6 +1791,18 @@ ent-CEDiamond10 = { ent-CEDiamond1 }
     .desc = { ent-CEDiamond1.desc }
     .suffix = 10
 
+ent-CEWoodenLadderItem = деревянная лестница
+    .desc = Сложенная деревянная лестница. Используйте её на стене, чтобы закрепить, или на открытом краю рядом с собой, чтобы спустить её на уровень ниже.
+    .suffix = 1
+
+ent-CEWoodenLadderItem5 = { ent-CEWoodenLadderItem }
+    .desc = { ent-CEWoodenLadderItem.desc }
+    .suffix = 5
+
+ent-CEWoodenLadderItem10 = { ent-CEWoodenLadderItem }
+    .desc = { ent-CEWoodenLadderItem.desc }
+    .suffix = 10
+
 ent-CELeather1 = кожа
     .desc = Рулон выделанной кожи.
     .suffix = 1
@@ -1708,12 +1840,6 @@ ent-CEMachineCoreHeater = ядро нагревателя
     .desc = { ent-CEBaseMachineCore.desc }
 
 ent-CEMachineCorePress = ядро пресса
-    .desc = { ent-CEBaseMachineCore.desc }
-
-ent-CEMachineCorePressTargetThaumaturgySplitter = ядро тауматургического расщепителя
-    .desc = { ent-CEBaseMachineCore.desc }
-
-ent-CEMachineCoreEssenceAttractor = ядро притягивателя эссенции
     .desc = { ent-CEBaseMachineCore.desc }
 
 ent-CEMachineCoreDistributionUnit = ядро блока распределения
@@ -2028,6 +2154,30 @@ ent-CEBrassBar10 = { ent-CEBrassBar1 }
     .desc = { ent-CEBrassBar1.desc }
     .suffix = 10
 
+ent-CEGoldOre1 = золотая руда
+    .desc = Кусок руды с золотыми прожилками. Может быть переплавлен в золотые слитки.
+    .suffix = 1
+
+ent-CEGoldOre10 = { ent-CEGoldOre1 }
+    .desc = { ent-CEGoldOre1.desc }
+    .suffix = 10
+
+ent-CEGoldOre30 = { ent-CEGoldOre1 }
+    .desc = { ent-CEGoldOre1.desc }
+    .suffix = 30
+
+ent-CEGoldBar1 = золотой слиток
+    .desc = Тяжёлый блестящий слиток очищенного золота
+    .suffix = 1
+
+ent-CEGoldBar5 = { ent-CEGoldBar1 }
+    .desc = { ent-CEGoldBar1.desc }
+    .suffix = 5
+
+ent-CEGoldBar10 = { ent-CEGoldBar1 }
+    .desc = { ent-CEGoldBar1.desc }
+    .suffix = 10
+
 ent-CEIronOre1 = железная руда
     .desc = Кусок железорудного агломерата. Может быть переплавлена в полезные железные бруски.
     .suffix = 1
@@ -2115,6 +2265,9 @@ ent-CEGlassSheet10 = { ent-CEGlassSheet1 }
     .desc = { ent-CEGlassSheet1.desc }
     .suffix = 10
 
+ent-CEMurkShield = щит от мрака
+    .desc = Небольшая сфера, защищающая от мрака. Действует до самого заката.
+
 ent-CEDropper = пипетка
     .desc = Маленькая пипетка для работы с очень малыми объёмами жидкостей.
 
@@ -2151,30 +2304,6 @@ ent-CEVialSkull = флакон-череп
 ent-CEVialSkullReinforced = укреплённый флакон-череп
     .desc = Укреплённый стеклянный флакон в форме черепа для небольшого количества жидкости. Теперь яд точно не прольётся на кожу.
 
-ent-CEVialMediumEarthEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Terra
-
-ent-CEVialMediumFireEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Ignis
-
-ent-CEVialMediumWaterEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Aqua
-
-ent-CEVialMediumAirEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Aer
-
-ent-CEVialMediumOrderEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Ordo
-
-ent-CEVialMediumChaosEssence = { ent-CEVialMedium }
-    .desc = { ent-CEVialMedium.desc }
-    .suffix = Perditio
-
 ent-CEGroundTobacco = молотый табак
     .desc = Измельчённые и высушенные листья табака. Некоторые считают его лекарством.
 
@@ -2195,223 +2324,6 @@ ent-CELightShard4 = четвёртый осколок светсердца
 
 ent-CERestorationRitualBook = восстановление сферы
     .desc = Обучает Ритуалу восстановления Сферы Люксона.
-
-ent-CEBaseEssence = магическая эссенция
-    .desc = Частицы магической энергии, поляризованные в определённый тип магии. Скоро исчезнут, так что постарайтесь собрать их как можно скорее!
-
-ent-CEEssenceEarth = terra
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceFire = ignis
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceWater = aqua
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceAir = aer
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceOrder = ordo
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceChaos = perditio
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T0
-
-ent-CEEssenceFrost = gelum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceLight = lux
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceMotion = motus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceCycle = permutatio
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceEnergia = energia
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceVoid = vacuos
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssencePoison = venenum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceLife = victus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceCrystal = vitreus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceWeather = tempestas
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T1
-
-ent-CEEssenceMagic = praecantatio
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceBeast = bestia
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceHunger = fames
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssencePlant = herba
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceTravel = iter
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceSlime = limus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceMetal = metallum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceDeath = mortuus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceHealing = sano
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceDarkness = tenebrae
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceTrap = vinculum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceFlight = volatus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T2
-
-ent-CEEssenceEldritch = alienis
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceTree = arbor
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceAura = auram
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceFlesh = corpus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceUndead = exanimis
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceSoul = spiritus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceTaint = vitium
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T3
-
-ent-CEEssenceMind = cognitio
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T4
-
-ent-CEEssenceSenses = sensus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T4
-
-ent-CEEssenceHuman = humanus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T5
-
-ent-CEEssenceTool = instrumentum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T6
-
-ent-CEEssenceCrop = messis
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T6
-
-ent-CEEssenceGreed = lucrum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T6
-
-ent-CEEssenceMining = perfodio
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T6
-
-ent-CEEssenceCraft = fabrico
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEEssenceMachine = machina
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEEssenceCloth = pannus
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEEssenceWeapon = telum
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEEssenceArmor = tutamen
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEEssenceHarvest = meto
-    .desc = { ent-CEBaseEssence.desc }
-    .suffix = T7
-
-ent-CEPortableMagicEssenceAttractor = портативный притягиватель эссенции
-    .desc = Складное тауматургическое устройство, которое в развёрнутом виде и при заряде маной притягивает из воздуха парящую магическую эссенцию.
-
-ent-CEUnselectedDiscoveryProject = черновик исследовательского предложения
-    .desc = Путаные записки учёного о великих открытиях, которые вот-вот будут сделаны. Пока разобраться в них может только сам автор.
-
-ent-CEDiscoveryProjectBase = исследовательский проект
-    .desc = { "" }
-
-ent-CEDiscoveryProjectEngineering = инженерный исследовательский проект
-    .desc = { "" }
-
-ent-CEDiscoveryProjectSpellcasting = исследовательский проект по колдовству
-    .desc = { "" }
-
-ent-CEThaumaturgicMagnifyingGlass = тауматургическая лупа
-    .desc = Линза, настроенная на остаточную магию. В руках показывает ближайшие предметы и существа, представляющие научный интерес, и позволяет изучать их для получения очков исследования.
-
-ent-CEThaumaturgicMagnifyingGlassAdmin = { ent-CEThaumaturgicMagnifyingGlass }
-    .desc = { ent-CEThaumaturgicMagnifyingGlass.desc }
-    .suffix = Admin, Instant
 
 ent-CEBaseKeyRing = кольцо для ключей
     .desc = Позволяет вам удобно хранить большое количество ключей в одном месте.
@@ -2563,22 +2475,6 @@ ent-CEBaseLock = замок
 ent-CELockIron = железный замок
     .desc = { ent-CEBaseLock.desc }
 
-ent-CEKeyAcademyHall = { ent-CEKeyIronBlank }
-    .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Academy Hall
-
-ent-CEKeyAcademyTechnical = { ent-CEKeyIronBlank }
-    .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Academy Technical
-
-ent-CEKeyAcademyLab = { ent-CEKeyIronBlank }
-    .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Academy Lab
-
-ent-CEKeyAcademyRectorRoom = { ent-CEKeyIronBlank }
-    .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Academy Rector Room
-
 ent-CEKeyUniversal = универсальный ключ
     .desc = { ent-CEBaseKey.desc }
     .suffix = Только для админов, не маппить
@@ -2616,17 +2512,6 @@ ent-CEKeyEngineeringStorage = { ent-CEKeyEngineeringBase }
     .desc = { ent-CEKeyEngineeringBase.desc }
     .suffix = Engineering Storage
 
-ent-CEKeySheriffBase = { ent-CEKeyIronBlank }
-    .desc = { ent-CEKeyIronBlank.desc }
-
-ent-CEKeySheriffHall = { ent-CEKeySheriffBase }
-    .desc = { ent-CEKeySheriffBase.desc }
-    .suffix = Зал шерифа
-
-ent-CEKeySheriffStaff = { ent-CEKeySheriffBase }
-    .desc = { ent-CEKeySheriffBase.desc }
-    .suffix = Персонал шерифа
-
 ent-CEKeyGuildLobby = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Guild Lobby
@@ -2638,6 +2523,21 @@ ent-CEKeyGuildInner = { ent-CEKeyIronBlank }
 ent-CEKeyGuildStorage = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Guild Storage
+
+ent-CEKeyGuildmasterRoom = { ent-CEKeyIronBlank }
+    .desc = { ent-CEKeyIronBlank.desc }
+    .suffix = Guildmaster Room
+
+ent-CEKeySheriffBase = { ent-CEKeyIronBlank }
+    .desc = { ent-CEKeyIronBlank.desc }
+
+ent-CEKeySheriffHall = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
+    .suffix = Зал шерифа
+
+ent-CEKeySheriffStaff = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
+    .suffix = Персонал шерифа
 
 ent-CEKeyTavernHall = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
@@ -2718,8 +2618,9 @@ ent-CEKeyHomeGoodsHome = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Home Goods Home
 
-ent-CEWeaponGunArbiter = арбитр
-    .desc = Высококачественная винтовка дальнего действия, которая стреляет двумя мощными залпами маны в быстрой последовательности. Она очень громкая, и её слышно на половине острова.
+ent-CEWeaponGunPeacekeeperGolden = золотой Миротворец
+    .desc = Низкозарядная энергетическая винтовка, которая стреляет мощным отталкивающим лучом концентрированной маны. Особый экземпляр, изготовленный в единственном числе на заказ для шерифа. Вмещает чуть больше зарядов.
+    .suffix = Theft Target
 
 ent-CEWeaponClubWooden = тяжёлая дубина
     .desc = Тяжёлая деревянная дубина. Тупая, жестокая и эффективная.
@@ -2847,38 +2748,6 @@ ent-CEWoodenDoorWindowedMirrored = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
     .suffix = Открыта, Отзеркалено
 
-ent-CEIronDoorAcademyHall = { ent-CEIronDoorWindowed }
-    .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Academy Hall
-
-ent-CEIronDoorAcademyHallMirrored = { ent-CEIronDoorWindowedMirrored }
-    .desc = { ent-CEIronDoorWindowedMirrored.desc }
-    .suffix = Academy Hall, Mirrored
-
-ent-CEIronDoorAcademyTechnical = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Academy Technical
-
-ent-CEIronDoorAcademyTechnicalMirrored = { ent-CEIronDoorMirrored }
-    .desc = { ent-CEIronDoorMirrored.desc }
-    .suffix = Academy Technical, Mirrored
-
-ent-CEIronDoorAcademyLab = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Academy Lab
-
-ent-CEIronDoorAcademyLabMirrored = { ent-CEIronDoorMirrored }
-    .desc = { ent-CEIronDoorMirrored.desc }
-    .suffix = Academy Lab, Mirrored
-
-ent-CEIronDoorAcademyRectorRoom = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Academy Rector Room
-
-ent-CEIronDoorAcademyRectorRoomMirrored = { ent-CEIronDoorMirrored }
-    .desc = { ent-CEIronDoorMirrored.desc }
-    .suffix = Academy Rector Room, Mirrored
-
 ent-CEIronDoorEngineeringHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
     .suffix = Engineering Hall
@@ -2931,22 +2800,6 @@ ent-CEIronGrateEngineeringTunnels = { ent-CEFenceGateBigIron }
     .desc = { ent-CEFenceGateBigIron.desc }
     .suffix = Engineering Tunnels
 
-ent-CEIronDoorSheriffHall = { ent-CEIronDoorWindowed }
-    .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Зал шерифа
-
-ent-CEIronDoorSheriffHallMirrored = { ent-CEIronDoorSheriffHall }
-    .desc = { ent-CEIronDoorSheriffHall.desc }
-    .suffix = Зал шерифа, Отзеркалено
-
-ent-CEIronDoorSheriffStaff = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Персонал шерифа
-
-ent-CEIronDoorSheriffStaffMirrored = { ent-CEIronDoorMirrored }
-    .desc = { ent-CEIronDoorMirrored.desc }
-    .suffix = Персонал шерифа, Отзеркалено
-
 ent-CEWoodenDoorGuildLobby = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
     .suffix = Guild Lobby
@@ -2962,6 +2815,30 @@ ent-CEIronDoorGuildStorage = { ent-CEIronDoor }
 ent-CEIronDoorGuildStorageMirrored = { ent-CEIronDoorMirrored }
     .desc = { ent-CEIronDoorMirrored.desc }
     .suffix = Guild Storage, Mirrored
+
+ent-CEIronDoorGuildmasterRoom = { ent-CEIronDoor }
+    .desc = { ent-CEIronDoor.desc }
+    .suffix = Guildmaster Room
+
+ent-CEIronDoorGuildmasterRoomMirrored = { ent-CEIronDoorMirrored }
+    .desc = { ent-CEIronDoorMirrored.desc }
+    .suffix = Guildmaster Room, Mirrored
+
+ent-CEIronDoorSheriffHall = { ent-CEIronDoorWindowed }
+    .desc = { ent-CEIronDoorWindowed.desc }
+    .suffix = Зал шерифа
+
+ent-CEIronDoorSheriffHallMirrored = { ent-CEIronDoorSheriffHall }
+    .desc = { ent-CEIronDoorSheriffHall.desc }
+    .suffix = Зал шерифа, Отзеркалено
+
+ent-CEIronDoorSheriffStaff = { ent-CEIronDoor }
+    .desc = { ent-CEIronDoor.desc }
+    .suffix = Персонал шерифа
+
+ent-CEIronDoorSheriffStaffMirrored = { ent-CEIronDoorMirrored }
+    .desc = { ent-CEIronDoorMirrored.desc }
+    .suffix = Персонал шерифа, Отзеркалено
 
 ent-CEWoodenDoorTavernHall = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
@@ -3178,6 +3055,10 @@ ent-CEWallStoneOreDiamond = { ent-CEBaseWall }
     .desc = { ent-CEBaseWall.desc }
     .suffix = Diamond Ore
 
+ent-CEWallStoneOreGold = { ent-CEBaseWall }
+    .desc = { ent-CEBaseWall.desc }
+    .suffix = Gold Ore
+
 ent-CEOreCoreBase = {{ ent-CEBaseWall }}
     .desc = { ent-CEBaseWall.desc }
 
@@ -3192,6 +3073,9 @@ ent-CEWallCrystalCore = ядро кристалла энергии
 
 ent-CEWallDiamondCore = ядро алмазной руды
     .desc = Невероятно твёрдое ядро, усыпанное алмазами. Кирки и обычные буры от него просто отскакивают - разбить его может только продвинутый бур или горный лазер манипулятора.
+
+ent-CEWallGoldCore = ядро золотой руды
+    .desc = Невероятно твёрдое и богатое золотом рудное ядро. Вы можете разбить его киркой, но лучше использовать какой-нибудь автоматический бур...
 
 ent-CEWallFrameStoneBrick = основание каменной кирпичной стены
     .desc = { ent-CEBaseWallFrame.desc }
@@ -3248,18 +3132,6 @@ ent-CEBoneSpine = костяной хребет
 
 ent-CEBoneDragon = костяной дракон
     .desc = Огромный скелет дракона. Возможность встретить такое существо одновременно завораживает и пугает.
-
-ent-CECobwebLeft1 = { ent-CECobwebRight1 }
-    .desc = { ent-CECobwebRight1.desc }
-    .suffix = Left. Corner.
-
-ent-CECobwebLeft2 = { ent-CECobwebRight1 }
-    .desc = { ent-CECobwebRight1.desc }
-    .suffix = Left. Flat.
-
-ent-CECobwebRight2 = { ent-CECobwebLeft2 }
-    .desc = { ent-CECobwebLeft2.desc }
-    .suffix = Right. Flat.
 
 ent-CEWallmountGarlandRed = { ent-CEWallmauntGarlandBase }
     .desc = { ent-CEWallmauntGarlandBase.desc }
@@ -3829,6 +3701,9 @@ ent-CEOrderBoardYellow = { ent-CEOrderBoard }
     .desc = { ent-CEOrderBoard.desc }
     .suffix = Yellow flag
 
+ent-CEPot = глиняный горшок
+    .desc = Хрупкий глиняный горшок. Кто знает, что внутри?
+
 ent-CEPottedPlantBase = растение в горшке
     .desc = Одомашненное растение в глиняном горшке, ещё растения.
 
@@ -3843,9 +3718,6 @@ ent-CEPottedPlant3 = { ent-CEPottedPlantBase }
 
 ent-CEPottedPlant4 = { ent-CEPottedPlantBase }
     .desc = { ent-CEPottedPlantBase.desc }
-
-ent-CEPot = глиняный горшок
-    .desc = Хрупкий глиняный горшок. Кто знает, что внутри?
 
 ent-CEWoodenSpikes = деревянные колья
     .desc = Острые деревянные колья, вбитые в землю. На них определённо не хочется падать!
@@ -3899,6 +3771,9 @@ ent-CEWallmountBarShelf = барная полка
 ent-CEWallmountKeyRack = вешалка для ключей
     .desc = Деревянная настенная доска с пазами для ключей.
 
+ent-CEWoodenLadder = деревянная лестница
+    .desc = Деревянная лестница, прибитая к стене. Идите в стену, чтобы взбираться, идите шагом, чтобы держаться.
+
 ent-CEConveyorBelt = конвейерная лента
     .desc = Транспортирует предметы в указанном направлении.
 
@@ -3938,9 +3813,6 @@ ent-CELamppostCurve = { ent-CELamppostBase }
 ent-CEPressTargetAnvil = промышленная наковальня
     .desc = Прочная наковальня для промышленного пресса. Используется, чтобы сплющивать предметы.
 
-ent-CEPressTargetThaumaturgySplitter = тауматургический расщепитель
-    .desc = Зачарованная платформа для пресса, позволяющая разлагать предметы на первичные эссенции.
-
 ent-CEShuttleWingBase = крыло дирижабля
     .desc = Гигантские перепончатые крылья, способные, вместе с магией, удерживать в воздухе самые тяжёлые объекты.
 
@@ -3966,6 +3838,26 @@ ent-CEWallLightBase = настенная лампа
 ent-CEWallLightOrange = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
 
+ent-CEWallLightPink = { ent-CEWallLightBase }
+    .desc = { ent-CEWallLightBase.desc }
+    .suffix = Pink
+
+ent-CEWallLightCyan = { ent-CEWallLightBase }
+    .desc = { ent-CEWallLightBase.desc }
+    .suffix = Cyan
+
+ent-CEWallLightGreen = { ent-CEWallLightBase }
+    .desc = { ent-CEWallLightBase.desc }
+    .suffix = Green
+
+ent-CEWallLightPurple = { ent-CEWallLightBase }
+    .desc = { ent-CEWallLightBase.desc }
+    .suffix = Purple
+
+ent-CEWallLightRed = { ent-CEWallLightBase }
+    .desc = { ent-CEWallLightBase.desc }
+    .suffix = Red
+
 ent-CEDrillAdvanced = улучшенный стационарный бур
     .desc = Промышленный бур, перестроенный с усиленными компонентами, бьёт вдвое сильнее стандартной модели.
 
@@ -3977,9 +3869,6 @@ ent-CEMachineFrame = { ent-CEMachineFrameBase }
 
 ent-CEMachineFrameDestroyed = разрушенный каркас машины
     .desc = { "" }
-
-ent-CEMurkShield = щит от мрака
-    .desc = Небольшая сфера, защищающая от мрака. Действует до самого заката.
 
 ent-CEAccumulatorVessel = { ent-CEAccumulatorVesselBase }
     .desc = { ent-CEAccumulatorVesselBase.desc }
@@ -4042,44 +3931,6 @@ ent-CEPipeBrassMediumBroken = { ent-CEPipeBrassMedium }
     .desc = Повреждённая латунная труба. Магическая энергия, протекающая через неё, будет вытекать здесь и может представлять серьёзную опасность для существ, восприимчивых к магии.
     .suffix = Сломана
 
-ent-CEWallRadioSpeakerBase = громкоговоритель
-    .desc = Устройство удалённого радиовещания.
-
-ent-CEWallRadioSpeaker = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common
-
-ent-CEWallRadioSpeakerAcademy = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Academy
-
-ent-CEWallRadioSpeakerEngineering = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Engineering
-
-ent-CEWallRadioSpeakerTavern = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Tavern
-
-ent-CERadioPostSpeakerBase = стойка с громкоговорителем
-    .desc = Устройство удалённого радиовещания.
-
-ent-CERadioPostSpeaker = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common
-
-ent-CERadioPostSpeakerAcademy = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Academy
-
-ent-CERadioPostSpeakerEngineering = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Engineering
-
-ent-CERadioPostSpeakerTavern = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Tavern
-
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
     .suffix = Случайный рост
@@ -4115,6 +3966,10 @@ ent-CESnowdrift = сугроб
 ent-CESpiderWeb = паутина
     .desc = Нитевидная и липкая.
 
+ent-CEPlantAgaricGrown = { ent-CEPlantAgaric }
+    .desc = { ent-CEPlantAgaric.desc }
+    .suffix = Grown
+
 ent-CEPlantCabbageDead = мёртвая капуста
     .desc = { ent-CEPlantDeadBase.desc }
 
@@ -4125,6 +3980,10 @@ ent-CEPlantCarrotDead = мёртвая морковь
 ent-CEPlantChanterelleDead = мёртвая лисичка
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
+
+ent-CEPlantChanterelleGrown = { ent-CEPlantChanterelle }
+    .desc = { ent-CEPlantChanterelle.desc }
+    .suffix = Grown
 
 ent-CEPlantCornDead = мёртвая кукуруза
     .desc = { ent-CEPlantDeadBase.desc }
@@ -4193,14 +4052,8 @@ ent-CEFloraTreeSpruce = { ent-CEBaseTree }
 ent-CERitualPedestal = пьедестал ритуала
     .desc = Пьедестал для осколка светсердца. Когда все осколки лежат у Сферы Люксона, можно начать Ритуал восстановления.
 
-ent-CEMagicEssenceNode = нода магической эссенции
-    .desc = Скопление магической эссенции, ненадолго обретшее форму в физической реальности.
-
-ent-CENodeStabilizerSphere = сфера-стабилизатор ноды
-    .desc = Большая стеклянная сфера в латунном кольце. Закреплённая и запитанная на ноде магической эссенции, она останавливает старение ноды, сохраняя её бесконечно, пока та продолжает вырабатывать эссенцию.
-
 ent-CEShadowRift = теневой разлом
-    .desc = Прореха в мироздании. С наступлением ночи из неё выходят теневые торговцы, а на рассвете ускользают обратно.
+    .desc = Разрыв в ткани мира. С наступлением ночи из него выходят теневые торговцы, а на рассвете ускользают обратно.
     .suffix = Traders
 
 ent-CEActionEnterShadowRift = Войти в разлом
@@ -4271,54 +4124,6 @@ ent-CERestorationRitualBookPostament = { ent-CETradePostamentBase }
     .desc = { ent-CETradePostamentBase.desc }
     .suffix = книга восстановления
 
-ent-CEWalletFilledAcademyProfessor = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEChestFilledAcademyProfessor = { ent-CEWoodenChest }
-    .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Academy Professor
-
-ent-CEBedsideTableFilledAcademyProfessor = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Academy Professor
-
-ent-CEKeyRingAcademyProfessor = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
-ent-CEWalletFilledAcademyRector = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEChestFilledAcademyRector = { ent-CEGoldChest }
-    .desc = { ent-CEGoldChest.desc }
-    .suffix = Filled, Academy Rector
-
-ent-CEBedsideTableFilledAcademyRector = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Academy Rector
-
-ent-CEKeyRingAcademyRector = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
-ent-CEWalletFilledAcademyStudent = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEChestFilledAcademyStudent = { ent-CEWoodenChest }
-    .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Academy Student
-
-ent-CEBedsideTableFilledAcademyStudent = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Academy Student
-
-ent-CEKeyRingAcademyStudent = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
 ent-CEWalletFilledBard = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
     .suffix = Пусто
@@ -4367,13 +4172,25 @@ ent-CEKeyRingTechnician = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEBedsideTableFilledSheriff = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Sheriff
+ent-CEWalletFilledAdventurer = { ent-CEWallet }
+    .desc = { ent-CEWallet.desc }
+    .suffix = Пусто
 
-ent-CEChestFilledSheriff = { ent-CEWoodenChest }
-    .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Sheriff
+ent-CEWalletFilledGuildmaster = { ent-CEWallet }
+    .desc = { ent-CEWallet.desc }
+    .suffix = Пусто
+
+ent-CEChestFilledGuildmaster = { ent-CEGoldChest }
+    .desc = { ent-CEGoldChest.desc }
+    .suffix = Filled, Guildmaster
+
+ent-CEBedsideTableFilledGuildmaster = { ent-CEBedsideTableWooden }
+    .desc = { ent-CEBedsideTableWooden.desc }
+    .suffix = Filled, Guildmaster
+
+ent-CEKeyRingGuildmaster = { ent-CEBaseKeyRing }
+    .desc = { ent-CEBaseKeyRing.desc }
+    .suffix = Пусто
 
 ent-CEWalletFilledSheriff = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
@@ -4383,17 +4200,13 @@ ent-CEKeyRingSheriff = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEWalletFilledAdventurer = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
+ent-CEBedsideTableFilledSheriff = { ent-CEBedsideTableWooden }
+    .desc = { ent-CEBedsideTableWooden.desc }
+    .suffix = Filled, Sheriff
 
-ent-CEWalletFilledGuildmaster = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEKeyRingGuildmaster = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
+ent-CEChestFilledSheriff = { ent-CEWoodenChest }
+    .desc = { ent-CEWoodenChest.desc }
+    .suffix = Filled, Sheriff
 
 ent-CEWalletFilledBartender = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
@@ -4468,9 +4281,6 @@ ent-CEObjectiveRecruiterRecruit = Завербуйте людей
 ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
     .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
-ent-CEObjectiveVandalSabotageRadio = Саботаж радиосвязи
-    .desc = Никакой пропаганды в моём городе. Все радиостанции должны быть уничтожены.
-
 ent-CEObjectiveBrotherhoodSurvive = Сохранить братство
     .desc = Все члены братства должны выжить.
 
@@ -4480,14 +4290,8 @@ ent-CEObjectiveBrotherhoodPatronage = Покровительство
 ent-CEObjectiveBrotherhoodDebt = Должок
     .desc = Этот человек в прошлом перешёл дорогу братству. Сделайте его жизнь невыносимой. Он должен оказаться в критическом состоянии 3 раза, но при этом выжить, чтобы выучить свой урок.
 
-ent-CEPaperBountyHunterContract = заказ
-    .desc = Короткое письмо без обратного адреса.
-
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
-
-ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
-    .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
 
 ent-CEObjectiveLoverAssist = Помогите возлюбленному
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно любите, выполнил все свои личные цели.
@@ -4498,6 +4302,9 @@ ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жи
 ent-CEObjectivePriestSurvive = Выжить
     .desc = Среди этого города есть существа, жаждающие моей смерти.
 
+ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
+    .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
+
 ent-CEObjectiveCityRestoreLucsonSphere = Восстановите Сферу Люксона
     .desc = Купите у Каравана теней осколки светсердца и книгу восстановления сферы, затем проведите Ритуал восстановления у Сферы Люксона, пока мрак не поглотил город.
 
@@ -4506,6 +4313,27 @@ ent-CEObjectiveNightmareKillPriests = Смерть свету
 
 ent-CEObjectiveNightmareSphereCollapse = Погрузите Город во мрак.
     .desc = Сфера Люксона дала трещину. Не позвольте городу восстановить её, пока мрак не поглотил его.
+
+ent-CEActionDarkSideBanishment = Изгнание на тёмную сторону
+    .desc = Прикосновением вы изгоняете существо из материального мира на минуту. Увидеть его там смогут лишь те, кто воспринимает магию.
+
+ent-CEActionToggleDarkSideWalk = Шаг на тёмную сторону
+    .desc = Покиньте материальный мир или вернитесь в него по своему желанию.
+
+ent-CEStatusEffectDarkSide = на тёмной стороне
+    .desc = Вы находитесь вне материального мира. Увидеть вас могут лишь те, кто воспринимает магию.
+
+ent-CEActionImperialSalary200 = Жалование Империи
+    .desc = Империя платит своим слугам 2 золотых на каждом рассвете. Заберите накопившееся жалование.
+
+ent-CEActionToggleMagicVision = Магическое зрение
+    .desc = Вы сосредотачиваетесь на магических потоках и видите скрытый мир магии.
+
+ent-CEStatusEffectMagicVision = магическое зрение
+    .desc = Вы видите скрытый мир магии.
+
+ent-CEActionManaControl = Контроль маны
+    .desc = Переключение между восстановлением и расходом маны.
 
 ent-CEStatusEffectManaRegen = восстановление маны
     .desc = Ваша мана постоянно восстанавливается.
@@ -4516,17 +4344,14 @@ ent-CEStatusEffectManaDrain = расход маны
 ent-CEActionMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость и страх. Переведите дух, чтобы мгновенно восстановить выносливость и стряхнуть первобытный ужас.
 
-ent-CEActionImperialSalary200 = Жалование Империи
-    .desc = Империя платит своим слугам 2 золотых на каждом рассвете. Заберите накопившееся жалование.
-
-ent-CEActionShopEmpireSheriff = Имперское снабжение
-    .desc = Закажите снаряжение со складов Империи.
-
 ent-CEStatusEffectMurkwalker = иммунитет к мраку
     .desc = { "" }
 
 ent-CEActionRestorationRitual = Ритуал восстановления Сферы Люксона
     .desc = Начать ритуал на треснувшей Сфере Люксона, когда все осколки светсердца лежат на пьедесталах ритуала. Обнажённое ядро должно уцелеть до конца ритуала.
+
+ent-CEActionShopEmpireSheriff = Имперское снабжение
+    .desc = Закажите снаряжение со складов Империи.
 
 ent-CEStatusEffectSoftLanding = мягкая посадка
     .desc = { "" }
@@ -4534,11 +4359,11 @@ ent-CEStatusEffectSoftLanding = мягкая посадка
 ent-CEStatusEffectTimeSense = чувство времени
     .desc = Вы интуитивно чувствуете, какое сейчас время дня.
 
-ent-CEStatusEffectVandalCrushing = крушение
-    .desc = { "" }
-
 ent-CEActionRecruit = Вербовка
     .desc = Пригласите кого-то рядом вступить в братство. Он может отказаться.
+
+ent-CEActionSoulGaze = Взгляд в душу
+    .desc = Загляните в чью-то душу и узнайте её истинную природу. Цель это почувствует.
 
 ent-CEStatusEffectMysticVitality = мистическая живучесть
     .desc = { "" }
@@ -4570,9 +4395,6 @@ ent-CEEffectBreakDivineShield = разрушение защитного барь
 
 ent-CEActionSpellResurrection = Воскрешение
     .desc = Вы возвращаете душу мёртвого существа, которого коснулись, обратно в его тело, полностью исцеляя его раны. Не срабатывает, если душа покинула тело навсегда.
-
-ent-CEStatusEffectKnowledgeCopying = копирование знаний
-    .desc = { "" }
 
 ent-CEActionSpellFeatherFall = Падение пёрышка
     .desc = Вы вызываете мягкий восходящий поток, сильно ослабляющий гравитацию для всех в области, позволяя им падать медленно и безопасно.
@@ -5234,7 +5056,7 @@ ent-CESnowball = снежок
     .desc = Небольшая горсть снега, удобная для метания.
 
 ent-CEWeaponGunJustice = Револьвер "Справедливость"
-    .desc = Быстрый и удобный револьвер шерифа, из которого можно легко стрелять двумя руками.
+    .desc = Быстрый и удобный револьвер шерифа, из которого легко стрелять двумя руками.
 
 ent-CEWeaponGunPeacekeeper = Миротворец
     .desc = Низкозарядная энергетическая винтовка, которая стреляет мощным отталкивающим лучом концентрированной маны.
@@ -5413,10 +5235,6 @@ ent-CEWindowWooden = деревянное окно
 ent-CEWindowFrameWooden = деревянная оконная рама
     .desc = { ent-CEBaseWindowFrame.desc }
 
-ent-CECobwebRight1 = паутина
-    .desc = Липкая паутина, на удивление прочная и неприятная.
-    .suffix = Right. Corner.
-
 ent-CEWallmauntGarlandBase = гирлянда из кристаллов
     .desc = Аккуратно изготовленные сверкающие кристаллы, нанизанные на нить. Для праздничного настроения.
 
@@ -5503,9 +5321,6 @@ ent-CELargeWoodenCrate = большой деревянный ящик
 ent-CESmallWoodenCrate = малый деревянный ящик
     .desc = Прочный деревянный ящик.
 
-ent-CEResearchTable = исследовательский стол
-    .desc = Стол для проведения научных исследований.
-
 ent-CEWorkbench = верстак
     .desc = Стол для производства различных базовых инструментов.
 
@@ -5540,14 +5355,17 @@ ent-CEFunnel = воронка
 ent-CEMapProjector = проектор карты
     .desc = Проецирует трёхмерную вращающуюся модель острова.
 
+ent-CEMurkShieldGenerator = генератор щита от мрака
+    .desc = Зажигает щит от мрака каждый рассвет, если подключён к питанию. Горит только один щит одновременно, независимо от количества генераторов.
+
 ent-CEPowerGridProjector = проектор энергосети острова
     .desc = Проецирует трёхмерную вращающуюся модель острова с подробной схемой всех энергетических устройств.
 
 ent-CERecycler = переработчик
     .desc = Большая разрушительная машина, используемая для извлечения энергии из магических предметов путём их уничтожения. Также может использоваться как способ переработки предметов в базовые материалы.
 
-ent-CEMurkShieldGenerator = генератор щита от мрака
-    .desc = Зажигает щит от мрака каждый рассвет, если подключён к питанию. Горит только один щит одновременно, независимо от количества генераторов.
+ent-CESolutionNormalizer = нормализатор растворов
+    .desc = Алхимическое устройство, уничтожающее реагент, которого в залитом в него растворе меньше всего, постепенно приводя смеси к их преобладающим реагентам. Для работы требуется энергия.
 
 ent-CEAccumulatorVesselBase = аккумулирующий сосуд
     .desc = Конструкция, собирающая магическую энергию и хранящая её для дальнейшего использования.
@@ -5568,11 +5386,11 @@ ent-CEGeneratorMagicCapacitor = воздушный конденсатор
 ent-CEPipeBrassBigBase = { "" }
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CERadioStation = радиорубка
-    .desc = Вещательная консоль. Когда она включена, всё сказанное рядом с ней повторяется громкоговорителями на её частотах.
-
 ent-CEHighBush = куст
     .desc = Толстый быстрорастущий сорняк
+
+ent-CEPlantAgaric = мухомор
+    .desc = Ярко-красный гриб с белыми крапинками. Лучше его не есть.
 
 ent-CEPlantAppleTree = яблоня
     .desc = Крепкое дерево, приносящее вкусные яблоки.
@@ -5618,12 +5436,6 @@ ent-CEPlantTomatoes = помидоры
 
 ent-CEPlantWheat = пшеница
     .desc = Самая популярная культура. Неприхотливая, она открывает путь к изобилию мучных изделий.
-
-ent-CEMagicEssenceAttractor = притягиватель эссенции
-    .desc = Тауматургическое устройство, притягивающее из воздуха парящую магическую эссенцию и конденсирующее её в собираемую жидкость, пока оно запитано.
-
-ent-CESolutionNormalizer = нормализатор растворов
-    .desc = Алхимическое устройство, уничтожающее реагент, которого в залитом в него растворе меньше всего, постепенно приводя смеси к их преобладающим реагентам. Для работы требуется энергия.
 
 ent-CEVehicleHoverboard = ховерборд
     .desc = Парящее личное транспортное средство.

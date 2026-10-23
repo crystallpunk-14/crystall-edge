@@ -1,7 +1,7 @@
+using System.Linq;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
-using Content.Shared.Mind;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -14,23 +14,14 @@ public sealed partial class AddAction : CESkillEffect
 
     public override void AddSkill(IEntityManager entManager, EntityUid target)
     {
-        var actionsSystem = entManager.System<SharedActionsSystem>();
-        var actionsContainerSys = entManager.System<ActionContainerSystem>();
-        var mindSys = entManager.System<SharedMindSystem>();
-
-        if (!mindSys.TryGetMind(target, out var mind, out _))
-            actionsSystem.AddAction(target, Action);
-        else
-            actionsContainerSys.AddAction(mind, Action);
+        entManager.System<SharedActionsSystem>().AddAction(target, Action);
     }
 
     public override void RemoveSkill(IEntityManager entManager, EntityUid target)
     {
         var actionsSystem = entManager.System<SharedActionsSystem>();
-        var actionsContainerSys = entManager.System<ActionContainerSystem>();
-        var mindSys = entManager.System<SharedMindSystem>();
 
-        foreach (var (uid, _) in actionsSystem.GetActions(target))
+        foreach (var (uid, _) in actionsSystem.GetActions(target).ToList())
         {
             if (!entManager.TryGetComponent<MetaDataComponent>(uid, out var metaData))
                 continue;
@@ -41,10 +32,7 @@ public sealed partial class AddAction : CESkillEffect
             if (metaData.EntityPrototype != Action)
                 continue;
 
-            if (!mindSys.TryGetMind(target, out var mind, out _))
-                actionsSystem.RemoveAction(target, uid);
-            else
-                actionsContainerSys.RemoveAction(uid);
+            actionsSystem.RemoveAction(target, uid);
         }
     }
 

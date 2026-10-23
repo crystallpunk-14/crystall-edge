@@ -23,9 +23,6 @@
     slots:
     - ears
     sprite: Clothing/Ears/Headsets/base.rsi
-  - type: GuideHelp
-    guides:
-    - Radio
 
 - type: entity
   parent: ClothingHeadset
@@ -63,21 +60,6 @@
       - EncryptionKeyCargo
       - EncryptionKeyCommand
       - EncryptionKeyCommon
-
-- type: entity
-  parent: [ClothingHeadset, BaseCommandContraband]
-  id: ClothingHeadsetCommand
-  name: command headset
-  description: A headset with a commanding channel.
-  components:
-  - type: ContainerFill
-    containers:
-      key_slots:
-      - EncryptionKeyStationMaster
-  - type: Sprite
-    sprite: Clothing/Ears/Headsets/command.rsi
-  - type: Clothing
-    sprite: Clothing/Ears/Headsets/command.rsi
 
 - type: entity
   parent: ClothingHeadset

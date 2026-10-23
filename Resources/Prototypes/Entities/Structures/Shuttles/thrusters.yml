@@ -42,9 +42,6 @@
   - type: ExtensionCableReceiver
   - type: StaticPrice
     price: 300
-  - type: GuideHelp
-    guides:
-    - ShuttleCraft
 
 - type: entity
   id: Thruster

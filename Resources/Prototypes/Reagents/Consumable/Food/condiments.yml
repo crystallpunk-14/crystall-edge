@@ -1,14 +1,4 @@
 - type: reagent
-  id: BbqSauce
-  name: reagent-name-bbq-sauce
-  group: Foods
-  desc: reagent-desc-bbq-sauce
-  physicalDesc: reagent-physical-desc-gloopy
-  flavor: sweet
-  color: darkred
-  recognizable: true
-
-- type: reagent
   id: Cornoil
   name: reagent-name-cornoil
   group: Foods
@@ -29,16 +19,6 @@
   recognizable: true
 
 - type: reagent
-  id: Hotsauce
-  name: reagent-name-hotsauce
-  group: Foods
-  desc: reagent-desc-hotsauce
-  physicalDesc: reagent-physical-desc-spicy
-  flavor: spicy
-  color: red
-  recognizable: true
-
-- type: reagent
   id: Ketchup
   name: reagent-name-ketchup
   group: Foods
@@ -56,16 +36,6 @@
   physicalDesc: reagent-physical-desc-funny
   flavor: sweet
   color: "#803280"
-  recognizable: true
-
-- type: reagent
-  id: Mayo
-  name: reagent-name-mayo
-  group: Foods
-  desc: reagent-desc-mayo
-  physicalDesc: reagent-physical-desc-thick
-  flavor: mayonnaise
-  color: "#f9f5e5"
   recognizable: true
 
 - type: reagent

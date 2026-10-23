@@ -15,9 +15,6 @@
     - ConstructionMaterial
   - type: Damageable
     damageModifierSet: Metallic
-  - type: GuideHelp
-    guides:
-    - ExpandingRepairingStation
 
 - type: entity
   parent: SheetMetalBase

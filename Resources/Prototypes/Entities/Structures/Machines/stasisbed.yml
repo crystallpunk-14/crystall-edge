@@ -53,8 +53,5 @@
         density: 190
         mask:
         - LowImpassable
-  - type: GuideHelp
-    guides:
-    - MedicalDoctor
   - type: PowerSwitch
   - type: AmbientMusicMarkerMedical

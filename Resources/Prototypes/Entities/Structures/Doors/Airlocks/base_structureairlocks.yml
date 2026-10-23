@@ -194,23 +194,10 @@
       # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
   - type: PryUnpowered
   - type: BlockWeather
-  - type: GuideHelp
-    guides:
-    - Airlocks
-    - WirePanels
-    - Networking
   - type: StructureAligner
   - type: StructureAlignerPylon
   placement:
     mode: SnapgridCenter
-
-- type: entity
-  id: AirlockRCDResistant
-  parent: Airlock
-  abstract: true
-  components:
-  - type: RCDDeconstructable
-    deconstructable: false
 
 - type: entity
   id: AirlockGlass

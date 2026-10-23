@@ -40,10 +40,6 @@
   id: AirlockCommand
 
 - type: wireLayout
-  parent: Airlock
-  id: AirlockExternal
-
-- type: wireLayout
   id: HighSec
   wires:
   - !type:PowerWireAction
@@ -65,24 +61,6 @@
   - !type:VendingMachineContrabandWireAction
   - !type:VendingMachineEjectItemWireAction
   - !type:SpeechWireAction
-
-- type: wireLayout
-  id: AirAlarm
-  wires:
-  - !type:AiInteractWireAction
-  - !type:PowerWireAction
-  - !type:AccessWireAction
-  - !type:LogWireAction
-  - !type:AirAlarmPanicWire
-  - !type:AtmosMonitorDeviceNetWire
-
-- type: wireLayout
-  id: FireAlarm
-  wires:
-  - !type:AiInteractWireAction
-  - !type:PowerWireAction
-  - !type:AtmosMonitorDeviceNetWire
-    alarmOnPulse: true
 
 - type: wireLayout
   id: Arcade
@@ -117,31 +95,6 @@
   - !type:ParticleAcceleratorLimiterWireAction
   - !type:ParticleAcceleratorPowerWireAction
   - !type:ParticleAcceleratorStrengthWireAction
-
-- type: wireLayout
-  id: Docking
-  dummyWires: 2
-  wires:
-  - !type:PowerWireAction
-  - !type:PowerWireAction
-    pulseTimeout: 15
-  - !type:LogWireAction
-  - !type:DoorBoltWireAction
-  - !type:DoorBoltLightWireAction
-  - !type:DoorTimingWireAction
-  - !type:DoorSafetyWireAction
-
-- type: wireLayout
-  id: Defusable
-  dummyWires: 3
-  wires:
-    - !type:ActivateWireAction
-    - !type:BoltWireAction
-    - !type:DelayWireAction
-    - !type:ProceedWireAction
-    - !type:BoomWireAction
-    - !type:BoomWireAction
-    - !type:BoomWireAction
 
 - type: wireLayout
   id: Jukebox

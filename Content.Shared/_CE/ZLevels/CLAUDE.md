@@ -7,10 +7,6 @@ map entity == grid entity. Levels are ordered by integer `Depth`: 0 = station ma
 negative = below, positive = above. Client rendering stacks eyes/sprites with a fixed
 per-level screen offset to fake height.
 
-**zGrid is a different, unrelated subsystem** (`CEZGrid*Component`): grid-on-grid vertical
-stacking (e.g. shuttle parked above a grid, linked by connector walls) inside the
-physics/roof system. NOT the map z-network. Do not confuse the two.
-
 ## Core data — Content.Shared/_CE/ZLevels/Core/Components
 - `CEZMapComponent` (each z-map, networked): `int Depth`, `EntityUid NetworkUid`,
   `EntityUid? MapAbove`, `EntityUid? MapBelow`.
@@ -26,21 +22,20 @@ physics/roof system. NOT the map z-network. Do not confuse the two.
   There is NO arbitrary "selected level" — a viewer's active level is always its transform's map.
 
 ## Systems
-- `CESharedZLevelsSystem` — partial: `.Maps .Grids .View .Update .Movement .Activation
+- `CESharedZLevelsSystem` — partial: `.Maps .View .Update .Movement .Activation
   .Cache .Constants`. Traversal + query API.
-- Server `CEZLevelsSystem` (`.cs .Maps .Grids .View`): builds the network on
+- Server `CEZLevelsSystem` (`.cs .Maps .View`): builds the network on
   `StationPostInitEvent`, loads MapsBelow/Above, calls `AddGridToStation` for each planet
   z-level, spawns PVS eyes per viewer.
 - Client `CEClientZLevelsSystem : CESharedZLevelsSystem`: only overrides eye-offset /
   draw-depth visuals. No client-side registry — discovery is purely via the networked components.
 
-## Key API (CESharedZLevelsSystem.Maps.cs / .Grids.cs)
+## Key API (CESharedZLevelsSystem.Maps.cs)
 - `TryGetMapNetwork(mapUid, out Entity<CEZMapNetworkComponent>)`
 - `TryMapOffset(ent, offset, out ...)`, `TryMapUp`, `TryMapDown`
 - `GetAllMapsAbove(Entity<CEZMapComponent>)`, `GetAllMapsBelow(...)` — nearest-first
 - `TryGetZLevelOffset(mapA, mapB, out int)` — O(1) depth diff
 - `TryGetMapAtDepth(network, depth, out EntityUid)` — server only
-- `TryGetGridZDepth(gridUid)`, `GridTileToWorldTile(gridUid, grid, tile)`
 - `GetVisibleZLevelsAbove(ent)`, `HasOpaqueAbove(worldPos, map)` — `.View.cs`
 
 ## Constants — CESharedZLevelsSystem.Constants.cs
@@ -64,8 +59,6 @@ To read a level's schematic: `TryComp<NavMapComponent>(zMapUid, out var nav)` th
 ## Events
 - `CEZLevelMapNetworkUpdatedEvent` (class, on network entity) — maps added/removed.
 - `CEMapAddedIntoZNetworkEvent` (ByRefEvent struct `{ Network, Depth }`, on the map).
-- zGrid: `CEGridAddedIntoZNetworkEvent`, `CEGridRemovedFromZNetworkEvent`,
-  `CEZLevelGridNetworkUpdatedEvent`.
 
 ## Example configs
 `Resources/Prototypes/_CE/Maps/shaar.yml`, `debug.yml` — `[Prototype("zMap")]`

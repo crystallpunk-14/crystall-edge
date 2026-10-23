@@ -33,41 +33,6 @@
       tags:
         - WallmountSubstationElectronics
 
-# Wallmount Generator
-- type: entity
-  parent: BaseElectronics
-  id: WallmountGeneratorElectronics
-  name: wallmount generator electronics
-  description: Circuit used to construct a wallmount generator.
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: charger_APC
-  - type: StaticPrice
-    price: 20
-  - type: PhysicalComposition
-    materialComposition:
-      Glass: 90
-  - type: Tag
-    tags:
-      - WallmountGeneratorElectronics
-
-# APU
-- type: entity
-  id: WallmountGeneratorAPUElectronics
-  parent: BaseElectronics
-  name: wallmount APU electronics
-  description: Circuit used to construct a wallmount APU.
-  components:
-    - type: Sprite
-      sprite: Objects/Misc/module.rsi
-      state: charger_APC
-    - type: StaticPrice
-      price: 40
-    - type: Tag
-      tags:
-        - WallmountGeneratorAPUElectronics
-
 # Solar Tracker Electronics
 - type: entity
   parent: BaseElectronics

@@ -1,51 +1,42 @@
 using Content.Server._CE.Objectives.Components;
+using Content.Server._CE.Roles;
 using Content.Shared._CE.Objectives.Components;
-using Content.Shared._CE.Roles;
-using Content.Shared.Mind;
 using Content.Shared.Mobs;
-using Content.Shared.Roles;
 
 namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveRoleSurviveConditionComponent"/> - the average
-/// survival of every current or original holder of the listed roles: alive = 1, critical = 0.5, dead or gone = 0.
+/// survival of every body that held one of the listed roles: alive = 1, critical = 0.5, dead or deleted = 0.
 /// </summary>
 public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
 {
     [Dependency] private CEObjectiveSystem _objectives = default!;
     [Dependency] private CEObjectiveDepartmentSurviveConditionSystem _departmentSurvive = default!;
-    [Dependency] private SharedRoleSystem _role = default!;
+
+    [SubscribeLocalEvent]
+    private void OnInitialize(Entity<CEObjectiveRoleSurviveConditionComponent> ent, ref CEInitializeObjectiveEvent args)
+    {
+        _departmentSurvive.CollectBodies(ent.Comp.Bodies, ent.Comp.Roles);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnRoleGranted(ref CESecretRoleGrantedEvent args)
+    {
+        var query = EntityQueryEnumerator<CEObjectiveRoleSurviveConditionComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!_departmentSurvive.IsHolder(comp.Roles, args.Role, args.Original) || !comp.Bodies.Add(args.Body))
+                continue;
+
+            _objectives.RefreshObjectiveProgress(uid);
+        }
+    }
 
     [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEObjectiveRoleSurviveConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        var holders = 0;
-        var survival = 0f;
-
-        var query = EntityQueryEnumerator<MindComponent>();
-        while (query.MoveNext(out var mindId, out var mind))
-        {
-            // The original role counts too - a recruited priest is still a priest to hunt.
-            if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
-                !(roleEnt.Value.Comp2.Role is { } roleId && ent.Comp.Roles.Contains(roleId) ||
-                  roleEnt.Value.Comp2.OriginalRole is { } originalId && ent.Comp.Roles.Contains(originalId)))
-            {
-                continue;
-            }
-
-            holders++;
-            survival += _departmentSurvive.GetSurvival(mind);
-        }
-
-        if (holders == 0)
-        {
-            args.Progress = ent.Comp.Invert ? 1f : 0f;
-            return;
-        }
-
-        var average = survival / holders;
-        args.Progress = ent.Comp.Invert ? 1f - average : average;
+        args.Progress = _departmentSurvive.GetProgress(ent.Comp.Bodies, ent.Comp.Invert);
     }
 
     [SubscribeLocalEvent]

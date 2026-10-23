@@ -15,7 +15,7 @@ namespace Content.Shared._CE.ZLevels.Roof;
 
 /// <summary>
 /// Systems that automatically covers tiles with roofs (or removes roofs)
-/// if there is a tile on one of the levels above in the ZLevels Map or Grid network.
+/// if there is a tile on one of the levels above in the ZLevels Map network.
 /// Roof data is calculated on the server only and networked to clients.
 /// </summary>
 public abstract partial class CESharedZLevelsRoofSystem : EntitySystem

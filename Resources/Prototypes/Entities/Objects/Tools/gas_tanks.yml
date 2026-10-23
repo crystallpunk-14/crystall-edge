@@ -262,22 +262,3 @@
     releasePressure: 30.4
   - type: Clothing
     sprite: Objects/Tanks/anesthetic.rsi
-
-- type: entity
-  # it's a square so no rolling dough
-  parent: GasTankBase
-  id: PlasmaTank
-  name: plasma tank
-  description: Contains dangerous plasma. Do not inhale. Extremely flammable. It can hold 5 L of gas.
-  components:
-  - type: Sprite
-    sprite: Objects/Tanks/plasma.rsi
-  - type: Item
-    sprite: Objects/Tanks/plasma.rsi
-  - type: GasTank
-    releasePressure: 101.3
-  - type: Clothing
-    sprite: Objects/Tanks/plasma.rsi
-    slots:
-    - Belt
-    - suitStorage

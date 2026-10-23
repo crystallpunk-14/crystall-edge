@@ -73,7 +73,7 @@
               coverage: 0.6
               shadowStrength: 0.6
               shadowColor: "#000000"
-            #- type: CEGridStability
+            - type: CEGridStability
               supportLowestLevel: True
             - type: CEMurkedMap
 

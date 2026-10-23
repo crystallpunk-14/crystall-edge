@@ -4,7 +4,6 @@
   antagonist: true
   setPreference: false # Baseline - disable vanilla content
   objective: roles-antag-syndicate-agent-objective
-  guides: [ Traitors ]
   tags:
   - OnStation
   - Roundstart
@@ -34,7 +33,6 @@
   antagonist: true
   setPreference: false # Baseline - disable vanilla content
   objective: roles-antag-syndicate-agent-sleeper-objective
-  guides: [ Traitors ]
   tags:
   - OnStation
   - Midround
@@ -49,11 +47,3 @@
   - TraitorSleeper
   mindRoles:
   - MindRoleTraitorSleeper
-
-# Syndicate Operative Outfit - Monkey
-- type: startingGear
-  id: SyndicateOperativeGearMonkey
-  equipment:
-    head: ClothingHeadHatOutlawHat
-    jumpsuit: ClothingUniformJumpsuitOperative
-    mask: CigaretteSyndicate

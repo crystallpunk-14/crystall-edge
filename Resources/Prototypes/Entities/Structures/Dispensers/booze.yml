@@ -19,31 +19,5 @@
     noRot: false
   - type: Machine
     board: BoozeDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
-
-- type: entity
-  id: BoozeDispenser
-  suffix: Filled
-  parent: BoozeDispenserEmpty
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: DrinkAleBottleFullGrowler
-        - id: DrinkBeerGrowler
-        - id: DrinkCoffeeLiqueurBottleFull
-        - id: DrinkCognacBottleFull
-        - id: DrinkGinBottleFull
-        - id: DrinkMeadJug
-        - id: DrinkRumBottleFull
-        - id: DrinkTequilaBottleFull
-        - id: DrinkVermouthBottleFull
-        - id: DrinkVodkaBottleFull
-        - id: DrinkWhiskeyBottleFull
-        - id: DrinkWineBottleFull

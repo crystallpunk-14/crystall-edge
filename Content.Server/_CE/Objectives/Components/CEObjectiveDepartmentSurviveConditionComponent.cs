@@ -20,4 +20,12 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionComponent : Com
     /// </summary>
     [DataField]
     public bool Invert;
+
+    /// <summary>
+    /// Every body that ever held a role from <see cref="Department"/> this round. Bodies are never
+    /// removed - whoever controls a body now, it's that body's survival that counts, and a deleted
+    /// body counts as dead.
+    /// </summary>
+    [DataField]
+    public HashSet<EntityUid> Bodies = new();
 }
