@@ -314,6 +314,69 @@
         "parent": "Clothing",
         "suffix": null
     },
+    "CEClothingCloakBartenderVest1": {
+        "id": "CEClothingCloakBartenderVest1",
+        "name": "bartender's vest",
+        "description": "A smart vest for a smart bartender.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakBartenderVest2": {
+        "id": "CEClothingCloakBartenderVest2",
+        "name": "bartender's waistcoat",
+        "description": "A dark waistcoat that hides every spilled drop.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakChefApron1": {
+        "id": "CEClothingCloakChefApron1",
+        "name": "chef's apron",
+        "description": "A white apron covered in the proof of honest work.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakChefApron2": {
+        "id": "CEClothingCloakChefApron2",
+        "name": "kitchen apron",
+        "description": "A thick apron that protects against splashes and grease.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakChefApron3": {
+        "id": "CEClothingCloakChefApron3",
+        "name": "cook's apron",
+        "description": "A long apron with deep pockets for spoons and spices.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakFarmerOveralls1": {
+        "id": "CEClothingCloakFarmerOveralls1",
+        "name": "farmer's overalls",
+        "description": "Hard-wearing overalls for farm work.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakFarmerOveralls2": {
+        "id": "CEClothingCloakFarmerOveralls2",
+        "name": "field overalls",
+        "description": "Overalls patched at the knees from endless weeding.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakTavernmasterJacket1": {
+        "id": "CEClothingCloakTavernmasterJacket1",
+        "name": "tavernmaster's jacket",
+        "description": "A respectable jacket for the owner of the house.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
+    "CEClothingCloakTavernmasterJacket2": {
+        "id": "CEClothingCloakTavernmasterJacket2",
+        "name": "tavernmaster's coat",
+        "description": "A fine jacket that says the guests are always welcome, if they pay.",
+        "parent": "CEClothingCloakBase",
+        "suffix": null
+    },
     "CEClothingEyesBase": {
         "id": "CEClothingEyesBase",
         "name": null,
@@ -382,20 +445,6 @@
         "name": "eye patch",
         "description": "Hides the mutilation of the eyes.",
         "parent": "CEClothingEyesBase",
-        "suffix": null
-    },
-    "CEClothingEyesThaumaturgyGlasses": {
-        "id": "CEClothingEyesThaumaturgyGlasses",
-        "name": "thaumaturgy glasses",
-        "description": "It allows one to see the hidden world of magic, the very essence of objects, and the fundamental aspects from which all existence is composed.",
-        "parent": "CEClothingEyesGogglesFoldableBase",
-        "suffix": null
-    },
-    "CEClothingEyesThaumaturgyGlassesAdvanced": {
-        "id": "CEClothingEyesThaumaturgyGlassesAdvanced",
-        "name": "advanced thaumaturgy glasses",
-        "description": "It allows one to see the hidden world of magic, the very essence of objects, and the fundamental aspects from which all existence is composed. An essence node locator is attached to these glasses.",
-        "parent": "CEClothingEyesThaumaturgyGlasses",
         "suffix": null
     },
     "CEClothingGlovesBase": {
@@ -475,13 +524,6 @@
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadBeretGuildGreen": {
-        "id": "CEClothingHeadBeretGuildGreen",
-        "name": "green guild worker's beret",
-        "description": "A green beret worn by field operatives of the adventurer's guild.",
-        "parent": "CEClothingHeadBase",
-        "suffix": null
-    },
     "CEClothingHeadBeretGuildRed": {
         "id": "CEClothingHeadBeretGuildRed",
         "name": "red guild worker's beret",
@@ -503,24 +545,17 @@
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadCapGuard": {
-        "id": "CEClothingHeadCapGuard",
-        "name": "guard cap",
-        "description": "Standard issue cap worn by city guards.",
+    "CEClothingHeadCapSheriff": {
+        "id": "CEClothingHeadCapSheriff",
+        "name": "sheriff's cap",
+        "description": "Standard issue cap worn by the sheriff.",
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadFedoraGuard": {
-        "id": "CEClothingHeadFedoraGuard",
-        "name": "guard fedora",
-        "description": "A stylish fedora worn by city guards.",
-        "parent": "CEClothingHeadBase",
-        "suffix": null
-    },
-    "CEClothingHeadFedoraTavernmaster": {
-        "id": "CEClothingHeadFedoraTavernmaster",
-        "name": "tavernmaster's fedora",
-        "description": "A stylish fedora worn by the tavernmaster.",
+    "CEClothingHeadFedoraSheriff": {
+        "id": "CEClothingHeadFedoraSheriff",
+        "name": "sheriff's hat",
+        "description": "A stylish fedora worn by the sheriff.",
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
@@ -566,17 +601,17 @@
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadHelmetGuard": {
-        "id": "CEClothingHeadHelmetGuard",
-        "name": "guard helmet",
-        "description": "A sturdy helmet worn by city guards for protection in dangerous situations.",
+    "CEClothingHeadHelmetSheriff": {
+        "id": "CEClothingHeadHelmetSheriff",
+        "name": "sheriff's helmet",
+        "description": "A sturdy helmet worn by the sheriff for protection in dangerous situations.",
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadHelmetGuardCorinthian": {
-        "id": "CEClothingHeadHelmetGuardCorinthian",
-        "name": "corinthian guard helmet",
-        "description": "An ornate corinthian-style helmet worn by elite city guards. Its classical design commands respect and authority.",
+    "CEClothingHeadHelmetSheriffCorinthian": {
+        "id": "CEClothingHeadHelmetSheriffCorinthian",
+        "name": "sheriff's corinthian helmet",
+        "description": "An ornate corinthian-style helmet worn by the sheriff. Its classical design commands respect and authority.",
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
@@ -664,10 +699,38 @@
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadTriangularGuard": {
-        "id": "CEClothingHeadTriangularGuard",
-        "name": "guard triangular hat",
-        "description": "A distinctive triangular hat worn by guards. Its unique shape makes it easy to identify guard personnel from a distance.",
+    "CEClothingHeadBeretBartender": {
+        "id": "CEClothingHeadBeretBartender",
+        "name": "bartender's beret",
+        "description": "A neat beret worn by tavern bartenders.",
+        "parent": "CEClothingHeadBase",
+        "suffix": null
+    },
+    "CEClothingHeadBeretChef": {
+        "id": "CEClothingHeadBeretChef",
+        "name": "chef's beret",
+        "description": "A soft beret that keeps hair out of the soup.",
+        "parent": "CEClothingHeadBase",
+        "suffix": null
+    },
+    "CEClothingHeadChefHat1": {
+        "id": "CEClothingHeadChefHat1",
+        "name": "chef's hat",
+        "description": "A tall white hat. The taller it is, the better the cook, or so they say.",
+        "parent": "CEClothingHeadBase",
+        "suffix": null
+    },
+    "CEClothingHeadChefHat2": {
+        "id": "CEClothingHeadChefHat2",
+        "name": "chef's cap",
+        "description": "A practical kitchen cap worn by tavern cooks.",
+        "parent": "CEClothingHeadBase",
+        "suffix": null
+    },
+    "CEClothingHeadTriangularSheriff": {
+        "id": "CEClothingHeadTriangularSheriff",
+        "name": "sheriff's triangular hat",
+        "description": "A distinctive triangular hat worn by the sheriff. Its unique shape makes it easy to identify the sheriff from a distance.",
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
@@ -748,13 +811,6 @@
         "parent": "CEClothingMaskIdentityBlockerBase",
         "suffix": null
     },
-    "CEClothingMaskInvestigator": {
-        "id": "CEClothingMaskInvestigator",
-        "name": "investigator mask",
-        "description": "A reinforced mask with thaumaturgic lenses, worn by investigators. It reveals the hidden world of magic and the essence of objects while protecting the face.",
-        "parent": "CEClothingMaskIdentityBlockerBase",
-        "suffix": null
-    },
     "CEClothingMaskVampireVoiceDevourers": {
         "id": "CEClothingMaskVampireVoiceDevourers",
         "name": "bloody bone mask",
@@ -825,10 +881,10 @@
         "parent": "CEClothingPantsBase",
         "suffix": null
     },
-    "CEClothingPantsGuard": {
-        "id": "CEClothingPantsGuard",
-        "name": "guard pants",
-        "description": "Standard issue pants worn by city guards.",
+    "CEClothingPantsSheriff": {
+        "id": "CEClothingPantsSheriff",
+        "name": "sheriff's pants",
+        "description": "Standard issue pants worn by the sheriff.",
         "parent": "CEClothingPantsBase",
         "suffix": null
     },
@@ -878,6 +934,20 @@
         "id": "CEClothingPantsEngineering",
         "name": "engineering pants",
         "description": "Durable pants for durable people.",
+        "parent": "CEClothingPantsBase",
+        "suffix": null
+    },
+    "CEClothingPantsTavern": {
+        "id": "CEClothingPantsTavern",
+        "name": "tavern pants",
+        "description": "Simple pants for people who work on their feet all day.",
+        "parent": "CEClothingPantsBase",
+        "suffix": null
+    },
+    "CEClothingPantsTavernSkirt": {
+        "id": "CEClothingPantsTavernSkirt",
+        "name": "tavern skirt",
+        "description": "A practical skirt for working in a busy tavern.",
         "parent": "CEClothingPantsBase",
         "suffix": null
     },
@@ -1196,10 +1266,10 @@
         "parent": "CEClothingShirtBase",
         "suffix": null
     },
-    "CEClothingShirtGuard": {
-        "id": "CEClothingShirtGuard",
-        "name": "guard's shirt",
-        "description": "The shirt worn by the imperial guard. All identical, in a single, strict style.",
+    "CEClothingShirtSheriff": {
+        "id": "CEClothingShirtSheriff",
+        "name": "sheriff's shirt",
+        "description": "The shirt worn by the sheriff, in a single, strict style.",
         "parent": "CEClothingShirtBase",
         "suffix": null
     },
@@ -1235,6 +1305,48 @@
         "id": "CEClothingShirtAcademyRobe2",
         "name": "academy robe",
         "description": "A formal robe worn by scholars of the Thaumaturgic Academy.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtBartender": {
+        "id": "CEClothingShirtBartender",
+        "name": "bartender's shirt",
+        "description": "A clean shirt for pouring drinks and listening to complaints.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtChef1": {
+        "id": "CEClothingShirtChef1",
+        "name": "chef's shirt",
+        "description": "A sturdy kitchen shirt, easy to wash and hard to burn.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtChef2": {
+        "id": "CEClothingShirtChef2",
+        "name": "chef's work shirt",
+        "description": "A kitchen shirt with rolled sleeves, ready for a busy evening.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtChef3": {
+        "id": "CEClothingShirtChef3",
+        "name": "chef's apron shirt",
+        "description": "A light kitchen shirt that stays cool beside the stove.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtFarmer1": {
+        "id": "CEClothingShirtFarmer1",
+        "name": "farmer's shirt",
+        "description": "A rough shirt for long days in the field.",
+        "parent": "CEClothingShirtBase",
+        "suffix": null
+    },
+    "CEClothingShirtFarmer2": {
+        "id": "CEClothingShirtFarmer2",
+        "name": "farmer's work shirt",
+        "description": "A patched shirt that has seen many harvests.",
         "parent": "CEClothingShirtBase",
         "suffix": null
     },
@@ -1469,13 +1581,6 @@
         "parent": null,
         "suffix": "VFX"
     },
-    "CEScientificInterestVFX": {
-        "id": "CEScientificInterestVFX",
-        "name": "scientific interest marker",
-        "description": null,
-        "parent": null,
-        "suffix": "VFX"
-    },
     "CEFireWhooshEffect": {
         "id": "CEFireWhooshEffect",
         "name": "fire whoosh",
@@ -1651,23 +1756,9 @@
         "parent": "SpawnPointJobBase",
         "suffix": null
     },
-    "CESpawnPointGuardCommander": {
-        "id": "CESpawnPointGuardCommander",
-        "name": "guard commander",
-        "description": null,
-        "parent": "CESpawnPointJobBase",
-        "suffix": null
-    },
-    "CESpawnPointGuard": {
-        "id": "CESpawnPointGuard",
-        "name": "guard",
-        "description": null,
-        "parent": "CESpawnPointJobBase",
-        "suffix": null
-    },
-    "CESpawnPointInvestigator": {
-        "id": "CESpawnPointInvestigator",
-        "name": "investigator",
+    "CESpawnPointSheriff": {
+        "id": "CESpawnPointSheriff",
+        "name": "sheriff",
         "description": null,
         "parent": "CESpawnPointJobBase",
         "suffix": null
@@ -1724,27 +1815,6 @@
     "CESpawnPointTownfolk": {
         "id": "CESpawnPointTownfolk",
         "name": "jobless",
-        "description": null,
-        "parent": "CESpawnPointJobBase",
-        "suffix": null
-    },
-    "CESpawnPointAcademyStudent": {
-        "id": "CESpawnPointAcademyStudent",
-        "name": "academy student",
-        "description": null,
-        "parent": "CESpawnPointJobBase",
-        "suffix": null
-    },
-    "CESpawnPointAcademyProfessor": {
-        "id": "CESpawnPointAcademyProfessor",
-        "name": "academy professor",
-        "description": null,
-        "parent": "CESpawnPointJobBase",
-        "suffix": null
-    },
-    "CESpawnPointAcademyRector": {
-        "id": "CESpawnPointAcademyRector",
-        "name": "academy rector",
         "description": null,
         "parent": "CESpawnPointJobBase",
         "suffix": null
@@ -1896,13 +1966,6 @@
         "parent": "CERubberStampBase",
         "suffix": null
     },
-    "CERubberStampGuard": {
-        "id": "CERubberStampGuard",
-        "name": "guard commander's stamp",
-        "description": "A rubber stamp bearing the seal of the guard commander.",
-        "parent": "CERubberStampBase",
-        "suffix": null
-    },
     "CERubberStampGuildmaster": {
         "id": "CERubberStampGuildmaster",
         "name": "guildmaster's stamp",
@@ -1966,18 +2029,11 @@
         "parent": "CEBookWriteableBase",
         "suffix": null
     },
-    "CEDebugKnowledgeBook": {
-        "id": "CEDebugKnowledgeBook",
-        "name": "endless thaumanomiconium",
-        "description": "An admin-only book brimming with impossible knowledge of every aspect at once.",
-        "parent": "CEBookBase",
-        "suffix": "Debug, All Aspects, 100"
-    },
-    "CEGuidebookImperialLaws": {
-        "id": "CEGuidebookImperialLaws",
-        "name": "imperial laws",
-        "description": "A book about Imperial Laws.",
-        "parent": "CEGuidebookBase",
+    "CEBookEmpty": {
+        "id": "CEBookEmpty",
+        "name": "empty book",
+        "description": "A plain book with a blank white cover, ready to be filled.",
+        "parent": "CEBookWriteableBase",
         "suffix": null
     },
     "CEGuidebookFarmingGuide": {
@@ -1992,48 +2048,6 @@
         "name": "cookbook",
         "description": "1000 and 1 recipes - as written on the cover. This is a blatant lie.",
         "parent": "CEGuidebookBase",
-        "suffix": null
-    },
-    "CEGuidebookThaumaturgy": {
-        "id": "CEGuidebookThaumaturgy",
-        "name": "thaumamicon",
-        "description": "A tome bound in essence-stained leather, cataloguing the aspects of thaumaturgy and how to derive them.",
-        "parent": "CEGuidebookBase",
-        "suffix": null
-    },
-    "CEBookEmpty": {
-        "id": "CEBookEmpty",
-        "name": "empty book",
-        "description": "A plain book with a blank white cover, ready to be filled.",
-        "parent": "CEBookWriteableBase",
-        "suffix": null
-    },
-    "CEBookAncient": {
-        "id": "CEBookAncient",
-        "name": "ancient book",
-        "description": "A weathered old book. It looks like it might be worth studying.",
-        "parent": "CEBookBase",
-        "suffix": "Random visual, scientific interest"
-    },
-    "CEBaseScienceBookUndefined": {
-        "id": "CEBaseScienceBookUndefined",
-        "name": "arcane engineering science book",
-        "description": null,
-        "parent": "CEBookBase",
-        "suffix": null
-    },
-    "CEBaseScienceBookArcaneEngineering": {
-        "id": "CEBaseScienceBookArcaneEngineering",
-        "name": "arcane engineering science book",
-        "description": null,
-        "parent": "CEBookBase",
-        "suffix": null
-    },
-    "CEBaseScienceBookSpellcasting": {
-        "id": "CEBaseScienceBookSpellcasting",
-        "name": "spellcasting science book",
-        "description": null,
-        "parent": "CEBookBase",
         "suffix": null
     },
     "CEDrinkBaseGoblet": {
@@ -2635,6 +2649,13 @@
         "id": "CEFoodChanterelle",
         "name": "chanterelle",
         "description": "A delicious mushroom.",
+        "parent": "FoodInjectableBase",
+        "suffix": null
+    },
+    "CEFoodAgaric": {
+        "id": "CEFoodAgaric",
+        "name": "fly agaric",
+        "description": "A bright red mushroom with white spots. Very pretty, and very poisonous.",
         "parent": "FoodInjectableBase",
         "suffix": null
     },
@@ -3450,6 +3471,153 @@
         "parent": "CEWallpaperItemBase",
         "suffix": "Black"
     },
+    "CEWallpaperItemPlainCrimsonWood": {
+        "id": "CEWallpaperItemPlainCrimsonWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Crimson, Wood"
+    },
+    "CEWallpaperItemPlainWineWood": {
+        "id": "CEWallpaperItemPlainWineWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Wine, Wood"
+    },
+    "CEWallpaperItemOrnateRoseTonal": {
+        "id": "CEWallpaperItemOrnateRoseTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Rose, Tonal"
+    },
+    "CEWallpaperItemPlainTerracottaTonal": {
+        "id": "CEWallpaperItemPlainTerracottaTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Terracotta, Tonal"
+    },
+    "CEWallpaperItemPlainOchreWood": {
+        "id": "CEWallpaperItemPlainOchreWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Ochre, Wood"
+    },
+    "CEWallpaperItemOrnateOliveTonal": {
+        "id": "CEWallpaperItemOrnateOliveTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Olive, Tonal"
+    },
+    "CEWallpaperItemPlainSageTonal": {
+        "id": "CEWallpaperItemPlainSageTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Sage, Tonal"
+    },
+    "CEWallpaperItemOrnateMossTonal": {
+        "id": "CEWallpaperItemOrnateMossTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Moss, Tonal"
+    },
+    "CEWallpaperItemPlainEmeraldWood": {
+        "id": "CEWallpaperItemPlainEmeraldWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Emerald, Wood"
+    },
+    "CEWallpaperItemOrnatePineGold": {
+        "id": "CEWallpaperItemOrnatePineGold",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Pine, Gold"
+    },
+    "CEWallpaperItemPlainSeaWood": {
+        "id": "CEWallpaperItemPlainSeaWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Sea, Wood"
+    },
+    "CEWallpaperItemPlainPowderTonal": {
+        "id": "CEWallpaperItemPlainPowderTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Powder, Tonal"
+    },
+    "CEWallpaperItemPlainAzureWood": {
+        "id": "CEWallpaperItemPlainAzureWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Azure, Wood"
+    },
+    "CEWallpaperItemOrnateRoyalTonal": {
+        "id": "CEWallpaperItemOrnateRoyalTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Royal, Tonal"
+    },
+    "CEWallpaperItemOrnateIndigoTonal": {
+        "id": "CEWallpaperItemOrnateIndigoTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Indigo, Tonal"
+    },
+    "CEWallpaperItemPlainChocolateTonal": {
+        "id": "CEWallpaperItemPlainChocolateTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Chocolate, Tonal"
+    },
+    "CEWallpaperItemPlainSandWood": {
+        "id": "CEWallpaperItemPlainSandWood",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Sand, Wood"
+    },
+    "CEWallpaperItemOrnateIvoryTonal": {
+        "id": "CEWallpaperItemOrnateIvoryTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Ornate, Ivory, Tonal"
+    },
+    "CEWallpaperItemPlainAshTonal": {
+        "id": "CEWallpaperItemPlainAshTonal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Plain, Ash, Tonal"
+    },
+    "CEWallpaperItemStripesSandTerracotta": {
+        "id": "CEWallpaperItemStripesSandTerracotta",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Stripes, Sand, Terracotta"
+    },
+    "CEWallpaperItemStripesAshTeal": {
+        "id": "CEWallpaperItemStripesAshTeal",
+        "name": null,
+        "description": null,
+        "parent": "CEWallpaperItemBase",
+        "suffix": "Stripes, Ash, Teal"
+    },
     "CEBaseDice": {
         "id": "CEBaseDice",
         "name": null,
@@ -3730,6 +3898,27 @@
         "parent": "ShardGlass",
         "suffix": null
     },
+    "CEWoodenLadderItem": {
+        "id": "CEWoodenLadderItem",
+        "name": "wooden ladder",
+        "description": "A folded wooden ladder. Use it on a wall to mount it, or on an open edge next to you to hang it down to the level below.",
+        "parent": "BaseItem",
+        "suffix": 1
+    },
+    "CEWoodenLadderItem5": {
+        "id": "CEWoodenLadderItem5",
+        "name": null,
+        "description": null,
+        "parent": "CEWoodenLadderItem",
+        "suffix": 5
+    },
+    "CEWoodenLadderItem10": {
+        "id": "CEWoodenLadderItem10",
+        "name": null,
+        "description": null,
+        "parent": "CEWoodenLadderItem",
+        "suffix": 10
+    },
     "CELeather1": {
         "id": "CELeather1",
         "name": "leather",
@@ -3800,13 +3989,6 @@
         "parent": "CEBaseMachineCore",
         "suffix": null
     },
-    "CEMachineCoreSalaryPlatform": {
-        "id": "CEMachineCoreSalaryPlatform",
-        "name": "salary platform machine core",
-        "description": null,
-        "parent": "CEBaseMachineCore",
-        "suffix": null
-    },
     "CEMachineCoreHeater": {
         "id": "CEMachineCoreHeater",
         "name": "heater machine core",
@@ -3817,20 +3999,6 @@
     "CEMachineCorePress": {
         "id": "CEMachineCorePress",
         "name": "press machine core",
-        "description": null,
-        "parent": "CEBaseMachineCore",
-        "suffix": null
-    },
-    "CEMachineCorePressTargetThaumaturgySplitter": {
-        "id": "CEMachineCorePressTargetThaumaturgySplitter",
-        "name": "thaumaturgical splitter machine core",
-        "description": null,
-        "parent": "CEBaseMachineCore",
-        "suffix": null
-    },
-    "CEMachineCoreEssenceAttractor": {
-        "id": "CEMachineCoreEssenceAttractor",
-        "name": "essence attractor machine core",
         "description": null,
         "parent": "CEBaseMachineCore",
         "suffix": null
@@ -4059,12 +4227,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedWheat30": {
-        "id": "CESeedWheat30",
+    "CESeedWheat10": {
+        "id": "CESeedWheat10",
         "name": null,
         "description": null,
         "parent": "CESeedWheat",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedPumpkin": {
         "id": "CESeedPumpkin",
@@ -4073,12 +4241,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedPumpkin30": {
-        "id": "CESeedPumpkin30",
+    "CESeedPumpkin10": {
+        "id": "CESeedPumpkin10",
         "name": null,
         "description": null,
         "parent": "CESeedPumpkin",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedCabbage": {
         "id": "CESeedCabbage",
@@ -4087,12 +4255,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedCabbage30": {
-        "id": "CESeedCabbage30",
+    "CESeedCabbage10": {
+        "id": "CESeedCabbage10",
         "name": null,
         "description": null,
         "parent": "CESeedCabbage",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedCucumber": {
         "id": "CESeedCucumber",
@@ -4101,12 +4269,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedCucumber30": {
-        "id": "CESeedCucumber30",
+    "CESeedCucumber10": {
+        "id": "CESeedCucumber10",
         "name": null,
         "description": null,
         "parent": "CESeedCucumber",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedTomato": {
         "id": "CESeedTomato",
@@ -4115,12 +4283,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedTomato30": {
-        "id": "CESeedTomato30",
+    "CESeedTomato10": {
+        "id": "CESeedTomato10",
         "name": null,
         "description": null,
         "parent": "CESeedTomato",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedPepper": {
         "id": "CESeedPepper",
@@ -4129,12 +4297,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedPepper30": {
-        "id": "CESeedPepper30",
+    "CESeedPepper10": {
+        "id": "CESeedPepper10",
         "name": null,
         "description": null,
         "parent": "CESeedPepper",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedCotton": {
         "id": "CESeedCotton",
@@ -4143,12 +4311,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedCotton30": {
-        "id": "CESeedCotton30",
+    "CESeedCotton10": {
+        "id": "CESeedCotton10",
         "name": null,
         "description": null,
         "parent": "CESeedCotton",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedSunflower": {
         "id": "CESeedSunflower",
@@ -4157,12 +4325,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedSunflower30": {
-        "id": "CESeedSunflower30",
+    "CESeedSunflower10": {
+        "id": "CESeedSunflower10",
         "name": null,
         "description": null,
         "parent": "CESeedSunflower",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedCorn": {
         "id": "CESeedCorn",
@@ -4171,12 +4339,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedCorn30": {
-        "id": "CESeedCorn30",
+    "CESeedCorn10": {
+        "id": "CESeedCorn10",
         "name": null,
         "description": null,
         "parent": "CESeedCorn",
-        "suffix": 30
+        "suffix": 10
     },
     "CESeedCarrot": {
         "id": "CESeedCarrot",
@@ -4185,12 +4353,12 @@
         "parent": "CEBaseSeed",
         "suffix": null
     },
-    "CESeedCarrot30": {
-        "id": "CESeedCarrot30",
+    "CESeedCarrot10": {
+        "id": "CESeedCarrot10",
         "name": null,
         "description": null,
         "parent": "CESeedCarrot",
-        "suffix": 30
+        "suffix": 10
     },
     "CEEnergyCrystalCell": {
         "id": "CEEnergyCrystalCell",
@@ -4444,6 +4612,48 @@
         "parent": "CEBrassBar1",
         "suffix": 10
     },
+    "CEGoldOre1": {
+        "id": "CEGoldOre1",
+        "name": "gold ore",
+        "description": "A chunk of ore veined with gold. Can be smelted down into gold bars.",
+        "parent": "BaseItem",
+        "suffix": 1
+    },
+    "CEGoldOre10": {
+        "id": "CEGoldOre10",
+        "name": null,
+        "description": null,
+        "parent": "CEGoldOre1",
+        "suffix": 10
+    },
+    "CEGoldOre30": {
+        "id": "CEGoldOre30",
+        "name": null,
+        "description": null,
+        "parent": "CEGoldOre1",
+        "suffix": 30
+    },
+    "CEGoldBar1": {
+        "id": "CEGoldBar1",
+        "name": "gold bar",
+        "description": "A heavy, gleaming bar of refined gold",
+        "parent": "BaseItem",
+        "suffix": 1
+    },
+    "CEGoldBar5": {
+        "id": "CEGoldBar5",
+        "name": null,
+        "description": null,
+        "parent": "CEGoldBar1",
+        "suffix": 5
+    },
+    "CEGoldBar10": {
+        "id": "CEGoldBar10",
+        "name": null,
+        "description": null,
+        "parent": "CEGoldBar1",
+        "suffix": 10
+    },
     "CEIronOre1": {
         "id": "CEIronOre1",
         "name": "iron ore",
@@ -4605,6 +4815,13 @@
         "parent": "CEGlassSheet1",
         "suffix": 10
     },
+    "CEMurkShield": {
+        "id": "CEMurkShield",
+        "name": "murk shield",
+        "description": "A small sphere that protects against darkness and lasts until sunset.",
+        "parent": "BaseItem",
+        "suffix": null
+    },
     "CEDropper": {
         "id": "CEDropper",
         "name": "dropper",
@@ -4703,48 +4920,6 @@
         "parent": "CEBaseVial",
         "suffix": null
     },
-    "CEVialMediumEarthEssence": {
-        "id": "CEVialMediumEarthEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Terra"
-    },
-    "CEVialMediumFireEssence": {
-        "id": "CEVialMediumFireEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Ignis"
-    },
-    "CEVialMediumWaterEssence": {
-        "id": "CEVialMediumWaterEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Aqua"
-    },
-    "CEVialMediumAirEssence": {
-        "id": "CEVialMediumAirEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Aer"
-    },
-    "CEVialMediumOrderEssence": {
-        "id": "CEVialMediumOrderEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Ordo"
-    },
-    "CEVialMediumChaosEssence": {
-        "id": "CEVialMediumChaosEssence",
-        "name": null,
-        "description": null,
-        "parent": "CEVialMedium",
-        "suffix": "Perditio"
-    },
     "CEGroundTobacco": {
         "id": "CEGroundTobacco",
         "name": "ground tobacco",
@@ -4801,398 +4976,6 @@
         "parent": "CEBookBase",
         "suffix": null
     },
-    "CEBaseEssence": {
-        "id": "CEBaseEssence",
-        "name": "magic essence",
-        "description": "Particles of magical energy polarised into a particular type of magic. Will be gone soon, so try to collect them as soon as possible!",
-        "parent": null,
-        "suffix": null
-    },
-    "CEEssenceEarth": {
-        "id": "CEEssenceEarth",
-        "name": "terra",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceFire": {
-        "id": "CEEssenceFire",
-        "name": "ignis",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceWater": {
-        "id": "CEEssenceWater",
-        "name": "aqua",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceAir": {
-        "id": "CEEssenceAir",
-        "name": "aer",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceOrder": {
-        "id": "CEEssenceOrder",
-        "name": "ordo",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceChaos": {
-        "id": "CEEssenceChaos",
-        "name": "perditio",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T0"
-    },
-    "CEEssenceFrost": {
-        "id": "CEEssenceFrost",
-        "name": "gelum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceLight": {
-        "id": "CEEssenceLight",
-        "name": "lux",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceMotion": {
-        "id": "CEEssenceMotion",
-        "name": "motus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceCycle": {
-        "id": "CEEssenceCycle",
-        "name": "permutatio",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceEnergia": {
-        "id": "CEEssenceEnergia",
-        "name": "energia",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceVoid": {
-        "id": "CEEssenceVoid",
-        "name": "vacuos",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssencePoison": {
-        "id": "CEEssencePoison",
-        "name": "venenum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceLife": {
-        "id": "CEEssenceLife",
-        "name": "victus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceCrystal": {
-        "id": "CEEssenceCrystal",
-        "name": "vitreus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceWeather": {
-        "id": "CEEssenceWeather",
-        "name": "tempestas",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T1"
-    },
-    "CEEssenceMagic": {
-        "id": "CEEssenceMagic",
-        "name": "praecantatio",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceBeast": {
-        "id": "CEEssenceBeast",
-        "name": "bestia",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceHunger": {
-        "id": "CEEssenceHunger",
-        "name": "fames",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssencePlant": {
-        "id": "CEEssencePlant",
-        "name": "herba",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceTravel": {
-        "id": "CEEssenceTravel",
-        "name": "iter",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceSlime": {
-        "id": "CEEssenceSlime",
-        "name": "limus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceMetal": {
-        "id": "CEEssenceMetal",
-        "name": "metallum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceDeath": {
-        "id": "CEEssenceDeath",
-        "name": "mortuus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceHealing": {
-        "id": "CEEssenceHealing",
-        "name": "sano",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceDarkness": {
-        "id": "CEEssenceDarkness",
-        "name": "tenebrae",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceTrap": {
-        "id": "CEEssenceTrap",
-        "name": "vinculum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceFlight": {
-        "id": "CEEssenceFlight",
-        "name": "volatus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T2"
-    },
-    "CEEssenceEldritch": {
-        "id": "CEEssenceEldritch",
-        "name": "alienis",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceTree": {
-        "id": "CEEssenceTree",
-        "name": "arbor",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceAura": {
-        "id": "CEEssenceAura",
-        "name": "auram",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceFlesh": {
-        "id": "CEEssenceFlesh",
-        "name": "corpus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceUndead": {
-        "id": "CEEssenceUndead",
-        "name": "exanimis",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceSoul": {
-        "id": "CEEssenceSoul",
-        "name": "spiritus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceTaint": {
-        "id": "CEEssenceTaint",
-        "name": "vitium",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T3"
-    },
-    "CEEssenceMind": {
-        "id": "CEEssenceMind",
-        "name": "cognitio",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T4"
-    },
-    "CEEssenceSenses": {
-        "id": "CEEssenceSenses",
-        "name": "sensus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T4"
-    },
-    "CEEssenceHuman": {
-        "id": "CEEssenceHuman",
-        "name": "humanus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T5"
-    },
-    "CEEssenceTool": {
-        "id": "CEEssenceTool",
-        "name": "instrumentum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T6"
-    },
-    "CEEssenceCrop": {
-        "id": "CEEssenceCrop",
-        "name": "messis",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T6"
-    },
-    "CEEssenceGreed": {
-        "id": "CEEssenceGreed",
-        "name": "lucrum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T6"
-    },
-    "CEEssenceMining": {
-        "id": "CEEssenceMining",
-        "name": "perfodio",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T6"
-    },
-    "CEEssenceCraft": {
-        "id": "CEEssenceCraft",
-        "name": "fabrico",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEEssenceMachine": {
-        "id": "CEEssenceMachine",
-        "name": "machina",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEEssenceCloth": {
-        "id": "CEEssenceCloth",
-        "name": "pannus",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEEssenceWeapon": {
-        "id": "CEEssenceWeapon",
-        "name": "telum",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEEssenceArmor": {
-        "id": "CEEssenceArmor",
-        "name": "tutamen",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEEssenceHarvest": {
-        "id": "CEEssenceHarvest",
-        "name": "meto",
-        "description": null,
-        "parent": "CEBaseEssence",
-        "suffix": "T7"
-    },
-    "CEPortableMagicEssenceAttractor": {
-        "id": "CEPortableMagicEssenceAttractor",
-        "name": "portable essence attractor",
-        "description": "A folding thaumaturgical device that draws in floating magic essence from the air while deployed and charged with mana.",
-        "parent": "BaseItem",
-        "suffix": null
-    },
-    "CEUnselectedDiscoveryProject": {
-        "id": "CEUnselectedDiscoveryProject",
-        "name": "draft research proposal",
-        "description": "A scientist's rambling notes about some great discoveries in the making. So far, only the author himself can make sense of them.",
-        "parent": "BaseItem",
-        "suffix": null
-    },
-    "CEDiscoveryProjectBase": {
-        "id": "CEDiscoveryProjectBase",
-        "name": "research project",
-        "description": null,
-        "parent": "BaseItem",
-        "suffix": null
-    },
-    "CEDiscoveryProjectEngineering": {
-        "id": "CEDiscoveryProjectEngineering",
-        "name": "engineering research project",
-        "description": null,
-        "parent": "CEDiscoveryProjectBase",
-        "suffix": null
-    },
-    "CEDiscoveryProjectSpellcasting": {
-        "id": "CEDiscoveryProjectSpellcasting",
-        "name": "spellcasting research project",
-        "description": null,
-        "parent": "CEDiscoveryProjectBase",
-        "suffix": null
-    },
-    "CEThaumaturgicMagnifyingGlass": {
-        "id": "CEThaumaturgicMagnifyingGlass",
-        "name": "thaumaturgic magnifying glass",
-        "description": "A lens attuned to residual magic. While held, it reveals nearby objects and creatures of scientific interest, and can be used on them to study them for research points.",
-        "parent": "BaseItem",
-        "suffix": null
-    },
-    "CEThaumaturgicMagnifyingGlassAdmin": {
-        "id": "CEThaumaturgicMagnifyingGlassAdmin",
-        "name": null,
-        "description": null,
-        "parent": "CEThaumaturgicMagnifyingGlass",
-        "suffix": "Admin, Instant"
-    },
     "CEBaseKeyRing": {
         "id": "CEBaseKeyRing",
         "name": "key ring",
@@ -5211,6 +4994,13 @@
         "id": "CESafeFallingAmulet",
         "name": "Emergency Levitation Amulet",
         "description": "An essential piece of everyday equipment for residents of the flying islands, protecting them from accidental falls from the island. Put it on your belt, and if you accidentally fall from the island, you will have a chance to save yourself.",
+        "parent": "BaseItem",
+        "suffix": null
+    },
+    "CEVoiceDistortionAmulet": {
+        "id": "CEVoiceDistortionAmulet",
+        "name": "voice distortion amulet",
+        "description": "A shadowy trinket from the Murk. Worn on the belt, it distorts the wearer's voice beyond recognition.",
         "parent": "BaseItem",
         "suffix": null
     },
@@ -5333,8 +5123,8 @@
         "parent": "CEThirdArmModuleBase",
         "suffix": null
     },
-    "ActionCEThirdArmManipulation": {
-        "id": "ActionCEThirdArmManipulation",
+    "CEActionThirdArmManipulation": {
+        "id": "CEActionThirdArmManipulation",
         "name": "matter manipulation",
         "description": "Allows you to build and take apart complex structures.",
         "parent": "BaseAction",
@@ -5347,8 +5137,8 @@
         "parent": "CEThirdArmModuleBase",
         "suffix": null
     },
-    "ActionCEThirdArmMiningLaser": {
-        "id": "ActionCEThirdArmMiningLaser",
+    "CEActionThirdArmMiningLaser": {
+        "id": "CEActionThirdArmMiningLaser",
         "name": "mining laser",
         "description": "Fire a series of precise laser beams capable of destroying structures.",
         "parent": "BaseAction",
@@ -5529,34 +5319,6 @@
         "parent": "CEBaseLock",
         "suffix": null
     },
-    "CEKeyAcademyHall": {
-        "id": "CEKeyAcademyHall",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyIronBlank",
-        "suffix": "Academy Hall"
-    },
-    "CEKeyAcademyTechnical": {
-        "id": "CEKeyAcademyTechnical",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyIronBlank",
-        "suffix": "Academy Technical"
-    },
-    "CEKeyAcademyLab": {
-        "id": "CEKeyAcademyLab",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyIronBlank",
-        "suffix": "Academy Lab"
-    },
-    "CEKeyAcademyRectorRoom": {
-        "id": "CEKeyAcademyRectorRoom",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyIronBlank",
-        "suffix": "Academy Rector Room"
-    },
     "CEKeyUniversal": {
         "id": "CEKeyUniversal",
         "name": "omni key",
@@ -5627,69 +5389,6 @@
         "parent": "CEKeyEngineeringBase",
         "suffix": "Engineering Storage"
     },
-    "CEKeyGuardBase": {
-        "id": "CEKeyGuardBase",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyIronBlank",
-        "suffix": null
-    },
-    "CEKeyGuardHall": {
-        "id": "CEKeyGuardHall",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Hall"
-    },
-    "CEKeyGuardStaff": {
-        "id": "CEKeyGuardStaff",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Staff"
-    },
-    "CEKeyGuardHeadRoom": {
-        "id": "CEKeyGuardHeadRoom",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Head Room"
-    },
-    "CEKeyGuardCage1": {
-        "id": "CEKeyGuardCage1",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Cage 1"
-    },
-    "CEKeyGuardCage2": {
-        "id": "CEKeyGuardCage2",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Cage 2"
-    },
-    "CEKeyGuardCage3": {
-        "id": "CEKeyGuardCage3",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Cage 3"
-    },
-    "CEKeyGuardCage4": {
-        "id": "CEKeyGuardCage4",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Cage 4"
-    },
-    "CEKeyGuardCage5": {
-        "id": "CEKeyGuardCage5",
-        "name": null,
-        "description": null,
-        "parent": "CEKeyGuardBase",
-        "suffix": "Guard Cage 5"
-    },
     "CEKeyGuildLobby": {
         "id": "CEKeyGuildLobby",
         "name": null,
@@ -5710,6 +5409,34 @@
         "description": null,
         "parent": "CEKeyIronBlank",
         "suffix": "Guild Storage"
+    },
+    "CEKeyGuildmasterRoom": {
+        "id": "CEKeyGuildmasterRoom",
+        "name": null,
+        "description": null,
+        "parent": "CEKeyIronBlank",
+        "suffix": "Guildmaster Room"
+    },
+    "CEKeySheriffBase": {
+        "id": "CEKeySheriffBase",
+        "name": null,
+        "description": null,
+        "parent": "CEKeyIronBlank",
+        "suffix": null
+    },
+    "CEKeySheriffHall": {
+        "id": "CEKeySheriffHall",
+        "name": null,
+        "description": null,
+        "parent": "CEKeySheriffBase",
+        "suffix": "Sheriff Hall"
+    },
+    "CEKeySheriffStaff": {
+        "id": "CEKeySheriffStaff",
+        "name": null,
+        "description": null,
+        "parent": "CEKeySheriffBase",
+        "suffix": "Sheriff Staff"
     },
     "CEKeyTavernHall": {
         "id": "CEKeyTavernHall",
@@ -5868,7 +5595,7 @@
     "CEWeaponGunPeacekeeperGolden": {
         "id": "CEWeaponGunPeacekeeperGolden",
         "name": "golden Peacemaker",
-        "description": "A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the guard commander. It has a slightly higher ammunition capacity.",
+        "description": "A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the sheriff. It has a slightly higher ammunition capacity.",
         "parent": "CEWeaponGunPeacekeeper",
         "suffix": "Theft Target"
     },
@@ -5907,24 +5634,24 @@
         "parent": "CEBaseWeaponHammer",
         "suffix": null
     },
-    "CEWeaponMaceTwoHandedGuardrail": {
-        "id": "CEWeaponMaceTwoHandedGuardrail",
-        "name": "guardrail mace",
-        "description": "A mana-powered heavy mace used by guards. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.",
+    "CEWeaponMaceTwoHandedSheriff": {
+        "id": "CEWeaponMaceTwoHandedSheriff",
+        "name": "sheriff's mace",
+        "description": "A mana-powered heavy mace used by the sheriff. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.",
         "parent": "CEBaseWeaponMaceTwoHanded",
         "suffix": null
     },
-    "CEGuardMaceEnergyBall": {
-        "id": "CEGuardMaceEnergyBall",
+    "CESheriffMaceEnergyBall": {
+        "id": "CESheriffMaceEnergyBall",
         "name": "energy ball",
         "description": null,
         "parent": "BaseBullet",
         "suffix": null
     },
-    "ActionCEGuardMaceCharge": {
-        "id": "ActionCEGuardMaceCharge",
+    "CEActionSheriffMaceCharge": {
+        "id": "CEActionSheriffMaceCharge",
         "name": "activate energy core",
-        "description": "Toggles the guardrail mace's energy core, swapping its attack mode.",
+        "description": "Toggles the sheriff's mace's energy core, swapping its attack mode.",
         "parent": "BaseToggleAction",
         "suffix": null
     },
@@ -6040,10 +5767,10 @@
         "parent": "CEBaseCrossbolt",
         "suffix": null
     },
-    "CEGuardBola": {
-        "id": "CEGuardBola",
+    "CEBola": {
+        "id": "CEBola",
         "name": "bola",
-        "description": "A tactical bola issued to guards, made of steel anchors linked by a strong rope. Reliable and reusable.",
+        "description": "A tactical bola made of steel anchors linked by a strong rope. Reliable and reusable.",
         "parent": "BaseItem",
         "suffix": null
     },
@@ -6222,62 +5949,6 @@
         "parent": "CEWoodenDoorWindowed",
         "suffix": "Opened, Mirrored"
     },
-    "CEIronDoorAcademyHall": {
-        "id": "CEIronDoorAcademyHall",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorWindowed",
-        "suffix": "Academy Hall"
-    },
-    "CEIronDoorAcademyHallMirrored": {
-        "id": "CEIronDoorAcademyHallMirrored",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorWindowedMirrored",
-        "suffix": "Academy Hall, Mirrored"
-    },
-    "CEIronDoorAcademyTechnical": {
-        "id": "CEIronDoorAcademyTechnical",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoor",
-        "suffix": "Academy Technical"
-    },
-    "CEIronDoorAcademyTechnicalMirrored": {
-        "id": "CEIronDoorAcademyTechnicalMirrored",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorMirrored",
-        "suffix": "Academy Technical, Mirrored"
-    },
-    "CEIronDoorAcademyLab": {
-        "id": "CEIronDoorAcademyLab",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoor",
-        "suffix": "Academy Lab"
-    },
-    "CEIronDoorAcademyLabMirrored": {
-        "id": "CEIronDoorAcademyLabMirrored",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorMirrored",
-        "suffix": "Academy Lab, Mirrored"
-    },
-    "CEIronDoorAcademyRectorRoom": {
-        "id": "CEIronDoorAcademyRectorRoom",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoor",
-        "suffix": "Academy Rector Room"
-    },
-    "CEIronDoorAcademyRectorRoomMirrored": {
-        "id": "CEIronDoorAcademyRectorRoomMirrored",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorMirrored",
-        "suffix": "Academy Rector Room, Mirrored"
-    },
     "CEIronDoorEngineeringHall": {
         "id": "CEIronDoorEngineeringHall",
         "name": null,
@@ -6369,69 +6040,6 @@
         "parent": "CEFenceGateBigIron",
         "suffix": "Engineering Tunnels"
     },
-    "CEIronDoorGuardHall": {
-        "id": "CEIronDoorGuardHall",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorWindowed",
-        "suffix": "Guard Hall"
-    },
-    "CEIronDoorGuardHallMirrored": {
-        "id": "CEIronDoorGuardHallMirrored",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoorWindowedMirrored",
-        "suffix": "Guard Hall, Mirrored"
-    },
-    "CEIronDoorGuardStaff": {
-        "id": "CEIronDoorGuardStaff",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoor",
-        "suffix": "Guard Staff"
-    },
-    "CEIronDoorGuardHeadRoom": {
-        "id": "CEIronDoorGuardHeadRoom",
-        "name": null,
-        "description": null,
-        "parent": "CEIronDoor",
-        "suffix": "Guard Head Room"
-    },
-    "CEIronDoorGuardCage1": {
-        "id": "CEIronDoorGuardCage1",
-        "name": null,
-        "description": null,
-        "parent": "CEFenceGateBigIron",
-        "suffix": "Guard Cage 1"
-    },
-    "CEIronDoorGuardCage2": {
-        "id": "CEIronDoorGuardCage2",
-        "name": null,
-        "description": null,
-        "parent": "CEFenceGateBigIron",
-        "suffix": "Guard Cage 2"
-    },
-    "CEIronDoorGuardCage3": {
-        "id": "CEIronDoorGuardCage3",
-        "name": null,
-        "description": null,
-        "parent": "CEFenceGateBigIron",
-        "suffix": "Guard Cage 3"
-    },
-    "CEIronDoorGuardCage4": {
-        "id": "CEIronDoorGuardCage4",
-        "name": null,
-        "description": null,
-        "parent": "CEFenceGateBigIron",
-        "suffix": "Guard Cage 4"
-    },
-    "CEIronDoorGuardCage5": {
-        "id": "CEIronDoorGuardCage5",
-        "name": null,
-        "description": null,
-        "parent": "CEFenceGateBigIron",
-        "suffix": "Guard Cage 5"
-    },
     "CEWoodenDoorGuildLobby": {
         "id": "CEWoodenDoorGuildLobby",
         "name": null,
@@ -6459,6 +6067,48 @@
         "description": null,
         "parent": "CEIronDoorMirrored",
         "suffix": "Guild Storage, Mirrored"
+    },
+    "CEIronDoorGuildmasterRoom": {
+        "id": "CEIronDoorGuildmasterRoom",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoor",
+        "suffix": "Guildmaster Room"
+    },
+    "CEIronDoorGuildmasterRoomMirrored": {
+        "id": "CEIronDoorGuildmasterRoomMirrored",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoorMirrored",
+        "suffix": "Guildmaster Room, Mirrored"
+    },
+    "CEIronDoorSheriffHall": {
+        "id": "CEIronDoorSheriffHall",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoorWindowed",
+        "suffix": "Sheriff Hall"
+    },
+    "CEIronDoorSheriffHallMirrored": {
+        "id": "CEIronDoorSheriffHallMirrored",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoorWindowedMirrored",
+        "suffix": "Sheriff Hall, Mirrored"
+    },
+    "CEIronDoorSheriffStaff": {
+        "id": "CEIronDoorSheriffStaff",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoor",
+        "suffix": "Sheriff Staff"
+    },
+    "CEIronDoorSheriffStaffMirrored": {
+        "id": "CEIronDoorSheriffStaffMirrored",
+        "name": null,
+        "description": null,
+        "parent": "CEIronDoorMirrored",
+        "suffix": "Sheriff Staff, Mirrored"
     },
     "CEWoodenDoorTavernHall": {
         "id": "CEWoodenDoorTavernHall",
@@ -6656,100 +6306,100 @@
         "parent": "BaseStructure",
         "suffix": null
     },
-    "CEZLevelLadderBase": {
-        "id": "CEZLevelLadderBase",
+    "CEZLevelStairsBase": {
+        "id": "CEZLevelStairsBase",
         "name": "stairs",
         "description": "Be careful, the higher you ascend, the more painful the fall.",
         "parent": "BaseStructure",
         "suffix": null
     },
-    "CEZLevelLadderCornerBase": {
-        "id": "CEZLevelLadderCornerBase",
+    "CEZLevelStairsCornerBase": {
+        "id": "CEZLevelStairsCornerBase",
         "name": null,
         "description": null,
-        "parent": "CEZLevelLadderBase",
+        "parent": "CEZLevelStairsBase",
         "suffix": null
     },
-    "CEZLevelLadderCornerInnerBase": {
-        "id": "CEZLevelLadderCornerInnerBase",
+    "CEZLevelStairsCornerInnerBase": {
+        "id": "CEZLevelStairsCornerInnerBase",
         "name": null,
         "description": null,
-        "parent": "CEZLevelLadderCornerBase",
+        "parent": "CEZLevelStairsCornerBase",
         "suffix": null
     },
-    "CEZLevelsLadderDirtCliffBase": {
-        "id": "CEZLevelsLadderDirtCliffBase",
+    "CEZLevelStairsDirtCliffBase": {
+        "id": "CEZLevelStairsDirtCliffBase",
         "name": "dirt cliff",
         "description": "TODO",
         "parent": null,
         "suffix": null
     },
-    "CEZLevelLadderFrameBase": {
-        "id": "CEZLevelLadderFrameBase",
-        "name": "ladder frame",
+    "CEZLevelStairsFrameBase": {
+        "id": "CEZLevelStairsFrameBase",
+        "name": "stairs frame",
         "description": "An unfinished wooden support frame. It needs to be covered before it's safe to climb.",
         "parent": "BaseStructure",
         "suffix": null
     },
-    "CEZLevelLadderFrame": {
-        "id": "CEZLevelLadderFrame",
-        "name": "ladder frame",
+    "CEZLevelStairsFrame": {
+        "id": "CEZLevelStairsFrame",
+        "name": "stairs frame",
         "description": null,
-        "parent": "CEZLevelLadderFrameBase",
+        "parent": "CEZLevelStairsFrameBase",
         "suffix": null
     },
-    "CEZLevelLadderFrameCorner": {
-        "id": "CEZLevelLadderFrameCorner",
-        "name": "ladder frame",
+    "CEZLevelStairsFrameCorner": {
+        "id": "CEZLevelStairsFrameCorner",
+        "name": "stairs frame",
         "description": null,
-        "parent": "CEZLevelLadderFrameBase",
+        "parent": "CEZLevelStairsFrameBase",
         "suffix": "Corner"
     },
-    "CEZLevelLadderFrameCornerInner": {
-        "id": "CEZLevelLadderFrameCornerInner",
-        "name": "ladder frame",
+    "CEZLevelStairsFrameCornerInner": {
+        "id": "CEZLevelStairsFrameCornerInner",
+        "name": "stairs frame",
         "description": null,
-        "parent": "CEZLevelLadderFrameCorner",
+        "parent": "CEZLevelStairsFrameCorner",
         "suffix": "Inner Corner"
     },
-    "CEZLevelsLadderRoofBase": {
-        "id": "CEZLevelsLadderRoofBase",
+    "CEZLevelStairsRoofBase": {
+        "id": "CEZLevelStairsRoofBase",
         "name": "roof tile",
         "description": "Roof tiles, for covering building roofs.",
         "parent": null,
         "suffix": null
     },
-    "CEZLevelsLadderRoofRedBase": {
-        "id": "CEZLevelsLadderRoofRedBase",
+    "CEZLevelStairsRoofRedBase": {
+        "id": "CEZLevelStairsRoofRedBase",
         "name": null,
         "description": null,
-        "parent": "CEZLevelsLadderRoofBase",
+        "parent": "CEZLevelStairsRoofBase",
         "suffix": null
     },
-    "CEZLevelsLadderRoofGreenBase": {
-        "id": "CEZLevelsLadderRoofGreenBase",
+    "CEZLevelStairsRoofGreenBase": {
+        "id": "CEZLevelStairsRoofGreenBase",
         "name": null,
         "description": null,
-        "parent": "CEZLevelsLadderRoofBase",
+        "parent": "CEZLevelStairsRoofBase",
         "suffix": null
     },
-    "CEZLevelsLadderRoofBlueBase": {
-        "id": "CEZLevelsLadderRoofBlueBase",
+    "CEZLevelStairsRoofBlueBase": {
+        "id": "CEZLevelStairsRoofBlueBase",
         "name": null,
         "description": null,
-        "parent": "CEZLevelsLadderRoofBase",
+        "parent": "CEZLevelStairsRoofBase",
         "suffix": null
     },
-    "CEZLevelsLadderStoneBase": {
-        "id": "CEZLevelsLadderStoneBase",
-        "name": "stone ladder",
+    "CEZLevelStairsStoneBase": {
+        "id": "CEZLevelStairsStoneBase",
+        "name": "stone stairs",
         "description": null,
         "parent": null,
         "suffix": null
     },
-    "CEZLevelsLadderWoodenBase": {
-        "id": "CEZLevelsLadderWoodenBase",
-        "name": "wooden ladder",
+    "CEZLevelStairsWoodenBase": {
+        "id": "CEZLevelStairsWoodenBase",
+        "name": "wooden stairs",
         "description": null,
         "parent": null,
         "suffix": null
@@ -6887,6 +6537,13 @@
         "parent": "CEBaseWall",
         "suffix": "Diamond Ore"
     },
+    "CEWallStoneOreGold": {
+        "id": "CEWallStoneOreGold",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWall",
+        "suffix": "Gold Ore"
+    },
     "CEOreCoreBase": {
         "id": "CEOreCoreBase",
         "name": null,
@@ -6919,6 +6576,13 @@
         "id": "CEWallDiamondCore",
         "name": "diamond ore core",
         "description": "An incredibly hard core studded with diamonds. Pickaxes and ordinary drills just bounce off it - only an advanced drill or a manipulator's mining laser can break it.",
+        "parent": "CEOreCoreBase",
+        "suffix": null
+    },
+    "CEWallGoldCore": {
+        "id": "CEWallGoldCore",
+        "name": "gold ore core",
+        "description": "An extremely hard and gold-rich ore core. You can certainly break it with a pickaxe, but it's better to use some kind of automatic drill...",
         "parent": "CEOreCoreBase",
         "suffix": null
     },
@@ -7054,27 +6718,6 @@
         "description": "The large skeleton of a dragon, the possibility of encountering such a creature is both fascinating and terrifying.",
         "parent": "CEBaseBoneStructure",
         "suffix": null
-    },
-    "CECobwebLeft1": {
-        "id": "CECobwebLeft1",
-        "name": null,
-        "description": null,
-        "parent": "CECobwebRight1",
-        "suffix": "Left. Corner."
-    },
-    "CECobwebLeft2": {
-        "id": "CECobwebLeft2",
-        "name": null,
-        "description": null,
-        "parent": "CECobwebRight1",
-        "suffix": "Left. Flat."
-    },
-    "CECobwebRight2": {
-        "id": "CECobwebRight2",
-        "name": null,
-        "description": null,
-        "parent": "CECobwebLeft2",
-        "suffix": "Right. Flat."
     },
     "CEWallmountGarlandRed": {
         "id": "CEWallmountGarlandRed",
@@ -8189,6 +7832,13 @@
         "parent": "CEOrderBoard",
         "suffix": "Yellow flag"
     },
+    "CEPot": {
+        "id": "CEPot",
+        "name": "clay pot",
+        "description": "A fragile clay pot. Who knows what is hidden inside?",
+        "parent": "BaseStructureDynamic",
+        "suffix": null
+    },
     "CEPottedPlantBase": {
         "id": "CEPottedPlantBase",
         "name": "potted plant",
@@ -8350,6 +8000,20 @@
         "parent": "CEBaseWallmount",
         "suffix": null
     },
+    "CEBaseLadder": {
+        "id": "CEBaseLadder",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWallmount",
+        "suffix": null
+    },
+    "CEWoodenLadder": {
+        "id": "CEWoodenLadder",
+        "name": "wooden ladder",
+        "description": "A wooden ladder nailed to the wall. Walk into the wall to climb, walk slowly to hold on.",
+        "parent": "CEBaseLadder",
+        "suffix": null
+    },
     "CEConveyorBelt": {
         "id": "CEConveyorBelt",
         "name": "conveyor belt",
@@ -8357,18 +8021,18 @@
         "parent": null,
         "suffix": null
     },
-    "CEConveyorLadder": {
-        "id": "CEConveyorLadder",
-        "name": "conveyor ladder",
+    "CEConveyorStairs": {
+        "id": "CEConveyorStairs",
+        "name": "conveyor stairs",
         "description": "TODO",
         "parent": "CEConveyorBelt",
         "suffix": null
     },
-    "CEConveyorLadderReverse": {
-        "id": "CEConveyorLadderReverse",
+    "CEConveyorStairsReverse": {
+        "id": "CEConveyorStairsReverse",
         "name": null,
         "description": null,
-        "parent": "CEConveyorLadder",
+        "parent": "CEConveyorStairs",
         "suffix": "Reverse"
     },
     "CEGridStabilityCore": {
@@ -8427,13 +8091,6 @@
         "parent": "CEPressTargetBase",
         "suffix": null
     },
-    "CEPressTargetThaumaturgySplitter": {
-        "id": "CEPressTargetThaumaturgySplitter",
-        "name": "thaumaturgical splitter",
-        "description": "An enchanted platform for the press that allows objects to be broken down into their primordial essences.",
-        "parent": "CEPressTargetBase",
-        "suffix": null
-    },
     "CEShuttleWingBase": {
         "id": "CEShuttleWingBase",
         "name": "airship wing",
@@ -8476,12 +8133,47 @@
         "parent": null,
         "suffix": null
     },
-    "CEWallLight": {
-        "id": "CEWallLight",
+    "CEWallLightOrange": {
+        "id": "CEWallLightOrange",
         "name": null,
         "description": null,
         "parent": "CEWallLightBase",
-        "suffix": null
+        "suffix": "Orange"
+    },
+    "CEWallLightPink": {
+        "id": "CEWallLightPink",
+        "name": null,
+        "description": null,
+        "parent": "CEWallLightBase",
+        "suffix": "Pink"
+    },
+    "CEWallLightCyan": {
+        "id": "CEWallLightCyan",
+        "name": null,
+        "description": null,
+        "parent": "CEWallLightBase",
+        "suffix": "Cyan"
+    },
+    "CEWallLightGreen": {
+        "id": "CEWallLightGreen",
+        "name": null,
+        "description": null,
+        "parent": "CEWallLightBase",
+        "suffix": "Green"
+    },
+    "CEWallLightPurple": {
+        "id": "CEWallLightPurple",
+        "name": null,
+        "description": null,
+        "parent": "CEWallLightBase",
+        "suffix": "Purple"
+    },
+    "CEWallLightRed": {
+        "id": "CEWallLightRed",
+        "name": null,
+        "description": null,
+        "parent": "CEWallLightBase",
+        "suffix": "Red"
     },
     "CEBaseMachinePowered": {
         "id": "CEBaseMachinePowered",
@@ -8516,20 +8208,6 @@
         "name": "destroyed machine frame",
         "description": null,
         "parent": "CEMachineFrameBase",
-        "suffix": null
-    },
-    "CECashImpact": {
-        "id": "CECashImpact",
-        "name": "cash impact",
-        "description": null,
-        "parent": null,
-        "suffix": "VFX"
-    },
-    "CEMurkShield": {
-        "id": "CEMurkShield",
-        "name": "murk shield",
-        "description": "A small sphere that protects against darkness and lasts until sunset.",
-        "parent": "BaseItem",
         "suffix": null
     },
     "CEAccumulatorVessel": {
@@ -8658,90 +8336,6 @@
         "parent": "CEPipeBrassMedium",
         "suffix": "Broken"
     },
-    "CEWallRadioSpeakerBase": {
-        "id": "CEWallRadioSpeakerBase",
-        "name": "loudspeaker",
-        "description": "Remote radio broadcasting device",
-        "parent": "CEBaseWallmount",
-        "suffix": null
-    },
-    "CEWallRadioSpeaker": {
-        "id": "CEWallRadioSpeaker",
-        "name": null,
-        "description": null,
-        "parent": "CEWallRadioSpeakerBase",
-        "suffix": "Common"
-    },
-    "CEWallRadioSpeakerAcademy": {
-        "id": "CEWallRadioSpeakerAcademy",
-        "name": null,
-        "description": null,
-        "parent": "CEWallRadioSpeakerBase",
-        "suffix": "Common, Academy"
-    },
-    "CEWallRadioSpeakerEngineering": {
-        "id": "CEWallRadioSpeakerEngineering",
-        "name": null,
-        "description": null,
-        "parent": "CEWallRadioSpeakerBase",
-        "suffix": "Common, Engineering"
-    },
-    "CEWallRadioSpeakerGuard": {
-        "id": "CEWallRadioSpeakerGuard",
-        "name": null,
-        "description": null,
-        "parent": "CEWallRadioSpeakerBase",
-        "suffix": "Common, Guard"
-    },
-    "CEWallRadioSpeakerTavern": {
-        "id": "CEWallRadioSpeakerTavern",
-        "name": null,
-        "description": null,
-        "parent": "CEWallRadioSpeakerBase",
-        "suffix": "Common, Tavern"
-    },
-    "CERadioPostSpeakerBase": {
-        "id": "CERadioPostSpeakerBase",
-        "name": "loudspeaker post",
-        "description": "Remote radio broadcasting device",
-        "parent": null,
-        "suffix": null
-    },
-    "CERadioPostSpeaker": {
-        "id": "CERadioPostSpeaker",
-        "name": null,
-        "description": null,
-        "parent": "CERadioPostSpeakerBase",
-        "suffix": "Common"
-    },
-    "CERadioPostSpeakerAcademy": {
-        "id": "CERadioPostSpeakerAcademy",
-        "name": null,
-        "description": null,
-        "parent": "CERadioPostSpeakerBase",
-        "suffix": "Common, Academy"
-    },
-    "CERadioPostSpeakerEngineering": {
-        "id": "CERadioPostSpeakerEngineering",
-        "name": null,
-        "description": null,
-        "parent": "CERadioPostSpeakerBase",
-        "suffix": "Common, Engineering"
-    },
-    "CERadioPostSpeakerGuard": {
-        "id": "CERadioPostSpeakerGuard",
-        "name": null,
-        "description": null,
-        "parent": "CERadioPostSpeakerBase",
-        "suffix": "Common, Guard"
-    },
-    "CERadioPostSpeakerTavern": {
-        "id": "CERadioPostSpeakerTavern",
-        "name": null,
-        "description": null,
-        "parent": "CERadioPostSpeakerBase",
-        "suffix": "Common, Tavern"
-    },
     "CEHighBushRandom": {
         "id": "CEHighBushRandom",
         "name": null,
@@ -8812,6 +8406,13 @@
         "parent": null,
         "suffix": null
     },
+    "CEPlantAgaricGrown": {
+        "id": "CEPlantAgaricGrown",
+        "name": null,
+        "description": null,
+        "parent": "CEPlantAgaric",
+        "suffix": "Grown"
+    },
     "CEPlantCabbageDead": {
         "id": "CEPlantCabbageDead",
         "name": "dead cabbage",
@@ -8832,6 +8433,13 @@
         "description": null,
         "parent": "CEPlantDeadBase",
         "suffix": "SPRITE TODO"
+    },
+    "CEPlantChanterelleGrown": {
+        "id": "CEPlantChanterelleGrown",
+        "name": null,
+        "description": null,
+        "parent": "CEPlantChanterelle",
+        "suffix": "Grown"
     },
     "CEPlantCornDead": {
         "id": "CEPlantCornDead",
@@ -9022,24 +8630,10 @@
         "parent": null,
         "suffix": null
     },
-    "CEMagicEssenceNode": {
-        "id": "CEMagicEssenceNode",
-        "name": "magic essence node",
-        "description": "A cluster of magical essence that briefly took shape in physical reality.",
-        "parent": null,
-        "suffix": null
-    },
-    "CENodeStabilizerSphere": {
-        "id": "CENodeStabilizerSphere",
-        "name": "node stabilizer sphere",
-        "description": "A large glass sphere ringed with brass. Anchored and powered on a magic essence node, it stops the node from aging, preserving it indefinitely while it keeps generating essence.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
     "CEShadowRift": {
         "id": "CEShadowRift",
         "name": "shadow rift",
-        "description": "A tear in the world. Shadow traders come out of it at dawn and slip back in at nightfall.",
+        "description": "A tear in the world. Shadow traders come out of it at nightfall and slip back in at dawn.",
         "parent": null,
         "suffix": "Traders"
     },
@@ -9112,13 +8706,6 @@
         "description": null,
         "parent": "CETradeCarpetBase",
         "suffix": "alcohol"
-    },
-    "CETradeTableEmpireGuard": {
-        "id": "CETradeTableEmpireGuard",
-        "name": null,
-        "description": null,
-        "parent": "CETradeCarpetBase",
-        "suffix": "empire guard"
     },
     "CETradeTableHelsinWarHouse": {
         "id": "CETradeTableHelsinWarHouse",
@@ -9218,11 +8805,32 @@
         "parent": "CEBaseGameRule",
         "suffix": null
     },
-    "CEGameRuleMagicEssenceNodes": {
-        "id": "CEGameRuleMagicEssenceNodes",
+    "CEWildlandsModifierBoneyard": {
+        "id": "CEWildlandsModifierBoneyard",
         "name": null,
         "description": null,
-        "parent": "CEBaseGameRule",
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierBrassRuins": {
+        "id": "CEWildlandsModifierBrassRuins",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierCaveEntrances": {
+        "id": "CEWildlandsModifierCaveEntrances",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierMushroomGrove": {
+        "id": "CEWildlandsModifierMushroomGrove",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
     "CEWildlandsModifierOreCoalNoise": {
@@ -9232,15 +8840,29 @@
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierOreIronNoise": {
-        "id": "CEWildlandsModifierOreIronNoise",
+    "CEWildlandsModifierOreCrystalNoise": {
+        "id": "CEWildlandsModifierOreCrystalNoise",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierOreCrystalNoise": {
-        "id": "CEWildlandsModifierOreCrystalNoise",
+    "CEWildlandsModifierDiamondVein": {
+        "id": "CEWildlandsModifierDiamondVein",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierGoldVein": {
+        "id": "CEWildlandsModifierGoldVein",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierOreIronNoise": {
+        "id": "CEWildlandsModifierOreIronNoise",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
@@ -9267,22 +8889,22 @@
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierCoreIronConstant15": {
-        "id": "CEWildlandsModifierCoreIronConstant15",
+    "CEWildlandsModifierCoreIronRatio30": {
+        "id": "CEWildlandsModifierCoreIronRatio30",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierCoreCoalConstant15": {
-        "id": "CEWildlandsModifierCoreCoalConstant15",
+    "CEWildlandsModifierCoreCoalRatio30": {
+        "id": "CEWildlandsModifierCoreCoalRatio30",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierCoreCrystalConstant15": {
-        "id": "CEWildlandsModifierCoreCrystalConstant15",
+    "CEWildlandsModifierCoreCrystalRatio30": {
+        "id": "CEWildlandsModifierCoreCrystalRatio30",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
@@ -9302,95 +8924,11 @@
         "parent": "CEBaseWildlandsModifier",
         "suffix": null
     },
-    "CEWildlandsModifierTestRoom": {
-        "id": "CEWildlandsModifierTestRoom",
+    "CEWildlandsModifierShadowEaters": {
+        "id": "CEWildlandsModifierShadowEaters",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
-        "suffix": null
-    },
-    "CEWalletFilledAcademyProfessor": {
-        "id": "CEWalletFilledAcademyProfessor",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEChestFilledAcademyProfessor": {
-        "id": "CEChestFilledAcademyProfessor",
-        "name": null,
-        "description": null,
-        "parent": "CEWoodenChest",
-        "suffix": "Filled, Academy Professor"
-    },
-    "CEBedsideTableFilledAcademyProfessor": {
-        "id": "CEBedsideTableFilledAcademyProfessor",
-        "name": null,
-        "description": null,
-        "parent": "CEBedsideTableWooden",
-        "suffix": "Filled, Academy Professor"
-    },
-    "CEKeyRingAcademyProfessor": {
-        "id": "CEKeyRingAcademyProfessor",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
-        "suffix": null
-    },
-    "CEWalletFilledAcademyRector": {
-        "id": "CEWalletFilledAcademyRector",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEChestFilledAcademyRector": {
-        "id": "CEChestFilledAcademyRector",
-        "name": null,
-        "description": null,
-        "parent": "CEGoldChest",
-        "suffix": "Filled, Academy Rector"
-    },
-    "CEBedsideTableFilledAcademyRector": {
-        "id": "CEBedsideTableFilledAcademyRector",
-        "name": null,
-        "description": null,
-        "parent": "CEBedsideTableWooden",
-        "suffix": "Filled, Academy Rector"
-    },
-    "CEKeyRingAcademyRector": {
-        "id": "CEKeyRingAcademyRector",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
-        "suffix": null
-    },
-    "CEWalletFilledAcademyStudent": {
-        "id": "CEWalletFilledAcademyStudent",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEChestFilledAcademyStudent": {
-        "id": "CEChestFilledAcademyStudent",
-        "name": null,
-        "description": null,
-        "parent": "CEWoodenChest",
-        "suffix": "Filled, Academy Student"
-    },
-    "CEBedsideTableFilledAcademyStudent": {
-        "id": "CEBedsideTableFilledAcademyStudent",
-        "name": null,
-        "description": null,
-        "parent": "CEBedsideTableWooden",
-        "suffix": "Filled, Academy Student"
-    },
-    "CEKeyRingAcademyStudent": {
-        "id": "CEKeyRingAcademyStudent",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
         "suffix": null
     },
     "CEWalletFilledBard": {
@@ -9477,76 +9015,6 @@
         "parent": "CEBaseKeyRing",
         "suffix": null
     },
-    "CEWalletFilledGuard": {
-        "id": "CEWalletFilledGuard",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEChestFilledGuard": {
-        "id": "CEChestFilledGuard",
-        "name": null,
-        "description": null,
-        "parent": "CEWoodenChest",
-        "suffix": "Filled, Guard"
-    },
-    "CEBedsideTableFilledGuard": {
-        "id": "CEBedsideTableFilledGuard",
-        "name": null,
-        "description": null,
-        "parent": "CEBedsideTableWooden",
-        "suffix": "Filled, Guard"
-    },
-    "CEKeyRingGuard": {
-        "id": "CEKeyRingGuard",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
-        "suffix": null
-    },
-    "CEWalletFilledGuardCommander": {
-        "id": "CEWalletFilledGuardCommander",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEChestFilledGuardCommander": {
-        "id": "CEChestFilledGuardCommander",
-        "name": null,
-        "description": null,
-        "parent": "CEGoldChest",
-        "suffix": "Filled, Guard Commander"
-    },
-    "CEBedsideTableFilledGuardCommander": {
-        "id": "CEBedsideTableFilledGuardCommander",
-        "name": null,
-        "description": null,
-        "parent": "CEBedsideTableWooden",
-        "suffix": "Filled, Guard Commander"
-    },
-    "CEKeyRingGuardCommander": {
-        "id": "CEKeyRingGuardCommander",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
-        "suffix": null
-    },
-    "CEWalletFilledInvestigator": {
-        "id": "CEWalletFilledInvestigator",
-        "name": null,
-        "description": null,
-        "parent": "CEWallet",
-        "suffix": null
-    },
-    "CEKeyRingInvestigator": {
-        "id": "CEKeyRingInvestigator",
-        "name": null,
-        "description": null,
-        "parent": "CEBaseKeyRing",
-        "suffix": null
-    },
     "CEWalletFilledAdventurer": {
         "id": "CEWalletFilledAdventurer",
         "name": null,
@@ -9561,12 +9029,54 @@
         "parent": "CEWallet",
         "suffix": null
     },
+    "CEChestFilledGuildmaster": {
+        "id": "CEChestFilledGuildmaster",
+        "name": null,
+        "description": null,
+        "parent": "CEGoldChest",
+        "suffix": "Filled, Guildmaster"
+    },
+    "CEBedsideTableFilledGuildmaster": {
+        "id": "CEBedsideTableFilledGuildmaster",
+        "name": null,
+        "description": null,
+        "parent": "CEBedsideTableWooden",
+        "suffix": "Filled, Guildmaster"
+    },
     "CEKeyRingGuildmaster": {
         "id": "CEKeyRingGuildmaster",
         "name": null,
         "description": null,
         "parent": "CEBaseKeyRing",
         "suffix": null
+    },
+    "CEWalletFilledSheriff": {
+        "id": "CEWalletFilledSheriff",
+        "name": null,
+        "description": null,
+        "parent": "CEWallet",
+        "suffix": null
+    },
+    "CEKeyRingSheriff": {
+        "id": "CEKeyRingSheriff",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseKeyRing",
+        "suffix": null
+    },
+    "CEBedsideTableFilledSheriff": {
+        "id": "CEBedsideTableFilledSheriff",
+        "name": null,
+        "description": null,
+        "parent": "CEBedsideTableWooden",
+        "suffix": "Filled, Sheriff"
+    },
+    "CEChestFilledSheriff": {
+        "id": "CEChestFilledSheriff",
+        "name": null,
+        "description": null,
+        "parent": "CEWoodenChest",
+        "suffix": "Filled, Sheriff"
     },
     "CEWalletFilledBartender": {
         "id": "CEWalletFilledBartender",
@@ -9701,13 +9211,6 @@
         "parent": null,
         "suffix": null
     },
-    "CEObjectiveVandalSabotageRadio": {
-        "id": "CEObjectiveVandalSabotageRadio",
-        "name": "Sabotage the radio",
-        "description": "No propaganda in my city. Every radio booth must be destroyed.",
-        "parent": null,
-        "suffix": null
-    },
     "CEObjectiveBrotherhoodSurvive": {
         "id": "CEObjectiveBrotherhoodSurvive",
         "name": "Keep the Brotherhood alive",
@@ -9727,13 +9230,6 @@
         "name": "A debt",
         "description": "This person once crossed the Brotherhood. Make their life unbearable - they must end up in critical condition 3 times, yet survive to learn their lesson.",
         "parent": null,
-        "suffix": null
-    },
-    "CEPaperBountyHunterContract": {
-        "id": "CEPaperBountyHunterContract",
-        "name": "contract",
-        "description": "A short letter with no return address.",
-        "parent": "CEPaper",
         "suffix": null
     },
     "CEObjectiveBountyHunterEliminate": {
@@ -9764,17 +9260,10 @@
         "parent": null,
         "suffix": null
     },
-    "CEObjectiveTormentorSpite": {
-        "id": "CEObjectiveTormentorSpite",
-        "name": "Foil your target's plans",
-        "description": "Do whatever it takes to make the person you secretly despise fail every one of their personal objectives.",
-        "parent": null,
-        "suffix": null
-    },
-    "CEObjectiveTormentorSurvive": {
-        "id": "CEObjectiveTormentorSurvive",
-        "name": "Keep your target alive",
-        "description": "Your target must live under the burden of knowing its own insignificance.",
+    "CEObjectiveSheriffDestroyDarkness": {
+        "id": "CEObjectiveSheriffDestroyDarkness",
+        "name": "Destroy the darkness",
+        "description": "Every nightmare hiding in the city must be dead.",
         "parent": null,
         "suffix": null
     },
@@ -9799,24 +9288,73 @@
         "parent": null,
         "suffix": null
     },
+    "CEActionDarkSideBanishment": {
+        "id": "CEActionDarkSideBanishment",
+        "name": "Banishment to the dark side",
+        "description": "With a touch, you cast a creature out of the material world for a minute. Only those who perceive magic can see it there.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEActionToggleDarkSideWalk": {
+        "id": "CEActionToggleDarkSideWalk",
+        "name": "Walk on the dark side",
+        "description": "Step out of the material world, or return to it, at will.",
+        "parent": "BaseAction",
+        "suffix": null
+    },
+    "CEStatusEffectDarkSide": {
+        "id": "CEStatusEffectDarkSide",
+        "name": "on the dark side",
+        "description": "You are outside the material world. Only those who perceive magic can see you.",
+        "parent": "StatusEffectSlowdown",
+        "suffix": null
+    },
+    "CEActionImperialSalary200": {
+        "id": "CEActionImperialSalary200",
+        "name": "Imperial salary",
+        "description": "The Empire pays its servants 2 gold coins at every dawn. Collect the salary accumulated so far.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEActionToggleMagicVision": {
+        "id": "CEActionToggleMagicVision",
+        "name": "Magical vision",
+        "description": "You focus on magical flows, perceiving the hidden world of magic.",
+        "parent": "BaseAction",
+        "suffix": null
+    },
+    "CEStatusEffectMagicVision": {
+        "id": "CEStatusEffectMagicVision",
+        "name": "magical vision",
+        "description": "You perceive the hidden world of magic.",
+        "parent": "StatusEffectBase",
+        "suffix": null
+    },
+    "CEActionManaControl": {
+        "id": "CEActionManaControl",
+        "name": "Mana control",
+        "description": "Switch between restoring and spending your mana.",
+        "parent": "BaseAction",
+        "suffix": null
+    },
     "CEStatusEffectManaRegen": {
         "id": "CEStatusEffectManaRegen",
         "name": "mana regeneration",
-        "description": "Your mana is constantly being restored. Click to switch to mana drain.",
+        "description": "Your mana is constantly being restored.",
         "parent": "StatusEffectBase",
         "suffix": null
     },
     "CEStatusEffectManaDrain": {
         "id": "CEStatusEffectManaDrain",
         "name": "mana drain",
-        "description": "Your mana is constantly being spent. Click to switch to mana regeneration.",
+        "description": "Your mana is constantly being spent.",
         "parent": "StatusEffectBase",
         "suffix": null
     },
-    "ActionCEMilitaryTraining": {
-        "id": "ActionCEMilitaryTraining",
+    "CEActionMilitaryTraining": {
+        "id": "CEActionMilitaryTraining",
         "name": "Military training",
-        "description": "Rigorous drilling has taught your body to push past exhaustion. Catch your second wind and instantly restore your stamina.",
+        "description": "Rigorous drilling has taught your body to push past exhaustion and fear. Catch your second wind to instantly restore your stamina and shake off primal terror.",
         "parent": null,
         "suffix": null
     },
@@ -9834,6 +9372,13 @@
         "parent": null,
         "suffix": null
     },
+    "CEActionShopEmpireSheriff": {
+        "id": "CEActionShopEmpireSheriff",
+        "name": "Imperial supply",
+        "description": "Order equipment from the Empire's warehouses.",
+        "parent": null,
+        "suffix": null
+    },
     "CEStatusEffectSoftLanding": {
         "id": "CEStatusEffectSoftLanding",
         "name": "soft landing",
@@ -9848,18 +9393,18 @@
         "parent": "StatusEffectBase",
         "suffix": null
     },
-    "CEStatusEffectVandalCrushing": {
-        "id": "CEStatusEffectVandalCrushing",
-        "name": "crushing",
-        "description": null,
-        "parent": "StatusEffectBase",
-        "suffix": null
-    },
     "CEActionRecruit": {
         "id": "CEActionRecruit",
         "name": "Recruitment",
         "description": "Invite someone nearby to join the Brotherhood. They can refuse.",
         "parent": null,
+        "suffix": null
+    },
+    "CEActionSoulGaze": {
+        "id": "CEActionSoulGaze",
+        "name": "Soul gaze",
+        "description": "Look into someone's soul and see their true nature. They will feel it.",
+        "parent": "BaseAction",
         "suffix": null
     },
     "CEStatusEffectMysticVitality": {
@@ -9932,13 +9477,6 @@
         "parent": null,
         "suffix": null
     },
-    "CEStatusEffectKnowledgeCopying": {
-        "id": "CEStatusEffectKnowledgeCopying",
-        "name": "knowledge copying",
-        "description": null,
-        "parent": "StatusEffectBase",
-        "suffix": null
-    },
     "CEActionSpellFeatherFall": {
         "id": "CEActionSpellFeatherFall",
         "name": "Feather Fall",
@@ -10002,8 +9540,8 @@
         "parent": "CEEffectAreaHealingTelegraphy",
         "suffix": null
     },
-    "ActionCEWerewolfTransform": {
-        "id": "ActionCEWerewolfTransform",
+    "CEActionWerewolfTransform": {
+        "id": "CEActionWerewolfTransform",
         "name": "True Form",
         "description": "Give in to the beast and take your true, wolf form. Only works at night.",
         "parent": null,
@@ -10782,10 +10320,10 @@
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
-    "CEClothingCloakGuardCommander": {
-        "id": "CEClothingCloakGuardCommander",
-        "name": "guard commander's cloak",
-        "description": "A prestigious cloak worn by the guard commander, denoting authority.",
+    "CEClothingCloakSheriff": {
+        "id": "CEClothingCloakSheriff",
+        "name": "sheriff's cloak",
+        "description": "A prestigious cloak worn by the sheriff, denoting authority.",
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
@@ -10793,13 +10331,6 @@
         "id": "CEClothingCloakBrigadier",
         "name": "brigadier's cloak",
         "description": "A status item that only senior foremen responsible for the integrity of the island are allowed to wear. The fabric is stitched with thin brass threads, providing excellent insulation from magical radiation.",
-        "parent": "CEClothingCloakBase",
-        "suffix": null
-    },
-    "CEClothingCloakTavernmaster": {
-        "id": "CEClothingCloakTavernmaster",
-        "name": "tavernmaster's cloak",
-        "description": "A ceremonial cloak worn by the tavernmaster, symbolizing leadership.",
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
@@ -10859,13 +10390,6 @@
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
-    "CEClothingCloakMantleInvestigator": {
-        "id": "CEClothingCloakMantleInvestigator",
-        "name": "investigator's mantle",
-        "description": "A practical mantle favored by investigators for its discreet appearance.",
-        "parent": "CEClothingCloakBase",
-        "suffix": null
-    },
     "CEClothingCloakMantleThaumaturge": {
         "id": "CEClothingCloakMantleThaumaturge",
         "name": "thaumaturge's mantle",
@@ -10915,10 +10439,10 @@
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
-    "CEClothingCloakRaincoatGuard": {
-        "id": "CEClothingCloakRaincoatGuard",
-        "name": "guard raincoat",
-        "description": "A reinforced raincoat issued to guards for weather protection while on duty.",
+    "CEClothingCloakRaincoatSheriff": {
+        "id": "CEClothingCloakRaincoatSheriff",
+        "name": "sheriff's raincoat",
+        "description": "A reinforced raincoat issued to the sheriff for weather protection while on duty.",
         "parent": "CEClothingCloakBase",
         "suffix": null
     },
@@ -10957,10 +10481,10 @@
         "parent": "CEClothingShirtBase",
         "suffix": null
     },
-    "CEClothingShirtSyurkoGuard": {
-        "id": "CEClothingShirtSyurkoGuard",
-        "name": "guard syurko",
-        "description": "A syurko styled for guard uniforms.",
+    "CEClothingShirtSyurkoSheriff": {
+        "id": "CEClothingShirtSyurkoSheriff",
+        "name": "sheriff's syurko",
+        "description": "A syurko styled for the sheriff's uniform.",
         "parent": "CEClothingShirtBase",
         "suffix": null
     },
@@ -11362,7 +10886,7 @@
     "CEWeaponGunJustice": {
         "id": "CEWeaponGunJustice",
         "name": "Justice Revolver",
-        "description": "A fast and convenient guard revolver that can be easily fired with two hands.",
+        "description": "A fast and convenient sheriff's revolver that can be easily fired with two hands.",
         "parent": null,
         "suffix": null
     },
@@ -11618,183 +11142,183 @@
         "parent": "CEBasePole",
         "suffix": "Wooden"
     },
-    "CEZLevelLadderDirtCliff": {
-        "id": "CEZLevelLadderDirtCliff",
+    "CEZLevelStairsDirtCliff": {
+        "id": "CEZLevelStairsDirtCliff",
         "name": null,
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderDirtCliffBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsDirtCliffBase"
         ],
         "suffix": null
     },
-    "CEZLevelLadderDirtCliffCorner": {
-        "id": "CEZLevelLadderDirtCliffCorner",
+    "CEZLevelStairsDirtCliffCorner": {
+        "id": "CEZLevelStairsDirtCliffCorner",
         "name": null,
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderDirtCliffBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsDirtCliffBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelLadderDirtCliffCornerInner": {
-        "id": "CEZLevelLadderDirtCliffCornerInner",
+    "CEZLevelStairsDirtCliffCornerInner": {
+        "id": "CEZLevelStairsDirtCliffCornerInner",
         "name": null,
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderDirtCliffBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsDirtCliffBase"
         ],
         "suffix": "Inner Corner"
     },
-    "CEZLevelsLadderRoofRed": {
-        "id": "CEZLevelsLadderRoofRed",
+    "CEZLevelStairsRoofRed": {
+        "id": "CEZLevelStairsRoofRed",
         "name": "red roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderRoofRedBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsRoofRedBase"
         ],
         "suffix": null
     },
-    "CEZLevelsLadderRoofRedCorner": {
-        "id": "CEZLevelsLadderRoofRedCorner",
+    "CEZLevelStairsRoofRedCorner": {
+        "id": "CEZLevelStairsRoofRedCorner",
         "name": "red roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderRoofRedBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsRoofRedBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelsLadderRoofRedCornerInner": {
-        "id": "CEZLevelsLadderRoofRedCornerInner",
+    "CEZLevelStairsRoofRedCornerInner": {
+        "id": "CEZLevelStairsRoofRedCornerInner",
         "name": "red roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderRoofRedBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsRoofRedBase"
         ],
         "suffix": "Inner Corner"
     },
-    "CEZLevelsLadderRoofGreen": {
-        "id": "CEZLevelsLadderRoofGreen",
+    "CEZLevelStairsRoofGreen": {
+        "id": "CEZLevelStairsRoofGreen",
         "name": "green roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderRoofGreenBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsRoofGreenBase"
         ],
         "suffix": null
     },
-    "CEZLevelsLadderRoofGreenCorner": {
-        "id": "CEZLevelsLadderRoofGreenCorner",
+    "CEZLevelStairsRoofGreenCorner": {
+        "id": "CEZLevelStairsRoofGreenCorner",
         "name": "green roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderRoofGreenBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsRoofGreenBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelsLadderRoofGreenCornerInner": {
-        "id": "CEZLevelsLadderRoofGreenCornerInner",
+    "CEZLevelStairsRoofGreenCornerInner": {
+        "id": "CEZLevelStairsRoofGreenCornerInner",
         "name": "green roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderRoofGreenBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsRoofGreenBase"
         ],
         "suffix": "Inner Corner"
     },
-    "CEZLevelsLadderRoofBlue": {
-        "id": "CEZLevelsLadderRoofBlue",
+    "CEZLevelStairsRoofBlue": {
+        "id": "CEZLevelStairsRoofBlue",
         "name": "blue roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderRoofBlueBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsRoofBlueBase"
         ],
         "suffix": null
     },
-    "CEZLevelsLadderRoofBlueCorner": {
-        "id": "CEZLevelsLadderRoofBlueCorner",
+    "CEZLevelStairsRoofBlueCorner": {
+        "id": "CEZLevelStairsRoofBlueCorner",
         "name": "blue roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderRoofBlueBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsRoofBlueBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelsLadderRoofBlueCornerInner": {
-        "id": "CEZLevelsLadderRoofBlueCornerInner",
+    "CEZLevelStairsRoofBlueCornerInner": {
+        "id": "CEZLevelStairsRoofBlueCornerInner",
         "name": "blue roof",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderRoofBlueBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsRoofBlueBase"
         ],
         "suffix": "Inner Corner"
     },
-    "CEZLevelLadderStone": {
-        "id": "CEZLevelLadderStone",
-        "name": "stone ladder",
+    "CEZLevelStairsStone": {
+        "id": "CEZLevelStairsStone",
+        "name": "stone stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderStoneBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsStoneBase"
         ],
         "suffix": null
     },
-    "CEZLevelLadderStoneCorner": {
-        "id": "CEZLevelLadderStoneCorner",
-        "name": "stone ladder",
+    "CEZLevelStairsStoneCorner": {
+        "id": "CEZLevelStairsStoneCorner",
+        "name": "stone stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderStoneBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsStoneBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelLadderStoneCornerInner": {
-        "id": "CEZLevelLadderStoneCornerInner",
-        "name": "stone ladder",
+    "CEZLevelStairsStoneCornerInner": {
+        "id": "CEZLevelStairsStoneCornerInner",
+        "name": "stone stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderStoneBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsStoneBase"
         ],
         "suffix": "Inner Corner"
     },
-    "CEZLevelLadderWooden": {
-        "id": "CEZLevelLadderWooden",
-        "name": "wooden ladder",
+    "CEZLevelStairsWooden": {
+        "id": "CEZLevelStairsWooden",
+        "name": "wooden stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderBase",
-            "CEZLevelsLadderWoodenBase"
+            "CEZLevelStairsBase",
+            "CEZLevelStairsWoodenBase"
         ],
         "suffix": null
     },
-    "CEZLevelLadderWoodenCorner": {
-        "id": "CEZLevelLadderWoodenCorner",
-        "name": "wooden ladder",
+    "CEZLevelStairsWoodenCorner": {
+        "id": "CEZLevelStairsWoodenCorner",
+        "name": "wooden stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerBase",
-            "CEZLevelsLadderWoodenBase"
+            "CEZLevelStairsCornerBase",
+            "CEZLevelStairsWoodenBase"
         ],
         "suffix": "Corner"
     },
-    "CEZLevelLadderWoodenCornerInner": {
-        "id": "CEZLevelLadderWoodenCornerInner",
-        "name": "wooden ladder",
+    "CEZLevelStairsWoodenCornerInner": {
+        "id": "CEZLevelStairsWoodenCornerInner",
+        "name": "wooden stairs",
         "description": null,
         "parent": [
-            "CEZLevelLadderCornerInnerBase",
-            "CEZLevelsLadderWoodenBase"
+            "CEZLevelStairsCornerInnerBase",
+            "CEZLevelStairsWoodenBase"
         ],
         "suffix": "Inner Corner"
     },
@@ -11866,13 +11390,6 @@
         "description": null,
         "parent": "CEBaseWindowFrame",
         "suffix": null
-    },
-    "CECobwebRight1": {
-        "id": "CECobwebRight1",
-        "name": "cobweb",
-        "description": "The sticky web is surprisingly strong and unpleasant.",
-        "parent": null,
-        "suffix": "Right. Corner."
     },
     "CEWallmauntGarlandBase": {
         "id": "CEWallmauntGarlandBase",
@@ -12063,13 +11580,6 @@
         "parent": "CEBaseSmallCrate",
         "suffix": null
     },
-    "CEResearchTable": {
-        "id": "CEResearchTable",
-        "name": "research table",
-        "description": "A table for conducting scientific research.",
-        "parent": null,
-        "suffix": null
-    },
     "CETableBase": {
         "id": "CETableBase",
         "name": null,
@@ -12175,6 +11685,13 @@
         "parent": "CEBaseMachinePowered",
         "suffix": null
     },
+    "CEMurkShieldGenerator": {
+        "id": "CEMurkShieldGenerator",
+        "name": "murk shield generator",
+        "description": "Kindles the murk shield at every dawn, if it has power. Only one shield burns at a time, no matter how many generators there are.",
+        "parent": "CEBaseMachinePowered",
+        "suffix": null
+    },
     "CEPowerGridProjector": {
         "id": "CEPowerGridProjector",
         "name": "island power grid projector",
@@ -12189,17 +11706,10 @@
         "parent": "CEBaseMachinePowered",
         "suffix": null
     },
-    "CESalaryPlatform": {
-        "id": "CESalaryPlatform",
-        "name": "salary platform",
-        "description": "Allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CEMurkShieldGenerator": {
-        "id": "CEMurkShieldGenerator",
-        "name": "murk shield generator",
-        "description": "Kindles the murk shield at every dawn, if it has power. Only one shield burns at a time, no matter how many generators there are.",
+    "CESolutionNormalizer": {
+        "id": "CESolutionNormalizer",
+        "name": "solution normalizer",
+        "description": "An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.",
         "parent": "CEBaseMachinePowered",
         "suffix": null
     },
@@ -12245,18 +11755,21 @@
         "parent": "CEPipeBase",
         "suffix": null
     },
-    "CERadioStation": {
-        "id": "CERadioStation",
-        "name": "radio booth",
-        "description": "A broadcasting console. When switched on, everything said next to it is repeated by loudspeakers on its frequencies.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
     "CEHighBush": {
         "id": "CEHighBush",
         "name": "bush",
         "description": "Thick fast-growing weed",
         "parent": "CEPlantBase",
+        "suffix": null
+    },
+    "CEPlantAgaric": {
+        "id": "CEPlantAgaric",
+        "name": "fly agaric",
+        "description": "A bright red mushroom with white spots. Better not to eat it.",
+        "parent": [
+            "CEPlantBase",
+            "CEPlantBaseMetabolizerFast"
+        ],
         "suffix": null
     },
     "CEPlantAppleTree": {
@@ -12407,20 +11920,6 @@
             "CEPlantBase",
             "CEPlantBaseMetabolizerFast"
         ],
-        "suffix": null
-    },
-    "CEMagicEssenceAttractor": {
-        "id": "CEMagicEssenceAttractor",
-        "name": "essence attractor",
-        "description": "A thaumaturgical device that draws in floating magic essence from the air and condenses it into a collectible liquid, as long as it has power.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CESolutionNormalizer": {
-        "id": "CESolutionNormalizer",
-        "name": "solution normalizer",
-        "description": "An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.",
-        "parent": "CEBaseMachinePowered",
         "suffix": null
     },
     "CEVehicleHoverboard": {

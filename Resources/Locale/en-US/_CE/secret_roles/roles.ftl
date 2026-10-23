@@ -35,9 +35,6 @@ ce-secret-role-description-priest = The light has chosen you as its vessel. You 
 ce-secret-role-name-immortal = Immortal
 ce-secret-role-description-immortal = You are incredibly hard to kill. One might even say almost impossible.
 
-ce-secret-role-name-vandal = Vandal
-ce-secret-role-description-vandal = Oh, you're against the way things are and the sheriff's grip on the city. Let's wreck the place a little.
-
 # Coven
 
 ce-secret-role-name-seer = Seer

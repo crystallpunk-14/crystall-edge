@@ -6,7 +6,6 @@
 using System.Numerics;
 using Robust.Shared.Analyzers;
 using System.Threading;
-using Content.Server._CE.ZLevels.Gravity;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Damage;
@@ -78,7 +77,24 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     private const float CollapseDelayMinSeconds = 3f;
     private const float CollapseDelayMaxSeconds = 10f;
 
+    /// <summary>
+    /// Target server-wide rate; new collapses are spread randomly over a window that keeps to it.
+    /// </summary>
+    private const float CollapsesPerSecond = 100f;
+
     private const int MaxCollapsesPerTick = 8;
+    private const int MaxWarningsPerTick = 16;
+
+    private static readonly TimeSpan WarningLeadTime = TimeSpan.FromSeconds(1.5);
+
+    /// <summary>
+    /// Every collapse changes a tile and re-dirties the column, so recomputes are throttled.
+    /// </summary>
+    private static readonly TimeSpan RecomputeInterval = TimeSpan.FromSeconds(1);
+
+    private const int SoundAreaSize = 8;
+
+    private static readonly TimeSpan SoundCooldown = TimeSpan.FromSeconds(2);
 
     /// <summary>Stability auto-seeded onto every live tile of a <see cref="CEGridStabilityComponent.SupportLowestLevel"/> grid that is the lowest level of its network.</summary>
     public const int LowestLevelSupportValue = 100;
@@ -161,8 +177,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
             return false;
 
-        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _) ||
-               network.Components.TryGetComponent<CEAutoGridGravityComponent>(_compFactory, out _);
+        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _);
     }
 
     /// <summary>Whether this grid's map sits at the lowest depth of its Z-level network — i.e. there is nothing below it.</summary>
@@ -323,32 +338,65 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         return above;
     }
 
+    /// <summary>
+    /// Lobby preload initializes the other levels before the station level, which gets its
+    /// <see cref="CEGridStabilityComponent"/> only on MapInit. Until then columns would miss its Cores.
+    /// </summary>
+    private bool IsZNetworkInitialized(EntityUid gridUid)
+    {
+        if (!TryGetOwningMap(gridUid, out var mapUid) ||
+            !_zMapQuery.TryGetComponent(mapUid, out var zMap) ||
+            !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
+            return true; // not part of a Z-network — nothing else to wait for
+
+        foreach (var levelMap in network.ZLevels.Values)
+        {
+            if (levelMap is { } levelUid && !_map.IsInitialized(levelUid))
+                return false;
+        }
+
+        return true;
+    }
+
+    private readonly List<EntityUid> _toStartBuffer = new();
+
     private void StartPendingJobs()
     {
         if (_dirtyGrids.Count == 0)
             return;
 
-        var toStart = new List<EntityUid>(_dirtyGrids);
-        foreach (var gridUid in toStart)
+        var now = _timing.CurTime;
+
+        _toStartBuffer.Clear();
+        _toStartBuffer.AddRange(_dirtyGrids);
+        foreach (var gridUid in _toStartBuffer)
         {
             // Already consumed by an earlier column in this same pass, or busy in an in-flight job —
             // leave it dirty and pick it up again once that job's result has been applied.
             if (!_dirtyGrids.Contains(gridUid) || _busyGrids.Contains(gridUid))
                 continue;
 
+            // Stays dirty and is retried next tick.
+            if (!_stabilityQuery.TryGetComponent(gridUid, out var gridComp) ||
+                gridComp.NextRecomputeTime > now ||
+                !IsZNetworkInitialized(gridUid))
+                continue;
+
             var column = GetColumn(gridUid, _stabilityQuery.HasComponent);
 
-            var columnBusy = false;
+            var columnBlocked = false;
             foreach (var g in column)
             {
-                if (_busyGrids.Contains(g))
+                if (_busyGrids.Contains(g) ||
+                    !_stabilityQuery.TryGetComponent(g, out var comp) ||
+                    comp.NextRecomputeTime > now)
                 {
-                    columnBusy = true;
+                    columnBlocked = true;
                     break;
                 }
             }
 
-            if (columnBusy)
+            if (columnBlocked)
                 continue;
 
             foreach (var g in column)
@@ -431,9 +479,13 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         var cts = new CancellationTokenSource();
         var job = new StabilityJob(ZCollapseJobTime, liveNodes, coreSeeds, bridges, cts.Token);
 
+        var nextRecompute = _timing.CurTime + RecomputeInterval;
         foreach (var gridUid in column)
         {
             _busyGrids.Add(gridUid);
+
+            if (_stabilityQuery.TryGetComponent(gridUid, out var comp))
+                comp.NextRecomputeTime = nextRecompute;
         }
 
         _inFlightJobs.Add((job, cts, column));
@@ -549,28 +601,26 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     /// <summary>
-    /// For every tile that was live when the job snapshot was taken but has no stability in the job's
-    /// result, spawns the first collapse dust puff and starts its random 2-4s countdown (unless one's
-    /// already running for it); for every tile that regained stability since, cancels any countdown in
-    /// progress. Skips tiles already gone, indestructible tiles, and anything in mapping mode (map
-    /// editors previewing a broken layout shouldn't have tiles start crumbling). The tile itself only
-    /// actually changes once the countdown fires — see <see cref="CollapseTile"/>.
+    /// Schedules newly unsupported tiles at random times within a window sized by
+    /// <see cref="CollapsesPerSecond"/>, and cancels tiles that regained stability.
     /// </summary>
     private void ScheduleCollapsingTiles(EntityUid gridUid, MapGridComponent grid, CEGridStabilityComponent comp, IReadOnlySet<Vector2i> liveTiles, Dictionary<Vector2i, int> newStability)
     {
+        // Mapping mode: never crumble a map being edited.
         if (!_map.IsInitialized(Transform(gridUid).MapUid))
             return;
 
+        List<Vector2i>? toSchedule = null;
         foreach (var tile in liveTiles)
         {
             if (newStability.ContainsKey(tile))
             {
-                comp.PendingCollapses.Remove(tile); // shored back up before it fell — cancel
+                comp.PendingCollapses.Remove(tile); // queue entries become stale
                 continue;
             }
 
             if (comp.PendingCollapses.ContainsKey(tile))
-                continue; // already crumbling — don't restart its clock or double the dust puff
+                continue;
 
             if (!_map.TryGetTile(grid, tile, out var currentTile) || currentTile.IsEmpty)
                 continue;
@@ -578,47 +628,74 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (_tileDefMan[currentTile.TypeId] is ContentTileDefinition { Indestructible: true })
                 continue;
 
-            var coords = _map.GridTileToLocal(gridUid, grid, tile);
-            SpawnAtPosition(CollapseDustEffect, coords);
-            _audio.PlayPvs(CollapseSound, coords);
-            comp.PendingCollapses[tile] = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(CollapseDelayMinSeconds, CollapseDelayMaxSeconds));
+            toSchedule ??= new List<Vector2i>();
+            toSchedule.Add(tile);
+        }
+
+        if (toSchedule == null)
+            return;
+
+        var window = Math.Max(CollapseDelayMaxSeconds, (CountPendingCollapses() + toSchedule.Count) / CollapsesPerSecond);
+        var now = _timing.CurTime;
+        foreach (var tile in toSchedule)
+        {
+            var collapseAt = now + TimeSpan.FromSeconds(_random.NextFloat(CollapseDelayMinSeconds, window));
+            comp.PendingCollapses[tile] = collapseAt;
+            comp.WarningQueue.Enqueue((tile, collapseAt), collapseAt - WarningLeadTime);
         }
     }
 
-    /// <summary>Fires every grid's due collapse countdowns. A plain per-tick scan over participating grids — collapses in flight at once are rare and few, so this stays cheap without needing its own dirty-tracking.</summary>
+    private int CountPendingCollapses()
+    {
+        var count = 0;
+        var query = AllEntityQuery<CEGridStabilityComponent>();
+        while (query.MoveNext(out var comp))
+        {
+            count += comp.PendingCollapses.Count;
+        }
+
+        return count;
+    }
+
+    private static bool IsStillPending(CEGridStabilityComponent comp, (Vector2i Tile, TimeSpan CollapseAt) entry)
+    {
+        return comp.PendingCollapses.TryGetValue(entry.Tile, out var collapseAt) && collapseAt == entry.CollapseAt;
+    }
+
     private void ProcessPendingCollapses()
     {
-        var budget = MaxCollapsesPerTick;
+        var now = _timing.CurTime;
+        var warningBudget = MaxWarningsPerTick;
+        var collapseBudget = MaxCollapsesPerTick;
 
         var query = AllEntityQuery<CEGridStabilityComponent, MapGridComponent>();
-        while (budget > 0 && query.MoveNext(out var gridUid, out var comp, out var grid))
+        while (query.MoveNext(out var gridUid, out var comp, out var grid))
         {
-            if (comp.PendingCollapses.Count == 0)
-                continue;
-
-            List<Vector2i>? due = null;
-            foreach (var (tile, collapseAt) in comp.PendingCollapses)
+            while (warningBudget > 0 && comp.WarningQueue.TryPeek(out var entry, out var warnAt) && warnAt <= now)
             {
-                if (collapseAt > _timing.CurTime)
+                comp.WarningQueue.Dequeue();
+                if (!IsStillPending(comp, entry))
                     continue;
 
-                due ??= new List<Vector2i>();
-                due.Add(tile);
+                if (_map.TryGetTile(grid, entry.Tile, out var tile) && !tile.IsEmpty)
+                {
+                    SpawnAtPosition(CollapseDustEffect, _map.GridTileToLocal(gridUid, grid, entry.Tile));
+                    warningBudget--;
+                }
 
-                if (due.Count >= budget)
-                    break;
+                comp.CollapseQueue.Enqueue(entry, entry.CollapseAt);
             }
 
-            if (due == null)
-                continue;
-
-            foreach (var tile in due)
+            while (collapseBudget > 0 && comp.CollapseQueue.TryPeek(out var entry, out var collapseAt) && collapseAt <= now)
             {
-                comp.PendingCollapses.Remove(tile);
-                CollapseTile(gridUid, grid, tile);
-            }
+                comp.CollapseQueue.Dequeue();
+                if (!IsStillPending(comp, entry))
+                    continue;
 
-            budget -= due.Count;
+                comp.PendingCollapses.Remove(entry.Tile);
+                CollapseTile(gridUid, grid, comp, entry.Tile);
+                collapseBudget--;
+            }
         }
     }
 
@@ -632,7 +709,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// marks the grid dirty either way). That's what makes the collapse read as gradual/recursive
     /// rather than a single tile-sized hole appearing instantly.
     /// </summary>
-    private void CollapseTile(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
+    private void CollapseTile(EntityUid gridUid, MapGridComponent grid, CEGridStabilityComponent comp, Vector2i tile)
     {
         if (!_map.TryGetTile(grid, tile, out var currentTile) || currentTile.IsEmpty)
             return; // something else (RCD, explosion) already took it — nothing left to collapse
@@ -643,13 +720,27 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
         var collapseCoords = _map.GridTileToLocal(gridUid, grid, tile);
         SpawnAtPosition(CollapseDustEffect, collapseCoords);
-        _audio.PlayPvs(CollapseSound, collapseCoords);
+        TryPlayCollapseSound(comp, tile, collapseCoords);
 
         DestroyAnchoredEntities(gridUid, grid, tile);
         DropTileItemBelow(gridUid, tile, tileDef);
 
         var nextTile = tileDef.BaseTurf is { } baseTurf ? new Tile(_tileDefMan[baseTurf].TileId) : Tile.Empty;
         _map.SetTile(gridUid, grid, tile, nextTile);
+    }
+
+    private void TryPlayCollapseSound(CEGridStabilityComponent comp, Vector2i tile, EntityCoordinates coords)
+    {
+        var area = new Vector2i(
+            (int) MathF.Floor(tile.X / (float) SoundAreaSize),
+            (int) MathF.Floor(tile.Y / (float) SoundAreaSize));
+
+        var now = _timing.CurTime;
+        if (comp.NextSoundTime.TryGetValue(area, out var next) && next > now)
+            return;
+
+        comp.NextSoundTime[area] = now + SoundCooldown;
+        _audio.PlayPvs(CollapseSound, coords);
     }
 
     /// <summary>
