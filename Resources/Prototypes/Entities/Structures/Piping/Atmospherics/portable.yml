@@ -78,9 +78,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-  - type: GuideHelp
-    guides:
-    - PortableScrubber
 
 - type: entity
   id: SpaceHeater
@@ -150,9 +147,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-  - type: GuideHelp
-    guides:
-    - Thermomachines
 
 - type: entity
   parent: SpaceHeater

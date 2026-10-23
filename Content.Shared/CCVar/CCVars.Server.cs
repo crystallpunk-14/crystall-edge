@@ -18,13 +18,13 @@ public sealed partial class CCVars
     ///     Guide Entry Prototype ID to be displayed as the server rules.
     /// </summary>
     public static readonly CVarDef<string> RulesFile =
-        CVarDef.Create("server.rules_file", "DefaultRuleset", CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.rules_file", "CERules", CVar.REPLICATED | CVar.SERVER); // CrystallEdge: upstream rulesets deleted with the upstream guidebook
 
     /// <summary>
     ///     Guide entry that is displayed by default when a guide is opened.
     /// </summary>
     public static readonly CVarDef<string> DefaultGuide =
-        CVarDef.Create("server.default_guide", "NewPlayer", CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.default_guide", "BaselineWelcomeEN", CVar.REPLICATED | CVar.SERVER); // CrystallEdge: upstream guidebook deleted
 
     /// <summary>
     ///     If greater than 0, automatically restart the server after this many minutes of uptime.

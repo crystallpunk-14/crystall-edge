@@ -112,10 +112,6 @@
   - type: EmptyOnMachineDeconstruct
     containers:
     - microwave_entity_container
-  - type: GuideHelp
-    guides:
-    - Chef
-    - FoodRecipes
   - type: Item
     sprite: Structures/Machines/microwave.rsi
     size: Ginormous

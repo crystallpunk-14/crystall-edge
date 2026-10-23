@@ -98,10 +98,6 @@
       enabled: false
       sound:
         path: /Audio/Ambience/Objects/vending_machine_hum.ogg
-    - type: GuideHelp
-      guides:
-      - TEG
-      - Power
     - type: StealTarget
       stealGroup: Teg
 
@@ -158,10 +154,6 @@
     - type: Rotatable
     - type: Anchorable
     - type: Pullable
-    - type: GuideHelp
-      guides:
-      - TEG
-      - Power
 
     # functionality
     - type: NodeContainer

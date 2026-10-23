@@ -85,9 +85,6 @@
     node: fire_alarm
   - type: Damageable
     damageModifierSet: PlasticMod
-  - type: GuideHelp
-    guides:
-    - Networking
   - type: Destructible
     thresholds:
     - trigger: &DamageMachineFlimsy

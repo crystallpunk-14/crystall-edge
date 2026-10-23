@@ -105,10 +105,6 @@
           SheetSteel1:
             min: 2
             max: 4
-  - type: GuideHelp
-    guides:
-    - TeslaEngine
-    - SingularityTeslaEngine
 
 - type: entity
   parent: BaseStructureHealth
@@ -190,7 +186,3 @@
           SheetSteel1:
             min: 2
             max: 4
-  - type: GuideHelp
-    guides:
-    - TeslaEngine
-    - SingularityTeslaEngine
