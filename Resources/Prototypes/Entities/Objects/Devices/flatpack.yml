@@ -63,6 +63,10 @@
     entity: AmeShielding
   - type: StaticPrice
     price: 500
+  - type: GuideHelp
+    guides:
+    - AME
+    - Power
   - type: StealTarget
     stealGroup: AmePartFlatpack
 

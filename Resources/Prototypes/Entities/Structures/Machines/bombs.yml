@@ -46,6 +46,10 @@
           layer:
             - MachineLayer
     - type: WiresPanel
+    - type: GuideHelp
+      openOnActivation: true
+      guides:
+      - Defusal
 
 - type: entity
   parent: BaseHardBomb

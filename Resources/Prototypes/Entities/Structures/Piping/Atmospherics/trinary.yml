@@ -78,6 +78,9 @@
         path: /Audio/Ambience/Objects/gas_hiss.ogg
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
+    - type: GuideHelp
+      guides:
+      - MixingAndFiltering
 
 - type: entity
   parent: GasFilter
@@ -177,6 +180,9 @@
         path: /Audio/Ambience/Objects/gas_hiss.ogg
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
+    - type: GuideHelp
+      guides:
+      - MixingAndFiltering
 
 - type: entity
   parent: GasMixer
@@ -280,3 +286,8 @@
       node: pneumaticvalve
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
+    - type: GuideHelp
+      guides:
+      - PneumaticValve
+      - Pumps
+      - Valves

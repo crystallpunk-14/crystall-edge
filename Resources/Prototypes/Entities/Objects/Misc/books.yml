@@ -56,6 +56,10 @@
   - type: Tag
     tags:
     - Book
+  - type: GuideHelp
+    openOnActivation: true
+    guides:
+    - SS14
   - type: MeleeWeapon  # Should write it again since BaseGuidebook doesn't inherit BookBase
     soundHit:
       collection: Punch
@@ -82,6 +86,9 @@
     - state: icon_wrench
     - state: icon_corner
       color: gold
+  - type: GuideHelp
+    guides:
+    - Engineering
 
 - type: entity
   id: BookScientistsGuidebook
@@ -97,6 +104,9 @@
     - state: decor_wingette_circle
       color: "#be69f0"
     - state: icon_dna
+  - type: GuideHelp
+    guides:
+    - Science
 
 - type: entity
   id: BookSecurity
@@ -117,6 +127,10 @@
     damage:
       types:
         Blunt: 6
+  - type: GuideHelp
+    guides:
+    - Security
+    - Antagonists
 
 - type: entity
   id: BookMedicalReferenceBook
@@ -133,6 +147,9 @@
       color: "#f7f7f7"
     - state: icon_medical
       color: "#58abcc"
+  - type: GuideHelp
+    guides:
+    - Medical
 
 - type: entity
   id: BookSpaceLaw
@@ -147,6 +164,9 @@
       color: "#87011c"
     - state: icon_law
       color: "#f7d61a"
+  - type: GuideHelp
+    guides:
+    - SpaceLaw
 
 - type: entity
   parent: BookBase

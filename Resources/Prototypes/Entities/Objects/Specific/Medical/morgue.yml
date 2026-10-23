@@ -145,3 +145,6 @@
       reagents:
       - ReagentId: Fresium
         Quantity: 15
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists

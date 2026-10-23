@@ -75,3 +75,7 @@
     - part-container
     - cell_slot
   - type: Pullable
+  - type: GuideHelp
+    guides:
+    - Cyborgs
+    - Robotics

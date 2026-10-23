@@ -78,6 +78,9 @@
   - type: Construction
     graph: bed
     node: medicalbed
+  - type: GuideHelp
+    guides:
+    - MedicalDoctor
   - type: AmbientMusicMarkerMedical
 
 - type: entity

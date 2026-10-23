@@ -54,6 +54,10 @@
   - type: PacifismDangerousAttack
 
   # Guidebook
+  - type: GuideHelp
+    guides:
+    - VoltageNetworks
+    - Power
 
   # Ambient sound
   - type: AmbientOnPowered

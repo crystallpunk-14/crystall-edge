@@ -21,6 +21,9 @@
       path: /Audio/Ambience/Objects/reclaimer_ambience.ogg
   - type: Machine
     board: BiomassReclaimerMachineCircuitboard
+  - type: GuideHelp
+    guides:
+    - Cloning
   - type: Destructible
     thresholds:
     - trigger: !type:DamageTrigger

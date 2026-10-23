@@ -27,3 +27,6 @@
   - type: Tag
     tags:
     - DiscreteHealthAnalyzer
+  - type: GuideHelp
+    guides:
+    - MedicalDoctor

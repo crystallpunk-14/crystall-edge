@@ -54,3 +54,7 @@
     tags:
     - AirSensor
     - Unstackable
+  - type: GuideHelp
+    guides:
+    - AtmosphericNetworkMonitor
+    - DeviceMonitoringAndControl

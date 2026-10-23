@@ -11,6 +11,7 @@
   antagonist: true
   setPreference: false # Baseline - disable vanilla content
   objective: roles-antag-wizard-objective # TODO: maybe give random objs and stationary ones from AntagObjectives and AntagRandomObjectives
+  guides: [ Wizard ]
   tags:
   - OffStation
   # - Roundstart - Not currently available roundstart

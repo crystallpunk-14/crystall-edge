@@ -108,6 +108,9 @@
     vaultable: false
   - type: ContainerTemperature
     coldDamageThreshold: 213
+  - type: GuideHelp
+    guides:
+    - Cryogenics
   - type: AmbientMusicMarkerMedical
 
 - type: entity

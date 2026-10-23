@@ -19,7 +19,7 @@ public sealed partial class InfoUIController : UIController, IOnStateExited<Game
     private RulesPopup? _rulesPopup;
     private RulesAndInfoWindow? _infoWindow;
 
-    private static readonly ProtoId<GuideEntryPrototype> DefaultRuleset = "CERules";
+    private static readonly ProtoId<GuideEntryPrototype> DefaultRuleset = "DefaultRuleset";
 
     public ProtoId<GuideEntryPrototype> RulesEntryId = DefaultRuleset;
 

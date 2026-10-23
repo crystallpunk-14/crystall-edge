@@ -1,0 +1,25 @@
+- type: guideEntry
+  id: Science
+  name: guide-entry-science
+  text: "/ServerInfo/Guidebook/Science/Science.xml"
+  children:
+  - Technologies
+  - Robotics
+
+- type: guideEntry
+  id: Technologies
+  name: guide-entry-technologies
+  text: "/ServerInfo/Guidebook/Science/Technologies.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  id: Robotics
+  name: guide-entry-robotics
+  text: "/ServerInfo/Guidebook/Science/Robotics.xml"
+  children:
+  - Cyborgs
+
+- type: guideEntry
+  id: Cyborgs
+  name: guide-entry-cyborgs
+  text: "/ServerInfo/Guidebook/Science/Cyborgs.xml"

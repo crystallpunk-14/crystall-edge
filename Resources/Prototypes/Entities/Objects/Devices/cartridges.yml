@@ -112,6 +112,9 @@
         sprite: Structures/Doors/Airlocks/Standard/security-base.rsi
         state: closed
     - type: LogProbeCartridge
+    - type: GuideHelp
+      guides:
+      - Forensics
 
 - type: entity
   parent: BasePDACartridge

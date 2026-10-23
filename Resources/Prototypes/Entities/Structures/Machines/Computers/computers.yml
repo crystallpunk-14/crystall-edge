@@ -44,6 +44,10 @@
             type: AtmosAlertsComputerBoundUserInterface
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - AtmosphericAlertsComputer
+    - DeviceMonitoringAndControl
   - type: AmbientMusicMarkerEngineering
 
 - type: entity
@@ -78,6 +82,10 @@
         type: AtmosMonitoringConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - AtmosphericNetworkMonitor
+    - DeviceMonitoringAndControl
 
 - type: entity
   parent: BaseComputer
@@ -116,6 +124,9 @@
       board: !type:Container
         ents: []
       disk_slot: !type:ContainerSlot {}
+  - type: GuideHelp
+    guides:
+    - ShuttleCraft
 
 - type: entity
   parent: BaseComputerShuttle
@@ -302,6 +313,9 @@
     board: CriminalRecordsComputerCircuitboard
   - type: AccessReader
     access: [["Security"]]
+  - type: GuideHelp
+    guides:
+    - CriminalRecords
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -324,6 +338,9 @@
     color: "#1f8c28"
   - type: Computer
     board: StationRecordsComputerCircuitboard
+  - type: GuideHelp
+    guides:
+    - Forensics
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -436,6 +453,9 @@
     radius: 1.5
     energy: 4.0
     color: "#b53ca1"
+  - type: GuideHelp
+    guides:
+    - Science
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -573,6 +593,10 @@
     radius: 1.5
     energy: 4.0
     color: "#e6e227"
+  - type: GuideHelp
+    guides:
+    - SolarPanels
+    - Power
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -656,6 +680,9 @@
     range: 200
     ports:
       - OrderSender
+  - type: GuideHelp
+    guides:
+    - Cargo
 
 - type: entity
   id: ComputerCargoBounty
@@ -692,6 +719,10 @@
     color: "#b89f25"
   - type: AccessReader
     access: [["Quartermaster"]]
+  - type: GuideHelp
+    guides:
+    - CargoBounties
+    - Cargo
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -737,6 +768,9 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: GuideHelp
+    guides:
+    - Cloning
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -890,6 +924,9 @@
     radius: 1.5
     energy: 4.0
     color: "#b89f25"
+  - type: GuideHelp
+    guides:
+    - Cargo
 
 - type: entity
   parent: BaseComputerAiAccess

@@ -87,6 +87,9 @@
       path: /Audio/Ambience/Objects/gas_pump.ogg
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: GasFlowRegulator
+  - type: GuideHelp
+    guides:
+    - Pumps
 
 - type: entity
   parent: GasBinaryBase
@@ -156,6 +159,9 @@
     - type: WiredNetworkConnection
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
+    - type: GuideHelp
+      guides:
+      - Pumps
 
 - type: entity
   parent: GasBinaryBase
@@ -213,6 +219,9 @@
       path: /Audio/Ambience/Objects/gas_hiss.ogg
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: GasFlowRegulator
+  - type: GuideHelp
+    guides:
+    - PressureRegulator
 
 - type: entity
   parent: GasBinaryBase
@@ -252,6 +261,9 @@
         path: /Audio/Ambience/Objects/gas_hiss.ogg
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasValve
+    - type: GuideHelp
+      guides:
+      - PassiveGate
 
 - type: entity
   parent: GasBinaryBase
@@ -310,6 +322,9 @@
         path: /Audio/Ambience/Objects/gas_hiss.ogg
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasValve
+    - type: GuideHelp
+      guides:
+      - ManualValve
 
 - type: entity
   parent: GasBinaryBase
@@ -379,6 +394,9 @@
       path: /Audio/Ambience/Objects/gas_hiss.ogg
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: GasValve
+  - type: GuideHelp
+    guides:
+    - SignalValve
 
 - type: entity
   parent: GasBinaryBase
@@ -415,6 +433,9 @@
       node: port
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasVentOpening
+    - type: GuideHelp
+      guides:
+      - GasCanisters
 
 - type: entity
   parent: GasVentPump
@@ -470,6 +491,9 @@
       enabled: true
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasVentOpening
+    - type: GuideHelp
+      guides:
+      - AirVent
 
 - type: entity
   parent: [ BaseMachine, ConstructibleMachine, BaseConstructibleMachineDestructible ]
@@ -540,6 +564,9 @@
     navMapBlip: GasValve
   - type: Transform
     noRot: false
+  - type: GuideHelp
+    guides:
+    - GasRecycling
   - type: TegCirculator
 
 - type: entity
@@ -585,6 +612,9 @@
     node: radiator
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: Thermoregulator
+  - type: GuideHelp
+    guides:
+    - Radiators
 
 - type: entity
   parent: HeatExchanger

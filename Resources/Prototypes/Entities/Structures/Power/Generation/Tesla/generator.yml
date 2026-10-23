@@ -25,4 +25,8 @@
         layer:
         - Opaque
   - type: Anchorable
+  - type: GuideHelp
+    guides:
+    - TeslaEngine
+    - Power
 

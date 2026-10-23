@@ -68,6 +68,10 @@
   - type: Anchorable
   - type: Rotatable
   - type: Pullable
+  - type: GuideHelp
+    guides:
+    - SingularityEngine
+    - Power
   - type: ContainerContainer
     containers:
       gas_tank: !type:ContainerSlot {}

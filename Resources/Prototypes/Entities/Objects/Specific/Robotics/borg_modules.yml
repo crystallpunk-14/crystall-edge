@@ -36,6 +36,10 @@
   - type: Tag
     tags:
     - BorgModuleGeneric
+  - type: GuideHelp
+    guides:
+    - Cyborgs
+    - Robotics
 
 - type: entity
   id: BaseProviderBorgModule

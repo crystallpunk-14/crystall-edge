@@ -64,6 +64,10 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  - type: GuideHelp
+    guides:
+    - PortableGenerator
+    - Power
 
     # Core functionality
   - type: PortableGenerator

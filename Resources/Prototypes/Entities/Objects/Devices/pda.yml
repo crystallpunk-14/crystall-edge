@@ -226,6 +226,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-internmed
+  - type: GuideHelp
+    guides:
+    - MedicalDoctor
 
 - type: entity
   parent: BaseSecurityPDA
@@ -632,6 +635,9 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-medical
+  - type: GuideHelp
+    guides:
+    - MedicalDoctor
 
 - type: entity
   parent: BaseMedicalPDA

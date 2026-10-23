@@ -125,6 +125,10 @@
   - type: StaticPrice
     price: 500
   - type: PowerGridCheckNotify
+  - type: GuideHelp
+    guides:
+    - VoltageNetworks
+    - Power
 
 # APC under construction
 - type: entity

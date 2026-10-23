@@ -117,6 +117,9 @@
     attributes:
       proper: true
       gender: male
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
   - type: Tool
     qualities: [ Slicing ]
 
@@ -240,6 +243,9 @@
     isBoss: false
   - type: Speech
     speechVerb: SmallMob
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning

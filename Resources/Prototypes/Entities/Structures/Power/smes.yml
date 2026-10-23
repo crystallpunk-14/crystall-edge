@@ -102,6 +102,11 @@
       sendBroadcastAttemptEvent: true
       examinableAddress: true
     - type: WiredNetworkConnection
+    - type: GuideHelp
+      guides:
+      - PowerStorage
+      - VoltageNetworks
+      - Power
 
     # Interface
     - type: BatteryInterface

@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: false # Baseline - disable vanilla content
   objective: roles-antag-syndicate-agent-objective
+  guides: [ Traitors ]
   tags:
   - OnStation
   - Roundstart
@@ -33,6 +34,7 @@
   antagonist: true
   setPreference: false # Baseline - disable vanilla content
   objective: roles-antag-syndicate-agent-sleeper-objective
+  guides: [ Traitors ]
   tags:
   - OnStation
   - Midround

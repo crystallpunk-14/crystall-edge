@@ -88,6 +88,9 @@
       storagebase: !type:Container
         ents: []
       item_slot: !type:ContainerSlot {}
+  - type: GuideHelp
+    guides:
+    - Janitorial
   - type: Damageable
     damageModifierSet: PlasticMod
   - type: Destructible
@@ -354,4 +357,7 @@
       wetfloorsign_slot1: !type:ContainerSlot {}
       lightreplacer_slot: !type:ContainerSlot {}
       spraybottle_slot:  !type:ContainerSlot {}
+  - type: GuideHelp
+    guides:
+    - Janitorial
   - type: DnaSubstanceTrace

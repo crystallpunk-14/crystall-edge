@@ -50,6 +50,9 @@
     requirePower: true
     highVoltageNode: output
   - type: RequireProjectileTarget
+  - type: GuideHelp
+    guides:
+    - SolarPanels
 
 - type: entity
   parent: [ SolarPanelBasePhysSprite, StructureHealthMachine ]
@@ -278,6 +281,9 @@
     node: solarassembly
     defaultTarget: solarpanel
   - type: RequireProjectileTarget
+  - type: GuideHelp
+    guides:
+    - SolarPanels
 
 - type: entity
   parent: StructureHealthMachine
@@ -329,3 +335,6 @@
     graph: SolarPanel
     node: solartracker
   - type: RequireProjectileTarget
+  - type: GuideHelp
+    guides:
+    - SolarPanels

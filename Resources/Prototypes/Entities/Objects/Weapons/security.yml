@@ -92,6 +92,10 @@
     materialComposition:
       Steel: 100
       Plastic: 100
+  - type: GuideHelp
+    guides:
+    - Security
+    - Antagonists
   - type: Tag
     tags:
     - Stunbaton
@@ -128,6 +132,10 @@
   - type: Appearance
   - type: StaticPrice
     price: 80
+  - type: GuideHelp
+    guides:
+    - Security
+    - Antagonists
 
 - type: entity
   name: flash
@@ -171,6 +179,10 @@
           enum.FlashVisualLayers.LightLayer:
             True: {visible: true}
             False: {visible: false}
+    - type: GuideHelp
+      guides:
+      - Security
+      - Antagonists
 
 - type: entity
   name: flash

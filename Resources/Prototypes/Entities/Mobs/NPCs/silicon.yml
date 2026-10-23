@@ -96,6 +96,9 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: GuideHelp
+    guides:
+    - Robotics
   - type: Tag
     tags:
     - DoorBumpOpener

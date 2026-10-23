@@ -97,6 +97,9 @@
     access: [[ "Engineering" ]]
   - type: Machine
     board: EmitterCircuitboard
+  - type: GuideHelp
+    guides:
+    - SingularityTeslaEngine
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice

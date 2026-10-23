@@ -25,6 +25,10 @@
       Ammonia: stationAmmonia
       NitrousOxide: stationNO
       Frezon: danger
+  - type: GuideHelp
+    guides:
+    - DeviceMonitoringAndControl
+    - AtmosphericsSystems
 
 - type: entity
   parent: [ AirSensorBase, StructureHealthMachineFlimsy ]

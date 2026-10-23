@@ -37,6 +37,10 @@
     layers:
       - state: boxwide
       - state: agrichemkit
+  - type: GuideHelp
+    guides:
+    - Botanical
+    - Chemicals
 
 - type: entity
   parent: BoxLightbulb
