@@ -6,7 +6,6 @@
 using System.Numerics;
 using Robust.Shared.Analyzers;
 using System.Threading;
-using Content.Server._CE.ZLevels.Gravity;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Damage;
@@ -178,8 +177,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
             return false;
 
-        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _) ||
-               network.Components.TryGetComponent<CEAutoGridGravityComponent>(_compFactory, out _);
+        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _);
     }
 
     /// <summary>Whether this grid's map sits at the lowest depth of its Z-level network — i.e. there is nothing below it.</summary>
