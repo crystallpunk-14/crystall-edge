@@ -4,6 +4,7 @@
   description: ce-secret-department-city-description
   color: "#87b7ff"
   weight: 10
+  victoryAchievement: CityWin
   roles:
   - Sheriff
   - Civilian

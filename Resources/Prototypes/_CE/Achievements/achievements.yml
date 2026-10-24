@@ -18,3 +18,11 @@
   icon:
     sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
     state: coin10
+
+- type: achievement
+  id: CityWin
+  name: ce-achievement-city-win-name
+  desc: ce-achievement-city-win-desc
+  icon:
+    sprite: _CE/Achievements/brotherhood.rsi
+    state: flag

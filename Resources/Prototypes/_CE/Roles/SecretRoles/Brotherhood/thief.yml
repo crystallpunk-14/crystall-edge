@@ -3,6 +3,9 @@
   name: ce-secret-role-name-thief
   description: ce-secret-role-description-thief
   icon: CESecretRoleIconThief
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: CityWin
   skills:
   - Pickpocketing
   objectives: !type:EntSelector
