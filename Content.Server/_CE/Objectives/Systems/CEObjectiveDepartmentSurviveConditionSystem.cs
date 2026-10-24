@@ -1,16 +1,16 @@
 using Content.Server._CE.Objectives.Components;
 using Content.Server._CE.Roles;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveDepartmentSurviveConditionComponent"/> - the average
-/// survival of every body that held a role from the department: alive = 1, critical = 0.5, dead or deleted = 0.
+/// survival of every body that held a role from the department: alive = 1, critical = 0.5, dead, dissolved or deleted = 0.
 /// </summary>
 public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : EntitySystem
 {
@@ -49,6 +49,17 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
 
     [SubscribeLocalEvent]
     private void OnMobStateChanged(MobStateChangedEvent args)
+    {
+        RefreshAll();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSoulConverted(ref CEMurkSoulConvertedEvent args)
+    {
+        RefreshAll();
+    }
+
+    private void RefreshAll()
     {
         var query = EntityQueryEnumerator<CEObjectiveDepartmentSurviveConditionComponent>();
         while (query.MoveNext(out var uid, out _))
@@ -105,18 +116,9 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
 
     private float GetBodySurvival(EntityUid body)
     {
-        if (TerminatingOrDeleted(body))
+        if (_objectives.IsBodyDead(body))
             return 0f;
 
-        if (!TryComp<MobStateComponent>(body, out var mobState))
-            return 1f;
-
-        return mobState.CurrentState switch
-        {
-            MobState.Alive => 1f,
-            MobState.Critical => 0.5f,
-            MobState.Dead => 0f,
-            _ => 1f,
-        };
+        return _objectives.IsBodyCritical(body) ? 0.5f : 1f;
     }
 }
