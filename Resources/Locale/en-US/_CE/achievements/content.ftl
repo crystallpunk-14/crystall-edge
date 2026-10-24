@@ -7,5 +7,5 @@ ce-achievement-werewolf-win-desc = Complete all objectives and finish the round 
 ce-achievement-bounty-hunter-win-name = Equipment: Gold Coin
 ce-achievement-bounty-hunter-win-desc = Complete all objectives and finish the round as a Bounty Hunter
 
-ce-achievement-city-win-name = Brotherhood
+ce-achievement-city-win-name = Sheriff
 ce-achievement-city-win-desc = Save the city while playing for the Zellasian Empire faction
