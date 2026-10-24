@@ -31,8 +31,6 @@
       CEFoodLumishroom: 2
   - type: CEPlantKudzu
     proto: CEPlantLumishroom
-    resourceCost: 2 # about one offspring per watering
-    energyCost: 2
   - type: CEPlantDying
     deadEntity: CEPlantLumishroomDead
 
