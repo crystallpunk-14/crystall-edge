@@ -1548,3 +1548,14 @@
   id: 1132
   time: '2026-10-23T19:13:36.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/556
+- author: TheShuEd
+  changes:
+  - message: Added "Brotherhood" achievements, brotherhood now locked by default.
+    type: Add
+  - message: Humands now have 30% murk restistance.
+    type: Add
+  - message: Bloodpack price was decreased.
+    type: Tweak
+  id: 1133
+  time: '2026-10-24T12:18:25.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/557
