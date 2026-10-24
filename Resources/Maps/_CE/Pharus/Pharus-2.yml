@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/22/2026 19:16:51
-  entityCount: 1544
+  time: 10/24/2026 22:18:20
+  entityCount: 1549
 maps:
 - 1
 grids:
@@ -962,11 +962,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 5.5,-17.5
-  - uid: 575
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,-6.5
   - uid: 576
     components:
     - type: Transform
@@ -1037,21 +1032,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,-7.5
-  - uid: 590
-    components:
-    - type: Transform
-      parent: 1
-      pos: 19.5,-8.5
-  - uid: 591
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,-7.5
-  - uid: 592
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,-8.5
   - uid: 595
     components:
     - type: Transform
@@ -1877,16 +1857,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 27.5,-14.5
-  - uid: 763
-    components:
-    - type: Transform
-      parent: 1
-      pos: 26.5,-14.5
-  - uid: 764
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-14.5
   - uid: 765
     components:
     - type: Transform
@@ -1966,7 +1936,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 22.5,-10.5
+      pos: 26.5,-14.5
   - uid: 781
     components:
     - type: Transform
@@ -1977,16 +1947,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,-11.5
-  - uid: 785
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,-11.5
-  - uid: 787
-    components:
-    - type: Transform
-      parent: 1
-      pos: 19.5,-9.5
   - uid: 788
     components:
     - type: Transform
@@ -2352,11 +2312,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 13.5,-22.5
-  - uid: 998
-    components:
-    - type: Transform
-      parent: 1
-      pos: 8.5,-32.5
   - uid: 1006
     components:
     - type: Transform
@@ -3696,6 +3651,26 @@ entities:
       pos: 4.5,-36.5
     - type: Fixtures
       fixtures: {}
+- proto: CEKeySheriffHall
+  entities:
+  - uid: 764
+    components:
+    - type: Transform
+      parent: 592
+    - type: Physics
+      canCollide: False
+    - type: CEZPhysics
+      currentZLevel: -2
+- proto: CEKeySheriffStaff
+  entities:
+  - uid: 763
+    components:
+    - type: Transform
+      parent: 592
+    - type: Physics
+      canCollide: False
+    - type: CEZPhysics
+      currentZLevel: -2
 - proto: CELamppostSingle
   entities:
   - uid: 1387
@@ -5188,14 +5163,6 @@ entities:
       pos: 13.5,-27.5
 - proto: CESmallWoodenCrateFilled
   entities:
-  - uid: 148
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 8.5,-31.5
-    - type: CEZPhysics
-      currentZLevel: -2
   - uid: 162
     components:
     - type: Transform
@@ -5986,6 +5953,64 @@ entities:
       pos: 9.5,-29.5
     - type: CEZPhysics
       currentZLevel: -2
+- proto: CETradeTableTailors
+  entities:
+  - uid: 148
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-31.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 575
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-32.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 590
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,-32.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 591
+    components:
+    - type: Transform
+      parent: 1
+      pos: 6.5,-31.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 785
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-31.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 787
+    components:
+    - type: Transform
+      parent: 1
+      pos: 5.5,-32.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 998
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-32.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1177
+    components:
+    - type: Transform
+      parent: 1
+      pos: 8.5,-31.5
+    - type: CEZPhysics
+      currentZLevel: -2
 - proto: CEWallCrystalCore
   entities:
   - uid: 3
@@ -6250,6 +6275,31 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 37.5,-37.5
+- proto: CEWallmountKeyRack
+  entities:
+  - uid: 592
+    components:
+    - type: Transform
+      parent: 1
+      pos: 7.5,-35.5
+    - type: Storage
+      storedItems:
+        763:
+          position: 0,0
+          _rotation: South
+        764:
+          position: 1,0
+          _rotation: South
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          ents:
+          - 763
+          - 764
+          showEnts: False
+          occludes: True
+    - type: Fixtures
+      fixtures: {}
 - proto: CEWallmountTorchAlwaysPowered
   entities:
   - uid: 179
@@ -8944,6 +8994,34 @@ entities:
     - type: Transform
       parent: 1
       pos: 2.5,-34.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1178
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,-10.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1179
+    components:
+    - type: Transform
+      parent: 1
+      pos: 20.5,-9.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1182
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-10.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1186
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-9.5
     - type: CEZPhysics
       currentZLevel: -2
   - uid: 1188

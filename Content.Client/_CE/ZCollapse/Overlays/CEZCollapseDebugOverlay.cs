@@ -89,7 +89,7 @@ public sealed partial class CEZCollapseDebugOverlay : Overlay
                 var t = stability <= 0
                     ? 0f
                     : AliveFloorT + (1f - AliveFloorT) * Math.Clamp((stability - 1f) / (WhiteCap - 1f), 0f, 1f);
-                var color = Color.InterpolateBetween(Color.Red, Color.White, t).WithAlpha(0.35f);
+                var color = Color.InterpolateBetween(Color.Red, Color.White, t).WithAlpha(0.2f);
                 handle.DrawRect(Box2.FromDimensions(new Vector2(tile.X, tile.Y), new Vector2(1, 1)), color);
             }
         }
