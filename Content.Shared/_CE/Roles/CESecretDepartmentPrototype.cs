@@ -1,3 +1,4 @@
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.Prototypes;
@@ -61,4 +62,12 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool MembersRecognizeEachOther;
+
+    /// <summary>
+    /// Achievement granted at round end to every player holding a role in this department, alive
+    /// or dead, if all of the department's shared <see cref="Objectives"/> are completed.
+    /// Personal role objectives are not checked.
+    /// </summary>
+    [DataField]
+    public ProtoId<CEAchievementPrototype>? VictoryAchievement;
 }

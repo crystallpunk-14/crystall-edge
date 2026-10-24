@@ -256,7 +256,7 @@
   - type: CEInnateSkills
     skills:
     - Flight
-    descriptorName: ce-innate-skill-source-carrin
+    descriptorName: ce-species-name-carrin
     descriptorColor: "#e7e397"
   - type: AmbientSound
     enabled: false

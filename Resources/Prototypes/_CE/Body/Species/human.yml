@@ -127,6 +127,11 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Human/parts.rsi
     state: full
+  - type: CEInnateSkills
+    skills:
+    - MurkResistance
+    descriptorName: ce-species-name-human
+    descriptorColor: "#d9b38c"
 
 - type: entity
   parent: OrganBase

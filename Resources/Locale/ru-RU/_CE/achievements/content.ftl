@@ -6,3 +6,6 @@ ce-achievement-werewolf-win-desc = Выполните все цели и зак�
 
 ce-achievement-bounty-hunter-win-name = Экипировка: Золотая монета
 ce-achievement-bounty-hunter-win-desc = Выполните все цели и закончите раунд, играя за Охотника за головами
+
+ce-achievement-city-win-name = Братство
+ce-achievement-city-win-desc = Спасите город, играя за фракцию Империи Зелласиан

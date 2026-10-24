@@ -131,6 +131,22 @@ public sealed partial class CESecretRoleSelectionSystem
         return false;
     }
 
+    /// <summary>
+    /// Finds the entity holding <paramref name="department"/>'s shared objectives in the active rule.
+    /// </summary>
+    public bool TryGetDepartmentObjectiveHolder(ProtoId<CESecretDepartmentPrototype> department, out EntityUid holderUid)
+    {
+        var rules = QueryActiveRules();
+        while (rules.MoveNext(out _, out _, out var comp, out _))
+        {
+            if (comp.DepartmentObjectiveHolders.TryGetValue(department, out holderUid))
+                return true;
+        }
+
+        holderUid = default;
+        return false;
+    }
+
     public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
     {
         foreach (var candidate in _proto.EnumeratePrototypes<CESecretDepartmentPrototype>())
