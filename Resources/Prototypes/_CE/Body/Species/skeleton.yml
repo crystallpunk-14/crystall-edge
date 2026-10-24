@@ -110,6 +110,9 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEBoneCrack
       - !type:GibBehavior
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -222,6 +225,9 @@
         !type:DamageTrigger
         damage: 30
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEBoneCrack
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
