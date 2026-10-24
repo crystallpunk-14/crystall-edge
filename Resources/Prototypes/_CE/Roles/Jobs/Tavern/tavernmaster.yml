@@ -61,6 +61,8 @@
         children:
         - id: CEClothingCloakTavernmasterJacket1
         - id: CEClothingCloakTavernmasterJacket2
+        - id: CEClothingPantsTavern
+        - id: CEClothingPantsTavernSkirt
 
 - type: entity
   id: CEKeyRingTavernmaster
