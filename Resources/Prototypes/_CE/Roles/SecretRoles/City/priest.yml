@@ -6,8 +6,11 @@
   skills:
   - CureWounds
   - Resurrection
-  objectives: !type:EntSelector
-    id: CEObjectivePriestSurvive
+  objectives: !type:AllSelector
+    children:
+    - id: CEObjectivePriestSurvive
+    - id: CEObjectivePriestProtect
+    - id: CEObjectivePriestProtect
 
 - type: entity
   id: CEObjectivePriestSurvive
@@ -20,5 +23,26 @@
   - type: CEObjective
   - type: CETargetObjective
   - type: CETargetHolderObjective
+  - type: CETargetSurviveCondition
+    defaultProgress: 1
+
+- type: entity
+  id: CEObjectivePriestProtect
+  name: Keep someone alive
+  description: You swore an oath to protect the innocent from death, and you will keep it.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/Spells/resurrection.rsi
+    state: icon
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-priest-protect-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetSecretDepartmentBlacklist
+    departments:
+    - Nightmares
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - DarkVessel # its body is meant to die
   - type: CETargetSurviveCondition
     defaultProgress: 1

@@ -4302,6 +4302,9 @@ ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жи
 ent-CEObjectivePriestSurvive = Выжить
     .desc = Среди этого города есть существа, жаждающие моей смерти.
 
+ent-CEObjectivePriestProtect = Сохранить жизнь
+    .desc = Вы дали клятву защищать невинных от смерти, и вы сдержите её.
+
 ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
     .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
 

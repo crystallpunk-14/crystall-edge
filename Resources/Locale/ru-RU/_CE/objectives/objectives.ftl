@@ -1,5 +1,6 @@
 ce-lover-assist-objective-title = Помочь { $targetName }, должность: { CAPITALIZE($job) }, выполнить свои цели
 ce-lover-survive-objective-title = Обеспечить, чтобы { $targetName }, должность: { CAPITALIZE($job) }, остался жив
+ce-priest-protect-objective-title = Сохранить жизнь { $targetName }, должность: { CAPITALIZE($job) }
 ce-brotherhood-patronage-objective-title = Покровительство: { $targetName }, должность: { CAPITALIZE($job) }
 ce-brotherhood-debt-objective-title = Должок: { $targetName }, должность: { CAPITALIZE($job) }
 ce-recruiter-recruit-objective-title = Завербуйте {$count} {$count ->
