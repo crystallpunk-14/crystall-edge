@@ -1,7 +1,5 @@
 - type: skill
   id: Recruitment
-  name: ce-skill-brotherhood-recruitment-name
-  desc: ce-skill-brotherhood-recruitment-desc
   icon:
     sprite: _CE/Achievements/brotherhood.rsi
     state: flag

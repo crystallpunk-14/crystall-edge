@@ -1,7 +1,5 @@
 - type: skill
   id: Murkwalker
-  name: ce-skill-murkwalker-name
-  desc: ce-skill-murkwalker-desc
   icon:
     sprite: _CE/Interface/Skills/murkwalker.rsi
     state: icon
@@ -11,7 +9,8 @@
 - type: entity
   parent: StatusEffectBase
   id: CEStatusEffectMurkwalker
-  name: murk immunity
+  name: Murk Immunity
+  description: You can safely stand in the murk without dissolving into oblivion.
   components:
   - type: CEMurkDissolvingModifier
     dissolvingModifier: 0

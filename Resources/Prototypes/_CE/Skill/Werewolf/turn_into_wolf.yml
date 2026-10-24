@@ -1,7 +1,5 @@
 - type: skill
   id: WerewolfTransformation
-  name: ce-skill-werewolf-transformation-name
-  desc: ce-skill-werewolf-transformation-desc
   icon:
     sprite: /Textures/_CE/Actions/werewolf.rsi
     state: true_form

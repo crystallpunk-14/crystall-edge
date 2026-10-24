@@ -1,7 +1,5 @@
 - type: skill
   id: MagicVision
-  name: ce-skill-magic-vision-name
-  desc: ce-skill-magic-vision-desc
   icon:
     sprite: _CE/Actions/Spells/magic_vision.rsi
     state: icon

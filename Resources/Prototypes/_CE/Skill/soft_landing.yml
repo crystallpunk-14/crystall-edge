@@ -1,7 +1,5 @@
 - type: skill
   id: SoftLanding
-  name: ce-skill-soft-landing-name
-  desc: ce-skill-soft-landing-desc
   icon:
     sprite: _CE/Actions/Spells/feather_fall.rsi
     state: icon
@@ -11,7 +9,8 @@
 - type: entity
   parent: StatusEffectBase
   id: CEStatusEffectSoftLanding
-  name: soft landing
+  name: Soft Landing
+  description: Softens falls from a height, reducing damage and preventing you from being knocked down as long as the fall speed is not too high.
   components:
   - type: CESoftLandingStatusEffect
     maxSpeedLimit: 7 # 2 floors safe fall

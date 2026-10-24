@@ -1,7 +1,5 @@
 - type: skill
   id: ManaControl
-  name: ce-skill-mana-control-name
-  desc: ce-skill-mana-control-desc
   icon:
     sprite: _CE/Interface/Skills/mana_control.rsi
     state: toggle
