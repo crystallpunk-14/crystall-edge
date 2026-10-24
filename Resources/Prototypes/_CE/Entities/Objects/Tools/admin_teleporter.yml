@@ -1,7 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CEHandTeleporterAdmin
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   name: divine teleporter
   description: Tears the fabric of the world. First use opens a rift, second use links it to a rift at your location, third closes both.
   suffix: Admin
