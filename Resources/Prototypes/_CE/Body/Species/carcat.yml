@@ -279,7 +279,7 @@
     skills:
     - SoftLanding
     - NightVision
-    descriptorName: ce-innate-skill-source-carcat
+    descriptorName: ce-species-name-carcat
     descriptorColor: "#6e492f"
   - type: Bloodstream
     bloodReferenceSolution:

@@ -148,7 +148,7 @@
     skills:
     - Murkwalker
     - NightVision
-    descriptorName: ce-innate-skill-source-skeleton
+    descriptorName: ce-species-name-skeleton
     descriptorColor: "#e3dac9"
 
 - type: entity

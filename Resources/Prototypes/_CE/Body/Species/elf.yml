@@ -164,7 +164,7 @@
     - ManaControl
     - ManaGift
     - ManaSteal
-    descriptorName: ce-innate-skill-source-elf
+    descriptorName: ce-species-name-elf
     descriptorColor: "#92efef"
 
 - type: entity
