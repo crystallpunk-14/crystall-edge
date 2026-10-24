@@ -147,6 +147,7 @@
   - type: CEInnateSkills
     skills:
     - Murkwalker
+    - NightVision
     descriptorName: ce-innate-skill-source-skeleton
     descriptorColor: "#e3dac9"
 
