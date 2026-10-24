@@ -110,12 +110,15 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEBoneCrack
       - !type:GibBehavior
       - !type:SpawnEntitiesBehavior
         spawn:
           CEBone1:
-            min: 2
-            max: 4
+            min: 1
+            max: 2
   - type: TransferMindOnGib
   - type: Fixtures
     fixtures:
@@ -222,6 +225,9 @@
         !type:DamageTrigger
         damage: 30
       behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEBoneCrack
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 

@@ -1,7 +1,6 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared._CE.Light;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Maps;
@@ -25,7 +24,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private SharedDestructibleSystem _destructible = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -46,12 +44,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
         SolutionQuery = GetEntityQuery<SolutionManagerComponent>();
-    }
-    [SubscribeLocalEvent]
-    private void OnAnchorStateChanged(Entity<CEPlantComponent> ent, ref AnchorStateChangedEvent args)
-    {
-        if (!args.Anchored)
-            _destructible.DestroyEntity(ent.Owner);
     }
 
     public void AffectEnergy(Entity<CEPlantComponent> ent, float energyDelta)

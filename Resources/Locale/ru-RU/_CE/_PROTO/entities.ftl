@@ -4275,43 +4275,49 @@ ent-CEKeyRingTavernmaster = { ent-CEBaseKeyRing }
 ent-CEMindRoleSecret = Секретная роль
     .desc = { "" }
 
-ent-CEObjectiveRecruiterRecruit = Завербуйте людей
+ent-CEObjectiveRecruiterRecruit = Завербовать людей
     .desc = Найдите лояльных людей, готовых бросить свои личные цели ради того, чтобы стать частью братства.
 
-ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
+ent-CEObjectiveThiefCashOut = Потратить 10 золотых в магазине теней
     .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
-ent-CEObjectiveBrotherhoodSurvive = Сохранить братство
+ent-CEObjectiveBrotherhoodSurvive = Сохранить жизнь всем членам братства
     .desc = Все члены братства должны выжить.
 
-ent-CEObjectiveBrotherhoodPatronage = Покровительство
+ent-CEObjectiveBrotherhoodPatronage = Помочь выполнить все цели
     .desc = Этот человек в прошлом помог братству. Отплатите ему тем же, он должен выполнить все свои цели.
 
-ent-CEObjectiveBrotherhoodDebt = Должок
+ent-CEObjectiveBrotherhoodDebt = Трижды довести до крита, не убив
     .desc = Этот человек в прошлом перешёл дорогу братству. Сделайте его жизнь невыносимой. Он должен оказаться в критическом состоянии 3 раза, но при этом выжить, чтобы выучить свой урок.
 
-ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
+ent-CEObjectiveBountyHunterEliminate = Убить всех членов братства
     .desc = Все члены братства должны быть мертвы.
 
-ent-CEObjectiveLoverAssist = Помогите возлюбленному
+ent-CEObjectiveDarkVesselSwap = Вселиться в новое тело
+    .desc = Ваше нынешнее тело, ваш сосуд, почти полностью износилось. Чтобы продолжать существовать, вам нужно новое тело.
+
+ent-CEObjectiveLoverAssist = Помочь возлюбленному
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно любите, выполнил все свои личные цели.
 
-ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жизнь
+ent-CEObjectiveLoverSurvive = Сохранить жизнь возлюбленному
     .desc = Человек, которого вы тайно любите, должен выжить.
 
 ent-CEObjectivePriestSurvive = Выжить
     .desc = Среди этого города есть существа, жаждающие моей смерти.
 
-ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
+ent-CEObjectivePriestProtect = Сохранить жизнь
+    .desc = Вы дали клятву защищать невинных от смерти, и вы сдержите её.
+
+ent-CEObjectiveSheriffDestroyDarkness = Убить всех кошмаров
     .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
 
-ent-CEObjectiveCityRestoreLucsonSphere = Восстановите Сферу Люксона
+ent-CEObjectiveCityRestoreLucsonSphere = Восстановить Сферу Люксона
     .desc = Купите у Каравана теней осколки светсердца и книгу восстановления сферы, затем проведите Ритуал восстановления у Сферы Люксона, пока мрак не поглотил город.
 
-ent-CEObjectiveNightmareKillPriests = Смерть свету
+ent-CEObjectiveNightmareKillPriests = Убить всех жрецов
     .desc = В этом городе есть жрецы света, чье существование противно вашей природе. Вычислите и убейте их.
 
-ent-CEObjectiveNightmareSphereCollapse = Погрузите Город во мрак.
+ent-CEObjectiveNightmareSphereCollapse = Не дать восстановить Сферу Люксона
     .desc = Сфера Люксона дала трещину. Не позвольте городу восстановить её, пока мрак не поглотил его.
 
 ent-CEActionDarkSideBanishment = Изгнание на тёмную сторону

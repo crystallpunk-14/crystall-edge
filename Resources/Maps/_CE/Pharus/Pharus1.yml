@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/22/2026 19:16:52
-  entityCount: 713
+  time: 10/24/2026 22:18:21
+  entityCount: 712
 maps:
 - 1
 grids:
@@ -462,6 +462,33 @@ entities:
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
     - type: LightTree
+- proto: CEBedsideTableFilledBartender
+  entities:
+  - uid: 578
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-10.5
+    - type: CEZPhysics
+      currentZLevel: 1
+- proto: CEBedsideTableFilledChef
+  entities:
+  - uid: 412
+    components:
+    - type: Transform
+      parent: 1
+      pos: 26.5,-10.5
+    - type: CEZPhysics
+      currentZLevel: 1
+- proto: CEBedsideTableFilledFarmer
+  entities:
+  - uid: 408
+    components:
+    - type: Transform
+      parent: 1
+      pos: 27.5,-10.5
+    - type: CEZPhysics
+      currentZLevel: 1
 - proto: CEBedsideTableWooden
   entities:
   - uid: 598
@@ -493,15 +520,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 34.5,-18.5
-    - type: CEZPhysics
-      currentZLevel: 1
-- proto: CEBucket
-  entities:
-  - uid: 412
-    components:
-    - type: Transform
-      parent: 1
-      pos: 27.803526,-10.405317
     - type: CEZPhysics
       currentZLevel: 1
 - proto: CECarpetPurple
@@ -1116,13 +1134,6 @@ entities:
       pos: 33.5,-11.5
     - type: CEZPhysics
       currentZLevel: 1
-  - uid: 579
-    components:
-    - type: Transform
-      parent: 1
-      pos: 26.5,-10.5
-    - type: CEZPhysics
-      currentZLevel: 1
 - proto: CEPipeBrassBig
   entities:
   - uid: 89
@@ -1645,13 +1656,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 30.5,-18.5
-    - type: CEZPhysics
-      currentZLevel: 1
-  - uid: 578
-    components:
-    - type: Transform
-      parent: 1
-      pos: 27.5,-11.5
     - type: CEZPhysics
       currentZLevel: 1
 - proto: CESnowdrift
@@ -5139,15 +5143,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 26.5,-15.5
-    - type: CEZPhysics
-      currentZLevel: 1
-- proto: CEWeaponMop
-  entities:
-  - uid: 408
-    components:
-    - type: Transform
-      parent: 1
-      pos: 27.432394,-10.31528
     - type: CEZPhysics
       currentZLevel: 1
 - proto: CEWoodenBedLight

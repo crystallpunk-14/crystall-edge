@@ -38,7 +38,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodLumishroom
-    count: 30
+    count: 15
   guidebook:
   - CEGuideLumishroomsEN
   - CEGuideLumishroomsRU

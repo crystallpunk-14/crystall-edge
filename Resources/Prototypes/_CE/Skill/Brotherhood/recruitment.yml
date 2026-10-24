@@ -1,7 +1,7 @@
 - type: skill
   id: Recruitment
   icon:
-    sprite: _CE/Achievements/brotherhood.rsi
+    sprite: _CE/Interface/Skills/recruitment.rsi
     state: flag
   effect: !type:AddAction
     action: CEActionRecruit
@@ -19,7 +19,7 @@
     useDelay: 600
     itemIconStyle: BigAction
   - type: Sprite
-    sprite: _CE/Achievements/brotherhood.rsi
+    sprite: _CE/Interface/Skills/recruitment.rsi
     layers:
     - state: flag
       map: ["enum.ActionVisuals.Icon"]

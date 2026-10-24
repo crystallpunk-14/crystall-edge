@@ -29,8 +29,6 @@
       CEFoodAgaric: 2
   - type: CEPlantKudzu
     proto: CEPlantAgaric
-    resourceCost: 2 # about one offspring per watering
-    energyCost: 2
 
 # Already grown agaric for mapping and world generation
 - type: entity

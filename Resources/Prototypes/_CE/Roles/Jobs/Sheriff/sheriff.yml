@@ -10,6 +10,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 1h
+    - !type:CEAchievementRequirement
+      achievement: CityWin
 
 - type: startingGear
   id: CESheriffGear

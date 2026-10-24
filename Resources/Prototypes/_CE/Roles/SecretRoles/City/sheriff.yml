@@ -15,7 +15,7 @@
 
 - type: entity
   id: CEObjectiveSheriffDestroyDarkness
-  name: Destroy the darkness
+  name: Kill every nightmare
   description: Every nightmare hiding in the city must be dead.
   components:
   - type: Sprite

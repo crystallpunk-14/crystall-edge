@@ -14,7 +14,7 @@
 
 - type: entity
   id: CEObjectiveDarkVesselSwap
-  name: Change the vessel
+  name: Move into a new body
   description: Your current body, your vessel, is almost completely worn out. You need a new body to go on existing.
   components:
   - type: Sprite

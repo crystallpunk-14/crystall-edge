@@ -1,8 +1,9 @@
 ce-lover-assist-objective-title = Помочь { $targetName }, должность: { CAPITALIZE($job) }, выполнить свои цели
-ce-lover-survive-objective-title = Обеспечить, чтобы { $targetName }, должность: { CAPITALIZE($job) }, остался жив
-ce-brotherhood-patronage-objective-title = Покровительство: { $targetName }, должность: { CAPITALIZE($job) }
-ce-brotherhood-debt-objective-title = Должок: { $targetName }, должность: { CAPITALIZE($job) }
-ce-recruiter-recruit-objective-title = Завербуйте {$count} {$count ->
+ce-lover-survive-objective-title = Сохранить жизнь { $targetName }, должность: { CAPITALIZE($job) }
+ce-priest-protect-objective-title = Сохранить жизнь { $targetName }, должность: { CAPITALIZE($job) }
+ce-brotherhood-patronage-objective-title = Помочь { $targetName }, должность: { CAPITALIZE($job) }, выполнить все свои цели
+ce-brotherhood-debt-objective-title = Трижды довести { $targetName }, должность: { CAPITALIZE($job) }, до крита, не убив
+ce-recruiter-recruit-objective-title = Завербовать {$count} {$count ->
     [one] человека
     *[other] человек
 }

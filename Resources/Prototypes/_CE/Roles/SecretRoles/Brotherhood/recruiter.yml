@@ -3,9 +3,6 @@
   name: ce-secret-role-name-recruiter
   description: ce-secret-role-description-recruiter
   icon: CESecretRoleIconRecruiter
-  requirements:
-  - !type:CEAchievementRequirement
-    achievement: CityWin
   skills:
   - Recruitment
   objectives: !type:EntSelector

@@ -56,6 +56,12 @@
         - id: CEClothingHeadBeretChef
         - id: CEClothingCloakChefApron1
         - id: CEClothingCloakChefApron2
+        - id: CEClothingCloakChefApron3
+        - id: CEClothingShirtChef1
+        - id: CEClothingShirtChef2
+        - id: CEClothingShirtChef3
+        - id: CEClothingPantsTavern
+        - id: CEClothingPantsTavernSkirt
 
 - type: entity
   id: CEKeyRingChef
