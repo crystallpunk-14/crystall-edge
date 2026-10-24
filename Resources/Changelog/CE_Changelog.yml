@@ -1559,3 +1559,25 @@
   id: 1133
   time: '2026-10-24T12:18:25.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/557
+- author: TheShuEd
+  changes:
+  - message: The Priest now has targets to protect 2 random other players (excluding
+      werewolves and empty vessels)
+    type: Tweak
+  - message: "Shadow Merchants\u2019 pedestals containing quest items are now stocked\
+      \ at the start of the round"
+    type: Tweak
+  - message: "The number of lumishrooms required for the Adventurers\u2019 quest has\
+      \ been reduced from 30 to 15."
+    type: Tweak
+  - message: Fixed bugs where mushrooms would not grow
+    type: Fix
+  - message: Fixed a bug where a target affected by Murk Dissolving was not counted
+      as killed for role objectives
+    type: Fix
+  - message: Fixed a bug where enabling combat mode would disable direction markers
+      for mining glasses
+    type: Fix
+  id: 1134
+  time: '2026-10-24T22:58:19.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/558
