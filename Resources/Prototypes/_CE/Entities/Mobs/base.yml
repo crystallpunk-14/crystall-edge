@@ -142,20 +142,6 @@
     - type: CEMurkedSoulSpeech
     - type: CEMurkedSoulSpeechAccent
 
-# Used for mobs that need to breathe
-- type: entity
-  save: false
-  id: CEMobRespirator
-  abstract: true
-  components:
-  - type: Respirator
-    damage:
-      types:
-        Asphyxiation: 2
-    damageRecovery:
-      types:
-        Asphyxiation: -1.0
-
 - type: entity
   id: CEMobCombat
   abstract: true

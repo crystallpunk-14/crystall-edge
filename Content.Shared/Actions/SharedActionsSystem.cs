@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.Actions;
+using Content.Shared._CE.Actions.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
@@ -11,6 +12,7 @@ using Content.Shared.Hands;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Whitelist;
@@ -36,6 +38,7 @@ public abstract partial class SharedActionsSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private MobStateSystem _mobState = default!; // CrystallEdge: some actions can be used while critical
 
     [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
     [Dependency] private EntityQuery<ActionsComponent> _actionsQuery = default!;
@@ -341,10 +344,17 @@ public abstract partial class SharedActionsSystem : EntitySystem
 
     private void OnValidate(Entity<ActionComponent> ent, ref ActionValidateEvent args)
     {
-        if ((ent.Comp.CheckConsciousness && !_actionBlocker.CanConsciouslyPerformAction(args.User))
+        if ((ent.Comp.CheckConsciousness && !_actionBlocker.CanConsciouslyPerformAction(args.User) && !CECanCastFromCritical(ent, args.User))
             || (ent.Comp.CheckCanInteract && !_actionBlocker.CanInteract(args.User, null)))
             args.Invalid = true;
     }
+
+    // CrystallEdge: some actions can be used while critical
+    private bool CECanCastFromCritical(EntityUid action, EntityUid user)
+    {
+        return HasComp<CEActionCastableFromCriticalComponent>(action) && _mobState.IsCritical(user);
+    }
+    // CrystallEdge end
 
     private void OnInstantValidate(Entity<InstantActionComponent> ent, ref ActionValidateEvent args)
     {

@@ -226,7 +226,6 @@
   - MobBloodstream
   - MobFlammable
   - CEBaseSpeciesMob
-  - CEMobRespirator
   - CEMobTemperature
   id: CEBaseSpeciesMobOrganic
   save: false

@@ -74,6 +74,15 @@ public sealed partial class BloodstreamComponent : Component
     [DataField, AutoNetworkedField]
     public float MaxBleedAmount = 10.0f;
 
+    // CrystallEdge: critical mobs keep bleeding out instead of suffocating
+    /// <summary>
+    /// Bleeding added every update interval while the mob is critical.
+    /// Higher than <see cref="BleedReductionAmount"/>, so bandaging only buys time.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float CECriticalBleedAmount = 1f;
+    // CrystallEdge end
+
     /// <summary>
     /// What percentage of current blood is necessary to avoid dealing blood loss damage?
     /// </summary>
