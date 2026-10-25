@@ -103,7 +103,7 @@ public sealed partial class CEDarkVesselSystem : EntitySystem
         {
             foreach (var skill in vessel.KeptSkills)
             {
-                _skill.TryAddSkill(target, skill, force: true);
+                _skill.TryAddSkill(target, skill);
             }
         }
 
