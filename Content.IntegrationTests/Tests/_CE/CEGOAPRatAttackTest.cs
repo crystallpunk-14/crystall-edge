@@ -87,7 +87,20 @@ public sealed class CEGOAPRatAttackTest
         });
 
         // Perception: the rat should notice the human through the fence within a couple of eye scans.
-        await pair.RunTicksSync(timing.TickRate * 4);
+        // The first scan is randomly delayed and the plan can be briefly empty while the rat is on the fence,
+        // so wait for the attack to show up instead of checking a fixed tick.
+        var attacking = false;
+        for (var i = 0; i < timing.TickRate * 4 && !attacking; i++)
+        {
+            await pair.RunTicksSync(1);
+            await server.WaitPost(() =>
+            {
+                var goap = entMan.GetComponent<CEGOAPComponent>(rat);
+                attacking = goap.CurrentActionIndex < goap.CurrentPlan.Count
+                            && goap.CurrentPlan[goap.CurrentActionIndex] is CEGOAPMeleeAttackAction { Target: var slot }
+                            && slot == EnemySlot;
+            });
+        }
 
         await server.WaitAssertion(() =>
         {
@@ -106,10 +119,7 @@ public sealed class CEGOAPRatAttackTest
                     $"The {EnemySlot} slot should resolve to the human");
 
                 // Walking up to the human is part of the attack, not a separate step of the plan.
-                Assert.That(goap.CurrentActionIndex < goap.CurrentPlan.Count
-                            && goap.CurrentPlan[goap.CurrentActionIndex] is CEGOAPMeleeAttackAction { Target: var slot }
-                            && slot == EnemySlot,
-                    $"Rat should be carrying out a melee attack on its {EnemySlot} slot");
+                Assert.That(attacking, $"Rat should be carrying out a melee attack on its {EnemySlot} slot");
             });
         });
 
