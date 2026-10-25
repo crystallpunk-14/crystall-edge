@@ -35,6 +35,10 @@
   - type: MultiHandedItem
   - type: RefillableSolution
     solution: cooker
+  - type: SolutionTransfer
+    canSend: false
+    transferAmount: 10
+    maxTransferAmount: 20
   - type: Spillable
     solution: cooker
   - type: SolutionItemStatus
