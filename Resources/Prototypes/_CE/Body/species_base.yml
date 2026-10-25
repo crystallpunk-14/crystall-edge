@@ -118,8 +118,6 @@
   - type: CanMoveInAir
   - type: Reactive
     groups:
-      Flammable: [ Touch ]
-      Extinguish: [ Touch ]
       Acidic: [Touch, Ingestion]
   - type: StatusEffects
     allowed:
@@ -224,9 +222,7 @@
 - type: entity
   parent:
   - MobBloodstream
-  - MobFlammable
   - CEBaseSpeciesMob
-  - CEMobTemperature
   id: CEBaseSpeciesMobOrganic
   save: false
   abstract: true
@@ -264,7 +260,3 @@
       reagents:
       - ReagentId: CEBlood
         Quantity: 300
-  - type: FireVisuals
-    sprite: _CE/Mobs/Effects/onfire.rsi
-    normalState: Small_burning
-    alternateState: Humanoid_burning

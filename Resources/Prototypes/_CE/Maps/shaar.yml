@@ -36,15 +36,6 @@
           - /Maps/_CE/Shaar/Shaar2.yml
           - /Maps/_CE/Shaar/Shaar3.yml
           zLevelsComponentOverrides:
-            - type: MapAtmosphere
-              space: False
-              mixture:
-                volume: 2500
-                immutable: True
-                temperature: 293.15
-                moles:
-                  Oxygen: 21.824879
-                  Nitrogen: 82.10312
             - type: Parallax
               parallax: CESky
             - type: MapLight #BEFORE Light Cycle

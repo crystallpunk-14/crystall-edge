@@ -22,11 +22,6 @@
   #  tags:
   #  - CEFireplaceFuel
   #  - Wooden
-  - type: Flammable
-    fireSpread: false
-    canResistFire: false
-    alwaysCombustible: true
-    canExtinguish: true
     #cP14FireplaceFuel: 10
     damage:
       types:
@@ -75,11 +70,6 @@
   #  tags:
   #  - CEFireplaceFuel
   #  - Wooden
-  - type: Flammable
-    fireSpread: false
-    canResistFire: false
-    alwaysCombustible: true
-    canExtinguish: true
     #cP14FireplaceFuel: 8
     damage:
       types:

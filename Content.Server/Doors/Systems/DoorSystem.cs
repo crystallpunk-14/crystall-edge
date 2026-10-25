@@ -1,4 +1,5 @@
 using Content.Server.Access;
+using Content.Server.Airtight;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Doors.Components;

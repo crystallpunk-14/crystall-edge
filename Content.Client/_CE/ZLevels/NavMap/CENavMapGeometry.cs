@@ -4,7 +4,6 @@
  */
 
 using System.Numerics;
-using Content.Shared.Atmos;
 using Content.Shared.Pinpointer;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
@@ -57,10 +56,16 @@ public static class CENavMapGeometry
     private const float ThinWallThickness = 0.165f;
     private const float ThinDoorThickness = 0.30f;
 
-    private const int SouthMask = (int)AtmosDirection.South << (int)NavMapChunkType.Wall;
-    private const int EastMask = (int)AtmosDirection.East << (int)NavMapChunkType.Wall;
-    private const int WestMask = (int)AtmosDirection.West << (int)NavMapChunkType.Wall;
-    private const int NorthMask = (int)AtmosDirection.North << (int)NavMapChunkType.Wall;
+    // Direction bits of nav map chunk tile data, in the order the server writes them.
+    private const int NorthBit = 1 << 0;
+    private const int SouthBit = 1 << 1;
+    private const int EastBit = 1 << 2;
+    private const int WestBit = 1 << 3;
+
+    private const int SouthMask = SouthBit << (int)NavMapChunkType.Wall;
+    private const int EastMask = EastBit << (int)NavMapChunkType.Wall;
+    private const int WestMask = WestBit << (int)NavMapChunkType.Wall;
+    private const int NorthMask = NorthBit << (int)NavMapChunkType.Wall;
 
     public static void Build(NavMapComponent nav, MapGridComponent grid, CENavMapGeometryData into)
     {
@@ -302,6 +307,18 @@ public static class CENavMapGeometry
         }
     }
 
+    private static Angle DirectionBitToAngle(int dirBit)
+    {
+        return dirBit switch
+        {
+            SouthBit => Angle.Zero,
+            EastBit => new Angle(MathHelper.PiOver2),
+            NorthBit => new Angle(Math.PI),
+            WestBit => new Angle(-MathHelper.PiOver2),
+            _ => throw new ArgumentOutOfRangeException(nameof(dirBit), dirBit, null),
+        };
+    }
+
     private static void AddRectForThinWall(CENavMapGeometryData data, int tileData, Vector2i tile)
     {
         var leftTop = new Vector2(-0.5f, 0.5f - ThinWallThickness);
@@ -314,7 +331,7 @@ public static class CENavMapGeometry
                 continue;
 
             var tilePosition = new Vector2(tile.X + 0.5f, -tile.Y - 0.5f);
-            var angle = -((AtmosDirection)dirMask).ToAngle();
+            var angle = -DirectionBitToAngle(dirMask);
             data.WallRects.Add((angle.RotateVec(leftTop) + tilePosition, angle.RotateVec(rightBottom) + tilePosition));
         }
     }
@@ -333,7 +350,7 @@ public static class CENavMapGeometry
                 continue;
 
             var tilePosition = new Vector2(tile.X + 0.5f, -tile.Y - 0.5f);
-            var angle = -((AtmosDirection)dirMask).ToAngle();
+            var angle = -DirectionBitToAngle(dirMask);
             data.WallRects.Add((angle.RotateVec(leftTop) + tilePosition, angle.RotateVec(rightBottom) + tilePosition));
             data.WallLines.Add(
                 (angle.RotateVec(centreTop) + tilePosition, angle.RotateVec(centreBottom) + tilePosition));

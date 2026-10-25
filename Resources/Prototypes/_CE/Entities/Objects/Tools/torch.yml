@@ -18,9 +18,6 @@
     shape:
     - 0,0,0,2
     storedRotation: -65
-  - type: FireVisuals
-    sprite: _CE/Objects/Tools/torch.rsi
-    normalState: lit-overlay
   #- type: GenericVisualizer
   #  visuals:
   #    enum.FireplaceFuelVisuals.Status:
@@ -59,12 +56,6 @@
     rotation: 240
   #- type: CP14FlammableBonusDamage
   - type: UseDelay
-  - type: ExtinguishOnInteract
-    extinguishAttemptSound:
-      path: /Audio/Items/candle_blowing.ogg
-      params:
-        variation: 0.05
-        volume: 10
   - type: Tag
     tags:
     - CETorch

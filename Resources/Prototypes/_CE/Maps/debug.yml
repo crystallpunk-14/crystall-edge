@@ -38,15 +38,6 @@
           - /Maps/_CE/Dev/Dev2.yml
           - /Maps/_CE/Dev/Dev3.yml
           zLevelsComponentOverrides:
-            - type: MapAtmosphere
-              space: False
-              mixture:
-                volume: 2500
-                immutable: True
-                temperature: 293.15
-                moles:
-                  Oxygen: 21.824879
-                  Nitrogen: 82.10312
             - type: Parallax
               parallax: CEBedrock
             - type: MapLight #BEFORE Light Cycle
@@ -89,15 +80,6 @@
   - /Maps/_CE/Empty.yml
   - /Maps/_CE/Empty.yml
   components:
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
     - type: Parallax
       parallax: CESky
     - type: SunShadowCycle

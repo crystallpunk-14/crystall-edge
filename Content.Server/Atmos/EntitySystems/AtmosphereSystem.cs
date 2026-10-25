@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.Airtight;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.Reactions;
 using Content.Server.Fluids.EntitySystems;
