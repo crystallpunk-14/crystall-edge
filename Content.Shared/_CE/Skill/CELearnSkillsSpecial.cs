@@ -25,7 +25,7 @@ public sealed partial class CELearnSkillsSpecial : JobSpecial
 
         foreach (var skill in Skills)
         {
-            skillSys.TryAddSkill(mob, skill, force: true, descriptor: descriptor);
+            skillSys.TryAddSkill(mob, skill, descriptor: descriptor);
         }
     }
 

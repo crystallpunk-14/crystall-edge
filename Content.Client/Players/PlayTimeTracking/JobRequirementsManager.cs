@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.Roles;
+using Content.Shared._CE.Traits;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.JobWhitelist;
@@ -193,6 +194,24 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
         return CheckRoleRequirements(role.Requirements, profile, out reason);
+    }
+
+    /// <summary>
+    /// Check whether the trait is unlocked for the current player. Unlike roles this ignores the role timers cvar -
+    /// the server always checks trait requirements.
+    /// </summary>
+    public bool IsAllowed(
+        CETraitPrototype trait,
+        HumanoidCharacterProfile? profile,
+        [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        return JobRequirements.TryRequirementsMet(trait.Requirements,
+            _roles,
+            out reason,
+            _entManager,
+            _prototypes,
+            profile,
+            _playerManager.LocalSession?.UserId);
     }
     // CrystallEdge end
 

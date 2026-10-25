@@ -54,7 +54,7 @@ public sealed partial class CESkillAddCommand : LocalizedCommands
             return;
         }
 
-        if (!skillSystem.TryAddSkill(target, skillId, force: true))
+        if (!skillSystem.TryAddSkill(target, skillId))
         {
             shell.WriteError($"Failed to add skill '{args[1]}' to player '{args[0]}'. The player may be missing the skill storage component.");
             return;

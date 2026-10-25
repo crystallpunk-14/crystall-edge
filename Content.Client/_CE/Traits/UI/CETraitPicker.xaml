@@ -1,0 +1,49 @@
+<ui:CETraitPicker
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._CE.Traits.UI"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Orientation="Vertical"
+    VerticalExpand="True"
+    HorizontalExpand="True">
+    <!-- Rules and balance -->
+    <PanelContainer StyleClasses="BackgroundPanel" Margin="0 0 0 8">
+        <!-- Overlay so the balance keeps its own column: a BoxContainer would hand the text all the width first -->
+        <Control Margin="10 8">
+            <RichTextLabel Name="RulesLabel" VerticalAlignment="Center" Margin="0 0 126 0" />
+            <BoxContainer Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="110">
+                <Label Text="{Loc 'ce-trait-balance-title'}" HorizontalAlignment="Center" FontColorOverride="#A0A0B0" />
+                <Label Name="BalanceLabel" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger" />
+            </BoxContainer>
+        </Control>
+    </PanelContainer>
+
+    <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+        <!-- Trait grid -->
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+            <GridContainer Name="TraitGrid" Columns="6" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollContainer>
+        <Label Name="EmptyLabel" Text="{Loc 'ce-trait-none'}" FontColorOverride="Gray" Visible="False"
+               HorizontalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <!-- Hovered trait details -->
+        <PanelContainer StyleClasses="BackgroundPanel" MinWidth="280" MaxWidth="280" Margin="8 0 0 0">
+            <BoxContainer Orientation="Vertical" Margin="12 10">
+                <BoxContainer Name="DetailsBox" Orientation="Vertical" Visible="False">
+                    <BoxContainer Orientation="Horizontal">
+                        <TextureRect Name="DetailsIcon" TextureScale="2 2" Stretch="KeepAspectCentered"
+                                     MinSize="64 64" Margin="0 0 10 0" />
+                        <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalExpand="True">
+                            <RichTextLabel Name="DetailsName" />
+                            <Label Name="DetailsCost" />
+                        </BoxContainer>
+                    </BoxContainer>
+                    <customControls:HSeparator Margin="0 8" />
+                    <RichTextLabel Name="DetailsDescription" />
+                    <RichTextLabel Name="DetailsExtra" Margin="0 8 0 0" />
+                </BoxContainer>
+                <Label Name="DetailsHint" Text="{Loc 'ce-trait-hover-hint'}" FontColorOverride="Gray"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" VerticalExpand="True" />
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</ui:CETraitPicker>

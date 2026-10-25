@@ -5,7 +5,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
+using Content.Shared._CE.Traits;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -48,7 +48,7 @@ public sealed partial class HumanoidCharacterProfileV1
     public HashSet<ProtoId<AntagPrototype>> AntagPreferences = new();
 
     [DataField("_traitPreferences")]
-    public HashSet<ProtoId<TraitPrototype>> TraitPreferences = new();
+    public HashSet<ProtoId<CETraitPrototype>> TraitPreferences = new();
 
     [DataField("_loadouts")]
     public Dictionary<string, RoleLoadout> Loadouts = new();
