@@ -228,20 +228,6 @@
           octaves: 1
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.5
-      fill:
-      - tile: Space
-        threshold: 0.6
-        noise:
-          frequency: 0.04
-          noiseType: OpenSimplex2
-          fractalType: FBm
-          octaves: 5
-          lacunarity: 2
-          gain: 0.5
-    - !type:TileNoiseDistanceLayer
-      size: *size
       distanceConfig: *mountainRing
       mask:
       - !type:TileMask
@@ -304,14 +290,6 @@
           octaves: 5
           lacunarity: 2
           gain: 0.5
-    - !type:TileNoiseDistanceLayer
-      size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.5
-      fill:
-      - tile: Space
-        threshold: 0.7
-        noise: *caveHolesNoise
     #Biome fill
     - !type:FillBiomeLayer
       biome: CECavesGeneric
