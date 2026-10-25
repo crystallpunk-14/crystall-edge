@@ -22,10 +22,6 @@
   #  tags:
   #  - CEFireplaceFuel
   #  - Wooden
-    #cP14FireplaceFuel: 10
-    damage:
-      types:
-        Heat: 1
   - type: ToolRefinable
     qualityNeeded: Slicing #TODO: add a dedicated saw tool with Sawing quality and switch to it
     refineResult:
@@ -70,10 +66,6 @@
   #  tags:
   #  - CEFireplaceFuel
   #  - Wooden
-    #cP14FireplaceFuel: 8
-    damage:
-      types:
-        Heat: 1
   - type: Appearance
   - type: Stack
     stackType: CEWood
