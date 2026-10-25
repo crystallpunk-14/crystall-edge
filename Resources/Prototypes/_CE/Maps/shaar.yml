@@ -27,6 +27,26 @@
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Shaar
+        - type: CEStationWeather
+          nodes:
+            clear:
+              minDuration: 10m
+              maxDuration: 30m
+              transitions:
+                rain: 1
+            rain:
+              weather: CEWeatherRain
+              minDuration: 5m
+              maxDuration: 15m
+              transitions:
+                clear: 1
+                storm: 0.5
+            storm:
+              weather: CEWeatherStorm
+              minDuration: 3m
+              maxDuration: 8m
+              transitions:
+                rain: 1
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Shaar/Shaar-2.yml

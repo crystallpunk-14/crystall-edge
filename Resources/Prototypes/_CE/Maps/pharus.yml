@@ -27,6 +27,40 @@
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Pharus
+        - type: CEStationWeather
+          nodes:
+            clear:
+              minDuration: 5m
+              maxDuration: 15m
+              transitions:
+                snowLight: 1
+            snowLight:
+              weather: CEWeatherSnowLight
+              minDuration: 1m
+              maxDuration: 15m
+              transitions:
+                clear: 1
+                snowMedium: 0.5
+            snowMedium:
+              weather: CEWeatherSnowMedium
+              minDuration: 1m
+              maxDuration: 12m
+              transitions:
+                snowLight: 1
+                snowHeavy: 0.5
+            snowHeavy:
+              weather: CEWeatherSnowHeavy
+              minDuration: 1m
+              maxDuration: 8m
+              transitions:
+                snowMedium: 1
+                snowSolid: 0.25
+            snowSolid:
+              weather: CEWeatherSnowSolid
+              minDuration: 2m
+              maxDuration: 5m
+              transitions:
+                snowHeavy: 1
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Pharus/Pharus-2.yml
