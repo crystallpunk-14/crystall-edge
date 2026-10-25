@@ -34,6 +34,13 @@ public sealed partial class CESecretRoleSelectionSystem
         return true;
     }
 
+    [SubscribeLocalEvent]
+    private void OnRunLevelChanged(GameRunLevelChangedEvent args)
+    {
+        if (args.New == GameRunLevel.PostRound)
+            _roleIcon.RevealAllRoleIcons();
+    }
+
     // GameRuleSystem<T> already subscribes to RoundEndTextAppendEvent and dispatches to this
     // virtual method - a second raw SubscribeLocalEvent here would throw on duplicate
     // subscription, unlike ES's ESSecretIdentitySystem which isn't a GameRuleSystem<T> itself.
