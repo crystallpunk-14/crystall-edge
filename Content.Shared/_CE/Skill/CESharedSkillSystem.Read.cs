@@ -79,6 +79,12 @@ public abstract partial class CESharedSkillSystem
 
         args.Handled = true;
 
+        if (!SkillConditionsMet(target, ent.Comp.Skill))
+        {
+            _popup.PopupClient(Loc.GetString("ce-skill-req-not-met"), target, target);
+            return;
+        }
+
         if (TryAddSkill(target, ent.Comp.Skill))
             _popup.PopupClient(Loc.GetString("ce-skill-learned"), target, target);
         else

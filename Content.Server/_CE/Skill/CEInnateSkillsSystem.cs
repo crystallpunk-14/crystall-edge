@@ -24,7 +24,7 @@ public sealed partial class CEInnateSkillsSystem : EntitySystem
 
         foreach (var skill in ent.Comp.Skills)
         {
-            _skill.TryAddSkill(ent.Owner, skill, descriptor: descriptor);
+            _skill.TryAddSkill(ent.Owner, skill, force: true, descriptor: descriptor);
         }
     }
 }

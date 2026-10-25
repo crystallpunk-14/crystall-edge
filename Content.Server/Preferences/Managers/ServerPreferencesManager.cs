@@ -15,7 +15,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared._CE.Traits;
+using Content.Shared.Traits;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -99,7 +99,7 @@ namespace Content.Server.Preferences.Managers
             var secretRoles = profile.SecretRoles.ToDictionary(r => new ProtoId<CESecretRolePrototype>(r.SecretRoleName), r => (JobPriority) r.Priority);
             // CrystallEdge end
             var antags = profile.Antags.Select(a => new ProtoId<AntagPrototype>(a.AntagName));
-            var traits = profile.Traits.Select(t => new ProtoId<CETraitPrototype>(t.TraitName));
+            var traits = profile.Traits.Select(t => new ProtoId<TraitPrototype>(t.TraitName));
 
             var sex = Sex.Male;
             if (Enum.TryParse<Sex>(profile.Sex, true, out var sexVal))

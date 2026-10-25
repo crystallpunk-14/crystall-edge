@@ -1,3 +1,4 @@
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Effects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
@@ -64,6 +65,14 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     /// </summary>
     [DataField]
     public CESkillEffect? Effect;
+
+    /// <summary>
+    /// Conditions an actor must pass to be allowed to learn this skill (e.g. already knowing a
+    /// prerequisite skill). Checked by <see cref="CESharedSkillSystem.SkillConditionsMet"/> at
+    /// every player-facing "try to learn" entry point. Empty means no restriction.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public List<CEEntityCondition> Conditions = new();
 
     /// <summary>
     /// Color used to highlight this skill's name in the learned-skills examine text.

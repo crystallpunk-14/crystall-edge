@@ -287,7 +287,6 @@ namespace Content.Client._CE.Lobby.UI
 
             #endregion Jobs
 
-            TraitPicker.OnTraitToggled += OnTraitToggled;
             RefreshTraits();
 
             #region Markings
@@ -436,8 +435,7 @@ namespace Content.Client._CE.Lobby.UI
 
         private void UpdateSaveButton()
         {
-            SaveButton.Disabled = Profile is null || !IsDirty || !TraitsValid;
-            SaveButton.ToolTip = TraitsValid ? null : Loc.GetString("ce-trait-save-blocked");
+            SaveButton.Disabled = Profile is null || !IsDirty;
             ResetButton.Disabled = Profile is null || !IsDirty;
         }
 

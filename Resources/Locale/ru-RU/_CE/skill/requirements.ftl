@@ -1,3 +1,4 @@
+ce-skill-req-not-met = У вас не получается изучить это
 ce-skill-req-prerequisite = Навык "{$name}" должен быть изучен
 ce-skill-req-not-prerequisite = Навык "{$name}" не должен быть изучен
 ce-skill-req-species = Вы должны быть расы "{$name}"
