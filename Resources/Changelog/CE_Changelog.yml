@@ -1581,3 +1581,13 @@
   id: 1134
   time: '2026-10-24T22:58:19.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/558
+- author: TheShuEd
+  changes:
+  - message: All secret role icons are now visible after round end
+    type: Add
+  - message: Refactored critical mob state, players can now crawl and talk in critical
+      state, but slowly dies from bloodloss.
+    type: Add
+  id: 1135
+  time: '2026-10-25T10:59:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/560
