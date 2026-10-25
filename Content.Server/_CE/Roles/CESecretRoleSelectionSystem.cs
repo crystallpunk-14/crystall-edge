@@ -471,14 +471,19 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             if (giveGear)
                 _stationSpawning.EquipStartingGear(target, role.Gear);
 
+            // Roles granted on the round end screen show up already revealed, like the rest.
+            var revealed = GameTicker.RunLevel == GameRunLevel.PostRound;
+
             var icon = EnsureComp<CESecretRoleIconComponent>(target);
             icon.Role = role.ID;
+            icon.Revealed = revealed;
             Dirty(target, icon);
 
             if (original != role.ID)
             {
                 var originalIcon = EnsureComp<CESecretRoleOriginalIconComponent>(target);
                 originalIcon.Role = original;
+                originalIcon.Revealed = revealed;
                 Dirty(target, originalIcon);
             }
 

@@ -132,15 +132,6 @@
         - MobMask
         layer:
         - MobLayer
-  - type: Temperature
-    temperature: 293.15
-    specificHeat: 42
-  - type: TemperatureDamage
-    heatDamageThreshold: 373.15
-    coldDamageThreshold: 0
-    heatDamage:
-      types:
-        Heat: 1.5
   - type: Speech
     speechVerb: Skeleton
   - type: CEBarkSpeech

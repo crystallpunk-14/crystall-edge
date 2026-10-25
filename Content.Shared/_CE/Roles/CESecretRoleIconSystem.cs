@@ -43,6 +43,26 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
     }
 
     /// <summary>
+    /// Makes every role icon recognizable by everyone - called once the round is over.
+    /// </summary>
+    public void RevealAllRoleIcons()
+    {
+        var query = EntityQueryEnumerator<CESecretRoleIconComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            comp.Revealed = true;
+            Dirty(uid, comp);
+        }
+
+        var originalQuery = EntityQueryEnumerator<CESecretRoleOriginalIconComponent>();
+        while (originalQuery.MoveNext(out var uid, out var comp))
+        {
+            comp.Revealed = true;
+            Dirty(uid, comp);
+        }
+    }
+
+    /// <summary>
     /// Re-evaluates which viewers receive every role icon.
     /// </summary>
     public void DirtyAllRoleIcons()
@@ -66,7 +86,7 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         if (args.Player?.AttachedEntity is not { } viewer)
             return;
 
-        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer);
+        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer, ent.Comp.Revealed);
     }
 
     [SubscribeLocalEvent]
@@ -75,13 +95,13 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         if (args.Player?.AttachedEntity is not { } viewer)
             return;
 
-        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer);
+        args.Cancelled = !CanRecognize(ent, ent.Comp.Role, viewer, ent.Comp.Revealed);
     }
 
     [SubscribeLocalEvent]
     private void OnGetStatusIcons(Entity<CESecretRoleIconComponent> ent, ref GetStatusIconsEvent args)
     {
-        if (_player.LocalEntity is not { } viewer || !CanRecognize(ent, ent.Comp.Role, viewer))
+        if (_player.LocalEntity is not { } viewer || !CanRecognize(ent, ent.Comp.Role, viewer, ent.Comp.Revealed))
             return;
 
         AddStatusIcon(ent.Comp.Role, ref args);
@@ -153,11 +173,11 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         original = null;
         current = null;
 
-        if (TryComp<CESecretRoleIconComponent>(target, out var icon) && CanRecognize(target, icon.Role, viewer))
+        if (TryComp<CESecretRoleIconComponent>(target, out var icon) && CanRecognize(target, icon.Role, viewer, icon.Revealed))
             current = icon.Role;
 
         if (TryComp<CESecretRoleOriginalIconComponent>(target, out var originalIcon) &&
-            CanRecognize(target, originalIcon.Role, viewer))
+            CanRecognize(target, originalIcon.Role, viewer, originalIcon.Revealed))
         {
             original = originalIcon.Role;
         }
@@ -171,13 +191,14 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
     /// an icon component's state is even networked to that viewer) and for the icon/examine text.
     /// Each of the target's roles is checked on its own, against both of the viewer's roles.
     /// </summary>
-    public bool CanRecognize(EntityUid target, ProtoId<CESecretRolePrototype> role, EntityUid viewer)
+    /// <param name="revealed">Whether the icon carrying <paramref name="role"/> was revealed at round end.</param>
+    public bool CanRecognize(EntityUid target, ProtoId<CESecretRolePrototype> role, EntityUid viewer, bool revealed)
     {
         // Never your own icon above your own head.
         if (viewer == target)
             return false;
 
-        if (_ghostMeta.CanSeeMeta(viewer))
+        if (revealed || _ghostMeta.CanSeeMeta(viewer))
             return true;
 
         if (!_mind.TryGetMind(viewer, out var mindId, out var mind))

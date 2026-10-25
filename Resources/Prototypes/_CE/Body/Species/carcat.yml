@@ -242,10 +242,6 @@
   id: CEMobCarcat
   name: Mr. Cat
   components:
-  - type: FireVisuals
-    sprite: _CE/Mobs/Effects/onfire.rsi
-    normalState: Small_burning
-    alternateState: Carcat_burning
   - type: Icon
     sprite: _CE/Mobs/Species/Carcat/parts.rsi
     state: full

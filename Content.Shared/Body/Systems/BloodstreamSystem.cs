@@ -64,6 +64,11 @@ public sealed partial class BloodstreamSystem : EntitySystem
             {
                 TryRegulateBloodLevel(uid, bloodstream.BloodRefreshAmount);
 
+                // CrystallEdge: critical mobs keep bleeding out instead of suffocating
+                if (_mobStateSystem.IsCritical(uid))
+                    TryModifyBleedAmount((uid, bloodstream), bloodstream.CECriticalBleedAmount);
+                // CrystallEdge end
+
                 TickBleed((uid, bloodstream));
 
                 // deal bloodloss damage if their blood level is below a threshold.

@@ -19,15 +19,6 @@
   - type: PaperVisualizer
   - type: PaperVisuals
     contentImageModulate: "#998665"
-  - type: Flammable
-    fireSpread: true
-    alwaysCombustible: true
-    damage:
-      types:
-        Heat: 1
-  - type: FireVisuals
-    sprite: Effects/fire.rsi
-    normalState: fire
   - type: Damageable
     damageModifierSet: Wood
   - type: Injurable

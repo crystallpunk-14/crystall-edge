@@ -15,5 +15,11 @@ public sealed partial class CESecretRoleIconComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public ProtoId<CESecretRolePrototype> Role;
 
+    /// <summary>
+    /// Set once the round is over - every viewer but the holder recognizes the role from then on.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Revealed;
+
     public override bool SessionSpecific => true;
 }

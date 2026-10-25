@@ -6,7 +6,7 @@ namespace Content.Shared._CE.StatusEffect.MysticVitality;
 
 /// <summary>
 /// Keeps resistable incoming damage from ever reaching the dead threshold. While the target is
-/// critical, it also regenerates damage and keeps the target from suffocating.
+/// critical, it also regenerates damage.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class CEMysticVitalityStatusEffectComponent : Component
@@ -28,7 +28,4 @@ public sealed partial class CEMysticVitalityStatusEffectComponent : Component
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextRegen = TimeSpan.Zero;
-
-    [DataField]
-    public bool PreventCritSuffocation = true;
 }

@@ -95,7 +95,6 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
-  - type: FireVisuals
   - type: GuideHelp
     guides:
     - CEFarmingGuideEN

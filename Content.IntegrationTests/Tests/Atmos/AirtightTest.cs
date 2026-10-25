@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.IntegrationTests.Fixtures.Attributes;
+using Content.Server.Airtight;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;

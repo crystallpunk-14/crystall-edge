@@ -14,5 +14,9 @@ public sealed partial class CESecretRoleOriginalIconComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public ProtoId<CESecretRolePrototype> Role;
 
+    /// <inheritdoc cref="CESecretRoleIconComponent.Revealed"/>
+    [DataField, AutoNetworkedField]
+    public bool Revealed;
+
     public override bool SessionSpecific => true;
 }
