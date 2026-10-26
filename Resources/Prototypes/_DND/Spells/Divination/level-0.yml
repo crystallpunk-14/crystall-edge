@@ -1,0 +1,15 @@
+- type: dndSpell
+  id: Guidance
+  name: dnd-spell-guidance-name
+  description: dnd-spell-guidance-desc
+  school: Divination
+  level: 0
+  lists:
+  - Cleric
+  - Druid
+  recommendedFor:
+  - Cleric
+  order: 0
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Guidance

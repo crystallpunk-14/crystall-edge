@@ -1,0 +1,54 @@
+# The six abilities. Scores are chosen in character creation; modifiers are derived in code.
+- type: dndAbility
+  id: Strength
+  name: dnd-ability-strength-name
+  description: dnd-ability-strength-desc
+  order: 0
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20
+
+- type: dndAbility
+  id: Dexterity
+  name: dnd-ability-dexterity-name
+  description: dnd-ability-dexterity-desc
+  order: 1
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20
+
+- type: dndAbility
+  id: Constitution
+  name: dnd-ability-constitution-name
+  description: dnd-ability-constitution-desc
+  order: 2
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20
+
+- type: dndAbility
+  id: Intelligence
+  name: dnd-ability-intelligence-name
+  description: dnd-ability-intelligence-desc
+  order: 3
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20
+
+- type: dndAbility
+  id: Wisdom
+  name: dnd-ability-wisdom-name
+  description: dnd-ability-wisdom-desc
+  order: 4
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20
+
+- type: dndAbility
+  id: Charisma
+  name: dnd-ability-charisma-name
+  description: dnd-ability-charisma-desc
+  order: 5
+  defaultScore: 10
+  minScore: 1
+  maxScore: 20

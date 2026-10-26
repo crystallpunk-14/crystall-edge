@@ -1,0 +1,14 @@
+- type: dndSpell
+  id: InflictWounds
+  name: dnd-spell-inflict-wounds-name
+  description: dnd-spell-inflict-wounds-desc
+  school: Necromancy
+  level: 1
+  lists:
+  - Cleric
+  order: 11
+  rangeFeet: 5
+  damageDice: 3
+  damageSides: 10
+  damageType: Necrotic
+  effect: Attack

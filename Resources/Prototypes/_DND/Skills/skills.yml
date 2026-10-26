@@ -1,0 +1,107 @@
+- type: dndSkill
+  id: AnimalHandling
+  name: dnd-skill-animal-handling-name
+  description: dnd-skill-animal-handling-desc
+  ability: Wisdom
+
+- type: dndSkill
+  id: Athletics
+  name: dnd-skill-athletics-name
+  description: dnd-skill-athletics-desc
+  ability: Strength
+
+- type: dndSkill
+  id: Intimidation
+  name: dnd-skill-intimidation-name
+  description: dnd-skill-intimidation-desc
+  ability: Charisma
+
+- type: dndSkill
+  id: Nature
+  name: dnd-skill-nature-name
+  description: dnd-skill-nature-desc
+  ability: Intelligence
+
+- type: dndSkill
+  id: Perception
+  name: dnd-skill-perception-name
+  description: dnd-skill-perception-desc
+  ability: Wisdom
+
+- type: dndSkill
+  id: Survival
+  name: dnd-skill-survival-name
+  description: dnd-skill-survival-desc
+  ability: Wisdom
+
+- type: dndSkill
+  id: Acrobatics
+  name: dnd-skill-acrobatics-name
+  description: dnd-skill-acrobatics-desc
+  ability: Dexterity
+
+- type: dndSkill
+  id: Arcana
+  name: dnd-skill-arcana-name
+  description: dnd-skill-arcana-desc
+  ability: Intelligence
+
+- type: dndSkill
+  id: Deception
+  name: dnd-skill-deception-name
+  description: dnd-skill-deception-desc
+  ability: Charisma
+
+- type: dndSkill
+  id: History
+  name: dnd-skill-history-name
+  description: dnd-skill-history-desc
+  ability: Intelligence
+
+- type: dndSkill
+  id: Insight
+  name: dnd-skill-insight-name
+  description: dnd-skill-insight-desc
+  ability: Wisdom
+
+- type: dndSkill
+  id: Investigation
+  name: dnd-skill-investigation-name
+  description: dnd-skill-investigation-desc
+  ability: Intelligence
+
+- type: dndSkill
+  id: Medicine
+  name: dnd-skill-medicine-name
+  description: dnd-skill-medicine-desc
+  ability: Wisdom
+
+- type: dndSkill
+  id: Performance
+  name: dnd-skill-performance-name
+  description: dnd-skill-performance-desc
+  ability: Charisma
+
+- type: dndSkill
+  id: Persuasion
+  name: dnd-skill-persuasion-name
+  description: dnd-skill-persuasion-desc
+  ability: Charisma
+
+- type: dndSkill
+  id: Religion
+  name: dnd-skill-religion-name
+  description: dnd-skill-religion-desc
+  ability: Intelligence
+
+- type: dndSkill
+  id: SleightOfHand
+  name: dnd-skill-sleight-of-hand-name
+  description: dnd-skill-sleight-of-hand-desc
+  ability: Dexterity
+
+- type: dndSkill
+  id: Stealth
+  name: dnd-skill-stealth-name
+  description: dnd-skill-stealth-desc
+  ability: Dexterity

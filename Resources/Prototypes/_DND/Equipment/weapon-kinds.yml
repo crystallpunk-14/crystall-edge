@@ -1,0 +1,173 @@
+- type: dndWeaponKind
+  id: Club
+  name: dnd-weapon-club
+  training: Simple
+  mastery: Slow
+
+- type: dndWeaponKind
+  id: Dagger
+  name: dnd-weapon-dagger
+  training: Simple
+  mastery: Nick
+  light: true
+
+- type: dndWeaponKind
+  id: Greatclub
+  name: dnd-weapon-greatclub
+  training: Simple
+  mastery: Push
+
+- type: dndWeaponKind
+  id: Handaxe
+  name: dnd-weapon-handaxe
+  training: Simple
+  mastery: Vex
+  light: true
+
+- type: dndWeaponKind
+  id: Javelin
+  name: dnd-weapon-javelin
+  training: Simple
+  mastery: Slow
+
+- type: dndWeaponKind
+  id: LightHammer
+  name: dnd-weapon-light-hammer
+  training: Simple
+  mastery: Nick
+  light: true
+
+- type: dndWeaponKind
+  id: Mace
+  name: dnd-weapon-mace
+  training: Simple
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Quarterstaff
+  name: dnd-weapon-quarterstaff
+  training: Simple
+  mastery: Topple
+
+- type: dndWeaponKind
+  id: Sickle
+  name: dnd-weapon-sickle
+  training: Simple
+  mastery: Nick
+  light: true
+
+- type: dndWeaponKind
+  id: Spear
+  name: dnd-weapon-spear
+  training: Simple
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Battleaxe
+  name: dnd-weapon-battleaxe
+  training: Martial
+  mastery: Topple
+
+- type: dndWeaponKind
+  id: Flail
+  name: dnd-weapon-flail
+  training: Martial
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Glaive
+  name: dnd-weapon-glaive
+  training: Martial
+  mastery: Graze
+
+- type: dndWeaponKind
+  id: Greataxe
+  name: dnd-weapon-greataxe
+  training: Martial
+  mastery: Cleave
+
+- type: dndWeaponKind
+  id: Greatsword
+  name: dnd-weapon-greatsword
+  training: Martial
+  mastery: Graze
+
+- type: dndWeaponKind
+  id: Halberd
+  name: dnd-weapon-halberd
+  training: Martial
+  mastery: Cleave
+
+- type: dndWeaponKind
+  id: Lance
+  name: dnd-weapon-lance
+  training: Martial
+  mastery: Topple
+
+- type: dndWeaponKind
+  id: Longsword
+  name: dnd-weapon-longsword
+  training: Martial
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Maul
+  name: dnd-weapon-maul
+  training: Martial
+  mastery: Topple
+
+- type: dndWeaponKind
+  id: Morningstar
+  name: dnd-weapon-morningstar
+  training: Martial
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Pike
+  name: dnd-weapon-pike
+  training: Martial
+  mastery: Push
+
+- type: dndWeaponKind
+  id: Rapier
+  name: dnd-weapon-rapier
+  training: Martial
+  mastery: Vex
+
+- type: dndWeaponKind
+  id: Scimitar
+  name: dnd-weapon-scimitar
+  training: Martial
+  mastery: Nick
+  light: true
+
+- type: dndWeaponKind
+  id: Shortsword
+  name: dnd-weapon-shortsword
+  training: Martial
+  mastery: Vex
+  light: true
+
+- type: dndWeaponKind
+  id: Trident
+  name: dnd-weapon-trident
+  training: Martial
+  mastery: Topple
+
+- type: dndWeaponKind
+  id: Warhammer
+  name: dnd-weapon-warhammer
+  training: Martial
+  mastery: Push
+
+- type: dndWeaponKind
+  id: WarPick
+  name: dnd-weapon-war-pick
+  training: Martial
+  mastery: Sap
+
+- type: dndWeaponKind
+  id: Whip
+  name: dnd-weapon-whip
+  training: Martial
+  mastery: Slow

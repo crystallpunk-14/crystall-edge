@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Rogue
+  name: dnd-class-rogue-name
+  description: dnd-class-rogue-desc
+  order: 8
+  hitDie: 8

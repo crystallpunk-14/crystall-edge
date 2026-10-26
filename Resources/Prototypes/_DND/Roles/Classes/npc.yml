@@ -1,0 +1,8 @@
+# Joins the round as a ghost and takes a ghost role.
+- type: dndClass
+  id: Npc
+  name: dnd-class-npc-name
+  description: dnd-class-npc-desc
+  order: 12
+  spawnAsGhost: true
+  hitDie: 8

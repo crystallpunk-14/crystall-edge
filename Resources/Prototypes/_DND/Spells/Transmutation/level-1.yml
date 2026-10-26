@@ -1,0 +1,54 @@
+- type: dndSpell
+  id: Longstrider
+  name: dnd-spell-longstrider-name
+  description: dnd-spell-longstrider-desc
+  school: Transmutation
+  level: 1
+  lists:
+  - Bard
+  - Druid
+  order: 16
+  rangeFeet: 5
+  canTargetSelf: true
+  requiresFocus: true
+  effect: Longstrider
+
+- type: dndSpell
+  id: CreateOrDestroyWater
+  name: dnd-spell-water-name
+  description: dnd-spell-water-desc
+  school: Transmutation
+  level: 1
+  lists:
+  - Cleric
+  - Druid
+  order: 17
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: Splash
+
+- type: dndSpell
+  id: PurifyFoodAndDrink
+  name: dnd-spell-purify-name
+  description: dnd-spell-purify-desc
+  school: Transmutation
+  level: 1
+  lists:
+  - Cleric
+  - Druid
+  order: 18
+  rangeFeet: 10
+  effect: Purify
+
+- type: dndSpell
+  id: Jump
+  name: dnd-spell-jump-name
+  description: dnd-spell-jump-desc
+  school: Transmutation
+  level: 1
+  lists:
+  - Druid
+  order: 24
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Jump

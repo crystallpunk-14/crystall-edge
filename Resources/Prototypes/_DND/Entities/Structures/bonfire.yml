@@ -1,0 +1,19 @@
+- type: entity
+  parent: BaseStructure
+  id: DndBonfire
+  name: bonfire
+  description: A fire built for a short rest.
+  components:
+  - type: Sprite
+    sprite: Structures/Decoration/bonfire.rsi
+    noRot: true
+    layers:
+    - state: bonfire
+    - state: burning
+  - type: DndBonfire
+  - type: PointLight
+    radius: 6
+    energy: 2
+    softness: 1
+    color: "#FF6A00"
+  - type: InteractionOutline

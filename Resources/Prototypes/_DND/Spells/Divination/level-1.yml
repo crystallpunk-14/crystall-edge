@@ -1,0 +1,53 @@
+- type: dndSpell
+  id: DetectEvilAndGood
+  name: dnd-spell-detect-evil-name
+  description: dnd-spell-detect-evil-desc
+  school: Divination
+  level: 1
+  lists:
+  - Cleric
+  order: 14
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: DetectSides
+
+- type: dndSpell
+  id: DetectMagic
+  name: dnd-spell-detect-magic-name
+  description: dnd-spell-detect-magic-desc
+  school: Divination
+  level: 1
+  lists:
+  - Cleric
+  - Druid
+  order: 15
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: DetectMagic
+
+- type: dndSpell
+  id: DetectPoisonAndDisease
+  name: dnd-spell-detect-poison-name
+  description: dnd-spell-detect-poison-desc
+  school: Divination
+  level: 1
+  lists:
+  - Cleric
+  - Druid
+  order: 16
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: DetectPoison
+
+- type: dndSpell
+  id: SpeakWithAnimals
+  name: dnd-spell-speak-animals-name
+  description: dnd-spell-speak-animals-desc
+  school: Divination
+  level: 1
+  lists:
+  - Druid
+  order: 4
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: SpeakWithAnimals

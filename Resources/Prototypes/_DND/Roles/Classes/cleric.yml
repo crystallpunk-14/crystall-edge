@@ -1,0 +1,63 @@
+- type: dndClass
+  id: Cleric
+  name: dnd-class-cleric-name
+  description: dnd-class-cleric-desc
+  order: 2
+  hitDie: 8
+  primaryAbility: Wisdom
+  savingThrows:
+  - Wisdom
+  - Charisma
+  skillChoiceCount: 2
+  skillOptions:
+  - History
+  - Insight
+  - Medicine
+  - Persuasion
+  - Religion
+  weaponTraining:
+  - Simple
+  armorTraining:
+  - Light
+  - Medium
+  - Shield
+  spellList: Cleric
+  spellFocus: HolySymbol
+  reprepareOnLongRest: true
+  cantripChoiceCount: 3
+  preparedSpellCount: 4
+  features:
+  - ClericSpellcasting
+  - DivineOrder
+  equipmentOptions:
+  - id: Gear
+    name: dnd-equipment-cleric-gear
+    items:
+    - prototype: DndChainShirt
+    - prototype: DndShield
+    - prototype: DndMace
+    - prototype: DndHolySymbol
+    - prototype: DndPriestsPack
+    - prototype: CECoinGold5
+    - prototype: CECoinGold1
+      amount: 2
+  - id: Gold
+    name: dnd-equipment-cleric-gold
+    items:
+    - prototype: CECoinGold10
+      amount: 11
+
+- type: dndFeature
+  id: ClericSpellcasting
+  name: dnd-feature-cleric-spellcasting-name
+  description: dnd-feature-cleric-spellcasting-desc
+  level: 1
+  kind: Spellcasting
+  slotsByLevel: [2]
+
+- type: dndFeature
+  id: DivineOrder
+  name: dnd-feature-divine-order-name
+  description: dnd-feature-divine-order-desc
+  level: 1
+  kind: DivineOrder

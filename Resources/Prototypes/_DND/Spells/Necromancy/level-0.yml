@@ -1,0 +1,29 @@
+- type: dndSpell
+  id: SpareTheDying
+  name: dnd-spell-spare-name
+  description: dnd-spell-spare-desc
+  school: Necromancy
+  level: 0
+  lists:
+  - Cleric
+  - Druid
+  order: 14
+  rangeFeet: 5
+  canTargetSelf: false
+  effect: SpareDying
+
+- type: dndSpell
+  id: PoisonSpray
+  name: dnd-spell-poison-spray-name
+  description: dnd-spell-poison-spray-desc
+  school: Necromancy
+  level: 0
+  lists:
+  - Druid
+  order: 19
+  rangeFeet: 30
+  save: Constitution
+  damageDice: 1
+  damageSides: 12
+  damageType: Poison
+  effect: Smite

@@ -1,0 +1,49 @@
+- type: dndInstrument
+  id: Bagpipes
+  name: dnd-instrument-bagpipes
+  entity: DndBagpipes
+
+- type: dndInstrument
+  id: Drum
+  name: dnd-instrument-drum
+  entity: DndDrum
+
+- type: dndInstrument
+  id: Dulcimer
+  name: dnd-instrument-dulcimer
+  entity: DndDulcimer
+
+- type: dndInstrument
+  id: Flute
+  name: dnd-instrument-flute
+  entity: DndFlute
+
+- type: dndInstrument
+  id: Horn
+  name: dnd-instrument-horn
+  entity: DndHorn
+
+- type: dndInstrument
+  id: Lute
+  name: dnd-instrument-lute
+  entity: DndLute
+
+- type: dndInstrument
+  id: Lyre
+  name: dnd-instrument-lyre
+  entity: DndLyre
+
+- type: dndInstrument
+  id: PanFlute
+  name: dnd-instrument-pan-flute
+  entity: DndPanFlute
+
+- type: dndInstrument
+  id: Shawm
+  name: dnd-instrument-shawm
+  entity: DndShawm
+
+- type: dndInstrument
+  id: Viol
+  name: dnd-instrument-viol
+  entity: DndViol

@@ -1,0 +1,13 @@
+- type: dndSpell
+  id: Resistance
+  name: dnd-spell-resistance-name
+  description: dnd-spell-resistance-desc
+  school: Abjuration
+  level: 0
+  lists:
+  - Cleric
+  - Druid
+  order: 13
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Ward

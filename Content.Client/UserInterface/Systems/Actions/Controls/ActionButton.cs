@@ -3,6 +3,8 @@ using Content.Client.Actions;
 using Content.Client.Actions.UI;
 using Content.Client.Cooldown;
 using Content.Shared.Actions.Components;
+using Content.Shared.Charges.Components;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -23,6 +25,8 @@ public sealed class ActionButton : Control, IEntityControl
 
     private IEntityManager _entities;
     private IPlayerManager _player;
+    private IGameTiming _timing;
+    private SharedChargesSystem? _charges;
     private ActionsSystem? _actionsSys;
     private ActionUIController? _controller;
     private bool _beingHovered;
@@ -49,6 +53,10 @@ public sealed class ActionButton : Control, IEntityControl
     private readonly SpriteView _bigActionIcon;
     private readonly SpriteView _smallActionIcon;
     public readonly Label Label;
+    // Dnd: countdown until the action can be used again, and how many uses remain
+    public readonly Label TimerLabel;
+    public readonly Label UsesLabel;
+    // Dnd end
     public readonly CooldownGraphic Cooldown;
     private readonly SpriteView _smallItemSpriteView;
     private readonly SpriteView _bigItemSpriteView;
@@ -66,6 +74,7 @@ public sealed class ActionButton : Control, IEntityControl
 
         _entities = entities;
         _player = IoCManager.Resolve<IPlayerManager>();
+        _timing = IoCManager.Resolve<IGameTiming>();
         _controller = controller;
 
         MouseFilter = MouseFilterMode.Pass;
@@ -105,6 +114,25 @@ public sealed class ActionButton : Control, IEntityControl
             VerticalAlignment = VAlignment.Top,
             Margin = new Thickness(5, 0, 0, 0)
         };
+        // Dnd: the timer sits in the middle of the icon and the use count sits at the bottom right
+        TimerLabel = new Label
+        {
+            Name = "Timer",
+            HorizontalAlignment = HAlignment.Center,
+            VerticalAlignment = VAlignment.Center,
+            MouseFilter = MouseFilterMode.Ignore,
+            Visible = false,
+        };
+        UsesLabel = new Label
+        {
+            Name = "Uses",
+            HorizontalAlignment = HAlignment.Right,
+            VerticalAlignment = VAlignment.Bottom,
+            Margin = new Thickness(0, 0, 2, 0),
+            MouseFilter = MouseFilterMode.Ignore,
+            Visible = false,
+        };
+        // Dnd end
         _bigItemSpriteView = new SpriteView
         {
             Name = "Big Sprite",
@@ -150,6 +178,10 @@ public sealed class ActionButton : Control, IEntityControl
         AddChild(_bigItemSpriteView);
         AddChild(HighlightRect);
         AddChild(Label);
+        // Dnd: draw the countdown and the use count above the cooldown pie
+        AddChild(TimerLabel);
+        AddChild(UsesLabel);
+        // Dnd end
         AddChild(Cooldown);
         AddChild(paddingBoxItemIcon);
 
@@ -167,6 +199,10 @@ public sealed class ActionButton : Control, IEntityControl
     {
         base.OnThemeUpdated();
         Label.FontColorOverride = Theme.ResolveColorOrSpecified("whiteText");
+        // Dnd: white countdown, gold use count
+        TimerLabel.FontColorOverride = Theme.ResolveColorOrSpecified("whiteText");
+        UsesLabel.FontColorOverride = new Color(255, 230, 120);
+        // Dnd end
         _slotBackground = Theme.ResolveTexture("SlotBackground");
         UpdateBackground();
     }
@@ -322,6 +358,10 @@ public sealed class ActionButton : Control, IEntityControl
         Cooldown.Visible = false;
         Cooldown.Progress = 1;
         Label.Visible = false;
+        // Dnd: hide the countdown and the use count with the action
+        TimerLabel.Visible = false;
+        UsesLabel.Visible = false;
+        // Dnd end
         UpdateIcons();
     }
 
@@ -336,9 +376,57 @@ public sealed class ActionButton : Control, IEntityControl
         if (action.Cooldown is {} cooldown)
             Cooldown.FromTime(cooldown.Start, cooldown.End);
 
+        // Dnd: seconds left, then how many times the action can still be used
+        UpdateDndReadout(action);
+        // Dnd end
+
         if (_toggled != action.Toggled)
             _toggled = action.Toggled;
     }
+
+    // Dnd: the pie is the cooldown. These two numbers say how long is left and how many uses remain.
+    private void UpdateDndReadout(ActionComponent action)
+    {
+        if (Action is not { } actionEntity)
+        {
+            TimerLabel.Visible = false;
+            UsesLabel.Visible = false;
+            return;
+        }
+
+        if (action.Cooldown is { } cooldown)
+        {
+            var left = cooldown.End - _timing.CurTime;
+            if (left > TimeSpan.Zero)
+            {
+                TimerLabel.Text = $"{(int) Math.Ceiling(left.TotalSeconds)}s";
+                TimerLabel.Visible = true;
+            }
+            else
+            {
+                TimerLabel.Visible = false;
+            }
+        }
+        else
+        {
+            TimerLabel.Visible = false;
+        }
+
+        if (_entities.TryGetComponent<LimitedChargesComponent>(actionEntity.Owner, out var charges))
+        {
+            _charges ??= _entities.System<SharedChargesSystem>();
+            var current = _charges.GetCurrentCharges((actionEntity.Owner, charges, null));
+            if (current >= 0)
+            {
+                UsesLabel.Text = current.ToString();
+                UsesLabel.Visible = true;
+                return;
+            }
+        }
+
+        UsesLabel.Visible = false;
+    }
+    // Dnd end
 
     protected override void MouseEntered()
     {

@@ -1,0 +1,70 @@
+- type: entity
+  parent: ClothingOuterBase
+  id: DndChainShirt
+  name: chain shirt
+  description: Medium armor. Its Armor Class is 13 plus your Dexterity modifier, to a maximum of +2.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/bone_armor.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/bone_armor.rsi
+  - type: DndArmor
+    category: Medium
+    armorClass: 13
+
+- type: entity
+  parent: BaseItem
+  id: DndShield
+  name: shield
+  description: A shield adds 2 to Armor Class while you wear or hold it.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/shields.rsi
+    state: riot-icon
+  - type: Item
+    sprite: Objects/Weapons/Melee/shields.rsi
+    size: Large
+    heldPrefix: riot
+  - type: DndArmor
+    category: Shield
+    armorClass: 2
+
+- type: entity
+  parent: CEWeaponClubWooden
+  id: DndMace
+  name: mace
+  description: A simple one-handed mace. Its mastery is Sap.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 6
+    damageType: Bludgeoning
+    ability: Strength
+    rangeFeet: 5
+    kind: Mace
+    training: Simple
+    mastery: Sap
+
+- type: entity
+  parent: BaseItem
+  id: DndHolySymbol
+  name: holy symbol
+  description: A symbol of the divine. It can focus a cleric spell that needs one.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/amulets.rsi
+    state: focus
+  - type: Item
+    size: Small
+  - type: Clothing
+    slots:
+    - neck
+    sprite: _CE/Objects/Tools/amulets.rsi
+  - type: DndSpellFocus
+    kind: HolySymbol
+
+- type: entity
+  parent: ClothingBackpack
+  id: DndPriestsPack
+  name: priest's pack
+  description: A backpack packed for the road and the shrine.

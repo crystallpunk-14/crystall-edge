@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Fighter
+  name: dnd-class-fighter-name
+  description: dnd-class-fighter-desc
+  order: 4
+  hitDie: 10

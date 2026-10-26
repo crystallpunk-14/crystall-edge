@@ -298,6 +298,12 @@ namespace Content.Client._CE.Lobby.UI
 
             RefreshFlavorText();
 
+            // Dnd: roles, traits, and flavor text stay in the editor but are hidden.
+            // Appearance customization and the Abilities tab are the character-creation menus.
+            ApplyDndCharacterCreationMenus();
+            RefreshDndClasses();
+            RefreshDndAbilities();
+
             #region Dummy
 
             SpriteRotateLeft.OnPressed += _ =>
@@ -394,6 +400,9 @@ namespace Content.Client._CE.Lobby.UI
             RefreshBarkVoices();
             RefreshTraits();
             RefreshFlavorText();
+            ApplyDndCharacterCreationMenus();
+            RefreshDndClasses();
+            RefreshDndAbilities();
             UpdateBarkControls();
             ReloadPreview();
 

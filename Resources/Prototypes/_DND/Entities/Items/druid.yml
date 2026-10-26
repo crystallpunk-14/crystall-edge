@@ -1,0 +1,77 @@
+- type: entity
+  parent: CEWeaponDaggerSickle
+  id: DndSickle
+  name: sickle
+  description: A curved blade for harvesting.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 4
+    damageType: Slashing
+    ability: Strength
+    kind: Sickle
+    training: Simple
+    mastery: Nick
+    light: true
+    rangeFeet: 5
+
+- type: entity
+  parent: CEWeaponStaffWooden
+  id: DndDruidicFocus
+  name: druidic focus
+  description: A wooden quarterstaff that focuses druid spells.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 6
+    damageType: Bludgeoning
+    ability: Strength
+    kind: Quarterstaff
+    training: Simple
+    mastery: Topple
+    rangeFeet: 5
+  - type: DndSpellFocus
+    kind: Druidic
+
+- type: entity
+  parent: BaseItem
+  id: DndHerbalismKit
+  name: herbalism kit
+  description: Pouches of dried herbs and a small blade for gathering them.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/Equipment/plant_bag.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Clothing
+    slots:
+    - belt
+    sprite: Objects/Specific/Hydroponics/Equipment/plant_bag.rsi
+
+- type: entity
+  parent: BaseItem
+  id: DndDruidicSign
+  name: scratches
+  description: Marks in bark, dirt, or stone.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/Equipment/plant_bag.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: DndDruidicSign
+
+- type: entity
+  parent: BaseItem
+  id: DndGoodberry
+  name: goodberries
+  description: A handful of berries. Each one restores a little life.
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/berryjuice.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: DndGoodberry
+    uses: 10

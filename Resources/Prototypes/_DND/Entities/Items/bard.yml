@@ -1,0 +1,144 @@
+- type: entity
+  parent: ClothingOuterBase
+  id: DndLeatherArmor
+  name: leather armor
+  description: Light armor. Its Armor Class is 11 plus your Dexterity modifier.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Coats/detective.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Coats/detective.rsi
+  - type: DndArmor
+    category: Light
+    armorClass: 11
+
+- type: entity
+  parent: CEWeaponDaggerIron
+  id: DndDagger
+  name: dagger
+  description: A light, finesse blade. Its mastery is Nick.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 4
+    damageType: Piercing
+    ability: Finesse
+    rangeFeet: 5
+    kind: Dagger
+    training: Simple
+    mastery: Nick
+    light: true
+
+- type: entity
+  parent: ClothingBackpack
+  id: DndEntertainersPack
+  name: entertainer's pack
+  description: A backpack packed for the stage and the road.
+
+- type: entity
+  parent: BagpipeInstrument
+  id: DndBagpipes
+  name: bagpipes
+  description: A loud instrument of pipes and a bag.
+  components:
+  - type: DndInstrument
+    kind: Bagpipes
+
+- type: entity
+  parent: BasePercussionInstrument
+  id: DndDrum
+  name: drum
+  description: A small hand drum.
+  components:
+  - type: Instrument
+    program: 117
+  - type: Sprite
+    sprite: Objects/Fun/Instruments/glockenspiel.rsi
+  - type: DndInstrument
+    kind: Drum
+
+- type: entity
+  parent: KalimbaInstrument
+  id: DndDulcimer
+  name: dulcimer
+  description: A small stringed instrument played in the lap.
+  components:
+  - type: DndInstrument
+    kind: Dulcimer
+
+- type: entity
+  parent: CEInstrumentFlute
+  id: DndFlute
+  name: flute
+  description: A wooden flute.
+  components:
+  - type: DndInstrument
+    kind: Flute
+
+- type: entity
+  parent: FrenchHornInstrument
+  id: DndHorn
+  name: horn
+  description: A curled brass horn.
+  components:
+  - type: DndInstrument
+    kind: Horn
+
+- type: entity
+  parent: CEInstrumentLute
+  id: DndLute
+  name: lute
+  description: A bard's lute.
+  components:
+  - type: DndInstrument
+    kind: Lute
+
+- type: entity
+  parent: CEInstrumentLyra
+  id: DndLyre
+  name: lyre
+  description: A small harp of the road.
+  components:
+  - type: DndInstrument
+    kind: Lyre
+
+- type: entity
+  parent: PanFluteInstrument
+  id: DndPanFlute
+  name: pan flute
+  description: A row of bound pipes.
+  components:
+  - type: DndInstrument
+    kind: PanFlute
+
+- type: entity
+  parent: RecorderInstrument
+  id: DndShawm
+  name: shawm
+  description: A loud double-reed pipe.
+  components:
+  - type: DndInstrument
+    kind: Shawm
+
+- type: entity
+  parent: ViolinInstrument
+  id: DndViol
+  name: viol
+  description: A bowed string instrument.
+  components:
+  - type: DndInstrument
+    kind: Viol
+
+- type: entity
+  id: DndDancingLight
+  name: dancing light
+  description: A hovering mote of warm light.
+  components:
+  - type: PointLight
+    radius: 4
+    energy: 2
+    color: "#FFD8A8"
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Instruments/lute.rsi
+    state: icon
+  - type: DndDancingLight

@@ -3,6 +3,12 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Speech;
+using Content.Shared._DND.Abilities;
+using Content.Shared._DND.Backgrounds;
+using Content.Shared._DND.Classes;
+using Content.Shared._DND.Equipment;
+using Content.Shared._DND.Skills;
+using Content.Shared._DND.Spells;
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.EntityEffects.Effects;
@@ -120,6 +126,87 @@ namespace Content.Shared.Preferences
         public float BarkPitch { get; set; } = 1.0f;
         // CrystallEdge end
 
+        // Dnd: ability scores chosen in character creation. Missing entries use the prototype default.
+        [DataField]
+        private Dictionary<ProtoId<DndAbilityPrototype>, int> _abilityScores = new();
+
+        /// <summary>
+        /// <see cref="_abilityScores"/>
+        /// </summary>
+        public IReadOnlyDictionary<ProtoId<DndAbilityPrototype>, int> AbilityScores => _abilityScores;
+
+        /// <summary>
+        /// Chosen class. This replaces job selection.
+        /// </summary>
+        [DataField]
+        public ProtoId<DndClassPrototype> DndClass { get; set; } = DndClassPrototype.Default;
+
+        /// <summary>
+        /// Point Buy or Standard Array. Scores are not rolled.
+        /// </summary>
+        [DataField]
+        public DndAbilityGeneration AbilityGeneration { get; set; } = DndAbilityGeneration.PointBuy;
+
+        /// <summary>
+        /// Background whose three abilities can be increased after the base scores are assigned.
+        /// </summary>
+        [DataField]
+        public ProtoId<DndBackgroundPrototype> DndBackground { get; set; } = DndBackgroundPrototype.Default;
+
+        [DataField]
+        public DndBackgroundIncrease BackgroundIncrease { get; set; } = DndBackgroundIncrease.AllThree;
+
+        [DataField]
+        public ProtoId<DndAbilityPrototype> BackgroundPlusTwo { get; set; } = DndAbilityPrototype.IntelligenceId;
+
+        [DataField]
+        public ProtoId<DndAbilityPrototype> BackgroundPlusOne { get; set; } = DndAbilityPrototype.WisdomId;
+
+        /// <summary>
+        /// Skills chosen from the class list.
+        /// </summary>
+        [DataField]
+        public List<ProtoId<DndSkillPrototype>> SkillProficiencies { get; set; } = new();
+
+        /// <summary>
+        /// Which starting equipment package was chosen. Empty until the class offers one.
+        /// </summary>
+        [DataField]
+        public string EquipmentChoice { get; set; } = "";
+
+        /// <summary>
+        /// Weapon kinds whose mastery properties this character can use.
+        /// </summary>
+        [DataField]
+        public List<ProtoId<DndWeaponKindPrototype>> WeaponMasteries { get; set; } = new();
+
+        /// <summary>
+        /// Musical instruments this character is proficient with.
+        /// </summary>
+        [DataField]
+        public List<ProtoId<DndInstrumentPrototype>> Instruments { get; set; } = new();
+
+        /// <summary>
+        /// Cantrips known.
+        /// </summary>
+        [DataField]
+        public List<ProtoId<DndSpellPrototype>> Cantrips { get; set; } = new();
+
+        /// <summary>
+        /// Leveled spells prepared.
+        /// </summary>
+        [DataField]
+        public List<ProtoId<DndSpellPrototype>> PreparedSpells { get; set; } = new();
+
+        /// <summary>
+        /// Protector or Thaumaturge. Empty when the class has no Divine Order.
+        /// </summary>
+        [DataField]
+        public string DivineOrder { get; set; } = "";
+
+        public string PrimalOrder { get; set; } = "";
+        // Dnd end
+
         /// <summary>
         /// When spawning into a round what's the preferred spot to spawn.
         /// </summary>
@@ -225,6 +312,24 @@ namespace Content.Shared.Preferences
             // CrystallEdge: secret role priorities
             _secretRolePriorities = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(other.SecretRolePriorities);
             // CrystallEdge end
+
+            // Dnd: ability scores and class
+            _abilityScores = new Dictionary<ProtoId<DndAbilityPrototype>, int>(other._abilityScores);
+            DndClass = other.DndClass;
+            AbilityGeneration = other.AbilityGeneration;
+            DndBackground = other.DndBackground;
+            BackgroundIncrease = other.BackgroundIncrease;
+            BackgroundPlusTwo = other.BackgroundPlusTwo;
+            BackgroundPlusOne = other.BackgroundPlusOne;
+            SkillProficiencies = new List<ProtoId<DndSkillPrototype>>(other.SkillProficiencies);
+            EquipmentChoice = other.EquipmentChoice;
+            WeaponMasteries = new List<ProtoId<DndWeaponKindPrototype>>(other.WeaponMasteries);
+            Instruments = new List<ProtoId<DndInstrumentPrototype>>(other.Instruments);
+            Cantrips = new List<ProtoId<DndSpellPrototype>>(other.Cantrips);
+            PreparedSpells = new List<ProtoId<DndSpellPrototype>>(other.PreparedSpells);
+            DivineOrder = other.DivineOrder;
+            PrimalOrder = other.PrimalOrder;
+            // Dnd end
         }
 
         /// <summary>
@@ -402,6 +507,24 @@ namespace Content.Shared.Preferences
 
             profile.Appearance = HumanoidCharacterAppearance.Random(speciesProto, profile.Sex, randomizeCfg, baseProfile.Appearance);
 
+            // Dnd: randomizing appearance keeps the ability scores and class already chosen.
+            profile._abilityScores = new Dictionary<ProtoId<DndAbilityPrototype>, int>(baseProfile._abilityScores);
+            profile.DndClass = baseProfile.DndClass;
+            profile.AbilityGeneration = baseProfile.AbilityGeneration;
+            profile.DndBackground = baseProfile.DndBackground;
+            profile.BackgroundIncrease = baseProfile.BackgroundIncrease;
+            profile.BackgroundPlusTwo = baseProfile.BackgroundPlusTwo;
+            profile.BackgroundPlusOne = baseProfile.BackgroundPlusOne;
+            profile.SkillProficiencies = new List<ProtoId<DndSkillPrototype>>(baseProfile.SkillProficiencies);
+            profile.EquipmentChoice = baseProfile.EquipmentChoice;
+            profile.WeaponMasteries = new List<ProtoId<DndWeaponKindPrototype>>(baseProfile.WeaponMasteries);
+            profile.Instruments = new List<ProtoId<DndInstrumentPrototype>>(baseProfile.Instruments);
+            profile.Cantrips = new List<ProtoId<DndSpellPrototype>>(baseProfile.Cantrips);
+            profile.PreparedSpells = new List<ProtoId<DndSpellPrototype>>(baseProfile.PreparedSpells);
+            profile.DivineOrder = baseProfile.DivineOrder;
+            profile.PrimalOrder = baseProfile.PrimalOrder;
+            // Dnd end
+
             return profile;
         }
 
@@ -472,6 +595,79 @@ namespace Content.Shared.Preferences
             return new(this) { BarkPitch = barkPitch };
         }
         //CrystallEdge end
+
+        // Dnd: ability scores
+        public int GetAbilityScore(ProtoId<DndAbilityPrototype> ability, int fallback)
+        {
+            return _abilityScores.TryGetValue(ability, out var score) ? score : fallback;
+        }
+
+        public HumanoidCharacterProfile WithAbilityScore(ProtoId<DndAbilityPrototype> ability, int score)
+        {
+            var copy = new Dictionary<ProtoId<DndAbilityPrototype>, int>(_abilityScores);
+            copy[ability] = score;
+            return new(this) { _abilityScores = copy };
+        }
+
+        public HumanoidCharacterProfile WithAbilityScores(IReadOnlyDictionary<ProtoId<DndAbilityPrototype>, int> scores)
+        {
+            return new(this)
+            {
+                _abilityScores = new Dictionary<ProtoId<DndAbilityPrototype>, int>(scores),
+            };
+        }
+
+        public HumanoidCharacterProfile WithAbilityGeneration(DndAbilityGeneration generation)
+        {
+            return new(this) { AbilityGeneration = generation };
+        }
+
+        public HumanoidCharacterProfile WithDndBackground(ProtoId<DndBackgroundPrototype> background)
+        {
+            return new(this) { DndBackground = background };
+        }
+
+        public HumanoidCharacterProfile WithBackgroundIncrease(
+            DndBackgroundIncrease increase,
+            ProtoId<DndAbilityPrototype> plusTwo,
+            ProtoId<DndAbilityPrototype> plusOne)
+        {
+            return new(this)
+            {
+                BackgroundIncrease = increase,
+                BackgroundPlusTwo = plusTwo,
+                BackgroundPlusOne = plusOne,
+            };
+        }
+
+        public HumanoidCharacterProfile WithDndClass(ProtoId<DndClassPrototype> dndClass)
+        {
+            return new(this) { DndClass = dndClass };
+        }
+
+        public HumanoidCharacterProfile WithClassChoices(
+            IReadOnlyList<ProtoId<DndSkillPrototype>> skills,
+            string equipment,
+            IReadOnlyList<ProtoId<DndWeaponKindPrototype>> masteries,
+            IReadOnlyList<ProtoId<DndInstrumentPrototype>>? instruments = null,
+            IReadOnlyList<ProtoId<DndSpellPrototype>>? cantrips = null,
+            IReadOnlyList<ProtoId<DndSpellPrototype>>? prepared = null,
+            string? divineOrder = null,
+            string? primalOrder = null)
+        {
+            return new(this)
+            {
+                SkillProficiencies = new List<ProtoId<DndSkillPrototype>>(skills),
+                EquipmentChoice = equipment,
+                WeaponMasteries = new List<ProtoId<DndWeaponKindPrototype>>(masteries),
+                Instruments = new List<ProtoId<DndInstrumentPrototype>>(instruments ?? Instruments),
+                Cantrips = new List<ProtoId<DndSpellPrototype>>(cantrips ?? Cantrips),
+                PreparedSpells = new List<ProtoId<DndSpellPrototype>>(prepared ?? PreparedSpells),
+                DivineOrder = divineOrder ?? DivineOrder,
+                PrimalOrder = primalOrder ?? PrimalOrder,
+            };
+        }
+        // Dnd end
 
         public HumanoidCharacterProfile WithSpawnPriorityPreference(SpawnPriorityPreference spawnPriority)
         {
@@ -709,6 +905,41 @@ namespace Content.Shared.Preferences
                 ("age", Age)
             );
 
+        private static bool SameChoices<T>(IReadOnlyList<ProtoId<T>> left, IReadOnlyList<ProtoId<T>> right)
+            where T : class, IPrototype
+        {
+            if (left.Count != right.Count)
+                return false;
+
+            foreach (var id in left)
+            {
+                var found = false;
+                foreach (var other in right)
+                {
+                    if (other != id)
+                        continue;
+
+                    found = true;
+                    break;
+                }
+
+                if (!found)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private static int ChoiceHash<T>(IReadOnlyList<ProtoId<T>> ids)
+            where T : class, IPrototype
+        {
+            var hash = 0;
+            foreach (var id in ids)
+                hash ^= id.GetHashCode();
+
+            return hash;
+        }
+
         public bool MemberwiseEquals(HumanoidCharacterProfile other)
         {
             if (Name != other.Name) return false;
@@ -731,6 +962,46 @@ namespace Content.Shared.Preferences
             if (BarkVoice != other.BarkVoice) return false;
             if (!BarkPitch.Equals(other.BarkPitch)) return false;
             // CrystallEdge end
+            // Dnd: ability scores
+            if (_abilityScores.Count != other._abilityScores.Count)
+                return false;
+
+            foreach (var (ability, score) in _abilityScores)
+            {
+                if (!other._abilityScores.TryGetValue(ability, out var otherScore) || otherScore != score)
+                    return false;
+            }
+
+            if (DndClass != other.DndClass)
+                return false;
+
+            if (AbilityGeneration != other.AbilityGeneration)
+                return false;
+            if (DndBackground != other.DndBackground)
+                return false;
+            if (BackgroundIncrease != other.BackgroundIncrease)
+                return false;
+            if (BackgroundPlusTwo != other.BackgroundPlusTwo)
+                return false;
+            if (BackgroundPlusOne != other.BackgroundPlusOne)
+                return false;
+            if (!SameChoices(SkillProficiencies, other.SkillProficiencies))
+                return false;
+            if (EquipmentChoice != other.EquipmentChoice)
+                return false;
+            if (!SameChoices(WeaponMasteries, other.WeaponMasteries))
+                return false;
+            if (!SameChoices(Instruments, other.Instruments))
+                return false;
+            if (!SameChoices(Cantrips, other.Cantrips))
+                return false;
+            if (!SameChoices(PreparedSpells, other.PreparedSpells))
+                return false;
+            if (DivineOrder != other.DivineOrder)
+                return false;
+            if (PrimalOrder != other.PrimalOrder)
+                return false;
+            // Dnd end
             return Appearance.Equals(other.Appearance);
         }
 
@@ -904,12 +1175,63 @@ namespace Content.Shared.Preferences
             BarkPitch = Math.Clamp(BarkPitch, 0.75f, 1.5f);
             // CrystallEdge end
 
+            // Dnd: scores come from Point Buy or the Standard Array. Dice results are not kept.
+            if (!Enum.IsDefined(AbilityGeneration))
+                AbilityGeneration = DndAbilityGeneration.PointBuy;
+
+            var abilityIds = DndAbilityScores.OrderedIds(prototypeManager.EnumeratePrototypes<DndAbilityPrototype>());
+            var storedScores = new Dictionary<string, int>(abilityIds.Count);
+            foreach (var abilityId in abilityIds)
+            {
+                if (_abilityScores.TryGetValue(abilityId, out var score))
+                    storedScores[abilityId] = score;
+            }
+
+            var normalized = AbilityGeneration == DndAbilityGeneration.StandardArray
+                ? DndAbilityScores.NormalizeStandardArray(abilityIds, storedScores)
+                : DndAbilityScores.NormalizePointBuy(abilityIds, storedScores);
+
+            _abilityScores.Clear();
+            foreach (var (abilityId, score) in normalized)
+                _abilityScores[abilityId] = score;
+
+            if (!prototypeManager.TryIndex(DndClass, out DndClassPrototype? dndClass))
+            {
+                DndClass = DndClassPrototype.Default;
+                prototypeManager.TryIndex(DndClass, out dndClass);
+            }
+
+            DndClassChoices.Normalize(this, dndClass, prototypeManager);
+
+            if (!prototypeManager.TryIndex(DndBackground, out DndBackgroundPrototype? background) || background.Abilities.Count < 2)
+            {
+                DndBackground = DndBackgroundPrototype.Default;
+                prototypeManager.TryIndex(DndBackground, out background);
+            }
+
+            if (!Enum.IsDefined(BackgroundIncrease))
+                BackgroundIncrease = DndBackgroundIncrease.AllThree;
+
+            if (background != null
+                && background.Abilities.Count >= 2
+                && !DndBackgroundScores.IsValidSplit(background.Abilities, BackgroundPlusTwo, BackgroundPlusOne))
+            {
+                BackgroundPlusTwo = background.Abilities[0];
+                BackgroundPlusOne = background.Abilities[1];
+            }
+            // Dnd end
+
             _jobPriorities.Clear();
 
             foreach (var (job, priority) in priorities)
             {
                 _jobPriorities.Add(job, priority);
             }
+
+            // Dnd: class selection replaces jobs. The body still needs the overflow slot.
+            _jobPriorities.Clear();
+            _jobPriorities[SharedGameTicker.FallbackOverflowJob] = JobPriority.High;
+            // Dnd end
 
             // CrystallEdge: secret role priorities
             _secretRolePriorities.Clear();
@@ -921,6 +1243,10 @@ namespace Content.Shared.Preferences
             // CrystallEdge end
 
             PreferenceUnavailable = prefsUnavailableMode;
+
+            // Dnd: a chosen class enters the round instead of waiting on a job slot.
+            PreferenceUnavailable = PreferenceUnavailableMode.SpawnAsOverflow;
+            // Dnd end
 
             _antagPreferences.Clear();
             _antagPreferences.UnionWith(antags);
@@ -1041,6 +1367,35 @@ namespace Content.Shared.Preferences
             hashCode.Add(BarkVoice);
             hashCode.Add(BarkPitch);
             // CrystallEdge end
+            // Dnd: order-independent ability score hash
+            var abilityHash = 0;
+            foreach (var (ability, score) in _abilityScores)
+                abilityHash ^= HashCode.Combine(ability, score);
+
+            hashCode.Add(abilityHash);
+            hashCode.Add(DndClass);
+            hashCode.Add((int)AbilityGeneration);
+            hashCode.Add(DndBackground);
+            hashCode.Add((int)BackgroundIncrease);
+            hashCode.Add(BackgroundPlusTwo);
+            hashCode.Add(BackgroundPlusOne);
+            var skillHash = 0;
+            foreach (var skill in SkillProficiencies)
+                skillHash ^= skill.GetHashCode();
+
+            hashCode.Add(skillHash);
+            hashCode.Add(EquipmentChoice);
+            var masteryHash = 0;
+            foreach (var mastery in WeaponMasteries)
+                masteryHash ^= mastery.GetHashCode();
+
+            hashCode.Add(masteryHash);
+            hashCode.Add(ChoiceHash(Instruments));
+            hashCode.Add(ChoiceHash(Cantrips));
+            hashCode.Add(ChoiceHash(PreparedSpells));
+            hashCode.Add(DivineOrder);
+            hashCode.Add(PrimalOrder);
+            // Dnd end
             return hashCode.ToHashCode();
         }
 

@@ -7,6 +7,9 @@ public sealed partial class CEHumanoidProfileEditor
 {
     private bool _allowFlavorText;
 
+    // Dnd: flavor-text menu is disabled. The editor below stays so it can be turned back on.
+    private const bool FlavorTextMenuEnabled = false;
+
     private FlavorText.FlavorText? _flavorText;
     private TextEdit? _flavorTextEdit;
 
@@ -15,7 +18,7 @@ public sealed partial class CEHumanoidProfileEditor
     /// </summary>
     public void RefreshFlavorText()
     {
-        if (_allowFlavorText)
+        if (FlavorTextMenuEnabled && _allowFlavorText)
         {
             if (_flavorText != null)
                 return;

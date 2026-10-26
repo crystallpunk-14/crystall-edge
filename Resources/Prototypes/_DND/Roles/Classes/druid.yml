@@ -1,0 +1,76 @@
+- type: dndClass
+  id: Druid
+  name: dnd-class-druid-name
+  description: dnd-class-druid-desc
+  order: 3
+  hitDie: 8
+  primaryAbility: Wisdom
+  savingThrows:
+  - Intelligence
+  - Wisdom
+  skillChoiceCount: 2
+  skillOptions:
+  - AnimalHandling
+  - Arcana
+  - Insight
+  - Medicine
+  - Nature
+  - Perception
+  - Religion
+  - Survival
+  weaponTraining:
+  - Simple
+  armorTraining:
+  - Light
+  - Shield
+  spellList: Druid
+  spellFocus: Druidic
+  reprepareOnLongRest: true
+  cantripChoiceCount: 2
+  preparedSpellCount: 4
+  alwaysPrepared:
+  - SpeakWithAnimals
+  features:
+  - DruidSpellcasting
+  - Druidic
+  - PrimalOrder
+  equipmentOptions:
+  - id: Gear
+    name: dnd-equipment-druid-gear
+    items:
+    - prototype: DndLeatherArmor
+    - prototype: DndShield
+    - prototype: DndSickle
+    - prototype: DndDruidicFocus
+    - prototype: DndExplorersPack
+    - prototype: DndHerbalismKit
+    - prototype: CECoinGold5
+    - prototype: CECoinGold1
+      amount: 4
+  - id: Gold
+    name: dnd-equipment-druid-gold
+    items:
+    - prototype: CECoinGold10
+      amount: 5
+
+- type: dndFeature
+  id: DruidSpellcasting
+  name: dnd-feature-druid-spellcasting-name
+  description: dnd-feature-druid-spellcasting-desc
+  level: 1
+  kind: Spellcasting
+  slotsByLevel: [2]
+
+- type: dndFeature
+  id: Druidic
+  name: dnd-feature-druidic-name
+  description: dnd-feature-druidic-desc
+  level: 1
+  kind: Druidic
+
+- type: dndFeature
+  id: PrimalOrder
+  name: dnd-feature-primal-order-name
+  description: dnd-feature-primal-order-desc
+  level: 1
+  kind: PrimalOrder

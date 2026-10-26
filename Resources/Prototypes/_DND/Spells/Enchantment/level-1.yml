@@ -1,0 +1,118 @@
+- type: dndSpell
+  id: Bane
+  name: dnd-spell-bane-name
+  description: dnd-spell-bane-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Bard
+  - Cleric
+  order: 13
+  rangeFeet: 30
+  save: Charisma
+  effect: Bane
+
+- type: dndSpell
+  id: Bless
+  name: dnd-spell-bless-name
+  description: dnd-spell-bless-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Cleric
+  recommendedFor:
+  - Cleric
+  order: 0
+  rangeFeet: 30
+  canTargetSelf: true
+  requiresFocus: true
+  effect: Bless
+
+- type: dndSpell
+  id: Command
+  name: dnd-spell-command-name
+  description: dnd-spell-command-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Cleric
+  order: 10
+  rangeFeet: 60
+  save: Wisdom
+  effect: Command
+
+- type: dndSpell
+  id: CharmPerson
+  name: dnd-spell-charm-person-name
+  description: dnd-spell-charm-person-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Bard
+  - Druid
+  recommendedFor:
+  - Bard
+  order: 0
+  rangeFeet: 30
+  save: Wisdom
+  effect: Charm
+
+- type: dndSpell
+  id: DissonantWhispers
+  name: dnd-spell-dissonant-whispers-name
+  description: dnd-spell-dissonant-whispers-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Bard
+  recommendedFor:
+  - Bard
+  order: 2
+  rangeFeet: 60
+  save: Wisdom
+  halfOnSave: true
+  damageDice: 3
+  damageSides: 6
+  damageType: Psychic
+  effect: Whisper
+
+- type: dndSpell
+  id: Heroism
+  name: dnd-spell-heroism-name
+  description: dnd-spell-heroism-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Bard
+  order: 14
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Heroism
+
+- type: dndSpell
+  id: Sleep
+  name: dnd-spell-sleep-name
+  description: dnd-spell-sleep-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Bard
+  order: 15
+  rangeFeet: 60
+  effect: Sleep
+
+- type: dndSpell
+  id: AnimalFriendship
+  name: dnd-spell-animal-friendship-name
+  description: dnd-spell-animal-friendship-desc
+  school: Enchantment
+  level: 1
+  lists:
+  - Druid
+  recommendedFor:
+  - Druid
+  order: 0
+  rangeFeet: 30
+  save: Wisdom
+  requiresFocus: true
+  effect: AnimalFriendship

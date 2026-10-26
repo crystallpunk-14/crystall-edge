@@ -1,0 +1,315 @@
+- type: entity
+  parent: BaseAction
+  id: DndActionBardBase
+  abstract: true
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Instruments/lute.rsi
+    layers:
+    - state: icon
+  - type: TargetAction
+    checkCanAccess: true
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionBardicInspiration
+  name: Bardic Inspiration
+  description: Bonus action. Give a creature within 60 feet your inspiration die. The number is how many uses you have left.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: LimitedCharges
+    maxCharges: 1
+    lastCharges: 1
+    onFailPopup: dnd-inspiration-spent
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndInspireEvent
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionDancingLights
+  name: Dancing Lights
+  description: Cantrip. A mote of light appears beside the target for ten minutes.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 24
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: DancingLights
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionViciousMockery
+  name: Vicious Mockery
+  description: Cantrip. Psychic damage, and their next attack is hindered.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: ViciousMockery
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionStarryWisp
+  name: Starry Wisp
+  description: Cantrip. A spell attack for radiant damage.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: StarryWisp
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionThunderclap
+  name: Thunderclap
+  description: Cantrip. Thunder damages creatures within 5 feet. Constitution save.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Thunderclap
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionLight
+  name: Light
+  description: Cantrip. A light appears beside the target for ten minutes.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Light
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionCharmPerson
+  name: Charm Person
+  description: A spell slot. Wisdom save or the target joins your side for one hour.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: CharmPerson
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionColorSpray
+  name: Color Spray
+  description: A spell slot. A cone of color blinds creatures for 6 seconds.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: ColorSpray
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionDissonantWhispers
+  name: Dissonant Whispers
+  description: A spell slot. Psychic damage. A failed Wisdom save sends them away from you.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: DissonantWhispers
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionHealingWord
+  name: Healing Word
+  description: Bonus action and a spell slot. Heal 1d4 plus your Charisma modifier.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: HealingWord
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionCureWounds
+  name: Cure Wounds
+  description: A spell slot. Touch to heal 1d8 plus your Charisma modifier.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: CureWounds
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionThunderwave
+  name: Thunderwave
+  description: A spell slot. Thunder in front of you. A failed Constitution save pushes them back.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Thunderwave
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionFaerieFire
+  name: Faerie Fire
+  description: A spell slot. Creatures that fail a Dexterity save are easier to hit for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: FaerieFire
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionBane
+  name: Bane
+  description: A spell slot. A failed Charisma save hinders their attacks and saves for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: Bane
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionHeroism
+  name: Heroism
+  description: A spell slot. The target gains temporary hit points equal to your Charisma modifier for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Heroism
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionSleep
+  name: Sleep
+  description: A spell slot. The weakest creatures near the target fall unconscious for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Sleep
+
+- type: entity
+  parent: DndActionBardBase
+  id: DndActionLongstrider
+  name: Longstrider
+  description: A spell slot. The target's pace rises by 10 feet for one hour.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Longstrider

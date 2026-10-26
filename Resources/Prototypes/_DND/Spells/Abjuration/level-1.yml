@@ -1,0 +1,85 @@
+- type: dndSpell
+  id: CureWounds
+  name: dnd-spell-cure-wounds-name
+  description: dnd-spell-cure-wounds-desc
+  school: Abjuration
+  level: 1
+  lists:
+  - Bard
+  - Cleric
+  - Druid
+  recommendedFor:
+  - Cleric
+  - Druid
+  order: 10
+  rangeFeet: 5
+  canTargetSelf: true
+  healDice: 1
+  healSides: 8
+  addCastingModifier: true
+  effect: Heal
+
+- type: dndSpell
+  id: HealingWord
+  name: dnd-spell-healing-word-name
+  description: dnd-spell-healing-word-desc
+  school: Abjuration
+  level: 1
+  lists:
+  - Bard
+  - Cleric
+  - Druid
+  recommendedFor:
+  - Bard
+  order: 3
+  casting: BonusAction
+  rangeFeet: 60
+  canTargetSelf: true
+  healDice: 1
+  healSides: 4
+  addCastingModifier: true
+  effect: Heal
+
+- type: dndSpell
+  id: ProtectionFromEvil
+  name: dnd-spell-protection-name
+  description: dnd-spell-protection-desc
+  school: Abjuration
+  level: 1
+  lists:
+  - Cleric
+  - Druid
+  order: 12
+  rangeFeet: 5
+  canTargetSelf: true
+  requiresFocus: true
+  effect: Protection
+
+- type: dndSpell
+  id: Sanctuary
+  name: dnd-spell-sanctuary-name
+  description: dnd-spell-sanctuary-desc
+  school: Abjuration
+  level: 1
+  lists:
+  - Cleric
+  order: 13
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: Sanctuary
+
+- type: dndSpell
+  id: ShieldOfFaith
+  name: dnd-spell-shield-of-faith-name
+  description: dnd-spell-shield-of-faith-desc
+  school: Abjuration
+  level: 1
+  lists:
+  - Cleric
+  recommendedFor:
+  - Cleric
+  order: 3
+  casting: BonusAction
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: ShieldOfFaith

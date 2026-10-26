@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Monk
+  name: dnd-class-monk-name
+  description: dnd-class-monk-desc
+  order: 5
+  hitDie: 8

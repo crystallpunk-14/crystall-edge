@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Wizard
+  name: dnd-class-wizard-name
+  description: dnd-class-wizard-desc
+  order: 11
+  hitDie: 6

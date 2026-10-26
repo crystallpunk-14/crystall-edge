@@ -1,0 +1,40 @@
+# SRD backgrounds. Each lists the three abilities that can be increased at creation.
+- type: dndBackground
+  id: Acolyte
+  name: dnd-background-acolyte-name
+  description: dnd-background-acolyte-desc
+  order: 0
+  abilities:
+  - Intelligence
+  - Wisdom
+  - Charisma
+
+- type: dndBackground
+  id: Criminal
+  name: dnd-background-criminal-name
+  description: dnd-background-criminal-desc
+  order: 1
+  abilities:
+  - Dexterity
+  - Constitution
+  - Intelligence
+
+- type: dndBackground
+  id: Sage
+  name: dnd-background-sage-name
+  description: dnd-background-sage-desc
+  order: 2
+  abilities:
+  - Constitution
+  - Intelligence
+  - Wisdom
+
+- type: dndBackground
+  id: Soldier
+  name: dnd-background-soldier-name
+  description: dnd-background-soldier-desc
+  order: 3
+  abilities:
+  - Strength
+  - Dexterity
+  - Constitution

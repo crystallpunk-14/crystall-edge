@@ -1,0 +1,53 @@
+- type: dndSpell
+  id: FaerieFire
+  name: dnd-spell-faerie-fire-name
+  description: dnd-spell-faerie-fire-desc
+  school: Evocation
+  level: 1
+  lists:
+  - Bard
+  - Druid
+  recommendedFor:
+  - Druid
+  order: 12
+  rangeFeet: 60
+  save: Dexterity
+  effect: FaerieFire
+
+- type: dndSpell
+  id: Thunderwave
+  name: dnd-spell-thunderwave-name
+  description: dnd-spell-thunderwave-desc
+  school: Evocation
+  level: 1
+  lists:
+  - Bard
+  - Druid
+  recommendedFor:
+  - Druid
+  order: 11
+  rangeFeet: 15
+  canTargetSelf: true
+  save: Constitution
+  halfOnSave: true
+  damageDice: 2
+  damageSides: 8
+  damageType: Thunder
+  effect: Thunderwave
+
+- type: dndSpell
+  id: GuidingBolt
+  name: dnd-spell-guiding-bolt-name
+  description: dnd-spell-guiding-bolt-desc
+  school: Evocation
+  level: 1
+  lists:
+  - Cleric
+  recommendedFor:
+  - Cleric
+  order: 1
+  rangeFeet: 120
+  damageDice: 4
+  damageSides: 6
+  damageType: Radiant
+  effect: GuidingBolt

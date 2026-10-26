@@ -1,0 +1,38 @@
+- type: entity
+  parent: CEWeaponWarAxeIron
+  id: DndGreataxe
+  name: greataxe
+  description: A heavy axe made for two hands. Its mastery is Cleave.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 12
+    damageType: Slashing
+    ability: Strength
+    rangeFeet: 5
+    kind: Greataxe
+    training: Martial
+    mastery: Cleave
+
+- type: entity
+  parent: CEWeaponDaggerHatchet
+  id: DndHandaxe
+  name: handaxe
+  description: A light axe that can be thrown. Its mastery is Vex.
+  components:
+  - type: DndWeapon
+    diceCount: 1
+    diceSides: 6
+    damageType: Slashing
+    ability: Strength
+    rangeFeet: 5
+    kind: Handaxe
+    training: Simple
+    mastery: Vex
+    light: true
+
+- type: entity
+  parent: ClothingBackpack
+  id: DndExplorersPack
+  name: explorer's pack
+  description: A backpack packed for the road.

@@ -6,6 +6,7 @@ using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
+using Content.Shared._DND.Classes;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -87,6 +88,16 @@ namespace Content.Server.GameTicking
             }
 
             var spawnableStations = GetSpawnableStations();
+
+            // Dnd: class selection replaces job priorities. The body still uses the overflow job.
+            var classSpawnPriorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>
+            {
+                [FallbackOverflowJob] = JobPriority.High,
+            };
+            foreach (var (userId, profile) in profiles.ToList())
+                profiles[userId] = profile.WithJobPriorities(classSpawnPriorities);
+            // Dnd end
+
             var assignedJobs = _stationJobs.AssignJobs(profiles, spawnableStations);
 
             _stationJobs.AssignOverflowJobs(ref assignedJobs, playerNetIds, profiles, spawnableStations);
@@ -95,6 +106,10 @@ namespace Content.Server.GameTicking
             var stationJobCounts = spawnableStations.ToDictionary(e => e, _ => 0);
             foreach (var (netUser, (job, station)) in assignedJobs)
             {
+                // Dnd: NPC does not take a station job.
+                if (IsDndGhostClass(netUser))
+                    continue;
+
                 if (job == null)
                 {
                     var playerSession = _playerManager.GetSessionById(netUser);
@@ -114,13 +129,29 @@ namespace Content.Server.GameTicking
             // Spawn everybody in!
             foreach (var (player, (job, station)) in assignedJobs)
             {
+                // Dnd: an NPC with no assigned job still enters as a ghost.
+                // SpawnPlayer turns an NPC who did get a job into a ghost.
                 if (job == null)
+                {
+                    if (IsDndGhostClass(player))
+                        JoinAsObserver(_playerManager.GetSessionById(player));
+
                     continue;
+                }
 
                 SpawnPlayer(_playerManager.GetSessionById(player), profiles[player], station, job, false);
             }
 
             RefreshLateJoinAllowed();
+
+            // Dnd: true when this player's class joins the round as a ghost.
+            bool IsDndGhostClass(NetUserId userId)
+            {
+                return profiles.TryGetValue(userId, out var profile)
+                       && ProtoMan.TryIndex(profile.DndClass, out DndClassPrototype? dndClass)
+                       && dndClass.SpawnAsGhost;
+            }
+            // Dnd end
 
             // Allow rules to add roles to players who have been spawned in. (For example, on-station traitors)
             RaiseLocalEvent(new RulePlayerJobsAssignedEvent(
@@ -163,6 +194,14 @@ namespace Content.Server.GameTicking
             // Can't spawn players with a dummy ticker!
             if (DummyTicker)
                 return;
+
+            // Dnd: NPC joins as a ghost and can take a ghost role.
+            if (ProtoMan.TryIndex(character.DndClass, out DndClassPrototype? dndClass) && dndClass.SpawnAsGhost)
+            {
+                JoinAsObserver(player);
+                return;
+            }
+            // Dnd end
 
             if (station == EntityUid.Invalid)
             {

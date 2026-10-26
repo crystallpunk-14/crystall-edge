@@ -1,0 +1,63 @@
+- type: dndSpell
+  id: Light
+  name: dnd-spell-light-name
+  description: dnd-spell-light-desc
+  school: Evocation
+  level: 0
+  lists:
+  - Bard
+  - Cleric
+  order: 12
+  rangeFeet: 5
+  effect: Lights
+
+- type: dndSpell
+  id: StarryWisp
+  name: dnd-spell-starry-wisp-name
+  description: dnd-spell-starry-wisp-desc
+  school: Evocation
+  level: 0
+  lists:
+  - Bard
+  - Druid
+  order: 10
+  rangeFeet: 60
+  damageDice: 1
+  damageSides: 8
+  damageType: Radiant
+  effect: Attack
+
+- type: dndSpell
+  id: Thunderclap
+  name: dnd-spell-thunderclap-name
+  description: dnd-spell-thunderclap-desc
+  school: Evocation
+  level: 0
+  lists:
+  - Bard
+  order: 11
+  rangeFeet: 5
+  canTargetSelf: true
+  save: Constitution
+  damageDice: 1
+  damageSides: 6
+  damageType: Thunder
+  effect: SaveDamage
+
+- type: dndSpell
+  id: SacredFlame
+  name: dnd-spell-sacred-flame-name
+  description: dnd-spell-sacred-flame-desc
+  school: Evocation
+  level: 0
+  lists:
+  - Cleric
+  recommendedFor:
+  - Cleric
+  order: 1
+  rangeFeet: 60
+  save: Dexterity
+  damageDice: 1
+  damageSides: 8
+  damageType: Radiant
+  effect: Smite

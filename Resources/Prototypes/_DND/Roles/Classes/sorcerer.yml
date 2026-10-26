@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Sorcerer
+  name: dnd-class-sorcerer-name
+  description: dnd-class-sorcerer-desc
+  order: 9
+  hitDie: 6

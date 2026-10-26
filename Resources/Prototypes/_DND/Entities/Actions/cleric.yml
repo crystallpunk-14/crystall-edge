@@ -1,0 +1,331 @@
+- type: entity
+  parent: BaseAction
+  id: DndActionClericBase
+  abstract: true
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: Objects/Specific/Chapel/bible.rsi
+    layers:
+    - state: icon
+  - type: TargetAction
+    checkCanAccess: true
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionGuidance
+  name: Guidance
+  description: Cantrip. The next attack or save within one minute adds 1d4.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Guidance
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionSacredFlame
+  name: Sacred Flame
+  description: Cantrip. 1d8 radiant damage. Dexterity save.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: SacredFlame
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionThaumaturgy
+  name: Thaumaturgy
+  description: Cantrip. A minor wonder and a mote of light.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Thaumaturgy
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionMending
+  name: Mending
+  description: Cantrip. Repair a broken object you touch.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: Mending
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionResistance
+  name: Resistance
+  description: Cantrip. The target resists weapon blows for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Resistance
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionSpareTheDying
+  name: Spare the Dying
+  description: Cantrip. A dying creature stabilizes.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: SpareTheDying
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionBless
+  name: Bless
+  description: A spell slot. Up to three allies add 1d4 to attacks and saves for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Bless
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionCommand
+  name: Command
+  description: A spell slot. A failed Wisdom save drops them to the ground.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: Command
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionGuidingBolt
+  name: Guiding Bolt
+  description: A spell slot. A spell attack for 4d6 radiant. The next attack against them has advantage.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 24
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: GuidingBolt
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionShieldOfFaith
+  name: Shield of Faith
+  description: Bonus action and a spell slot. +2 Armor Class for one minute.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: ShieldOfFaith
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionInflictWounds
+  name: Inflict Wounds
+  description: A spell slot. A touch spell attack for 3d10 necrotic damage.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: InflictWounds
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionSanctuary
+  name: Sanctuary
+  description: A spell slot. An attacker must pass a Wisdom save or lose the attack.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Sanctuary
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionProtectionFromEvil
+  name: Protection from Evil and Good
+  description: A spell slot. Attacks from another side have disadvantage for one minute.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: ProtectionFromEvil
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionCreateOrDestroyWater
+  name: Create or Destroy Water
+  description: A spell slot. A splash of water soaks the target.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: CreateOrDestroyWater
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionPurifyFoodAndDrink
+  name: Purify Food and Drink
+  description: A spell slot. Food and drink you touch are made safe.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 2
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: PurifyFoodAndDrink
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionDetectEvilAndGood
+  name: Detect Evil and Good
+  description: A spell slot. You learn the side of creatures within 30 feet.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: DetectEvilAndGood
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionDetectMagic
+  name: Detect Magic
+  description: A spell slot. You notice magical creatures within 30 feet.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: DetectMagic
+
+- type: entity
+  parent: DndActionClericBase
+  id: DndActionDetectPoisonAndDisease
+  name: Detect Poison and Disease
+  description: A spell slot. You learn whether the target is poisoned.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: DetectPoisonAndDisease

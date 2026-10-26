@@ -1,0 +1,67 @@
+- type: dndClass
+  id: Bard
+  name: dnd-class-bard-name
+  description: dnd-class-bard-desc
+  order: 1
+  hitDie: 8
+  primaryAbility: Charisma
+  savingThrows:
+  - Dexterity
+  - Charisma
+  skillChoiceCount: 3
+  weaponTraining:
+  - Simple
+  armorTraining:
+  - Light
+  instrumentChoiceCount: 3
+  instrumentOptions:
+  - Bagpipes
+  - Drum
+  - Dulcimer
+  - Flute
+  - Horn
+  - Lute
+  - Lyre
+  - PanFlute
+  - Shawm
+  - Viol
+  spellList: Bard
+  spellFocus: Instrument
+  cantripChoiceCount: 2
+  preparedSpellCount: 4
+  features:
+  - BardicInspiration
+  - Spellcasting
+  equipmentOptions:
+  - id: Gear
+    name: dnd-equipment-bard-gear
+    items:
+    - prototype: DndLeatherArmor
+    - prototype: DndDagger
+      amount: 2
+    - prototype: DndEntertainersPack
+    - prototype: CECoinGold10
+    - prototype: CECoinGold5
+    - prototype: CECoinGold1
+      amount: 4
+  - id: Gold
+    name: dnd-equipment-bard-gold
+    items:
+    - prototype: CECoinGold10
+      amount: 9
+
+- type: dndFeature
+  id: BardicInspiration
+  name: dnd-feature-bardic-inspiration-name
+  description: dnd-feature-bardic-inspiration-desc
+  level: 1
+  kind: BardicInspiration
+  dieByLevel: [6, 6, 6, 6, 8, 8, 8, 8, 8, 10, 10, 10, 10, 10, 12, 12, 12, 12, 12, 12]
+
+- type: dndFeature
+  id: Spellcasting
+  name: dnd-feature-spellcasting-name
+  description: dnd-feature-spellcasting-desc
+  level: 1
+  kind: Spellcasting
+  slotsByLevel: [2]

@@ -1,0 +1,72 @@
+- type: dndClass
+  id: Barbarian
+  name: dnd-class-barbarian-name
+  description: dnd-class-barbarian-desc
+  order: 0
+  hitDie: 12
+  primaryAbility: Strength
+  savingThrows:
+  - Strength
+  - Constitution
+  skillChoiceCount: 2
+  skillOptions:
+  - AnimalHandling
+  - Athletics
+  - Intimidation
+  - Nature
+  - Perception
+  - Survival
+  weaponTraining:
+  - Simple
+  - Martial
+  armorTraining:
+  - Light
+  - Medium
+  - Shield
+  defaultMasteries:
+  - Greataxe
+  - Handaxe
+  features:
+  - Rage
+  - UnarmoredDefense
+  - WeaponMastery
+  equipmentOptions:
+  - id: Gear
+    name: dnd-equipment-barbarian-gear
+    items:
+    - prototype: DndGreataxe
+    - prototype: DndHandaxe
+      amount: 4
+    - prototype: DndExplorersPack
+    - prototype: CECoinGold10
+    - prototype: CECoinGold5
+  - id: Gold
+    name: dnd-equipment-barbarian-gold
+    items:
+    - prototype: CECoinGold10
+      amount: 7
+    - prototype: CECoinGold5
+
+- type: dndFeature
+  id: Rage
+  name: dnd-feature-rage-name
+  description: dnd-feature-rage-desc
+  level: 1
+  kind: Rage
+  usesByLevel: [2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6]
+  damageByLevel: [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+
+- type: dndFeature
+  id: UnarmoredDefense
+  name: dnd-feature-unarmored-defense-name
+  description: dnd-feature-unarmored-defense-desc
+  level: 1
+  kind: UnarmoredDefense
+
+- type: dndFeature
+  id: WeaponMastery
+  name: dnd-feature-weapon-mastery-name
+  description: dnd-feature-weapon-mastery-desc
+  level: 1
+  kind: WeaponMastery
+  masteryByLevel: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]

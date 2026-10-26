@@ -1,0 +1,16 @@
+- type: dndSpell
+  id: ViciousMockery
+  name: dnd-spell-vicious-mockery-name
+  description: dnd-spell-vicious-mockery-desc
+  school: Enchantment
+  level: 0
+  lists:
+  - Bard
+  recommendedFor:
+  - Bard
+  order: 1
+  rangeFeet: 60
+  damageDice: 1
+  damageSides: 6
+  damageType: Psychic
+  effect: Mockery

@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Warlock
+  name: dnd-class-warlock-name
+  description: dnd-class-warlock-desc
+  order: 10
+  hitDie: 8

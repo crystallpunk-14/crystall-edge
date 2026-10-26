@@ -1,0 +1,40 @@
+- type: entity
+  parent: BaseAction
+  id: DndActionRage
+  name: Rage
+  description: Bonus action. The timer is how long until you can use it again. The number is how many rages you have left.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 3
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-rage-spent
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/WarAxe/iron.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:DndRageActionEvent
+  - type: DndRageAction
+
+- type: entity
+  parent: BaseAction
+  id: DndActionWeaponDrill
+  name: Weapon Drill
+  description: Action. After a long rest, change one weapon mastery. The timer is the wait, and the number is how many changes you have left.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 6
+  - type: LimitedCharges
+    maxCharges: 1
+    lastCharges: -1
+    onFailPopup: dnd-mastery-drill-none
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Dagger/hatchet.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:DndWeaponDrillActionEvent

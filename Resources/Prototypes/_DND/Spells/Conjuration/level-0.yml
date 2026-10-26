@@ -1,0 +1,16 @@
+- type: dndSpell
+  id: ProduceFlame
+  name: dnd-spell-produce-flame-name
+  description: dnd-spell-produce-flame-desc
+  school: Conjuration
+  level: 0
+  lists:
+  - Druid
+  recommendedFor:
+  - Druid
+  order: 1
+  rangeFeet: 60
+  damageDice: 1
+  damageSides: 8
+  damageType: Fire
+  effect: ProduceFlame

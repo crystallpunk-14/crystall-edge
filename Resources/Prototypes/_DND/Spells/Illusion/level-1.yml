@@ -1,0 +1,15 @@
+- type: dndSpell
+  id: ColorSpray
+  name: dnd-spell-color-spray-name
+  description: dnd-spell-color-spray-desc
+  school: Illusion
+  level: 1
+  lists:
+  - Bard
+  recommendedFor:
+  - Bard
+  order: 1
+  rangeFeet: 15
+  canTargetSelf: true
+  requiresFocus: true
+  effect: ConeBlind

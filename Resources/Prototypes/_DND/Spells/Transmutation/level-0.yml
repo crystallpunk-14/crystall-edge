@@ -1,0 +1,81 @@
+- type: dndSpell
+  id: Mending
+  name: dnd-spell-mending-name
+  description: dnd-spell-mending-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Cleric
+  - Druid
+  order: 15
+  rangeFeet: 5
+  effect: Mend
+
+- type: dndSpell
+  id: Thaumaturgy
+  name: dnd-spell-thaumaturgy-name
+  description: dnd-spell-thaumaturgy-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Cleric
+  recommendedFor:
+  - Cleric
+  order: 2
+  rangeFeet: 30
+  canTargetSelf: true
+  effect: Wonder
+
+- type: dndSpell
+  id: Druidcraft
+  name: dnd-spell-druidcraft-name
+  description: dnd-spell-druidcraft-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Druid
+  recommendedFor:
+  - Druid
+  order: 0
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Druidcraft
+
+- type: dndSpell
+  id: Elementalism
+  name: dnd-spell-elementalism-name
+  description: dnd-spell-elementalism-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Druid
+  order: 16
+  rangeFeet: 30
+  effect: Elementalism
+
+- type: dndSpell
+  id: Message
+  name: dnd-spell-message-name
+  description: dnd-spell-message-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Druid
+  order: 17
+  rangeFeet: 120
+  canTargetSelf: true
+  effect: Message
+
+- type: dndSpell
+  id: Shillelagh
+  name: dnd-spell-shillelagh-name
+  description: dnd-spell-shillelagh-desc
+  school: Transmutation
+  level: 0
+  lists:
+  - Druid
+  order: 18
+  casting: BonusAction
+  rangeFeet: 5
+  canTargetSelf: true
+  effect: Shillelagh

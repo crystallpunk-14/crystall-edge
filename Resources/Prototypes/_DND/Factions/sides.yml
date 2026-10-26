@@ -1,0 +1,15 @@
+- type: dndSide
+  id: Adventurers
+  name: dnd-side-adventurers
+
+- type: dndSide
+  id: Goblins
+  name: dnd-side-goblins
+
+- type: dndSide
+  id: Wolves
+  name: dnd-side-wolves
+
+- type: dndSide
+  id: Neutral
+  name: dnd-side-neutral

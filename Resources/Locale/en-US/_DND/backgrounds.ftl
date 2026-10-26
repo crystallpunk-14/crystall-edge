@@ -1,0 +1,16 @@
+dnd-background-header = Background
+dnd-background-hint = After your base scores, increase one listed ability by 2 and a different one by 1, or increase all three by 1. No increase can raise a score above 20.
+dnd-background-abilities = Abilities: { $first }, { $second }, and { $third }
+dnd-background-increase-all = All three +1
+dnd-background-increase-split = +2 and +1
+dnd-background-plus-two = Increase by 2
+dnd-background-plus-one = Increase by 1
+dnd-ability-score-adjusted = Base { $base } · Background { $bonus } · Score { $score } · Modifier { $modifier } · { $band }
+dnd-background-acolyte-name = Acolyte
+dnd-background-acolyte-desc = Raised in a temple or other sacred service.
+dnd-background-criminal-name = Criminal
+dnd-background-criminal-desc = Lived by theft, smuggling, or another crime.
+dnd-background-sage-name = Sage
+dnd-background-sage-desc = Spent years studying books and lore.
+dnd-background-soldier-name = Soldier
+dnd-background-soldier-desc = Trained and served in a war band or an army.

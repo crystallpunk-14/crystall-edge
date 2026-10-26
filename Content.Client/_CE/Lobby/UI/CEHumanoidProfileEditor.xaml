@@ -143,7 +143,14 @@
                         </BoxContainer>
                     </ScrollContainer>
                 </BoxContainer>
-                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <BoxContainer Name="DndClassTab" Orientation="Vertical" Margin="10">
+                    <Label Text="{Loc 'dnd-character-creation-class-header'}" StyleClasses="LabelHeading" />
+                    <RichTextLabel Text="{Loc 'dnd-character-creation-class-intro'}" MaxWidth="720" Margin="0 6 0 4" />
+                    <ScrollContainer VerticalExpand="True">
+                        <BoxContainer Name="DndClassList" Orientation="Vertical" />
+                    </ScrollContainer>
+                </BoxContainer>
+                <BoxContainer Name="RolesTab" Orientation="Horizontal" HorizontalExpand="True">
                     <!-- Jobs -->
                     <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="5 0">
                         <Label Text="{Loc 'ce-humanoid-profile-editor-jobs-header-title'}" StyleClasses="LabelHeading" HorizontalAlignment="Center" HorizontalExpand="True" />
@@ -167,10 +174,30 @@
                         </ScrollContainer>
                     </BoxContainer>
                 </BoxContainer>
-                <BoxContainer Orientation="Vertical" Margin="10">
+                <BoxContainer Name="TraitsTab" Orientation="Vertical" Margin="10">
                     <!-- Traits -->
                     <ScrollContainer VerticalExpand="True">
                         <BoxContainer Name="TraitsList" Orientation="Vertical" />
+                    </ScrollContainer>
+                </BoxContainer>
+                <!-- Dnd character creation: the six abilities -->
+                <BoxContainer Name="DndAbilitiesTab" Orientation="Vertical" Margin="10">
+                    <Label Text="{Loc 'dnd-character-creation-abilities-header'}" StyleClasses="LabelHeading" />
+                    <RichTextLabel Text="{Loc 'dnd-character-creation-abilities-intro'}" MaxWidth="720" Margin="0 6 0 4" />
+                    <BoxContainer Orientation="Horizontal" Margin="0 0 0 4" SeparationOverride="8">
+                        <Button Name="DndPointBuyButton" ToggleMode="True" Text="{Loc 'dnd-ability-method-point-buy'}" />
+                        <Button Name="DndStandardArrayButton" ToggleMode="True" Text="{Loc 'dnd-ability-method-standard-array'}" />
+                    </BoxContainer>
+                    <Label Name="DndAbilityMethodHint" FontColorOverride="#999999" Margin="0 0 0 2" />
+                    <Label Name="DndPointBuyBudget" Margin="0 0 0 4" />
+                    <Label Name="DndProficiencyLabel" Margin="0 4 0 0" />
+                    <Label Name="DndProficiencyHint" FontColorOverride="#999999" Margin="0 0 0 4" />
+                    <Label Name="DndArmorClassLabel" />
+                    <Label Name="DndArmorClassHint" FontColorOverride="#999999" Margin="0 0 0 2" />
+                    <Label Name="DndHitPointsLabel" />
+                    <Label Name="DndHitPointsHint" FontColorOverride="#999999" Margin="0 0 0 6" />
+                    <ScrollContainer VerticalExpand="True">
+                        <BoxContainer Name="DndAbilityList" Orientation="Vertical" />
                     </ScrollContainer>
                 </BoxContainer>
             </TabContainer>

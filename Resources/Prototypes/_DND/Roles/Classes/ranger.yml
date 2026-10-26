@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Ranger
+  name: dnd-class-ranger-name
+  description: dnd-class-ranger-desc
+  order: 7
+  hitDie: 10

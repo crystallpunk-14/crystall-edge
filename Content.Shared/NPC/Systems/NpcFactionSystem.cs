@@ -1,3 +1,4 @@
+using Content.Shared._DND.Factions;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Prototypes;
@@ -13,6 +14,9 @@ public sealed partial class NpcFactionSystem : EntitySystem
 {
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
+    // Dnd: a shared side counts as friendly, so a pack does not hunt itself
+    [Dependency] private DndAllegianceSystem _allegiance = default!;
+    // Dnd end
 
     /// <summary>
     /// To avoid prototype mutability we store an intermediary data class that gets used instead.
@@ -221,6 +225,11 @@ public sealed partial class NpcFactionSystem : EntitySystem
     /// </remarks>
     public bool IsEntityFriendly(Entity<NpcFactionMemberComponent?> ent, Entity<NpcFactionMemberComponent?> other)
     {
+        // Dnd: adventurers, goblins, and wolves do not treat their own side as an enemy
+        if (_allegiance.IsParty(ent.Owner, other.Owner))
+            return true;
+        // Dnd end
+
         if (!Resolve(ent, ref ent.Comp, false) || !Resolve(other, ref other.Comp, false))
             return false;
 

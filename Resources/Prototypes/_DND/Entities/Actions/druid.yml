@@ -1,0 +1,236 @@
+- type: entity
+  parent: BaseAction
+  id: DndActionDruidBase
+  abstract: true
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Staff/wooden.rsi
+    layers:
+    - state: icon
+  - type: TargetAction
+    checkCanAccess: true
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionDruidcraft
+  name: Druidcraft
+  description: A brief wonder of nature.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Druidcraft
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionElementalism
+  name: Elementalism
+  description: A gust shoves a creature 5 feet.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: Elementalism
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionMessage
+  name: Message
+  description: Whisper a short message to someone you can see.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 24
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Message
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionPoisonSpray
+  name: Poison Spray
+  description: 1d12 poison damage. Constitution save.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: PoisonSpray
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionProduceFlame
+  name: Produce Flame
+  description: A spell attack for 1d8 fire. A flame stays in your hand.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: ProduceFlame
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionShillelagh
+  name: Shillelagh
+  description: Bonus action. A club or quarterstaff you hold uses Wisdom and deals at least 1d8 for one minute.
+  components:
+  - type: Action
+    useDelay: 3
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Shillelagh
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionAnimalFriendship
+  name: Animal Friendship
+  description: A beast that fails a Wisdom save is calmed for one hour.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 6
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: AnimalFriendship
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionEntangle
+  name: Entangle
+  description: Creatures in 20 feet that fail a Strength save fall and are tangled.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Entangle
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionFogCloud
+  name: Fog Cloud
+  description: Creatures in 20 feet are blinded for a moment.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 24
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: FogCloud
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionGoodberry
+  name: Goodberry
+  description: Ten berries appear. Each restores 1 hit point.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Goodberry
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionIceKnife
+  name: Ice Knife
+  description: A spell attack for 1d10 piercing, then 2d6 cold in 5 feet. Constitution save for half the cold.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:DndCastSpellEvent
+      spell: IceKnife
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionJump
+  name: Jump
+  description: The target leaps 15 feet.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: Jump
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots
+
+- type: entity
+  parent: DndActionDruidBase
+  id: DndActionSpeakWithAnimals
+  name: Speak with Animals
+  description: For ten minutes you understand beasts you examine.
+  components:
+  - type: Action
+    useDelay: 6
+  - type: TargetAction
+    range: 1.5
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:DndCastSpellEvent
+      spell: SpeakWithAnimals
+  - type: LimitedCharges
+    maxCharges: 2
+    lastCharges: 2
+    onFailPopup: dnd-spell-slots

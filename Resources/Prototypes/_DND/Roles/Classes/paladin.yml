@@ -1,0 +1,6 @@
+- type: dndClass
+  id: Paladin
+  name: dnd-class-paladin-name
+  description: dnd-class-paladin-desc
+  order: 6
+  hitDie: 10

@@ -1,0 +1,14 @@
+- type: dndSpell
+  id: DancingLights
+  name: dnd-spell-dancing-lights-name
+  description: dnd-spell-dancing-lights-desc
+  school: Illusion
+  level: 0
+  lists:
+  - Bard
+  recommendedFor:
+  - Bard
+  order: 0
+  rangeFeet: 120
+  requiresFocus: true
+  effect: Lights

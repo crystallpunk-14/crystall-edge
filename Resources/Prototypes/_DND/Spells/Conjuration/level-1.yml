@@ -1,0 +1,53 @@
+- type: dndSpell
+  id: Entangle
+  name: dnd-spell-entangle-name
+  description: dnd-spell-entangle-desc
+  school: Conjuration
+  level: 1
+  lists:
+  - Druid
+  order: 20
+  rangeFeet: 90
+  save: Strength
+  effect: Entangle
+
+- type: dndSpell
+  id: FogCloud
+  name: dnd-spell-fog-name
+  description: dnd-spell-fog-desc
+  school: Conjuration
+  level: 1
+  lists:
+  - Druid
+  order: 21
+  rangeFeet: 120
+  effect: Fog
+
+- type: dndSpell
+  id: Goodberry
+  name: dnd-spell-goodberry-name
+  description: dnd-spell-goodberry-desc
+  school: Conjuration
+  level: 1
+  lists:
+  - Druid
+  order: 22
+  rangeFeet: 5
+  canTargetSelf: true
+  requiresFocus: true
+  effect: Goodberry
+
+- type: dndSpell
+  id: IceKnife
+  name: dnd-spell-ice-knife-name
+  description: dnd-spell-ice-knife-desc
+  school: Conjuration
+  level: 1
+  lists:
+  - Druid
+  order: 23
+  rangeFeet: 60
+  damageDice: 1
+  damageSides: 10
+  damageType: Piercing
+  effect: IceKnife
