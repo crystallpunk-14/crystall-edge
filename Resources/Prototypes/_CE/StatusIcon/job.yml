@@ -97,6 +97,14 @@
 
 - type: jobIcon
   parent: CEJobIcon
+  id: CEJobIconKeyKeeper
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/Jobs/citizens.rsi
+    state: key_keeper
+  jobName: ce-job-name-key-keeper
+
+- type: jobIcon
+  parent: CEJobIcon
   id: CEJobIconTownfolk
   icon:
     sprite: /Textures/_CE/Interface/Icons/Jobs/citizens.rsi

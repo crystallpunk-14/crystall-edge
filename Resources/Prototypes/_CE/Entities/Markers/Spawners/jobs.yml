@@ -129,6 +129,20 @@
       - state: workman
 
 - type: entity
+  id: CESpawnPointKeyKeeper
+  parent: CESpawnPointJobBase
+  name: key keeper
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEKeyKeeper
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
   id: CESpawnPointTownfolk
   parent: CESpawnPointJobBase
   name: jobless

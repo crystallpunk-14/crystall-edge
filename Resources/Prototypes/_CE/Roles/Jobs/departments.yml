@@ -46,6 +46,7 @@
   roles:
   - CETownfolk
   - CEBard
+  - CEKeyKeeper
 
 - type: department
   id: CEGuild

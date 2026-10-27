@@ -120,3 +120,14 @@
   - CEBardShoes #
   - CEBardTool #
   - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEKeyKeeper
+  groups:
+  - CEGeneralBag
+  - CEGeneralEyes
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
