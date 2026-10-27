@@ -27,7 +27,7 @@ public sealed partial class CELockpickControl : Control
 
     // Geometry matched to the frame sprites.
     private const int OffsetX = 4; // room for the lockpick handle left of the frame
-    private const int Height = 64;
+    private const int FrameHeight = 64;
     private const int FrameMiddleX = 16;
     private const int FrameRightBaseX = 21;
     private const int FrameRightWidth = 63;
@@ -122,7 +122,7 @@ public sealed partial class CELockpickControl : Control
 
     protected override Vector2 MeasureOverride(Vector2 availableSize)
     {
-        return new Vector2(FrameRightX(PinCount) + FrameRightWidth, Height) * PixelScale;
+        return new Vector2(FrameRightX(PinCount) + FrameRightWidth, FrameHeight) * PixelScale;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
