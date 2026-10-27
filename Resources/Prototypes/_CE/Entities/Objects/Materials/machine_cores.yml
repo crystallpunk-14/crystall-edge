@@ -203,7 +203,7 @@
   - type: MachineBoard
     prototype: CEKeyForge
   - type: StaticPrice
-    price: 120
+    price: 47
   - type: GuideHelp
     guides:
     - CELocksKeysGuideRU
@@ -216,7 +216,7 @@
   - type: MachineBoard
     prototype: CELockForge
   - type: StaticPrice
-    price: 120
+    price: 47
   - type: GuideHelp
     guides:
     - CELocksKeysGuideRU
