@@ -19,6 +19,7 @@
     canEmbedded: true
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
 
 - type: entity

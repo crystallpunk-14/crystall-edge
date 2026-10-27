@@ -16,6 +16,7 @@
   - type: CEKey
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
   - type: EmitSoundOnLand
     sound:

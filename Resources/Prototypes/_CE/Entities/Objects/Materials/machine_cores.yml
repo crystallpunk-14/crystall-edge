@@ -206,6 +206,7 @@
     price: 47
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
 
 - type: entity
@@ -219,4 +220,5 @@
     price: 47
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU

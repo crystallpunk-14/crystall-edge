@@ -13,6 +13,7 @@
   - type: CELockpick
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
   - type: Tag
     tags:
@@ -36,6 +37,7 @@
   - type: CEKeyFile
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
   - type: UseDelay
     delay: 1.0

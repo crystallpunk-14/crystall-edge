@@ -9,6 +9,7 @@
   - type: CEKeyRing
   - type: GuideHelp
     guides:
+    - CELocksKeysGuideEN
     - CELocksKeysGuideRU
   - type: Sprite
     sprite: _CE/Objects/Storage/keyring.rsi
