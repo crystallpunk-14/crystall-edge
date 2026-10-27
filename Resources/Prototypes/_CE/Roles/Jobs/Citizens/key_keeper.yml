@@ -44,6 +44,21 @@
             value: 3
 
 - type: entity
+  id: CEBedsideTableFilledKeyKeeper
+  parent: CEBedsideTableWooden
+  suffix: Filled, Key Keeper
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadKeyKeeperCap
+        - id: CEClothingShirtKeyKeeper
+        - id: CEClothingPantsKeyKeeper
+
+- type: entity
   id: CEKeyRingKeyKeeper
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]
@@ -52,3 +67,4 @@
     contents:
     - id: CEKeyKeyKeeperHall
     - id: CEKeyKeyKeeperStorage
+    - id: CEKeyKeyKeeperTechnical

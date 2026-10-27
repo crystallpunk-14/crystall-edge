@@ -61,3 +61,11 @@
   components:
   - type: CEKey
     autoGenerateShape: KeyKeeperStorage
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyKeyKeeperTechnical
+  suffix: Key Keeper Technical
+  components:
+  - type: CEKey
+    autoGenerateShape: KeyKeeperTechnical

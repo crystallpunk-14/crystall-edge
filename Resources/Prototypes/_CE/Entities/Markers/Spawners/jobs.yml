@@ -5,7 +5,6 @@
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
-    sprite: _CE/Markers/jobs.rsi
     snapCardinals: true
 
 # Sheriff
@@ -21,8 +20,20 @@
     job_id: CESheriff
   - type: Sprite
     layers:
-      - state: green
-      - state: sheriff
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Sheriff/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Sheriff/shirt.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Sheriff/sheriff.rsi
+      state: equipped-CLOAK
+    - sprite: _CE/Clothing/Head/Sheriff/cap.rsi
+      state: equipped-HELMET
 
 # Guild
 
@@ -37,8 +48,20 @@
     job_id: CEGuildmaster
   - type: Sprite
     layers:
-      - state: green
-      - state: guildmaster
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/black.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Guild/guildmaster.rsi
+      state: equipped-CLOAK
+    - sprite: _CE/Clothing/Head/Guild/guildmaster.rsi
+      state: equipped-HELMET
 
 - type: entity
   id: CESpawnPointAdventurer
@@ -51,8 +74,18 @@
     job_id: CEAdventurer
   - type: Sprite
     layers:
-      - state: green
-      - state: adventurer
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/green.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/blue_green.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Generic/Cape/fur.rsi
+      state: equipped-CLOAK
 
 # Tavern
 
@@ -67,8 +100,18 @@
     job_id: CETavernmaster
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Tavern/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Tavern/bartender.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Tavern/tavernmaster_jacket1.rsi
+      state: equipped-CLOAK
 
 - type: entity
   id: CESpawnPointBartender
@@ -81,8 +124,18 @@
     job_id: CEBartender
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Tavern/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Tavern/bartender.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Tavern/bartender_vest1.rsi
+      state: equipped-CLOAK
 
 - type: entity
   id: CESpawnPointChef
@@ -95,8 +148,20 @@
     job_id: CEChef
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Tavern/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Tavern/chef1.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Tavern/chef_apron1.rsi
+      state: equipped-CLOAK
+    - sprite: _CE/Clothing/Head/Tavern/chef_hat1.rsi
+      state: equipped-HELMET
 
 - type: entity
   id: CESpawnPointFarmer
@@ -109,8 +174,18 @@
     job_id: CEFarmer
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/blue_green.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Head/Townfolk/straw_hat.rsi
+      state: equipped-HELMET
 
 # Citizens
 
@@ -125,8 +200,18 @@
     job_id: CEBard
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Bard/jesters.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Bard/jesters_ringers.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Bard/jesters_attire.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Head/Bard/jesters_cap.rsi
+      state: equipped-HELMET
 
 - type: entity
   id: CESpawnPointKeyKeeper
@@ -139,8 +224,18 @@
     job_id: CEKeyKeeper
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/KeyKeeper/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/KeyKeeper/shirt.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
+      state: equipped-HELMET
 
 - type: entity
   id: CESpawnPointTownfolk
@@ -153,8 +248,18 @@
     job_id: CETownfolk
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/blue.rsi
+      state: equipped-SHIRT
+
+# Engineering
 
 - type: entity
   id: CESpawnPointBrigadier
@@ -167,8 +272,20 @@
     job_id: CEBrigadier
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Engineering/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Engineering/shirt.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Cloak/Engineering/brigadier.rsi
+      state: equipped-CLOAK
+    - sprite: _CE/Clothing/Head/Engineering/bowler_leather_hat.rsi
+      state: equipped-HELMET
 
 - type: entity
   id: CESpawnPointTechnician
@@ -181,5 +298,17 @@
     job_id: CETechnician
   - type: Sprite
     layers:
-      - state: green
-      - state: workman
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Engineering/pants.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Engineering/shirt.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Eyes/Engineering/mining_glasses.rsi
+      state: equipped-EYES
+    - sprite: _CE/Clothing/Head/Townfolk/Fedoras/brown.rsi
+      state: equipped-HELMET

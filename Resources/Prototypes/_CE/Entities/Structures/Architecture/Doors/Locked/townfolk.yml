@@ -79,28 +79,38 @@
     locked: true
 
 - type: entity
-  parent: CEWoodenDoorWindowed
-  id: CEWoodenDoorKeyKeeperHall
+  parent: CEIronDoorWindowed
+  id: CEIronDoorKeyKeeperHall
   suffix: Key Keeper Hall
   components:
   - type: CELock
     autoGenerateShape: KeyKeeperHall
   - type: Lock
-    locked: false
+    locked: true
 
 - type: entity
   parent:
-  - CEWoodenDoorKeyKeeperHall
-  - CEWoodenDoorWindowedMirrored
-  id: CEWoodenDoorKeyKeeperHallMirrored
+  - CEIronDoorKeyKeeperHall
+  - CEIronDoorWindowedMirrored
+  id: CEIronDoorKeyKeeperHallMirrored
   suffix: Key Keeper Hall, Mirrored
 
 - type: entity
-  parent: CEWoodenDoor
-  id: CEWoodenDoorKeyKeeperStorage
+  parent: CEIronDoor
+  id: CEIronDoorKeyKeeperStorage
   suffix: Key Keeper Storage
   components:
   - type: CELock
     autoGenerateShape: KeyKeeperStorage
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorKeyKeeperTechnical
+  suffix: Key Keeper Technical
+  components:
+  - type: CELock
+    autoGenerateShape: KeyKeeperTechnical
   - type: Lock
     locked: true
