@@ -44,3 +44,5 @@ ce-lock-shape-pharmacy-shop = pharmacy
 ce-lock-shape-pharmacy-home = pharmacy owner's home
 ce-lock-shape-homegoods-shop = homegoods shop
 ce-lock-shape-homegoods-home = homegoods shop owner's home
+ce-lock-shape-key-keeper-hall = key vault hall
+ce-lock-shape-key-keeper-storage = key vault storage

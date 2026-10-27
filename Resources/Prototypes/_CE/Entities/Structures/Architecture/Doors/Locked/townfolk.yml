@@ -77,3 +77,30 @@
     autoGenerateShape: PharmacyHome
   - type: Lock
     locked: true
+
+- type: entity
+  parent: CEWoodenDoorWindowed
+  id: CEWoodenDoorKeyKeeperHall
+  suffix: Key Keeper Hall
+  components:
+  - type: CELock
+    autoGenerateShape: KeyKeeperHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+  - CEWoodenDoorKeyKeeperHall
+  - CEWoodenDoorWindowedMirrored
+  id: CEWoodenDoorKeyKeeperHallMirrored
+  suffix: Key Keeper Hall, Mirrored
+
+- type: entity
+  parent: CEWoodenDoor
+  id: CEWoodenDoorKeyKeeperStorage
+  suffix: Key Keeper Storage
+  components:
+  - type: CELock
+    autoGenerateShape: KeyKeeperStorage
+  - type: Lock
+    locked: true

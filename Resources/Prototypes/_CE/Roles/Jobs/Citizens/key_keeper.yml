@@ -11,8 +11,8 @@
 - type: startingGear
   id: CEKeyKeeperGear
   equipment:
+    belt: CEKeyRingKeyKeeper
     pocket1: CEWalletFilledKeyKeeper
-    pocket2: CEKeyFile
 
 - type: entity
   id: CEWalletFilledKeyKeeper
@@ -42,3 +42,13 @@
         - id: CELockIron
           amount: !type:ConstantNumberSelector
             value: 3
+
+- type: entity
+  id: CEKeyRingKeyKeeper
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyKeyKeeperHall
+    - id: CEKeyKeyKeeperStorage

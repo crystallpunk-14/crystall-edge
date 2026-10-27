@@ -45,3 +45,19 @@
   components:
   - type: CEKey
     autoGenerateShape: HomeGoodsHome
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyKeyKeeperHall
+  suffix: Key Keeper Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: KeyKeeperHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyKeyKeeperStorage
+  suffix: Key Keeper Storage
+  components:
+  - type: CEKey
+    autoGenerateShape: KeyKeeperStorage

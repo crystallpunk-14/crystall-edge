@@ -27,3 +27,13 @@
   id: HomeGoodsHome
   complexity: 4
   name: ce-lock-shape-homegoods-home
+
+- type: lockType
+  id: KeyKeeperHall
+  complexity: 3
+  name: ce-lock-shape-key-keeper-hall
+
+- type: lockType
+  id: KeyKeeperStorage
+  complexity: 4
+  name: ce-lock-shape-key-keeper-storage

@@ -44,3 +44,5 @@ ce-lock-shape-pharmacy-shop = аптека
 ce-lock-shape-pharmacy-home = дом хозяина аптеки
 ce-lock-shape-homegoods-shop = магазин товаров для дома
 ce-lock-shape-homegoods-home = дом хозяина магазина товаров для дома
+ce-lock-shape-key-keeper-hall = холл хранилища ключей
+ce-lock-shape-key-keeper-storage = склад хранилища ключей
