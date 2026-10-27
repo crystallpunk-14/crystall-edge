@@ -34,13 +34,13 @@
       components:
       - MobState
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationResurrection
+      animation: Resurrection
   - type: CEActionTargetConditions
     conditions:
     - !type:Revivable
 
 - type: entityEffectAnimation
-  id: AnimationResurrection
+  id: Resurrection
   movementSpeed: 0.5
   duration: 5
   events:

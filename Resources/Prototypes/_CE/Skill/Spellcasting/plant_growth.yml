@@ -32,10 +32,10 @@
     range: 5
   - type: WorldTargetAction
     event: !type:CEWorldTargetActionAnimationEvent
-      animation: AnimationPlantGrowth
+      animation: PlantGrowth
 
 - type: entityEffectAnimation
-  id: AnimationPlantGrowth
+  id: PlantGrowth
   movementSpeed: 0.5
   duration: 0.5
   events:

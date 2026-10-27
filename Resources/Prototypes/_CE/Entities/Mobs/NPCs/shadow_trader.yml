@@ -117,7 +117,7 @@
       - time: 2
         offset: 0, 0
   - type: CESpawnAnimation
-    animation: AnimationShadowTraderSpawn
+    animation: ShadowTraderSpawn
 
 - type: entity
   parent:
@@ -176,7 +176,7 @@
   categories: [ ForkFiltered, HideSpawnMenu ]
 
 - type: entityEffectAnimation
-  id: AnimationShadowTraderSpawn
+  id: ShadowTraderSpawn
   movementSpeed: 0
   duration: 1
   events:
@@ -208,13 +208,13 @@
       components:
       - CETradeTable
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationRestockTradeTable
+      animation: RestockTradeTable
   - type: CEActionTargetConditions
     conditions:
     - !type:TradeTableHasFreeSlot
 
 - type: entityEffectAnimation
-  id: AnimationRestockTradeTable
+  id: RestockTradeTable
   movementSpeed: 0
   duration: 0.3
   events:
@@ -252,13 +252,13 @@
       components:
       - CETradeTable
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationClearTradeTable
+      animation: ClearTradeTable
   - type: CEActionTargetConditions
     conditions:
     - !type:TradeTableHasOffer
 
 - type: entityEffectAnimation
-  id: AnimationClearTradeTable
+  id: ClearTradeTable
   movementSpeed: 0
   duration: 0.5
   events:

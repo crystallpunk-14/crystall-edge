@@ -32,10 +32,10 @@
     range: 5
   - type: WorldTargetAction
     event: !type:CEWorldTargetActionAnimationEvent
-      animation: AnimationFeatherFall
+      animation: FeatherFall
 
 - type: entityEffectAnimation
-  id: AnimationFeatherFall
+  id: FeatherFall
   movementSpeed: 0.5
   duration: 0.5
   events:

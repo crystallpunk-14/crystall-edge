@@ -37,10 +37,10 @@
       components:
       - Battery
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationManaGift
+      animation: ManaGift
 
 - type: entityEffectAnimation
-  id: AnimationManaGift
+  id: ManaGift
   movementSpeed: 0.5
   duration: 0.3
   events:

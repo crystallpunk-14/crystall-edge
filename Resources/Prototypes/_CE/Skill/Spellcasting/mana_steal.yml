@@ -34,10 +34,10 @@
       components:
       - Battery
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationManaSteal
+      animation: ManaSteal
 
 - type: entityEffectAnimation
-  id: AnimationManaSteal
+  id: ManaSteal
   movementSpeed: 0.6
   duration: 0.3
   events:

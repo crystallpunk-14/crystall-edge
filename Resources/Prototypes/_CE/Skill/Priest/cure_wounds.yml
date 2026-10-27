@@ -37,10 +37,10 @@
       components:
       - MobState
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationCureWounds
+      animation: CureWounds
 
 - type: entityEffectAnimation
-  id: AnimationCureWounds
+  id: CureWounds
   movementSpeed: 0.5
   duration: 2
   events:
