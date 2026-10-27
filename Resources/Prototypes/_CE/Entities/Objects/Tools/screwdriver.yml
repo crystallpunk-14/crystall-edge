@@ -6,6 +6,10 @@
   description: Industrial grade torque in a small screwdriving package.
   components:
   - type: CELockEditor
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU
   - type: UseDelay
     delay: 1.0
   - type: EmitSoundOnLand

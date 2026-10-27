@@ -1,0 +1,70 @@
+- type: job
+  id: CEKeyKeeper
+  setPreference: true
+  name: ce-job-name-key-keeper
+  description: ce-job-desc-key-keeper
+  playTimeTracker: CEJobKeyKeeper
+  startingGear: CEKeyKeeperGear
+  icon: CEJobIconKeyKeeper
+  supervisors: ce-job-supervisors-empire
+
+- type: startingGear
+  id: CEKeyKeeperGear
+  equipment:
+    belt: CEKeyRingKeyKeeper
+    pocket1: CEWalletFilledKeyKeeper
+
+- type: entity
+  id: CEWalletFilledKeyKeeper
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #50cp total
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledKeyKeeper
+  parent: CEWoodenChest
+  suffix: Filled, Key Keeper
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEKeyIronBlank
+          amount: !type:ConstantNumberSelector
+            value: 5
+        - id: CELockIron
+          amount: !type:ConstantNumberSelector
+            value: 3
+
+- type: entity
+  id: CEBedsideTableFilledKeyKeeper
+  parent: CEBedsideTableWooden
+  suffix: Filled, Key Keeper
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadKeyKeeperCap
+        - id: CEClothingShirtKeyKeeper
+        - id: CEClothingPantsKeyKeeper
+
+- type: entity
+  id: CEKeyRingKeyKeeper
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyKeyKeeperHall
+    - id: CEKeyKeyKeeperStorage
+    - id: CEKeyKeyKeeperTechnical

@@ -1,13 +1,8 @@
 ce-verb-categories-lock = Keyhole
 
-ce-lock-verb-lock-pick-use-text = Push:
-ce-lock-verb-lock-pick-use-message = If you engage the lock prongs in the correct sequence, you can unlock the lock.
-
 ce-lock-key-no-fit = The key does not fit!
 
-ce-lock-lock-pick-success = One of the lock elements clicks quietly.
-ce-lock-lock-pick-failed = {$lock} is reset to its original position.
-ce-lock-lock-pick-failed-break = {$lock} resets to its original position, breaking your lockpick.
+ce-lock-lock-pick-busy = Someone is already picking this lock.
 
 ce-lock-verb-use-key-text-open = Open the lock with {$item}.
 ce-lock-verb-use-key-text-close = Close the lock with {$item}

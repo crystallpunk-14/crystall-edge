@@ -25,10 +25,10 @@
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
-      animation: AnimationFrostBlade
+      animation: FrostBlade
 
 - type: entityEffectAnimation
-  id: AnimationFrostBlade
+  id: FrostBlade
   movementSpeed: 0.3
   duration: 1.5
   lockRotation: true

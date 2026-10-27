@@ -192,3 +192,33 @@
     prototype: CEMurkShieldGenerator
   - type: StaticPrice
     price: 150
+
+# Key keeper
+
+- type: entity
+  id: CEMachineCoreKeyForge
+  parent: CEBaseMachineCore
+  name: key forge machine core
+  components:
+  - type: MachineBoard
+    prototype: CEKeyForge
+  - type: StaticPrice
+    price: 47
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU
+
+- type: entity
+  id: CEMachineCoreLockForge
+  parent: CEBaseMachineCore
+  name: lock forge machine core
+  components:
+  - type: MachineBoard
+    prototype: CELockForge
+  - type: StaticPrice
+    price: 47
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU

@@ -11,6 +11,7 @@
   - CETavernmaster
   - CEBrigadier
   - CEGuildmaster
+  - CEKeyKeeper
 
 - type: department
   id: CETavern
@@ -44,6 +45,7 @@
   color: "#b3b3b3"
   editorHidden: false
   roles:
+  - CEKeyKeeper
   - CETownfolk
   - CEBard
 

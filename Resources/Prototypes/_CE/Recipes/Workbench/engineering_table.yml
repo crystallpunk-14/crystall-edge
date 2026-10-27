@@ -353,6 +353,36 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: MachineCoreKeyForge
+  parent: BaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEIronBar
+    count: 3
+  result: CEMachineCoreKeyForge
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: MachineCoreLockForge
+  parent: BaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEIronBar
+    count: 3
+  result: CEMachineCoreLockForge
+  resultCount: 1
+
+- type: workbenchRecipe
   id: MachineCoreGeneratorMagicCapacitor
   parent: BaseEngineeringTableRecipe
   category: MachineCore

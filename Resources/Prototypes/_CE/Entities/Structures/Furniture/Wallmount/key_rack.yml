@@ -33,3 +33,48 @@
   - type: Construction
     graph: CEWallmountKeyRack
     node: CEWallmountKeyRack
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackEngineering
+  suffix: Filled, Engineering
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - Engineering
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackTavern
+  suffix: Filled, Tavern
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - Tavern
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackTavernDorms
+  suffix: Filled, Tavern Rooms
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - TavernDorms
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackGuard
+  suffix: Filled, Guard
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - Guard
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackGuild
+  suffix: Filled, Guild
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - Guild

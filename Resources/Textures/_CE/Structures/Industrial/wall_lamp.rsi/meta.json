@@ -12,14 +12,6 @@
       "directions": 4
     },
     {
-      "name": "broken",
-      "directions": 4
-    },
-    {
-      "name": "empty",
-      "directions": 4
-    },
-    {
       "name": "glow",
       "directions": 4
     }

@@ -65,10 +65,10 @@
       components:
       - CEShadowRift
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationEnterShadowRift
+      animation: EnterShadowRift
 
 - type: entityEffectAnimation
-  id: AnimationEnterShadowRift
+  id: EnterShadowRift
   movementSpeed: 0
   duration: 1
   events:

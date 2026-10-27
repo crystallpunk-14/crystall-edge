@@ -2,20 +2,24 @@
 
 - type: lockType
   id: GuildLobby
+  group: Guild
   complexity: 3
   name: ce-lock-shape-guild-lobby
 
 - type: lockType
   id: GuildInner
+  group: Guild
   complexity: 3
   name: ce-lock-shape-guild-inner
 
 - type: lockType
   id: GuildStorage
+  group: Guild
   complexity: 5
   name: ce-lock-shape-guild-storage
 
 - type: lockType
   id: GuildmasterRoom
+  group: Guild
   complexity: 5
   name: ce-lock-shape-guildmaster-room

@@ -54,6 +54,14 @@ ent-CEOrganSilvaExternal = { "" }
     .desc = { "" }
     .suffix = silva
 
+ent-CEOrganSkeleton = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonExternal = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
 ent-CEOrganTiefling = { "" }
     .desc = { "" }
     .suffix = tiefling
@@ -162,6 +170,9 @@ ent-CEClothingEyesMerchantMonocle = монокль торговца
 
 ent-CEClothingEyesEyePatch = повязка на глаз
     .desc = Скрывает увечья глаз.
+
+ent-CEClothingEyesBarGlasses = очки бармена
+    .desc = Тонкие очки, которые каждый уважающий себя бармен держит под рукой, чтобы читать этикетки.
 
 ent-CEClothingGlovesGirdles = железные наручи
     .desc = Бронированные боевые наручи.
@@ -878,6 +889,21 @@ ent-CEGuidebookCookingRecipes = кулинарная книга
     .desc = 1001 рецепт — так написано на обложке. Это наглая ложь.
     .suffix = Путеводитель
 
+ent-CEDrinkGlass = стакан
+    .desc = Простой стакан для любого напитка.
+
+ent-CEDrinkGlassWine = бокал для вина
+    .desc = Бокал на длинной ножке, созданный, чтобы раскрыть цвет и аромат вина.
+
+ent-CEDrinkGlassRock = рокс
+    .desc = Низкий стакан с тяжёлым дном для крепких напитков.
+
+ent-CEDrinkGlassMartini = бокал для мартини
+    .desc = Конический бокал для тех, кто любит, чтобы напитки подавали со стилем.
+
+ent-CEDrinkGlassShot = стопка
+    .desc = Крошечная рюмка на один глоток.
+
 ent-CEDrinkBaseGoblet = кубок
     .desc = Металлический кубок для тех, кто хочет пить изысканно.
 
@@ -905,6 +931,9 @@ ent-CESteelBeerMug = пивная кружка
 
 ent-CESteelWoodBeerMug = пивная кружка
     .desc = Деревянная кружка с железными вставками.
+
+ent-CEDrinkShaker = шейкер
+    .desc = Верный помощник бармена в смешивании напитков.
 
 ent-CEBottleWine = бутылка вина
     .desc = Букет ароматов прошлого века.
@@ -952,6 +981,62 @@ ent-CEBottleSyrupSugar = бутылка сахарного сиропа
 
 ent-CEBottleSyrupSugarFull = { ent-CEBottleSyrupSugar }
     .desc = { ent-CEBottleSyrupSugar.desc }
+    .suffix = Full
+
+ent-CEBottleGin = бутылка джина
+    .desc = Можжевеловый спирт с бодрящей травяной ноткой.
+    .suffix = Empty
+
+ent-CEBottleGinFull = { ent-CEBottleGin }
+    .desc = { ent-CEBottleGin.desc }
+    .suffix = Full
+
+ent-CEBottleAbsinthe = бутылка абсента
+    .desc = Зелёный спирт на полыни и анисе. Говорят, он кое-что показывает.
+    .suffix = Empty
+
+ent-CEBottleAbsintheFull = { ent-CEBottleAbsinthe }
+    .desc = { ent-CEBottleAbsinthe.desc }
+    .suffix = Full
+
+ent-CEBottleBrandy = бутылка бренди
+    .desc = Перегнанное вино, выдержанное до тёплого янтарного цвета.
+    .suffix = Empty
+
+ent-CEBottleBrandyFull = { ent-CEBottleBrandy }
+    .desc = { ent-CEBottleBrandy.desc }
+    .suffix = Full
+
+ent-CEBottleBlueCuracao = бутылка блю кюрасао
+    .desc = Сладкий апельсиновый ликёр, окрашенный в поразительно синий цвет.
+    .suffix = Empty
+
+ent-CEBottleBlueCuracaoFull = { ent-CEBottleBlueCuracao }
+    .desc = { ent-CEBottleBlueCuracao.desc }
+    .suffix = Full
+
+ent-CEBottleCherryLiqueur = бутылка вишнёвого ликёра
+    .desc = Сладкий тёмный ликёр из вишни.
+    .suffix = Empty
+
+ent-CEBottleCherryLiqueurFull = { ent-CEBottleCherryLiqueur }
+    .desc = { ent-CEBottleCherryLiqueur.desc }
+    .suffix = Full
+
+ent-CEBottleCitrusJuice = бутылка цитрусового сока
+    .desc = Резкий кислый сок, выжатый из свежих цитрусов.
+    .suffix = Empty
+
+ent-CEBottleCitrusJuiceFull = { ent-CEBottleCitrusJuice }
+    .desc = { ent-CEBottleCitrusJuice.desc }
+    .suffix = Full
+
+ent-CEBottlePineBitter = бутылка соснового биттера
+    .desc = Смолистая горькая настойка со вкусом леса после дождя.
+    .suffix = Empty
+
+ent-CEBottlePineBitterFull = { ent-CEBottlePineBitter }
+    .desc = { ent-CEBottlePineBitter.desc }
     .suffix = Full
 
 ent-CEFoodCheeseSlice = ломтик сыра
@@ -1143,6 +1228,9 @@ ent-CEFoodChanterelle = лисичка
 ent-CEFoodAgaric = мухомор
     .desc = Ярко-красный гриб с белыми крапинками. Очень красивый и очень ядовитый.
 
+ent-CEFoodLumishroom = люмигриб
+    .desc = Светящийся пещерный гриб. Он бродит прямо в шляпке, так что пара штук сразу ударяет в голову.
+
 ent-CEBloodpack = пакет крови
     .desc = Содержит магическую кровь, которая определённо не из космоса.
     .suffix = Полный
@@ -1177,6 +1265,22 @@ ent-CESmokingPipeFilledTobacco = { ent-CESmokingPipe }
 ent-CESmokingPipeFilledSage = { ent-CESmokingPipe }
     .desc = { ent-CESmokingPipe.desc }
     .suffix = Sage
+
+ent-CESpiceJarCinnamon = баночка корицы
+    .desc = Маленькая стеклянная баночка для молотой корицы.
+    .suffix = Empty
+
+ent-CESpiceJarCinnamonFull = { ent-CESpiceJarCinnamon }
+    .desc = { ent-CESpiceJarCinnamon.desc }
+    .suffix = Full
+
+ent-CESpiceJarSpicyPepper = баночка острого перца
+    .desc = Маленькая стеклянная баночка для молотого острого перца.
+    .suffix = Empty
+
+ent-CESpiceJarSpicyPepperFull = { ent-CESpiceJarSpicyPepper }
+    .desc = { ent-CESpiceJarSpicyPepper.desc }
+    .suffix = Full
 
 ent-CEBell = колокольчик
     .desc = Обычный колокольчик с ручкой, чтобы привлекать внимание.
@@ -2333,6 +2437,13 @@ ent-CEWallet = кошелёк
     .desc = Маленький кошелёк, удобный для хранения монет.
     .suffix = Пусто
 
+ent-CEHandTeleporterAdmin = божественный телепортер
+    .desc = Разрывает ткань мира. Первое использование открывает разлом, второе связывает его с разломом там, где вы стоите, третье закрывает оба.
+    .suffix = Admin
+
+ent-CEHandTeleporterAdminRift = разлом
+    .desc = Прореха в мире, ведущая в какое-то другое место.
+
 ent-CESafeFallingAmulet = амулет экстренной левитации
     .desc = Необходимая часть повседневного снаряжения жителей летающих островов, защищающая от случайного падения с острова. Наденьте на пояс, и если случайно упадёте с острова, у вас будет шанс спастись.
 
@@ -2434,6 +2545,12 @@ ent-CEFork = вилка
 
 ent-CESpoon = ложка
     .desc = Считается первым инструментом для еды, не считая рук.
+
+ent-CEBarSpoon = барная ложка
+    .desc = Длинная витая ложка для размешивания коктейлей.
+
+ent-CERag = влажная тряпка
+    .desc = Видимо, чтобы убирать беспорядок.
 
 ent-CECookingPot = кастрюля
     .desc = Контейнер для приготовления Большого Супа.
@@ -4000,6 +4117,14 @@ ent-CEPlantGarlicDead = мёртвый чеснок
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
+ent-CEPlantLumishroomDead = мёртвый люмигриб
+    .desc = { ent-CEPlantDeadBase.desc }
+    .suffix = SPRITE TODO
+
+ent-CEPlantLumishroomGrown = { ent-CEPlantLumishroom }
+    .desc = { ent-CEPlantLumishroom.desc }
+    .suffix = Grown
+
 ent-CEPlantOnionDead = мёртвый лук
     .desc = { ent-CEPlantDeadBase.desc }
 
@@ -4284,10 +4409,10 @@ ent-CEObjectiveThiefCashOut = Потратить 10 золотых в магаз
 ent-CEObjectiveBrotherhoodSurvive = Сохранить жизнь всем членам братства
     .desc = Все члены братства должны выжить.
 
-ent-CEObjectiveBrotherhoodPatronage = Помочь выполнить все цели
+ent-CEObjectiveBrotherhoodPatronage = Помочь кое-кому выполнить все его цели
     .desc = Этот человек в прошлом помог братству. Отплатите ему тем же, он должен выполнить все свои цели.
 
-ent-CEObjectiveBrotherhoodDebt = Трижды довести до крита, не убив
+ent-CEObjectiveBrotherhoodDebt = Трижды довести кое-кого до крита, не убив
     .desc = Этот человек в прошлом перешёл дорогу братству. Сделайте его жизнь невыносимой. Он должен оказаться в критическом состоянии 3 раза, но при этом выжить, чтобы выучить свой урок.
 
 ent-CEObjectiveBountyHunterEliminate = Убить всех членов братства
@@ -4350,11 +4475,11 @@ ent-CEStatusEffectManaDrain = расход маны
 ent-CEActionMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость и страх. Переведите дух, чтобы мгновенно восстановить выносливость и стряхнуть первобытный ужас.
 
+ent-CEStatusEffectMurkwalker = Невосприимчивость ко мраку
+    .desc = Вы можете безопасно находиться во мраке, не растворяясь в небытии.
+
 ent-CEStatusEffectMurkResistance = Устойчивость к мраку
     .desc = Вы растворяетесь во мраке на 30% медленнее.
-
-ent-CEStatusEffectMurkwalker = Невосприимчивость ко мраку
-    .desc = Вы можете безопасно находиться во мраке, не растворяясь в небытие.
 
 ent-CEActionRestorationRitual = Ритуал восстановления Сферы Люксона
     .desc = Начать ритуал на треснувшей Сфере Люксона, когда все осколки светсердца лежат на пьедесталах ритуала. Обнажённое ядро должно уцелеть до конца ритуала.
@@ -4362,8 +4487,8 @@ ent-CEActionRestorationRitual = Ритуал восстановления Сфе
 ent-CEActionShopEmpireSheriff = Имперское снабжение
     .desc = Закажите снаряжение со складов Империи.
 
-ent-CEStatusEffectSoftLanding = Мягкие лапы
-    .desc = Смягчает падение с высоты — снижает урон и не сбивает с ног при некритичной скорости падения.
+ent-CEStatusEffectSoftLanding = Мягкое падение
+    .desc = Смягчает падение с высоты: снижает урон и не сбивает с ног, если скорость падения не слишком высока.
 
 ent-CEStatusEffectTimeSense = Чувство времени
     .desc = Вы интуитивно чувствуете, какое сейчас время дня.
@@ -4374,8 +4499,11 @@ ent-CEActionRecruit = Вербовка
 ent-CEActionSoulGaze = Взгляд в душу
     .desc = Загляните в чью-то душу и узнайте её истинную природу. Цель это почувствует.
 
+ent-CEActionDarkVesselSwap = Сменить сосуд
+    .desc = Покинуть это старое тело, старый сосуд, и переселиться в новое, переняв все его цели и способности. Работает только на трупе игрока, у которого была тайная роль.
+
 ent-CEStatusEffectMysticVitality = Мистическая живучесть
-    .desc = Как бы сильно вас не били, вас почти невозможно убить, и вы непрестанно возвращаетесь назад, регенерируя любой полученный урон. Вас конечно, все еще можно убить, сбросив например с острова, но постарайтесь не говорить об этом.
+    .desc = Как бы сильно вас ни били, вас почти невозможно убить: вы раз за разом возвращаетесь, восстанавливаясь от любого урона. Убить вас, конечно, всё ещё можно — например, сбросив с острова, — но постарайтесь об этом не болтать.
 
 ent-CEActionLurkerFear = Первобытный ужас
     .desc = Вы погружаете цель в первобытный ужас, лишая её способности сопротивляться.
@@ -4766,6 +4894,49 @@ ent-CEOrganSilvaFootRight = { "" }
 ent-CEOrganSilvaEyes = { "" }
     .desc = { "" }
     .suffix = silva
+
+ent-CEMobSkeleton = Мистер Скелет
+    .desc = { "" }
+
+ent-CEOrganSkeletonTorso = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonHead = череп
+    .desc = Бедный Йорик...
+    .suffix = skeleton
+
+ent-CEOrganSkeletonArmLeft = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonArmRight = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonHandLeft = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonHandRight = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonLegLeft = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonLegRight = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonFootLeft = { "" }
+    .desc = { "" }
+    .suffix = skeleton
+
+ent-CEOrganSkeletonFootRight = { "" }
+    .desc = { "" }
+    .suffix = skeleton
 
 ent-CEMobTiefling = Мистер Тифлинг
     .desc = { "" }
@@ -5424,6 +5595,9 @@ ent-CEPlantCucumber = огурец
 
 ent-CEPlantGarlic = чеснок
     .desc = Только люди догадались взять острый, невкусный корнеплод и использовать его как приправу где только можно.
+
+ent-CEPlantLumishroom = люмигриб
+    .desc = Пещерный гриб с мягко светящейся зелёной шляпкой. Пахнет дрожжами и крепкой выпивкой.
 
 ent-CEPlantOnion = лук
     .desc = Он такой милый, что до слёз, когда его режешь.

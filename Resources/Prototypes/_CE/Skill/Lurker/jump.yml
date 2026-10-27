@@ -25,10 +25,10 @@
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
-      animation: AnimationJump
+      animation: Jump
 
 - type: entityEffectAnimation
-  id: AnimationJump
+  id: Jump
   movementSpeed: 1
   duration: 0.4
   events:

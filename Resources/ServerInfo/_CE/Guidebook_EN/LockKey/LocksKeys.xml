@@ -1,0 +1,65 @@
+<Document>
+# Keys and locks
+
+Doors, chests and cabinets with a lock installed can be locked and unlocked with a matching key.
+
+<Box>
+  <GuideEntityEmbed Entity="CEKeyIronBlank" Caption="Key"/>
+  <GuideEntityEmbed Entity="CELockIron" Caption="Lock"/>
+  <GuideEntityEmbed Entity="CEBaseKeyRing" Caption="Key ring"/>
+</Box>
+
+## Shape
+
+Every key and lock has a [color=yellow]shape[/color] - a sequence of teeth.
+Each tooth has a height from 1 to 5, and the number of teeth defines the [color=yellow]complexity[/color].
+A key opens a lock only if their shapes [color=yellow]match exactly[/color].
+A key ring picks the matching key from the ones on it by itself.
+
+To see the shape, examine a key or a portable lock while holding it in your hands.
+
+## Installing a lock
+
+A portable lock can be installed into a door or a chest by simply using it on them.
+
+## Lockpicking
+
+A lock can be opened without a key using a lockpick.
+
+<Box>
+  <GuideEntityEmbed Entity="CEBaseLockpick"/>
+</Box>
+
+## Forges
+
+The main way to work with keys and locks is two automatic forges.
+
+<Box>
+  <GuideEntityEmbed Entity="CEKeyForge"/>
+  <GuideEntityEmbed Entity="CELockForge"/>
+</Box>
+
+- The [color=yellow]key forge[/color] makes keys.
+- The [color=yellow]lock forge[/color] makes portable locks.
+
+Each key or lock costs [color=yellow]1 iron bar[/color].
+
+<Box>
+  <GuideEntityEmbed Entity="CEIronBar1"/>
+</Box>
+
+## Manual tuning
+
+The second, alternative "underground" way to work with keys and locks is hand tools.
+
+<Box>
+  <GuideEntityEmbed Entity="CEKeyFile"/>
+  <GuideEntityEmbed Entity="CEScrewdriver"/>
+</Box>
+
+- The [color=yellow]key file[/color] grinds the chosen tooth of a key down by 1, letting you change the key's shape, but only in one direction.
+- The [color=yellow]screwdriver[/color] lowers the chosen tooth of a portable lock by 1. After 1 the tooth wraps back to 5, so any height can be set.
+
+Both tools are used through the action menu (right-click a key or lock with the tool in hand).
+The number of teeth cannot be changed by hand.
+</Document>

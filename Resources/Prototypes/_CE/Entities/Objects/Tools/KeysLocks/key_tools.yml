@@ -11,7 +11,10 @@
     sprite: _CE/Objects/Tools/lockpick.rsi
     state: lockpick_iron
   - type: CELockpick
-    health: 10
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU
   - type: Tag
     tags:
     - CELockpick
@@ -32,6 +35,10 @@
     sprite: _CE/Objects/Tools/lockpick.rsi
     state: file
   - type: CEKeyFile
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU
   - type: UseDelay
     delay: 1.0
   #- type: PhysicalComposition

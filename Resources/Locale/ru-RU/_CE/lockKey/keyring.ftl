@@ -1,13 +1,8 @@
 ce-verb-categories-lock = Замочная скважина
 
-ce-lock-verb-lock-pick-use-text = Надавить:
-ce-lock-verb-lock-pick-use-message = Если вы в правильной последовательности заденете зубчики замка, вы сможете разблокировать его.
-
 ce-lock-key-no-fit = Ключ не подходит!
 
-ce-lock-lock-pick-success = Один из элементов замка тихо щелкает.
-ce-lock-lock-pick-failed = {$lock} сбрасывается в исходное положение.
-ce-lock-lock-pick-failed-break = {$lock} сбрасывается в исходное положение, ломая вашу отмычку.
+ce-lock-lock-pick-busy = Этот замок уже кто-то взламывает.
 
 ce-lock-verb-use-key-text-open = Открыть замок при помощи {$item}
 ce-lock-verb-use-key-text-close = Закрыть замок при помощи {$item}

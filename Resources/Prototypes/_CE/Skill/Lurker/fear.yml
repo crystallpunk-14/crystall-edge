@@ -34,10 +34,10 @@
       components:
       - MobState
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationLurkerFear
+      animation: LurkerFear
 
 - type: entityEffectAnimation
-  id: AnimationLurkerFear
+  id: LurkerFear
   movementSpeed: 0.25
   duration: 1
   events:

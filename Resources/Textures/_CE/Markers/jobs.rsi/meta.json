@@ -8,31 +8,7 @@
   },
   "states": [
     {
-      "name": "adventurer"
-    },
-    {
-      "name": "alchemist"
-    },
-    {
-      "name": "merchant"
-    },
-    {
-      "name": "blacksmith"
-    },
-    {
-      "name": "commandant"
-    },
-    {
       "name": "green"
-    },
-    {
-      "name": "guildmaster"
-    },
-    {
-      "name": "sheriff"
-    },
-    {
-      "name": "workman"
     }
   ]
 }

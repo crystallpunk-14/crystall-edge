@@ -2,16 +2,19 @@
 
 - type: lockType
   id: TavernHall
+  group: Tavern
   complexity: 3
   name: ce-lock-shape-tavern-hall
 
 - type: lockType
   id: TavernStaff
+  group: Tavern
   complexity: 3
   name: ce-lock-shape-tavern-staff
 
 - type: lockType
   id: TavernHeadRoom
+  group: Tavern
   complexity: 5
   name: ce-lock-shape-tavern-head-room
 
@@ -19,50 +22,60 @@
 
 - type: lockType
   id: TavernDorm1
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-1
 
 - type: lockType
   id: TavernDorm2
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-2
 
 - type: lockType
   id: TavernDorm3
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-3
 
 - type: lockType
   id: TavernDorm4
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-4
 
 - type: lockType
   id: TavernDorm5
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-5
 
 - type: lockType
   id: TavernDorm6
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-6
 
 - type: lockType
   id: TavernDorm7
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-7
 
 - type: lockType
   id: TavernDorm8
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-8
 
 - type: lockType
   id: TavernDorm9
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-9
 
 - type: lockType
   id: TavernDorm10
+  group: TavernDorms
   complexity: 3
   name: ce-lock-shape-tavern-dorm-10

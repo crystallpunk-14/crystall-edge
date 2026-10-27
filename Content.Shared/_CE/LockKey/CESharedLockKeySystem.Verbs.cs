@@ -1,5 +1,4 @@
 using Content.Shared._CE.LockKey.Components;
-using Content.Shared.DoAfter;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
 using Robust.Shared.Analyzers;
@@ -63,7 +62,7 @@ public abstract partial class CESharedLockKeySystem
             {
                 Act = () =>
                 {
-                    if (keyComp.Shape[i1] <= -DepthComplexity)
+                    if (keyComp.Shape[i1] <= MinHeight)
                         return;
 
                     if (!_timing.IsFirstTimePredicted)
@@ -87,57 +86,10 @@ public abstract partial class CESharedLockKeySystem
                 IconEntity = GetNetEntity(ent),
                 Category = VerbCategory.CELock,
                 Priority = -i,
-                Disabled = keyComp.Shape[i] <= -DepthComplexity,
+                Disabled = keyComp.Shape[i] <= MinHeight,
                 Text = Loc.GetString("ce-lock-key-file-use-hint", ("num", i)),
                 CloseMenu = false,
             };
-            args.Verbs.Add(verb);
-        }
-    }
-
-    [SubscribeLocalEvent]
-    private void GetLockpickVerbs(Entity<CELockpickComponent> lockPick, ref GetVerbsEvent<UtilityVerb> args)
-    {
-        if (!args.CanInteract || !args.CanAccess)
-            return;
-
-        if (!_lockQuery.TryComp(args.Target, out var lockComp) || !lockComp.Locked)
-            return;
-
-        if (!_ceLockQuery.HasComp(args.Target))
-            return;
-
-        var target = args.Target;
-        var user = args.User;
-
-        for (var i = DepthComplexity; i >= -DepthComplexity; i--)
-        {
-            var height = i;
-            var verb = new UtilityVerb()
-            {
-                Act = () =>
-                {
-                    _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
-                        user,
-                        lockPick.Comp.HackTime,
-                        new LockPickHackDoAfterEvent(height),
-                        target,
-                        target,
-                        lockPick)
-                    {
-                        BreakOnDamage = true,
-                        BreakOnMove = true,
-                        BreakOnDropItem = true,
-                        BreakOnHandChange = true,
-                    });
-                },
-                Text = Loc.GetString("ce-lock-verb-lock-pick-use-text") + $" {height}",
-                Message = Loc.GetString("ce-lock-verb-lock-pick-use-message"),
-                Category = VerbCategory.CELock,
-                Priority = height,
-                CloseMenu = false,
-            };
-
             args.Verbs.Add(verb);
         }
     }
@@ -173,8 +125,8 @@ public abstract partial class CESharedLockKeySystem
                         return;
 
                     lockComp.Shape[i1]--;
-                    if (lockComp.Shape[i1] < -DepthComplexity)
-                        lockComp.Shape[i1] = DepthComplexity; //Cycle back to max
+                    if (lockComp.Shape[i1] < MinHeight)
+                        lockComp.Shape[i1] = MaxHeight; //Cycle back to max
 
                     DirtyField(target, lockComp, nameof(CELockComponent.Shape));
                     _audio.PlayPvs(ent.Comp.UseSound, Transform(target).Coordinates);

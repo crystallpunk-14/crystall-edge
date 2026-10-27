@@ -182,7 +182,7 @@
 #MARK: Seeds
 - type: tradeOffer
   id: BuySeedWheat10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -192,7 +192,7 @@
 
 - type: tradeOffer
   id: BuySeedPumpkin10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -202,7 +202,7 @@
 
 - type: tradeOffer
   id: BuySeedCabbage10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -212,7 +212,7 @@
 
 - type: tradeOffer
   id: BuySeedCucumber10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -222,7 +222,7 @@
 
 - type: tradeOffer
   id: BuySeedTomato10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -232,7 +232,7 @@
 
 - type: tradeOffer
   id: BuySeedPepper10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -242,7 +242,7 @@
 
 - type: tradeOffer
   id: BuySeedCarrot10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -252,7 +252,7 @@
 
 - type: tradeOffer
   id: BuySeedCotton10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -262,7 +262,7 @@
 
 - type: tradeOffer
   id: BuySeedSunflower10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -272,7 +272,7 @@
 
 - type: tradeOffer
   id: BuySeedCorn10
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -282,7 +282,7 @@
 
 - type: tradeOffer
   id: BuySeedAppleTree
-  weight: 0.2
+  weight: 0.3
   shop: Horticulture
   pay:
     bonus: 1

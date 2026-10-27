@@ -1,0 +1,23 @@
+- type: workbenchRecipe
+  id: KeyForgeKey
+  tag: CERecipeKeyForge
+  workbench: CEKeyForge
+  craftTime: 3
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  result: CEKeyIronBlank
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: LockForgeLock
+  tag: CERecipeLockForge
+  workbench: CELockForge
+  craftTime: 3
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  result: CELockIron
+  resultCount: 1
