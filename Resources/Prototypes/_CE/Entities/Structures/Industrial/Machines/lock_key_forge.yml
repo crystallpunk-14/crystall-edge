@@ -16,6 +16,7 @@
     snapCardinals: true
     drawdepth: Mobs
     sprite: _CE/Structures/Industrial/melting_furnace.rsi
+    color: "#00aaff"
     state: base
   - type: Icon
     sprite: _CE/Structures/Industrial/melting_furnace.rsi

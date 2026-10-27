@@ -74,7 +74,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
         return newData;
     }
 
-    private bool TrySetShapeFromProto(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
+    public bool TrySetShapeFromProto(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
     {
         if (!TrySetShape((keyEnt, keyEnt.Comp), GetKeyLockData(type)))
             return false;

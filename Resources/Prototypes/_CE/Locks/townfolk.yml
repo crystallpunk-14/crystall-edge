@@ -30,15 +30,18 @@
 
 - type: lockType
   id: KeyKeeperHall
+  group: Guard
   complexity: 3
   name: ce-lock-shape-key-keeper-hall
 
 - type: lockType
   id: KeyKeeperStorage
+  group: Guard
   complexity: 4
   name: ce-lock-shape-key-keeper-storage
 
 - type: lockType
   id: KeyKeeperTechnical
+  group: Guard
   complexity: 5
   name: ce-lock-shape-key-keeper-technical

@@ -21,8 +21,7 @@ public sealed partial class CELockTypePrototype : IPrototype
     public int Complexity = 3;
 
     /// <summary>
-    /// Group Affiliation. Used for “abstract key” mechanics,
-    /// where the key takes one of the free forms from identical rooms (10 different kinds of tavern rooms for example).
+    /// Group this lock type belongs to. Key racks of this group get a key for it.
     /// </summary>
     [DataField]
     public ProtoId<CELockGroupPrototype>? Group;
