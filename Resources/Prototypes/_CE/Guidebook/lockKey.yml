@@ -1,0 +1,7 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CELocksKeysGuideRU
+  name: Ключи и замки
+  text: "/ServerInfo/_CE/Guidebook_RU/LockKey/LocksKeys.xml"
+  filterEnabled: True

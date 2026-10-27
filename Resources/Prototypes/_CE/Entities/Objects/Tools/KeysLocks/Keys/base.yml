@@ -14,6 +14,9 @@
   - type: Sprite
     sprite: _CE/Objects/Tools/key.rsi
   - type: CEKey
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideRU
   - type: EmitSoundOnLand
     sound:
       path: /Audio/_CE/Effects/key_drop.ogg

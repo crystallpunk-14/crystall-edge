@@ -17,6 +17,9 @@
         variation: 0.05
   - type: CELock
     canEmbedded: true
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideRU
 
 - type: entity
   parent: CEBaseLock

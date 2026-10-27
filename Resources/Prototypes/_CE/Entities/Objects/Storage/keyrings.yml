@@ -7,6 +7,9 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEKeyRing
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideRU
   - type: Sprite
     sprite: _CE/Objects/Storage/keyring.rsi
     layers:

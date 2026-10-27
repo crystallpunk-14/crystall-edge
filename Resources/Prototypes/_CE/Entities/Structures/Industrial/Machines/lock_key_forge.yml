@@ -1,0 +1,51 @@
+- type: entity
+  parent: CEBaseAutoCrafter
+  id: CEBaseLockKeyForge
+  abstract: true
+  components:
+  - type: ActivatableUI
+    key: enum.CELockKeyForgeUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CELockKeyForgeUiKey.Key:
+        type: CELockKeyForgeBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: CELockKeyForge
+  - type: Sprite # TODO: placeholder sprite
+    snapCardinals: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/melting_furnace.rsi
+    state: base
+  - type: Icon
+    sprite: _CE/Structures/Industrial/melting_furnace.rsi
+    state: base
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideRU
+
+- type: entity
+  parent: CEBaseLockKeyForge
+  id: CEKeyForge
+  name: key forge
+  description: An automated machine that cuts keys of the configured shape out of iron bars.
+  components:
+  - type: Machine
+    board: CEMachineCoreKeyForge
+  - type: CEWorkbench
+    recipeTags:
+    - CERecipeKeyForge
+    selectedRecipe: KeyForgeKey
+
+- type: entity
+  parent: CEBaseLockKeyForge
+  id: CELockForge
+  name: lock forge
+  description: An automated machine that assembles locks of the configured shape out of iron bars.
+  components:
+  - type: Machine
+    board: CEMachineCoreLockForge
+  - type: CEWorkbench
+    recipeTags:
+    - CERecipeLockForge
+    selectedRecipe: LockForgeLock
