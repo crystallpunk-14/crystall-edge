@@ -95,16 +95,6 @@ public abstract partial class CESharedLockKeySystem
         DirtyFields(ent, ent.Comp, null,
             nameof(CELockComponent.LockPickStatus),
             nameof(CELockComponent.LockPickFailures));
-
-        if (!_net.IsServer)
-            return;
-
-        lockpick.Health--;
-        if (lockpick.Health > 0)
-            return;
-
-        _ui.CloseUi(ent.Owner, CELockpickUiKey.Key);
-        QueueDel(args.Used);
     }
 
     [SubscribeLocalEvent]

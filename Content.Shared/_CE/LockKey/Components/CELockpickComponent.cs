@@ -9,10 +9,7 @@ namespace Content.Shared._CE.LockKey.Components;
 public sealed partial class CELockpickComponent : Component
 {
     [DataField]
-    public int Health = 10;
-
-    [DataField]
-    public TimeSpan HackTime = TimeSpan.FromSeconds(1.0f);
+    public TimeSpan HackTime = TimeSpan.FromSeconds(0.5f);
 
     [DataField]
     public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/_CE/Effects/lockpick_use.ogg")
