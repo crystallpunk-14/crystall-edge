@@ -2,30 +2,36 @@
 
 - type: lockType
   id: EngineeringHall
+  group: Engineering
   complexity: 3
   name: ce-lock-shape-engineering-hall
 
 - type: lockType
   id: EngineeringStaff
+  group: Engineering
   complexity: 5
   name: ce-lock-shape-engineering-staff
 
 - type: lockType
   id: EngineeringGenerator
+  group: Engineering
   complexity: 5
   name: ce-lock-shape-engineering-generator
 
 - type: lockType
   id: EngineeringTunnels
+  group: Engineering
   complexity: 4
   name: ce-lock-shape-engineering-tunnels
 
 - type: lockType
   id: EngineeringBrigadier
+  group: Engineering
   complexity: 6
   name: ce-lock-shape-engineering-brigadier
 
 - type: lockType
   id: EngineeringStorage
+  group: Engineering
   complexity: 4
   name: ce-lock-shape-engineering-storage

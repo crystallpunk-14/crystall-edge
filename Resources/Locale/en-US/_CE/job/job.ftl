@@ -38,6 +38,9 @@ ce-job-desc-technician = Perform technical repairs and maintenance work. Assist 
 ce-job-name-bard = Bard
 ce-job-desc-bard = Music, fun, and jokes are your job and bread. Make this city's life more enjoyable, and try not to die in poverty.
 
+ce-job-name-key-keeper = Key Keeper
+ce-job-desc-key-keeper = Every door in the city answers to you. Cut keys, change locks, and decide who gets to go where.
+
 ce-job-name-townfolk = Jobless
 ce-job-desc-townfolk = A free citizen who has saved enough money to take a week off and do whatever their heart desires.
 

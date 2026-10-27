@@ -20,6 +20,21 @@ public sealed partial class CELockComponent : Component
     public int LockPickStatus = 0;
 
     /// <summary>
+    /// Failed lockpick attempts counter. The UI uses it to play the fail animation.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int LockPickFailures = 0;
+
+    /// <summary>
+    /// The only player currently picking this lock.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public EntityUid? Picker;
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? Lockpick;
+
+    /// <summary>
     /// If not null, automatically generates a lock for the specified category on initialization. This ensures that the lock will be opened with a key of the same category.
     /// </summary>
     [DataField, AutoNetworkedField]

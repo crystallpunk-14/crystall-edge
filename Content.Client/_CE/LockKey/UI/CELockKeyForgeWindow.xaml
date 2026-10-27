@@ -1,0 +1,32 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+               Title="{Loc 'ce-lock-forge-ui-title'}"
+               SetSize="460 560"
+               MinSize="400 440">
+    <BoxContainer Orientation="Vertical" Margin="5">
+        <!-- Preview of the crafted item -->
+        <EntityPrototypeView Name="ResultView"
+                             Scale="3,3"
+                             MinSize="96 96"
+                             MaxSize="96 96"
+                             HorizontalAlignment="Center"
+                             Margin="0 5" />
+
+        <!-- Shape editor, applied on every change -->
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+            <Button Name="RemoveToothButton" Text="-" MinWidth="30" />
+            <Label Name="ComplexityLabel" Margin="10 0" />
+            <Button Name="AddToothButton" Text="+" MinWidth="30" />
+        </BoxContainer>
+        <BoxContainer Name="TeethContainer" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5" />
+
+        <controls:HLine Color="#404040" Thickness="2" Margin="0 5" />
+
+        <!-- Templates from the user's inventory -->
+        <Label Text="{Loc 'ce-lock-forge-ui-templates'}" />
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+            <BoxContainer Name="TemplatesContainer" Orientation="Vertical" HorizontalExpand="True" />
+        </ScrollContainer>
+        <Label Name="NoTemplatesLabel" Text="{Loc 'ce-lock-forge-ui-no-templates'}" />
+    </BoxContainer>
+</DefaultWindow>

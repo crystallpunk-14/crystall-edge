@@ -177,6 +177,8 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             resultEntities.Add(resultEntity);
         }
 
+        RaiseLocalEvent(workbench, new CEWorkbenchCraftedEvent(resultEntities));
+
         // Teleport result to workbench AFTER crafting
         foreach (var resultEntity in resultEntities)
         {
@@ -190,4 +192,12 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             _physics.WakeBody(resultEntity);
         }
     }
+}
+
+/// <summary>
+/// Raised on the workbench after the recipe results are spawned, before they are placed in the world.
+/// </summary>
+public sealed class CEWorkbenchCraftedEvent(HashSet<EntityUid> results) : EntityEventArgs
+{
+    public readonly HashSet<EntityUid> Results = results;
 }

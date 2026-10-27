@@ -3,16 +3,13 @@ using Robust.Shared.Audio;
 namespace Content.Shared._CE.LockKey.Components;
 
 /// <summary>
-/// A component of a lock that stores its keyhole shape, complexity, and current state.
+/// A lockpick. Using it on a locked <see cref="CELockComponent"/> opens the lockpicking window.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CELockpickComponent : Component
 {
     [DataField]
-    public int Health = 10;
-
-    [DataField]
-    public TimeSpan HackTime = TimeSpan.FromSeconds(1.0f);
+    public TimeSpan HackTime = TimeSpan.FromSeconds(0.5f);
 
     [DataField]
     public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/_CE/Effects/lockpick_use.ogg")

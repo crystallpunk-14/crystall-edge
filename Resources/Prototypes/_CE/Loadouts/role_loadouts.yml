@@ -5,6 +5,7 @@
   groups:
   - CEGeneralBag
   - CETavernEyes
+  - CETavernmasterHead
   - CETavernmasterCloak
   - CETavernShirt
   - CETavernPants
@@ -15,7 +16,7 @@
   id: JobCEChef
   groups:
   - CEGeneralBag
-  - CEChefHead 
+  - CEChefHead
   - CETavernEyes
   - CETavernCloak
   - CETavernShirt
@@ -119,4 +120,16 @@
   - CEBardPants #
   - CEBardShoes #
   - CEBardTool #
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEKeyKeeper
+  groups:
+  - CEGeneralBag
+  - CEKeyKeeperHead #
+  - CEGeneralEyes
+  - CEGeneralGloves
+  - CEKeyKeeperShirt #
+  - CEKeyKeeperPants #
+  - CEGeneralShoes
   - CEGeneralInstruments

@@ -1,0 +1,16 @@
+# Key rack groups. A key rack collects keys for every lock type of its groups found on the station.
+
+- type: lockGroup
+  id: Engineering
+
+- type: lockGroup
+  id: Tavern
+
+- type: lockGroup
+  id: TavernDorms
+
+- type: lockGroup
+  id: Guard
+
+- type: lockGroup
+  id: Guild
