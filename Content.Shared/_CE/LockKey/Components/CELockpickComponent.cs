@@ -3,7 +3,7 @@ using Robust.Shared.Audio;
 namespace Content.Shared._CE.LockKey.Components;
 
 /// <summary>
-/// A component of a lock that stores its keyhole shape, complexity, and current state.
+/// A lockpick. Using it on a locked <see cref="CELockComponent"/> opens the lockpicking window.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CELockpickComponent : Component

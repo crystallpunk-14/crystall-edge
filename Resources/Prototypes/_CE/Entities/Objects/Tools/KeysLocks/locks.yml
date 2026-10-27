@@ -27,11 +27,11 @@
     state: lock_iron
   - type: CELock
     shape:
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10

@@ -1,0 +1,4 @@
+- files: ["part1.png", "part2.png", "part3.png", "pin.png", "pin_doned.png", "pin_move.png", "pin_failed.png", "power.png", "power_selected.png", "lockpick.png", "done.png", "select.png"]
+  license: "All rights reserved"
+  copyright: "Created by ezik2008 (Discord)"
+  source: "https://github.com/crystallpunk-14/crystall-edge"
