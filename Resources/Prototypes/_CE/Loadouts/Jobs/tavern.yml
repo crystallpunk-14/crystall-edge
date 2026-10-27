@@ -18,7 +18,7 @@
 - type: loadout
   id: CEClothingCloakTavernmasterJacket2
   equipment:
-    cloak: CEClothingCloakTavernmasterJacket2 
+    cloak: CEClothingCloakTavernmasterJacket2
 
 ## Tavern staff
 
@@ -99,6 +99,17 @@
   id: CEClothingHeadBeretBartender
   equipment:
     head: CEClothingHeadBeretBartender
+
+- type: loadoutGroup
+  id: CETavernmasterHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadBowlerTavernmaster
+
+- type: loadout
+  id: CEClothingHeadBowlerTavernmaster
+  equipment:
+    head: CEClothingHeadBowlerTavernmaster
 
 # Shirt
 
