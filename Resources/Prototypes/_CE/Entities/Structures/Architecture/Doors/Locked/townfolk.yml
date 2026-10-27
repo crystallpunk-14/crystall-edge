@@ -89,11 +89,14 @@
     locked: true
 
 - type: entity
-  parent:
-  - CEIronDoorKeyKeeperHall
-  - CEIronDoorWindowedMirrored
+  parent: CEIronDoorWindowedMirrored
   id: CEIronDoorKeyKeeperHallMirrored
   suffix: Key Keeper Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: KeyKeeperHall
+  - type: Lock
+    locked: false
 
 - type: entity
   parent: CEIronDoor
