@@ -125,9 +125,10 @@
   id: JobCEKeyKeeper
   groups:
   - CEGeneralBag
+  - CEKeyKeeperHead #
   - CEGeneralEyes
   - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CEKeyKeeperShirt #
+  - CEKeyKeeperPants #
   - CEGeneralShoes
   - CEGeneralInstruments

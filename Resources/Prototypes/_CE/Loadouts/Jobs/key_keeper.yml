@@ -1,0 +1,39 @@
+# Head
+
+- type: loadoutGroup
+  id: CEKeyKeeperHead
+  name: ce-loadout-head
+  minLimit: 0
+  loadouts:
+  - CEClothingHeadKeyKeeperCap
+
+- type: loadout
+  id: CEClothingHeadKeyKeeperCap
+  equipment:
+    head: CEClothingHeadKeyKeeperCap
+
+# Shirt
+
+- type: loadoutGroup
+  id: CEKeyKeeperShirt
+  name: ce-loadout-shirt
+  loadouts:
+  - CEClothingShirtKeyKeeper
+
+- type: loadout
+  id: CEClothingShirtKeyKeeper
+  equipment:
+    shirt: CEClothingShirtKeyKeeper
+
+# Pants
+
+- type: loadoutGroup
+  id: CEKeyKeeperPants
+  name: ce-loadout-pants
+  loadouts:
+  - CEClothingPantsKeyKeeper
+
+- type: loadout
+  id: CEClothingPantsKeyKeeper
+  equipment:
+    pants: CEClothingPantsKeyKeeper

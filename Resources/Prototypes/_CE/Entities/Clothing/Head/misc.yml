@@ -96,3 +96,14 @@
     sprite: _CE/Clothing/Head/Engineering/bowler_leather_hat.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Engineering/bowler_leather_hat.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadKeyKeeperCap
+  name: key keeper cap
+  description: A cap worn by the keeper of keys.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
