@@ -17,10 +17,16 @@ public sealed partial class CEAchievementPrototype : IPrototype
     public LocId Name = string.Empty;
 
     /// <summary>
-    /// Description of the achievement.
+    /// How to earn the achievement.
     /// </summary>
     [DataField(required: true)]
     public LocId Desc = string.Empty;
+
+    /// <summary>
+    /// What the achievement unlocks, shown in the achievements window.
+    /// </summary>
+    [DataField]
+    public LocId? Unlocks;
 
     /// <summary>
     /// Icon of the achievement. Shown tinted black until the achievement is earned.
