@@ -13,6 +13,10 @@ ce-achievement-rounds-finished-alive-1-name = Things Get Tangled: Night Hunt
 ce-achievement-rounds-finished-alive-1-desc = Finish a round without dying
 ce-achievement-rounds-finished-alive-1-unlocks = Werewolf role and Sheriff job
 
+ce-achievement-rounds-finished-alive-2-name = Things Get Tangled: Journey into the Murk
+ce-achievement-rounds-finished-alive-2-desc = Finish 2 rounds without dying
+ce-achievement-rounds-finished-alive-2-unlocks = Adventurer job
+
 ce-achievement-rounds-finished-alive-3-name = Things Get Tangled: Hunt for the Brotherhood
 ce-achievement-rounds-finished-alive-3-desc = Finish 3 rounds without dying
 ce-achievement-rounds-finished-alive-3-unlocks = Brotherhood and Bounty Hunter roles

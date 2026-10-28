@@ -99,8 +99,6 @@ public sealed partial class CEHumanoidProfileEditor
 
             SecretRoleList.AddChild(category);
 
-            Array.Sort(roles, (a, b) => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.CurrentCultureIgnoreCase));
-
             foreach (var role in roles)
             {
                 var roleContainer = new BoxContainer()

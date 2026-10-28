@@ -13,6 +13,10 @@ ce-achievement-rounds-finished-alive-1-name = Все становится зап
 ce-achievement-rounds-finished-alive-1-desc = Закончите раунд, не умерев
 ce-achievement-rounds-finished-alive-1-unlocks = роль Оборотня и профессия Шерифа
 
+ce-achievement-rounds-finished-alive-2-name = Все становится запутаннее: Путешествие во мрак
+ce-achievement-rounds-finished-alive-2-desc = Закончите 2 раунда, не умерев
+ce-achievement-rounds-finished-alive-2-unlocks = профессия Авантюриста
+
 ce-achievement-rounds-finished-alive-3-name = Все становится запутаннее: Охота на братство
 ce-achievement-rounds-finished-alive-3-desc = Закончите 3 раунда, не умерев
 ce-achievement-rounds-finished-alive-3-unlocks = роли Братства и Охотника за головами

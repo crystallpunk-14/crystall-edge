@@ -15,6 +15,7 @@ public sealed partial class CERoundsFinishedAliveAchievementSystem : EntitySyste
     private static readonly (long Rounds, ProtoId<CEAchievementPrototype> Achievement)[] OverallThresholds =
     [
         (1, "RoundsFinishedAlive1"),
+        (2, "RoundsFinishedAlive2"),
         (3, "RoundsFinishedAlive3"),
     ];
 

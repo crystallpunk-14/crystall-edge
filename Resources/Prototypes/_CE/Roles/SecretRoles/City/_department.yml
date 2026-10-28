@@ -7,12 +7,12 @@
   roles:
   - Sheriff
   - Civilian
-  - DarkVessel
   - Bodyguard
   - Helper
-  - BountyHunter
   - Priest
   - Immortal
+  - BountyHunter
+  - DarkVessel
   objectives: !type:EntSelector
     id: CEObjectiveCityRestoreLucsonSphere
 
