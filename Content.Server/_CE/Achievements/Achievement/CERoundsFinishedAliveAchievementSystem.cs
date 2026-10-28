@@ -5,24 +5,32 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.Achievements.Achievement;
 
 /// <summary>
-/// Grants <see cref="Achievement"/> once the player has finished enough rounds alive.
+/// Grants achievements once the player has finished enough rounds alive.
 /// </summary>
 public sealed partial class CERoundsFinishedAliveAchievementSystem : EntitySystem
 {
     [Dependency] private CEAchievementsSystem _achievement = default!;
 
-    private static readonly ProtoId<CEAchievementPrototype> Achievement = "RoundsFinishedAlive3";
-    private const long RequiredRounds = 3;
+    private static readonly (long Rounds, ProtoId<CEAchievementPrototype> Achievement)[] Thresholds =
+    [
+        (1, "RoundsFinishedAlive1"),
+        (3, "RoundsFinishedAlive3"),
+    ];
 
     [SubscribeLocalEvent]
     private void OnStatisticUpdated(CEStatisticUpdatedEvent ev)
     {
-        if (ev.GetTotalValue(CEStatistics.RoundsFinishedAlive) < RequiredRounds)
-            return;
+        var rounds = ev.GetTotalValue(CEStatistics.RoundsFinishedAlive);
 
-        if (_achievement.HasCachedAchievement(ev.UserId, Achievement))
-            return;
+        foreach (var (required, achievement) in Thresholds)
+        {
+            if (rounds < required)
+                continue;
 
-        _ = _achievement.AddPlayerAchievementAsync(ev.UserId, Achievement);
+            if (_achievement.HasCachedAchievement(ev.UserId, achievement))
+                continue;
+
+            _ = _achievement.AddPlayerAchievementAsync(ev.UserId, achievement);
+        }
     }
 }

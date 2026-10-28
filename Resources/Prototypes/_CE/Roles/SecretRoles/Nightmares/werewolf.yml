@@ -4,6 +4,9 @@
   description: ce-secret-role-description-werewolf
   icon: CESecretRoleIconWerewolf
   victoryAchievement: WerewolfWin
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive1
   skills:
   - Murkwalker
   - TimeSense

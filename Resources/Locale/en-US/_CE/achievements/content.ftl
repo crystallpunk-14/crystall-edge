@@ -13,6 +13,10 @@ ce-achievement-city-win-name = Guarding the Light
 ce-achievement-city-win-desc = Save the city while playing for the Zellasian Empire faction
 ce-achievement-city-win-unlocks = Sheriff job
 
+ce-achievement-rounds-finished-alive-1-name = Things Get Tangled: Night Hunt
+ce-achievement-rounds-finished-alive-1-desc = Finish a round without dying
+ce-achievement-rounds-finished-alive-1-unlocks = Werewolf role
+
 ce-achievement-rounds-finished-alive-3-name = Things Get Tangled: Hunt for the Brotherhood
 ce-achievement-rounds-finished-alive-3-desc = Finish 3 rounds without dying
 ce-achievement-rounds-finished-alive-3-unlocks = Brotherhood and Bounty Hunter roles

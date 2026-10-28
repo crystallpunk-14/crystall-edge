@@ -13,6 +13,10 @@ ce-achievement-city-win-name = На страже света
 ce-achievement-city-win-desc = Спасите город, играя за фракцию Империи Зелласиан
 ce-achievement-city-win-unlocks = профессия Шерифа
 
+ce-achievement-rounds-finished-alive-1-name = Все становится запутаннее: Ночная охота
+ce-achievement-rounds-finished-alive-1-desc = Закончите раунд, не умерев
+ce-achievement-rounds-finished-alive-1-unlocks = роль Оборотня
+
 ce-achievement-rounds-finished-alive-3-name = Все становится запутаннее: Охота на братство
 ce-achievement-rounds-finished-alive-3-desc = Закончите 3 раунда, не умерев
 ce-achievement-rounds-finished-alive-3-unlocks = роли Братства и Охотника за головами
