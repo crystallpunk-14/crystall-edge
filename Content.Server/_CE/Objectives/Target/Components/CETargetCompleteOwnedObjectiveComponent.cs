@@ -23,7 +23,7 @@ public sealed partial class CETargetCompleteOwnedObjectiveComponent : Component
 
     /// <summary>
     /// Objectives blacklisted and ignored for the purposes of this condition - used to prevent
-    /// infinite loops, e.g. a lover targeting another lover.
+    /// infinite loops, e.g. a helper targeting another helper.
     /// </summary>
     [DataField]
     public EntityWhitelist? ObjectiveBlacklist;

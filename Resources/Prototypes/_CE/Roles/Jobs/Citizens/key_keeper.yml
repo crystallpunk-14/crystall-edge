@@ -7,6 +7,10 @@
   startingGear: CEKeyKeeperGear
   icon: CEJobIconKeyKeeper
   supervisors: ce-job-supervisors-empire
+  special: 
+  - !type:CELearnSkillsSpecial
+    skills: 
+    - ImperialSalary100
 
 - type: startingGear
   id: CEKeyKeeperGear

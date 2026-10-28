@@ -1,5 +1,5 @@
-ce-lover-assist-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete their objectives
-ce-lover-survive-objective-title = Keep {$targetName}, {CAPITALIZE($job)} alive
+ce-helper-assist-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete their objectives
+ce-bodyguard-protect-objective-title = Keep {$targetName}, {CAPITALIZE($job)} alive
 ce-priest-protect-objective-title = Keep {$targetName}, {CAPITALIZE($job)} alive
 ce-brotherhood-patronage-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete all their objectives
 ce-brotherhood-debt-objective-title = Put {$targetName}, {CAPITALIZE($job)} in critical condition 3 times without killing them

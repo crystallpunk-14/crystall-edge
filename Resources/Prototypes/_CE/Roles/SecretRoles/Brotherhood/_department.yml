@@ -46,7 +46,7 @@
   - type: CETargetExcludeHolderDepartment
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
-      components: # avoid an infinite loop through e.g. a lover's assist objective
+      components: # avoid an infinite loop through e.g. a helper's assist objective
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:

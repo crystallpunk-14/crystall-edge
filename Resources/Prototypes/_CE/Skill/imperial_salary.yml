@@ -1,3 +1,4 @@
+#MARK: 2 GP
 - type: skill
   id: ImperialSalary200
   icon:
@@ -24,3 +25,31 @@
     event: !type:CESalaryActionEvent
   - type: CESalary
     salary: 200
+
+#MARK: 1 GP
+- type: skill
+  id: ImperialSalary100
+  icon:
+    sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
+    state: coin1
+  effect: !type:AddAction
+    action: CEActionImperialSalary100
+
+- type: entity
+  id: CEActionImperialSalary100
+  name: Imperial salary
+  description: The Empire pays its servants 1 gold coin at every dawn. Collect the salary accumulated so far.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    checkCanInteract: false
+    useDelay: 10
+  - type: Sprite
+    sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
+    layers:
+    - state: coin1
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:CESalaryActionEvent
+  - type: CESalary
+    salary: 100
