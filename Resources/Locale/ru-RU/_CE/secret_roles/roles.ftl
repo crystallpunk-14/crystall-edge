@@ -17,8 +17,11 @@ ce-secret-role-description-dark-vessel = Вы не совсем человек -
 ce-secret-role-name-thief = Вор
 ce-secret-role-description-thief = Угроза городского масштаба? Отличная возможность подзаработать деньжат и прикарманить чужие ценности, пока все в панике.
 
-ce-secret-role-name-lover = Влюблённый
-ce-secret-role-description-lover = Вы одержимы одним особенным человеком. Вы готовы на все чтобы помочь ему.
+ce-secret-role-name-bodyguard = Телохранитель
+ce-secret-role-description-bodyguard = Вы поклялись защищать одного человека. Его жизнь в ваших руках.
+
+ce-secret-role-name-helper = Помощник
+ce-secret-role-description-helper = Вы обязаны помочь выполнить задачи другого человека. Его успех - ваш успех.
 
 ce-secret-role-name-recruiter = Вербовщик
 ce-secret-role-description-recruiter = Вы умеете замечать тех, кого подвёл город. Приведите их в братство - чем больше рук, тем безопаснее всем.

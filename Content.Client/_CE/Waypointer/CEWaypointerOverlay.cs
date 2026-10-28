@@ -8,6 +8,7 @@ using Content.Shared.Station.Components;
 using Content.Shared._CE.Waypointer;
 using Content.Shared.Whitelist;
 using Robust.Client.Player;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
@@ -75,6 +76,10 @@ public sealed partial class CEWaypointerOverlay : Overlay
                 || !prototype.WorkOnGrid && playerXform.GridUid != null)
                 continue;
 
+            // An empty registry would match every entity.
+            if (prototype.TrackedComponents.Count == 0)
+                continue;
+
             var waypointQuery = _entity.CompRegistryQueryEnumerator(prototype.TrackedComponents);
             while (waypointQuery.MoveNext(out var target))
             {
@@ -92,55 +97,76 @@ public sealed partial class CEWaypointerOverlay : Overlay
                         target = mainGrid.Value;
                 }
 
-                // Check if it has the Transform Component
-                if (!_entity.TryGetComponent<TransformComponent>(target, out var targetXform)
-                    // Check if the target is even on the same map.
-                    || targetXform.MapID != args.MapId)
-                    continue;
-
-                _physics.TryGetDistance(player, target, out var distance, playerXform, targetXform);
-
-                // Too close to point in any meaningful direction (e.g. the target is in the player's own inventory).
-                if (distance < MinDistance)
-                    continue;
-
-                if (distance > prototype.MaxRange)
-                    continue;
-
-                // The NTStationWaypointer has 5 stages and 20 range. With calculations, it'll check if it's either in:
-                // 0-39, 40-89, 80-119, 120-159, 160-200 range and use the respective waypointer sprite for it.
-                var increments = prototype.MaxRange / prototype.WaypointerStates;
-                var waypointerState = Math.Truncate(distance / increments) + 1;
-                var stateName = "marker" + waypointerState;
-
-                var rsi = new SpriteSpecifier.Rsi(new ResPath(prototype.RsiPath), stateName);
-                var texture = _sprite.Frame0(rsi);
-
-                var positionA = _transform.GetWorldPosition(playerXform);
-                Vector2 positionB;
-
-                // Check if it's a grid.
-                if (_entity.TryGetComponent<MapGridComponent>(target, out var map))
-                {
-                    var gridData = _transform.GetWorldPositionRotation(targetXform);
-                    // Adding the centerVector will get the position of the center from the grid.
-                    positionB = gridData.WorldPosition + gridData.WorldRotation.RotateVec(map.LocalAABB.Center);
-                }
-                else
-                {
-                    // Else use the current world position.
-                    positionB = _transform.GetWorldPosition(targetXform);
-                }
-
-                var dir = positionA - positionB;
-                var angle = dir.ToWorldAngle();
-
-                // This is to draw the Waypointer sprites directly ontop of the entity sprite.
-                var offset = new Vector2(texture.Height / 2, texture.Width / 2) / EyeManager.PixelsPerMeter;
-
-                handle.DrawTexture(texture, positionA - offset, angle, prototype.Color);
+                DrawWaypointer(handle, prototype, player, playerXform, target, args.MapId);
             }
             handle.SetTransform(Matrix3x2.Identity);
         }
+
+        foreach (var (target, waypointerProtoId) in waypointer.TrackedEntities)
+        {
+            if (!_prototype.Resolve(waypointerProtoId, out var prototype)
+                || !prototype.WorkOnGrid && playerXform.GridUid != null)
+                continue;
+
+            DrawWaypointer(handle, prototype, player, playerXform, target, args.MapId);
+        }
+        handle.SetTransform(Matrix3x2.Identity);
+    }
+
+    private void DrawWaypointer(
+        DrawingHandleWorld handle,
+        CEWaypointerPrototype prototype,
+        EntityUid player,
+        TransformComponent playerXform,
+        EntityUid target,
+        MapId mapId)
+    {
+        // Check if it has the Transform Component (it may be outside of PVS)
+        if (!_entity.TryGetComponent<TransformComponent>(target, out var targetXform)
+            // Check if the target is even on the same map.
+            || targetXform.MapID != mapId)
+            return;
+
+        _physics.TryGetDistance(player, target, out var distance, playerXform, targetXform);
+
+        // Too close to point in any meaningful direction (e.g. the target is in the player's own inventory).
+        if (distance < MinDistance)
+            return;
+
+        if (distance > prototype.MaxRange)
+            return;
+
+        // The NTStationWaypointer has 5 stages and 20 range. With calculations, it'll check if it's either in:
+        // 0-39, 40-89, 80-119, 120-159, 160-200 range and use the respective waypointer sprite for it.
+        var increments = prototype.MaxRange / prototype.WaypointerStates;
+        var waypointerState = Math.Min(Math.Truncate(distance / increments) + 1, prototype.WaypointerStates);
+        var stateName = "marker" + waypointerState;
+
+        var rsi = new SpriteSpecifier.Rsi(new ResPath(prototype.RsiPath), stateName);
+        var texture = _sprite.Frame0(rsi);
+
+        var positionA = _transform.GetWorldPosition(playerXform);
+        Vector2 positionB;
+
+        // Check if it's a grid.
+        if (_entity.TryGetComponent<MapGridComponent>(target, out var map))
+        {
+            var gridData = _transform.GetWorldPositionRotation(targetXform);
+            // Adding the centerVector will get the position of the center from the grid.
+            positionB = gridData.WorldPosition + gridData.WorldRotation.RotateVec(map.LocalAABB.Center);
+        }
+        else
+        {
+            // Else use the current world position.
+            positionB = _transform.GetWorldPosition(targetXform);
+        }
+
+        var dir = positionA - positionB;
+        var angle = dir.ToWorldAngle();
+
+        // This is to draw the Waypointer sprites directly ontop of the entity sprite.
+        var offset = new Vector2(texture.Height / 2, texture.Width / 2) / EyeManager.PixelsPerMeter;
+
+        handle.DrawTexture(texture, positionA - offset, angle, prototype.Color);
     }
 }

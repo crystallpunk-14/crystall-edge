@@ -1,0 +1,29 @@
+- type: secretRole
+  id: Helper
+  name: ce-secret-role-name-helper
+  description: ce-secret-role-description-helper
+  icon: CESecretRoleIconHelper
+  skills:
+  - Attachment
+  objectives: !type:EntSelector
+    id: CEObjectiveHelperAssist
+
+- type: entity
+  id: CEObjectiveHelperAssist
+  name: Common cause
+  description: You must help another person complete their objectives. Their success is your success.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Icons/SecretRoles/city.rsi
+    state: helper
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-helper-assist-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetCompleteOwnedObjective
+    objectiveBlacklist:
+      components: # avoid an infinite loop if this ever targets another helper
+      - CETargetCompleteOwnedObjective
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - Helper

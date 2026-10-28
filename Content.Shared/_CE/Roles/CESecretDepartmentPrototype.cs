@@ -57,7 +57,7 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
 
     /// <summary>
     /// Whether holders of any role in this department can see each other's secret role icon and
-    /// examine text - including two holders of the exact same role, e.g. two unrelated Lovers. See
+    /// examine text - including two holders of the exact same role, e.g. two unrelated Helpers. See
     /// <see cref="CESecretRoleIconComponent"/>.
     /// </summary>
     [DataField]
