@@ -1662,6 +1662,51 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         //CrystallEdge achievements end
         #endregion
 
+        #region CrystallEdge Statistics
+        //CrystallEdge statistics
+
+        public async Task<Dictionary<Guid, Dictionary<string, long>>> AddPlayerStatistics(
+            Dictionary<Guid, Dictionary<string, long>> deltas)
+        {
+            await using var db = await GetDb();
+
+            var players = deltas.Keys.ToList();
+            var rows = await db.DbContext.PlayerStatistic
+                .Where(s => players.Contains(s.PlayerUserId))
+                .ToListAsync();
+
+            var lookup = rows.ToDictionary(r => (r.PlayerUserId, r.Key));
+            var totals = new Dictionary<Guid, Dictionary<string, long>>();
+
+            foreach (var (player, stats) in deltas)
+            {
+                var playerTotals = new Dictionary<string, long>();
+                totals[player] = playerTotals;
+
+                foreach (var (key, delta) in stats)
+                {
+                    if (!lookup.TryGetValue((player, key), out var row))
+                    {
+                        row = new PlayerStatistic
+                        {
+                            PlayerUserId = player,
+                            Key = key,
+                        };
+                        db.DbContext.PlayerStatistic.Add(row);
+                    }
+
+                    row.Value += delta;
+                    playerTotals[key] = row.Value;
+                }
+            }
+
+            await db.DbContext.SaveChangesAsync();
+            return totals;
+        }
+
+        //CrystallEdge statistics end
+        #endregion
+
         # region IPIntel
 
         public async Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)

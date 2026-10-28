@@ -316,6 +316,16 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region CrystallEdge Statistics
+
+        /// <summary>
+        /// Adds per-player statistic deltas in one transaction and returns the new totals of the touched keys.
+        /// </summary>
+        Task<Dictionary<Guid, Dictionary<string, long>>> AddPlayerStatistics(
+            Dictionary<Guid, Dictionary<string, long>> deltas);
+
+        #endregion
+
         #region IPintel
 
         Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score);
@@ -1049,6 +1059,15 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.GetAchievementPercentages());
         }
         //CrystallEdge achievements end
+
+        //CrystallEdge statistics
+        public Task<Dictionary<Guid, Dictionary<string, long>>> AddPlayerStatistics(
+            Dictionary<Guid, Dictionary<string, long>> deltas)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddPlayerStatistics(deltas));
+        }
+        //CrystallEdge statistics end
 
         public Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
         {
