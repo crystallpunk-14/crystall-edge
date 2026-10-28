@@ -1,5 +1,6 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Roles.Jobs;
 using Robust.Shared.Network;
 
 namespace Content.Server._CE.Statistics.Collectors.RoundsFinishedAlive;
@@ -11,6 +12,7 @@ public sealed partial class CERoundsFinishedAliveStatisticSystem : EntitySystem
 {
     [Dependency] private CEStatisticSystem _statistic = default!;
     [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedJobSystem _job = default!;
 
     [SubscribeLocalEvent]
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
@@ -35,8 +37,16 @@ public sealed partial class CERoundsFinishedAliveStatisticSystem : EntitySystem
 
             _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAlive);
 
-            if (tracker.Job is { } job)
-                _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAliveJob, job);
+            if (tracker.Job is not { } job)
+                continue;
+
+            _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAliveJob, job);
+
+            _job.TryGetAllDepartments(job.Id, out var departments);
+            foreach (var department in departments)
+            {
+                _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAliveDepartment, department.ID);
+            }
         }
     }
 }

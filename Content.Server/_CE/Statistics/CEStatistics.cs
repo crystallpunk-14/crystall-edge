@@ -17,4 +17,9 @@ public static class CEStatistics
     /// <see cref="RoundsFinishedAlive"/> split by the job the character spawned with.
     /// </summary>
     public static readonly CEStatisticDef<ProtoId<JobPrototype>> RoundsFinishedAliveJob = new("rounds_finished_alive.job");
+
+    /// <summary>
+    /// <see cref="RoundsFinishedAlive"/> split by every department of the job the character spawned with.
+    /// </summary>
+    public static readonly CEStatisticDef<ProtoId<DepartmentPrototype>> RoundsFinishedAliveDepartment = new("rounds_finished_alive.department");
 }

@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "brigadier by TheShuEd, combined from _CE/Objects/Tools/ThirdArm/third_arm.rsi and module_mining.rsi; guildmaster and tavernmaster by creamy, recolored by Ed, cropped from _CE/Clothing/Head/Guild/guildmaster.rsi and _CE/Clothing/Head/Tavern/tavernmaster.rsi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "brigadier"
+        },
+        {
+            "name": "guildmaster"
+        },
+        {
+            "name": "tavernmaster"
+        }
+    ]
+}

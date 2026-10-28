@@ -9,14 +9,22 @@ ce-achievement-bounty-hunter-win-name = Награда для ведьмака
 ce-achievement-bounty-hunter-win-desc = Выполните все цели и закончите раунд, играя за Охотника за головами
 ce-achievement-bounty-hunter-win-unlocks = золотая монета в снаряжении
 
-ce-achievement-city-win-name = На страже света
-ce-achievement-city-win-desc = Спасите город, играя за фракцию Империи Зелласиан
-ce-achievement-city-win-unlocks = профессия Шерифа
-
 ce-achievement-rounds-finished-alive-1-name = Все становится запутаннее: Ночная охота
 ce-achievement-rounds-finished-alive-1-desc = Закончите раунд, не умерев
-ce-achievement-rounds-finished-alive-1-unlocks = роль Оборотня
+ce-achievement-rounds-finished-alive-1-unlocks = роль Оборотня и профессия Шерифа
 
 ce-achievement-rounds-finished-alive-3-name = Все становится запутаннее: Охота на братство
 ce-achievement-rounds-finished-alive-3-desc = Закончите 3 раунда, не умерев
 ce-achievement-rounds-finished-alive-3-unlocks = роли Братства и Охотника за головами
+
+ce-achievement-rounds-finished-alive-engineering-2-name = Бригадир
+ce-achievement-rounds-finished-alive-engineering-2-desc = Закончите 2 раунда, не умерев, работая в Инженерном отделе
+ce-achievement-rounds-finished-alive-engineering-2-unlocks = профессия Бригадира
+
+ce-achievement-rounds-finished-alive-guild-2-name = Гильдмастер
+ce-achievement-rounds-finished-alive-guild-2-desc = Закончите 2 раунда, не умерев, работая в Гильдии авантюристов
+ce-achievement-rounds-finished-alive-guild-2-unlocks = профессия Гильдмастера
+
+ce-achievement-rounds-finished-alive-tavern-2-name = Хозяин трактира
+ce-achievement-rounds-finished-alive-tavern-2-desc = Закончите 2 раунда, не умерев, работая в Таверне
+ce-achievement-rounds-finished-alive-tavern-2-unlocks = профессия Хозяина трактира

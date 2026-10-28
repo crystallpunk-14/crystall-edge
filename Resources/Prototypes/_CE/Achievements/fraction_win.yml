@@ -1,8 +1,0 @@
-- type: achievement
-  id: CityWin
-  name: ce-achievement-city-win-name
-  desc: ce-achievement-city-win-desc
-  unlocks: ce-achievement-city-win-unlocks
-  icon:
-    sprite: _CE/Achievements/city.rsi
-    state: sheriff
