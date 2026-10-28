@@ -14,16 +14,16 @@
           availableJobs:
             #Engineering
             CEBrigadier: [ 1, 1 ]
-            CETechnician: [ 2, 2 ]
+            CETechnician: [ 3, 3 ]
             #Tavern
             CETavernmaster: [ 1, 1 ]
-            CEChef: [ 2, 2 ]
+            CEChef: [ 3, 3 ]
             #Guild
             CEGuildmaster: [ 1, 1 ]
             CEAdventurer: [ 3, 4 ]
             #Citizens
             CEBard: [ 1, 1 ]
-            CEKeyKeeper: [ 1, 1 ]
+            #CEKeyKeeper: [ 1, 1 ]
             CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands

@@ -3,6 +3,9 @@
   name: ce-secret-role-name-recruiter
   description: ce-secret-role-description-recruiter
   icon: CESecretRoleIconRecruiter
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive3
   skills:
   - Recruitment
   objectives: !type:EntSelector

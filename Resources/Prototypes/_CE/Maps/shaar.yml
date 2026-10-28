@@ -23,7 +23,7 @@
             CEAdventurer: [ 4, 5 ]
             #Citizens
             CEBard: [ 2, 2 ]
-            CEKeyKeeper: [ 1, 1 ]
+            #CEKeyKeeper: [ 1, 1 ]
             CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands

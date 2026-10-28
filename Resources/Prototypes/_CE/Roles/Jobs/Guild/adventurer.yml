@@ -7,6 +7,9 @@
   startingGear: CEAdventurerGear
   icon: CEJobIconAdventurer
   supervisors: ce-job-supervisors-guildmaster
+  requirements:
+    - !type:CEAchievementRequirement
+      achievement: RoundsFinishedAlive2
 
 - type: startingGear
   id: CEAdventurerGear

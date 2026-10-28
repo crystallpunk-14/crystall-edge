@@ -10,9 +10,8 @@
   requireAdminNotify: true
   joinNotifyCrew: true
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: CETavern
-      time: 2.5h
+    - !type:CEAchievementRequirement
+      achievement: RoundsFinishedAliveTavern2
 
 - type: startingGear
   id: CETavernmasterGear

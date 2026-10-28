@@ -1,6 +1,6 @@
 - type: job
   id: CEKeyKeeper
-  setPreference: true
+  setPreference: false
   name: ce-job-name-key-keeper
   description: ce-job-desc-key-keeper
   playTimeTracker: CEJobKeyKeeper

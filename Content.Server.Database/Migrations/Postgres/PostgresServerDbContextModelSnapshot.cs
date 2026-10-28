@@ -1090,6 +1090,37 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("player_achievement", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerStatistic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("player_statistic_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("key");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<long>("Value")
+                        .HasColumnType("bigint")
+                        .HasColumnName("value");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_statistic");
+
+                    b.HasIndex("PlayerUserId", "Key")
+                        .IsUnique();
+
+                    b.ToTable("player_statistic", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -2064,6 +2095,19 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Player");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerStatistic", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("PlayerStatistics")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_player_statistic_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.HasOne("Content.Server.Database.Preference", "Preference")
@@ -2290,6 +2334,8 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("JobWhitelists");
 
                     b.Navigation("PlayerAchievements");
+
+                    b.Navigation("PlayerStatistics");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

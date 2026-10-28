@@ -1027,6 +1027,35 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("player_achievement", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerStatistic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("player_statistic_id");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("key");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<long>("Value")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("value");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_statistic");
+
+                    b.HasIndex("PlayerUserId", "Key")
+                        .IsUnique();
+
+                    b.ToTable("player_statistic", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -1977,6 +2006,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Player");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerStatistic", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("PlayerStatistics")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_player_statistic_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.HasOne("Content.Server.Database.Preference", "Preference")
@@ -2203,6 +2245,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("JobWhitelists");
 
                     b.Navigation("PlayerAchievements");
+
+                    b.Navigation("PlayerStatistics");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

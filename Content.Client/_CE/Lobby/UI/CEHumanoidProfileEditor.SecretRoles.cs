@@ -50,6 +50,16 @@ public sealed partial class CEHumanoidProfileEditor
 
         foreach (var department in departments)
         {
+            var roles = department.Roles
+                .Select(roleId => _prototypeManager.TryIndex(roleId, out var role) ? role : null)
+                .Where(role => role is { SetPreference: true })
+                .Select(role => role!)
+                .ToArray();
+
+            // No header for a department without any selectable role
+            if (roles.Length == 0)
+                continue;
+
             var departmentName = Loc.GetString(department.Name);
 
             var category = new BoxContainer
@@ -88,14 +98,6 @@ public sealed partial class CEHumanoidProfileEditor
             });
 
             SecretRoleList.AddChild(category);
-
-            var roles = department.Roles
-                .Select(roleId => _prototypeManager.TryIndex(roleId, out var role) ? role : null)
-                .Where(role => role is { SetPreference: true })
-                .Select(role => role!)
-                .ToArray();
-
-            Array.Sort(roles, (a, b) => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.CurrentCultureIgnoreCase));
 
             foreach (var role in roles)
             {

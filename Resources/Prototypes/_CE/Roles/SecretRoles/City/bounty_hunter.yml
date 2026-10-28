@@ -5,6 +5,9 @@
   icon: CESecretRoleIconBountyHunter
   gear: CEBountyHunterGear
   victoryAchievement: BountyHunterWin
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive3
   skills:
   - MilitaryTraining
   objectives: !type:EntSelector
