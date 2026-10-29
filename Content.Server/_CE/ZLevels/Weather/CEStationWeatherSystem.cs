@@ -48,15 +48,30 @@ public sealed partial class CEStationWeatherSystem : EntitySystem
 
     private string PickNextNode(Entity<CEStationWeatherComponent> ent)
     {
-        if (ent.Comp.CurrentNode is { } current && ent.Comp.Nodes.TryGetValue(current, out var currentNode))
-        {
-            var picked = PickWeighted(currentNode.Transitions, ent.Comp.Nodes);
-            if (picked is not null)
-                return picked;
+        if (ent.Comp.CurrentNode is not { } current || !ent.Comp.Nodes.TryGetValue(current, out var currentNode))
+            return PickRoundStartNode(ent);
 
-            Log.Error($"Weather node '{current}' of {ToPrettyString(ent)} has no valid transitions, picking a random node.");
+        var picked = PickWeighted(currentNode.Transitions, ent.Comp.Nodes);
+        if (picked is not null)
+            return picked;
+
+        Log.Error($"Weather node '{current}' of {ToPrettyString(ent)} has no valid transitions, picking a random node.");
+        return _random.Pick(ent.Comp.Nodes.Keys.ToList());
+    }
+
+    private string PickRoundStartNode(Entity<CEStationWeatherComponent> ent)
+    {
+        var candidates = new List<string>();
+        foreach (var (key, node) in ent.Comp.Nodes)
+        {
+            if (node.RoundStart)
+                candidates.Add(key);
         }
 
+        if (candidates.Count > 0)
+            return _random.Pick(candidates);
+
+        Log.Error($"{ToPrettyString(ent)} has no round start weather nodes, picking a random node.");
         return _random.Pick(ent.Comp.Nodes.Keys.ToList());
     }
 
