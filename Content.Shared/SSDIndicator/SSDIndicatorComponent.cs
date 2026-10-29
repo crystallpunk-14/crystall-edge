@@ -34,6 +34,16 @@ public sealed partial class SSDIndicatorComponent : Component
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan FallAsleepTime = TimeSpan.Zero;
 
+    // CrystallEdge: long SSD blocks achievements
+    /// <summary>
+    /// The time at which the entity became SSD.
+    /// </summary>
+    [AutoNetworkedField, AutoPausedField]
+    [Access(typeof(SSDIndicatorSystem))]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan SSDStartTime = TimeSpan.Zero;
+    // CrystallEdge end
+
     /// <summary>
     /// The next time this component will be updated.
     /// </summary>

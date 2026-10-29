@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/16/2026 16:09:41
-  entityCount: 362
+  time: 10/29/2026 18:16:37
+  entityCount: 361
 maps:
 - 1
 grids:
@@ -242,6 +242,7 @@ entities:
             -38,4: []
     - type: ChunkContainer
       chunkEntities: []
+    - type: LightTree
 - proto: CEArmchairMetallicPillowPurple
   entities:
   - uid: 647
@@ -802,6 +803,12 @@ entities:
       pos: -37.5,-10.5
 - proto: CEIronDoor
   entities:
+  - uid: 95
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -3.5,-15.5
   - uid: 107
     components:
     - type: Transform
@@ -813,14 +820,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -33.5,-10.5
-- proto: CEIronDoorGuardStaff
-  entities:
-  - uid: 95
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -3.5,-15.5
 - proto: CEIronDoorMirrored
   entities:
   - uid: 299
@@ -1325,7 +1324,7 @@ entities:
       pos: -35.5,-17.5
     - type: CEZPhysics
       currentZLevel: 2
-- proto: CEWallLight
+- proto: CEWallLightOrange
   entities:
   - uid: 134
     components:
@@ -1844,16 +1843,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -36.5,-8.5
-    - type: Fixtures
-      fixtures: {}
-- proto: CEWallRadioSpeaker
-  entities:
-  - uid: 126
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -32.5,-9.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStoneBrick

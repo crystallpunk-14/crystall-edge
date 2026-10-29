@@ -19,4 +19,11 @@ public sealed partial class CCVars
     [CVarControl(AdminFlags.Admin)]
     public static readonly CVarDef<string> CEDiscordRoundEndSummaryWebhook =
         CVarDef.Create("discord.round_end_summary_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    /// <summary>
+    /// How many seconds the main character may stay alive and SSD before its player stops earning achievements and statistics.
+    /// </summary>
+    [CVarControl(AdminFlags.Admin)]
+    public static readonly CVarDef<float> CEAchievementsSSDThreshold =
+        CVarDef.Create("achievements.ssd_threshold", 600f, CVar.SERVERONLY);
 }

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using Content.Server._CE.GameTicking.Components;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
@@ -65,19 +66,29 @@ public sealed partial class CEStatisticSystem : EntitySystem
         return GetBufferedValue(player, stat.GetKey(arg));
     }
 
+    /// <summary>
+    /// Only the player's main character earns statistics, never a ghost role.
+    /// </summary>
     private bool TryGetPlayer(EntityUid entity, out NetUserId player)
     {
         player = default;
-        if (!_mind.TryGetMind(entity, out _, out var mind) || mind.UserId is not { } userId)
+        if (!TryComp<CEMainCharacterComponent>(entity, out var character) ||
+            !_mind.TryGetMind(entity, out _, out var mind) ||
+            mind.UserId != character.Player)
             return false;
 
-        player = userId;
+        player = character.Player;
         return true;
     }
 
     private void AddToBuffer(NetUserId player, string key, long amount)
     {
         if (_cfg.GetCVar(CCVars.DatabaseSynchronous))
+            return;
+
+        var attempt = new CEStatisticAttemptEvent(player);
+        RaiseLocalEvent(ref attempt);
+        if (attempt.Cancelled)
             return;
 
         var buffer = EnsureBuffer();
@@ -168,3 +179,9 @@ public sealed partial class CEStatisticSystem : EntitySystem
         }
     }
 }
+
+/// <summary>
+/// Raised broadcast before a statistic is added to a player. Cancel to keep the player from gaining it.
+/// </summary>
+[ByRefEvent]
+public record struct CEStatisticAttemptEvent(NetUserId Player, bool Cancelled = false);

@@ -27,7 +27,6 @@
   showInVote: true
   rules:
   - CEGameRuleMurkConsuming
-  #- CEGameRuleThieves
   - CERampingStationEventScheduler
 
 - type: gamePreset

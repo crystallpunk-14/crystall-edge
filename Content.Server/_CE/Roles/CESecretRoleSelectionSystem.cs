@@ -140,6 +140,28 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         return true;
     }
 
+    /// <summary>
+    /// Frees the mind's secret role slot for late joiners, while the role and its objectives stay on the mind
+    /// so the round end still shows them. Used when a player leaves the round early.
+    /// </summary>
+    public void ReleaseSecretRoleSlot(Entity<MindComponent> mind)
+    {
+        if (!_role.MindHasRole<CESecretRoleComponent>((mind.Owner, mind.Comp), out var roleEnt) ||
+            roleEnt.Value.Comp2.Role is not { } roleId)
+            return;
+
+        var rules = QueryActiveRules();
+        while (rules.MoveNext(out _, out _, out var comp, out _))
+        {
+            if (comp.AssignedCounts.TryGetValue(roleId, out var count) && count > 0)
+                comp.AssignedCounts[roleId] = count - 1;
+        }
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.Medium,
+            $"{ToPrettyString(mind):player} released the slot of secret role {roleId}");
+    }
+
     private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = true, bool keepObjectives = false)
     {
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
