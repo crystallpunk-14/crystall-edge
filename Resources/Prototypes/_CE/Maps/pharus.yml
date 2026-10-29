@@ -2,7 +2,6 @@
   id: Pharus
   mapName: Pharus
   minPlayers: 0
-  maxPlayers: 20
   mapPath: /Maps/_CE/Pharus/Pharus0.yml
   stations:
     Pharus:
