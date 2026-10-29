@@ -10,12 +10,13 @@
   - type: Sprite
     drawdepth: Mobs
     noRot: true
-    sprite: _CE/Structures/Industrial/DimensionalLift/demiplan_rift.rsi
+    sprite: _CE/Structures/Industrial/round_portal.rsi
     layers:
-    - state: anom
+    - state: base
+    - state: light
       shader: unshaded
   - type: PointLight
-    color: MediumPurple
+    color: "#3fdaee"
     radius: 4
     energy: 2
   - type: Clickable

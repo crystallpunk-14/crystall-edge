@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 289.0.0
+  engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 09/15/2026 10:55:20
+  time: 10/29/2026 18:18:52
   entityCount: 1
 maps:
 - 1
@@ -76,4 +76,5 @@ entities:
     - type: ExplosionAirtightGrid
     - type: ChunkContainer
       chunkEntities: []
+    - type: LightTree
 ...
