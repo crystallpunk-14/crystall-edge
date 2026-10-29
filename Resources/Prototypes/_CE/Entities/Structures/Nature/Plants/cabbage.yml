@@ -26,14 +26,3 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodCabbage: 4
-  - type: CEPlantDying
-    deadEntity: CEPlantCabbageDead
-
-- type: entity
-  parent: CEPlantDeadBase
-  id: CEPlantCabbageDead
-  name: dead cabbage
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
-    state: death

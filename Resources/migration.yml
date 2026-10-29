@@ -359,6 +359,24 @@ CERadioPostSpeakerEngineering: null
 CERadioPostSpeakerTavern: null
 CERadioStation: null
 
+# 2026-10-29
+# Plant withering removed
+CEPlantCabbageDead: null
+CEPlantCarrotDead: null
+CEPlantChanterelleDead: null
+CEPlantCornDead: null
+CEPlantCottonDead: null
+CEPlantCucumberDead: null
+CEPlantGarlicDead: null
+CEPlantLumishroomDead: null
+CEPlantOnionDead: null
+CEPlantPepperDead: null
+CEPlantPotatoDead: null
+CEPlantPumpkinDead: null
+CEPlantSunflowerDead: null
+CEPlantTomatoesDead: null
+CEPlantWheatDead: null
+
 # CrystallEdge migration zone end
 
 

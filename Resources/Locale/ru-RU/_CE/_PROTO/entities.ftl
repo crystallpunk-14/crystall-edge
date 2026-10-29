@@ -4087,68 +4087,13 @@ ent-CEPlantAgaricGrown = { ent-CEPlantAgaric }
     .desc = { ent-CEPlantAgaric.desc }
     .suffix = Grown
 
-ent-CEPlantCabbageDead = мёртвая капуста
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantCarrotDead = мёртвая морковь
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantChanterelleDead = мёртвая лисичка
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
 ent-CEPlantChanterelleGrown = { ent-CEPlantChanterelle }
     .desc = { ent-CEPlantChanterelle.desc }
     .suffix = Grown
 
-ent-CEPlantCornDead = мёртвая кукуруза
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantCottonDead = мёртвый хлопок
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantCucumberDead = мёртвый огурец
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantGarlicDead = мёртвый чеснок
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantLumishroomDead = мёртвый люмигриб
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
 ent-CEPlantLumishroomGrown = { ent-CEPlantLumishroom }
     .desc = { ent-CEPlantLumishroom.desc }
     .suffix = Grown
-
-ent-CEPlantOnionDead = мёртвый лук
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantPepperDead = мёртвый перец
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantPotatoDead = мёртвый картофель
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantPumpkinDead = мёртвая тыква
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantSunflowerDead = мёртвый подсолнух
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantTomatoesDead = мёртвые помидоры
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantWheatDead = мёртвая пшеница
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantDeadBase = мёртвое растение
-    .desc = Засохшая безжизненная оболочка. Уберите её, прежде чем снова сажать здесь.
 
 ent-CEBaseTree = дерево
     .desc = Десятилетия жизни и роста, насыщающие окружающую природу свежим воздухом.
