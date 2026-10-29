@@ -10,12 +10,34 @@
     - !type:SpawnEntities
       entity: CEPlantLumishroomGrown
       count:
-        min: 100
-        max: 100
+        min: 200
+        max: 200
       mask:
       - !type:RoofedMask
       - !type:NoEntityMask
       - !type:TileMask # same soils as CEPlantBaseFungalType, other tiles reject the plant
+        tiles:
+        - CEDirt
+        - CEMycelium
+        - CEMyceliumLight
+
+# Guaranteed lumishrooms inside the city, spawns fewer if the city lacks roofed soil.
+- type: entity
+  id: CEWildlandsModifierLumishroomsConstant3
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnEntities
+      entity: CEPlantLumishroomGrown
+      count:
+        min: 3
+        max: 3
+      mask:
+      - !type:RoofedMask
+      - !type:NoEntityMask
+      - !type:TileMask
         tiles:
         - CEDirt
         - CEMycelium

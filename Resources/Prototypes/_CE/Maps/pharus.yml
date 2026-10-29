@@ -124,6 +124,7 @@
     - id: CEWildlandsModifierCoreCoalRatio30
     - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
+    - id: CEWildlandsModifierLumishroomsConstant3
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise
