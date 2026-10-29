@@ -1,3 +1,4 @@
+using Content.Server._CE.GameTicking;
 using Content.Server._CE.Objectives;
 using Content.Server._CE.Roles;
 using Content.Server.Administration.Logs;
@@ -26,6 +27,7 @@ namespace Content.Server._CE.DarkVessel;
 public sealed partial class CEDarkVesselSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private CEMainCharacterSystem _mainCharacter = default!;
     [Dependency] private CEObjectiveSystem _objectives = default!;
     [Dependency] private CERevivableConditionSystem _revivable = default!;
     [Dependency] private CESecretRoleSelectionSystem _secretRoles = default!;
@@ -86,6 +88,7 @@ public sealed partial class CEDarkVesselSystem : EntitySystem
 
         EvictOwner(target);
         _mind.TransferTo(mindId, target, mind: mind);
+        _mainCharacter.TransferMainCharacter(user, target);
 
         _damageable.ClearAllDamage(target);
         _mobState.ChangeMobState(target, MobState.Alive, origin: user);

@@ -66,7 +66,7 @@ public sealed partial class CEAddAchievementCommand : LocalizedCommands
         try
         {
             var sys = _entMan.System<CEAchievementsSystem>();
-            var added = await sys.AddPlayerAchievementAsync(sessionUserId, protoArg);
+            var added = await sys.AddPlayerAchievementAsync(sessionUserId, protoArg, force: true);
             if (!added)
             {
                 shell.WriteLine($"Player {located.Username} already has achievement {protoArg}.");

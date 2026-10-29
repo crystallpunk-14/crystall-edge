@@ -1,4 +1,4 @@
-using Content.Shared.GameTicking;
+using Content.Server._CE.GameTicking.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Network;
@@ -6,7 +6,7 @@ using Robust.Shared.Network;
 namespace Content.Server._CE.Statistics.Collectors.RoundsFinishedAlive;
 
 /// <summary>
-/// Counts <see cref="CEStatistics.RoundsFinishedAlive"/> for lobby characters that are not dead at round end.
+/// Counts <see cref="CEStatistics.RoundsFinishedAlive"/> for main characters that are not dead at round end.
 /// </summary>
 public sealed partial class CERoundsFinishedAliveStatisticSystem : EntitySystem
 {
@@ -15,37 +15,29 @@ public sealed partial class CERoundsFinishedAliveStatisticSystem : EntitySystem
     [Dependency] private SharedJobSystem _job = default!;
 
     [SubscribeLocalEvent]
-    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
-    {
-        var tracker = EnsureComp<CERoundsFinishedAliveTrackerComponent>(ev.Mob);
-        tracker.Player = ev.Player.UserId;
-        tracker.Job = ev.JobId;
-    }
-
-    [SubscribeLocalEvent]
     private void OnCollect(CEStatisticsCollectEvent ev)
     {
         var counted = new HashSet<NetUserId>();
-        var query = EntityQueryEnumerator<CERoundsFinishedAliveTrackerComponent>();
-        while (query.MoveNext(out var uid, out var tracker))
+        var query = EntityQueryEnumerator<CEMainCharacterComponent>();
+        while (query.MoveNext(out var uid, out var character))
         {
             if (_mobState.IsDead(uid))
                 continue;
 
-            if (!counted.Add(tracker.Player))
+            if (!counted.Add(character.Player))
                 continue;
 
-            _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAlive);
+            _statistic.AddStatistic(character.Player, CEStatistics.RoundsFinishedAlive);
 
-            if (tracker.Job is not { } job)
+            if (character.Job is not { } job)
                 continue;
 
-            _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAliveJob, job);
+            _statistic.AddStatistic(character.Player, CEStatistics.RoundsFinishedAliveJob, job);
 
             _job.TryGetAllDepartments(job.Id, out var departments);
             foreach (var department in departments)
             {
-                _statistic.AddStatistic(tracker.Player, CEStatistics.RoundsFinishedAliveDepartment, department.ID);
+                _statistic.AddStatistic(character.Player, CEStatistics.RoundsFinishedAliveDepartment, department.ID);
             }
         }
     }

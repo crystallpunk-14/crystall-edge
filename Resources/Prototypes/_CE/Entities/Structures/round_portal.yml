@@ -1,0 +1,81 @@
+- type: entity
+  id: CERoundPortal
+  name: portal
+  description: A stable tear in the world. Newcomers arrive through it, and those who are done with this place can leave through it forever.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  # TODO: placeholder sprite
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: _CE/Structures/Industrial/DimensionalLift/demiplan_rift.rsi
+    layers:
+    - state: anom
+      shader: unshaded
+  - type: PointLight
+    color: MediumPurple
+    radius: 4
+    energy: 2
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+  - type: CEPvsOverride
+  - type: CERoundPortal
+    spawnOffset: 0, -1
+    arrivalSound:
+      path: /Audio/Effects/teleport_arrival.ogg
+    departureSound:
+      path: /Audio/Effects/teleport_departure.ogg
+    arrivalEffect: CEEffectRoundPortalArrival
+    departureEffect: CEEffectRoundPortalDeparture
+  - type: ActivatableUI
+    key: enum.CERoundPortalUiKey.Key
+    requiresComplex: false
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.CERoundPortalUiKey.Key:
+        type: CERoundPortalBoundUserInterface
+
+# TODO: placeholder effects
+- type: entity
+  id: CEEffectRoundPortalArrival
+  categories: [ ForkFiltered ]
+  save: false
+  name: portal arrival
+  suffix: VFX
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    sprite: _CE/Effects/mana_restore.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: PointLight
+    color: MediumPurple
+    radius: 2
+  - type: TimedDespawn
+    lifetime: 1
+
+- type: entity
+  parent: CEEffectRoundPortalArrival
+  id: CEEffectRoundPortalDeparture
+  name: portal departure
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/mana_drain.rsi

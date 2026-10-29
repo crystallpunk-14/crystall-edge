@@ -48,6 +48,7 @@ public sealed partial class SSDIndicatorSystem : EntitySystem
     private void OnPlayerDetached(EntityUid uid, SSDIndicatorComponent component, PlayerDetachedEvent args)
     {
         component.IsSSD = true;
+        component.SSDStartTime = _timing.CurTime; // CrystallEdge: long SSD blocks achievements
 
         // Sets the time when the entity should fall asleep
         if (_icSsdSleep)

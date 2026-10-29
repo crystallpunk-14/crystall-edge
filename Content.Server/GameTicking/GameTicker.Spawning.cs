@@ -263,22 +263,22 @@ namespace Content.Server.GameTicking
                 if (jobPrototype.JoinNotifyCrew)
                 {
                     _chatSystem.DispatchStationAnnouncement(station,
-                        Loc.GetString("latejoin-arrival-announcement-special",
+                        Loc.GetString("ce-round-portal-arrival-announcement-special", // CrystallEdge: fantasy arrival text
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
-                        Loc.GetString("latejoin-arrival-sender"),
+                        Loc.GetString("ce-round-portal-announcement-sender"), // CrystallEdge: fantasy arrival text
                         playDefaultSound: false,
                         colorOverride: Color.Gold);
                 }
                 else
                 {
                     _chatSystem.DispatchStationAnnouncement(station,
-                        Loc.GetString("latejoin-arrival-announcement",
+                        Loc.GetString("ce-round-portal-arrival-announcement", // CrystallEdge: fantasy arrival text
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
-                        Loc.GetString("latejoin-arrival-sender"),
+                        Loc.GetString("ce-round-portal-announcement-sender"), // CrystallEdge: fantasy arrival text
                         playDefaultSound: false);
                 }
             }

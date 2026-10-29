@@ -103,10 +103,19 @@ public sealed partial class CEAchievementsSystem : EntitySystem
 
     /// <summary>
     /// Adds an achievement to a player in the database, updates local caches and notifies connected clients.
-    /// Returns true if the achievement was added, false if the player already had it.
+    /// Returns true if the achievement was added, false if the player already had it or can't earn it this round.
     /// </summary>
-    public async Task<bool> AddPlayerAchievementAsync(Guid player, string achievementProtoId)
+    /// <param name="force">Skips <see cref="CEAchievementAttemptEvent"/>, for admin grants.</param>
+    public async Task<bool> AddPlayerAchievementAsync(Guid player, string achievementProtoId, bool force = false)
     {
+        if (!force)
+        {
+            var attempt = new CEAchievementAttemptEvent(new NetUserId(player));
+            RaiseLocalEvent(ref attempt);
+            if (attempt.Cancelled)
+                return false;
+        }
+
         try
         {
             var has = await _db.HasPlayerAchievement(player, achievementProtoId);
@@ -210,3 +219,9 @@ public sealed partial class CEAchievementsSystem : EntitySystem
         }
     }
 }
+
+/// <summary>
+/// Raised broadcast before an achievement is granted to a player. Cancel to keep the player from earning it.
+/// </summary>
+[ByRefEvent]
+public record struct CEAchievementAttemptEvent(NetUserId Player, bool Cancelled = false);
