@@ -1,5 +1,5 @@
 
-# Shared skeleton for a growing plant AND its dead remains: an anchored, damageable tile structure.
+# Shared skeleton for a growing plant: an anchored, damageable tile structure.
 - type: entity
   id: CEPlantVisualBase
   parent: BaseStructure
@@ -115,8 +115,6 @@
   - type: CEPlantAdditionalProduceOnDestruct
     produce:
       CEWoodLog: 3
-  #- type: CEPlantDying #TODO dead apple tree
-  #  deathThreshold: 60
   - type: CEWaveShader
     speed: 3
     dis: 4
