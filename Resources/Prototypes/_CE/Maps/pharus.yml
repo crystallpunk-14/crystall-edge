@@ -31,6 +31,7 @@
         - type: CEStationWeather
           nodes:
             clear:
+              roundStart: true
               minDuration: 5m
               maxDuration: 15m
               transitions:
@@ -123,6 +124,7 @@
     - id: CEWildlandsModifierCoreCoalRatio30
     - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
+    - id: CEWildlandsModifierLumishroomsConstant3
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise

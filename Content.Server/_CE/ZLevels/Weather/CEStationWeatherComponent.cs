@@ -18,7 +18,7 @@ public sealed partial class CEStationWeatherComponent : Component
 
     /// <summary>
     /// Weather graph. Transitions reference other nodes by their key.
-    /// The starting node is picked uniformly at random.
+    /// The starting node is picked uniformly at random among nodes with <see cref="CEWeatherNode.RoundStart"/>.
     /// </summary>
     [DataField(required: true)]
     public Dictionary<string, CEWeatherNode> Nodes = new();
@@ -47,6 +47,12 @@ public sealed partial class CEWeatherNode
     /// </summary>
     [DataField]
     public EntProtoId? Weather;
+
+    /// <summary>
+    /// Whether this node can be picked as the starting node of the round.
+    /// </summary>
+    [DataField]
+    public bool RoundStart;
 
     [DataField]
     public TimeSpan MinDuration = TimeSpan.FromMinutes(5);

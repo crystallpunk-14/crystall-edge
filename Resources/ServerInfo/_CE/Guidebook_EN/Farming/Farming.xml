@@ -60,24 +60,7 @@ Scoop water with a [color=yellow]bucket[/color] and use it on a plant. Examine t
   <GuideEntityEmbed Entity="CEWaterFloorEntity"/>
 </Box>
 
-# Plant health
-
-A neglected plant will [color=yellow]wither and die[/color]. What kills it is running completely out of [color=yellow]water[/color] - a plant with no water left slowly takes damage, and once it is spent it dies and leaves a [color=yellow]dead husk[/color]. The husk blocks the tile until you clear it away - a couple of hits will do.
-
-Watering a plant in time [color=yellow]heals[/color] it. A recovering plant spends its water and energy on mending itself before growing, so it grows slowly until it is patched up.
-
-- A crop on bare ground with no water dies in roughly [color=yellow]25 minutes[/color].
-- On a proper soil bed, or with any watering at all, it recovers and keeps growing.
-- Trees are far tougher and practically never wither.
-- Running out of [color=yellow]light[/color] does not kill a plant - it only pauses growth until light returns.
-
-Examine a plant to check its condition.
-
-<Box>
-  <GuideEntityEmbed Entity="CEPlantCabbageDead"/>
-  <GuideEntityEmbed Entity="CEPlantWheatDead"/>
-  <GuideEntityEmbed Entity="CEPlantTomatoesDead"/>
-</Box>
+Without water a plant [color=yellow]stops growing[/color], but it never dies.
 
 # Lighting
 

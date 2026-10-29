@@ -1,5 +1,5 @@
 # Mushrooms feed mostly on water: mycelium adds a little resource, plain dirt adds none.
-# List this parent before CEPlantBase, so its zero resource and fading override the base values.
+# List this parent before CEPlantBase, so its zero resource overrides the base value.
 - type: entity
   id: CEPlantBaseFungalType # MUSHROOMS
   abstract: true
@@ -10,10 +10,6 @@
       CEDirt: 0
       CEMycelium: 0.1
       CEMyceliumLight: 0.2
-  - type: CEPlantFading # an unwatered mushroom lies dormant instead of withering
-    damage:
-      types:
-        Cellular: 0
 
 - type: entity
   id: CEPlantBaseFloralWildType # For undemanding plants or trees that can grow equally effectively anywhere

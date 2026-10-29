@@ -20,18 +20,22 @@
       state: base
       shader: unshaded
       offset: 0.05, 0.02
+      map: [ "bigNode" ]
     - sprite: _CE/Structures/Specific/Thaumaturgy/Node/medium_node.rsi
       state: base
       shader: unshaded
       offset: 0.05, 0.06
+      map: [ "mediumNode" ]
     - sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
       state: base
       shader: unshaded
       offset: -0.05, 0.06
+      map: [ "smallNode" ]
     - sprite: _CE/Structures/LucsonSphere/active_effect.rsi
       state: effect
       shader: unshaded
       offset: -0.05, -0.1
+      map: [ "effect" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -42,6 +46,16 @@
           Ritual: { visible: false } # TODO: proper shell shedding visuals
           Success: { state: full, visible: true }
           Failure: { state: cracked, visible: true }
+        # The core is gone after a failure - only the broken glass shell remains
+        bigNode: &coreVisuals
+          PreRound: { visible: true }
+          InGame: { visible: true }
+          Ritual: { visible: true }
+          Success: { visible: true }
+          Failure: { visible: false }
+        mediumNode: *coreVisuals
+        smallNode: *coreVisuals
+        effect: *coreVisuals
   - type: AmbientSound
     volume: 5
     range: 10

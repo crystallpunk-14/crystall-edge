@@ -31,19 +31,6 @@
       CEFoodLumishroom: 2
   - type: CEPlantKudzu
     proto: CEPlantLumishroom
-  - type: CEPlantDying
-    deadEntity: CEPlantLumishroomDead
-
-- type: entity
-  parent: CEPlantDeadBase
-  id: CEPlantLumishroomDead
-  suffix: SPRITE TODO
-  name: dead lumishroom
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
-    state: death
-    color: green
 
 # Already grown lumishroom for mapping and world generation
 - type: entity
