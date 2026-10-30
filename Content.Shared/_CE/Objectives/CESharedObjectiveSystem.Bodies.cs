@@ -1,36 +1,42 @@
-using Content.Shared._CE.Murk.Components;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
+using Content.Shared._CE.Character;
 
 namespace Content.Shared._CE.Objectives;
 
 public abstract partial class CESharedObjectiveSystem
 {
-    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
-    [Dependency] private EntityQuery<CEMurkDissolvingComponent> _murkDissolvingQuery = default!;
+    [Dependency] private CECharacterSystem _character = default!;
 
     /// <summary>
-    /// Whether a body counts as dead for objectives: deleted, dead, or dissolved into a murked soul.
-    /// A soul is kept alive only so its AI can walk, there is no way back for the player.
+    /// Whether protecting the body counts as done - see <see cref="CECharacterSystem.IsSurvived"/>.
     /// </summary>
-    public bool IsBodyDead(EntityUid body)
+    public bool IsBodySurvived(EntityUid body)
     {
-        if (TerminatingOrDeleted(body))
-            return true;
-
-        if (_murkDissolvingQuery.TryComp(body, out var dissolving) && dissolving.Converted)
-            return true;
-
-        return _mobStateQuery.TryComp(body, out var mobState) && mobState.CurrentState == MobState.Dead;
+        return CECharacterSystem.IsSurvived(_character.GetBodyState(body));
     }
 
     /// <summary>
-    /// Whether a body that isn't <see cref="IsBodyDead"/> is currently in critical condition.
+    /// Progress of an objective keeping the body alive: alive or left the round = 1, critical = 0.5, otherwise 0.
     /// </summary>
-    public bool IsBodyCritical(EntityUid body)
+    public float GetSurvivalProgress(EntityUid body)
     {
-        return !IsBodyDead(body) &&
-               _mobStateQuery.TryComp(body, out var mobState) &&
-               mobState.CurrentState == MobState.Critical;
+        return _character.GetBodyState(body) switch
+        {
+            CEBodyState.Alive or CEBodyState.LeftRound => 1f,
+            CEBodyState.Critical => 0.5f,
+            _ => 0f,
+        };
+    }
+
+    /// <summary>
+    /// Progress of an objective getting rid of the body: eliminated = 1, critical = 0.5, otherwise 0.
+    /// See <see cref="CECharacterSystem.IsEliminated"/>.
+    /// </summary>
+    public float GetEliminationProgress(EntityUid body)
+    {
+        var state = _character.GetBodyState(body);
+        if (CECharacterSystem.IsEliminated(state))
+            return 1f;
+
+        return state == CEBodyState.Critical ? 0.5f : 0f;
     }
 }

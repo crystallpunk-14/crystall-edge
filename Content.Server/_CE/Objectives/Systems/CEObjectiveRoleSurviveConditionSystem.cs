@@ -1,6 +1,6 @@
 using Content.Server._CE.Objectives.Components;
 using Content.Server._CE.Roles;
-using Content.Shared._CE.Murk;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared.Mobs;
 
@@ -8,7 +8,7 @@ namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveRoleSurviveConditionComponent"/> - the average
-/// survival of every body that held one of the listed roles: alive = 1, critical = 0.5, dead, dissolved or deleted = 0.
+/// survival of every body that held one of the listed roles - see <see cref="CEObjectiveDepartmentSurviveConditionSystem.GetProgress"/>.
 /// </summary>
 public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
 {
@@ -47,7 +47,7 @@ public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnSoulConverted(ref CEMurkSoulConvertedEvent args)
+    private void OnBodyStateChanged(ref CEBodyStateChangedEvent args)
     {
         RefreshAll();
     }

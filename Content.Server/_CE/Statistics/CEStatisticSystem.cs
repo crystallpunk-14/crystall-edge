@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using Content.Server._CE.GameTicking.Components;
 using Content.Server.Database;
+using Content.Shared._CE.Character;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
@@ -20,6 +20,7 @@ public sealed partial class CEStatisticSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private CECharacterSystem _character = default!;
     [Dependency] private SharedMindSystem _mind = default!;
 
     public void AddStatistic(NetUserId player, CEStatisticDef stat, long amount = 1)
@@ -67,17 +68,18 @@ public sealed partial class CEStatisticSystem : EntitySystem
     }
 
     /// <summary>
-    /// Only the player's main character earns statistics, never a ghost role.
+    /// Only a character's own player inside its body earns statistics, never a ghost role.
     /// </summary>
     private bool TryGetPlayer(EntityUid entity, out NetUserId player)
     {
         player = default;
-        if (!TryComp<CEMainCharacterComponent>(entity, out var character) ||
-            !_mind.TryGetMind(entity, out _, out var mind) ||
-            mind.UserId != character.Player)
+        if (!_character.TryGetCharacterByBody(entity, out var character) ||
+            !_mind.TryGetMind(entity, out var mindId, out var mind) ||
+            mindId != character.Value.Owner ||
+            mind.OriginalOwnerUserId is not { } owner)
             return false;
 
-        player = character.Player;
+        player = owner;
         return true;
     }
 

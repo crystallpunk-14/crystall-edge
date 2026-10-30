@@ -9,19 +9,18 @@ using Content.Server.Mind;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.RoundPortal;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Ghost.Components;
-using Content.Shared.Mind;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Station;
 using Content.Shared.StationRecords;
 using Content.Shared.StationRecords.Components;
 using Content.Shared.StationRecords.Systems;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.RoundPortal;
@@ -35,6 +34,7 @@ public sealed partial class CERoundPortalSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private CECharacterSystem _character = default!;
     [Dependency] private CESecretRoleSelectionSystem _secretRoles = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private GhostSystem _ghost = default!;
@@ -123,27 +123,16 @@ public sealed partial class CERoundPortalSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnAchievementAttempt(ref CEAchievementAttemptEvent args)
     {
-        if (HasLeftRound(args.Player))
+        if (_character.HasLeftRound(args.Player))
             args.Cancelled = true;
     }
 
+    // Statistics gained before leaving are already buffered and stay; only new ones are refused.
     [SubscribeLocalEvent]
     private void OnStatisticAttempt(ref CEStatisticAttemptEvent args)
     {
-        if (HasLeftRound(args.Player))
+        if (_character.HasLeftRound(args.Player))
             args.Cancelled = true;
-    }
-
-    private bool HasLeftRound(NetUserId player)
-    {
-        var query = EntityQueryEnumerator<CERoundLeavedComponent, MindComponent>();
-        while (query.MoveNext(out _, out _, out var mind))
-        {
-            if (mind.OriginalOwnerUserId == player)
-                return true;
-        }
-
-        return false;
     }
 
     private bool CanLeave(EntityUid user)
@@ -188,7 +177,7 @@ public sealed partial class CERoundPortalSystem : EntitySystem
         }
 
         _secretRoles.ReleaseSecretRoleSlot((mindId, mind));
-        AddComp<CERoundLeavedComponent>(mindId);
+        _character.MarkLeftRound(mindId, body);
 
         var coords = Transform(body).Coordinates;
         _audio.PlayPvs(portal.Comp.DepartureSound, coords);

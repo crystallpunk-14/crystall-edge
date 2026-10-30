@@ -13,6 +13,8 @@ namespace Content.Client._CE.UserInterface.Systems.Ghost.Controls;
 [GenerateTypedNameReferences]
 public sealed partial class CEGhostWarpPlayerRow : PanelContainer
 {
+    private static readonly Color OutModulate = Color.White.WithAlpha(0.45f);
+
     public CEGhostWarpPlayerRow()
     {
         RobustXamlLoader.Load(this);
@@ -29,8 +31,12 @@ public sealed partial class CEGhostWarpPlayerRow : PanelContainer
         Color? secretRoleColor,
         string? secretRoleTooltip,
         Texture? originalSecretRoleIcon,
-        bool canShowInfo)
+        bool canShowInfo,
+        bool isOut,
+        bool canWarp)
     {
+        Modulate = isOut ? OutModulate : Color.White;
+
         NameLabel.Text = name;
 
         JobLabel.Text = jobName ?? "-";
@@ -48,7 +54,8 @@ public sealed partial class CEGhostWarpPlayerRow : PanelContainer
         OriginalRoleIcon.Visible = originalSecretRoleIcon != null;
         OriginalRoleArrow.Visible = originalSecretRoleIcon != null;
         SecretRoleCell.ToolTip = secretRoleTooltip;
-        InfoButton.Visible = canShowInfo;
+        InfoButton.Visible = canShowInfo && canWarp;
+        WarpButton.Disabled = !canWarp;
 
         WarpButton.ToolTip = Loc.GetString("ce-ghost-target-window-warp-tooltip", ("name", name));
         InfoButton.ToolTip = Loc.GetString("ce-ghost-target-window-info-tooltip", ("name", name));

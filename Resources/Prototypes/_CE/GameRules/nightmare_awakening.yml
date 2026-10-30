@@ -33,7 +33,6 @@
         max: 1
         weight: 0.25
       - role: BountyHunter
-        weight: 2
       - role: Priest
         max: 2
       - role: Immortal
