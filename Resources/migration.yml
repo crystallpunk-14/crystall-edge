@@ -383,10 +383,8 @@ CEAppearanceTiefling: CEAppearanceInfernal
 CEBookTieflingGambit: CEBookInfernalGambit
 CEMobTiefling: CEMobInfernal
 CEMobShadowTraderTiefling: CEMobShadowTraderInfernal
-CEOrganTiefling: CEOrganInfernal
 CEOrganTieflingArmLeft: CEOrganInfernalArmLeft
 CEOrganTieflingArmRight: CEOrganInfernalArmRight
-CEOrganTieflingExternal: CEOrganInfernalExternal
 CEOrganTieflingEyes: CEOrganInfernalEyes
 CEOrganTieflingFootLeft: CEOrganInfernalFootLeft
 CEOrganTieflingFootRight: CEOrganInfernalFootRight
