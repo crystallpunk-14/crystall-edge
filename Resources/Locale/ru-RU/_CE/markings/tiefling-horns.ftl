@@ -9,3 +9,4 @@ marking-CETieflingHorns6 = Барашек
 marking-CETieflingHorns7 = Облегающие
 marking-CETieflingHorns8 = Корона
 marking-CETieflingHorns9 = Единорог
+marking-CETieflingHorns10 = Корона

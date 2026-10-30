@@ -9,3 +9,4 @@ marking-CETieflingHorns6 = Lamb
 marking-CETieflingHorns7 = Horny horns
 marking-CETieflingHorns8 = Crown
 marking-CETieflingHorns9 = Unicorn
+marking-CETieflingHorns10 = Crown

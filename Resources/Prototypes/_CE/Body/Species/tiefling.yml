@@ -44,7 +44,7 @@
       onlyGroupWhitelisted: true
       default: [ CETieflingTail ]
     enum.HumanoidVisualLayers.HeadTop:
-      limit: 1
+      limit: 2
       required: true
       onlyGroupWhitelisted: true
       default: [ CETieflingHorns ]

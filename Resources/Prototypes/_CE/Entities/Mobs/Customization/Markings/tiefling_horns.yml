@@ -86,3 +86,10 @@
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn9
 
+- type: marking
+  id: CETieflingHorns10
+  bodyPart: HeadTop
+  groupWhitelist: [ CETiefling ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
+    state: horn10
