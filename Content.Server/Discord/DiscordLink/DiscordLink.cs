@@ -73,6 +73,9 @@ public sealed partial class DiscordLink : IPostInjectInit
     /// <summary>
     ///     Event that is raised when a message is received from Discord. This is raised for every message, including commands.
     /// </summary>
+    /// <remarks>
+    ///     Message contents are empty unless <see cref="CCVars.DiscordMessageContentIntent"/> is enabled.
+    /// </remarks>
     public event Action<Message>? OnMessageReceived;
 
     // CrystallEdge: raised when the Discord gateway client is ready (after connect).
@@ -115,17 +118,22 @@ public sealed partial class DiscordLink : IPostInjectInit
             return;
         }
 
+        var intents = GatewayIntents.Guilds
+                      | GatewayIntents.GuildMessages
+                      | GatewayIntents.DirectMessages;
+
+        // Message Content is a privileged intent, Discord refuses the connection if the bot isn't allowed to use it.
+        if (_configuration.GetCVar(CCVars.DiscordMessageContentIntent))
+            intents |= GatewayIntents.MessageContent;
+
         _client = new GatewayClient(new BotToken(token), new GatewayClientConfiguration()
         {
-            Intents = GatewayIntents.Guilds
-                             | GatewayIntents.GuildUsers
-                             | GatewayIntents.GuildMessages
-                             | GatewayIntents.MessageContent
-                             | GatewayIntents.DirectMessages,
+            Intents = intents,
             Logger = new DiscordSawmillLogger(_sawmillLog),
         });
         _client.MessageCreate += OnCommandReceivedInternal;
         _client.MessageCreate += OnMessageReceivedInternal;
+        InitializeSlashCommands();
 
         _botToken = token;
         // Since you cannot change the token while the server is running / the DiscordLink is initialized,
@@ -161,6 +169,7 @@ public sealed partial class DiscordLink : IPostInjectInit
             // Unsubscribe from the events.
             _client.MessageCreate -= OnCommandReceivedInternal;
             _client.MessageCreate -= OnMessageReceivedInternal;
+            ShutdownSlashCommands();
 
             await _client.CloseAsync();
             _client.Dispose();
@@ -234,9 +243,9 @@ public sealed partial class DiscordLink : IPostInjectInit
     #region Proxy methods
 
     /// <summary>
-    /// Sends a message to a Discord channel with the specified ID. Without any mentions.
+    /// Sends a message to a Discord channel with the specified ID. Without any mentions, unless specified otherwise.
     /// </summary>
-    public async Task SendMessageAsync(ulong channelId, string message)
+    public async Task SendMessageAsync(ulong channelId, string message, AllowedMentionsProperties? allowedMentions = null)
     {
         if (_client == null)
         {
@@ -252,9 +261,34 @@ public sealed partial class DiscordLink : IPostInjectInit
 
         await channel.SendMessageAsync(new MessageProperties()
         {
-            AllowedMentions = AllowedMentionsProperties.None,
+            AllowedMentions = allowedMentions ?? AllowedMentionsProperties.None,
             Content = message,
         });
+    }
+
+    /// <summary>
+    /// Creates a thread in a Discord forum channel with the specified ID. Without any mentions.
+    /// </summary>
+    /// <param name="channelId">The ID of the forum channel.</param>
+    /// <param name="name">The name of the thread.</param>
+    /// <param name="message">The content of the first message in the thread.</param>
+    /// <returns>The ID of the created thread, or null if the bot is not connected.</returns>
+    public async Task<ulong?> CreateForumThreadAsync(ulong channelId, string name, string message)
+    {
+        if (_client == null)
+        {
+            return null;
+        }
+
+        var thread = await _client.Rest.CreateForumGuildThreadAsync(channelId,
+            new ForumGuildThreadProperties(name,
+                new ForumGuildThreadMessageProperties()
+                {
+                    AllowedMentions = AllowedMentionsProperties.None,
+                    Content = message,
+                }));
+
+        return thread.Id;
     }
 
     // CrystallEdge
