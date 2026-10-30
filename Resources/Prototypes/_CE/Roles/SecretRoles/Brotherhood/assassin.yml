@@ -1,0 +1,28 @@
+- type: secretRole
+  id: Assassin
+  name: ce-secret-role-name-assassin
+  description: ce-secret-role-description-assassin
+  icon: CESecretRoleIconAssassin
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive3
+  skills:
+  - MilitaryTraining
+  objectives: !type:EntSelector
+    id: CEObjectiveAssassinKill
+
+- type: entity
+  id: CEObjectiveAssassinKill
+  name: Kill someone
+  description: The contract must be fulfilled - this person has to die.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
+    state: assassin
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-assassin-kill-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetExcludeHolderDepartment
+  - type: CETargetExcludeDepartmentTargets
+  - type: CETargetKillCondition

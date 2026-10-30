@@ -29,6 +29,9 @@ ce-secret-role-description-recruiter = Вы умеете замечать тех
 ce-secret-role-name-recruit = Рекрут
 ce-secret-role-description-recruit = Вы отказались от прежних амбиций и поклялись в верности братству. Теперь его цели - ваши цели.
 
+ce-secret-role-name-assassin = Ассассин
+ce-secret-role-description-assassin = Наемный убийца, вступивший в братство, чтобы обрести от него защиту, и стать его оружием.
+
 ce-secret-role-name-bounty-hunter = Охотник за головами
 ce-secret-role-description-bounty-hunter = Вы получили крупную сумму денег и заказ уничтожить преступную группировку «Братство» в этом городе. Выполняйте свою работу.
 

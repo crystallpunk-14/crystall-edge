@@ -3,6 +3,7 @@ ce-bodyguard-protect-objective-title = Сохранить жизнь { $targetNa
 ce-priest-protect-objective-title = Сохранить жизнь { $targetName }, должность: { CAPITALIZE($job) }
 ce-brotherhood-patronage-objective-title = Помочь { $targetName }, должность: { CAPITALIZE($job) }, выполнить все свои цели
 ce-brotherhood-debt-objective-title = Трижды довести { $targetName }, должность: { CAPITALIZE($job) }, до крита, не убив
+ce-assassin-kill-objective-title = Убить { $targetName }, должность: { CAPITALIZE($job) }
 ce-recruiter-recruit-objective-title = Завербовать {$count} {$count ->
     [one] человека
     *[other] человек
