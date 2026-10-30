@@ -180,6 +180,9 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            if (!_randomizeCharacters && _ceSpeciesRequirements.TryRefuseJoin(player, character)) // CrystallEdge: a character of a locked species stays in the lobby
+                return;
+
             string speciesId;
             if (_randomizeCharacters)
             {

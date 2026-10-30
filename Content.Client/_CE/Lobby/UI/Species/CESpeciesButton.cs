@@ -64,14 +64,13 @@ public sealed class CESpeciesButton : ContainerButton
         _selected = selected;
         _locked = locked;
 
-        // A locked species that is still picked (e.g. the unlock was revoked) stays visible as picked.
-        Disabled = !selected && locked;
+        // Locked species stay clickable: they can be previewed and edited, just not saved.
         _icon.Modulate = locked ? Color.Black : Color.White;
 
         UpdateVisuals();
     }
 
-    // Tracked by hand rather than via DrawMode: disabled (locked) tiles still react to hovering.
+    // Tracked by hand rather than via DrawMode so hovering looks the same for every tile state.
     protected override void MouseEntered()
     {
         base.MouseEntered();

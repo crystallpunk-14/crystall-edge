@@ -144,15 +144,33 @@ public sealed partial class CEHumanoidProfileEditor
     }
 
     /// <summary>
-    /// Refreshes the species selector.
+    /// Whether the picked species can be saved: not locked by its requirements.
+    /// </summary>
+    public bool SpeciesValid => Profile is null || !SpeciesPicker.IsLocked(Profile.Species);
+
+    /// <summary>
+    /// Refreshes the species selector - on profile change, species prototype reload or unlock (achievement) updates.
     /// </summary>
     public void RefreshSpecies()
     {
-        SpeciesPicker.Populate(Profile?.Species);
+        SpeciesPicker.Populate(Profile);
 
         // If our species isn't available then reset it to default.
-        if (Profile != null && SpeciesPicker.GetAvailableSpecies().All(s => s.ID != Profile.Species))
+        if (Profile != null && SpeciesPicker.GetRoundStartSpecies().All(s => s.ID != Profile.Species))
             SetSpecies(HumanoidCharacterProfile.DefaultSpecies);
+
+        UpdateSaveButton();
+    }
+
+    /// <summary>
+    /// Round-start species the player can't pick yet - kept out of the randomizer.
+    /// </summary>
+    private HashSet<string> GetLockedSpecies()
+    {
+        return SpeciesPicker.GetRoundStartSpecies()
+            .Where(s => SpeciesPicker.IsLocked(s.ID))
+            .Select(s => s.ID)
+            .ToHashSet();
     }
 
     private void SetSpecies(string newSpecies)
@@ -169,6 +187,7 @@ public sealed partial class CEHumanoidProfileEditor
         UpdateVoiceControls();
         SpeciesPicker.SetSelection(Profile?.Species);
         ReloadPreview();
+        UpdateSaveButton();
     }
 
     private void SetAge(int newAge)

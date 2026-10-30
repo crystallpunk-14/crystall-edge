@@ -2,6 +2,7 @@
     xmlns="https://spacestation14.io"
     xmlns:species="clr-namespace:Content.Client._CE.Lobby.UI.Species"
     xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     Orientation="Horizontal"
     VerticalExpand="True"
     HorizontalExpand="True">
@@ -21,6 +22,12 @@
                         <Label Name="DetailsName" StyleClasses="LabelHeadingBigger" VerticalAlignment="Center" />
                     </BoxContainer>
                     <customControls:HSeparator Margin="0 8" />
+                    <PanelContainer Name="DetailsLock" Margin="0 0 0 8" Visible="False">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#4A1E1E" BorderColor="#B0413E" BorderThickness="1" />
+                        </PanelContainer.PanelOverride>
+                        <RichTextLabel Name="DetailsLockLabel" Margin="6 4" />
+                    </PanelContainer>
                     <RichTextLabel Name="DetailsDescription" />
                     <BoxContainer Name="SkillsBox" Orientation="Vertical" Margin="0 10 0 0">
                         <Label Text="{Loc 'ce-species-picker-skills'}" StyleClasses="LabelHeading" />

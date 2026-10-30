@@ -15,3 +15,5 @@ ce-humanoid-profile-editor-personality-tab = Personality
 ce-humanoid-profile-editor-basic-header = Basics
 ce-species-picker-hover-hint = Hover over a species to learn more about it
 ce-species-picker-skills = Skills
+ce-species-locked-wait-in-lobby = The { $species } species is not unlocked for you yet, so you stay in the lobby. { $reason }
+ce-humanoid-profile-editor-species-locked-save = The picked species is not unlocked yet - the character can not be saved.

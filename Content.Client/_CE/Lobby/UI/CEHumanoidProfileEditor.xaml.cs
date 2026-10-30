@@ -432,7 +432,8 @@ namespace Content.Client._CE.Lobby.UI
 
         private void UpdateSaveButton()
         {
-            SaveButton.Disabled = Profile is null || !IsDirty;
+            SaveButton.Disabled = Profile is null || !IsDirty || !SpeciesValid;
+            SaveButton.ToolTip = SpeciesValid ? null : Loc.GetString("ce-humanoid-profile-editor-species-locked-save");
             ResetButton.Disabled = Profile is null || !IsDirty;
         }
 

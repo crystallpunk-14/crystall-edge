@@ -3,6 +3,7 @@ using Content.Shared.Body;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -150,6 +151,12 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public Color SkillsBadgeColor = Color.White;
+
+    /// <summary>
+    /// Requirements to play this species: locked in the character editor and refused on joining the round.
+    /// </summary>
+    [DataField]
+    public HashSet<JobRequirement>? Requirements;
     // CrystallEdge end
 }
 

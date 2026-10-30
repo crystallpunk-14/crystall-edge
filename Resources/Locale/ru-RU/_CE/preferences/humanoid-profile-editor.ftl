@@ -18,3 +18,5 @@ ce-humanoid-profile-editor-personality-tab = Личность
 ce-humanoid-profile-editor-basic-header = Основное
 ce-species-picker-hover-hint = Наведите на расу, чтобы узнать о ней больше
 ce-species-picker-skills = Навыки
+ce-species-locked-wait-in-lobby = Раса «{ $species }» вам ещё недоступна, поэтому вы остаётесь в лобби. { $reason }
+ce-humanoid-profile-editor-species-locked-save = Выбранная раса ещё не разблокирована - персонажа нельзя сохранить.
