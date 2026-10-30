@@ -32,6 +32,42 @@
       collection: Whistles
 
 - type: emoteSounds
+  id: CEUnisexCarrin
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: CECarrinScream
+    Laugh:
+      collection: CECarrinLaugh
+    Crying:
+      collection: CECarrinCry
+    Sigh:
+      path: /Audio/_CE/Voice/Carrin/carrin_sigh.ogg
+    Yawn:
+      path: /Audio/_CE/Voice/Carrin/carrin_yawn.ogg
+    Sneeze:
+      path: /Audio/_CE/Voice/Carrin/carrin_cough.ogg
+    Cough:
+      path: /Audio/_CE/Voice/Carrin/carrin_cough.ogg
+    DefaultDeathgasp:
+      path: /Audio/_CE/Voice/Carrin/carrin_deathgasp.ogg
+    Whistle:
+      collection: CECarrinWhistle
+    Chirp:
+      path: /Audio/_CE/Voice/Carrin/carrin_chirp.ogg
+    CECall:
+      path: /Audio/_CE/Voice/Carrin/carrin_call.ogg
+    CEScree:
+      path: /Audio/_CE/Voice/Carrin/carrin_scree.ogg
+    CECaw:
+      path: /Audio/_CE/Voice/Carrin/carrin_caw.ogg
+    CESquawk:
+      path: /Audio/_CE/Voice/Carrin/carrin_squawk.ogg
+    CECoo:
+      path: /Audio/_CE/Voice/Carrin/carrin_coo.ogg
+
+- type: emoteSounds
   id: CEBear
   params:
     variation: 0.125

@@ -1,0 +1,102 @@
+# Carrin bird emotes, granted via Speech allowedEmotes
+
+- type: emote
+  id: CECall
+  name: chat-emote-name-ce-call
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/vocal.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ce-call"]
+  chatTriggers:
+    - calls out
+    - зовёт
+    - зовет
+    - кличет
+    - издаёт клич
+
+- type: emote
+  id: CEScree
+  name: chat-emote-name-ce-scree
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ce-scree"]
+  chatTriggers:
+    - scree
+    - screes
+    - клекочет
+    - клёкот
+
+- type: emote
+  id: CECaw
+  name: chat-emote-name-ce-caw
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/squeak.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ce-caw"]
+  chatTriggers:
+    - caw
+    - caws
+    - cawing
+    - каркает
+    - каркнул
+    - каркнула
+
+- type: emote
+  id: CESquawk
+  name: chat-emote-name-ce-squawk
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/chitter.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ce-squawk"]
+  chatTriggers:
+    - squawk
+    - squawks
+    - squawking
+    - гаркает
+    - гаркнул
+    - гаркнула
+
+- type: emote
+  id: CECoo
+  name: chat-emote-name-ce-coo
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/whistle.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-ce-coo"]
+  chatTriggers:
+    - coo
+    - coos
+    - cooing
+    - курлычет
+    - курлыкает
