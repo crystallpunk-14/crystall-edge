@@ -17,7 +17,7 @@ ce-species-name-silva = Silva
 ce-species-desc-silva = Oops, I haven't finished this race yet either! I want Silvas to be able to grow plants on their heads! But for now plants aren't an important enough part of the gameplay for that to be useful...
 
 ce-species-name-carcat = Carcat
-ce-species-desc-carcat = Natural predators with a silent step and night vision. Taller than you, with powerful clawed paws, and it goes "nyaw" instead of meowing.
+ce-species-desc-carcat = Natural predators with a silent step and night vision. Taller than you, with powerful clawed paws, and it goes "teow" instead of meow.
 
 ce-species-name-skeleton = Skeleton
 ce-species-desc-skeleton = Spooky Scary Skeletons.
