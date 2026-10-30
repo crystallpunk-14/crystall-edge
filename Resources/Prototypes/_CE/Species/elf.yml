@@ -2,6 +2,15 @@
   id: CEElf
   name: ce-species-name-elf
   roundStart: true
+  description: ce-species-desc-elf
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: elf
+  skills:
+  - ManaControl
+  - ManaGift
+  - ManaSteal
+  skillsBadgeColor: "#92efef"
   prototype: CEMobElf
   dollPrototype: CEAppearanceElf
   skinColoration: CEElf

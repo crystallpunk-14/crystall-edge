@@ -2,6 +2,13 @@
   id: CECarrin
   name: ce-species-name-carrin
   roundStart: true
+  description: ce-species-desc-carrin
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: carrin
+  skills:
+  - Flight
+  skillsBadgeColor: "#e7e397"
   prototype: CEMobCarrin
   dollPrototype: CEAppearanceCarrin
   skinColoration: Hues

@@ -1,8 +1,10 @@
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Body;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -117,6 +119,32 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    // CrystallEdge: species picker card and inborn species skills
+    /// <summary>
+    /// Tile and details icon in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Icon;
+
+    /// <summary>
+    /// Description shown in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public LocId? Description;
+
+    /// <summary>
+    /// Skills every mob of this species is born with.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CESkillPrototype>> Skills = new();
+
+    /// <summary>
+    /// Color of the species badge on its skills in the character menu.
+    /// </summary>
+    [DataField]
+    public Color SkillsBadgeColor = Color.White;
+    // CrystallEdge end
 }
 
 public enum SpeciesNaming : byte

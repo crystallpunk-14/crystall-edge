@@ -1,7 +1,6 @@
 humanoid-profile-editor-bark-voice-label = Voice:
 humanoid-profile-editor-bark-pitch-label = Tone:
 ce-humanoid-profile-editor-emote-voice-label = Emote Voice:
-ce-humanoid-profile-editor-personality-header = Personality
 ce-humanoid-profile-editor-voice-header = Voice
 ce-humanoid-profile-editor-roles-tab = Roles
 ce-humanoid-profile-editor-jobs-header-title = Job
@@ -11,3 +10,8 @@ ce-humanoid-profile-editor-secret-roles-header-description = Your character's se
 ce-humanoid-profile-editor-preference-unavailable-label = If preference unavailable:
 ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button = Be {INDEFINITE($overflowJob)} {$overflowJob}
 ce-humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Stay in lobby
+
+ce-humanoid-profile-editor-personality-tab = Personality
+ce-humanoid-profile-editor-basic-header = Basics
+ce-species-picker-hover-hint = Hover over a species to learn more about it
+ce-species-picker-skills = Skills

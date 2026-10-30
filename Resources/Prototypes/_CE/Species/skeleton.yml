@@ -2,6 +2,14 @@
   id: CESkeleton
   name: ce-species-name-skeleton
   roundStart: false
+  description: ce-species-desc-skeleton
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: skeleton
+  skills:
+  - Murkwalker
+  - NightVision
+  skillsBadgeColor: "#e3dac9"
   prototype: CEMobSkeleton
   dollPrototype: CEAppearanceSkeleton
   skinColoration: CESkeleton

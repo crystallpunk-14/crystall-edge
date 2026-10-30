@@ -7,3 +7,13 @@ ce-species-name-silva = Сильва
 ce-species-name-carcat = Каркат
 ce-species-name-skeleton = Скелет
 ce-species-name-carrin = Каррин
+
+ce-species-desc-human = TODO: описание расы.
+ce-species-desc-infernal = TODO: описание расы.
+ce-species-desc-dwarf = TODO: описание расы.
+ce-species-desc-elf = TODO: описание расы.
+ce-species-desc-goblin = TODO: описание расы.
+ce-species-desc-silva = TODO: описание расы.
+ce-species-desc-carcat = TODO: описание расы.
+ce-species-desc-skeleton = TODO: описание расы.
+ce-species-desc-carrin = TODO: описание расы.

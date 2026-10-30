@@ -7,3 +7,13 @@ ce-species-name-silva = Silva
 ce-species-name-carcat = Carcat
 ce-species-name-skeleton = Skeleton
 ce-species-name-carrin = Carrin
+
+ce-species-desc-human = TODO: species description.
+ce-species-desc-infernal = TODO: species description.
+ce-species-desc-dwarf = TODO: species description.
+ce-species-desc-elf = TODO: species description.
+ce-species-desc-goblin = TODO: species description.
+ce-species-desc-silva = TODO: species description.
+ce-species-desc-carcat = TODO: species description.
+ce-species-desc-skeleton = TODO: species description.
+ce-species-desc-carrin = TODO: species description.

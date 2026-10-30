@@ -253,11 +253,6 @@
   - type: CESkinColoredLayers
     maps:
     - wings
-  - type: CEInnateSkills
-    skills:
-    - Flight
-    descriptorName: ce-species-name-carrin
-    descriptorColor: "#e7e397"
   - type: AmbientSound
     enabled: false
     volume: 2

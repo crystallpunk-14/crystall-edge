@@ -138,12 +138,6 @@
     barkSpeech: Skeleton
   - type: Vocal
     emoteSounds: Skeleton
-  - type: CEInnateSkills
-    skills:
-    - Murkwalker
-    - NightVision
-    descriptorName: ce-species-name-skeleton
-    descriptorColor: "#e3dac9"
 
 - type: entity
   parent: OrganBase

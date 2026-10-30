@@ -34,12 +34,20 @@ public sealed partial class CESkillControl : BoxContainer
 
     public void SetSkill(EntityUid target, ProtoId<CESkillPrototype> skill)
     {
+        SetSkill(skill, _skill.GetDescriptor(target, skill));
+    }
+
+    /// <summary>
+    /// Shows a skill that nobody has learned yet (e.g. in the lobby), with an optional source badge.
+    /// </summary>
+    public void SetSkill(ProtoId<CESkillPrototype> skill, CESkillDescriptor? descriptor = null)
+    {
         TitleLabel.Text = _skill.GetSkillName(skill);
         DescriptionLabel.Text = _skill.GetSkillDescription(skill);
 
         Icon.Texture = _skill.GetSkillIcon(skill) is { } icon ? _sprite.Frame0(icon) : null;
 
-        if (_skill.GetDescriptor(target, skill) is { } descriptor)
+        if (descriptor is not null)
         {
             OwnerPanel.Visible = true;
             OwnerPanel.ModulateSelfOverride = descriptor.Color;

@@ -4,8 +4,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Skill;
 
 /// <summary>
-/// Grants a fixed set of skills the moment this entity is initialized (e.g. a species' or ghost
-/// role's inborn abilities). All skills share one <see cref="CESkillDescriptor"/>-equivalent badge
+/// Grants a fixed set of skills the moment this entity is initialized (e.g. a ghost role's inborn
+/// abilities; species skills live on <c>SpeciesPrototype.Skills</c> instead). All skills share one <see cref="CESkillDescriptor"/>-equivalent badge
 /// (name/color/tooltip) naming this component as their source in the character menu.
 /// </summary>
 [RegisterComponent]

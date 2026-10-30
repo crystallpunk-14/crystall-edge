@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Guidebook;
 using Content.Shared.Humanoid;
@@ -17,27 +16,7 @@ public sealed partial class CEHumanoidProfileEditor
     public event Action<List<ProtoId<GuideEntryPrototype>>>? OnOpenGuidebook;
 
     private ColorSelectorSliders _rgbSkinColorSelector;
-    private List<SpeciesPrototype> _species = new();
     private List<EmoteSoundsPrototype> _voices = new();
-
-    public void UpdateSpeciesGuidebookIcon()
-    {
-        SpeciesInfoButton.StyleClasses.Clear();
-
-        var species = Profile?.Species;
-        if (species is null)
-            return;
-
-        if (!_prototypeManager.Resolve<SpeciesPrototype>(species, out var speciesProto))
-            return;
-
-        // Don't display the info button if no guide entry is found
-        if (!_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-            return;
-
-        const string style = "SpeciesInfoDefault";
-        SpeciesInfoButton.StyleIdentifier = style;
-    }
 
     private void UpdateGenderControls()
     {
@@ -169,32 +148,11 @@ public sealed partial class CEHumanoidProfileEditor
     /// </summary>
     public void RefreshSpecies()
     {
-        SpeciesButton.Clear();
-        _species.Clear();
-
-        _species.AddRange(_prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart));
-        _species.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
-        var speciesIds = _species.Select(o => o.ID).ToList();
-
-        for (var i = 0; i < _species.Count; i++)
-        {
-            var name = Loc.GetString(_species[i].Name);
-            SpeciesButton.AddItem(name, i);
-
-            if (Profile?.Species.Equals(_species[i].ID) == true)
-            {
-                SpeciesButton.SelectId(i);
-            }
-        }
+        SpeciesPicker.Populate(Profile?.Species);
 
         // If our species isn't available then reset it to default.
-        if (Profile != null)
-        {
-            if (!speciesIds.Contains(Profile.Species))
-            {
-                SetSpecies(HumanoidCharacterProfile.DefaultSpecies);
-            }
-        }
+        if (Profile != null && SpeciesPicker.GetAvailableSpecies().All(s => s.ID != Profile.Species))
+            SetSpecies(HumanoidCharacterProfile.DefaultSpecies);
     }
 
     private void SetSpecies(string newSpecies)
@@ -209,7 +167,7 @@ public sealed partial class CEHumanoidProfileEditor
         RefreshLoadouts();
         UpdateSexControls(); // update sex for new species
         UpdateVoiceControls();
-        UpdateSpeciesGuidebookIcon();
+        SpeciesPicker.SetSelection(Profile?.Species);
         ReloadPreview();
     }
 
@@ -256,22 +214,6 @@ public sealed partial class CEHumanoidProfileEditor
     {
         Profile = Profile?.WithGender(newGender);
         ReloadPreview();
-    }
-
-    private void OnSpeciesInfoButtonPressed(BaseButton.ButtonEventArgs args)
-    {
-        // TODO GUIDEBOOK
-        // make the species guide book a field on the species prototype.
-        // I.e., do what jobs/antags do.
-
-        var guidebookController = UserInterfaceManager.GetUIController<GuidebookUIController>();
-        var species = Profile?.Species ?? HumanoidCharacterProfile.DefaultSpecies;
-        if (!_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-            return;
-
-        var page = new ProtoId<GuideEntryPrototype>(species.Id); // Gross. See above todo comment.
-        //TODO: Don't close the guidebook if its already open, just go to the correct page
-        guidebookController.OpenGuidebook(new List<ProtoId<GuideEntryPrototype>> { page }, selected: page);
     }
 
     private void OnSkinColorOnValueChanged()
