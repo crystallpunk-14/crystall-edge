@@ -10,7 +10,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
+using Content.Shared._CE.Traits;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Client.State;
@@ -90,6 +90,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             _profileEditor.RefreshAntags();
             _profileEditor.RefreshJobs();
             _profileEditor.RefreshSecretRoles(); // CrystallEdge: secret role requirements
+            _profileEditor.RefreshTraits();
         }
     }
 
@@ -128,7 +129,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
                 _profileEditor.RefreshSpecies();
             }
 
-            if (obj.WasModified<TraitPrototype>())
+            if (obj.WasModified<CETraitPrototype>())
             {
                 _profileEditor.RefreshTraits();
             }
@@ -202,6 +203,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _profileEditor?.RefreshJobs();
         _profileEditor?.RefreshSecretRoles(); // CrystallEdge: secret role requirements
         _profileEditor?.RefreshLoadouts();
+        _profileEditor?.RefreshTraits();
     }
 
     private void SaveProfile()
@@ -240,6 +242,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             return;
 
         _savePanel = new CharacterSetupGuiSavePanel();
+        _savePanel.SaveButton.Disabled = _profileEditor?.TraitsValid == false;
 
         _savePanel.SaveButton.OnPressed += _ =>
         {

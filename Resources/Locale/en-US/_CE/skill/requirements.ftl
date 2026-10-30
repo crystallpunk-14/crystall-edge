@@ -1,4 +1,3 @@
-ce-skill-req-not-met = You fail to learn this
 ce-skill-req-prerequisite = Skill "{$name}" must be learned
 ce-skill-req-not-prerequisite = Skill "{$name}" must not be learned
 ce-skill-req-species = You must be the race of “{$name}”

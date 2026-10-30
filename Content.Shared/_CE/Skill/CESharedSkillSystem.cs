@@ -1,12 +1,10 @@
 using System.Linq;
 using Robust.Shared.Analyzers;
 using System.Text;
-using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -35,20 +33,16 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
         foreach (var skill in learned)
         {
-            TryAddSkill(ent.Owner, skill, ent.Comp, force: true);
+            TryAddSkill(ent.Owner, skill, ent.Comp);
         }
     }
 
     /// <summary>
-    /// Directly adds the skill to the player. Checks <see cref="CESkillPrototype.Conditions"/> via
-    /// <see cref="SkillConditionsMet"/> unless <paramref name="force"/> is true - this is the single
-    /// authoritative checkpoint for whether a skill can be granted, callers no longer need to
-    /// pre-check conditions themselves.
+    /// Directly adds the skill to the player.
     /// </summary>
     public bool TryAddSkill(EntityUid target,
         ProtoId<CESkillPrototype> skill,
         CESkillStorageComponent? component = null,
-        bool force = false,
         CESkillDescriptor? descriptor = null)
     {
         component ??= EnsureComp<CESkillStorageComponent>(target);
@@ -57,9 +51,6 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             return false;
 
         if (!_proto.Resolve(skill, out var indexedSkill))
-            return false;
-
-        if (!force && !SkillConditionsMet(target, skill))
             return false;
 
         indexedSkill.Effect?.AddSkill(EntityManager, target);
@@ -234,19 +225,6 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         }
 
         return sb.ToString();
-    }
-
-    /// <summary>
-    /// Whether <paramref name="actor"/> currently satisfies <paramref name="skill"/>'s
-    /// <see cref="CESkillPrototype.Conditions"/>. Does not check whether it is already known.
-    /// </summary>
-    public bool SkillConditionsMet(EntityUid actor, ProtoId<CESkillPrototype> skill)
-    {
-        if (!_proto.Resolve(skill, out var indexedSkill))
-            return false;
-
-        var args = new CEEntityEffectArgs(EntityManager, actor, null, Angle.Zero, 0f, actor, null);
-        return indexedSkill.Conditions.All(condition => condition.Passes(args));
     }
 
     /// <summary>

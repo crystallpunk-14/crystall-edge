@@ -1,0 +1,47 @@
+# Placeholder set built on existing skills to exercise the trait system; the real traits are a separate task.
+
+- type: trait
+  id: NightVision
+  skill: NightVision
+  cost: 3
+
+- type: trait
+  id: MurkResistance
+  skill: MurkResistance
+  cost: 2
+  incompatible:
+  - Murkwalker
+
+- type: trait
+  id: SoftLanding
+  skill: SoftLanding
+  cost: 1
+  gear: CERope
+
+- type: trait
+  id: TimeSense
+  skill: TimeSense
+  cost: 0
+
+- type: trait
+  id: Murkwalker
+  skill: Murkwalker
+  cost: -1
+
+- type: trait
+  id: MilitaryTraining
+  skill: MilitaryTraining
+  cost: -2
+
+- type: trait
+  id: ManaControl
+  skill: ManaControl
+  cost: -3
+
+- type: trait
+  id: Flight
+  skill: Flight
+  cost: 2
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: WerewolfWin
