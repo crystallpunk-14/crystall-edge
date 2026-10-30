@@ -4,8 +4,8 @@ ce-reagent-desc-blood-animal = Жизненная энергия живого н
 ce-reagent-name-blood = Кровь
 ce-reagent-desc-blood = Жизненная энергия живого теплокровного существа.
 
-ce-reagent-name-blood-tiefling = Кровь тифлинга
-ce-reagent-desc-blood-tiefling = Жизненная энергия огнекровного существа.
+ce-reagent-name-blood-infernal = Кровь инфернала
+ce-reagent-desc-blood-infernal = Жизненная энергия огнекровного существа.
 
 ce-reagent-name-blood-elf = Кровь эльфа
 ce-reagent-desc-blood-elf = Жизненная энергия волшебного существа.

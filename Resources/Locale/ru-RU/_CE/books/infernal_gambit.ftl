@@ -1,4 +1,4 @@
-ce-book-text-tiefling-gambit = [head=1]Гамбит Тифлинга[/head]
+ce-book-text-infernal-gambit = [head=1]Гамбит Инфернала[/head]
     Рекомендуется 3+ игроков
 
     •[bold]Цель:[/bold] Выбросить наибольшее количество очков в раунде

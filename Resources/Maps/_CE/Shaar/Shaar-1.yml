@@ -2634,7 +2634,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -33.5,-13.5
-- proto: CEBookTieflingGambit
+- proto: CEBookInfernalGambit
   entities:
   - uid: 1714
     components:

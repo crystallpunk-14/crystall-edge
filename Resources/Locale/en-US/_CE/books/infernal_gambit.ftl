@@ -1,4 +1,4 @@
-ce-book-text-tiefling-gambit = [head=1]Tiefling's Gambit[/head]
+ce-book-text-infernal-gambit = [head=1]Infernal's Gambit[/head]
     Recommended for 3+ players
 
 

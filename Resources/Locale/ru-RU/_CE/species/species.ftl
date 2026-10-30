@@ -1,5 +1,5 @@
 ce-species-name-human = Человек 
-ce-species-name-tiefling = Тифлинг 
+ce-species-name-infernal = Инфернал 
 ce-species-name-dwarf = Дварф
 ce-species-name-elf = Эльф
 ce-species-name-goblin = Гоблин

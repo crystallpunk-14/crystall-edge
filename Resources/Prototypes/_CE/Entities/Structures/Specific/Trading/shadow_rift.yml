@@ -39,7 +39,7 @@
     - CEMobShadowTraderGoblin
     - CEMobShadowTraderHuman
     - CEMobShadowTraderSilva
-    - CEMobShadowTraderTiefling
+    - CEMobShadowTraderInfernal
   - type: CEMurkDissolvingStatus
     dissolved: 0.75
     overlayEnabled: false

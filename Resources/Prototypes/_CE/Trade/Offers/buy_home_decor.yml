@@ -107,13 +107,13 @@
     proto: CEPlushieSilva
 
 - type: tradeOffer
-  id: BuyPlushieTiefling
+  id: BuyPlushieInfernal
   shop: HomeDecor
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CEPlushieTiefling
+    proto: CEPlushieInfernal
 
 - type: tradeOffer
   id: BuyPlushieCarcat
@@ -871,13 +871,13 @@
     proto: CEPlushieGoldenSilva
 
 - type: tradeOffer
-  id: BuyPlushieGoldenTiefling
+  id: BuyPlushieGoldenInfernal
   shop: HomeDecor
   pay:
     bonus: 200
   reward:
   - !type:CETradeSpawnReward
-    proto: CEPlushieGoldenTiefling
+    proto: CEPlushieGoldenInfernal
 
 - type: tradeOffer
   id: BuyPlushieGoldenCarcat

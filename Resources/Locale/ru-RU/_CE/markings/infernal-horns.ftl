@@ -1,0 +1,12 @@
+marking-CEInfernalHorns = Извилистые
+marking-CEInfernalHorns2 = Прилежность
+marking-CEInfernalHorns3 = Вертикаль власти
+marking-CEInfernalHorns3Broken = Сломанная вертикаль
+marking-CEInfernalHorns4 = Мелочь
+marking-CEInfernalHorns5 = Дьявол
+marking-CEInfernalHorns5Broken = Сломленный дьявол
+marking-CEInfernalHorns6 = Барашек
+marking-CEInfernalHorns7 = Облегающие
+marking-CEInfernalHorns8 = Корона
+marking-CEInfernalHorns9 = Единорог
+marking-CEInfernalHorns10 = Изогнутое надменство

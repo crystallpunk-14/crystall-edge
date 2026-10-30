@@ -1,5 +1,5 @@
 ce-species-name-human = Human
-ce-species-name-tiefling = Tiefling
+ce-species-name-infernal = Infernal
 ce-species-name-dwarf = Dwarf
 ce-species-name-elf = Elf
 ce-species-name-goblin = Goblin

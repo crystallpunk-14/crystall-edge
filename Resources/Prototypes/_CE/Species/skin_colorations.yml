@@ -1,5 +1,5 @@
 - type: skinColoration
-  id: CETieflingHues
+  id: CEInfernalHues
   strategy: !type:ClampedHsvColoration
     hue: [0.6, 1.05]
     saturation: [0.15, 0.8]

@@ -1,0 +1,14 @@
+- type: species
+  id: CEInfernal
+  name: ce-species-name-infernal
+  roundStart: true
+  prototype: CEMobInfernal
+  dollPrototype: CEAppearanceInfernal
+  skinColoration: CEInfernalHues
+  maleFirstNames: CE_Names_Infernal_Male_First
+  femaleFirstNames: CE_Names_Infernal_Female_First
+  lastNames: CE_Names_Infernal_Last
+  minAge: 18 #TODO: mention ages in the species guidebook entry
+  maxAge: 120
+  youngAge: 50
+  oldAge: 80

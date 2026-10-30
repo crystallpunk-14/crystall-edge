@@ -1,5 +1,5 @@
 - type: markingsGroup
-  id: CETiefling
+  id: CEInfernal
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 1
@@ -42,24 +42,22 @@
       limit: 1
       required: true
       onlyGroupWhitelisted: true
-      default: [ CETieflingTail ]
+      default: [ CEInfernalTail ]
     enum.HumanoidVisualLayers.HeadTop:
-      limit: 1
+      limit: 2
       required: true
       onlyGroupWhitelisted: true
-      default: [ CETieflingHorns ]
+      default: [ CEInfernalHorns ]
     enum.HumanoidVisualLayers.Special:
       limit: 0
       required: false
   appearances:
     enum.HumanoidVisualLayers.Tail:
       matchSkin: true
-    enum.HumanoidVisualLayers.HeadTop:
-      matchSkin: true
 
 - type: entity
   parent: CEBaseSpeciesAppearance
-  id: CEAppearanceTiefling
+  id: CEAppearanceInfernal
   categories: [ ForkFiltered, HideSpawnMenu ]
   components:
   - type: Inventory
@@ -109,72 +107,72 @@
             state: female_neck
   - type: InitialBody
     organs:
-      Torso: CEOrganTieflingTorso
-      Head: CEOrganTieflingHead
-      ArmLeft: CEOrganTieflingArmLeft
-      ArmRight: CEOrganTieflingArmRight
-      HandRight: CEOrganTieflingHandRight
-      HandLeft: CEOrganTieflingHandLeft
-      LegLeft: CEOrganTieflingLegLeft
-      LegRight: CEOrganTieflingLegRight
-      FootLeft: CEOrganTieflingFootLeft
-      FootRight: CEOrganTieflingFootRight
+      Torso: CEOrganInfernalTorso
+      Head: CEOrganInfernalHead
+      ArmLeft: CEOrganInfernalArmLeft
+      ArmRight: CEOrganInfernalArmRight
+      HandRight: CEOrganInfernalHandRight
+      HandLeft: CEOrganInfernalHandLeft
+      LegLeft: CEOrganInfernalLegLeft
+      LegRight: CEOrganInfernalLegRight
+      FootLeft: CEOrganInfernalFootLeft
+      FootRight: CEOrganInfernalFootRight
       Brain: OrganHumanBrain
-      Eyes: CEOrganTieflingEyes
+      Eyes: CEOrganInfernalEyes
       Heart: OrganHumanHeart
       Lungs: OrganHumanLungs
       Stomach: OrganHumanStomach
       Liver: OrganHumanLiver
       Kidneys: OrganHumanKidneys
   - type: HumanoidProfile
-    species: CETiefling
+    species: CEInfernal
 
 - type: entity
   parent:
-  - CEAppearanceTiefling
+  - CEAppearanceInfernal
   - CEBaseSpeciesMobOrganic
-  id: CEMobTiefling
-  name: Mr. Tiefling
+  id: CEMobInfernal
+  name: Mr. Infernal
   components:
   - type: Icon
-    sprite: _CE/Mobs/Species/Tiefling/parts.rsi
+    sprite: _CE/Mobs/Species/Infernal/parts.rsi
     state: full
   - type: Wagging
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
-      - ReagentId: CEBloodTiefling
+      - ReagentId: CEBloodInfernal
         Quantity: 300
 
 - type: entity
   parent: OrganBase
-  id: CEOrganTiefling
+  id: CEOrganInfernal
   categories: [ ForkFiltered ]
   abstract: true
-  suffix: tiefling
+  suffix: infernal
 
 - type: entity
-  parent: CEOrganTiefling
-  id: CEOrganTieflingExternal
+  parent: CEOrganInfernal
+  id: CEOrganInfernalExternal
   abstract: true
   components:
   - type: Sprite
-    sprite: _CE/Mobs/Species/Tiefling/parts.rsi
+    sprite: _CE/Mobs/Species/Infernal/parts.rsi
   - type: VisualOrgan
     data:
-      sprite: _CE/Mobs/Species/Tiefling/parts.rsi
+      sprite: _CE/Mobs/Species/Infernal/parts.rsi
   - type: VisualOrganMarkings
     markingData:
-      group: CETiefling
+      group: CEInfernal
 
 - type: entity
-  parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganTieflingExternal ]
-  id: CEOrganTieflingTorso
+  parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganInfernalExternal ]
+  id: CEOrganInfernalTorso
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganTieflingExternal ]
-  id: CEOrganTieflingHead
+  parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganInfernalExternal ]
+  id: CEOrganInfernalHead
   categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
@@ -183,48 +181,48 @@
     - enum.HumanoidVisualLayers.Snout
 
 - type: entity
-  parent: [ CEOrganBaseArmLeftSexed, OrganBaseArmLeft, CEOrganTieflingExternal ]
-  id: CEOrganTieflingArmLeft
+  parent: [ CEOrganBaseArmLeftSexed, OrganBaseArmLeft, CEOrganInfernalExternal ]
+  id: CEOrganInfernalArmLeft
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseArmRightSexed, OrganBaseArmRight, CEOrganTieflingExternal ]
-  id: CEOrganTieflingArmRight
+  parent: [ CEOrganBaseArmRightSexed, OrganBaseArmRight, CEOrganInfernalExternal ]
+  id: CEOrganInfernalArmRight
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseHandLeftSexed, OrganBaseHandLeft, CEOrganTieflingExternal ]
-  id: CEOrganTieflingHandLeft
+  parent: [ CEOrganBaseHandLeftSexed, OrganBaseHandLeft, CEOrganInfernalExternal ]
+  id: CEOrganInfernalHandLeft
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseHandRightSexed, OrganBaseHandRight, CEOrganTieflingExternal ]
-  id: CEOrganTieflingHandRight
+  parent: [ CEOrganBaseHandRightSexed, OrganBaseHandRight, CEOrganInfernalExternal ]
+  id: CEOrganInfernalHandRight
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseLegLeftSexed, OrganBaseLegLeft, CEOrganTieflingExternal ]
-  id: CEOrganTieflingLegLeft
+  parent: [ CEOrganBaseLegLeftSexed, OrganBaseLegLeft, CEOrganInfernalExternal ]
+  id: CEOrganInfernalLegLeft
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseLegRightSexed, OrganBaseLegRight, CEOrganTieflingExternal ]
-  id: CEOrganTieflingLegRight
+  parent: [ CEOrganBaseLegRightSexed, OrganBaseLegRight, CEOrganInfernalExternal ]
+  id: CEOrganInfernalLegRight
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseFootLeftSexed, OrganBaseFootLeft, CEOrganTieflingExternal ]
-  id: CEOrganTieflingFootLeft
+  parent: [ CEOrganBaseFootLeftSexed, OrganBaseFootLeft, CEOrganInfernalExternal ]
+  id: CEOrganInfernalFootLeft
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ CEOrganBaseFootRightSexed, OrganBaseFootRight, CEOrganTieflingExternal ]
-  id: CEOrganTieflingFootRight
+  parent: [ CEOrganBaseFootRightSexed, OrganBaseFootRight, CEOrganInfernalExternal ]
+  id: CEOrganInfernalFootRight
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganTieflingExternal ]
-  id: CEOrganTieflingEyes
+  parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganInfernalExternal ]
+  id: CEOrganInfernalEyes
   categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
