@@ -21,7 +21,7 @@
     - CEMobShadowTraderGoblin
     - CEMobShadowTraderHuman
     - CEMobShadowTraderSilva
-    - CEMobShadowTraderTiefling
+    - CEMobShadowTraderInfernal
 
 - type: entity
   parent:
@@ -170,9 +170,9 @@
 
 - type: entity
   parent:
-  - CEAppearanceTiefling
+  - CEAppearanceInfernal
   - CEMobShadowTrader
-  id: CEMobShadowTraderTiefling
+  id: CEMobShadowTraderInfernal
   categories: [ ForkFiltered, HideSpawnMenu ]
 
 - type: entityEffectAnimation

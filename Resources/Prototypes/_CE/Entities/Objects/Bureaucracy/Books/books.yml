@@ -1,7 +1,7 @@
 - type: entity
-  id: CEBookTieflingGambit
+  id: CEBookInfernalGambit
   parent: CEBookWriteableBase
-  name: "Tiefling's Gambit"
+  name: "Infernal's Gambit"
   description: Rules for gambling with dice, created by Callista Zyanur.
   components:
   - type: Sprite
@@ -18,7 +18,7 @@
     - state: bookmark_short
       map: [ "overlay" ]
   - type: Paper
-    content: ce-book-text-tiefling-gambit
+    content: ce-book-text-infernal-gambit
 
 - type: entity
   id: CEBookPantheonGodsSileita

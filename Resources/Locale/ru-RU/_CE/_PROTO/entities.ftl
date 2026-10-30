@@ -62,13 +62,13 @@ ent-CEOrganSkeletonExternal = { "" }
     .desc = { "" }
     .suffix = skeleton
 
-ent-CEOrganTiefling = { "" }
+ent-CEOrganInfernal = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingExternal = { "" }
+ent-CEOrganInfernalExternal = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
 ent-CEActionEnergyScannerMode = Переключить режим сканера
     .desc = Меняет, какие энергетические трубы показывают очки: текущий уровень и нижний, только текущий, текущий и верхний или ничего.
@@ -869,7 +869,7 @@ ent-CEGuidebookBase = { ent-CEBookBase }
     .desc = { ent-CEBookBase.desc }
     .suffix = Путеводитель
 
-ent-CEBookTieflingGambit = Гамбит Тифлинга
+ent-CEBookInfernalGambit = Гамбит Инфернала
     .desc = Правила игры в кости, созданные Каллистой Зянур.
 
 ent-CEBookPantheonGodsSileita = Пантеон богов Силеиты
@@ -1589,7 +1589,7 @@ ent-CEPlushieDwarf = плюшевый дварф
 ent-CEPlushieElf = плюшевый эльф
     .desc = Непонятно, мужчина это или женщина... Зато вмещает немного маны!
 
-ent-CEPlushieTiefling = плюшевый тифлинг
+ent-CEPlushieInfernal = плюшевый инфернал
     .desc = Осторожно, не уколи палец о рог! Так горячо...
 
 ent-CEPlushieCarcat = плюшевый каркат
@@ -1631,7 +1631,7 @@ ent-CEPlushieGoldenGoblin = золотая фигурка гоблина
 ent-CEPlushieGoldenSilva = золотая фигурка сильвы
     .desc = TODO fun description
 
-ent-CEPlushieGoldenTiefling = золотая фигурка тифлинга
+ent-CEPlushieGoldenInfernal = золотая фигурка инфернала
     .desc = Эти острые рога сделаны из металла! Вы не ослышались. Эту золотую фигурку вполне можно использовать как оружие.
 
 ent-CEPlushieGoldenCarcat = золотая фигурка каркат
@@ -4889,52 +4889,52 @@ ent-CEOrganSkeletonFootRight = { "" }
     .desc = { "" }
     .suffix = skeleton
 
-ent-CEMobTiefling = Мистер Тифлинг
+ent-CEMobInfernal = Мистер Инфернал
     .desc = { "" }
 
-ent-CEOrganTieflingTorso = { "" }
+ent-CEOrganInfernalTorso = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingHead = { "" }
+ent-CEOrganInfernalHead = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingArmLeft = { "" }
+ent-CEOrganInfernalArmLeft = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingArmRight = { "" }
+ent-CEOrganInfernalArmRight = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingHandLeft = { "" }
+ent-CEOrganInfernalHandLeft = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingHandRight = { "" }
+ent-CEOrganInfernalHandRight = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingLegLeft = { "" }
+ent-CEOrganInfernalLegLeft = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingLegRight = { "" }
+ent-CEOrganInfernalLegRight = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingFootLeft = { "" }
+ent-CEOrganInfernalFootLeft = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingFootRight = { "" }
+ent-CEOrganInfernalFootRight = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
-ent-CEOrganTieflingEyes = { "" }
+ent-CEOrganInfernalEyes = { "" }
     .desc = { "" }
-    .suffix = tiefling
+    .suffix = infernal
 
 ent-CESmallWoodenCrateFilled = { ent-CESmallWoodenCrate }
     .desc = { ent-CESmallWoodenCrate.desc }
@@ -5077,7 +5077,7 @@ ent-CEMobShadowTraderHuman = { ent-CEMobShadowTrader }
 ent-CEMobShadowTraderSilva = { ent-CEMobShadowTrader }
     .desc = { ent-CEMobShadowTrader.desc }
 
-ent-CEMobShadowTraderTiefling = { ent-CEMobShadowTrader }
+ent-CEMobShadowTraderInfernal = { ent-CEMobShadowTrader }
     .desc = { ent-CEMobShadowTrader.desc }
 
 ent-CEFoodCheeseWheel = круг сыра

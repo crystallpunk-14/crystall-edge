@@ -377,6 +377,28 @@ CEPlantSunflowerDead: null
 CEPlantTomatoesDead: null
 CEPlantWheatDead: null
 
+# 2026-10-30
+# Tieflings renamed to Infernals
+CEAppearanceTiefling: CEAppearanceInfernal
+CEBookTieflingGambit: CEBookInfernalGambit
+CEMobTiefling: CEMobInfernal
+CEMobShadowTraderTiefling: CEMobShadowTraderInfernal
+CEOrganTiefling: CEOrganInfernal
+CEOrganTieflingArmLeft: CEOrganInfernalArmLeft
+CEOrganTieflingArmRight: CEOrganInfernalArmRight
+CEOrganTieflingExternal: CEOrganInfernalExternal
+CEOrganTieflingEyes: CEOrganInfernalEyes
+CEOrganTieflingFootLeft: CEOrganInfernalFootLeft
+CEOrganTieflingFootRight: CEOrganInfernalFootRight
+CEOrganTieflingHandLeft: CEOrganInfernalHandLeft
+CEOrganTieflingHandRight: CEOrganInfernalHandRight
+CEOrganTieflingHead: CEOrganInfernalHead
+CEOrganTieflingLegLeft: CEOrganInfernalLegLeft
+CEOrganTieflingLegRight: CEOrganInfernalLegRight
+CEOrganTieflingTorso: CEOrganInfernalTorso
+CEPlushieGoldenTiefling: CEPlushieGoldenInfernal
+CEPlushieTiefling: CEPlushieInfernal
+
 # CrystallEdge migration zone end
 
 

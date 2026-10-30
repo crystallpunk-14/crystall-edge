@@ -1,19 +1,19 @@
 - type: marking
-  id: CETieflingTail
+  id: CEInfernalTail
   bodyPart: Tail
-  groupWhitelist: [ CETiefling ]
+  groupWhitelist: [ CEInfernal ]
   forcedColoring: true
   sprites:
-    - sprite: _CE/Mobs/Customization/tiefling_tails.rsi
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
       state: tail
 
 - type: marking
-  id: CETieflingTailSpades
+  id: CEInfernalTailSpades
   bodyPart: Tail
-  groupWhitelist: [ CETiefling ]
+  groupWhitelist: [ CEInfernal ]
   forcedColoring: true
   sprites:
-    - sprite: _CE/Mobs/Customization/tiefling_tails.rsi
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
       state: tail_spades
 
 
@@ -22,19 +22,19 @@
 # Animation
 
 - type: marking
-  id: CETieflingTailAnimated
+  id: CEInfernalTailAnimated
   bodyPart: Tail
   groupWhitelist: []
   forcedColoring: true
   sprites:
-    - sprite: _CE/Mobs/Customization/tiefling_tails.rsi
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
       state: tail_waggin
 
 - type: marking
-  id: CETieflingTailSpadesAnimated
+  id: CEInfernalTailSpadesAnimated
   bodyPart: Tail
   groupWhitelist: []
   forcedColoring: true
   sprites:
-    - sprite: _CE/Mobs/Customization/tiefling_tails.rsi
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
       state: tail_spades_waggin

@@ -26,10 +26,10 @@
   color: "#802020"
 
 - type: reagent
-  id: CEBloodTiefling
+  id: CEBloodInfernal
   parent: CEBlood
-  desc: ce-reagent-desc-blood-tiefling
-  name: ce-reagent-name-blood-tiefling
+  desc: ce-reagent-desc-blood-infernal
+  name: ce-reagent-name-blood-infernal
   color: "#803300"
 
 - type: reagent
