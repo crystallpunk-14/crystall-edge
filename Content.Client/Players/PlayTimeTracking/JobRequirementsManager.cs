@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.Roles;
 using Content.Shared.CCVar;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Players;
 using Content.Shared.Players.JobWhitelist;
 using Content.Shared.Players.PlayTimeTracking;
@@ -193,6 +194,17 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
         return CheckRoleRequirements(role.Requirements, profile, out reason);
+    }
+
+    /// <summary>
+    /// Check the species prototype against the current player, for requirements.
+    /// </summary>
+    public bool IsAllowed(
+        SpeciesPrototype species,
+        HumanoidCharacterProfile? profile,
+        [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        return CheckRoleRequirements(species.Requirements, profile, out reason);
     }
     // CrystallEdge end
 

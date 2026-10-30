@@ -2,6 +2,13 @@
   id: CEHuman
   name: ce-species-name-human
   roundStart: true
+  description: ce-species-desc-human
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: human
+  skills:
+  - MurkResistance
+  skillsBadgeColor: "#d9b38c"
   prototype: CEMobHuman
   dollPrototype: CEAppearanceHuman
   skinColoration: HumanToned

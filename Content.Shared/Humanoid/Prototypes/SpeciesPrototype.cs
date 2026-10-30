@@ -1,8 +1,11 @@
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Body;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -117,6 +120,44 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    // CrystallEdge: species picker card and inborn species skills
+    /// <summary>
+    /// Tile and details icon in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Icon;
+
+    /// <summary>
+    /// Optional replacement for <see cref="Icon"/> while the species is hovered or picked in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? HoveredIcon;
+
+    /// <summary>
+    /// Description shown in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public LocId? Description;
+
+    /// <summary>
+    /// Skills every mob of this species is born with.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CESkillPrototype>> Skills = new();
+
+    /// <summary>
+    /// Color of the species badge on its skills in the character menu.
+    /// </summary>
+    [DataField]
+    public Color SkillsBadgeColor = Color.White;
+
+    /// <summary>
+    /// Requirements to play this species: locked in the character editor and refused on joining the round.
+    /// </summary>
+    [DataField]
+    public HashSet<JobRequirement>? Requirements;
+    // CrystallEdge end
 }
 
 public enum SpeciesNaming : byte

@@ -27,9 +27,24 @@ public sealed partial class CEHumanoidProfileEditor
     /// </summary>
     private void RandomizeProfile()
     {
-        Profile = Profile == null
-            ? HumanoidCharacterProfile.Random()
-            : HumanoidCharacterProfile.Random(RandomizeLockButton.RandomizeCfg, Profile!);
+        var locked = GetLockedSpecies();
+        if (Profile == null)
+        {
+            Profile = HumanoidCharacterProfile.Random(locked);
+        }
+        else
+        {
+            // Roll the species here so locked ones are skipped, then randomize the rest around it.
+            var cfg = RandomizeLockButton.RandomizeCfg;
+            var baseProfile = Profile;
+            if ((cfg & HumanoidCharacterProfile.RandomizeCfg.Species) != 0)
+            {
+                baseProfile = baseProfile.WithSpecies(HumanoidCharacterProfile.RandomSpecies(locked).ID);
+                cfg &= ~HumanoidCharacterProfile.RandomizeCfg.Species;
+            }
+
+            Profile = HumanoidCharacterProfile.Random(cfg, baseProfile);
+        }
         SetProfile(Profile, CharacterSlot);
         SetDirty();
     }

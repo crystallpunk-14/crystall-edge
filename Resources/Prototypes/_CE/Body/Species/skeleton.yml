@@ -6,6 +6,7 @@
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
@@ -138,12 +139,6 @@
     barkSpeech: Skeleton
   - type: Vocal
     emoteSounds: Skeleton
-  - type: CEInnateSkills
-    skills:
-    - Murkwalker
-    - NightVision
-    descriptorName: ce-species-name-skeleton
-    descriptorColor: "#e3dac9"
 
 - type: entity
   parent: OrganBase

@@ -3,6 +3,8 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.Prototypes;
 
@@ -95,6 +97,14 @@ public sealed class DrainTest : InteractionTest
     public async Task DrainPuddleTest()
     {
         var solutionContainerSys = SEntMan.System<SharedSolutionContainerSystem>();
+
+        // CrystallEdge: roof the tile so the puddle does not evaporate under the open sky
+        await Server.WaitPost(() =>
+        {
+            SEntMan.EnsureComponent<RoofComponent>(MapData.Grid);
+            SEntMan.System<SharedRoofSystem>().SetRoof((MapData.Grid, null), MapData.Tile.GridIndices, true);
+        });
+        // CrystallEdge end
 
         // Spawn a puddle at the player coordinates;
         var puddle = await Spawn("PuddleBloodTest", PlayerCoords);

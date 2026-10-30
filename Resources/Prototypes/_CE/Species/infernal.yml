@@ -2,6 +2,10 @@
   id: CEInfernal
   name: ce-species-name-infernal
   roundStart: true
+  description: ce-species-desc-infernal
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: infernal
   prototype: CEMobInfernal
   dollPrototype: CEAppearanceInfernal
   skinColoration: CEInfernalHues

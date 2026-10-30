@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._CE.Fluids;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
@@ -22,7 +23,8 @@ public abstract partial class SharedPuddleSystem
         if (_evaporationQuery.HasComp(uid))
             return;
 
-        if (solution.GetTotalPrototypeQuantity(GetEvaporatingReagents(solution)) > FixedPoint2.Zero)
+        if (CEGetOutdoorEvaporationSpeed(uid) > FixedPoint2.Zero || // CrystallEdge: puddle under the open sky evaporates any reagent
+            solution.GetTotalPrototypeQuantity(GetEvaporatingReagents(solution)) > FixedPoint2.Zero)
         {
             var evaporation = AddComp<EvaporationComponent>(uid);
             evaporation.NextTick = _timing.CurTime + EvaporationCooldown;
@@ -32,6 +34,21 @@ public abstract partial class SharedPuddleSystem
 
         RemComp<EvaporationComponent>(uid);
     }
+
+    // CrystallEdge: minimal evaporation speed of any reagent, non-zero only under the open sky
+    private FixedPoint2 CEGetOutdoorEvaporationSpeed(EntityUid uid)
+    {
+        if (!_ceOutdoorEvaporationQuery.TryComp(uid, out var outdoor))
+            return FixedPoint2.Zero;
+
+        var xform = Transform(uid);
+        if (xform.GridUid is not { } gridUid || !_gridQuery.TryComp(gridUid, out var grid))
+            return FixedPoint2.Zero;
+
+        var tileRef = _map.GetTileRef((gridUid, grid), xform.Coordinates);
+        return _weather.CanWeatherAffect((gridUid, grid, null), tileRef) ? outdoor.Speed : FixedPoint2.Zero;
+    }
+    // CrystallEdge end
 
     private void TickEvaporation()
     {
@@ -51,7 +68,7 @@ public abstract partial class SharedPuddleSystem
 
             // If we have multiple evaporating reagents in one puddle, just take the average evaporation speed and apply
             // that to all of them.
-            var evaporationSpeeds = GetEvaporationSpeeds(puddleSolution);
+            var evaporationSpeeds = GetEvaporationSpeeds(puddleSolution, CEGetOutdoorEvaporationSpeed(uid)); // CrystallEdge: everything evaporates under the open sky
             if (evaporationSpeeds.Count == 0)
                 continue;
 
@@ -112,15 +129,19 @@ public abstract partial class SharedPuddleSystem
     /// Gets a mapping of evaporating speed of the reagents within a solution.
     /// The speed at which a solution evaporates is the average of the speed of all evaporating reagents in it.
     /// </summary>
-    public Dictionary<ProtoId<ReagentPrototype>, FixedPoint2> GetEvaporationSpeeds(Solution solution)
+    public Dictionary<ProtoId<ReagentPrototype>, FixedPoint2> GetEvaporationSpeeds(Solution solution, FixedPoint2 ceMinSpeed = default) // CrystallEdge: outdoor evaporation
     {
         Dictionary<ProtoId<ReagentPrototype>, FixedPoint2> evaporatingSpeeds = [];
         foreach (var solProto in solution.GetReagentPrototypes(ProtoMan).Keys)
         {
-            if (solProto.EvaporationSpeed > FixedPoint2.Zero)
+            // CrystallEdge: under the open sky every reagent evaporates at least at the outdoor speed
+            var speed = FixedPoint2.Max(solProto.EvaporationSpeed, ceMinSpeed);
+
+            if (speed > FixedPoint2.Zero)
             {
-                evaporatingSpeeds.Add(solProto.ID, solProto.EvaporationSpeed);
+                evaporatingSpeeds.Add(solProto.ID, speed);
             }
+            // CrystallEdge end
         }
         return evaporatingSpeeds;
     }

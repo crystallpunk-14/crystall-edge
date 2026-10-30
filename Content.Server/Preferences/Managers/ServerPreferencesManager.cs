@@ -1,3 +1,4 @@
+using Content.Server._CE.Humanoid;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
@@ -511,6 +512,7 @@ namespace Content.Server.Preferences.Managers
 
                 var speciesToBlacklist =
                     new HashSet<string>(_cfg.GetCVar(CCVars.ICNewAccountSpeciesBlacklist).Split(","));
+                CESpeciesRequirementsSystem.AddRestrictedSpecies(speciesToBlacklist, _prototypeManager); // CrystallEdge: a new player hasn't unlocked any species yet
 
                 //Randomize species and set job priorities from cvar
                 var profile = HumanoidCharacterProfile.Random(speciesToBlacklist);

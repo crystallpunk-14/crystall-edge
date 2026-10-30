@@ -1,0 +1,49 @@
+- files: ["carrin_chirp.ogg"]
+  license: "CC-BY-SA-4.0"
+  copyright: "Original sound by https://xeno-canto.org/797998, taken from DeltaV (Resources/Audio/_DV/Voice/Harpy/chirp1.ogg)"
+  source: "https://xeno-canto.org/797998"
+
+- files: ["carrin_cry1.ogg", "carrin_cry2.ogg", "carrin_cry3.ogg"]
+  license: "CC0-1.0"
+  copyright: "'Red-shouldered hawk' by Vrymaa, mixed and edited by Starlight (Resources/Audio/_Starlight/Voice/Resomi/resomi_cry_*.ogg)"
+  source: "https://freesound.org/people/Vrymaa/sounds/770032/"
+
+- files: ["carrin_call.ogg", "carrin_scree.ogg", "carrin_caw.ogg", "carrin_squawk.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from public wildlife sound library xeno-canto.org, via Starlight (Resources/Audio/_Starlight/Voice/Resomi: resomi_call_2, resomi_scree_1, resomi_scree_2, resomi_squawk_1)"
+  source: "https://github.com/ss14Starlight/space-station-14/tree/starlight-dev/Resources/Audio/_Starlight/Voice/Resomi"
+
+- files: ["carrin_laugh1.ogg", "carrin_laugh2.ogg", "carrin_laugh3.ogg"]
+  license: "CC0-1.0"
+  copyright: "galah0X.wav by ImmergoMedia, via Starlight (Resources/Audio/_Starlight/Voice/Resomi/resomi_laugh*.ogg)"
+  source: "https://freesound.org/people/ImmergoMedia/"
+
+- files: ["carrin_sigh.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "'reinsamba_Nightingale_song_dublostinspace1-rwrk' by suonho, mixed and edited by Starlight"
+  source: "https://freesound.org/people/suonho/sounds/59337/"
+
+- files: ["carrin_yawn.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "'reinsamba_Nightingale_song_happydub1-rwrk' by suonho, mixed and edited by Starlight"
+  source: "https://freesound.org/people/suonho/sounds/59344/"
+
+- files: ["carrin_deathgasp.ogg"]
+  license: "CC-BY-3.0"
+  copyright: "Sound by xpoki, edited by lillian_industries (MoffStation), via Cosmatic Drift (avali_deathgasp.ogg)"
+  source: "https://freesound.org/people/xpoki/sounds/432735/"
+
+- files: ["carrin_cough.ogg"]
+  license: "CC0-1.0"
+  copyright: "Sound by Vrymaa, edited by lillian_industries (MoffStation), via Cosmatic Drift (avali_cough.ogg)"
+  source: "https://freesound.org/people/Vrymaa/sounds/737756/"
+
+- files: ["carrin_coo.ogg"]
+  license: "CC0-1.0"
+  copyright: "Sound by uwesoundboiz, edited by lillian_industries (MoffStation), via Cosmatic Drift (avali_gasp.ogg)"
+  source: "https://freesound.org/people/uwesoundboiz/sounds/109840/"
+
+- files: ["carrin_scream1.ogg", "carrin_scream2.ogg", "carrin_scream3.ogg"]
+  license: "CC0-1.0"
+  copyright: "Made by Shartmok from 'Prehistoric bird sounds' by Mastersoundboy2005, via Goob Station (Resources/Audio/_Goobstation/Voice/Vox: scream3, scream4, vox_yawn)"
+  source: "https://freesound.org/s/733528/"

@@ -90,6 +90,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             _profileEditor.RefreshAntags();
             _profileEditor.RefreshJobs();
             _profileEditor.RefreshSecretRoles(); // CrystallEdge: secret role requirements
+            _profileEditor.RefreshSpecies(); // CrystallEdge: species requirements
         }
     }
 
@@ -201,6 +202,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _profileEditor?.RefreshAntags();
         _profileEditor?.RefreshJobs();
         _profileEditor?.RefreshSecretRoles(); // CrystallEdge: secret role requirements
+        _profileEditor?.RefreshSpecies(); // CrystallEdge: species requirements
         _profileEditor?.RefreshLoadouts();
     }
 

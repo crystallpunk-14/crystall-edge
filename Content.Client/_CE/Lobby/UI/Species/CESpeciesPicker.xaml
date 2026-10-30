@@ -1,0 +1,42 @@
+<species:CESpeciesPicker
+    xmlns="https://spacestation14.io"
+    xmlns:species="clr-namespace:Content.Client._CE.Lobby.UI.Species"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    Orientation="Horizontal"
+    VerticalExpand="True"
+    HorizontalExpand="True">
+    <!-- Species grid -->
+    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+        <GridContainer Name="SpeciesGrid" Columns="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    </ScrollContainer>
+
+    <!-- Hovered or picked species details -->
+    <PanelContainer StyleClasses="BackgroundPanel" MinWidth="340" MaxWidth="340" Margin="8 0 0 0">
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+            <BoxContainer Orientation="Vertical" Margin="12 10">
+                <BoxContainer Name="DetailsBox" Orientation="Vertical" Visible="False">
+                    <BoxContainer Orientation="Horizontal">
+                        <TextureRect Name="DetailsIcon" TextureScale="2 2" Stretch="KeepAspectCentered"
+                                     MinSize="96 96" Margin="0 0 10 0" />
+                        <Label Name="DetailsName" StyleClasses="LabelHeadingBigger" VerticalAlignment="Center" />
+                    </BoxContainer>
+                    <customControls:HSeparator Margin="0 8" />
+                    <PanelContainer Name="DetailsLock" Margin="0 0 0 8" Visible="False">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#4A1E1E" BorderColor="#B0413E" BorderThickness="1" />
+                        </PanelContainer.PanelOverride>
+                        <RichTextLabel Name="DetailsLockLabel" Margin="6 4" />
+                    </PanelContainer>
+                    <RichTextLabel Name="DetailsDescription" />
+                    <BoxContainer Name="SkillsBox" Orientation="Vertical" Margin="0 10 0 0">
+                        <Label Text="{Loc 'ce-species-picker-skills'}" StyleClasses="LabelHeading" />
+                        <BoxContainer Name="SkillsList" Orientation="Vertical" />
+                    </BoxContainer>
+                </BoxContainer>
+                <Label Name="DetailsHint" Text="{Loc 'ce-species-picker-hover-hint'}" FontColorOverride="Gray"
+                       HorizontalAlignment="Center" />
+            </BoxContainer>
+        </ScrollContainer>
+    </PanelContainer>
+</species:CESpeciesPicker>
