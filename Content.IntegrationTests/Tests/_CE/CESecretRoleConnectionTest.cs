@@ -28,7 +28,7 @@ public sealed class CESecretRoleConnectionTest : GameTest
   - type: GameRule
     minPlayers: 0
   - type: CESecretRoleSelection
-    roles: []
+    departments: []
 ";
 
     public override PoolSettings PoolSettings => new()
