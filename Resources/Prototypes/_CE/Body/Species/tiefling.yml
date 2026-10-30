@@ -54,8 +54,6 @@
   appearances:
     enum.HumanoidVisualLayers.Tail:
       matchSkin: true
-    enum.HumanoidVisualLayers.HeadTop:
-      matchSkin: true
 
 - type: entity
   parent: CEBaseSpeciesAppearance
