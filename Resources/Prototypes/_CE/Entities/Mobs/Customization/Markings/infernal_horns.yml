@@ -5,6 +5,8 @@
   sprites:
   - sprite: _CE/Mobs/Customization/infernal_horns.rsi
     state: horn1
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn1_gradient
 
 - type: marking
   id: CEInfernalHorns2
@@ -61,6 +63,8 @@
   sprites:
   - sprite: _CE/Mobs/Customization/infernal_horns.rsi
     state: horn6
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn6_gradient
 
 - type: marking
   id: CEInfernalHorns7
@@ -69,6 +73,8 @@
   sprites:
   - sprite: _CE/Mobs/Customization/infernal_horns.rsi
     state: horn7
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn7_gradient
 
 - type: marking
   id: CEInfernalHorns8
@@ -93,3 +99,5 @@
   sprites:
   - sprite: _CE/Mobs/Customization/infernal_horns.rsi
     state: horn10
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn10_gradient
