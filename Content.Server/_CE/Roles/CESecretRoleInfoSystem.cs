@@ -1,6 +1,7 @@
 using Content.Server.Mind;
 using Content.Server.Roles;
 using Content.Shared._CE.Roles;
+using Content.Shared.Mind;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Roles;
@@ -47,8 +48,21 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
         role = null;
         originalRole = null;
 
-        if (!_minds.TryGetMind(entity, out var mindId, out var mind)
-            || !_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+        return _minds.TryGetMind(entity, out var mindId, out var mind) &&
+               TryGetMindSecretRole((mindId, mind), out role, out originalRole);
+    }
+
+    /// <summary>
+    /// Same as <see cref="TryGetSecretRole"/>, but straight off a mind - works for characters with no body left.
+    /// </summary>
+    public bool TryGetMindSecretRole(Entity<MindComponent> mind,
+        out ProtoId<CESecretRolePrototype>? role,
+        out ProtoId<CESecretRolePrototype>? originalRole)
+    {
+        role = null;
+        originalRole = null;
+
+        if (!_role.MindHasRole<CESecretRoleComponent>(mind.AsNullable(), out var roleEnt))
             return false;
 
         role = roleEnt.Value.Comp2.Role;

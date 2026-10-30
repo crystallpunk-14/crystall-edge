@@ -9,6 +9,7 @@
   - Thief
   - Recruiter
   - Recruit
+  - Assassin
   objectives: !type:AllSelector
     children:
     - id: CEObjectiveBrotherhoodSurvive
@@ -44,6 +45,7 @@
     title: ce-brotherhood-patronage-objective-title
   - type: CETargetPlayersObjective
   - type: CETargetExcludeHolderDepartment
+  - type: CETargetExcludeDepartmentTargets
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
       components: # avoid an infinite loop through e.g. a helper's assist objective
@@ -68,5 +70,6 @@
     title: ce-brotherhood-debt-objective-title
   - type: CETargetPlayersObjective
   - type: CETargetExcludeHolderDepartment
+  - type: CETargetExcludeDepartmentTargets
   - type: CETargetCritCountCondition
     requiredCrits: 3

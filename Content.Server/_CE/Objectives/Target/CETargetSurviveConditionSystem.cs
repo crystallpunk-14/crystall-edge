@@ -23,12 +23,7 @@ public sealed partial class CETargetSurviveConditionSystem : CEBaseTargetObjecti
             return;
         }
 
-        if (ObjectivesSys.IsBodyDead(target.Value))
-            args.Progress = 0f;
-        else if (ObjectivesSys.IsBodyCritical(target.Value))
-            args.Progress = 0.5f;
-        else
-            args.Progress = 1f;
+        args.Progress = ObjectivesSys.GetSurvivalProgress(target.Value);
     }
 
     [SubscribeLocalEvent]

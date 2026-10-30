@@ -1,9 +1,11 @@
 using System.Linq;
 using Content.Server._CE.Roles;
 using Content.Server.Roles.Jobs;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Ghost;
 using Content.Shared._CE.Roles;
 using Content.Shared.Ghost.Components;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Warps;
@@ -25,6 +27,7 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private CESecretRoleInfoSystem _secretRoleInfo = default!;
     [Dependency] private CEGhostMetaSystem _ghostMeta = default!;
+    [Dependency] private CECharacterSystem _character = default!;
 
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
 
@@ -59,7 +62,7 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
     private void SendWarps(EntityUid ghost, ICommonSession session)
     {
         var canSeeMeta = _ghostMeta.CanSeeMeta(ghost);
-        var response = new CEGhostWarpsResponseEvent(GetPlayerWarps(ghost, canSeeMeta).Concat(GetLocationWarps()).ToList(), canSeeMeta);
+        var response = new CEGhostWarpsResponseEvent(GetPlayerWarps(canSeeMeta).Concat(GetLocationWarps()).ToList(), canSeeMeta);
         RaiseNetworkEvent(response, session.Channel);
     }
 
@@ -73,25 +76,65 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
         }
     }
 
-    private IEnumerable<CEGhostWarp> GetPlayerWarps(EntityUid except, bool canSeeMeta)
+    private IEnumerable<CEGhostWarp> GetPlayerWarps(bool canSeeMeta)
     {
+        // Every character that ever entered the round, whatever happened to it since.
+        var characters = EntityQueryEnumerator<CECharacterComponent, MindComponent>();
+        while (characters.MoveNext(out var mindId, out var character, out var mind))
+        {
+            var status = _character.GetStatus((mindId, character, mind));
+            var body = character.Body is { } b && !TerminatingOrDeleted(b) ? b : (EntityUid?) null;
+            var name = body is { } named ? Name(named) : mind.CharacterName ?? string.Empty;
+
+            ProtoId<CESecretRolePrototype>? secretRole = null;
+            ProtoId<CESecretRolePrototype>? originalSecretRole = null;
+            if (canSeeMeta)
+                _secretRoleInfo.TryGetMindSecretRole((mindId, mind), out secretRole, out originalSecretRole);
+
+            var target = GetWarpTarget(status, body, mind);
+            yield return new CEGhostWarp(target is { } t ? GetNetEntity(t) : NetEntity.Invalid,
+                name,
+                false,
+                character.Job,
+                secretRole,
+                originalSecretRole,
+                status);
+        }
+
+        // Living players that aren't characters, e.g. ghost roles.
         foreach (var player in _player.Sessions)
         {
-            if (player.AttachedEntity is not { Valid: true } attached || attached == except)
+            if (player.AttachedEntity is not { Valid: true } attached ||
+                _ghostQuery.HasComp(attached) ||
+                HasComp<CECharacterBodyComponent>(attached) ||
+                !(_mobState.IsAlive(attached) || _mobState.IsCritical(attached)))
+            {
                 continue;
+            }
 
-            TryComp<MindContainerComponent>(attached, out var mind);
+            TryComp<MindContainerComponent>(attached, out var mindContainer);
+            _jobs.MindTryGetJobId(mindContainer?.Mind, out var jobId);
 
-            _jobs.MindTryGetJobId(mind?.Mind, out var jobId);
             ProtoId<CESecretRolePrototype>? secretRole = null;
             ProtoId<CESecretRolePrototype>? originalSecretRole = null;
             if (canSeeMeta)
                 _secretRoleInfo.TryGetSecretRole(attached, out secretRole, out originalSecretRole);
 
-            var playerName = Comp<MetaDataComponent>(attached).EntityName;
-
-            if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
-                yield return new CEGhostWarp(GetNetEntity(attached), playerName, false, jobId, secretRole, originalSecretRole);
+            yield return new CEGhostWarp(GetNetEntity(attached), Name(attached), false, jobId, secretRole, originalSecretRole);
         }
+    }
+
+    /// <summary>
+    /// The body if it's still in the round, otherwise wherever the player is now (usually their ghost).
+    /// </summary>
+    private EntityUid? GetWarpTarget(CECharacterStatus status, EntityUid? body, MindComponent mind)
+    {
+        if (body != null && status != CECharacterStatus.LeftRound)
+            return body;
+
+        if (mind.CurrentEntity is { } current && current != body && !TerminatingOrDeleted(current))
+            return current;
+
+        return null;
     }
 }

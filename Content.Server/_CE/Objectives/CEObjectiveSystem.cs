@@ -1,4 +1,4 @@
-using Content.Shared._CE.Murk;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Objectives;
 using Content.Shared._CE.Objectives.Target;
 using Content.Shared.Mind;
@@ -30,9 +30,9 @@ public sealed partial class CEObjectiveSystem : CESharedObjectiveSystem
             RefreshHolderOverrides(mindId, args.Player, add: false);
     }
 
-    // A dissolved body may not change mob state at all, so nothing else would refresh its targeters.
+    // Dissolving or leaving the round doesn't change mob state, so nothing else would refresh the targeters.
     [SubscribeLocalEvent]
-    private void OnSoulConverted(ref CEMurkSoulConvertedEvent args)
+    private void OnBodyStateChanged(ref CEBodyStateChangedEvent args)
     {
         foreach (var objective in _targetObjective.GetTargetingObjectives(args.Body))
         {

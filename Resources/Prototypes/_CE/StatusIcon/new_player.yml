@@ -1,0 +1,8 @@
+- type: factionIcon
+  id: CENewPlayerIcon
+  priority: 1
+  locationPreference: Left
+  isShaded: true
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/new_player.rsi
+    state: plant
