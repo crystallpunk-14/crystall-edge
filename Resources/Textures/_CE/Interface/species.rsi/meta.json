@@ -26,6 +26,9 @@
       "name": "goblin"
     },
     {
+      "name": "goblin_hovered"
+    },
+    {
       "name": "human"
     },
     {

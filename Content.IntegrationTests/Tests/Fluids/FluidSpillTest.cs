@@ -5,6 +5,8 @@ using Content.Server.Spreader;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -42,6 +44,7 @@ public sealed class FluidSpill : GameTest
         var entityManager = server.ResolveDependency<IEntityManager>();
         var puddleSystem = server.System<PuddleSystem>();
         var mapSystem = server.System<SharedMapSystem>();
+        var roofSystem = server.System<SharedRoofSystem>(); // CrystallEdge: roof the test grid
         var gameTiming = server.ResolveDependency<IGameTiming>();
         EntityUid gridId = default;
 
@@ -56,12 +59,14 @@ public sealed class FluidSpill : GameTest
             mapSystem.CreateMap(out var mapId);
             var grid = mapSystem.CreateGridEntity(mapId);
             gridId = grid.Owner;
+            entityManager.EnsureComponent<RoofComponent>(grid); // CrystallEdge: roofed tiles keep puddles from evaporating under the open sky
 
             for (var x = 0; x < 3; x++)
             {
                 for (var y = 0; y < 3; y++)
                 {
                     mapSystem.SetTile(grid, new Vector2i(x, y), new Tile(1));
+                    roofSystem.SetRoof((grid, null), new Vector2i(x, y), true); // CrystallEdge: roofed tiles keep puddles from evaporating under the open sky
                 }
             }
 

@@ -6,6 +6,9 @@
   icon:
     sprite: _CE/Interface/species.rsi
     state: goblin
+  hoveredIcon:
+    sprite: _CE/Interface/species.rsi
+    state: goblin_hovered
   prototype: CEMobGoblin
   dollPrototype: CEAppearanceGoblin
   skinColoration: VoxFeathers

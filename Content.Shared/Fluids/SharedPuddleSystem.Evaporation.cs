@@ -23,7 +23,7 @@ public abstract partial class SharedPuddleSystem
         if (_evaporationQuery.HasComp(uid))
             return;
 
-        if (_ceOutdoorEvaporationQuery.HasComp(uid) || // CrystallEdge: puddle may evaporate once it is (or later becomes) exposed to the open sky
+        if (CEGetOutdoorEvaporationSpeed(uid) > FixedPoint2.Zero || // CrystallEdge: puddle under the open sky evaporates any reagent
             solution.GetTotalPrototypeQuantity(GetEvaporatingReagents(solution)) > FixedPoint2.Zero)
         {
             var evaporation = AddComp<EvaporationComponent>(uid);
