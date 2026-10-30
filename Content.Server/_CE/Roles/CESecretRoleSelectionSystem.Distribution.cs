@@ -80,6 +80,10 @@ public sealed partial class CESecretRoleSelectionSystem
         var options = new List<(CESecretDepartmentSelectorEntry Department, List<(CESecretRoleSelectorEntry Entry, CESecretRolePrototype Role, JobPriority Priority)> Roles, float Multiplier)>();
         foreach (var department in rule.Comp.Departments)
         {
+            // A department with no slots this round is closed, even for the over-quota draw below.
+            if (department.GetTargetCount(playerCount) <= 0)
+                continue;
+
             var roles = GetAvailableRoles(department, assignedCounts, session, profile);
             if (roles.Count == 0)
                 continue;
