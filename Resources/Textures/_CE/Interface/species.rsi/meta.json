@@ -20,6 +20,9 @@
       "name": "elf"
     },
     {
+      "name": "elf_hovered"
+    },
+    {
       "name": "goblin"
     },
     {

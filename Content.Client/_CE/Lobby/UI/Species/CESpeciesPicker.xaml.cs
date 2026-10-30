@@ -63,7 +63,7 @@ public sealed partial class CESpeciesPicker : BoxContainer
         foreach (var species in GetAvailableSpecies())
         {
             var id = new ProtoId<SpeciesPrototype>(species.ID);
-            var button = new CESpeciesButton(id, GetIcon(species));
+            var button = new CESpeciesButton(id, GetIcon(species.Icon), GetIcon(species.HoveredIcon));
 
             button.OnPressed += _ =>
             {
@@ -127,7 +127,7 @@ public sealed partial class CESpeciesPicker : BoxContainer
         DetailsBox.Visible = true;
         DetailsHint.Visible = false;
 
-        DetailsIcon.Texture = GetIcon(species);
+        DetailsIcon.Texture = GetIcon(species.HoveredIcon ?? species.Icon);
         DetailsName.Text = Loc.GetString(species.Name);
         DetailsDescription.SetMessage(species.Description is { } description
             ? FormattedMessage.FromMarkupPermissive(Loc.GetString(description))
@@ -145,8 +145,8 @@ public sealed partial class CESpeciesPicker : BoxContainer
         SkillsBox.Visible = species.Skills.Count > 0;
     }
 
-    private Texture? GetIcon(SpeciesPrototype species)
+    private Texture? GetIcon(SpriteSpecifier? icon)
     {
-        return species.Icon is { } icon ? _sprite.Frame0(icon) : null;
+        return icon is not null ? _sprite.Frame0(icon) : null;
     }
 }

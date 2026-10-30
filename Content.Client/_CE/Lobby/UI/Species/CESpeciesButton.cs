@@ -8,7 +8,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._CE.Lobby.UI.Species;
 
 /// <summary>
-/// A single square species tile in the lobby species picker: just the species icon, with a green frame when picked and a black silhouette while locked.
+/// A single square species tile in the lobby species picker: just the species icon (swapped for the
+/// hovered icon while hovered or picked), with a green frame when picked and a black silhouette while locked.
 /// </summary>
 public sealed class CESpeciesButton : ContainerButton
 {
@@ -25,14 +26,18 @@ public sealed class CESpeciesButton : ContainerButton
     private readonly PanelContainer _frame;
     private readonly StyleBoxFlat _frameStyle = new() { BorderThickness = new Thickness(2) };
     private readonly TextureRect _icon;
+    private readonly Texture? _idleIcon;
+    private readonly Texture? _hoveredIcon;
 
     private bool _selected;
     private bool _locked;
     private bool _hovered;
 
-    public CESpeciesButton(ProtoId<SpeciesPrototype> species, Texture? icon)
+    public CESpeciesButton(ProtoId<SpeciesPrototype> species, Texture? icon, Texture? hoveredIcon)
     {
         Species = species;
+        _idleIcon = icon;
+        _hoveredIcon = hoveredIcon ?? icon;
         SetSize = new Vector2(104, 104);
         Margin = new Thickness(3);
 
@@ -83,6 +88,8 @@ public sealed class CESpeciesButton : ContainerButton
 
     private void UpdateVisuals()
     {
+        _icon.Texture = _selected || _hovered ? _hoveredIcon : _idleIcon;
+
         if (_selected)
         {
             _frameStyle.BorderColor = _hovered ? FrameSelectedHover : FrameSelected;

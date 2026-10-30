@@ -128,6 +128,12 @@ public sealed partial class SpeciesPrototype : IPrototype
     public SpriteSpecifier? Icon;
 
     /// <summary>
+    /// Optional replacement for <see cref="Icon"/> while the species is hovered or picked in the lobby species picker.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? HoveredIcon;
+
+    /// <summary>
     /// Description shown in the lobby species picker.
     /// </summary>
     [DataField]

@@ -6,6 +6,9 @@
   icon:
     sprite: _CE/Interface/species.rsi
     state: elf
+  hoveredIcon:
+    sprite: _CE/Interface/species.rsi
+    state: elf_hovered
   skills:
   - ManaControl
   - ManaGift
