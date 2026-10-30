@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/30/2026 11:33:31
-  entityCount: 1138
+  time: 10/30/2026 11:56:50
+  entityCount: 1139
 maps:
 - 1
 grids:
@@ -6797,6 +6797,11 @@ entities:
       pos: 12.5,-8.5
 - proto: CEWeaponMop
   entities:
+  - uid: 740
+    components:
+    - type: Transform
+      parent: 1
+      pos: 35.788757,-14.59293
   - uid: 956
     components:
     - type: Transform

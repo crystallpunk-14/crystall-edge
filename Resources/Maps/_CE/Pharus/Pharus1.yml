@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/30/2026 11:33:33
-  entityCount: 730
+  time: 10/30/2026 11:56:51
+  entityCount: 733
 maps:
 - 1
 grids:
@@ -511,6 +511,15 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 34.5,-18.5
+    - type: CEZPhysics
+      currentZLevel: 1
+- proto: CEBucket
+  entities:
+  - uid: 705
+    components:
+    - type: Transform
+      parent: 1
+      pos: 27.495335,-10.79795
     - type: CEZPhysics
       currentZLevel: 1
 - proto: CECarpetPurple
@@ -5224,6 +5233,22 @@ entities:
     - type: Transform
       parent: 1
       pos: 26.5,-15.5
+    - type: CEZPhysics
+      currentZLevel: 1
+- proto: CEWeaponMop
+  entities:
+  - uid: 704
+    components:
+    - type: Transform
+      parent: 1
+      pos: 27.799057,-10.87666
+    - type: CEZPhysics
+      currentZLevel: 1
+  - uid: 706
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.731174,-14.015349
     - type: CEZPhysics
       currentZLevel: 1
 - proto: CEWoodenBedLight

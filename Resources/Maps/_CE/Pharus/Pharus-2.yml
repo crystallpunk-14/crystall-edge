@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/30/2026 11:33:32
-  entityCount: 1527
+  time: 10/30/2026 11:56:50
+  entityCount: 1524
 maps:
 - 1
 grids:
@@ -3849,6 +3849,20 @@ entities:
       pos: 12.5,-14.5
     - type: Fixtures
       fixtures: {}
+  - uid: 86
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-22.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 90
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-22.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 137
     components:
     - type: Transform
@@ -5955,6 +5969,18 @@ entities:
       currentZLevel: -2
 - proto: CEWallLightCyan
   entities:
+  - uid: 97
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 25.5,-22.5
+  - uid: 100
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 21.5,-22.5
   - uid: 165
     components:
     - type: Transform
@@ -5966,12 +5992,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 34.5,-24.5
-  - uid: 260
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 27.5,-21.5
   - uid: 261
     components:
     - type: Transform
@@ -5983,12 +6003,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 24.5,-26.5
-  - uid: 470
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 22.5,-22.5
   - uid: 802
     components:
     - type: Transform
@@ -7176,13 +7190,6 @@ entities:
       layers:
         West: PlainChocolateTonal
         East: PlainEmeraldWood
-  - uid: 218
-    components:
-    - type: Transform
-      parent: 1
-      pos: 27.5,-22.5
-    - type: CEZPhysics
-      currentZLevel: -2
   - uid: 219
     components:
     - type: Transform
@@ -7197,16 +7204,6 @@ entities:
       pos: 24.5,-24.5
     - type: CEZPhysics
       currentZLevel: -2
-  - uid: 221
-    components:
-    - type: Transform
-      parent: 1
-      pos: 26.5,-22.5
-    - type: CEZPhysics
-      currentZLevel: -2
-    - type: CEWallpaperHolder
-      layers:
-        South: PlainAshTonal
   - uid: 223
     components:
     - type: Transform
@@ -7283,13 +7280,6 @@ entities:
     - type: CEWallpaperHolder
       layers:
         South: PlainEmeraldWood
-  - uid: 235
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-22.5
-    - type: CEZPhysics
-      currentZLevel: -2
   - uid: 236
     components:
     - type: Transform
@@ -7502,20 +7492,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 27.5,-26.5
-    - type: CEZPhysics
-      currentZLevel: -2
-  - uid: 311
-    components:
-    - type: Transform
-      parent: 1
-      pos: 24.5,-22.5
-    - type: CEZPhysics
-      currentZLevel: -2
-  - uid: 313
-    components:
-    - type: Transform
-      parent: 1
-      pos: 23.5,-22.5
     - type: CEZPhysics
       currentZLevel: -2
   - uid: 315

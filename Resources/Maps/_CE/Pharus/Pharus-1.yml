@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/30/2026 11:33:33
-  entityCount: 1578
+  time: 10/30/2026 11:56:51
+  entityCount: 1574
 maps:
 - 1
 grids:
@@ -22,6 +22,8 @@ tilemap:
   23: CEGrassAutumn
   20: CEGrassLight
   19: CEGrassTall
+  28: CEMycelium
+  27: CEMyceliumLight
   21: CEOakWoodPlanks
   16: CEOakWoodPlanksBig
   17: CEOakWoodPlanksCruciform
@@ -78,7 +80,7 @@ entities:
           version: 7
         1,-1:
           ind: 1,-1
-          tiles: AgAAAAAIABAAAAAAAwATAAAAAAUAEgAAAAADABIAAAAAAQASAAAAAAEAEgAAAAAFABIAAAAAAwASAAAAAAAAFAAAAAADABMAAAAAAgAUAAAAAAMAFAAAAAABABEAAAAAAgABAAAAAAQAAQAAAAADAAEAAAAAAAAQAAAAAAIAFQAAAAABABUAAAAAAAAVAAAAAAEAFQAAAAACABYAAAAAAgAWAAAAAAEAFQAAAAABABUAAAAAAwAVAAAAAAMAFQAAAAADABUAAAAAAAARAAAAAAMAAQAAAAALAAEAAAAADAABAAAAAAwAEQAAAAACABEAAAAAAgARAAAAAAEAEQAAAAACABEAAAAAAAARAAAAAAIAFgAAAAACABEAAAAAAQARAAAAAAIAEQAAAAABABEAAAAAAAARAAAAAAIAEQAAAAAAAAEAAAAACgABAAAAAAsAAQAAAAAEABEAAAAAAQAVAAAAAAEAFQAAAAABABUAAAAAAgAVAAAAAAMAFgAAAAABABYAAAAAAwAVAAAAAAMAFQAAAAABABUAAAAAAQAVAAAAAAEAFQAAAAABABEAAAAAAgABAAAAAAYAAQAAAAADAAYAAAAABAARAAAAAAAAEQAAAAACABEAAAAAAQARAAAAAAMAEQAAAAABABYAAAAAAgAWAAAAAAMAEQAAAAABABEAAAAAAAARAAAAAAAAEQAAAAACABEAAAAAAgARAAAAAAAAAQAAAAAIAAEAAAAADAAGAAAAAAIAEQAAAAADABEAAAAAAAARAAAAAAIAEQAAAAACABEAAAAAAwAWAAAAAAAAFgAAAAADABEAAAAAAAARAAAAAAEAEQAAAAABABEAAAAAAwARAAAAAAMAEQAAAAACAAEAAAAACAABAAAAAAwABgAAAAAEABEAAAAAAwARAAAAAAMAEQAAAAACABEAAAAAAQARAAAAAAEAEQAAAAACABEAAAAAAwARAAAAAAIAEQAAAAADABEAAAAAAQARAAAAAAIAEQAAAAABABEAAAAAAwABAAAAAAQAAQAAAAABAAYAAAAABAABAAAAAAcAAQAAAAAIAAEAAAAABAABAAAAAAAAAQAAAAAFAAEAAAAACQAHAAAAAAgAAQAAAAABAAEAAAAADQABAAAAAAAAAQAAAAAKAAEAAAAADAABAAAAAAsAAQAAAAACAAEAAAAABgABAAAAAAoAAQAAAAACAAEAAAAABQABAAAAAAYAAQAAAAAMAAEAAAAACwAHAAAAAAEABwAAAAAKAAEAAAAAAQABAAAAAAkAAQAAAAALAAEAAAAAAQABAAAAAAYAAQAAAAAGAAEAAAAAAQABAAAAAAwAAQAAAAAAAAEAAAAACgABAAAAAAUAAQAAAAADAAEAAAAADQAHAAAAAAoABgAAAAADAAEAAAAADQABAAAAAAAAAQAAAAAAAAEAAAAACAABAAAAAAAAAQAAAAAMAAEAAAAABAABAAAAAAAAAQAAAAAKAAEAAAAACQABAAAAAAwAAQAAAAAJAAEAAAAACwAHAAAAAA0ABwAAAAACAAEAAAAACgABAAAAAAoAAQAAAAAGAAEAAAAACwABAAAAAAoAAQAAAAAGAAEAAAAADAABAAAAAAgAAQAAAAAHAAEAAAAAAAABAAAAAAQAAQAAAAAGAAEAAAAABwABAAAAAAAAAQAAAAAJAAEAAAAACgABAAAAAAEAAQAAAAAAAAEAAAAAAgABAAAAAAIAAQAAAAAIAAEAAAAABQABAAAAAAAAAQAAAAAKAAEAAAAABAABAAAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: AgAAAAAIABAAAAAAAwATAAAAAAUAEgAAAAADABIAAAAAAQASAAAAAAEAEgAAAAAFABIAAAAAAwASAAAAAAAAFAAAAAADABMAAAAAAgAUAAAAAAMAFAAAAAABABEAAAAAAgABAAAAAAQAAQAAAAADAAEAAAAAAAAQAAAAAAIAFQAAAAABABUAAAAAAAAVAAAAAAEAFQAAAAACABYAAAAAAgAWAAAAAAEAFQAAAAABABUAAAAAAwAVAAAAAAMAFQAAAAADABUAAAAAAAARAAAAAAMAAQAAAAALAAEAAAAADAABAAAAAAwAEQAAAAACABEAAAAAAgARAAAAAAEAEQAAAAACABEAAAAAAAARAAAAAAIAFgAAAAACABEAAAAAAQARAAAAAAIAEQAAAAABABEAAAAAAAARAAAAAAIAEQAAAAAAAAEAAAAACgABAAAAAAsAAQAAAAAEABEAAAAAAQAVAAAAAAEAFQAAAAABABUAAAAAAgAVAAAAAAMAFgAAAAABABYAAAAAAwAVAAAAAAMAFQAAAAABABUAAAAAAQAVAAAAAAEAFQAAAAABABEAAAAAAgABAAAAAAYAAQAAAAADAAYAAAAABAARAAAAAAAAEQAAAAACABEAAAAAAQARAAAAAAMAEQAAAAABABYAAAAAAgAWAAAAAAMAEQAAAAABABEAAAAAAAARAAAAAAAAEQAAAAACABEAAAAAAgARAAAAAAAAAQAAAAAIAAEAAAAADAAGAAAAAAIAEQAAAAADABEAAAAAAAARAAAAAAIAEQAAAAACABEAAAAAAwAWAAAAAAAAFgAAAAADABEAAAAAAAARAAAAAAEAEQAAAAABABEAAAAAAwARAAAAAAMAEQAAAAACAAEAAAAACAABAAAAAAwABgAAAAAEABEAAAAAAwARAAAAAAMAEQAAAAACABEAAAAAAQARAAAAAAEAEQAAAAACABEAAAAAAwARAAAAAAIAEQAAAAADABEAAAAAAQARAAAAAAIAEQAAAAABABEAAAAAAwABAAAAAAQAAQAAAAABAAYAAAAABAABAAAAAAcAAQAAAAAIAAEAAAAABAABAAAAAAAAAQAAAAAFABsAAAAAAAAcAAAAAAAAHAAAAAAAAAEAAAAADQABAAAAAAAAAQAAAAAKAAEAAAAADAABAAAAAAsAAQAAAAACAAEAAAAABgAHAAAAAAAAAQAAAAACAAcAAAAAAAABAAAAAAYAAQAAAAAMAAEAAAAACwAcAAAAAAAAHAAAAAAAABsAAAAAAAABAAAAAAkAAQAAAAALAAEAAAAAAQABAAAAAAYAAQAAAAAGAAEAAAAAAQABAAAAAAwAAQAAAAAAAAcAAAAAAAABAAAAAAUAAQAAAAADAAEAAAAADQAHAAAAAAoAHAAAAAAAABsAAAAAAAAbAAAAAAAAAQAAAAAAAAEAAAAACAABAAAAAAAAAQAAAAAMAAEAAAAABAABAAAAAAAAAQAAAAAKAAEAAAAACQABAAAAAAwAAQAAAAAJAAEAAAAACwAHAAAAAA0ABwAAAAACAAEAAAAACgABAAAAAAoAAQAAAAAGAAEAAAAACwABAAAAAAoAAQAAAAAGAAEAAAAADAABAAAAAAgAAQAAAAAHAAEAAAAAAAABAAAAAAQAAQAAAAAGAAEAAAAABwABAAAAAAAAAQAAAAAJAAEAAAAACgABAAAAAAEAAQAAAAAAAAEAAAAAAgABAAAAAAIAAQAAAAAIAAEAAAAABQABAAAAAAAAAQAAAAAKAAEAAAAABAABAAAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
         2,-2:
           ind: 2,-2
@@ -497,16 +499,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 26.5,-8.5
-  - uid: 839
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-8.5
-  - uid: 840
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-7.5
   - uid: 841
     components:
     - type: Transform
@@ -607,11 +599,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 30.5,-12.5
-  - uid: 883
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-6.5
   - uid: 915
     components:
     - type: Transform
@@ -957,36 +944,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,-4.5
-  - uid: 1020
-    components:
-    - type: Transform
-      parent: 1
-      pos: 24.5,-6.5
-  - uid: 1021
-    components:
-    - type: Transform
-      parent: 1
-      pos: 23.5,-6.5
-  - uid: 1022
-    components:
-    - type: Transform
-      parent: 1
-      pos: 23.5,-5.5
-  - uid: 1023
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,-5.5
-  - uid: 1024
-    components:
-    - type: Transform
-      parent: 1
-      pos: 24.5,-7.5
-  - uid: 1025
-    components:
-    - type: Transform
-      parent: 1
-      pos: 24.5,-8.5
   - uid: 1029
     components:
     - type: Transform
@@ -3381,13 +3338,6 @@ entities:
       pos: 14.5,-11.5
     - type: CEZPhysics
       currentZLevel: -1
-  - uid: 1026
-    components:
-    - type: Transform
-      parent: 1
-      pos: 23.5,-8.5
-    - type: CEZPhysics
-      currentZLevel: -1
   - uid: 1087
     components:
     - type: Transform
@@ -5511,6 +5461,24 @@ entities:
       pos: 7.5,-36.5
     - type: Fixtures
       fixtures: {}
+- proto: CEPlantChanterelle
+  entities:
+  - uid: 977
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,-6.5
+    - type: CEZPhysics
+      currentZLevel: -1
+- proto: CEPlantChanterelleGrown
+  entities:
+  - uid: 890
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,-6.5
+    - type: CEZPhysics
+      currentZLevel: -1
 - proto: CEPlateIron
   entities:
   - uid: 1151
@@ -5613,6 +5581,24 @@ entities:
     - type: Transform
       parent: 1
       pos: 17.5,-27.5
+- proto: CESack
+  entities:
+  - uid: 983
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 28.654701,-14.157471
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 984
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 28.373474,-14.427336
+    - type: CEZPhysics
+      currentZLevel: -1
 - proto: CESeedCarrot10
   entities:
   - uid: 1186
@@ -5715,13 +5701,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 17.5,-8.5
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 1027
-    components:
-    - type: Transform
-      parent: 1
-      pos: 21.5,-7.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 1028
@@ -6563,13 +6542,6 @@ entities:
       pos: 34.5,-5.5
     - type: CEZPhysics
       currentZLevel: -1
-  - uid: 881
-    components:
-    - type: Transform
-      parent: 1
-      pos: 24.5,-5.5
-    - type: CEZPhysics
-      currentZLevel: -1
   - uid: 884
     components:
     - type: Transform
@@ -6589,13 +6561,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 39.5,-11.5
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 890
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,-4.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 891
@@ -7521,13 +7486,6 @@ entities:
       pos: 20.5,-8.5
     - type: CEZPhysics
       currentZLevel: -1
-  - uid: 901
-    components:
-    - type: Transform
-      parent: 1
-      pos: 21.5,-8.5
-    - type: CEZPhysics
-      currentZLevel: -1
   - uid: 902
     components:
     - type: Transform
@@ -7540,13 +7498,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 20.5,-7.5
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 904
-    components:
-    - type: Transform
-      parent: 1
-      pos: 22.5,-8.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 907
@@ -9088,25 +9039,11 @@ entities:
       pos: 39.5,-9.5
     - type: CEZPhysics
       currentZLevel: -1
-  - uid: 871
-    components:
-    - type: Transform
-      parent: 1
-      pos: 21.5,-4.5
-    - type: CEZPhysics
-      currentZLevel: -1
   - uid: 872
     components:
     - type: Transform
       parent: 1
       pos: 39.5,-7.5
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 873
-    components:
-    - type: Transform
-      parent: 1
-      pos: 20.5,-4.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 874
@@ -9123,25 +9060,11 @@ entities:
       pos: 39.5,-10.5
     - type: CEZPhysics
       currentZLevel: -1
-  - uid: 877
-    components:
-    - type: Transform
-      parent: 1
-      pos: 19.5,-4.5
-    - type: CEZPhysics
-      currentZLevel: -1
   - uid: 879
     components:
     - type: Transform
       parent: 1
       pos: 32.5,-5.5
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 882
-    components:
-    - type: Transform
-      parent: 1
-      pos: 25.5,-5.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 887
@@ -10589,10 +10512,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: 23.5,-9.5
-    - type: CEWallpaperHolder
-      layers:
-        South: OrnateOliveTonal
+      pos: 25.5,-6.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 155
@@ -10897,6 +10817,76 @@ entities:
     - type: Transform
       parent: 1
       pos: 29.5,-15.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 839
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-7.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 840
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-8.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 873
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-8.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 877
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-6.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 881
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-7.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 882
+    components:
+    - type: Transform
+      parent: 1
+      pos: 23.5,-5.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 883
+    components:
+    - type: Transform
+      parent: 1
+      pos: 24.5,-5.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 901
+    components:
+    - type: Transform
+      parent: 1
+      pos: 22.5,-5.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 904
+    components:
+    - type: Transform
+      parent: 1
+      pos: 21.5,-5.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 982
+    components:
+    - type: Transform
+      parent: 1
+      pos: 25.5,-5.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 1267
@@ -11255,6 +11245,14 @@ entities:
     - type: Transform
       parent: 1
       pos: 23.5,-13.5
+    - type: CEZPhysics
+      currentZLevel: -1
+  - uid: 871
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 23.5,-9.5
     - type: CEZPhysics
       currentZLevel: -1
   - uid: 1467
