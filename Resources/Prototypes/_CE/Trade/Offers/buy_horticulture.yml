@@ -475,6 +475,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEBowlWooden
+    count: 5
 
 - type: tradeOffer
   id: BuyBowlIron
@@ -485,6 +486,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEBowlIron
+    count: 5
 
 - type: tradeOffer
   id: BuyPlateWooden
@@ -495,6 +497,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEPlateWooden
+    count: 5
 
 - type: tradeOffer
   id: BuyPlateIron
@@ -505,6 +508,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEPlateIron
+    count: 5
 
 - type: tradeOffer
   id: BuyWoodenBeerMug
@@ -515,6 +519,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEWoodenBeerMug
+    count: 5
 
 - type: tradeOffer
   id: BuySteelBeerMug
@@ -525,6 +530,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CESteelBeerMug
+    count: 5
 
 - type: tradeOffer
   id: BuySteelWoodBeerMug
@@ -535,6 +541,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CESteelWoodBeerMug
+    count: 5
 
 - type: tradeOffer
   id: BuyMetalBeerMug
@@ -545,6 +552,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEMetalBeerMug
+    count: 5
 
 - type: tradeOffer
   id: BuySteelGobletIron
@@ -555,6 +563,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CESteelGobletIron
+    count: 5
 
 - type: tradeOffer
   id: BuySteelGobletCopper
@@ -565,6 +574,7 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CESteelGobletCopper
+    count: 5
 
 - type: tradeOffer
   id: BuySteelGobletGold
@@ -575,3 +585,4 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CESteelGobletGold
+    count: 5
