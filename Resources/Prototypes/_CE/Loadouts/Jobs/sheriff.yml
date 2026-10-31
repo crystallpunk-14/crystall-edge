@@ -19,7 +19,7 @@
 
 - type: loadoutGroup
   id: CESheriffGun
-  name: ce-loadout-gun
+  name: ce-loadout-weapon
   minLimit: 1
   loadouts:
   - CEWeaponGunPeacekeeper

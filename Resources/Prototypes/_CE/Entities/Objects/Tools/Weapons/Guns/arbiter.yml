@@ -8,7 +8,7 @@
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    sprite: _CE/Objects/Tools/Weapons/Guns/arbiter.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -16,7 +16,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    sprite: _CE/Objects/Tools/Weapons/Guns/arbiter.rsi
     equipDelay: 2
     unequipDelay: 2.5
     equipWhileMoving: true
