@@ -4,6 +4,7 @@ using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Labels.EntitySystems;
+using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -14,6 +15,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private LabelSystem _label = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     //TODO: it won't survive saving and loading. This data must be stored in some component.
     private Dictionary<ProtoId<CELockTypePrototype>, List<int>> _roundKeyData = new();
@@ -37,6 +39,8 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     [SubscribeLocalEvent]
     private void OnLockInit(Entity<CELockComponent> lockEnt, ref MapInitEvent args)
     {
+        _ui.SetUi(lockEnt.Owner, CELockpickUiKey.Key, new InterfaceData("CELockpickBoundUserInterface"));
+
         if (lockEnt.Comp.AutoGenerateShape is null)
             return;
 
@@ -51,12 +55,14 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
         var shape = new List<int>();
         for (var i = 0; i < ent.Comp.Length; i++)
         {
-            shape.Add(_random.Next(-DepthComplexity, DepthComplexity));
+            shape.Add(RandomHeight());
         }
 
         TrySetShape((ent, lockComp), shape);
     }
     #endregion
+
+    private int RandomHeight() => _random.Next(MinHeight, MaxHeight + 1);
 
     private List<int> GetKeyLockData(ProtoId<CELockTypePrototype> category)
     {
@@ -68,7 +74,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
         return newData;
     }
 
-    private bool TrySetShapeFromProto(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
+    public bool TrySetShapeFromProto(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
     {
         if (!TrySetShape((keyEnt, keyEnt.Comp), GetKeyLockData(type)))
             return false;
@@ -104,7 +110,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
             newKeyData = new List<int>();
             for (var i = 0; i < categoryData.Complexity; i++)
             {
-                newKeyData.Add(_random.Next(-DepthComplexity, DepthComplexity));
+                newKeyData.Add(RandomHeight());
             }
 
             // Identity Check shit code

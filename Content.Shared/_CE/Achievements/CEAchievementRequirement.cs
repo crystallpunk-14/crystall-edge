@@ -39,6 +39,12 @@ public sealed partial class CEAchievementRequirement : JobRequirement
         var desc = string.Empty;
         if (protoManager.TryIndex(Achievement, out var achievement))
         {
+            if (achievement.Secret && !Inverted)
+            {
+                reason = FormattedMessage.FromMarkupPermissive(Loc.GetString("ce-role-req-achievement-secret"));
+                return false;
+            }
+
             name = Loc.GetString(achievement.Name);
             desc = Loc.GetString(achievement.Desc);
         }

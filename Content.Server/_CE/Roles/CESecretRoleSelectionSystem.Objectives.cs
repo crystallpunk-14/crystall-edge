@@ -131,6 +131,41 @@ public sealed partial class CESecretRoleSelectionSystem
         return false;
     }
 
+    /// <summary>
+    /// Finds the entity holding <paramref name="department"/>'s shared objectives in the active rule.
+    /// </summary>
+    public bool TryGetDepartmentObjectiveHolder(ProtoId<CESecretDepartmentPrototype> department, out EntityUid holderUid)
+    {
+        var rules = QueryActiveRules();
+        while (rules.MoveNext(out _, out _, out var comp, out _))
+        {
+            if (comp.DepartmentObjectiveHolders.TryGetValue(department, out holderUid))
+                return true;
+        }
+
+        holderUid = default;
+        return false;
+    }
+
+    /// <summary>
+    /// Finds the department of an objective holder - either a member's mind (personal objectives)
+    /// or the department's own holder entity (objectives shared by the whole department).
+    /// </summary>
+    public bool TryGetObjectiveHolderDepartment(EntityUid holderUid, out CESecretDepartmentPrototype department)
+    {
+        return TryGetMindDepartment(holderUid, out department) || TryGetHolderDepartment(holderUid, out department);
+    }
+
+    public bool TryGetMindDepartment(EntityUid mindId, out CESecretDepartmentPrototype department)
+    {
+        department = default!;
+
+        return TryComp<MindComponent>(mindId, out var mind) &&
+               _role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) &&
+               roleEnt.Value.Comp2.Role is { } roleId &&
+               TryGetDepartment(roleId, out department);
+    }
+
     public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
     {
         foreach (var candidate in _proto.EnumeratePrototypes<CESecretDepartmentPrototype>())

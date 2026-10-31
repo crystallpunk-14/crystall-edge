@@ -1,21 +1,24 @@
 using Content.Server._CE.Objectives.Components;
 using Content.Server._CE.Roles;
+using Content.Server.Roles;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
+using Content.Shared.Mind;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveDepartmentSurviveConditionComponent"/> - the average
-/// survival of every body that held a role from the department: alive = 1, critical = 0.5, dead or deleted = 0.
+/// survival of every body that held a role from the department - see <see cref="GetProgress"/>.
 /// </summary>
 public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : EntitySystem
 {
     [Dependency] private CEObjectiveSystem _objectives = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private RoleSystem _role = default!;
 
     [SubscribeLocalEvent]
     private void OnInitialize(Entity<CEObjectiveDepartmentSurviveConditionComponent> ent, ref CEInitializeObjectiveEvent args)
@@ -50,6 +53,17 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
     [SubscribeLocalEvent]
     private void OnMobStateChanged(MobStateChangedEvent args)
     {
+        RefreshAll();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnBodyStateChanged(ref CEBodyStateChangedEvent args)
+    {
+        RefreshAll();
+    }
+
+    private void RefreshAll()
+    {
         var query = EntityQueryEnumerator<CEObjectiveDepartmentSurviveConditionComponent>();
         while (query.MoveNext(out var uid, out _))
         {
@@ -58,17 +72,23 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
     }
 
     /// <summary>
-    /// Adds every existing body that holds one of <paramref name="roles"/>, as its current or original
-    /// role, to <paramref name="bodies"/> - for objectives created after the roles were handed out.
+    /// Adds the body of every character that holds one of <paramref name="roles"/>, as its current or
+    /// original role, to <paramref name="bodies"/> - for objectives created after the roles were handed out.
     /// </summary>
     public void CollectBodies(HashSet<EntityUid> bodies, ICollection<ProtoId<CESecretRolePrototype>> roles)
     {
-        var query = EntityQueryEnumerator<CESecretRoleIconComponent>();
-        while (query.MoveNext(out var uid, out var icon))
+        var query = EntityQueryEnumerator<CECharacterComponent, MindComponent>();
+        while (query.MoveNext(out var uid, out var character, out var mind))
         {
-            var original = CompOrNull<CESecretRoleOriginalIconComponent>(uid)?.Role ?? icon.Role;
-            if (IsHolder(roles, icon.Role, original))
-                bodies.Add(uid);
+            if (character.Body is not { } body ||
+                !_role.MindHasRole<CESecretRoleComponent>((uid, mind), out var roleEnt) ||
+                roleEnt.Value.Comp2.Role is not { } role)
+            {
+                continue;
+            }
+
+            if (IsHolder(roles, role, roleEnt.Value.Comp2.OriginalRole ?? role))
+                bodies.Add(body);
         }
     }
 
@@ -85,38 +105,21 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
     }
 
     /// <summary>
-    /// Average survival of <paramref name="bodies"/>, flipped if <paramref name="invert"/>. No bodies at
-    /// all counts as fully done for an inverted objective and as failed otherwise.
+    /// Average survival of <paramref name="bodies"/>, or average elimination if <paramref name="invert"/>.
+    /// Leaving the round counts for both. No bodies at all counts as fully done for an inverted objective
+    /// and as failed otherwise.
     /// </summary>
     public float GetProgress(HashSet<EntityUid> bodies, bool invert)
     {
         if (bodies.Count == 0)
             return invert ? 1f : 0f;
 
-        var survival = 0f;
+        var total = 0f;
         foreach (var body in bodies)
         {
-            survival += GetBodySurvival(body);
+            total += invert ? _objectives.GetEliminationProgress(body) : _objectives.GetSurvivalProgress(body);
         }
 
-        var average = survival / bodies.Count;
-        return invert ? 1f - average : average;
-    }
-
-    private float GetBodySurvival(EntityUid body)
-    {
-        if (TerminatingOrDeleted(body))
-            return 0f;
-
-        if (!TryComp<MobStateComponent>(body, out var mobState))
-            return 1f;
-
-        return mobState.CurrentState switch
-        {
-            MobState.Alive => 1f,
-            MobState.Critical => 0.5f,
-            MobState.Dead => 0f,
-            _ => 1f,
-        };
+        return total / bodies.Count;
     }
 }

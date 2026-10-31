@@ -59,6 +59,7 @@
     base: splat
     mode: CardinalFlags
   - type: Puddle
+  - type: CEOutdoorEvaporation # CrystallEdge: every reagent evaporates under the open sky
   - type: Solution
     id: puddle
   - type: MixableSolution

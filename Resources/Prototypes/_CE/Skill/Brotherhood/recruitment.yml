@@ -1,10 +1,8 @@
 - type: skill
   id: Recruitment
-  name: ce-skill-brotherhood-recruitment-name
-  desc: ce-skill-brotherhood-recruitment-desc
   icon:
-    sprite: _CE/Actions/misc.rsi
-    state: todo
+    sprite: _CE/Interface/Skills/recruitment.rsi
+    state: flag
   effect: !type:AddAction
     action: CEActionRecruit
 
@@ -21,9 +19,9 @@
     useDelay: 600
     itemIconStyle: BigAction
   - type: Sprite
-    sprite: _CE/Actions/misc.rsi
+    sprite: _CE/Interface/Skills/recruitment.rsi
     layers:
-    - state: todo
+    - state: flag
       map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 1.5

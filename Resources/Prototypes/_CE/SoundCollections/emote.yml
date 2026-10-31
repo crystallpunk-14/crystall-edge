@@ -5,3 +5,31 @@
   - /Audio/_CE/Voice/Carcat/carcat_laugh2.ogg
   - /Audio/_CE/Voice/Carcat/carcat_laugh3.ogg
 
+- type: soundCollection
+  id: CECarrinScream
+  files:
+  - /Audio/_CE/Voice/Carrin/carrin_scream1.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_scream2.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_scream3.ogg
+
+- type: soundCollection
+  id: CECarrinLaugh
+  files:
+  - /Audio/_CE/Voice/Carrin/carrin_laugh1.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_laugh2.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_laugh3.ogg
+
+- type: soundCollection
+  id: CECarrinCry
+  files:
+  - /Audio/_CE/Voice/Carrin/carrin_cry1.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_cry2.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_cry3.ogg
+
+- type: soundCollection
+  id: CECarrinWhistle
+  files:
+  - /Audio/_CE/Voice/Carrin/carrin_scree.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_caw.ogg
+  - /Audio/_CE/Voice/Carrin/carrin_squawk.ogg
+

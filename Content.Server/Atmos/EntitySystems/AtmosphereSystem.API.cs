@@ -1,6 +1,7 @@
 using System.Buffers;
 using System.Diagnostics;
 using System.Numerics.Tensors;
+using Content.Server.Airtight;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
@@ -20,6 +21,14 @@ public partial class AtmosphereSystem
      If you feel like you're stepping on eggshells because you can't access things in AtmosphereSystem,
      consider adding a method here instead of making your own way to work around it.
      */
+
+    // CrystallEdge: Airtight moved out of Atmos and no longer calls InvalidateTile directly
+    [SubscribeLocalEvent]
+    private void OnAirtightPositionInvalidated(ref AirtightPositionInvalidatedEvent args)
+    {
+        InvalidateTile(args.Grid, args.Tile);
+    }
+    // CrystallEdge end
 
     /// <summary>
     /// Checks if a grid has an atmosphere.

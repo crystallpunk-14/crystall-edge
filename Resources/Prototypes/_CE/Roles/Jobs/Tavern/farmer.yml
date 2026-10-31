@@ -51,11 +51,12 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingShirtGreenYellow
-        - id: CEClothingPantsHakama
-        - id: CEClothingCloakRaincoatGreen
-        - id: CEClothingShoesLongLeatherBoots
-        - id: CEClothingHeadStrawHat
+        - id: CEClothingShirtFarmer1
+        - id: CEClothingShirtFarmer2
+        - id: CEClothingCloakFarmerOveralls1
+        - id: CEClothingCloakFarmerOveralls2
+        - id: CEClothingPantsTavern
+        - id: CEClothingPantsTavernSkirt
 
 - type: entity
   id: CEKeyRingFarmer

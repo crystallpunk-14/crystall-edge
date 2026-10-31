@@ -1,5 +1,5 @@
 
-# Shared skeleton for a growing plant AND its dead remains: an anchored, damageable tile structure.
+# Shared skeleton for a growing plant: an anchored, damageable tile structure.
 - type: entity
   id: CEPlantVisualBase
   parent: BaseStructure
@@ -58,15 +58,6 @@
     energyMax: 5
     resourceMax: 5
     growthLevel: 0
-  - type: CEPlantFading
-    damage:
-      types:
-        Cellular: 0.5
-  - type: CEPlantHealing
-    heal:
-      types:
-        Cellular: 1
-  - type: CEPlantDying
   - type: PlacementReplacement
     key: CEPlant
   - type: Destructible
@@ -95,7 +86,6 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
-  - type: FireVisuals
   - type: GuideHelp
     guides:
     - CEFarmingGuideEN
@@ -125,8 +115,6 @@
   - type: CEPlantAdditionalProduceOnDestruct
     produce:
       CEWoodLog: 3
-  #- type: CEPlantDying #TODO dead apple tree
-  #  deathThreshold: 60
   - type: CEWaveShader
     speed: 3
     dis: 4
@@ -167,20 +155,3 @@
             variation: 0.05
       - !type:DoActsBehavior
         acts: [ "Destruction", "Breakage" ]
-
-#MARK: Dead
-- type: entity
-  id: CEPlantDeadBase
-  parent: CEPlantVisualBase
-  abstract: true
-  name: dead plant
-  description: A withered, lifeless husk. Clear it away before planting here again.
-  components:
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 10
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]

@@ -1,0 +1,27 @@
+- type: secretRole
+  id: Bodyguard
+  name: ce-secret-role-name-bodyguard
+  description: ce-secret-role-description-bodyguard
+  icon: CESecretRoleIconBodyguard
+  skills:
+  - Attachment
+  objectives: !type:EntSelector
+    id: CEObjectiveBodyguardProtect
+
+- type: entity
+  id: CEObjectiveBodyguardProtect
+  name: Protect your ward
+  description: Your ward must survive, whatever it takes.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Icons/SecretRoles/city.rsi
+    state: bodyguard
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-bodyguard-protect-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - Bodyguard
+    - DarkVessel # its body is meant to die
+  - type: CETargetSurviveCondition

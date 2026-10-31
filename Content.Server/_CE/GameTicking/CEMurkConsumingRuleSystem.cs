@@ -12,6 +12,7 @@ using Content.Shared._CE.RestorationRitual.Components;
 using Content.Shared._CE.Roundflow;
 using Content.Shared._CE.Trade.MainQuest;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.Audio;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
@@ -39,6 +40,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private SharedGodmodeSystem _godmode = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPointLightSystem _pointLight = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambientSound = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
     private readonly EntProtoId _sphereFailureLightning = "CESkyLightning";
@@ -223,11 +226,12 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         {
             SetSphereState((collapseUid, collapseSphere), CEMurkSphereState.Failure);
 
-            // The sphere itself is destroyed - leave a lightning strike and a shockwave in its place.
+            // Only the broken shell remains: its murk boundary stays while the safe zone drains away.
             var coordinates = Transform(collapseUid).Coordinates;
             Spawn(_sphereFailureLightning, coordinates);
             Spawn(_sphereShockwave, coordinates);
-            QueueDel(collapseUid);
+            _pointLight.SetEnabled(collapseUid, false);
+            _ambientSound.SetAmbience(collapseUid, false);
         }
 
         _roundEndSystem.EndRound();

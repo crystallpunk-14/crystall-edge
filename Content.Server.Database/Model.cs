@@ -53,6 +53,7 @@ namespace Content.Server.Database
         public DbSet<CustomVoteLogOption> CustomVoteLogOption { get; set; } = null!;
         public DbSet<PlayerAchievement> PlayerAchievement { get; set; } = default!; //CrystallEdge achievements
         public DbSet<SecretRole> SecretRole { get; set; } = default!; //CrystallEdge secret role priorities
+        public DbSet<PlayerStatistic> PlayerStatistic { get; set; } = default!; //CrystallEdge statistics
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -172,6 +173,19 @@ namespace Content.Server.Database
                 .HasPrincipalKey(p => p.UserId)
                 .IsRequired();
             //CrystallEdge achievements end
+
+            //CrystallEdge statistics
+            modelBuilder.Entity<PlayerStatistic>()
+                .HasIndex(p => new { p.PlayerUserId, p.Key })
+                .IsUnique();
+
+            modelBuilder.Entity<PlayerStatistic>()
+                .HasOne(p => p.Player)
+                .WithMany(p => p.PlayerStatistics)
+                .HasForeignKey(p => p.PlayerUserId)
+                .HasPrincipalKey(p => p.UserId)
+                .IsRequired();
+            //CrystallEdge statistics end
 
             modelBuilder.Entity<Round>()
                 .HasIndex(round => round.StartDate);
@@ -577,6 +591,7 @@ namespace Content.Server.Database
         public List<Ban> AdminServerBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
         public List<PlayerAchievement> PlayerAchievements { get; set; } = null!; //CrystallEdge achievements
+        public List<PlayerStatistic> PlayerStatistics { get; set; } = null!; //CrystallEdge statistics
     }
 
     [Table("whitelist")]
@@ -1130,4 +1145,23 @@ namespace Content.Server.Database
         public string ProtoId { get; set; } = string.Empty;
     }
     //CrystallEdge achievements end
+
+    //CrystallEdge statistics
+    [Table("player_statistic")]
+    public sealed class PlayerStatistic
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required, ForeignKey("Player")]
+        public Guid PlayerUserId { get; set; }
+        public Player Player { get; set; } = default!;
+
+        [Required, Column("key")]
+        public string Key { get; set; } = string.Empty;
+
+        [Column("value")]
+        public long Value { get; set; }
+    }
+    //CrystallEdge statistics end
 }

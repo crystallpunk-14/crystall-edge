@@ -1,18 +1,17 @@
 using Content.Shared._CE.Roles;
-using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Roles;
 
 /// <summary>
-/// Placed on a GameRule entity. Lists every secret role (of any faction) that can be granted
-/// this round, along with how many of each to hand out. See <see cref="CESecretRoleSelectionSystem"/>.
+/// Placed on a GameRule entity. Lists every secret department that can appear this round, the share
+/// of players each one gets and the roles it hands out. See <see cref="CESecretRoleSelectionSystem"/>.
 /// </summary>
 [RegisterComponent, Access(typeof(CESecretRoleSelectionSystem))]
 public sealed partial class CESecretRoleSelectionComponent : Component
 {
     [DataField(required: true)]
-    public List<CESecretRoleSelectorEntry> Roles = new();
+    public List<CESecretDepartmentSelectorEntry> Departments = new();
 
     /// <summary>
     /// How many of each role have been granted so far this round. Lets late joiners top up
@@ -33,8 +32,41 @@ public sealed partial class CESecretRoleSelectionComponent : Component
 }
 
 /// <summary>
-/// A single entry in <see cref="CESecretRoleSelectionComponent.Roles"/>, describing how many
-/// instances of a secret role to grant this round.
+/// A single entry in <see cref="CESecretRoleSelectionComponent.Departments"/>: how big a department
+/// gets this round and which of its roles can be handed out.
+/// </summary>
+[DataDefinition]
+public sealed partial class CESecretDepartmentSelectorEntry
+{
+    [DataField(required: true)]
+    public ProtoId<CESecretDepartmentPrototype> Department;
+
+    /// <summary>
+    /// Fraction of the players this department aims to hold, e.g. 0.2 for 20%.
+    /// </summary>
+    [DataField(required: true)]
+    public float Share;
+
+    /// <summary>
+    /// Below this many players the department gets no slots at all.
+    /// </summary>
+    [DataField]
+    public int MinPlayers;
+
+    [DataField(required: true)]
+    public List<CESecretRoleSelectorEntry> Roles = new();
+
+    public int GetTargetCount(int playerCount)
+    {
+        if (playerCount < MinPlayers)
+            return 0;
+
+        return (int) MathF.Round(playerCount * Share, MidpointRounding.AwayFromZero);
+    }
+}
+
+/// <summary>
+/// A single role inside a <see cref="CESecretDepartmentSelectorEntry"/>.
 /// </summary>
 [DataDefinition]
 public sealed partial class CESecretRoleSelectorEntry
@@ -43,38 +75,21 @@ public sealed partial class CESecretRoleSelectorEntry
     public ProtoId<CESecretRolePrototype> Role;
 
     /// <summary>
-    /// How many players are needed to "earn" one instance of this role, if scaled by population.
-    /// A fixed count is just a degenerate range, e.g. <c>range: {min: 1, max: 1}</c>.
+    /// Relative frequency of this role among the department's other roles.
     /// </summary>
     [DataField]
-    public int PlayerRatio = 10;
+    public float Weight = 1f;
 
     /// <summary>
-    /// Clamp for the population-scaled count. Ignored if <see cref="FillRemaining"/> is set.
+    /// Hard cap on how many players can hold this role in a round. Null means no cap.
     /// </summary>
     [DataField]
-    public MinMax Range = new(0, int.MaxValue);
+    public int? Max;
 
     /// <summary>
-    /// If true, this role ignores <see cref="PlayerRatio"/>/<see cref="Range"/> entirely and never
-    /// runs out of room - a guaranteed fallback (e.g. Civilian). Pair with a low <see cref="Weight"/>
-    /// so it only gets picked when nothing else is available.
+    /// If true, the role is only handed out when no other role of the department is available to the
+    /// player - unless the player set it to a priority above Low themselves.
     /// </summary>
     [DataField]
-    public bool FillRemaining;
-
-    /// <summary>
-    /// Tie-breaker used when a player has equal priority for more than one still-open role -
-    /// the higher-weight one wins (see <see cref="CESecretRoleSelectionSystem.TryPickRole"/>).
-    /// </summary>
-    [DataField]
-    public int Weight;
-
-    public int GetTargetCount(int playerCount)
-    {
-        if (FillRemaining)
-            return int.MaxValue;
-
-        return Math.Clamp(playerCount / PlayerRatio, (int) Range.Min, (int) Range.Max);
-    }
+    public bool Fallback;
 }

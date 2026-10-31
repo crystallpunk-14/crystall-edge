@@ -14,6 +14,6 @@
   - type: EdgeSpreader
     id: CEPlant
   - type: ActiveEdgeSpreader
-  - type: CEPlantKudzu
-    resourceCost: 50
-    energyCost: 50
+  - type: CEPlantKudzu # costs must stay within CEPlantBase energyMax/resourceMax, or the plant never spreads
+    resourceCost: 3
+    energyCost: 3

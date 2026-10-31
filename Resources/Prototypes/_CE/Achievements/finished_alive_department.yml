@@ -1,0 +1,26 @@
+- type: achievement
+  id: RoundsFinishedAliveEngineering2
+  name: ce-achievement-rounds-finished-alive-engineering-2-name
+  desc: ce-achievement-rounds-finished-alive-engineering-2-desc
+  unlocks: ce-achievement-rounds-finished-alive-engineering-2-unlocks
+  icon:
+    sprite: _CE/Achievements/heads.rsi
+    state: brigadier
+
+- type: achievement
+  id: RoundsFinishedAliveGuild2
+  name: ce-achievement-rounds-finished-alive-guild-2-name
+  desc: ce-achievement-rounds-finished-alive-guild-2-desc
+  unlocks: ce-achievement-rounds-finished-alive-guild-2-unlocks
+  icon:
+    sprite: _CE/Achievements/heads.rsi
+    state: guildmaster
+
+- type: achievement
+  id: RoundsFinishedAliveTavern2
+  name: ce-achievement-rounds-finished-alive-tavern-2-name
+  desc: ce-achievement-rounds-finished-alive-tavern-2-desc
+  unlocks: ce-achievement-rounds-finished-alive-tavern-2-unlocks
+  icon:
+    sprite: _CE/Achievements/heads.rsi
+    state: tavernmaster

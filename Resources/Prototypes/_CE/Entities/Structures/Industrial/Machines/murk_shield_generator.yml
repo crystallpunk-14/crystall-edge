@@ -65,6 +65,7 @@
     enabled: false
   - type: Clickable
   - type: PlaceableSurface
+    placeCentered: true
   - type: ApcPowerReceiver
     powerLoad: 3
   - type: Rotatable

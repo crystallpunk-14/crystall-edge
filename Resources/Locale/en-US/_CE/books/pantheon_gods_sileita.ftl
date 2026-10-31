@@ -87,7 +87,7 @@ ce-book-text-pantheon-gods-sileita = The pantheon of Sileita is divided into thr
     • [bold]Symbol[/bold]: Crossed swords above a helmet.
     • [bold]Presence[/bold]: Often — in person, in the body of a soldier of any race, hiding his true nature. Speaks through the flaming enthusiasm of a warrior.
     • [bold]Character[/bold]: Rude, but honest. His respect must be earned. He is not about winning — he is about fighting.
-    • [bold]Attitude to mortals[/bold]: Loves those who fight not for the sake of killing, but for the sake of dignity. Tieflings are native creatures of his personal war plan.
+    • [bold]Attitude to mortals[/bold]: Loves those who fight not for the sake of killing, but for the sake of dignity. Infernals are native creatures of his personal war plan.
     • [bold]Comment[/bold]: Dangerous where the cult turns war into a game. But necessary where honor is above fear.
 
     {"[head=3][color=blue]Archfey[/color][/head]"}

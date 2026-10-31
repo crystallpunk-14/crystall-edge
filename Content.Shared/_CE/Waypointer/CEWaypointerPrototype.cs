@@ -19,8 +19,19 @@ public sealed partial class CEWaypointerPrototype : IPrototype, IInheritingProto
     [AbstractDataField, NeverPushInheritance]
     public bool Abstract { get; private set; }
 
-    [DataField(required: true)]
-    public ComponentRegistry TrackedComponents = default!;
+    /// <summary>
+    /// Every entity with all of these components is tracked. Leave empty for waypointers that only point at
+    /// specific entities handed out through <see cref="CERefreshWaypointersEvent.TrackedEntities"/>.
+    /// </summary>
+    [DataField]
+    public ComponentRegistry TrackedComponents = new();
+
+    /// <summary>
+    /// If true, specific tracked entities (<see cref="CERefreshWaypointersEvent.TrackedEntities"/>) are PVS-overridden
+    /// to the owner's session, so they can be pointed at from any distance on the same map.
+    /// </summary>
+    [DataField]
+    public bool PvsOverride;
 
     /// <summary>
     /// The path to the rsi folder.

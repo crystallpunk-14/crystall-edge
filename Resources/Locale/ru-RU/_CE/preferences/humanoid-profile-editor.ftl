@@ -1,7 +1,6 @@
 humanoid-profile-editor-bark-voice-label = Голос:
 humanoid-profile-editor-bark-pitch-label = Тон:
 ce-humanoid-profile-editor-emote-voice-label = Голос эмоций:
-ce-humanoid-profile-editor-personality-header = Личность
 ce-humanoid-profile-editor-voice-header = Голос
 ce-humanoid-profile-editor-roles-tab = Роли
 
@@ -14,3 +13,10 @@ ce-humanoid-profile-editor-secret-roles-header-description = Секретная 
 ce-humanoid-profile-editor-preference-unavailable-label = Если недоступно:
 ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button = Получить должность "{ $overflowJob }"
 ce-humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Остаться в лобби
+
+ce-humanoid-profile-editor-personality-tab = Личность
+ce-humanoid-profile-editor-basic-header = Основное
+ce-species-picker-hover-hint = Наведите на расу, чтобы узнать о ней больше
+ce-species-picker-skills = Навыки
+ce-species-locked-wait-in-lobby = Раса «{ $species }» вам ещё недоступна, поэтому вы остаётесь в лобби. { $reason }
+ce-humanoid-profile-editor-species-locked-save = Выбранная раса ещё не разблокирована - персонажа нельзя сохранить.

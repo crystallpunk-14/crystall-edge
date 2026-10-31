@@ -18,7 +18,7 @@
 - type: loadout
   id: CEClothingCloakTavernmasterJacket2
   equipment:
-    cloak: CEClothingCloakTavernmasterJacket2 
+    cloak: CEClothingCloakTavernmasterJacket2
 
 ## Tavern staff
 
@@ -100,6 +100,17 @@
   equipment:
     head: CEClothingHeadBeretBartender
 
+- type: loadoutGroup
+  id: CETavernmasterHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadBowlerTavernmaster
+
+- type: loadout
+  id: CEClothingHeadBowlerTavernmaster
+  equipment:
+    head: CEClothingHeadBowlerTavernmaster
+
 # Shirt
 
 - type: loadoutGroup
@@ -163,3 +174,20 @@
   id: CEClothingPantsTavernSkirt
   equipment:
     pants: CEClothingPantsTavernSkirt
+
+# Eyes
+
+- type: loadoutGroup
+  id: CETavernEyes
+  name: ce-loadout-goggles
+  minLimit: 0
+  loadouts:
+  - CEClothingEyesBarGlasses
+  - CEClothingEyesMonocle
+  - CEClothingEyesGlasses
+  - CEClothingEyesEyePatch
+
+- type: loadout
+  id: CEClothingEyesBarGlasses
+  equipment:
+    eyes: CEClothingEyesBarGlasses

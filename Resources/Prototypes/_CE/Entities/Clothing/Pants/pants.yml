@@ -118,3 +118,14 @@
     sprite: _CE/Clothing/Pants/Engineering/pants.rsi
   - type: Clothing
     sprite: _CE/Clothing/Pants/Engineering/pants.rsi
+
+- type: entity
+  parent: CEClothingPantsBase
+  id: CEClothingPantsKeyKeeper
+  name: key keeper pants
+  description: Sturdy pants with plenty of room for keys.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Pants/KeyKeeper/pants.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Pants/KeyKeeper/pants.rsi

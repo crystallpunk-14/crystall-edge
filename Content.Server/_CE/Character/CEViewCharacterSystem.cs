@@ -18,6 +18,7 @@ public sealed partial class CEViewCharacterSystem : EntitySystem
     [Dependency] private SharedMindSystem _minds = default!;
     [Dependency] private CESharedObjectiveSystem _objectives = default!;
     [Dependency] private CEGhostMetaSystem _ghostMeta = default!;
+    [Dependency] private CECharacterSystem _character = default!;
 
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
 
@@ -42,7 +43,7 @@ public sealed partial class CEViewCharacterSystem : EntitySystem
         var target = GetEntity(msg.Target);
         var objectives = new List<CEObjectiveInfo>();
 
-        if (Exists(target) && _minds.TryGetMind(target, out var mindId, out _))
+        if (Exists(target) && TryGetTargetMind(target, out var mindId))
         {
             foreach (var objective in _objectives.GetObjectives(mindId))
             {
@@ -51,6 +52,18 @@ public sealed partial class CEViewCharacterSystem : EntitySystem
         }
 
         RaiseNetworkEvent(new CEViewCharacterResponseEvent(msg.Target, objectives), args.SenderSession.Channel);
+    }
+
+    // A character's body leads to its mind even after the player left it, e.g. a corpse.
+    private bool TryGetTargetMind(EntityUid target, out EntityUid mindId)
+    {
+        if (_character.TryGetCharacterByBody(target, out var character))
+        {
+            mindId = character.Value.Owner;
+            return true;
+        }
+
+        return _minds.TryGetMind(target, out mindId, out _);
     }
 
     private CEObjectiveInfo BuildObjectiveInfo(Entity<CEObjectiveComponent> objective)

@@ -39,24 +39,24 @@
     prefix: ce-species-name-human-last-
     count: 30
 
-# Tiefling
+# Infernal
 
 - type: localizedDataset
-  id: CE_Names_Tiefling_Male_First
+  id: CE_Names_Infernal_Male_First
   values:
-    prefix: ce-species-name-tiefling-male-first-
+    prefix: ce-species-name-infernal-male-first-
     count: 58
 
 - type: localizedDataset
-  id: CE_Names_Tiefling_Female_First
+  id: CE_Names_Infernal_Female_First
   values:
-    prefix: ce-species-name-tiefling-female-first-
+    prefix: ce-species-name-infernal-female-first-
     count: 53
 
 - type: localizedDataset
-  id: CE_Names_Tiefling_Last
+  id: CE_Names_Infernal_Last
   values:
-    prefix: ce-species-name-tiefling-last-
+    prefix: ce-species-name-infernal-last-
     count: 24
 
 # Elf

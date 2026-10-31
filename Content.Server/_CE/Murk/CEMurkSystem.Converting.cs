@@ -7,8 +7,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Audio;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 
 namespace Content.Server._CE.Murk;
@@ -18,7 +16,6 @@ public sealed partial class CEMurkSystem
     [Dependency] private GhostSystem _ghost = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
-    [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private MobStateSystem _mobState = default!;
 
     private static readonly SoundSpecifier ConvertSound = new SoundPathSpecifier("/Audio/_CE/Announce/murked.ogg");
@@ -53,7 +50,8 @@ public sealed partial class CEMurkSystem
         if (HasComp<MobStateComponent>(ent))
             _mobState.ChangeMobState(ent, MobState.Alive);
 
-        Phase(ent.Owner);
+        var ev = new CEMurkSoulConvertedEvent(ent);
+        RaiseLocalEvent(ref ev);
     }
 
     /// <summary>
@@ -81,19 +79,5 @@ public sealed partial class CEMurkSystem
         }
 
         _ghost.OnGhostAttempt(mindId, false, viaCommand: true, forced: true, mind: mind);
-    }
-
-    /// <summary>
-    /// Makes the soul non-solid, so the living walk straight through it.
-    /// </summary>
-    private void Phase(Entity<FixturesComponent?> ent)
-    {
-        if (!Resolve(ent, ref ent.Comp, false))
-            return;
-
-        foreach (var (_, fixture) in ent.Comp.Fixtures)
-        {
-            _physics.SetHard(ent, fixture, false, ent.Comp);
-        }
     }
 }

@@ -221,9 +221,10 @@
     sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
   - type: Vocal
-    emoteSounds: CEUnisexCarcat #TODO: change to carrin sound
+    emoteSounds: CEUnisexCarrin
   - type: Speech
     speechSounds: CECarcat #TODO: change to carrin sound
+    allowedEmotes: ['Chirp', 'CECall', 'CEScree', 'CECaw', 'CESquawk', 'CECoo']
   - type: FootstepModifier
     footstepSoundCollection:
       collection: CEStepCarrin
@@ -253,11 +254,6 @@
   - type: CESkinColoredLayers
     maps:
     - wings
-  - type: CEInnateSkills
-    skills:
-    - Flight
-    descriptorName: ce-innate-skill-source-carrin
-    descriptorColor: "#e7e397"
   - type: AmbientSound
     enabled: false
     volume: 2

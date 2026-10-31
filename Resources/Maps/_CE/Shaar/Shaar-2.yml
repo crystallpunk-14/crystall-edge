@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/16/2026 16:09:40
-  entityCount: 1811
+  time: 10/29/2026 18:16:37
+  entityCount: 1807
 maps:
 - 1
 grids:
@@ -145,15 +145,6 @@ entities:
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        temperature: 293.15
-        volume: 2500
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-        immutable: True
     - type: Forensics
       residues: []
       fingerprints: []
@@ -303,6 +294,7 @@ entities:
             -15,-6: []
     - type: ChunkContainer
       chunkEntities: []
+    - type: LightTree
 - proto: CEAccumulatorVessel
   entities:
   - uid: 1270
@@ -7788,7 +7780,7 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -5.5,-7.5
-- proto: CEWallLight
+- proto: CEWallLightOrange
   entities:
   - uid: 5
     components:
@@ -10262,41 +10254,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 8.5,4.5
-    - type: Fixtures
-      fixtures: {}
-- proto: CEWallRadioSpeaker
-  entities:
-  - uid: 1565
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -39.5,-10.5
-    - type: Fixtures
-      fixtures: {}
-- proto: CEWallRadioSpeakerEngineering
-  entities:
-  - uid: 899
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -14.5,0.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1591
-    components:
-    - type: Transform
-      parent: 1
-      pos: -8.5,14.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1592
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: -22.5,10.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone

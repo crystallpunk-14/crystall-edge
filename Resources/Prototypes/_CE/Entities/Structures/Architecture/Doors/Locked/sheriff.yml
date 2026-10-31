@@ -6,7 +6,7 @@
   - type: CELock
     autoGenerateShape: SheriffHall
   - type: Lock
-    locked: false
+    locked: true
 
 - type: entity
   parent: CEIronDoorWindowedMirrored
@@ -16,7 +16,7 @@
   - type: CELock
     autoGenerateShape: SheriffHall
   - type: Lock
-    locked: false
+    locked: true
 
 - type: entity
   parent: CEIronDoor

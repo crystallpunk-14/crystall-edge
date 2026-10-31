@@ -12,7 +12,7 @@ import os
 import psycopg2
 from uuid import UUID
 
-LATEST_DB_MIGRATION = "20260913140834_SecretRolePriorities"
+LATEST_DB_MIGRATION = "20261030092658_RenameTieflingToInfernal"
 
 def main():
     parser = argparse.ArgumentParser()

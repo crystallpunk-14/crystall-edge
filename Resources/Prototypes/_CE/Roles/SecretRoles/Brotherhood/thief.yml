@@ -3,6 +3,9 @@
   name: ce-secret-role-name-thief
   description: ce-secret-role-description-thief
   icon: CESecretRoleIconThief
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive3
   skills:
   - Pickpocketing
   objectives: !type:EntSelector
@@ -10,7 +13,7 @@
 
 - type: entity
   id: CEObjectiveThiefCashOut
-  name: Squander 10 gold
+  name: Spend 10 gold in the shadow shop
   description: Spend 10 gold coins on purchases in the shadow shop.
   components:
   - type: Sprite

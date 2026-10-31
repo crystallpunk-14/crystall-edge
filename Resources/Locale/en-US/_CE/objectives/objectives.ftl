@@ -1,7 +1,9 @@
-ce-lover-assist-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete their objectives
-ce-lover-survive-objective-title = Ensure {$targetName}, {CAPITALIZE($job)} stays alive
-ce-brotherhood-patronage-objective-title = Patronage: {$targetName}, {CAPITALIZE($job)}
-ce-brotherhood-debt-objective-title = A debt: {$targetName}, {CAPITALIZE($job)}
+ce-helper-assist-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete their objectives
+ce-bodyguard-protect-objective-title = Keep {$targetName}, {CAPITALIZE($job)} alive
+ce-priest-protect-objective-title = Keep {$targetName}, {CAPITALIZE($job)} alive
+ce-brotherhood-patronage-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete all their objectives
+ce-brotherhood-debt-objective-title = Put {$targetName}, {CAPITALIZE($job)} in critical condition 3 times without killing them
+ce-assassin-kill-objective-title = Kill {$targetName}, {CAPITALIZE($job)}
 ce-recruiter-recruit-objective-title = Recruit {$count} {$count ->
     [one] person
     *[other] people

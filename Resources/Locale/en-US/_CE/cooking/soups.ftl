@@ -42,3 +42,12 @@ ce-porridge-recipe-meat-desc = Hearty oat porridge simmered with chunks of meat.
 
 ce-porridge-recipe-pumpkin-name = oat porridge with pumpkin
 ce-porridge-recipe-pumpkin-desc = Creamy oat porridge blended with pumpkin.
+
+ce-soup-recipe-lumishroom-cream-name = glow cream soup
+ce-soup-recipe-lumishroom-cream-desc = A thick purée of glowing mushrooms. Juicy, with chewy, heady bits that make your teeth glow green.
+
+ce-soup-recipe-fly-agaric-name = fly agaric stew
+ce-soup-recipe-fly-agaric-desc = Very pretty, and very poisonous. Give the chef your regards and never come back to this tavern.
+
+ce-soup-recipe-fly-agaric-lumishroom-name = not just fly agaric stew
+ce-soup-recipe-fly-agaric-lumishroom-desc = Very pretty and it glows, but the fly agaric bits make no secret of how poisonous it is. On the bright side, thanks to the lumishrooms you'll die drunk and merry!

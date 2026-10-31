@@ -4,6 +4,9 @@
   description: ce-secret-role-description-werewolf
   icon: CESecretRoleIconWerewolf
   victoryAchievement: WerewolfWin
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive1
   skills:
   - Murkwalker
   - TimeSense
@@ -13,7 +16,7 @@
 
 - type: entity
   id: CEObjectiveNightmareKillPriests
-  name: Death to the light
+  name: Kill every priest
   description: There are priests of light in this city whose very existence is repugnant to your nature. Find them out and kill them.
   components:
   - type: Sprite

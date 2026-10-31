@@ -1,0 +1,35 @@
+- type: skill
+  id: Attachment
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddAction
+    action: CEActionToggleAttachment
+
+- type: entity
+  parent: BaseAction
+  id: CEActionToggleAttachment
+  name: Attachment
+  description: You always feel where the people you are bound to are.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 5
+    checkCanInteract: false
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    layers:
+    - state: todo
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:CEToggleStatusEffectsActionEvent
+      enabled: CEStatusEffectAttachment
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectAttachment
+  name: attachment
+  description: You feel where the people you are bound to are.
+  components:
+  - type: CEObjectiveTargetsWaypointerStatusEffect
+    waypointer: AttachmentWaypointer

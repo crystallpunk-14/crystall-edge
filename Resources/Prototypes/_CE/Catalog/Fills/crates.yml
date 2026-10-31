@@ -175,7 +175,7 @@
     - !type:GroupSelector
       weight: 0.3
       children:
-      - id: CEBookTieflingGambit
+      - id: CEBookInfernalGambit
       - id: CEBookPantheonGodsSileita
       - id: CEBookPantheonGodsSileitaImitators
         weight: 0.1

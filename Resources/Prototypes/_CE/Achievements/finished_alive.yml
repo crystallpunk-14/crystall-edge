@@ -1,0 +1,29 @@
+- type: achievement
+  id: RoundsFinishedAlive1
+  name: ce-achievement-rounds-finished-alive-1-name
+  desc: ce-achievement-rounds-finished-alive-1-desc
+  unlocks: ce-achievement-rounds-finished-alive-1-unlocks
+  secret: true
+  icon:
+    sprite: _CE/Actions/werewolf.rsi
+    state: true_form
+
+- type: achievement
+  id: RoundsFinishedAlive2
+  name: ce-achievement-rounds-finished-alive-2-name
+  desc: ce-achievement-rounds-finished-alive-2-desc
+  unlocks: ce-achievement-rounds-finished-alive-2-unlocks
+  secret: true
+  icon:
+    sprite: _CE/Achievements/sphere_of_light.rsi
+    state: icon
+
+- type: achievement
+  id: RoundsFinishedAlive3
+  name: ce-achievement-rounds-finished-alive-3-name
+  desc: ce-achievement-rounds-finished-alive-3-desc
+  unlocks: ce-achievement-rounds-finished-alive-3-unlocks
+  secret: true
+  icon:
+    sprite: _CE/Interface/Skills/recruitment.rsi
+    state: flag

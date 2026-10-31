@@ -1,0 +1,12 @@
+marking-CEInfernalHorns = Winding
+marking-CEInfernalHorns2 = Diligence
+marking-CEInfernalHorns3 = Vertical of Power
+marking-CEInfernalHorns3Broken = Broken Vertical
+marking-CEInfernalHorns4 = Change
+marking-CEInfernalHorns5 = The Devil
+marking-CEInfernalHorns5Broken = Broken Devil
+marking-CEInfernalHorns6 = Lamb
+marking-CEInfernalHorns7 = Horny horns
+marking-CEInfernalHorns8 = Crown
+marking-CEInfernalHorns9 = Unicorn
+marking-CEInfernalHorns10 = Curved Arrogance

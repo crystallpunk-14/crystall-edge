@@ -1,3 +1,4 @@
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Roles;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -26,7 +27,8 @@ public struct CEGhostWarp
         bool isWarpPoint,
         ProtoId<JobPrototype>? job = null,
         ProtoId<CESecretRolePrototype>? secretRole = null,
-        ProtoId<CESecretRolePrototype>? originalSecretRole = null)
+        ProtoId<CESecretRolePrototype>? originalSecretRole = null,
+        CECharacterStatus? status = null)
     {
         Entity = entity;
         DisplayName = displayName;
@@ -34,11 +36,13 @@ public struct CEGhostWarp
         Job = job;
         SecretRole = secretRole;
         OriginalSecretRole = originalSecretRole;
+        Status = status;
     }
 
     /// <summary>
     /// The entity representing the warp point.
     /// This is passed back to the server in the vanilla GhostWarpToTargetRequestEvent.
+    /// Invalid for a character with neither a body in the round nor a ghost to warp to.
     /// </summary>
     public NetEntity Entity { get; }
 
@@ -69,6 +73,12 @@ public struct CEGhostWarp
     /// changed since. Sent under the same rules as <see cref="SecretRole"/>.
     /// </summary>
     public ProtoId<CESecretRolePrototype>? OriginalSecretRole { get; }
+
+    /// <summary>
+    /// What happened to the character - see CECharacterSystem.GetStatus. Null for warp points and
+    /// players that aren't characters, e.g. ghost roles.
+    /// </summary>
+    public CECharacterStatus? Status { get; }
 }
 
 /// <summary>

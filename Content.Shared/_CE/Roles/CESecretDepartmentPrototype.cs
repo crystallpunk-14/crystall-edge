@@ -1,3 +1,4 @@
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.Prototypes;
@@ -56,9 +57,17 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
 
     /// <summary>
     /// Whether holders of any role in this department can see each other's secret role icon and
-    /// examine text - including two holders of the exact same role, e.g. two unrelated Lovers. See
+    /// examine text - including two holders of the exact same role, e.g. two unrelated Helpers. See
     /// <see cref="CESecretRoleIconComponent"/>.
     /// </summary>
     [DataField]
     public bool MembersRecognizeEachOther;
+
+    /// <summary>
+    /// Achievement granted at round end to every player holding a role in this department, alive
+    /// or dead, if all of the department's shared <see cref="Objectives"/> are completed.
+    /// Personal role objectives are not checked.
+    /// </summary>
+    [DataField]
+    public ProtoId<CEAchievementPrototype>? VictoryAchievement;
 }

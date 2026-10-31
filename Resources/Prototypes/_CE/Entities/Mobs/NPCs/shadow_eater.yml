@@ -105,13 +105,13 @@
       components:
       - CEMurkDissolvingStatus
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationShadowEaterDevour
+      animation: ShadowEaterDevour
   - type: CEActionTargetConditions
     conditions:
     - !type:MurkDissolved
 
 - type: entityEffectAnimation
-  id: AnimationShadowEaterDevour
+  id: ShadowEaterDevour
   movementSpeed: 0
   duration: 2
   events:

@@ -1,4 +1,4 @@
-# Cave entrances: medium holes through the floor, only above open floor of the level below, on the surface and on the first cave level.
+# Cave entrances: medium holes through the floor, only above open floor of the level below and away from the city, on the surface and on the first cave level.
 
 - type: entity
   id: CEWildlandsModifierCaveEntrances
@@ -18,6 +18,9 @@
           inverted: true
           tiles:
           - Space
+        - !type:RadiusMask # no holes right next to the city
+          inverted: true
+          radius: 70
         - !type:NoEntityMask # nothing is left hanging over the hole
         - !type:BelowMask # the landing: a floor with no wall on it
           masks:

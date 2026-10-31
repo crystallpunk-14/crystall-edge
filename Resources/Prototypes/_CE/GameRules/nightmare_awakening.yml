@@ -3,49 +3,39 @@
   id: CEGameRuleNightmareAwakening
   components:
   - type: GameRule
-    minPlayers: 1
   - type: CESecretRoleSelection
-    roles:
-    # Nightmares
-    - role: Werewolf
-      playerRatio: 10
-      range: { min: 1, max: 4 }
-      weight: 10
-    # Brotherhood
-    - role: Recruiter
-      playerRatio: 7
-      range: { min: 1, max: 1 }
-      weight: 5
-    - role: Thief
-      playerRatio: 6
-      range: { min: 1, max: 3 }
-      weight: 5
-    # Coven
-    #- role: Seer
-    #  playerRatio: 10
-    #  range: { min: 1, max: 1 }
-    #  weight: 5
-    # City
-    - role: Lover
-      playerRatio: 3
-      range: { min: 1, max: 3 }
-      weight: 5
-    - role: DarkVessel
-      playerRatio: 10
-      range: { min: 1, max: 1 }
-      weight: 5
-    - role: BountyHunter
-      playerRatio: 5
-      range: { min: 1, max: 1 }
-      weight: 5
-    - role: Priest
-      playerRatio: 10
-      range: { min: 1, max: 2 }
-      weight: 5
-    - role: Immortal
-      playerRatio: 10
-      range: { min: 1, max: 1 }
-      weight: 5
-    - role: Civilian
-      fillRemaining: true
-      weight: -100
+    departments:
+    - department: Nightmares
+      share: 0.10
+      roles:
+      - role: Werewolf
+    - department: Brotherhood
+      share: 0.20
+      roles:
+      - role: Recruiter
+        max: 1
+      - role: Thief
+        weight: 2
+      - role: Assassin
+    #- department: Coven
+    #  share: 0.05
+    #  roles:
+    #  - role: Seer
+    #    max: 1
+    - department: City
+      share: 0.70
+      roles:
+      - role: Bodyguard
+        weight: 2
+      - role: Helper
+        weight: 2
+      - role: DarkVessel
+        max: 1
+        weight: 0.25
+      - role: BountyHunter
+      - role: Priest
+        max: 2
+      - role: Immortal
+        max: 1
+      - role: Civilian
+        fallback: true

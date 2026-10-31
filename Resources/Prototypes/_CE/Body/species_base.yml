@@ -7,6 +7,7 @@
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
@@ -52,7 +53,6 @@
   - CEMobDamageable
   - CEMobMagical
   - CEMobCombat
-  - CEMobTemperature
   - CEMobMurkDissolving
   - MobPolymorphable
   - CEBaseSpeciesAppearance
@@ -119,8 +119,6 @@
   - type: CanMoveInAir
   - type: Reactive
     groups:
-      Flammable: [ Touch ]
-      Extinguish: [ Touch ]
       Acidic: [Touch, Ingestion]
   - type: StatusEffects
     allowed:
@@ -188,12 +186,6 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
-  - type: Satiation
-    satiations:
-      Hunger:
-        prototype: NormalSatiationHunger
-      Thirst:
-        prototype: NormalSatiationThirst
   - type: CEAnimationController
   - type: CEIdleAnimation
     animation:
@@ -231,13 +223,17 @@
 - type: entity
   parent:
   - MobBloodstream
-  - MobFlammable
   - CEBaseSpeciesMob
-  - CEMobRespirator
   id: CEBaseSpeciesMobOrganic
   save: false
   abstract: true
   components:
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: NormalSatiationThirst
   - type: StatusEffects
     allowed:
     - Stun
@@ -265,7 +261,3 @@
       reagents:
       - ReagentId: CEBlood
         Quantity: 300
-  - type: FireVisuals
-    sprite: _CE/Mobs/Effects/onfire.rsi
-    normalState: Small_burning
-    alternateState: Humanoid_burning

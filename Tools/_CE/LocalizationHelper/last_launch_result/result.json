@@ -146,6 +146,27 @@
         "parent": "CEOrganSilva",
         "suffix": null
     },
+    "CEAppearanceSkeleton": {
+        "id": "CEAppearanceSkeleton",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseSpeciesAppearance",
+        "suffix": null
+    },
+    "CEOrganSkeleton": {
+        "id": "CEOrganSkeleton",
+        "name": null,
+        "description": null,
+        "parent": "OrganBase",
+        "suffix": "skeleton"
+    },
+    "CEOrganSkeletonExternal": {
+        "id": "CEOrganSkeletonExternal",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeleton",
+        "suffix": null
+    },
     "CEAppearanceTiefling": {
         "id": "CEAppearanceTiefling",
         "name": null,
@@ -444,6 +465,13 @@
         "id": "CEClothingEyesEyePatch",
         "name": "eye patch",
         "description": "Hides the mutilation of the eyes.",
+        "parent": "CEClothingEyesBase",
+        "suffix": null
+    },
+    "CEClothingEyesBarGlasses": {
+        "id": "CEClothingEyesBarGlasses",
+        "name": "bartender's glasses",
+        "description": "Thin glasses that every self-respecting bartender keeps for reading the labels.",
         "parent": "CEClothingEyesBase",
         "suffix": null
     },
@@ -2050,6 +2078,48 @@
         "parent": "CEGuidebookBase",
         "suffix": null
     },
+    "CEDrinkBaseGlass": {
+        "id": "CEDrinkBaseGlass",
+        "name": null,
+        "description": null,
+        "parent": "BaseItem",
+        "suffix": null
+    },
+    "CEDrinkGlass": {
+        "id": "CEDrinkGlass",
+        "name": "glass",
+        "description": "A simple glass for any drink.",
+        "parent": "CEDrinkBaseGlass",
+        "suffix": null
+    },
+    "CEDrinkGlassWine": {
+        "id": "CEDrinkGlassWine",
+        "name": "wine glass",
+        "description": "A glass on a long stem, made to show off the color and aroma of wine.",
+        "parent": "CEDrinkBaseGlass",
+        "suffix": null
+    },
+    "CEDrinkGlassRock": {
+        "id": "CEDrinkGlassRock",
+        "name": "rocks glass",
+        "description": "A short, heavy-bottomed glass for strong spirits.",
+        "parent": "CEDrinkBaseGlass",
+        "suffix": null
+    },
+    "CEDrinkGlassMartini": {
+        "id": "CEDrinkGlassMartini",
+        "name": "martini glass",
+        "description": "A cone-shaped glass for those who like their drinks served with style.",
+        "parent": "CEDrinkBaseGlass",
+        "suffix": null
+    },
+    "CEDrinkGlassShot": {
+        "id": "CEDrinkGlassShot",
+        "name": "shot glass",
+        "description": "A tiny glass for a single swallow.",
+        "parent": "CEDrinkBaseGlass",
+        "suffix": null
+    },
     "CEDrinkBaseGoblet": {
         "id": "CEDrinkBaseGoblet",
         "name": "goblet",
@@ -2118,6 +2188,13 @@
         "name": "beer mug",
         "description": "Wooden mug with iron inclusions.",
         "parent": "CEDrinkBaseMug",
+        "suffix": null
+    },
+    "CEDrinkShaker": {
+        "id": "CEDrinkShaker",
+        "name": "shaker",
+        "description": "The trusty mixing buddy of the bartender.",
+        "parent": "BaseItem",
         "suffix": null
     },
     "CEBottleWine": {
@@ -2202,6 +2279,104 @@
         "name": null,
         "description": null,
         "parent": "CEBottleSyrupSugar",
+        "suffix": "Full"
+    },
+    "CEBottleGin": {
+        "id": "CEBottleGin",
+        "name": "gin bottle",
+        "description": "Juniper spirit with a crisp, herbal bite.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleGinFull": {
+        "id": "CEBottleGinFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleGin",
+        "suffix": "Full"
+    },
+    "CEBottleAbsinthe": {
+        "id": "CEBottleAbsinthe",
+        "name": "absinthe bottle",
+        "description": "A green spirit of wormwood and anise, said to show you things.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleAbsintheFull": {
+        "id": "CEBottleAbsintheFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleAbsinthe",
+        "suffix": "Full"
+    },
+    "CEBottleBrandy": {
+        "id": "CEBottleBrandy",
+        "name": "brandy bottle",
+        "description": "Distilled wine, aged until it turns warm and amber.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleBrandyFull": {
+        "id": "CEBottleBrandyFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleBrandy",
+        "suffix": "Full"
+    },
+    "CEBottleBlueCuracao": {
+        "id": "CEBottleBlueCuracao",
+        "name": "blue curacao bottle",
+        "description": "Sweet orange liqueur dyed a startling shade of blue.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleBlueCuracaoFull": {
+        "id": "CEBottleBlueCuracaoFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleBlueCuracao",
+        "suffix": "Full"
+    },
+    "CEBottleCherryLiqueur": {
+        "id": "CEBottleCherryLiqueur",
+        "name": "cherry liqueur bottle",
+        "description": "A sweet dark liqueur made from cherries.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleCherryLiqueurFull": {
+        "id": "CEBottleCherryLiqueurFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleCherryLiqueur",
+        "suffix": "Full"
+    },
+    "CEBottleCitrusJuice": {
+        "id": "CEBottleCitrusJuice",
+        "name": "citrus juice bottle",
+        "description": "Sharp and sour juice squeezed from fresh citrus.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottleCitrusJuiceFull": {
+        "id": "CEBottleCitrusJuiceFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottleCitrusJuice",
+        "suffix": "Full"
+    },
+    "CEBottlePineBitter": {
+        "id": "CEBottlePineBitter",
+        "name": "pine bitter bottle",
+        "description": "A resinous bitter tincture that tastes like a forest after rain.",
+        "parent": "CEDrinkBottleBase",
+        "suffix": "Empty"
+    },
+    "CEBottlePineBitterFull": {
+        "id": "CEBottlePineBitterFull",
+        "name": null,
+        "description": null,
+        "parent": "CEBottlePineBitter",
         "suffix": "Full"
     },
     "CEFoodCheeseSlice": {
@@ -2659,6 +2834,13 @@
         "parent": "FoodInjectableBase",
         "suffix": null
     },
+    "CEFoodLumishroom": {
+        "id": "CEFoodLumishroom",
+        "name": "lumishroom",
+        "description": "A glowing cave mushroom. It ferments right in the cap, so eating a few goes straight to your head.",
+        "parent": "FoodInjectableBase",
+        "suffix": null
+    },
     "CEBloodpack": {
         "id": "CEBloodpack",
         "name": "blood pack",
@@ -2721,6 +2903,41 @@
         "description": null,
         "parent": "CESmokingPipe",
         "suffix": "Sage"
+    },
+    "CESpiceJarBase": {
+        "id": "CESpiceJarBase",
+        "name": null,
+        "description": null,
+        "parent": "BaseItem",
+        "suffix": null
+    },
+    "CESpiceJarCinnamon": {
+        "id": "CESpiceJarCinnamon",
+        "name": "cinnamon jar",
+        "description": "A small glass jar for ground cinnamon.",
+        "parent": "CESpiceJarBase",
+        "suffix": "Empty"
+    },
+    "CESpiceJarCinnamonFull": {
+        "id": "CESpiceJarCinnamonFull",
+        "name": null,
+        "description": null,
+        "parent": "CESpiceJarCinnamon",
+        "suffix": "Full"
+    },
+    "CESpiceJarSpicyPepper": {
+        "id": "CESpiceJarSpicyPepper",
+        "name": "spicy pepper jar",
+        "description": "A small glass jar for ground hot pepper.",
+        "parent": "CESpiceJarBase",
+        "suffix": "Empty"
+    },
+    "CESpiceJarSpicyPepperFull": {
+        "id": "CESpiceJarSpicyPepperFull",
+        "name": null,
+        "description": null,
+        "parent": "CESpiceJarSpicyPepper",
+        "suffix": "Full"
     },
     "CEBell": {
         "id": "CEBell",
@@ -4990,6 +5207,20 @@
         "parent": "BaseStorageItem",
         "suffix": "Empty"
     },
+    "CEHandTeleporterAdmin": {
+        "id": "CEHandTeleporterAdmin",
+        "name": "divine teleporter",
+        "description": "Tears the fabric of the world. First use opens a rift, second use links it to a rift at your location, third closes both.",
+        "parent": "BaseItem",
+        "suffix": "Admin"
+    },
+    "CEHandTeleporterAdminRift": {
+        "id": "CEHandTeleporterAdminRift",
+        "name": "rift",
+        "description": "A tear in the world leading somewhere else.",
+        "parent": "BasePortal",
+        "suffix": null
+    },
     "CESafeFallingAmulet": {
         "id": "CESafeFallingAmulet",
         "name": "Emergency Levitation Amulet",
@@ -5218,6 +5449,20 @@
         "id": "CESpoon",
         "name": "spoon",
         "description": "It is considered the first tool for eating, not counting the hands.",
+        "parent": "BaseItem",
+        "suffix": null
+    },
+    "CEBarSpoon": {
+        "id": "CEBarSpoon",
+        "name": "bar spoon",
+        "description": "A long twisted spoon for stirring cocktails.",
+        "parent": "CESpoon",
+        "suffix": null
+    },
+    "CERag": {
+        "id": "CERag",
+        "name": "damp rag",
+        "description": "For cleaning up messes, you suppose.",
         "parent": "BaseItem",
         "suffix": null
     },
@@ -8469,6 +8714,20 @@
         "parent": "CEPlantDeadBase",
         "suffix": "SPRITE TODO"
     },
+    "CEPlantLumishroomDead": {
+        "id": "CEPlantLumishroomDead",
+        "name": "dead lumishroom",
+        "description": null,
+        "parent": "CEPlantDeadBase",
+        "suffix": "SPRITE TODO"
+    },
+    "CEPlantLumishroomGrown": {
+        "id": "CEPlantLumishroomGrown",
+        "name": null,
+        "description": null,
+        "parent": "CEPlantLumishroom",
+        "suffix": "Grown"
+    },
     "CEPlantOnionDead": {
         "id": "CEPlantOnionDead",
         "name": "dead onion",
@@ -8821,6 +9080,13 @@
     },
     "CEWildlandsModifierCaveEntrances": {
         "id": "CEWildlandsModifierCaveEntrances",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseWildlandsModifier",
+        "suffix": null
+    },
+    "CEWildlandsModifierLumishrooms": {
+        "id": "CEWildlandsModifierLumishrooms",
         "name": null,
         "description": null,
         "parent": "CEBaseWildlandsModifier",
@@ -9206,36 +9472,43 @@
     },
     "CEObjectiveThiefCashOut": {
         "id": "CEObjectiveThiefCashOut",
-        "name": "Squander 10 gold",
+        "name": "Spend 10 gold in the shadow shop",
         "description": "Spend 10 gold coins on purchases in the shadow shop.",
         "parent": null,
         "suffix": null
     },
     "CEObjectiveBrotherhoodSurvive": {
         "id": "CEObjectiveBrotherhoodSurvive",
-        "name": "Keep the Brotherhood alive",
+        "name": "Keep every Brotherhood member alive",
         "description": "Every member of the Brotherhood must survive.",
         "parent": null,
         "suffix": null
     },
     "CEObjectiveBrotherhoodPatronage": {
         "id": "CEObjectiveBrotherhoodPatronage",
-        "name": "Patronage",
+        "name": "Help someone complete all their objectives",
         "description": "This person once helped the Brotherhood. Repay the favor - they must complete all of their objectives.",
         "parent": null,
         "suffix": null
     },
     "CEObjectiveBrotherhoodDebt": {
         "id": "CEObjectiveBrotherhoodDebt",
-        "name": "A debt",
+        "name": "Put someone in critical condition 3 times without killing them",
         "description": "This person once crossed the Brotherhood. Make their life unbearable - they must end up in critical condition 3 times, yet survive to learn their lesson.",
         "parent": null,
         "suffix": null
     },
     "CEObjectiveBountyHunterEliminate": {
         "id": "CEObjectiveBountyHunterEliminate",
-        "name": "Eliminate the Brotherhood",
+        "name": "Kill every Brotherhood member",
         "description": "Every member of the Brotherhood must be dead.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEObjectiveDarkVesselSwap": {
+        "id": "CEObjectiveDarkVesselSwap",
+        "name": "Move into a new body",
+        "description": "Your current body, your vessel, is almost completely worn out. You need a new body to go on existing.",
         "parent": null,
         "suffix": null
     },
@@ -9260,9 +9533,16 @@
         "parent": null,
         "suffix": null
     },
+    "CEObjectivePriestProtect": {
+        "id": "CEObjectivePriestProtect",
+        "name": "Keep someone alive",
+        "description": "You swore an oath to protect the innocent from death, and you will keep it.",
+        "parent": null,
+        "suffix": null
+    },
     "CEObjectiveSheriffDestroyDarkness": {
         "id": "CEObjectiveSheriffDestroyDarkness",
-        "name": "Destroy the darkness",
+        "name": "Kill every nightmare",
         "description": "Every nightmare hiding in the city must be dead.",
         "parent": null,
         "suffix": null
@@ -9276,14 +9556,14 @@
     },
     "CEObjectiveNightmareKillPriests": {
         "id": "CEObjectiveNightmareKillPriests",
-        "name": "Death to the light",
+        "name": "Kill every priest",
         "description": "There are priests of light in this city whose very existence is repugnant to your nature. Find them out and kill them.",
         "parent": null,
         "suffix": null
     },
     "CEObjectiveNightmareSphereCollapse": {
         "id": "CEObjectiveNightmareSphereCollapse",
-        "name": "Plunge the City into Murk.",
+        "name": "Keep the Lucson Sphere from being restored",
         "description": "The lucson sphere has cracked. Keep the city from restoring it until the murk consumes it.",
         "parent": null,
         "suffix": null
@@ -9360,8 +9640,15 @@
     },
     "CEStatusEffectMurkwalker": {
         "id": "CEStatusEffectMurkwalker",
-        "name": "murk immunity",
-        "description": null,
+        "name": "Murk Immunity",
+        "description": "You can safely stand in the murk without dissolving into oblivion.",
+        "parent": "StatusEffectBase",
+        "suffix": null
+    },
+    "CEStatusEffectMurkResistance": {
+        "id": "CEStatusEffectMurkResistance",
+        "name": "Murk Resistance",
+        "description": "You dissolve in the murk 30% slower.",
         "parent": "StatusEffectBase",
         "suffix": null
     },
@@ -9381,14 +9668,14 @@
     },
     "CEStatusEffectSoftLanding": {
         "id": "CEStatusEffectSoftLanding",
-        "name": "soft landing",
-        "description": null,
+        "name": "Soft Landing",
+        "description": "Softens falls from a height, reducing damage and preventing you from being knocked down as long as the fall speed is not too high.",
         "parent": "StatusEffectBase",
         "suffix": null
     },
     "CEStatusEffectTimeSense": {
         "id": "CEStatusEffectTimeSense",
-        "name": "sense of time",
+        "name": "Sense of Time",
         "description": "You intuitively feel what time of day it is.",
         "parent": "StatusEffectBase",
         "suffix": null
@@ -9407,10 +9694,17 @@
         "parent": "BaseAction",
         "suffix": null
     },
+    "CEActionDarkVesselSwap": {
+        "id": "CEActionDarkVesselSwap",
+        "name": "Change the vessel",
+        "description": "Leave this old body, this old vessel, and move into a new one, taking over all its objectives and abilities. Only works on the corpse of a player who held a secret role.",
+        "parent": null,
+        "suffix": null
+    },
     "CEStatusEffectMysticVitality": {
         "id": "CEStatusEffectMysticVitality",
-        "name": "mystic vitality",
-        "description": null,
+        "name": "Mystic Vitality",
+        "description": "No matter how hard you are beaten, you are almost impossible to kill, and you keep coming back, regenerating any damage taken. You can still be killed, of course - by being thrown off the island, for example - but try not to talk about that.",
         "parent": "StatusEffectBase",
         "suffix": null
     },
@@ -10175,6 +10469,86 @@
         "name": null,
         "description": null,
         "parent": "CEOrganSilvaExternal",
+        "suffix": null
+    },
+    "CEMobSkeleton": {
+        "id": "CEMobSkeleton",
+        "name": "Mr. Skeleton",
+        "description": null,
+        "parent": [
+            "CEAppearanceSkeleton",
+            "CEBaseSpeciesMob"
+        ],
+        "suffix": null
+    },
+    "CEOrganSkeletonTorso": {
+        "id": "CEOrganSkeletonTorso",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonHead": {
+        "id": "CEOrganSkeletonHead",
+        "name": "skull",
+        "description": "Alas poor Yorick...",
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonArmLeft": {
+        "id": "CEOrganSkeletonArmLeft",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonArmRight": {
+        "id": "CEOrganSkeletonArmRight",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonHandLeft": {
+        "id": "CEOrganSkeletonHandLeft",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonHandRight": {
+        "id": "CEOrganSkeletonHandRight",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonLegLeft": {
+        "id": "CEOrganSkeletonLegLeft",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonLegRight": {
+        "id": "CEOrganSkeletonLegRight",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonFootLeft": {
+        "id": "CEOrganSkeletonFootLeft",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
+        "suffix": null
+    },
+    "CEOrganSkeletonFootRight": {
+        "id": "CEOrganSkeletonFootRight",
+        "name": null,
+        "description": null,
+        "parent": "CEOrganSkeletonExternal",
         "suffix": null
     },
     "CEMobTiefling": {
@@ -11849,6 +12223,16 @@
         "parent": [
             "CEPlantBase",
             "CEPlantBaseMetabolizerMedium"
+        ],
+        "suffix": null
+    },
+    "CEPlantLumishroom": {
+        "id": "CEPlantLumishroom",
+        "name": "lumishroom",
+        "description": "A cave mushroom with a softly glowing green cap. It smells of yeast and strong drink.",
+        "parent": [
+            "CEPlantBase",
+            "CEPlantBaseMetabolizerFast"
         ],
         "suffix": null
     },

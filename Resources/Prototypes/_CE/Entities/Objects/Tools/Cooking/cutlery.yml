@@ -92,3 +92,15 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 5
+- type: entity
+  parent: CESpoon
+  id: CEBarSpoon
+  name: bar spoon
+  description: A long twisted spoon for stirring cocktails.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/bar_spoon.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/bar_spoon.rsi
+    heldPrefix: spoon

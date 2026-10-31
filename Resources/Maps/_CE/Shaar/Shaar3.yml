@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/16/2026 16:09:41
+  time: 10/29/2026 18:16:38
   entityCount: 55
 maps:
 - 1
@@ -96,15 +96,6 @@ entities:
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        temperature: 293.15
-        volume: 2500
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-        immutable: True
     - type: Forensics
       residues: []
       fingerprints: []
@@ -159,6 +150,7 @@ entities:
             -16,-1: []
     - type: ChunkContainer
       chunkEntities: []
+    - type: LightTree
 - proto: CEClothingHeadAmanitaHelmet
   entities:
   - uid: 206
@@ -311,7 +303,7 @@ entities:
       pos: -6.5,-11.5
     - type: Fixtures
       fixtures: {}
-- proto: CESpawnPointInvestigator
+- proto: CESpawnPointSheriff
   entities:
   - uid: 51
     components:

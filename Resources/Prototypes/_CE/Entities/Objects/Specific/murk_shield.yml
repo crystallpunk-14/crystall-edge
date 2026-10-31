@@ -34,10 +34,10 @@
     intensity: -7
   - type: CEMurkShield
   - type: CESpawnAnimation
-    animation: AnimationMurkShieldSpawn
+    animation: MurkShieldSpawn
 
 - type: entityEffectAnimation
-  id: AnimationMurkShieldSpawn
+  id: MurkShieldSpawn
   movementSpeed: 0
   duration: 1
   events:

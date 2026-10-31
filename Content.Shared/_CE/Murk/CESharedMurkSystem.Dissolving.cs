@@ -144,3 +144,9 @@ public abstract partial class CESharedMurkSystem
 /// </summary>
 [ByRefEvent]
 public record struct CEMurkDissolvedEvent;
+
+/// <summary>
+/// Broadcast once a dissolved body has fully turned into a murked soul and its player is gone.
+/// </summary>
+[ByRefEvent]
+public record struct CEMurkSoulConvertedEvent(EntityUid Body);

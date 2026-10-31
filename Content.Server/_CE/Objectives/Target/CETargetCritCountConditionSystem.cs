@@ -2,7 +2,6 @@ using Content.Server._CE.Objectives.Target.Components;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Target;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Objectives.Target;
 
@@ -25,7 +24,7 @@ public sealed partial class CETargetCritCountConditionSystem : CEBaseTargetObjec
         }
 
         // The lesson only counts if they live to learn it.
-        if (TryComp<MobStateComponent>(target.Value, out var mobState) && mobState.CurrentState == MobState.Dead)
+        if (!ObjectivesSys.IsBodySurvived(target.Value))
         {
             args.Progress = 0f;
             return;

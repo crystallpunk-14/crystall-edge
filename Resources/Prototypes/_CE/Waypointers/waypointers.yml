@@ -19,3 +19,11 @@
       - id: CEIronOre1
   maxRange: 10
   workOnGrid: true
+
+- type: waypointer
+  parent: BaseWaypointer
+  id: AttachmentWaypointer
+  color: "#e05a8a"
+  pvsOverride: true
+  maxRange: 500
+  workOnGrid: true

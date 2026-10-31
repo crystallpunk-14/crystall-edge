@@ -12,7 +12,7 @@
 
 - type: entity
   id: CEObjectiveNightmareSphereCollapse
-  name: Plunge the City into Murk.
+  name: Keep the Lucson Sphere from being restored
   description: The lucson sphere has cracked. Keep the city from restoring it until the murk consumes it.
   components:
   - type: Sprite

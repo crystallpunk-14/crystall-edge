@@ -2,6 +2,10 @@
   id: CEDwarf
   name: ce-species-name-dwarf
   roundStart: true
+  description: ce-species-desc-dwarf
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: dwarf
   prototype: CEMobDwarf
   dollPrototype: CEAppearanceDwarf
   skinColoration: HumanToned

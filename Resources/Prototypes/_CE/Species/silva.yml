@@ -2,6 +2,10 @@
   id: CESilva
   name: ce-species-name-silva
   roundStart: true
+  description: ce-species-desc-silva
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: silva
   prototype: CEMobSilva
   dollPrototype: CEAppearanceSilva
   skinColoration: CESilvasHues

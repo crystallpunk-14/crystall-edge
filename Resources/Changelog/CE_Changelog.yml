@@ -1528,3 +1528,66 @@
   id: 1130
   time: '2026-10-23T15:13:40.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/554
+- author: TheShuEd, D1nazewwr, Vojner
+  changes:
+  - message: Added bunch of new inhands sprites for various items!
+    type: Add
+  - message: Added new alcohol content in shadow traders shop!
+    type: Add
+  id: 1131
+  time: '2026-10-23T16:11:42.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/555
+- author: TheShuEd
+  changes:
+  - message: 'Added new adventurers quest: lumishroom collection.'
+    type: Add
+  - message: Lumishrooms added into game.
+    type: Add
+  - message: 3 new shrooms soup recipe was added.
+    type: Add
+  id: 1132
+  time: '2026-10-23T19:13:36.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/556
+- author: TheShuEd
+  changes:
+  - message: Added "Brotherhood" achievements, brotherhood now locked by default.
+    type: Add
+  - message: Humands now have 30% murk restistance.
+    type: Add
+  - message: Bloodpack price was decreased.
+    type: Tweak
+  id: 1133
+  time: '2026-10-24T12:18:25.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/557
+- author: TheShuEd
+  changes:
+  - message: The Priest now has targets to protect 2 random other players (excluding
+      werewolves and empty vessels)
+    type: Tweak
+  - message: "Shadow Merchants\u2019 pedestals containing quest items are now stocked\
+      \ at the start of the round"
+    type: Tweak
+  - message: "The number of lumishrooms required for the Adventurers\u2019 quest has\
+      \ been reduced from 30 to 15."
+    type: Tweak
+  - message: Fixed bugs where mushrooms would not grow
+    type: Fix
+  - message: Fixed a bug where a target affected by Murk Dissolving was not counted
+      as killed for role objectives
+    type: Fix
+  - message: Fixed a bug where enabling combat mode would disable direction markers
+      for mining glasses
+    type: Fix
+  id: 1134
+  time: '2026-10-24T22:58:19.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/558
+- author: TheShuEd
+  changes:
+  - message: All secret role icons are now visible after round end
+    type: Add
+  - message: Refactored critical mob state, players can now crawl and talk in critical
+      state, but slowly dies from bloodloss.
+    type: Add
+  id: 1135
+  time: '2026-10-25T10:59:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/560

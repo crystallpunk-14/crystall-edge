@@ -1,17 +1,59 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd, fire sprite from Agoichi",
+  "copyright": "Created by kbas5 (discord)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
+      "name": "carved_pot1"
+    },
+    {
+      "name": "carved_pot2"
+    },
+    {
+      "name": "carved_pot3"
+    },
+    {
+      "name": "carved_pot4"
+    },
+    {
+      "name": "cracked_pot1"
+    },
+    {
+      "name": "cracked_pot2"
+    },
+    {
+      "name": "cracked_pot3"
+    },
+    {
+      "name": "cracked_pot4"
+    },
+    {
+      "name": "patterned_pot1"
+    },
+    {
+      "name": "patterned_pot2"
+    },
+    {
+      "name": "patterned_pot3"
+    },
+    {
+      "name": "patterned_pot4"
+    },
+    {
       "name": "pot1"
     },
     {
       "name": "pot2"
+    },
+    {
+      "name": "pot3"
+    },
+    {
+      "name": "pot4"
     }
   ]
 }

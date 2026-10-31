@@ -53,6 +53,69 @@
     proto: CEBottleSyrupSugarFull
 
 - type: tradeOffer
+  id: BuyBottleGin
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleGinFull
+
+- type: tradeOffer
+  id: BuyBottleAbsinthe
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleAbsintheFull
+
+- type: tradeOffer
+  id: BuyBottleBrandy
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleBrandyFull
+
+- type: tradeOffer
+  id: BuyBottleBlueCuracao
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleBlueCuracaoFull
+
+- type: tradeOffer
+  id: BuyBottleCherryLiqueur
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleCherryLiqueurFull
+
+- type: tradeOffer
+  id: BuyBottleCitrusJuice
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleCitrusJuiceFull
+
+- type: tradeOffer
+  id: BuyBottlePineBitter
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottlePineBitterFull
+
+- type: tradeOffer
   id: BuySmokingPipe
   shop: Alcohol
   pay:

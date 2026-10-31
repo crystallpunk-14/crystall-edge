@@ -51,11 +51,13 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingShirtWhiteCollar
-        - id: CEClothingShirtOpenRed
-        - id: CEClothingPantsBrown
-        - id: CEClothingCloakCapeFur
-        - id: CEClothingShoesSandals
+        - id: CEClothingShirtBartender
+        - id: CEClothingHeadBeretBartender
+        - id: CEClothingCloakBartenderVest1
+        - id: CEClothingCloakBartenderVest2
+        - id: CEClothingEyesBarGlasses
+        - id: CEClothingPantsTavern
+        - id: CEClothingPantsTavernSkirt
 
 - type: entity
   id: CEKeyRingBartender

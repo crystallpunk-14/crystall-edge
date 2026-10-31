@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 10/16/2026 16:09:41
-  entityCount: 2126
+  time: 10/29/2026 18:16:37
+  entityCount: 2118
 maps:
 - 1
 grids:
@@ -161,15 +161,6 @@ entities:
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        temperature: 293.15
-        volume: 2500
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-        immutable: True
     - type: Forensics
       residues: []
       fingerprints: []
@@ -231,6 +222,7 @@ entities:
             -3,-46: []
     - type: ChunkContainer
       chunkEntities: []
+    - type: LightTree
 - proto: CEArmchairMetallicPillowPurple
   entities:
   - uid: 1726
@@ -2589,6 +2581,18 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -4.5,-30.5
+- proto: CEBola
+  entities:
+  - uid: 1180
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.6363082,-17.270815
+  - uid: 1504
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.343834,-17.057173
 - proto: CEBone1
   entities:
   - uid: 953
@@ -2630,7 +2634,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -33.5,-13.5
-- proto: CEBookTieflingGambit
+- proto: CEBookInfernalGambit
   entities:
   - uid: 1714
     components:
@@ -2828,7 +2832,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.782066,-9.162329
-- proto: CEClothingHeadTriangularGuard
+- proto: CEClothingHeadTriangularSheriff
   entities:
   - uid: 1626
     components:
@@ -4220,31 +4224,42 @@ entities:
       pos: -39.223743,-10.469931
     - type: CEZPhysics
       currentZLevel: -1
-- proto: CEGuardBola
-  entities:
-  - uid: 1180
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.6363082,-17.270815
-  - uid: 1504
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.343834,-17.057173
 - proto: CEIronDoor
   entities:
+  - uid: 79
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -3.5,-13.5
   - uid: 95
     components:
     - type: Transform
       parent: 1
       pos: -15.5,17.5
+  - uid: 208
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-15.5
   - uid: 274
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: -31.5,-12.5
+  - uid: 367
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,-11.5
+  - uid: 550
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -5.5,-17.5
   - uid: 1157
     components:
     - type: Transform
@@ -4267,31 +4282,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -7.5,-2.5
-- proto: CEIronDoorGuardStaff
-  entities:
-  - uid: 79
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: -3.5,-13.5
-  - uid: 208
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 3.5,-15.5
-  - uid: 367
-    components:
-    - type: Transform
-      parent: 1
-      pos: -0.5,-11.5
-  - uid: 550
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -5.5,-17.5
 - proto: CEIronDoorGuildStorage
   entities:
   - uid: 1712
@@ -6751,13 +6741,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -32.5,-11.5
-- proto: CERadioStation
-  entities:
-  - uid: 949
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-14.5
 - proto: CERestorationRitualBookPostament
   entities:
   - uid: 853
@@ -8480,7 +8463,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -5.5,8.5
-- proto: CEWallLight
+- proto: CEWallLightOrange
   entities:
   - uid: 47
     components:
@@ -10383,33 +10366,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -1.5,-12.5
-    - type: Storage
-      storedItems: {}
-    - type: ContainerContainer
-      containers:
-        storagebase: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-    - type: Fixtures
-      fixtures: {}
-- proto: CEWallRadioSpeaker
-  entities:
-  - uid: 948
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -35.5,-16.5
-    - type: Fixtures
-      fixtures: {}
-- proto: CEWallRadioSpeakerGuard
-  entities:
-  - uid: 947
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,-12.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone
@@ -14013,7 +13969,7 @@ entities:
       pos: -26.754412,15.774861
     - type: CEZPhysics
       currentZLevel: -1
-- proto: CEWeaponMaceTwoHandedGuardrail
+- proto: CEWeaponMaceTwoHandedSheriff
   entities:
   - uid: 2104
     components:

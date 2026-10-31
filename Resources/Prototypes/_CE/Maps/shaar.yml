@@ -23,10 +23,32 @@
             CEAdventurer: [ 4, 5 ]
             #Citizens
             CEBard: [ 2, 2 ]
+            #CEKeyKeeper: [ 1, 1 ]
             CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Shaar
+        - type: CEStationWeather
+          nodes:
+            clear:
+              roundStart: true
+              minDuration: 10m
+              maxDuration: 30m
+              transitions:
+                rain: 1
+            rain:
+              weather: CEWeatherRain
+              minDuration: 5m
+              maxDuration: 15m
+              transitions:
+                clear: 1
+                storm: 0.5
+            storm:
+              weather: CEWeatherStorm
+              minDuration: 3m
+              maxDuration: 8m
+              transitions:
+                rain: 1
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Shaar/Shaar-2.yml
@@ -36,15 +58,6 @@
           - /Maps/_CE/Shaar/Shaar2.yml
           - /Maps/_CE/Shaar/Shaar3.yml
           zLevelsComponentOverrides:
-            - type: MapAtmosphere
-              space: False
-              mixture:
-                volume: 2500
-                immutable: True
-                temperature: 293.15
-                moles:
-                  Oxygen: 21.824879
-                  Nitrogen: 82.10312
             - type: Parallax
               parallax: CESky
             - type: MapLight #BEFORE Light Cycle
@@ -105,6 +118,7 @@
     - id: CEWildlandsModifierCoreCoalRatio30
     - id: CEWildlandsModifierCoreCrystalRatio30
     - id: CEWildlandsModifierCoreDiamondConstant1
+    - id: CEWildlandsModifierLumishroomsConstant3
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise
@@ -118,6 +132,7 @@
     - id: CEWildlandsModifierCaveEntrances
     - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
+    - id: CEWildlandsModifierLumishrooms
   # Flat floating islands: the autumn archipelago is flat with caves underneath; only the ice island has caves on the surface and hills above.
   layersByDepth:
   #MARK: 0 Surface

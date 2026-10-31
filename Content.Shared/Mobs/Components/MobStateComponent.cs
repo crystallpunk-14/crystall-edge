@@ -28,4 +28,12 @@ public sealed partial class MobStateComponent : Component
         MobState.Critical,
         MobState.Dead
     };
+
+    // CrystallEdge: critical mobs crawl instead of lying still
+    /// <summary>
+    /// Movement speed multiplier while in <see cref="MobState.Critical"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float CECriticalSpeedModifier = 0.2f;
+    // CrystallEdge end
 }

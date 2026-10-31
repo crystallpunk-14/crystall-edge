@@ -8,31 +8,10 @@
     tags:
     - Candle
   - type: Appearance
-  - type: Reactive
-    groups:
-      Flammable: [ Touch ]
-      Extinguish: [ Touch ]
-  - type: ExtinguishOnInteract
-    extinguishAttemptSound:
-      path: /Audio/Items/candle_blowing.ogg
-      params:
-        variation: 0.05
-        volume: 10
-  - type: UseDelay
-  #- type: CEDelayedIgnitionSource
-  #- type: CEIgnitionModifier
-  #  ignitionTimeModifier: 0.5
-  #  hideCaution: true
-  - type: Flammable
-    fireSpread: false
-    canResistFire: false
-    alwaysCombustible: true
-    canExtinguish: true
-    firestacksOnIgnite: 15.0
-    firestackFade: -0
-    damage:
-      types:
-        Heat: 0
+  - type: PointLight
+    color: "#FFA500"
+    radius: 2
+    energy: 2
   - type: StaticPrice
     price: 3
 
@@ -49,6 +28,8 @@
     layers:
       - state: small1
         map: ["random"]
+      - state: small_fire
+        shader: unshaded
   - type: RandomSprite
     available:
     - random:
@@ -57,9 +38,6 @@
         small3: ""
   - type: Item
     size: Small
-  - type: FireVisuals
-    sprite: _CE/Objects/Decorations/candles.rsi
-    normalState: small_fire
   #- type: ToggleableLightVisuals #TODO inhands
   #  spriteLayer: null
   #  inhandVisuals:
@@ -80,16 +58,6 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: Flammable
-    firestacksOnIgnite: 2
-
-#- type: entity
-#  parent: CECandle
-#  id: CECandleIgnited
-#  suffix: Ignited
-#  components:
-#  - type: CEAutoIgnite
-#    startStack: 2
 
 #Candelabra
 
@@ -107,11 +75,14 @@
     sprite: _CE/Objects/Decorations/candelabra.rsi
     layers:
       - state: triple
+      - state: triple_fire
+        shader: unshaded
   - type: Item
     size: Normal
-  - type: FireVisuals
-    sprite: _CE/Objects/Decorations/candelabra.rsi
-    normalState: triple_fire
+  - type: PointLight
+    color: "#FFA500"
+    radius: 3
+    energy: 2
   - type: Damageable
     damageModifierSet: CEMetallic
   - type: Injurable
@@ -138,16 +109,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10 # 1 iron bar
-  - type: Flammable
-    firestacksOnIgnite: 4
-
-#- type: entity
-#  parent: CECandelabra
-#  id: CECandelabraIgnited
-#  suffix: Ignited
-#  components:
-#  - type: CEAutoIgnite
-#    startStack: 4
 
 - type: entity
   parent: CECandelabra
@@ -159,9 +120,10 @@
   - type: Sprite
     layers:
       - state: blood
-  - type: FireVisuals
-    lightColor: "#ff1100"
-    normalState: blood_fire
+      - state: blood_fire
+        shader: unshaded
+  - type: PointLight
+    color: "#ff1100"
 
 - type: entity
   parent: CECandle
@@ -174,9 +136,10 @@
     layers:
       - state: blood1
         map: ["random"]
-  - type: FireVisuals
-    lightColor: "#ff1100"
-    normalState: blood_fire
+      - state: blood_fire
+        shader: unshaded
+  - type: PointLight
+    color: "#ff1100"
   - type: RandomSprite
     available:
     - random:

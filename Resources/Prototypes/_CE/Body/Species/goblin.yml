@@ -70,6 +70,7 @@
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
@@ -209,10 +210,6 @@
   id: CEMobGoblin
   name: Mr. Goblin
   components:
-  - type: FireVisuals
-    sprite: _CE/Mobs/Effects/onfire.rsi
-    normalState: Small_burning
-    alternateState: Goblin_burning
   - type: Icon
     sprite: _CE/Mobs/Species/Goblin/parts.rsi
     state: full

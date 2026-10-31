@@ -1,6 +1,7 @@
 <ui:CEAchievementEntry
     xmlns="https://spacestation14.io"
-    xmlns:ui="clr-namespace:Content.Client._CE.Achievements.UI">
+    xmlns:ui="clr-namespace:Content.Client._CE.Achievements.UI"
+    MouseFilter="Stop">
   <PanelContainer HorizontalExpand="True" Margin="2" StyleClasses="BackgroundPanel">
     <ui:CEAchievementFillBar Name="FillBar" HorizontalExpand="True" VerticalExpand="True" />
 

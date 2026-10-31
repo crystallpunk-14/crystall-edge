@@ -1,10 +1,10 @@
 - type: entity
   id: CEPlantAgaric
   parent:
+  - CEPlantBaseFungalType
   - CEPlantBase
   - CEPlantBaseDarknessEnergy
   - CEPlantBaseSingleHarvest
-  - CEPlantBaseFungalType
   - CEPlantBaseGrowingFast
   - CEPlantBaseMetabolizerFast
   - CEPlantBaseMetabolizerWater
@@ -29,10 +29,6 @@
       CEFoodAgaric: 2
   - type: CEPlantKudzu
     proto: CEPlantAgaric
-  - type: CEPlantFading # never withers, even off the mycelium
-    damage:
-      types:
-        Cellular: 0
 
 # Already grown agaric for mapping and world generation
 - type: entity

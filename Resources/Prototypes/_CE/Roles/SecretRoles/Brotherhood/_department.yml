@@ -9,6 +9,7 @@
   - Thief
   - Recruiter
   - Recruit
+  - Assassin
   objectives: !type:AllSelector
     children:
     - id: CEObjectiveBrotherhoodSurvive
@@ -21,7 +22,7 @@
 
 - type: entity
   id: CEObjectiveBrotherhoodSurvive
-  name: Keep the Brotherhood alive
+  name: Keep every Brotherhood member alive
   description: Every member of the Brotherhood must survive.
   components:
   - type: Sprite
@@ -33,7 +34,7 @@
 
 - type: entity
   id: CEObjectiveBrotherhoodPatronage
-  name: Patronage
+  name: Help someone complete all their objectives
   description: This person once helped the Brotherhood. Repay the favor - they must complete all of their objectives.
   components:
   - type: Sprite
@@ -44,9 +45,10 @@
     title: ce-brotherhood-patronage-objective-title
   - type: CETargetPlayersObjective
   - type: CETargetExcludeHolderDepartment
+  - type: CETargetExcludeDepartmentTargets
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
-      components: # avoid an infinite loop through e.g. a lover's assist objective
+      components: # avoid an infinite loop through e.g. a helper's assist objective
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
@@ -57,7 +59,7 @@
 
 - type: entity
   id: CEObjectiveBrotherhoodDebt
-  name: A debt
+  name: Put someone in critical condition 3 times without killing them
   description: This person once crossed the Brotherhood. Make their life unbearable - they must end up in critical condition 3 times, yet survive to learn their lesson.
   components:
   - type: Sprite
@@ -68,5 +70,6 @@
     title: ce-brotherhood-debt-objective-title
   - type: CETargetPlayersObjective
   - type: CETargetExcludeHolderDepartment
+  - type: CETargetExcludeDepartmentTargets
   - type: CETargetCritCountCondition
     requiredCrits: 3

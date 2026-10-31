@@ -8,6 +8,7 @@ using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
@@ -65,87 +66,91 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
         }
     }
 
-   public override void Update(float frameTime)
-   {
-       base.Update(frameTime);
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
 
-       if (_timing.CurTime <= _nextUpdateTime)
-           return;
+        if (_timing.CurTime <= _nextUpdateTime)
+            return;
 
-       _nextUpdateTime = _timing.CurTime + _updateFrequency;
+        _nextUpdateTime = _timing.CurTime + _updateFrequency;
 
-       if (_state.CurrentState is not GameplayState)
-           return;
+        if (_state.CurrentState is not GameplayState)
+            return;
 
-       var requiredLoops = GetAmbientLoops();
+        var requiredLoops = GetAmbientLoops();
 
-       foreach (var loop in _loopStreams)
-       {
-           if (!requiredLoops.Contains(loop.Key))  //If ambient is playing and it shouldn't, stop it.
-               StopAmbientLoop(loop.Key);
-       }
+        foreach (var loop in _loopStreams)
+        {
+            if (!requiredLoops.Contains(loop.Key))  //If ambient is playing and it shouldn't, stop it.
+                StopAmbientLoop(loop.Key);
+        }
 
-       foreach (var loop in requiredLoops)
-       {
-           if (!_loopStreams.ContainsKey(loop)) //If it's not playing, but should, run it
-               StartAmbientLoop(loop);
-       }
-   }
+        foreach (var loop in requiredLoops)
+        {
+            if (!_loopStreams.ContainsKey(loop)) //If it's not playing, but should, run it
+                StartAmbientLoop(loop);
+        }
+    }
 
-   private void StartAmbientLoop(CEAmbientLoopPrototype proto)
-   {
-       if (_loopStreams.ContainsKey(proto))
-           return;
+    private void StartAmbientLoop(CEAmbientLoopPrototype proto)
+    {
+        if (_loopStreams.ContainsKey(proto))
+            return;
 
-       var newLoop = _audio.PlayGlobal(
-           proto.Sound,
-           Filter.Local(),
-           false,
-           AudioParams.Default
-               .WithLoop(true)
-               .WithVolume(proto.Sound.Params.Volume + _volumeSlider)
-               .WithPlayOffset(_random.NextFloat(0f, 100f)));
+        var newLoop = _audio.PlayGlobal(
+            proto.Sound,
+            Filter.Local(),
+            false,
+            AudioParams.Default
+                .WithLoop(true)
+                .WithVolume(proto.Sound.Params.Volume + _volumeSlider)
+                .WithPlayOffset(_random.NextFloat(0f, 100f)));
 
-       if (newLoop is null)
-           return;
+        if (newLoop is null)
+            return;
 
-       _loopStreams.Add(proto, newLoop.Value.Entity);
+        _loopStreams.Add(proto, newLoop.Value.Entity);
 
-       _contentAudio.FadeIn(newLoop.Value.Entity, newLoop.Value.Component, AmbientLoopFadeInTime);
-   }
+        _contentAudio.FadeIn(newLoop.Value.Entity, newLoop.Value.Component, AmbientLoopFadeInTime);
+    }
 
-   private void StopAmbientLoop(CEAmbientLoopPrototype proto)
-   {
-       if (!_loopStreams.TryGetValue(proto, out var audioEntity))
-           return;
+    private void StopAmbientLoop(CEAmbientLoopPrototype proto)
+    {
+        if (!_loopStreams.TryGetValue(proto, out var audioEntity))
+            return;
 
-       _contentAudio.FadeOut(audioEntity, duration: AmbientLoopFadeOutTime);
-       _loopStreams.Remove(proto);
-   }
+        _loopStreams.Remove(proto);
 
-   /// <summary>
-   /// Checks the player's environment, and returns a list of all ambients that should currently be playing around the player
-   /// </summary>
-   /// <returns></returns>
-   private List<CEAmbientLoopPrototype> GetAmbientLoops()
-   {
-       List<CEAmbientLoopPrototype> list = new();
+        if (!TryComp<AudioComponent>(audioEntity, out var audioComp))
+            return;
 
-       var player = _player.LocalEntity;
+        _contentAudio.FadeOut(audioEntity, audioComp, AmbientLoopFadeOutTime);
+    }
 
-       if (player == null)
-           return list;
+    /// <summary>
+    /// Checks the player's environment, and returns a list of all ambients that should currently be playing around the player
+    /// </summary>
+    /// <returns></returns>
+    private List<CEAmbientLoopPrototype> GetAmbientLoops()
+    {
+        List<CEAmbientLoopPrototype> list = new();
 
-       var ambientLoops = System.Linq.Enumerable.ToList(_proto.EnumeratePrototypes<CEAmbientLoopPrototype>());
+        var player = _player.LocalEntity;
 
-       foreach (var loop in ambientLoops)
-       {
-           if (_conditions.TryConditions(player.Value, loop.Conditions))
-           {
-               list.Add(loop);
-           }
-       }
+        if (player == null)
+            return list;
 
-       return list;
-   }
+        var ambientLoops = System.Linq.Enumerable.ToList(_proto.EnumeratePrototypes<CEAmbientLoopPrototype>());
+
+        foreach (var loop in ambientLoops)
+        {
+            if (_conditions.TryConditions(player.Value, loop.Conditions))
+            {
+                list.Add(loop);
+            }
+        }
+
+        return list;
+    }
 }

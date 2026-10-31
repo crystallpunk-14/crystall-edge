@@ -10,6 +10,8 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 1h
+    - !type:CEAchievementRequirement
+      achievement: RoundsFinishedAlive1
 
 - type: startingGear
   id: CESheriffGear

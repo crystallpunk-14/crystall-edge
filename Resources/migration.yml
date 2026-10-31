@@ -359,6 +359,44 @@ CERadioPostSpeakerEngineering: null
 CERadioPostSpeakerTavern: null
 CERadioStation: null
 
+# 2026-10-29
+# Plant withering removed
+CEPlantCabbageDead: null
+CEPlantCarrotDead: null
+CEPlantChanterelleDead: null
+CEPlantCornDead: null
+CEPlantCottonDead: null
+CEPlantCucumberDead: null
+CEPlantGarlicDead: null
+CEPlantLumishroomDead: null
+CEPlantOnionDead: null
+CEPlantPepperDead: null
+CEPlantPotatoDead: null
+CEPlantPumpkinDead: null
+CEPlantSunflowerDead: null
+CEPlantTomatoesDead: null
+CEPlantWheatDead: null
+
+# 2026-10-30
+# Tieflings renamed to Infernals
+CEAppearanceTiefling: CEAppearanceInfernal
+CEBookTieflingGambit: CEBookInfernalGambit
+CEMobTiefling: CEMobInfernal
+CEMobShadowTraderTiefling: CEMobShadowTraderInfernal
+CEOrganTieflingArmLeft: CEOrganInfernalArmLeft
+CEOrganTieflingArmRight: CEOrganInfernalArmRight
+CEOrganTieflingEyes: CEOrganInfernalEyes
+CEOrganTieflingFootLeft: CEOrganInfernalFootLeft
+CEOrganTieflingFootRight: CEOrganInfernalFootRight
+CEOrganTieflingHandLeft: CEOrganInfernalHandLeft
+CEOrganTieflingHandRight: CEOrganInfernalHandRight
+CEOrganTieflingHead: CEOrganInfernalHead
+CEOrganTieflingLegLeft: CEOrganInfernalLegLeft
+CEOrganTieflingLegRight: CEOrganInfernalLegRight
+CEOrganTieflingTorso: CEOrganInfernalTorso
+CEPlushieGoldenTiefling: CEPlushieGoldenInfernal
+CEPlushieTiefling: CEPlushieInfernal
+
 # CrystallEdge migration zone end
 
 

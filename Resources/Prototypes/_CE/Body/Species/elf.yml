@@ -159,13 +159,6 @@
       reagents:
       - ReagentId: CEBloodElf
         Quantity: 300
-  - type: CEInnateSkills
-    skills:
-    - ManaControl
-    - ManaGift
-    - ManaSteal
-    descriptorName: ce-innate-skill-source-elf
-    descriptorColor: "#92efef"
 
 - type: entity
   parent: OrganBase

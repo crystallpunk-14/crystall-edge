@@ -2,3 +2,13 @@
   license: "All rights reserved"
   copyright: "Voice recorded by Ed"
   source: "https://github.com/crystallpunk-14/crystalledge"
+
+- files: ["bone.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "EvanBoyerman on FreeSound"
+  source: "https://freesound.org/people/EvanBoyerman/sounds/369602/"
+
+- files: ["bone2.ogg"]
+  license: "CC0-1.0"
+  copyright: "Vinni_R on FreeSound"
+  source: "https://freesound.org/people/Vinni_R/sounds/630594/"

@@ -5,6 +5,9 @@
   icon: CESecretRoleIconBountyHunter
   gear: CEBountyHunterGear
   victoryAchievement: BountyHunterWin
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: RoundsFinishedAlive3
   skills:
   - MilitaryTraining
   objectives: !type:EntSelector
@@ -19,7 +22,7 @@
 
 - type: entity
   id: CEObjectiveBountyHunterEliminate
-  name: Eliminate the Brotherhood
+  name: Kill every Brotherhood member
   description: Every member of the Brotherhood must be dead.
   components:
   - type: Sprite

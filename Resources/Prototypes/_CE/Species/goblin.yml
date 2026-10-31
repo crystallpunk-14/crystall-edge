@@ -2,6 +2,13 @@
   id: CEGoblin
   name: ce-species-name-goblin
   roundStart: true
+  description: ce-species-desc-goblin
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: goblin
+  hoveredIcon:
+    sprite: _CE/Interface/species.rsi
+    state: goblin_hovered
   prototype: CEMobGoblin
   dollPrototype: CEAppearanceGoblin
   skinColoration: VoxFeathers

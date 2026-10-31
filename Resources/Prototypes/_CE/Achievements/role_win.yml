@@ -1,0 +1,17 @@
+- type: achievement
+  id: WerewolfWin
+  name: ce-achievement-werewolf-win-name
+  desc: ce-achievement-werewolf-win-desc
+  unlocks: ce-achievement-werewolf-win-unlocks
+  icon:
+    sprite: _CE/Interface/Skills/murkwalker.rsi
+    state: icon
+
+- type: achievement
+  id: BountyHunterWin
+  name: ce-achievement-bounty-hunter-win-name
+  desc: ce-achievement-bounty-hunter-win-desc
+  unlocks: ce-achievement-bounty-hunter-win-unlocks
+  icon:
+    sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
+    state: coin10

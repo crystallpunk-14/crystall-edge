@@ -30,10 +30,10 @@
   - type: CEActionRequireLineOfSight
   - type: WorldTargetAction
     event: !type:CEWorldTargetActionAnimationEvent
-      animation: AnimationLurkerShadowStep
+      animation: LurkerShadowStep
 
 - type: entityEffectAnimation
-  id: AnimationLurkerShadowStep
+  id: LurkerShadowStep
   movementSpeed: 0.1
   duration: 1
   events:

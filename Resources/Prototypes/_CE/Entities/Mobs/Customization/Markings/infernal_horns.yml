@@ -1,0 +1,103 @@
+- type: marking
+  id: CEInfernalHorns
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn1
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn1_gradient
+
+- type: marking
+  id: CEInfernalHorns2
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn2
+
+- type: marking
+  id: CEInfernalHorns3
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn3
+
+- type: marking
+  id: CEInfernalHorns3Broken
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn3_broken
+
+- type: marking
+  id: CEInfernalHorns4
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn4
+
+- type: marking
+  id: CEInfernalHorns5
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn5
+
+- type: marking
+  id: CEInfernalHorns5Broken
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn5_broken
+
+- type: marking
+  id: CEInfernalHorns6
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn6
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn6_gradient
+
+- type: marking
+  id: CEInfernalHorns7
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn7
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn7_gradient
+
+- type: marking
+  id: CEInfernalHorns8
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn8
+
+- type: marking
+  id: CEInfernalHorns9
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn9
+
+- type: marking
+  id: CEInfernalHorns10
+  bodyPart: HeadTop
+  groupWhitelist: [ CEInfernal ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn10
+  - sprite: _CE/Mobs/Customization/infernal_horns.rsi
+    state: horn10_gradient

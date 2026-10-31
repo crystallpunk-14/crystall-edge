@@ -41,3 +41,14 @@
     sprite: _CE/Clothing/Head/Tavern/chef_hat2.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Tavern/chef_hat2.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadBowlerTavernmaster
+  name: tavernmaster's bowler
+  description: No! That's not a leprechaun!
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Tavern/tavernmaster.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Tavern/tavernmaster.rsi

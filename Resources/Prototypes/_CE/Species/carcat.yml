@@ -2,6 +2,14 @@
   id: CECarcat
   name: ce-species-name-carcat
   roundStart: true
+  description: ce-species-desc-carcat
+  icon:
+    sprite: _CE/Interface/species.rsi
+    state: carcat
+  skills:
+  - SoftLanding
+  - NightVision
+  skillsBadgeColor: "#6e492f"
   prototype: CEMobCarcat
   dollPrototype: CEAppearanceCarcat
   skinColoration: CECarcatHues

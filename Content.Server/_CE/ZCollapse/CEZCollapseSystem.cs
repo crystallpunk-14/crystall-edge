@@ -180,6 +180,18 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _);
     }
 
+    /// <summary>Mapping-preview counterpart of <see cref="CEGridStabilityComponent.SupportLowestLevel"/>, read from the network's component overrides.</summary>
+    private bool PreviewSupportsLowestLevel(EntityUid gridUid)
+    {
+        if (!TryGetOwningMap(gridUid, out var mapUid) ||
+            !_zMapQuery.TryGetComponent(mapUid, out var zMap) ||
+            !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network) ||
+            !network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out var comp))
+            return false;
+
+        return comp.SupportLowestLevel && zMap.Depth == network.SortedMin;
+    }
+
     /// <summary>Whether this grid's map sits at the lowest depth of its Z-level network — i.e. there is nothing below it.</summary>
     private bool IsLowestZLevel(EntityUid gridUid)
     {

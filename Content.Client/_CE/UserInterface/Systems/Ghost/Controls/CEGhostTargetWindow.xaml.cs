@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client._CE.Roles;
 using Content.Client._CE.UserInterface.Systems.Character.Windows;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Ghost;
 using Content.Shared._CE.Roles;
 using Content.Shared.Roles;
@@ -55,7 +56,20 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         string SecretRoleDepartmentSearchText,
         string? OriginalSecretRoleName,
         Texture? OriginalSecretRoleIcon,
-        string? SecretRoleTooltip);
+        string? SecretRoleTooltip,
+        string? StatusText)
+    {
+        /// <summary>
+        /// Out of play characters (dead, gone, disconnected...) are faded and always listed last.
+        /// </summary>
+        public bool IsOut => StatusText != null;
+
+        public bool CanWarp => Entity.Valid;
+
+        public string DisplayName => StatusText != null
+            ? Loc.GetString("ce-ghost-target-window-name-status", ("name", Name), ("status", StatusText))
+            : Name;
+    }
 
     private sealed record LocationRow(NetEntity Entity, string Name);
 
@@ -164,6 +178,10 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 }
             }
 
+            string? statusText = null;
+            if (warp.Status is { } status && CECharacterSystem.IsOut(status))
+                statusText = Loc.GetString(GetStatusLoc(status));
+
             _allPlayers.Add(new PlayerRow(
                 warp.Entity,
                 warp.DisplayName,
@@ -179,8 +197,24 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 secretRoleDepartmentSearchText,
                 originalSecretRoleName,
                 originalSecretRoleIcon,
-                secretRoleTooltip));
+                secretRoleTooltip,
+                statusText));
         }
+    }
+
+    private static LocId GetStatusLoc(CECharacterStatus status)
+    {
+        return status switch
+        {
+            CECharacterStatus.Critical => "ce-character-status-critical",
+            CECharacterStatus.Disconnected => "ce-character-status-disconnected",
+            CECharacterStatus.LeftBody => "ce-character-status-left-body",
+            CECharacterStatus.Dead => "ce-character-status-dead",
+            CECharacterStatus.Murked => "ce-character-status-murked",
+            CECharacterStatus.LeftRound => "ce-character-status-left-round",
+            CECharacterStatus.Destroyed => "ce-character-status-destroyed",
+            _ => "ce-character-status-active",
+        };
     }
 
     private Texture? GetRoleIcon(CESecretRolePrototype role)
@@ -212,7 +246,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
             var row = players[i];
             var control = new CEGhostWarpPlayerRow();
             control.SetData(
-                row.Name,
+                row.DisplayName,
                 row.JobName,
                 row.JobIcon,
                 row.JobColor,
@@ -222,7 +256,9 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 row.SecretRoleColor,
                 row.SecretRoleTooltip,
                 row.OriginalSecretRoleIcon,
-                _canSeeMeta);
+                _canSeeMeta,
+                row.IsOut,
+                row.CanWarp);
             control.PanelOverride = new StyleBoxFlat(i % 2 == 0 ? AltColor : DefaultColor);
 
             var target = row.Entity;
@@ -256,6 +292,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
 
         return _allPlayers.Where(row =>
             row.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
+            || (row.StatusText?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
             || (row.JobName?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
             || (row.SecretRoleName?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
             || row.JobDepartmentSearchText.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
@@ -291,6 +328,10 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
     {
         players.Sort((x, y) =>
         {
+            // Out of play characters stay at the end regardless of the sort direction.
+            if (x.IsOut != y.IsOut)
+                return x.IsOut ? 1 : -1;
+
             if (!_playerSortAscending)
                 (x, y) = (y, x);
 

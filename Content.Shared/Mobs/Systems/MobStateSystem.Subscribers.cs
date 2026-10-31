@@ -13,6 +13,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Pointing;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Speech;
@@ -30,17 +31,19 @@ public partial class MobStateSystem
     //General purpose event subscriptions. If you can avoid it register these events inside their own systems
     private void SubscribeEvents()
     {
-        SubscribeLocalEvent<MobStateComponent, ChangeDirectionAttemptEvent>(CheckAct);
+        // CrystallEdge: critical mobs can crawl, turn, emote and point, only the dead are blocked
+        SubscribeLocalEvent<MobStateComponent, ChangeDirectionAttemptEvent>(CECheckActDead);
         SubscribeLocalEvent<MobStateComponent, UseAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, AttackAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, ThrowAttemptEvent>(CheckAct);
-        SubscribeLocalEvent<MobStateComponent, EmoteAttemptEvent>(CheckAct);
+        SubscribeLocalEvent<MobStateComponent, EmoteAttemptEvent>(CECheckActDead);
         SubscribeLocalEvent<MobStateComponent, DropAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, PickupAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, StartPullAttemptEvent>(CheckAct);
-        SubscribeLocalEvent<MobStateComponent, UpdateCanMoveEvent>(CheckAct);
+        SubscribeLocalEvent<MobStateComponent, UpdateCanMoveEvent>(CECheckActDead);
         SubscribeLocalEvent<MobStateComponent, StandAttemptEvent>(CheckAct);
-        SubscribeLocalEvent<MobStateComponent, PointAttemptEvent>(CheckAct);
+        SubscribeLocalEvent<MobStateComponent, PointAttemptEvent>(CECheckActDead);
+        // CrystallEdge end
     }
 
     [SubscribeLocalEvent]
@@ -101,6 +104,7 @@ public partial class MobStateSystem
             return;
 
         _blocker.UpdateCanMove(target); //update movement anytime a state changes
+        _movementSpeed.RefreshMovementSpeedModifiers(target); // CrystallEdge: critical mobs crawl slowly
         switch (state)
         {
             case MobState.Alive:
@@ -171,7 +175,7 @@ public partial class MobStateSystem
             return;
         }
 
-        CheckAct(uid, component, args);
+        CECheckActDead(uid, component, args); // CrystallEdge: critical mobs can speak
     }
 
     private void CheckAct(EntityUid target, MobStateComponent component, CancellableEntityEventArgs args)
@@ -184,6 +188,21 @@ public partial class MobStateSystem
                 break;
         }
     }
+
+    // CrystallEdge: blocks what critical mobs are still allowed to do
+    private void CECheckActDead(EntityUid target, MobStateComponent component, CancellableEntityEventArgs args)
+    {
+        if (component.CurrentState == MobState.Dead)
+            args.Cancel();
+    }
+
+    [SubscribeLocalEvent]
+    private void CEOnRefreshMoveSpeed(Entity<MobStateComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (ent.Comp.CurrentState == MobState.Critical)
+            args.ModifySpeed(ent.Comp.CECriticalSpeedModifier, ent.Comp.CECriticalSpeedModifier);
+    }
+    // CrystallEdge end
 
     [SubscribeLocalEvent]
     private void OnEquipAttempt(EntityUid target, MobStateComponent component, IsEquippingAttemptEvent args)

@@ -104,12 +104,12 @@
 
 - type: entity
   parent: CEPlushieBase
-  id: CEPlushieTiefling
-  name: tiefling plushie
+  id: CEPlushieInfernal
+  name: infernal plushie
   description: Be careful, don't stab your finger on the horn! So hot...
   components:
   - type: Sprite
-    state: tiefling
+    state: infernal
 
 - type: entity
   parent: CEPlushieBase
@@ -246,12 +246,12 @@
 
 - type: entity
   parent: CEPlushieGoldenBase
-  id: CEPlushieGoldenTiefling
-  name: golden tiefling figurine
+  id: CEPlushieGoldenInfernal
+  name: golden infernal figurine
   description: These sharp horns are made of metal! You heard that right. This golden figurine could easily be used as a weapon.
   components:
   - type: Sprite
-    state: tiefling
+    state: infernal
   - type: CEWeapon
     effectSlots:
       OnHit:

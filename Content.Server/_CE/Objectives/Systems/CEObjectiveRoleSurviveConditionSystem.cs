@@ -1,5 +1,6 @@
 using Content.Server._CE.Objectives.Components;
 using Content.Server._CE.Roles;
+using Content.Shared._CE.Character;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared.Mobs;
 
@@ -7,7 +8,7 @@ namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveRoleSurviveConditionComponent"/> - the average
-/// survival of every body that held one of the listed roles: alive = 1, critical = 0.5, dead or deleted = 0.
+/// survival of every body that held one of the listed roles - see <see cref="CEObjectiveDepartmentSurviveConditionSystem.GetProgress"/>.
 /// </summary>
 public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
 {
@@ -41,6 +42,17 @@ public sealed partial class CEObjectiveRoleSurviveConditionSystem : EntitySystem
 
     [SubscribeLocalEvent]
     private void OnMobStateChanged(MobStateChangedEvent args)
+    {
+        RefreshAll();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnBodyStateChanged(ref CEBodyStateChangedEvent args)
+    {
+        RefreshAll();
+    }
+
+    private void RefreshAll()
     {
         var query = EntityQueryEnumerator<CEObjectiveRoleSurviveConditionComponent>();
         while (query.MoveNext(out var uid, out _))

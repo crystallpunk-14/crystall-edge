@@ -1,0 +1,40 @@
+- type: marking
+  id: CEInfernalTail
+  bodyPart: Tail
+  groupWhitelist: [ CEInfernal ]
+  forcedColoring: true
+  sprites:
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
+      state: tail
+
+- type: marking
+  id: CEInfernalTailSpades
+  bodyPart: Tail
+  groupWhitelist: [ CEInfernal ]
+  forcedColoring: true
+  sprites:
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
+      state: tail_spades
+
+
+
+
+# Animation
+
+- type: marking
+  id: CEInfernalTailAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  forcedColoring: true
+  sprites:
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
+      state: tail_waggin
+
+- type: marking
+  id: CEInfernalTailSpadesAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  forcedColoring: true
+  sprites:
+    - sprite: _CE/Mobs/Customization/infernal_tails.rsi
+      state: tail_spades_waggin

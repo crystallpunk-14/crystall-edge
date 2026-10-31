@@ -17,14 +17,20 @@ ce-secret-role-description-dark-vessel = You are not quite human - only a vessel
 ce-secret-role-name-thief = Thief
 ce-secret-role-description-thief = A city-wide threat? A great opportunity to make some money and pocket other people's valuables while everyone panics.
 
-ce-secret-role-name-lover = Lover
-ce-secret-role-description-lover = You're obsessed with one special person. You'll do anything to help them.
+ce-secret-role-name-bodyguard = Bodyguard
+ce-secret-role-description-bodyguard = You have sworn to protect one person. Their life is in your hands.
+
+ce-secret-role-name-helper = Helper
+ce-secret-role-description-helper = You must help another person complete their objectives. Their success is your success.
 
 ce-secret-role-name-recruiter = Recruiter
 ce-secret-role-description-recruiter = You know how to spot people the city has failed. Bring them into the Brotherhood - the more hands, the safer everyone is.
 
 ce-secret-role-name-recruit = Recruit
 ce-secret-role-description-recruit = You gave up your old ambitions and swore yourself to the Brotherhood. Its goals are yours now.
+
+ce-secret-role-name-assassin = Assassin
+ce-secret-role-description-assassin = A hired killer who joined the Brotherhood to gain its protection and become its weapon.
 
 ce-secret-role-name-bounty-hunter = Bounty Hunter
 ce-secret-role-description-bounty-hunter = You've been paid a large sum of money and hired to wipe out the criminal gang known as the Brotherhood in this city. Do your job.

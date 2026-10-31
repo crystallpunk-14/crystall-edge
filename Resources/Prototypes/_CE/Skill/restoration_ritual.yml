@@ -31,12 +31,12 @@
       components:
       - CEMurkLusconSphere
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationRestorationRitual
+      animation: RestorationRitual
   - type: CERestorationRitualAction
 
 # TODO: proper ritual casting visuals
 - type: entityEffectAnimation
-  id: AnimationRestorationRitual
+  id: RestorationRitual
   movementSpeed: 0
   duration: 5
   events:

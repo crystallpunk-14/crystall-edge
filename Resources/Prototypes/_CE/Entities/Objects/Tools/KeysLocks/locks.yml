@@ -17,6 +17,10 @@
         variation: 0.05
   - type: CELock
     canEmbedded: true
+  - type: GuideHelp
+    guides:
+    - CELocksKeysGuideEN
+    - CELocksKeysGuideRU
 
 - type: entity
   parent: CEBaseLock
@@ -27,11 +31,11 @@
     state: lock_iron
   - type: CELock
     shape:
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10

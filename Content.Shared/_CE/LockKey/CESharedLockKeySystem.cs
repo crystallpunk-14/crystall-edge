@@ -6,6 +6,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
@@ -27,13 +28,17 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private SharedDoorSystem _door = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     private EntityQuery<LockComponent> _lockQuery;
     private EntityQuery<CELockComponent> _ceLockQuery;
     private EntityQuery<CEKeyComponent> _keyQuery;
     private EntityQuery<DoorComponent> _doorQuery;
 
-    public const int DepthComplexity = 2;
+    // Pin/tooth height range, also the lockpick press power range.
+    public const int MinHeight = 1;
+    public const int MaxHeight = 5;
 
     public override void Initialize()
     {
@@ -95,84 +100,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         ent.Comp.Shape = new List<int>(shape);
         DirtyField(ent, ent.Comp, nameof(CEKeyComponent.Shape));
         return true;
-    }
-
-    [SubscribeLocalEvent]
-    private void OnLockHacked(Entity<CELockComponent> ent, ref LockPickHackDoAfterEvent args)
-    {
-        if (args.Cancelled || args.Handled)
-            return;
-
-        if (!_lockQuery.TryComp(ent, out var lockComp))
-            return;
-
-        if (!TryComp<CELockpickComponent>(args.Used, out var lockPick))
-            return;
-
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (args.Height == ent.Comp.Shape[ent.Comp.LockPickStatus]) //Success
-        {
-            _audio.PlayPredicted(lockPick.SuccessSound, ent, args.User);
-            ent.Comp.LockPickStatus++;
-            DirtyField(ent, ent.Comp, nameof(CELockComponent.LockPickStatus));
-
-            if (ent.Comp.LockPickStatus >= ent.Comp.Shape.Count) // Final success
-            {
-                if (lockComp.Locked)
-                {
-                    _lock.TryUnlock(ent, args.User, lockComp);
-                    _popup.PopupPredicted(Loc.GetString("ce-lock-unlock", ("lock", MetaData(ent).EntityName)),
-                        ent,
-                        args.User);
-
-                    ent.Comp.LockPickStatus = 0;
-                    DirtyField(ent, ent.Comp, nameof(CELockComponent.LockPickStatus));
-                    return;
-                }
-
-                _lock.TryLock(ent, args.User, lockComp);
-
-                _popup.PopupPredicted(Loc.GetString("ce-lock-lock", ("lock", MetaData(ent).EntityName)),
-                    ent,
-                    args.User);
-                ent.Comp.LockPickStatus = 0;
-
-                DirtyField(ent, ent.Comp, nameof(CELockComponent.LockPickStatus));
-                return;
-            }
-
-            _popup.PopupClient(Loc.GetString("ce-lock-lock-pick-success") +
-                               $" ({ent.Comp.LockPickStatus}/{ent.Comp.Shape.Count})",
-                ent,
-                args.User);
-        }
-        else //Fail
-        {
-            _audio.PlayPredicted(lockPick.FailSound, ent, args.User);
-            if (_net.IsServer)
-            {
-                lockPick.Health--;
-                if (lockPick.Health > 0)
-                {
-                    _popup.PopupEntity(Loc.GetString("ce-lock-lock-pick-failed", ("lock", MetaData(ent).EntityName)),
-                        ent,
-                        args.User);
-                }
-                else
-                {
-                    _popup.PopupEntity(
-                        Loc.GetString("ce-lock-lock-pick-failed-break", ("lock", MetaData(ent).EntityName)),
-                        ent,
-                        args.User);
-                    QueueDel(args.Used);
-                }
-            }
-
-            ent.Comp.LockPickStatus = 0;
-            DirtyField(ent, ent.Comp, nameof(CELockComponent.LockPickStatus));
-        }
     }
 
     private void UseKeyOnLock(EntityUid user, Entity<CELockComponent> target, Entity<CEKeyComponent> key)
@@ -250,20 +177,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         sb.Append(")");
         args.PushMarkup(sb.ToString());
     }
-}
-
-[Serializable, NetSerializable]
-public sealed partial class LockPickHackDoAfterEvent : DoAfterEvent
-{
-    [DataField]
-    public int Height = 0;
-
-    public LockPickHackDoAfterEvent(int h)
-    {
-        Height = h;
-    }
-
-    public override DoAfterEvent Clone() => this;
 }
 
 [Serializable, NetSerializable]

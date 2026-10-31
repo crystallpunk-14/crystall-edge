@@ -35,7 +35,7 @@
       components:
       - MobState
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: AnimationDarkSideBanishment
+      animation: DarkSideBanishment
 
 - type: skill
   id: DarkSideWalk
@@ -67,7 +67,7 @@
       enabled: CEStatusEffectDarkSide
 
 - type: entityEffectAnimation
-  id: AnimationDarkSideBanishment
+  id: DarkSideBanishment
   movementSpeed: 0.6
   duration: 0.3
   events:

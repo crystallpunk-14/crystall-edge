@@ -38,15 +38,6 @@ entities:
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        temperature: 293.15
-        volume: 2500
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-        immutable: True
     - type: TileHistory
       chunkHistory:
         0,0:

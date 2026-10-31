@@ -157,6 +157,7 @@ public sealed partial class CEZCollapseSystem
         var aboveOf = new Dictionary<EntityUid, EntityUid>();
         var liveNodes = new HashSet<(EntityUid, Vector2i)>();
         var gridsByUid = new Dictionary<EntityUid, MapGridComponent>();
+        var coreSeeds = new List<(EntityUid, Vector2i, int)>();
 
         foreach (var gridUid in column)
         {
@@ -183,14 +184,19 @@ public sealed partial class CEZCollapseSystem
 
             gridsByUid[gridUid] = grid;
 
+            var supportLowestLevel = PreviewSupportsLowestLevel(gridUid);
+
             var tileEnumerator = _map.GetAllTilesEnumerator(gridUid, grid);
             while (tileEnumerator.MoveNext(out var tileRef))
             {
-                liveNodes.Add((gridUid, tileRef.Value.GridIndices));
+                var tile = tileRef.Value.GridIndices;
+                liveNodes.Add((gridUid, tile));
+
+                if (supportLowestLevel)
+                    coreSeeds.Add((gridUid, tile, LowestLevelSupportValue));
             }
         }
 
-        var coreSeeds = new List<(EntityUid, Vector2i, int)>();
         var coreQuery = AllEntityQuery<CEGridStabilityCoreComponent, TransformComponent>();
         while (coreQuery.MoveNext(out _, out var core, out var xform))
         {

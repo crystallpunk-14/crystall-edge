@@ -4,7 +4,7 @@
   minLimit: 2
   maxLimit: 2
   loadouts:
-  - CESafeFallingAmulet
+  #- CESafeFallingAmulet
   - CELantern
   - CEClothingWristwatch
   - CEManaTransferGlove

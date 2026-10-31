@@ -152,7 +152,8 @@ namespace Content.Client._CE.Lobby.UI
 
             #region Appearance
 
-            TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-appearance-tab"));
+            TabContainer.SetTabTitle(0, Loc.GetString("ce-humanoid-profile-editor-personality-tab"));
+            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-appearance-tab"));
 
             #region Sex
 
@@ -203,10 +204,9 @@ namespace Content.Client._CE.Lobby.UI
 
             RefreshSpecies();
 
-            SpeciesButton.OnItemSelected += args =>
+            SpeciesPicker.OnSpeciesSelected += species =>
             {
-                SpeciesButton.SelectId(args.Id);
-                SetSpecies(_species[args.Id].ID);
+                SetSpecies(species);
                 OnSkinColorOnValueChanged();
             };
 
@@ -263,7 +263,7 @@ namespace Content.Client._CE.Lobby.UI
 
             #region Jobs
 
-            TabContainer.SetTabTitle(1, Loc.GetString("ce-humanoid-profile-editor-roles-tab"));
+            TabContainer.SetTabTitle(2, Loc.GetString("ce-humanoid-profile-editor-roles-tab"));
 
             PreferenceUnavailableButton.AddItem(
                 Loc.GetString("ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button",
@@ -320,9 +320,6 @@ namespace Content.Client._CE.Lobby.UI
                 ReloadPreview();
             };
 
-            SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
-
-            UpdateSpeciesGuidebookIcon();
             IsDirty = false;
         }
 
@@ -435,7 +432,8 @@ namespace Content.Client._CE.Lobby.UI
 
         private void UpdateSaveButton()
         {
-            SaveButton.Disabled = Profile is null || !IsDirty;
+            SaveButton.Disabled = Profile is null || !IsDirty || !SpeciesValid;
+            SaveButton.ToolTip = SpeciesValid ? null : Loc.GetString("ce-humanoid-profile-editor-species-locked-save");
             ResetButton.Disabled = Profile is null || !IsDirty;
         }
 

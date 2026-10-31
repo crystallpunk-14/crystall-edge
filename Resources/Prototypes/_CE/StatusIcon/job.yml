@@ -11,7 +11,7 @@
   parent: CEJobIcon
   id: CEJobIconSheriff
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/sheriff.rsi
     state: sheriff
   jobName: ce-job-name-sheriff
 
@@ -21,7 +21,7 @@
   parent: CEJobIcon
   id: CEJobIconGuildmaster
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/guild.rsi
     state: guildmaster
   jobName: ce-job-name-guildmaster
 
@@ -29,7 +29,7 @@
   parent: CEJobIcon
   id: CEJobIconAdventurer
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/guild.rsi
     state: adventurer
   jobName: ce-job-name-adventurer
 
@@ -39,7 +39,7 @@
   parent: CEJobIcon
   id: CEJobIconTavernmaster
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/tavern.rsi
     state: tavernmaster
   jobName: ce-job-name-tavernmaster
 
@@ -47,7 +47,7 @@
   parent: CEJobIcon
   id: CEJobIconBartender
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/tavern.rsi
     state: bartender
   jobName: ce-job-name-bartender
 
@@ -55,7 +55,7 @@
   parent: CEJobIcon
   id: CEJobIconChef
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/tavern.rsi
     state: chef
   jobName: ce-job-name-chef
 
@@ -63,7 +63,7 @@
   parent: CEJobIcon
   id: CEJobIconFarmer
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/tavern.rsi
     state: farmer
   jobName: ce-job-name-farmer
 
@@ -73,7 +73,7 @@
   parent: CEJobIcon
   id: CEJobIconBrigadier
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/engineering.rsi
     state: brigadier
   jobName: ce-job-name-brigadier
 
@@ -81,7 +81,7 @@
   parent: CEJobIcon
   id: CEJobIconTechnician
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/engineering.rsi
     state: technician
   jobName: ce-job-name-technician
 
@@ -91,14 +91,22 @@
   parent: CEJobIcon
   id: CEJobIconBard
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/citizens.rsi
     state: bard
   jobName: ce-job-name-bard
 
 - type: jobIcon
   parent: CEJobIcon
+  id: CEJobIconKeyKeeper
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/Jobs/citizens.rsi
+    state: key_keeper
+  jobName: ce-job-name-key-keeper
+
+- type: jobIcon
+  parent: CEJobIcon
   id: CEJobIconTownfolk
   icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/Jobs/citizens.rsi
     state: jobless
   jobName: ce-job-name-townfolk

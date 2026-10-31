@@ -261,3 +261,14 @@
     sprite: _CE/Clothing/Shirt/Academy/robe2.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Academy/robe2.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtKeyKeeper
+  name: key keeper shirt
+  description: A neat shirt worn by those who keep the keys.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/KeyKeeper/shirt.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/KeyKeeper/shirt.rsi

@@ -1,7 +1,5 @@
 - type: skill
   id: TimeSense
-  name: ce-skill-time-sense-name
-  desc: ce-skill-time-sense-desc
   icon:
     sprite: _CE/Interface/Vitals/clock.rsi
     state: base
@@ -11,7 +9,7 @@
 - type: entity
   parent: StatusEffectBase
   id: CEStatusEffectTimeSense
-  name: sense of time
+  name: Sense of Time
   description: You intuitively feel what time of day it is.
   components:
   - type: CETimeSenseStatusEffect

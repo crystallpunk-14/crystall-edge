@@ -8,6 +8,7 @@
   components:
   - type: Item
     size: Normal
+    heldPrefix: herbbandage
   - type: Sprite
     sprite: _CE/Objects/Consumable/medical.rsi
     state: herbbandage_3
