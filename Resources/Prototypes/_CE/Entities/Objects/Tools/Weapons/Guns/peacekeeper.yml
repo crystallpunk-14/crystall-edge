@@ -74,3 +74,11 @@
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
 
+- type: entity
+  parent: CEWeaponGunPeacekeeper
+  id: CEWeaponGunPeacekeeperGolden
+  name: golden Peacemaker
+  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the sheriff.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi

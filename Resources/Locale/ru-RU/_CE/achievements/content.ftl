@@ -9,6 +9,10 @@ ce-achievement-bounty-hunter-win-name = Награда для ведьмака
 ce-achievement-bounty-hunter-win-desc = Выполните все цели и закончите раунд, играя за Охотника за головами
 ce-achievement-bounty-hunter-win-unlocks = золотая монета в снаряжении
 
+ce-achievement-sheriff-win-name = Защита города
+ce-achievement-sheriff-win-desc = Выполните все задания и завершите раунд в роли шерифа
+ce-achievement-sheriff-win-unlocks = золотой Миротворецr в снаряжении
+
 ce-achievement-rounds-finished-alive-1-name = Все становится запутаннее: Ночная охота
 ce-achievement-rounds-finished-alive-1-desc = Закончите раунд, не умерев
 ce-achievement-rounds-finished-alive-1-unlocks = роль Оборотня и профессия Шерифа

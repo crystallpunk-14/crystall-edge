@@ -3,6 +3,7 @@
   name: ce-secret-role-name-sheriff
   description: ce-secret-role-description-sheriff
   icon: CESecretRoleIconSheriff
+  victoryAchievement: SheriffWin
   setPreference: false
   guaranteedJobs:
   - CESheriff
