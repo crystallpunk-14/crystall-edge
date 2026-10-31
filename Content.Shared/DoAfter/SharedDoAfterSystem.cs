@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using Content.Shared._CE.DoAfter;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
@@ -327,6 +328,11 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
         EnsureComp<ActiveDoAfterComponent>(args.User);
         Dirty(args.User, comp);
         args.Event.DoAfter = doAfter;
+
+        // CrystallEdge: notify CE systems (interaction particles) that a DoAfter has started
+        var ceStartedEv = new CEDoAfterStartedEvent(doAfter);
+        RaiseLocalEvent(args.User, ref ceStartedEv);
+        // CrystallEdge end
         return true;
     }
 

@@ -1,6 +1,5 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared._CE.Light;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Maps;
@@ -35,7 +34,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 
     protected EntityQuery<CEPlantComponent> PlantQuery;
     protected EntityQuery<CEPlantProducingComponent> PlantProducingQuery;
-    protected EntityQuery<SolutionManagerComponent> SolutionQuery;
 
     public override void Initialize()
     {
@@ -43,7 +41,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
-        SolutionQuery = GetEntityQuery<SolutionManagerComponent>();
     }
 
     public void AffectEnergy(Entity<CEPlantComponent> ent, float energyDelta)

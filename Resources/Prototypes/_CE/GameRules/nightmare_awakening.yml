@@ -7,10 +7,12 @@
     departments:
     - department: Nightmares
       share: 0.10
+      minPlayers: 10
       roles:
       - role: Werewolf
     - department: Brotherhood
       share: 0.20
+      minPlayers: 5
       roles:
       - role: Recruiter
         max: 1

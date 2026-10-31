@@ -1,6 +1,5 @@
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Farming.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Map.Components;
 
@@ -50,11 +49,7 @@ public sealed partial class CEFarmingSystem
     [SubscribeLocalEvent]
     private void OnPlantMetabolizing(Entity<CEPlantMetabolizerComponent> ent, ref CEPlantUpdateEvent args)
     {
-        if (!SolutionQuery.TryComp(args.Plant, out var solmanager))
-            return;
-
-        var solEntity = new Entity<SolutionManagerComponent?>(args.Plant, solmanager);
-        if (!_solutionContainer.TryGetSolution(solEntity, ent.Comp.Solution, out var soln, out _))
+        if (!_solutionContainer.TryGetSolution(args.Plant.Owner, ent.Comp.Solution, out var soln, out _))
             return;
 
         var splitted = _solutionContainer.SplitSolution(soln.Value, ent.Comp.SolutionPerUpdate);

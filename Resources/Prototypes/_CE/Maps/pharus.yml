@@ -13,15 +13,15 @@
           availableJobs:
             #Engineering
             CEBrigadier: [ 1, 1 ]
-            CETechnician: [ 3, 3 ]
+            CETechnician: [ 4, 4 ]
             #Tavern
             CETavernmaster: [ 1, 1 ]
-            CEChef: [ 3, 3 ]
+            CEChef: [ 4, 4 ]
             #Guild
             CEGuildmaster: [ 1, 1 ]
-            CEAdventurer: [ 3, 4 ]
+            CEAdventurer: [ 4, 5 ]
             #Citizens
-            CEBard: [ 1, 1 ]
+            CEBard: [ 2, 2 ]
             #CEKeyKeeper: [ 1, 1 ]
             CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
