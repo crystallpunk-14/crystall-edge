@@ -57,8 +57,8 @@
     - map: [ "eyes" ] # differen sequence of layers for correct display
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ] # Snout under head
     - map: [ "head" ]
-    - map: [ "enum.HumanoidVisualLayers.Snout" ] # Snout over head
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
     - map: ["enum.HumanoidVisualLayers.Handcuffs"]
