@@ -27,7 +27,7 @@
     shape:
     - 0, 0, 5, 1 # 2x6
   - type: BatteryAmmoProvider
-    proto: CEJudgementHitscan
+    proto: CEArbiterHitscan
     fireCost: 15
   - type: Battery
     maxCharge: 150
@@ -61,7 +61,7 @@
 
 - type: entity
   parent: BasicHitscan
-  id: CEJudgementHitscan
+  id: CEArbiterHitscan
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage
