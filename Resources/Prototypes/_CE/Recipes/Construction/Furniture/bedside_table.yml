@@ -11,3 +11,17 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEBedsideTableStone
+  graph: CEBedsideTableStone
+  startNode: start
+  targetNode: CEBedsideTableStone
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

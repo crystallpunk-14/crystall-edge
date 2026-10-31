@@ -81,4 +81,7 @@
           CEWoodenPlanks1:
             min: 2
             max: 4
+  - type: Construction
+    graph: CEBookshelfWooden
+    node: CEBookshelfWooden
 

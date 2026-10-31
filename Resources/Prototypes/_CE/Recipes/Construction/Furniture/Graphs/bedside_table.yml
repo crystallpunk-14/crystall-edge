@@ -13,3 +13,19 @@
               doAfter: 2
     - node: CEBedsideTableWooden
       entity: CEBedsideTableWooden
+
+- type: constructionGraph
+  id: CEBedsideTableStone
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEBedsideTableStone
+          steps:
+            - material: CEStone
+              amount: 4
+              doAfter: 3
+    - node: CEBedsideTableStone
+      entity: CEBedsideTableStone
