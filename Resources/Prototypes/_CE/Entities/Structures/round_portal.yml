@@ -13,7 +13,8 @@
     sprite: _CE/Structures/Industrial/round_portal.rsi
     layers:
     - state: base
-    - state: light
+    - sprite: _CE/Structures/Industrial/round_portal_effect.rsi
+      state: effect
       shader: unshaded
   - type: PointLight
     color: "#3fdaee"
