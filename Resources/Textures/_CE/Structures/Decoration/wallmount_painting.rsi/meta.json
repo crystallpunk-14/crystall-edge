@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by Max Gab ",
+  "copyright": "Created by Max Gab, TTTomaTTT, lucson1337",
   "size": {
     "x": 32,
     "y": 96
@@ -21,6 +21,94 @@
     },
     {
       "name": "painting_saint",
+      "directions": 4
+    },
+    {
+      "name": "fire_paiting",
+      "directions": 4
+    },
+    {
+      "name": "froze_paiting",
+      "directions": 4
+    },
+    {
+      "name": "flem_paiting",
+      "directions": 4
+    },
+    {
+      "name": "lumera_paiting",
+      "directions": 4
+    },
+    {
+      "name": "paiting_ezik",
+      "directions": 4
+    },
+    {
+      "name": "paiting_gnome",
+      "directions": 4
+    },
+    {
+      "name": "paiting_lurker",
+      "directions": 4
+    },
+    {
+      "name": "paiting_omsoyk",
+      "directions": 4
+    },
+    {
+      "name": "squid_paiting",
+      "directions": 4
+    },
+    {
+      "name": "paiting_viator",
+      "directions": 4
+    },
+    {
+      "name": "sunset_paiting",
+      "directions": 4
+    },
+    {
+      "name": "aelyta_paiting",
+      "directions": 4
+    },
+    {
+      "name": "paiting_goblin",
+      "directions": 4
+    },
+    {
+      "name": "carcat_paiting",
+      "directions": 4
+    },
+    {
+      "name": "lootgob_paiting",
+      "directions": 4
+    },
+    {
+      "name": "paiting_armorattus",
+      "directions": 4
+    },
+    {
+      "name": "paiting_fight",
+      "directions": 4
+    },
+    {
+      "name": "paiting_rain",
+      "directions": 4
+    },
+    {
+      "name": "paiting_rich",
+      "directions": 4
+    },
+    {
+      "name": "pot_paiting",
+      "directions": 4
+    },
+    {
+      "name": "pitchforks_paiting",
+      "directions": 4
+    },
+    {
+      "name": "fishing_paiting",
       "directions": 4
     }
   ]
