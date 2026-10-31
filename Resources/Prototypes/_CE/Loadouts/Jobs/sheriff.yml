@@ -13,6 +13,33 @@
   equipment:
     cloak: CEClothingCloakSheriff
 
+#MARK: Gun
+
+## Sheriff
+
+- type: loadoutGroup
+  id: CESheriffGun
+  name: ce-loadout-gun
+  minLimit: 1
+  loadouts:
+  - CEWeaponGunPeacekeeper
+  - CEWeaponGunPeacekeeperGolden
+
+- type: loadout
+  id: CEWeaponGunPeacekeeper
+  equipment:
+    neck: CEWeaponGunPeacekeeper
+
+- type: loadout
+  id: CEWeaponGunPeacekeeperGolden
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:CEAchievementRequirement
+      achievement: SheriffWin
+  equipment:
+    neck: CEWeaponGunPeacekeeperGolden
+
 #MARK: Head
 
 ## Sheriff
