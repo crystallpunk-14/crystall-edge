@@ -24,3 +24,6 @@ ce-species-desc-skeleton = Sppoky Scary Skeletons.
 
 ce-species-name-carrin = Каррин
 ce-species-desc-carrin = Гуманодиные птицы. С трудом, но все еще способны летать. КАР!
+
+ce-species-name-gweeny = Гвини
+ce-species-desc-gweeny = Крошечные круглые птички. С трудом, но всё ещё способны летать. Пип!

@@ -24,3 +24,6 @@ ce-species-desc-skeleton = Spooky Scary Skeletons.
 
 ce-species-name-carrin = Carrin
 ce-species-desc-carrin = Humanoid birds. With difficulty, but still able to fly. CAW!
+
+ce-species-name-gweeny = Gweeny
+ce-species-desc-gweeny = Tiny round birds. With difficulty, but still able to fly. Peep!
