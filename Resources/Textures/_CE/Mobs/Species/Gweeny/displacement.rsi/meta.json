@@ -19,23 +19,11 @@
       "directions": 4
     },
     {
-      "name": "mask",
-      "directions": 4
-    },
-    {
-      "name": "gloves",
+      "name": "hands",
       "directions": 4
     },
     {
       "name": "pants",
-      "directions": 4
-    },
-    {
-      "name": "hand_r",
-      "directions": 4
-    },
-    {
-      "name": "hand_l",
       "directions": 4
     },
     {
