@@ -22,7 +22,7 @@ public abstract partial class SharedHandsSystem
             return;
         }
 
-        var didEquip = new DidEquipHandEvent(uid, args.Entity, hand.Value);
+        var didEquip = new DidEquipHandEvent(uid, args.Entity, hand.Value) { CEHandMove = _ceHandMove }; // CrystallEdge: flag hand-to-hand moves
         RaiseLocalEvent(uid, didEquip);
 
         var gotEquipped = new GotEquippedHandEvent(uid, args.Entity, hand.Value);

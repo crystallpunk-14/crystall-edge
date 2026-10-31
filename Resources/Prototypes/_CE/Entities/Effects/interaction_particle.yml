@@ -1,0 +1,17 @@
+- type: entity
+  id: CEInteractionParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+  - type: AnimationPlayer
+  - type: EffectVisuals
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Tag
+    tags:
+    - HideContextMenu

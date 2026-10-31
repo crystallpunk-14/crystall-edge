@@ -263,6 +263,13 @@ namespace Content.Shared.Hands
     public sealed class DidEquipHandEvent : EquippedHandEvent
     {
         public DidEquipHandEvent(EntityUid user, EntityUid unequipped, Hand hand) : base(user, unequipped, hand) { }
+
+        // CrystallEdge: pickup particles skip items moved between the user's own hands
+        /// <summary>
+        /// True if the item was moved from another hand of the same user.
+        /// </summary>
+        public bool CEHandMove { get; init; }
+        // CrystallEdge end
     }
 
     /// <summary>

@@ -15,6 +15,9 @@ namespace Content.Shared.Hands.EntitySystems;
 
 public abstract partial class SharedHandsSystem : EntitySystem
 {
+    // CrystallEdge: set only for the duration of TryMoveHeldEntityToActiveHand, never persists between calls
+    private bool _ceHandMove;
+
     private void InitializeInteractions()
     {
         SubscribeAllEvent<RequestSetHandEvent>(HandleSetHand);
@@ -173,7 +176,17 @@ public abstract partial class SharedHandsSystem : EntitySystem
             return false;
 
         DoDrop(uid, handName, false, log: false);
-        DoPickup(uid, handsComp.ActiveHandId, entity.Value, handsComp, log: false);
+        // CrystallEdge: mark the pickup as a hand-to-hand move for DidEquipHandEvent
+        _ceHandMove = true;
+        try
+        {
+            DoPickup(uid, handsComp.ActiveHandId, entity.Value, handsComp, log: false);
+        }
+        finally
+        {
+            _ceHandMove = false;
+        }
+        // CrystallEdge end
         return true;
     }
 
