@@ -1,6 +1,11 @@
 - type: markingsGroup
   id: CEGweeny
   onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: true
+      default: [ CEGweenyBeak ]
 
 # Visual alternative of Carrin: same mechanics, own body sprites
 - type: entity

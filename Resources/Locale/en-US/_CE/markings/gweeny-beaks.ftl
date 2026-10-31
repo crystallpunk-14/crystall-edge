@@ -1,0 +1,14 @@
+marking-CEGweenyBeak = Beak
+marking-CEGweenyBeak2 = Short thin beak
+marking-CEGweenyBeak3 = Curved beak 1
+marking-CEGweenyBeak4 = Short beak 1
+marking-CEGweenyBeak5 = Curved beak 2
+marking-CEGweenyBeak7 = Straight beak
+marking-CEGweenyBeak8 = Long beak
+marking-CEGweenyBeak9 = High beak
+marking-CEGweenyBeak10 = Thin beak
+marking-CEGweenyBeak11 = Hooked beak
+marking-CEGweenyBeak12 = Short hooked beak
+marking-CEGweenyBeak13 = Short hooked beak 2
+marking-CEGweenyBeak14 = Short beak 2
+marking-CEGweenyBeak15 = Short beak 3
