@@ -53,7 +53,7 @@
   abstract: true
   components:
   - type: CEPlant
-    resource: 5
+    resource: 0
     energy: 0
     energyMax: 5
     resourceMax: 5
