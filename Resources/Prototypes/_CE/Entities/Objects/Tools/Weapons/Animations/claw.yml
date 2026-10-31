@@ -2,7 +2,7 @@
 - type: entityEffectAnimation
   id: ClawAttack1
   movementSpeed: 0.3
-  duration: 0.35
+  duration: 0.3
   events:
     0:
     - !type:PlaySound

@@ -190,6 +190,12 @@
       - time: 0.2
         offset: 0, 0
         easing: QuadIn
+  - type: CEWeapon # damage and range inherited from Carrin, only the animations differ
+    animations:
+      Primary:
+      - anim: GweenyPeck
+      Secondary:
+      - anim: ClawCarrinKick
 
 - type: entity
   parent: OrganBase

@@ -1,0 +1,45 @@
+#MARK: Peck
+- type: entityEffectAnimation
+  id: GweenyPeck
+  movementSpeed: 0.3
+  duration: 0.3
+  events:
+    0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+    - !type:UsedEntityAnimation
+      dummyEntity: CEGweenyPeckEffect
+      offsetAnimation: # straight lunge forward and back, no side swing
+      - time: 0.0
+        offset: 0, -0.3
+        easing: QuadIn
+      - time: 0.08
+        offset: 0, -0.9
+        easing: QuadOut
+      - time: 0.25
+        offset: 0, -0.5
+        easing: QuadOut
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.15
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.25
+        color: "#ffffff00"  # Fade out
+    0.08:
+    - !type:WeaponArcAttack
+      arcWidth: 40
+      effects:
+      - !type:WeaponEffectSlot
+        slot: OnHit
+
+- type: entity
+  id: CEGweenyPeckEffect
+  categories: [ "HideSpawnMenu" ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/arcs.rsi
+    state: gweeny_peck
