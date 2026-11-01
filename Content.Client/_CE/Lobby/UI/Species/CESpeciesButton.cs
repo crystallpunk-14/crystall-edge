@@ -9,7 +9,7 @@ namespace Content.Client._CE.Lobby.UI.Species;
 
 /// <summary>
 /// A single square species tile in the lobby species picker: just the species icon (swapped for the
-/// hovered icon while hovered or picked), with a green frame when picked and a black silhouette while locked.
+/// hovered icon while hovered or picked), with a green frame when picked and a black silhouette with a corner lock while locked.
 /// </summary>
 public sealed class CESpeciesButton : ContainerButton
 {
@@ -26,6 +26,7 @@ public sealed class CESpeciesButton : ContainerButton
     private readonly PanelContainer _frame;
     private readonly StyleBoxFlat _frameStyle = new() { BorderThickness = new Thickness(2) };
     private readonly TextureRect _icon;
+    private readonly TextureRect _lock;
     private readonly Texture? _idleIcon;
     private readonly Texture? _hoveredIcon;
 
@@ -56,6 +57,21 @@ public sealed class CESpeciesButton : ContainerButton
         };
         _frame.AddChild(_icon);
 
+        // Outside the frame so the lock keeps its own alpha while the tile is dimmed.
+        _lock = new TextureRect
+        {
+            TexturePath = "/Textures/Interface/VerbIcons/lock.svg.192dpi.png",
+            Stretch = TextureRect.StretchMode.Scale,
+            SetSize = new Vector2(24, 24),
+            HorizontalAlignment = HAlignment.Right,
+            VerticalAlignment = VAlignment.Bottom,
+            Margin = new Thickness(0, 0, 6, 6),
+            Modulate = Color.White.WithAlpha(0.5f),
+            MouseFilter = MouseFilterMode.Ignore,
+            Visible = false,
+        };
+        AddChild(_lock);
+
         UpdateVisuals();
     }
 
@@ -66,6 +82,7 @@ public sealed class CESpeciesButton : ContainerButton
 
         // Locked species stay clickable: they can be previewed and edited, just not saved.
         _icon.Modulate = locked ? Color.Black : Color.White;
+        _lock.Visible = locked;
 
         UpdateVisuals();
     }
