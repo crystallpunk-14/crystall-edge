@@ -418,6 +418,10 @@ CEClothingHeadKeyKeeperCap: null
 CEClothingShirtKeyKeeper: null
 CEClothingPantsKeyKeeper: null
 
+# Blacksmith apron and gloves renamed to plain leather
+CEClothingCloakBlacksmithApron: CEClothingCloakLeatherApron
+CEClothingGlovesBlacksmith: CEClothingGlovesLeather
+
 # CrystallEdge migration zone end
 
 

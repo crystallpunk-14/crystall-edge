@@ -319,7 +319,7 @@
   minLimit: 0
   loadouts:
   - CEClothingGlovesJagermeister
-  - CEClothingGlovesBlacksmith
+  - CEClothingGlovesLeather
 
 - type: loadout
   id: CEClothingGlovesJagermeister
@@ -327,9 +327,9 @@
     gloves: CEClothingGlovesJagermeister
 
 - type: loadout
-  id: CEClothingGlovesBlacksmith
+  id: CEClothingGlovesLeather
   equipment:
-    gloves: CEClothingGlovesBlacksmith
+    gloves: CEClothingGlovesLeather
 
 # Pants
 

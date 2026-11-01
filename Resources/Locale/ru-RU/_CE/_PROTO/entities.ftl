@@ -180,7 +180,7 @@ ent-CEClothingGlovesGirdles = железные наручи
 ent-CEClothingGlovesJagermeister = перчатки егеря
     .desc = Кожаные перчатки, любимые местными егерями.
 
-ent-CEClothingGlovesBlacksmith = перчатки кузнеца
+ent-CEClothingGlovesLeather = кожаные перчатки
     .desc = Говорят, в них можно держать свежеотлитый слиток, но проверять всё же не стоит.
 
 ent-CEClothingWristwatch = латунные наручные часы
@@ -4992,7 +4992,7 @@ ent-CEClothingCloakMantleAlchemist = мантия алхимика
 ent-CEClothingCloakMantleThaumaturge = мантия тауматурга
     .desc = Парадная мантия, которую носят тауматурги Академии, с пристёгивающимся церемониальным капюшоном.
 
-ent-CEClothingCloakBlacksmithApron = фартук кузнеца
+ent-CEClothingCloakLeatherApron = кожаный фартук
     .desc = Тяжёлый фартук, используемый кузнецами для защиты от искр и жара.
 
 ent-CEClothingCloakCheetahSkin = плащ из кожи гепарда
