@@ -1,3 +1,4 @@
+using Content.Client.Parallax;
 using Content.Shared.CCVar;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
@@ -25,6 +26,8 @@ public sealed partial class CEMurkDebugOverlay : Overlay
     public CEMurkDebugOverlay()
     {
         IoCManager.InjectDependencies(this);
+
+        ZIndex = ParallaxSystem.ParallaxZIndex + 3;
 
         _shader = _proto.Index(_shaderProto).InstanceUnique();
         _murk = _entManager.System<CEClientMurkSystem>();
