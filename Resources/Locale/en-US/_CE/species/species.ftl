@@ -26,4 +26,4 @@ ce-species-name-carrin = Carrin
 ce-species-desc-carrin = Humanoid birds. With difficulty, but still able to fly. CAW!
 
 ce-species-name-gweeny = Gweeny
-ce-species-desc-gweeny = Tiny round birds. With difficulty, but still able to fly. Peep!
+ce-species-desc-gweeny = The next bone of contention. These cute little creatures are sure to spark quite a bit of debate about balance...

@@ -18,3 +18,5 @@
   lastNames: CE_Names_Gweeny_Last
   defaultSoundsBySex: [CEUnisexGweeny, CEUnisexGweeny, CEUnisexGweeny]
   voices: [CEUnisexGweeny]
+  requirements:
+  - !type:CEImpossibleRequirement

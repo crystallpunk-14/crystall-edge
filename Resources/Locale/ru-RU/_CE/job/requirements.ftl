@@ -2,3 +2,4 @@ ce-role-req-sponsor-feature-req = Вы должны иметь как миним
 ce-role-req-achievement-required = Требуется достижение [color=yellow]{ $achievement }[/color]: { $desc }
 ce-role-req-achievement-forbidden = Недоступно при наличии достижения [color=yellow]{ $achievement }[/color]: { $desc }
 ce-role-req-achievement-secret = Требует [color=yellow]Скрытого достижения[/color].
+ce-role-req-impossible = Этот контент все еще в разработке, и пока еще недоступен.

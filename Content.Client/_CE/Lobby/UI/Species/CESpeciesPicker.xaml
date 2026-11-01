@@ -2,13 +2,14 @@
     xmlns="https://spacestation14.io"
     xmlns:species="clr-namespace:Content.Client._CE.Lobby.UI.Species"
     xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:controls="clr-namespace:Content.Client._CE.UserInterface.Controls"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     Orientation="Horizontal"
     VerticalExpand="True"
     HorizontalExpand="True">
     <!-- Species grid -->
     <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
-        <GridContainer Name="SpeciesGrid" Columns="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <controls:CEAutoGridContainer Name="SpeciesGrid" HSeparation="0" VSeparation="0" VerticalAlignment="Top" />
     </ScrollContainer>
 
     <!-- Hovered or picked species details -->
