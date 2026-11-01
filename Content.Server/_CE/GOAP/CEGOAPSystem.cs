@@ -117,13 +117,13 @@ public sealed partial class CEGOAPSystem : EntitySystem
     }
 
     /// <summary>
-    /// When the entity's parent changes (e.g. Z-level transition to a different map),
+    /// When the entity ends up on a different map (fell down a chasm, pulled or flew to another Z-level),
     /// force an immediate re-plan so the NPC adapts to the new map.
     /// </summary>
     [SubscribeLocalEvent]
     private void OnParentChanged(Entity<CEGOAPComponent> ent, ref EntParentChangedMessage args)
     {
-        // Only trigger re-plan if the map actually changed (Z-level transition)
+        // Only trigger re-plan if the map actually changed
         if (args.OldMapId == args.Transform.MapUid)
             return;
 

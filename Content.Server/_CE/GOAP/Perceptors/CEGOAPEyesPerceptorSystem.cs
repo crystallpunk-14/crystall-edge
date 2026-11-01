@@ -38,13 +38,14 @@ public sealed partial class CEGOAPEyesPerceptorComponent : Component
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1.5);
 
-    /// <summary>
-    /// When true, the perceptor also scans the adjacent Z-level above and below.
-    /// Entities on the map below are only seen through a transparent tile above them on the agent's map.
-    /// Entities on the map above are only seen while the agent stands under a transparent tile.
-    /// </summary>
-    [DataField]
-    public bool CrossZLevelVision;
+    // Disabled until agents can move between Z-levels: they would only chase targets they can't reach.
+    // /// <summary>
+    // /// When true, the perceptor also scans the adjacent Z-level above and below.
+    // /// Entities on the map below are only seen through a transparent tile above them on the agent's map.
+    // /// Entities on the map above are only seen while the agent stands under a transparent tile.
+    // /// </summary>
+    // [DataField]
+    // public bool CrossZLevelVision;
 
     /// <summary>
     /// How long a seen entity is remembered. Falls back to the agent's memory duration if null.
@@ -104,23 +105,24 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
         var selfPos = _transform.GetWorldPosition(xform);
         ScanMap(ent, xform.MapID, selfPos, xform.MapID, null, true);
 
-        if (!ent.Comp1.CrossZLevelVision || xform.MapUid is not { } currentMap)
-            return;
-
-        // Below: line of sight is checked on our map, and the tile above the target must let light through.
-        if (_zLevels.TryMapDown((currentMap, null), out var mapBelow) &&
-            _mapQuery.TryComp(mapBelow, out var belowMap))
-        {
-            ScanMap(ent, belowMap.MapId, selfPos, xform.MapID, currentMap, false);
-        }
-
-        // Above: only while we stand under a transparent tile; line of sight is checked on the map above.
-        if (_zLevels.TryMapUp((currentMap, null), out var mapAbove) &&
-            IsTileTransparentAt(mapAbove, selfPos) &&
-            _mapQuery.TryComp(mapAbove, out var aboveMap))
-        {
-            ScanMap(ent, aboveMap.MapId, selfPos, aboveMap.MapId, null, false);
-        }
+        // Disabled until agents can move between Z-levels, see CEGOAPEyesPerceptorComponent.CrossZLevelVision.
+        // if (!ent.Comp1.CrossZLevelVision || xform.MapUid is not { } currentMap)
+        //     return;
+        //
+        // // Below: line of sight is checked on our map, and the tile above the target must let light through.
+        // if (_zLevels.TryMapDown((currentMap, null), out var mapBelow) &&
+        //     _mapQuery.TryComp(mapBelow, out var belowMap))
+        // {
+        //     ScanMap(ent, belowMap.MapId, selfPos, xform.MapID, currentMap, false);
+        // }
+        //
+        // // Above: only while we stand under a transparent tile; line of sight is checked on the map above.
+        // if (_zLevels.TryMapUp((currentMap, null), out var mapAbove) &&
+        //     IsTileTransparentAt(mapAbove, selfPos) &&
+        //     _mapQuery.TryComp(mapAbove, out var aboveMap))
+        // {
+        //     ScanMap(ent, aboveMap.MapId, selfPos, aboveMap.MapId, null, false);
+        // }
     }
 
     /// <summary>

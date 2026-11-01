@@ -1,7 +1,6 @@
 using System.Numerics;
 using System.Threading;
 using Content.Server._CE.MeleeWeapon;
-using Content.Server._CE.ZLevels.StairsCache;
 using Content.Server.Administration.Managers;
 using Content.Server.DoAfter;
 using Content.Server.NPC.Pathfinding;
@@ -9,8 +8,6 @@ using Content.Server.Storage.EntitySystems;
 using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
@@ -47,8 +44,8 @@ namespace Content.Server._CE.GOAP.Steering;
 
 /// <summary>
 /// Moves GOAP agents. Callers poll <see cref="Navigate"/> (or <see cref="Continue"/>) every tick; the system
-/// frees the agent (unbuckle, unpull, escape storage), crosses Z-levels through slopes and steers along
-/// pathfinding paths, handling obstacles on the way.
+/// frees the agent (unbuckle, unpull, escape storage) and steers along pathfinding paths, handling obstacles
+/// on the way. Agents never cross Z-levels on their own: a destination on another map has no path.
 /// The steering core (context steering, obstacles) is a copy of the vanilla NPC steering, decoupled from HTN.
 /// </summary>
 public sealed partial class CEGOAPSteeringSystem : EntitySystem
@@ -69,8 +66,6 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
     [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private CEWeaponSystem _weapon = default!;
     [Dependency] private CESharedAnimationActionSystem _animationAction = default!;
-    [Dependency] private CESharedZLevelsSystem _zLevels = default!;
-    [Dependency] private CEZLevelStairsCacheSystem _stairsCache = default!;
     [Dependency] private ClimbSystem _climb = default!;
     [Dependency] private DoAfterSystem _doAfter = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
@@ -90,14 +85,11 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
 
     [Dependency] private EntityQuery<BuckleComponent> _buckleQuery = default!;
     [Dependency] private EntityQuery<FixturesComponent> _fixturesQuery = default!;
-    [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
-    [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<MovementSpeedModifierComponent> _modifierQuery = default!;
     [Dependency] private EntityQuery<NpcFactionMemberComponent> _factionQuery = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
     [Dependency] private EntityQuery<PullableComponent> _pullableQuery = default!;
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
-    [Dependency] private EntityQuery<CEZMapComponent> _zMapQuery = default!;
 
     private readonly ObjectPool<HashSet<EntityUid>> _entSetPool =
         new DefaultObjectPool<HashSet<EntityUid>>(new SetPolicy<EntityUid>());
@@ -188,8 +180,6 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
             return;
 
         ent.Comp.Target = null;
-        ent.Comp.PendingAscent = null;
-        ent.Comp.PendingDescent = null;
         Halt((ent, ent.Comp));
     }
 
@@ -231,16 +221,9 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
             return steering.Status;
         }
 
-        switch (steering.Status)
-        {
-            case CEGOAPSteeringStatus.NoPath:
-                return CEGOAPSteeringStatus.NoPath;
-            case CEGOAPSteeringStatus.InRange when !sameMap:
-                CrossZLevel(ent);
-                break;
-        }
-
-        return CEGOAPSteeringStatus.Moving;
+        return steering.Status == CEGOAPSteeringStatus.NoPath
+            ? CEGOAPSteeringStatus.NoPath
+            : CEGOAPSteeringStatus.Moving;
     }
 
     #region Freeing
@@ -288,123 +271,24 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
 
     #endregion
 
-    #region Z-levels
+    #region Steering state
 
     /// <summary>
-    /// Starts steering to the destination, or to the nearest slope if the destination is on another Z-level.
+    /// Starts steering to the destination. Agents don't cross Z-levels, so a destination on another map has no path.
     /// </summary>
     private void BeginSteering(Entity<CEGOAPSteeringComponent> ent, EntityCoordinates destination)
     {
         var (uid, steering) = ent;
-        steering.PendingAscent = null;
-        steering.PendingDescent = null;
 
         if (!_xformQuery.TryGetComponent(uid, out var xform) || xform.MapUid is not { } agentMap ||
-            _transform.GetMap(destination) is not { } destinationMap)
+            _transform.GetMap(destination) != agentMap)
         {
             SetNoPath(ent);
             return;
         }
 
-        if (agentMap == destinationMap)
-        {
-            SteerTo(ent, destination, steering.TargetRange);
-            return;
-        }
-
-        var zOffset = GetZOffset(agentMap, destinationMap);
-        if (zOffset == 0 || !_gridQuery.TryGetComponent(agentMap, out var grid))
-        {
-            SetNoPath(ent);
-            return;
-        }
-
-        var agentWorldPos = _transform.GetWorldPosition(xform);
-
-        if (zOffset > 0)
-        {
-            // Steer to the uphill edge of the nearest slope on the current map.
-            if (!_stairsCache.GetNearestStairs(agentMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
-            {
-                SetNoPath(ent);
-                return;
-            }
-
-            var uphillDir = slope.Direction.GetOpposite();
-            var slopeTileCenter = _mapSystem.GridTileToLocal(agentMap, grid, slopeTilePos);
-            SteerTo(ent, new EntityCoordinates(slopeTileCenter.EntityId, slopeTileCenter.Position + uphillDir.ToVec() * 0.45f), 0.3f);
-            steering.PendingAscent = slope.Direction;
-        }
-        else
-        {
-            // Find the nearest slope on the map below and walk to the tile above its uphill end.
-            if (!_zLevels.TryMapDown(agentMap, out var belowMap) ||
-                !_stairsCache.GetNearestStairs(belowMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
-            {
-                SetNoPath(ent);
-                return;
-            }
-
-            var approachTile = slopeTilePos + slope.Direction.GetOpposite().ToIntVec();
-            if (!_mapSystem.TryGetTileRef(agentMap, grid, approachTile, out var tileRef) || tileRef.Tile.IsEmpty)
-            {
-                SetNoPath(ent);
-                return;
-            }
-
-            var tileCenter = _mapSystem.GridTileToLocal(agentMap, grid, approachTile);
-            SteerTo(ent, new EntityCoordinates(tileCenter.EntityId, tileCenter.Position + slope.Direction.ToVec() * 0.4f), 0.3f);
-            steering.PendingDescent = (slope.Direction, belowMap.Owner);
-        }
+        SteerTo(ent, destination, steering.TargetRange);
     }
-
-    /// <summary>
-    /// Reached the slope while the destination is on another Z-level: move to the neighbouring map.
-    /// Steering restarts towards the destination on the next poll.
-    /// </summary>
-    private void CrossZLevel(Entity<CEGOAPSteeringComponent> ent)
-    {
-        var (uid, steering) = ent;
-
-        if (steering.PendingAscent is { } ascentDir)
-        {
-            _zLevels.TryMoveUp(uid);
-            // ascentDir is downhill; shift uphill to land on the upper map's floor.
-            var pos = _transform.GetWorldPosition(uid);
-            _transform.SetWorldPosition(uid, pos + ascentDir.GetOpposite().ToVec() * 0.25f);
-        }
-        else if (steering.PendingDescent is { } descent && _mapQuery.TryComp(descent.BelowMap, out var belowMapComp))
-        {
-            var pos = _transform.GetWorldPosition(uid);
-            _transform.SetMapCoordinates(uid, new MapCoordinates(pos + descent.SlopeDir.ToVec() * 0.75f, belowMapComp.MapId));
-        }
-
-        steering.PendingAscent = null;
-        steering.PendingDescent = null;
-        Halt(ent);
-    }
-
-    /// <summary>
-    /// Z-offset from the agent's map to the destination map: positive if above, negative if below,
-    /// 0 if the maps aren't in the same Z-network.
-    /// </summary>
-    private int GetZOffset(EntityUid agentMap, EntityUid destinationMap)
-    {
-        if (!_zMapQuery.TryGetComponent(agentMap, out var agentZMap) ||
-            !_zMapQuery.TryGetComponent(destinationMap, out var destinationZMap))
-            return 0;
-
-        if (!_zLevels.TryGetMapNetwork(agentMap, out var agentNetwork) ||
-            !_zLevels.TryGetMapNetwork(destinationMap, out var destinationNetwork) ||
-            agentNetwork.Owner != destinationNetwork.Owner)
-            return 0;
-
-        return destinationZMap.Depth - agentZMap.Depth;
-    }
-
-    #endregion
-
-    #region Steering state
 
     private void SteerTo(Entity<CEGOAPSteeringComponent> ent, EntityCoordinates coordinates, float range)
     {
