@@ -1591,3 +1591,12 @@
   id: 1135
   time: '2026-10-25T10:59:15.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/560
+- author: TheShuEd
+  changes:
+  - message: Added key keeper job
+    type: Add
+  - message: Added key forge & lock forge - for convenient keyworking
+    type: Add
+  id: 1136
+  time: '2026-10-27T21:14:56.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/565
