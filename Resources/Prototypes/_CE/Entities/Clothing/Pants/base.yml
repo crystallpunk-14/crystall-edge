@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [Clothing, BaseSlicingRefinable]
   id: CEClothingPantsBase
   categories: [ ForkFiltered ]
   description: Pants to cover my thighs from the cold.
@@ -12,11 +12,13 @@
     - pants
   - type: Sprite
     state: icon
-  #- type: Butcherable
-  #  butcheringType: Knife
-  #  spawned:
-  #  - id: CECloth1
-  #    amount: 1
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 20
 
 - type: entity
   parent: CEClothingPantsBase

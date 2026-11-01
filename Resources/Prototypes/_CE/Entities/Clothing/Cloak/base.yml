@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [Clothing, BaseSlicingRefinable]
   id: CEClothingCloakBase
   categories: [ ForkFiltered ]
   components:
@@ -11,4 +11,10 @@
     - cloak
   - type: Sprite
     state: icon
-
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+      amount: 3
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 30

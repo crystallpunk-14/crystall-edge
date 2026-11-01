@@ -809,13 +809,13 @@
     proto: CEClothingGlovesJagermeister
 
 - type: tradeOffer
-  id: BuyClothingGlovesBlacksmith
+  id: BuyClothingGlovesLeather
   shop: Tailors
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingGlovesBlacksmith
+    proto: CEClothingGlovesLeather
 
 - type: tradeOffer
   id: BuyClothingMaskNeckerchief

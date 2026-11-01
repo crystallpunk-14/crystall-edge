@@ -1,9 +1,11 @@
 using System.Numerics;
 using Content.Shared.CCVar;
 using Content.Shared.Movement.Components;
+using Content.Shared.Physics;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Physics;
+using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
@@ -19,6 +21,7 @@ public abstract partial class SharedMobCollisionSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _moveMod = default!;
     [Dependency] protected SharedPhysicsSystem Physics = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
+    [Dependency] private FixtureSystem _fixture = default!; // CrystallEdge: own sensor fixture
 
     [Dependency] protected EntityQuery<MobCollisionComponent> MobQuery = default!;
     [Dependency] protected EntityQuery<PhysicsComponent> PhysicsQuery = default!;
@@ -66,9 +69,26 @@ public abstract partial class SharedMobCollisionSystem : EntitySystem
 
         SubscribeAllEvent<MobCollisionMessage>(OnCollision);
         SubscribeLocalEvent<MobCollisionComponent, RefreshMovementSpeedModifiersEvent>(OnMoveModifier);
+        SubscribeLocalEvent<MobCollisionComponent, MapInitEvent>(OnMapInit); // CrystallEdge: own sensor fixture
 
         UpdatesBefore.Add(typeof(SharedPhysicsSystem));
     }
+
+    // CrystallEdge: decoupled from the Flammable fixture, which CE mobs no longer have
+    private void OnMapInit(Entity<MobCollisionComponent> ent, ref MapInitEvent args)
+    {
+        if (!PhysicsQuery.TryComp(ent, out var body))
+            return;
+
+        _fixture.TryCreateFixture(ent,
+            new PhysShapeCircle(ent.Comp.Radius),
+            ent.Comp.FixtureId,
+            density: 0,
+            hard: false,
+            collisionMask: (int) CollisionGroup.MobLayer,
+            body: body);
+    }
+    // CrystallEdge end
 
     private void UpdatePushCap()
     {

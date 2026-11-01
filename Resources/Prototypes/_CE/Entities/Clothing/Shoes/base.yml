@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [Clothing, BaseSlicingRefinable]
   id: CEClothingShoesBase
   categories: [ ForkFiltered ]
   components:
@@ -14,3 +14,9 @@
   - type: Item
     size: Normal
   - type: ProtectedFromStepTriggers
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 10

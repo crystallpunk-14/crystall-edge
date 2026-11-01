@@ -25,11 +25,11 @@
 
 - type: entity
   parent: CEClothingGlovesBase
-  id: CEClothingGlovesBlacksmith
-  name: blacksmith's gloves
+  id: CEClothingGlovesLeather
+  name: leather gloves
   description: They say you can handle a newly poured ingot with them, but it's still not worth checking.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Gloves/Generic/blacksmith_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/leather_gloves.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Gloves/Generic/blacksmith_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/leather_gloves.rsi

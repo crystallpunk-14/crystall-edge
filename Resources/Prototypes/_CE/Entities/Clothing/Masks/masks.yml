@@ -13,7 +13,7 @@
       CEIron: 20
 
 - type: entity
-  parent: CEClothingMaskIdentityBlockerBase
+  parent: [CEClothingMaskIdentityBlockerBase, BaseSlicingRefinable]
   id: CEClothingMaskNeckerchief
   name: neckerchief
   description: It hides your face to the best of its ability.
@@ -22,9 +22,15 @@
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/plain.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/plain.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10
 
 - type: entity
-  parent: CEClothingMaskIdentityBlockerBase
+  parent: [CEClothingMaskIdentityBlockerBase, BaseSlicingRefinable]
   id: CEClothingMaskRedNeckerchief
   name: red neckerchief
   description: It hides your face to the best of its ability.
@@ -33,9 +39,15 @@
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/red.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/red.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10
 
 - type: entity
-  parent: CEClothingMaskIdentityBlockerBase
+  parent: [CEClothingMaskIdentityBlockerBase, BaseSlicingRefinable]
   id: CEClothingMaskGreenNeckerchief
   name: green neckerchief
   description: It hides your face to the best of its ability.
@@ -44,6 +56,12 @@
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/green.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/Generic/Neckerchief/green.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase

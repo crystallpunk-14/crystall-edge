@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadTriangularSheriff
   name: sheriff's triangular hat
   description: A distinctive triangular hat worn by the sheriff. Its unique shape makes it easy to identify the sheriff from a distance.
@@ -10,7 +10,7 @@
     sprite: _CE/Clothing/Head/Generic/triangular_sheriff.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadTriangularLeather
   name: leather triangular hat
   description: A practical triangular hat made from quality leather. Durable and weather-resistant.
@@ -19,9 +19,15 @@
     sprite: _CE/Clothing/Head/Academy/leather.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Academy/leather.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 10
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadTriangularLeatherGolden
   name: golden leather triangular hat
   description: An luxurious triangular hat made from fine leather with golden accents. A mark of high status and wealth.
@@ -30,3 +36,9 @@
     sprite: _CE/Clothing/Head/Academy/leather_golden.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Academy/leather_golden.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 10

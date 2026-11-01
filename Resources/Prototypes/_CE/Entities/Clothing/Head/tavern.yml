@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretBartender
   name: bartender's beret
   description: A neat beret worn by tavern bartenders.
@@ -10,7 +10,7 @@
     sprite: _CE/Clothing/Head/Tavern/bartender_beret.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretChef
   name: chef's beret
   description: A soft beret that keeps hair out of the soup.
@@ -21,7 +21,7 @@
     sprite: _CE/Clothing/Head/Tavern/chef_beret.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadChefHat1
   name: chef's hat
   description: A tall white hat. The taller it is, the better the cook, or so they say.
@@ -32,7 +32,7 @@
     sprite: _CE/Clothing/Head/Tavern/chef_hat1.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadChefHat2
   name: chef's cap
   description: A practical kitchen cap worn by tavern cooks.
@@ -43,7 +43,7 @@
     sprite: _CE/Clothing/Head/Tavern/chef_hat2.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBowlerTavernmaster
   name: tavernmaster's bowler
   description: No! That's not a leprechaun!

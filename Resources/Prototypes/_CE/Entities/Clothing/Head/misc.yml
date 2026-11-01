@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadAmanitaHelmet
   name: amanita helmet
   description: A peculiar helmet shaped like an amanita mushroom.
@@ -8,9 +8,12 @@
     sprite: _CE/Clothing/Head/Generic/amanita_helmet.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Generic/amanita_helmet.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodAgaric
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBowlerHat
   name: bowler hat
   description: A classic bowler hat that exudes sophistication and old-world charm.
@@ -21,7 +24,7 @@
     sprite: _CE/Clothing/Head/Generic/bowler_hat.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBowlerGoldenHat
   name: golden bowler hat
   description: An exquisite golden bowler hat that speaks of wealth and prestige. A symbol of high society.
@@ -32,7 +35,7 @@
     sprite: _CE/Clothing/Head/Generic/bowler_golden_hat.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadChristmasHat
   name: christmas hat
   description: A festive holiday hat that brings joy and Christmas spirit wherever you go.
@@ -43,7 +46,7 @@
     sprite: _CE/Clothing/Head/Townfolk/christmas_hat.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadJestersCap
   name: jester's cap
   description: A colorful and whimsical jester's cap complete with bells. Perfect for entertaining crowds or confusing enemies.
@@ -54,7 +57,7 @@
     sprite: _CE/Clothing/Head/Bard/jesters_cap.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadKasaHat
   name: kasa hat
   description: A traditional wide-brimmed straw hat that provides excellent protection from sun and rain.
@@ -63,9 +66,12 @@
     sprite: _CE/Clothing/Head/Townfolk/kasa_hat.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Townfolk/kasa_hat.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CEWheat
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadStrawHat
   name: straw hat
   description: A simple but practical straw hat perfect for working outdoors or casual wear.
@@ -74,6 +80,9 @@
     sprite: _CE/Clothing/Head/Townfolk/straw_hat.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Townfolk/straw_hat.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CEWheat
 
 - type: entity
   parent: CEClothingHeadBase
@@ -87,7 +96,7 @@
     sprite: _CE/Clothing/Head/Townfolk/wreath.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBowlerLeather
   name: leather bowler hat
   description: It looks sturdy enough to withstand a couple of stone falls on the forehead. But that's not certain.
@@ -96,14 +105,9 @@
     sprite: _CE/Clothing/Head/Engineering/bowler_leather_hat.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Engineering/bowler_leather_hat.rsi
-
-- type: entity
-  parent: CEClothingHeadBase
-  id: CEClothingHeadKeyKeeperCap
-  name: key keeper cap
-  description: A cap worn by the keeper of keys.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 10

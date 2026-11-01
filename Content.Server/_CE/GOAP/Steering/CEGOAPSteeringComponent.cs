@@ -88,18 +88,6 @@ public sealed partial class CEGOAPSteeringComponent : Component
     [ViewVariables]
     public float TargetRange;
 
-    /// <summary>
-    /// Downhill direction of the slope the agent walks to in order to go one Z-level up.
-    /// </summary>
-    [ViewVariables]
-    public Direction? PendingAscent;
-
-    /// <summary>
-    /// Downhill direction and map below of the slope the agent walks to in order to go one Z-level down.
-    /// </summary>
-    [ViewVariables]
-    public (Direction SlopeDir, EntityUid BelowMap)? PendingDescent;
-
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan NextFreeAttempt;

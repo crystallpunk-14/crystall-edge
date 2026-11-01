@@ -400,6 +400,28 @@ CEPlushieTiefling: CEPlushieInfernal
 # 2026-10-31
 CEClothingHeadMetalHeadband: null
 
+# 2026-11-01
+# Key Keeper job removed
+CEIronDoorKeyKeeperHall: CEIronDoorWindowed
+CEIronDoorKeyKeeperHallMirrored: CEIronDoorWindowedMirrored
+CEIronDoorKeyKeeperStorage: CEIronDoor
+CEIronDoorKeyKeeperTechnical: CEIronDoor
+CEChestFilledKeyKeeper: CEWoodenChest
+CEBedsideTableFilledKeyKeeper: CEBedsideTableWooden
+CESpawnPointKeyKeeper: null
+CEKeyKeyKeeperHall: null
+CEKeyKeyKeeperStorage: null
+CEKeyKeyKeeperTechnical: null
+CEKeyRingKeyKeeper: null
+CEWalletFilledKeyKeeper: null
+CEClothingHeadKeyKeeperCap: null
+CEClothingShirtKeyKeeper: null
+CEClothingPantsKeyKeeper: null
+
+# Blacksmith apron and gloves renamed to plain leather
+CEClothingCloakBlacksmithApron: CEClothingCloakLeatherApron
+CEClothingGlovesBlacksmith: CEClothingGlovesLeather
+
 # CrystallEdge migration zone end
 
 

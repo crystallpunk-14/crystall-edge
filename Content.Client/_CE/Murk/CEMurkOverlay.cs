@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Parallax;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared.CCVar;
 using Robust.Client.Graphics;
@@ -11,7 +12,7 @@ namespace Content.Client._CE.Murk;
 
 /// <summary>
 /// Draws murk as a translucent layer in <see cref="OverlaySpace.WorldSpaceBelowFOV"/> - above
-/// entities but below lighting and FOV. It never reads the screen texture: every z-level pass
+/// entities and weather but below lighting and FOV. It never reads the screen texture: every z-level pass
 /// alpha-blends its own layer, so stacked levels darken towards opaque instead of multiplying
 /// each other into pure black.
 /// </summary>
@@ -32,6 +33,9 @@ public sealed partial class CEMurkOverlay : Overlay
     public CEMurkOverlay()
     {
         IoCManager.InjectDependencies(this);
+
+        // Above the weather stencil overlay, so murk covers the rain.
+        ZIndex = ParallaxSystem.ParallaxZIndex + 2;
 
         _murkShader = _proto.Index(_shader).InstanceUnique();
         _mapQuery = _entManager.GetEntityQuery<CEMurkedMapComponent>();

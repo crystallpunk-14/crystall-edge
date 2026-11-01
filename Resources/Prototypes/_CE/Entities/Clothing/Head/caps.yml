@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadCapSheriff
   name: sheriff's cap
   description: Standard issue cap worn by the sheriff.

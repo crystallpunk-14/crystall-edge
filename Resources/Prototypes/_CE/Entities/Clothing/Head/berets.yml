@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretAlchemist
   name: alchemist's beret
   description: A scholarly beret worn by practitioners of the alchemical arts. The fabric seems to shimmer with traces of arcane knowledge.
@@ -10,7 +10,7 @@
     sprite: _CE/Clothing/Head/Generic/Berets/alchemist.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretGuild
   name: adventurer's guild beret
   description: A distinctive beret worn by members of the adventurer's guild.
@@ -21,7 +21,7 @@
     sprite: _CE/Clothing/Head/Generic/Berets/guild.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretGuildBlue
   name: blue guild worker's beret
   description: A blue beret worn by workers of the adventurer's guild.
@@ -32,7 +32,7 @@
     sprite: _CE/Clothing/Head/Generic/Berets/guild_blue.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretGuildRed
   name: red guild worker's beret
   description: A red beret worn by combat specialists of the adventurer's guild.
@@ -43,7 +43,7 @@
     sprite: _CE/Clothing/Head/Generic/Berets/guild_red.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretGuildYellow
   name: yellow guild worker's beret
   description: A yellow beret worn by scholars and researchers of the adventurer's guild.
@@ -54,7 +54,7 @@
     sprite: _CE/Clothing/Head/Generic/Berets/guild_yellow.rsi
 
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBeretMercenary
   name: mercenary's beret
   description: A weathered beret worn by freelance mercenaries. Its worn appearance speaks of countless battles and contracts fulfilled for the highest bidder.

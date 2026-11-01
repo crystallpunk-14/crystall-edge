@@ -2,6 +2,7 @@ using Content.Server.Ghost;
 using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roundflow;
+using Content.Shared.CombatMode;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -17,6 +18,7 @@ public sealed partial class CEMurkSystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedCombatModeSystem _combatMode = default!;
 
     private static readonly SoundSpecifier ConvertSound = new SoundPathSpecifier("/Audio/_CE/Announce/murked.ogg");
 
@@ -49,6 +51,9 @@ public sealed partial class CEMurkSystem
         // incapacitated mob. With damage gone there is nothing left to put it back in crit.
         if (HasComp<MobStateComponent>(ent))
             _mobState.ChangeMobState(ent, MobState.Alive);
+
+        if (TryComp<CombatModeComponent>(ent, out var combat))
+            _combatMode.SetInCombatMode(ent, false, combat);
 
         var ev = new CEMurkSoulConvertedEvent(ent);
         RaiseLocalEvent(ref ev);

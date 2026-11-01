@@ -1,7 +1,9 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
+using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Physics;
 using Content.Shared.Stacks;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
@@ -99,16 +101,39 @@ public abstract partial class CESharedFarmingSystem
             }
         }
 
-        foreach (var anchored in MapSystem.GetAnchoredEntities((map.Value, gridComp), position))
+        if (IsTileOccupied((map.Value, gridComp), position, exclude))
+        {
+            if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient)
+                _popup.PopupEntity(Loc.GetString("ce-farming-soil-occupied"), user.Value, user.Value);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Mirrors <see cref="AnchorableSystem.TileFree(Entity{MapGridComponent}, Vector2i, int, int)"/> with MobMask,
+    /// but supports exclude and treats any other plant as an obstacle. Puddles, decals and cables don't block planting.
+    /// </summary>
+    private bool IsTileOccupied(Entity<MapGridComponent> grid, EntityCoordinates position, EntityUid? exclude)
+    {
+        foreach (var anchored in MapSystem.GetAnchoredEntities(grid, position))
         {
             if (anchored == exclude)
                 continue;
 
-            if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient) _popup.PopupEntity(Loc.GetString("ce-farming-soil-occupied"), user.Value, user.Value);
-                return false;
+            if (PlantQuery.HasComp(anchored))
+                return true;
+
+            if (!_physicsQuery.TryGetComponent(anchored, out var body) || !body.CanCollide || !body.Hard)
+                continue;
+
+            if ((body.CollisionLayer & (int) CollisionGroup.MobMask) != 0)
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     protected bool CanPlant(EntProtoId plant, EntityCoordinates position, EntityUid? user, EntityUid? exclude = null)
@@ -116,7 +141,7 @@ public abstract partial class CESharedFarmingSystem
         if (!_proto.Resolve(plant, out var plantProto))
             return false;
 
-        return CanPlant(plantProto, position, user);
+        return CanPlant(plantProto, position, user, exclude);
     }
 }
 
