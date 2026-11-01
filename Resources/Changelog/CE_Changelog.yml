@@ -1644,3 +1644,12 @@
   id: 1139
   time: '2026-10-29T18:24:47.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/570
+- author: TheShuEd
+  changes:
+  - message: Tieflings horns update!
+    type: Add
+  - message: Tieflings renamed to Infernals
+    type: Tweak
+  id: 1140
+  time: '2026-10-30T12:14:51.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/576
