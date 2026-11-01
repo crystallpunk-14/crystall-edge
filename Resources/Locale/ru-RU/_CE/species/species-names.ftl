@@ -688,3 +688,10 @@ ce-species-name-carrin-last-18 = Ай’Вари
 ce-species-name-carrin-last-19 = Чи’Вейн
 ce-species-name-carrin-last-20 = Ву’Эн
 
+# GWEENY
+
+ce-species-name-gweeny-male-first-1 = Гвини
+
+ce-species-name-gweeny-female-first-1 = Гвини
+
+ce-species-name-gweeny-last-1 = Гвинсон

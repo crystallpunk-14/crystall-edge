@@ -2,3 +2,4 @@ ce-role-req-sponsor-feature-req = You must have at least the “{$role}” role 
 ce-role-req-achievement-required = Requires the [color=yellow]{ $achievement }[/color] achievement: { $desc }
 ce-role-req-achievement-forbidden = Unavailable with the [color=yellow]{ $achievement }[/color] achievement: { $desc }
 ce-role-req-achievement-secret = Requires a [color=yellow]Hidden achievement[/color].
+ce-role-req-impossible = This content is still in development and is not available yet.

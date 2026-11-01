@@ -1,0 +1,111 @@
+- type: marking
+  id: CEGweenyBeak
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 1
+
+- type: marking
+  id: CEGweenyBeak2
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 2
+
+- type: marking
+  id: CEGweenyBeak3
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 3
+
+- type: marking
+  id: CEGweenyBeak4
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 4
+
+- type: marking
+  id: CEGweenyBeak5
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 5
+
+- type: marking
+  id: CEGweenyBeak7
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 7
+
+- type: marking
+  id: CEGweenyBeak8
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 8
+
+- type: marking
+  id: CEGweenyBeak9
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 9
+
+- type: marking
+  id: CEGweenyBeak10
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 10
+
+- type: marking
+  id: CEGweenyBeak11
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 11
+
+- type: marking
+  id: CEGweenyBeak12
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 12
+
+- type: marking
+  id: CEGweenyBeak13
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 13
+
+- type: marking
+  id: CEGweenyBeak14
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 14
+
+- type: marking
+  id: CEGweenyBeak15
+  bodyPart: Snout
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_beak.rsi
+      state: 15

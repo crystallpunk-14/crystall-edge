@@ -2,7 +2,7 @@ ce-species-name-human = Human
 ce-species-desc-human = As one would expect of humans, they became the dominant race of Sileita, thanks in part to their adaptability and resilience to the Murk.
 
 ce-species-name-infernal = Infernal
-ce-species-desc-infernal = Wanderer wrote some lore about infernals and where they come from, but I completely forgot what it said. Tieflings are planned to get gameplay skills tied to temperature, fire and frost (once we add temperature, fire and frost).
+ce-species-desc-infernal = Wanderer wrote some lore about infernals and where they come from, but I completely forgot what it said. Infernals are planned to get gameplay skills tied to temperature, fire and frost (once we add temperature, fire and frost).
 
 ce-species-name-dwarf = Dwarf
 ce-species-desc-dwarf = I honestly have no idea what to do with these guys. I would delete dwarves, but Mirinda would eat me for it. I have no ideas on how to make them an interesting race.
@@ -24,3 +24,6 @@ ce-species-desc-skeleton = Spooky Scary Skeletons.
 
 ce-species-name-carrin = Carrin
 ce-species-desc-carrin = Humanoid birds. With difficulty, but still able to fly. CAW!
+
+ce-species-name-gweeny = Gweeny
+ce-species-desc-gweeny = The next bone of contention. These cute little creatures are sure to spark quite a bit of debate about balance...

@@ -1,0 +1,14 @@
+marking-CEGweenyBeak = Клюв
+marking-CEGweenyBeak2 = Короткий тонкий клюв
+marking-CEGweenyBeak3 = Выгнутый клюв 1
+marking-CEGweenyBeak4 = Короткий клюв 1
+marking-CEGweenyBeak5 = Выгнутый клюв 2
+marking-CEGweenyBeak7 = Прямой клюв
+marking-CEGweenyBeak8 = Длинный клюв
+marking-CEGweenyBeak9 = Высокий клюв
+marking-CEGweenyBeak10 = Тонкий клюв
+marking-CEGweenyBeak11 = Загнутый клюв
+marking-CEGweenyBeak12 = Короткий загнутый клюв
+marking-CEGweenyBeak13 = Короткий загнутый клюв 2
+marking-CEGweenyBeak14 = Короткий клюв 2
+marking-CEGweenyBeak15 = Короткий клюв 3

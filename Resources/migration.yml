@@ -397,6 +397,9 @@ CEOrganTieflingTorso: CEOrganInfernalTorso
 CEPlushieGoldenTiefling: CEPlushieGoldenInfernal
 CEPlushieTiefling: CEPlushieInfernal
 
+# 2026-10-31
+CEClothingHeadMetalHeadband: null
+
 # CrystallEdge migration zone end
 
 

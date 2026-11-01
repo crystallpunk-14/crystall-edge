@@ -643,13 +643,6 @@
         "parent": "CEClothingHeadBase",
         "suffix": null
     },
-    "CEClothingHeadMetalHeadband": {
-        "id": "CEClothingHeadMetalHeadband",
-        "name": "metal headband",
-        "description": "A simple but effective metal headband that provides minimal protection while keeping hair out of the way.",
-        "parent": "CEClothingHeadBase",
-        "suffix": null
-    },
     "CEClothingHeadHelmetBrassInsulator": {
         "id": "CEClothingHeadHelmetBrassInsulator",
         "name": "brass insulator",

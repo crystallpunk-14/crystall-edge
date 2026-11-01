@@ -27,17 +27,6 @@
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadMetalHeadband
-  name: metal headband
-  description: A simple but effective metal headband that provides minimal protection while keeping hair out of the way.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Head/Generic/metalheadband.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Head/Generic/metalheadband.rsi
-
-- type: entity
-  parent: CEClothingHeadBase
   id: CEClothingHeadHelmetBrassInsulator
   name: brass insulator
   description: A simple but effective magical energy insulator for the head. Not the most robust protection, but it works great for shielding against excess magical energy.

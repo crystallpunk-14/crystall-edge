@@ -1,0 +1,7 @@
+- type: marking
+  id: CEGweenyBeard1
+  bodyPart: FacialHair
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_facial_hair.rsi
+      state: 1

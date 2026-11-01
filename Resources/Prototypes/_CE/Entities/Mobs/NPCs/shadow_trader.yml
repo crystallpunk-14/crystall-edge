@@ -16,6 +16,7 @@
     prototypes:
     - CEMobShadowTraderCarcat
     - CEMobShadowTraderCarrin
+    - CEMobShadowTraderGweeny
     - CEMobShadowTraderDwarf
     - CEMobShadowTraderElf
     - CEMobShadowTraderGoblin
@@ -131,6 +132,13 @@
   - CEAppearanceCarrin
   - CEMobShadowTrader
   id: CEMobShadowTraderCarrin
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceGweeny
+  - CEMobShadowTrader
+  id: CEMobShadowTraderGweeny
   categories: [ ForkFiltered, HideSpawnMenu ]
 
 - type: entity

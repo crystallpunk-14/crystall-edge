@@ -684,3 +684,11 @@ ce-species-name-carrin-last-17 = Ya’Ril
 ce-species-name-carrin-last-18 = Ai’Vari
 ce-species-name-carrin-last-19 = Chi’Veyn
 ce-species-name-carrin-last-20 = Vu’En
+
+# GWEENY
+
+ce-species-name-gweeny-male-first-1 = Gweeny
+
+ce-species-name-gweeny-female-first-1 = Gweeny
+
+ce-species-name-gweeny-last-1 = Gweenson

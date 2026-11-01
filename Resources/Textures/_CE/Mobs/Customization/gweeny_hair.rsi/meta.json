@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github), resized for Gweeny",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "1",
+      "directions": 4
+    },
+    {
+      "name": "2",
+      "directions": 4
+    },
+    {
+      "name": "3",
+      "directions": 4
+    },
+    {
+      "name": "4",
+      "directions": 4
+    },
+    {
+      "name": "5",
+      "directions": 4
+    },
+    {
+      "name": "6",
+      "directions": 4
+    },
+    {
+      "name": "9",
+      "directions": 4
+    }
+  ]
+}
