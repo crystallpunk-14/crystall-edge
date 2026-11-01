@@ -1,0 +1,30 @@
+- type: entity
+  id: CECompassLucson
+  parent: BaseItem
+  name: Lucson compass
+  description: A brass compass whose needle always points to the Lucson Sphere, no matter how deep underground or high above you are.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  # The needle angle is computed in world space, so the item itself must not rotate
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Objects/Tools/compass.rsi
+    layers:
+    - state: brass
+    - state: arrow
+      map: [ "enum.CEPinpointerLayers.Needle" ]
+  - type: CEPinpointer
+    whitelist:
+      components:
+      - CEMurkLusconSphere
+    # Needle base is pixel (16, 15): half a pixel right and up from the texture center
+    needlePivot: 0.015625, 0.015625
+  - type: StaticPrice
+    price: 40
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 10

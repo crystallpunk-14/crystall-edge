@@ -1,0 +1,449 @@
+#MARK: Ore crab
+
+# Small and skittish: runs from any enemy, bites only when cornered.
+# A stone body: the pickaxe is the right tool both to kill it and to mine its corpse.
+- type: entity
+  parent:
+  - CEMobSimple
+  - CEMobCombat
+  - CEMobGOAPBase
+  id: CEMobOreCrabBase
+  abstract: true
+  name: ore crab
+  description: A small, skittish crab with a shell of living stone, overgrown with ore.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: Damageable
+    damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: CEGOAP
+    behaviors:
+    - Coward
+    - Explorer
+  - type: NpcFactionMember
+    factions:
+    - CEStoneCrabs
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Mobs/orecrab.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: gold
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4
+  - type: CEWeapon
+    range: 0.5
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Piercing: 3
+              Structural: 15
+    animations:
+      Primary:
+      - anim: RatBite
+
+- type: entity
+  parent: CEMobOreCrabBase
+  id: CEMobOreCrabGold
+  name: gold ore crab
+  categories: [ ForkFiltered ]
+  components:
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gold
+      Dead:
+        Base: dead_gold
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/picaxe2.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+          CEGoldOre1:
+            min: 2
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: CEInnateSkills
+    skills:
+    - NightVision
+
+#MARK: Ore spider
+
+# Big and aggressive: hunts every enemy it sees.
+- type: entity
+  parent:
+  - CEMobSimple
+  - CEMobCombat
+  - CEMobGOAPBase
+  id: CEMobOreSpiderBase
+  abstract: true
+  name: ore spider
+  description: A huge spider of living stone, its back overgrown with ore.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Dead
+  - type: Damageable
+    damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: CEGOAP
+    behaviors:
+    - MeleeAttacker
+    - Explorer
+    actions:
+    # Cheaper than a plain bite, so it is used whenever off cooldown
+    - !type:CEGOAPUseAction
+      actionPrototype: CEActionOreSpiderLunge
+      target: Enemy
+      range: 2
+      effects:
+        EnemyDead: true
+      cost: 0.5
+  - type: NpcFactionMember
+    factions:
+    - CEStoneCrabs
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Mobs/orecrabspider.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+    - map: ["enum.DamageStateVisualLayers.BaseUnshaded"]
+      state: gold
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 3.4
+  # Stone tapping, audible from afar and through walls
+  - type: Tag
+    tags:
+    - FootstepSound
+  - type: MobMover
+    stepSoundMoveDistanceRunning: 1.4
+    stepSoundMoveDistanceWalking: 1.4
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: CEStepOreSpider
+      params:
+        maxDistance: 20
+  - type: CEWeapon
+    range: 0.5
+    hitSound:
+      collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Dash
+        distance: -1
+      - !type:WeaponArcAttack
+        arcWidth: 80
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Piercing: 8
+              Structural: 20
+    animations:
+      Primary:
+      - anim: OreSpiderClaws
+  - type: CEInnateSkills
+    skills:
+    - NightVision
+
+- type: entity
+  parent: CEMobOreSpiderBase
+  id: CEMobOreSpiderCoal
+  name: coal ore spider
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+    - map: ["enum.DamageStateVisualLayers.BaseUnshaded"]
+      state: coal
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+        BaseUnshaded: coal
+      Dead:
+        Base: dead
+        BaseUnshaded: dead_coal
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/picaxe2.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 3
+            max: 5
+          CECoal1:
+            min: 8
+            max: 16
+          CEStoneHeart:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: CEMobOreSpiderBase
+  id: CEMobOreSpiderGold
+  name: gold ore spider
+  categories: [ ForkFiltered ]
+  components:
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+        BaseUnshaded: gold
+      Dead:
+        Base: dead
+        BaseUnshaded: dead_gold
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/picaxe2.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 3
+            max: 5
+          CEGoldOre1:
+            min: 8
+            max: 16
+          CEStoneHeart:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+#MARK: Ore spider attack
+
+# Two jaws: they slowly open in front of the spider (telegraphy), then snap shut in the center. No lunge.
+- type: entityEffectAnimation
+  id: OreSpiderClaws
+  movementSpeed: 0.5
+  duration: 1.7
+  lockRotation: true
+  events:
+    0:
+    - !type:UsedEntityAnimation
+      dummyEntity: CEOreSpiderClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -0.3, -0.6
+      - time: 0.7
+        offset: -0.8, -0.4
+        easing: QuadOut
+      - time: 0.8
+        offset: -0.15, -0.8
+        easing: QuadIn
+      - time: 1.1
+        offset: -0.15, -0.8
+
+      rotationAnimation:
+      - time: 0.0
+        rotation: -20
+      - time: 0.7
+        rotation: -70
+        easing: QuadOut
+      - time: 0.8
+        rotation: -10
+        easing: QuadIn
+      - time: 1.1
+        rotation: -10
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.9
+        color: "#ffffff"
+      - time: 1.1
+        color: "#ffffff00"  # Fade out
+        easing: QuadOut
+
+      scaleAnimation:
+      - time: 0.0
+        scale: 1, 1
+    - !type:UsedEntityAnimation
+      dummyEntity: CEOreSpiderClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 0.3, -0.6
+      - time: 0.7
+        offset: 0.8, -0.4
+        easing: QuadOut
+      - time: 0.8
+        offset: 0.15, -0.8
+        easing: QuadIn
+      - time: 1.1
+        offset: 0.15, -0.8
+
+      rotationAnimation:
+      - time: 0.0
+        rotation: 20
+      - time: 0.7
+        rotation: 70
+        easing: QuadOut
+      - time: 0.8
+        rotation: 10
+        easing: QuadIn
+      - time: 1.1
+        rotation: 10
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.9
+        color: "#ffffff"
+      - time: 1.1
+        color: "#ffffff00"  # Fade out
+        easing: QuadOut
+
+      scaleAnimation:
+      - time: 0.0
+        scale: -1, 1
+    0.8:
+    - !type:WeaponEffectSlot
+      slot: OnHit
+
+- type: entity
+  id: CEOreSpiderClawEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/arcs.rsi
+    state: ore_spider
+    drawdepth: Effects
+
+#MARK: Ore spider lunge
+
+- type: entity
+  id: CEActionOreSpiderLunge
+  name: Ore spider lunge
+  description: Lunge at the target, knocking it down and throwing it back.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeWideLineAction
+    width: 0.5
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 30
+  - type: Sprite
+    sprite: _CE/Mobs/orecrabspider.rsi
+    layers:
+    - state: base
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 2
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: OreSpiderLunge
+
+# Crouches, then dashes at the target and knocks down whatever is in front of it.
+- type: entityEffectAnimation
+  id: OreSpiderLunge
+  lockRotation: true
+  movementSpeed: 0
+  duration: 1.2
+  events:
+    0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Items/unsheath.ogg
+        params:
+          variation: 0.1
+          pitch: 0.5
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.4
+        scale: 1.15, 0.85
+      - time: 0.5
+        scale: 0.9, 1.1
+      - time: 0.7
+        scale: 1, 1
+    0.8:
+    - !type:Dash
+      distance: 2.5
+      speed: 8
+      ignoreFriction: true
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+        params:
+          variation: 0.1
+          pitch: 0.5
+    1:
+    - !type:WeaponArcAttack
+      arcWidth: 190
+      rangeMultiplier: 2
+      effects:
+      - !type:PlaySound
+        positional: true
+        sound:
+          path: /Audio/Magic/rumble.ogg
+          params:
+            variation: 0.1
+      - !type:SpawnEntity
+        effectTarget: Target
+        spawns:
+        - CEDustTileEffect
+      - !type:Knockdown
+        dropItems: true
+        duration: 2
+      - !type:ThrowFrom
+        distance: 1.5
+        effectTarget: Target
+        origin: User
+        throwPower: 3

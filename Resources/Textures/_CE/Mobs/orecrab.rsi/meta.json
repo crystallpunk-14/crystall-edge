@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "All rights reserved",
+  "copyright": "by TTTomaTTT (github) for CrystallEdge",
+  "states": [
+    {
+      "name": "copper",
+      "directions": 4
+    },
+    {
+      "name": "silver",
+      "directions": 4
+    },
+    {
+      "name": "gold",
+      "directions": 4
+    },
+    {
+      "name": "mithril",
+      "directions": 4
+    },
+    {
+      "name": "dead_copper"
+    },
+    {
+      "name": "dead_silver"
+    },
+    {
+      "name": "dead_gold"
+    },
+    {
+      "name": "dead_mithril"
+    }
+  ]
+}

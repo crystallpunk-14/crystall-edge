@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "license": "All rights reserved",
+  "copyright": "by TTTomaTTT (github) for CrystallEdge",
+  "states": [
+    {
+      "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "coal",
+      "directions": 4
+    },
+    {
+      "name": "copper",
+      "directions": 4
+    },
+    {
+      "name": "silver",
+      "directions": 4
+    },
+    {
+      "name": "gold",
+      "directions": 4
+    },
+    {
+      "name": "mithril",
+      "directions": 4
+    },
+    {
+      "name": "emerald",
+      "directions": 4
+    },
+    {
+      "name": "ruby",
+      "directions": 4
+    },
+    {
+      "name": "sapphire",
+      "directions": 4
+    },
+    {
+      "name": "topaz",
+      "directions": 4
+    },
+    {
+      "name": "dead"
+    },
+    {
+      "name": "dead_coal"
+    },
+    {
+      "name": "dead_copper"
+    },
+    {
+      "name": "dead_silver"
+    },
+    {
+      "name": "dead_gold"
+    },
+    {
+      "name": "dead_mithril"
+    },
+    {
+      "name": "dead_emerald"
+    },
+    {
+      "name": "dead_ruby"
+    },
+    {
+      "name": "dead_sapphire"
+    },
+    {
+      "name": "dead_topaz"
+    }
+  ]
+}

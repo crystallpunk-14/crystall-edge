@@ -4,6 +4,7 @@ using Content.Server.NPC.Pathfinding;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC;
+using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Actions;
@@ -12,6 +13,8 @@ namespace Content.Server._CE.GOAP.Actions;
 /// Flee away from its current target using BFS over pathfinding polygons.
 /// Every recalculation interval, performs a BFS from the NPC's current tile
 /// and picks the reachable tile farthest from the threat.
+/// Can't execute (and fails while running) when no tile gets farther from the threat by at least
+/// <see cref="MinGain"/>: the agent is cornered and the planner falls back to other actions.
 /// </summary>
 public sealed partial class CEGOAPFleeAction : CEGOAPActionBase<CEGOAPFleeAction>
 {
@@ -26,6 +29,12 @@ public sealed partial class CEGOAPFleeAction : CEGOAPActionBase<CEGOAPFleeAction
     /// </summary>
     [DataField]
     public float RecalculateInterval = 1f;
+
+    /// <summary>
+    /// How much farther from the threat than the agent's current position a flee point has to be, in tiles.
+    /// </summary>
+    [DataField]
+    public float MinGain = 0.5f;
 }
 
 public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFleeAction>
@@ -36,6 +45,16 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
     [Dependency] private SharedTransformSystem _transform = default!;
 
     private readonly Dictionary<EntityUid, TimeSpan> _nextRecalc = new();
+
+    protected override void OnCanExecute(
+        Entity<CEGOAPComponent> ent,
+        ref CEGOAPActionCanExecuteEvent<CEGOAPFleeAction> args)
+    {
+        if (Goap.ResolveTarget(ent, args.Action.Target).Entity is not { } target)
+            return;
+
+        args.CanExecute = TryFindFleePoint(ent, target, args.Action, out _);
+    }
 
     protected override void OnActionStartup(
         Entity<CEGOAPComponent> ent,
@@ -63,8 +82,14 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         // Recalculate flee destination periodically.
         if (_timing.CurTime >= _nextRecalc.GetValueOrDefault(ent))
         {
-            FindAndRegisterFleeTarget(ent, target, args.Action);
             _nextRecalc[ent] = _timing.CurTime + TimeSpan.FromSeconds(args.Action.RecalculateInterval);
+
+            // Cornered: let the planner pick something else.
+            if (!FindAndRegisterFleeTarget(ent, target, args.Action))
+            {
+                args.Status = CEGOAPActionStatus.Failed;
+                return;
+            }
         }
 
         switch (_steering.Continue(ent))
@@ -91,20 +116,40 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
     }
 
     /// <summary>
-    /// BFS over PathPoly neighbors from the NPC's current position.
-    /// Picks the reachable tile farthest from the threat within MaxBfsIterations depth.
+    /// Steers the agent to the flee point. Returns false when the agent is cornered.
     /// </summary>
-    private void FindAndRegisterFleeTarget(
+    private bool FindAndRegisterFleeTarget(
         Entity<CEGOAPComponent> ent,
         EntityUid threat,
         CEGOAPFleeAction action)
     {
-        var npcCoords = Transform(ent).Coordinates;
+        if (!TryFindFleePoint(ent, threat, action, out var fleePoint))
+            return false;
+
+        _steering.Navigate(ent, fleePoint, 1.5f);
+        return true;
+    }
+
+    /// <summary>
+    /// BFS over PathPoly neighbors from the NPC's current position.
+    /// Picks the reachable tile farthest from the threat within MaxBfsIterations depth,
+    /// as long as it is at least <see cref="CEGOAPFleeAction.MinGain"/> farther than the NPC itself.
+    /// </summary>
+    private bool TryFindFleePoint(
+        EntityUid uid,
+        EntityUid threat,
+        CEGOAPFleeAction action,
+        out EntityCoordinates fleePoint)
+    {
+        fleePoint = default;
+
+        var npcCoords = Transform(uid).Coordinates;
         var startPoly = _pathfinding.GetPoly(npcCoords);
         if (startPoly == null)
-            return;
+            return false;
 
         var threatWorldPos = _transform.GetWorldPosition(Transform(threat));
+        var minDist = Vector2.Distance(_transform.ToMapCoordinates(npcCoords).Position, threatWorldPos) + action.MinGain;
 
         // BFS: explore neighbors up to MaxBfsIterations depth.
         var visited = new HashSet<PathPoly> { startPoly };
@@ -147,9 +192,10 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
             frontier = nextFrontier;
         }
 
-        if (bestPoly == null)
-            return;
+        if (bestPoly == null || bestDistSq < minDist * minDist)
+            return false;
 
-        _steering.Navigate(ent, bestPoly.Coordinates, 1.5f);
+        fleePoint = bestPoly.Coordinates;
+        return true;
     }
 }

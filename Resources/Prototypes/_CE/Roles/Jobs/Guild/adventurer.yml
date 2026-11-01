@@ -15,6 +15,9 @@
   id: CEAdventurerGear
   equipment:
     pocket1: CEWalletFilledAdventurer
+  storage:
+    back:
+    - CECompassLucson
 
 - type: entity
   id: CEWalletFilledAdventurer

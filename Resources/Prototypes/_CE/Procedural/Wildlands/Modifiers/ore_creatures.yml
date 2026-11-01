@@ -1,0 +1,64 @@
+# Ore crabs and ore spiders: living stone under any roof of the wildlands, mostly the caves.
+# They sleep until a player comes near, so a full map of them costs nothing while unvisited.
+# One modifier per creature: effects of a single modifier share its seed, so with the same mask
+# they would shuffle the tiles identically and stack every creature on the same spots.
+
+- type: entity
+  id: CEWildlandsModifierOreCrabsGold
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnEntities
+      entity: CEMobOreCrabGold
+      count:
+        min: 100
+        max: 100
+      mask:
+      - !type:RoofedMask
+      - !type:NoEntityMask
+      - !type:TileMask
+        inverted: true
+        tiles:
+        - Space
+
+- type: entity
+  id: CEWildlandsModifierOreSpidersCoal
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnEntities
+      entity: CEMobOreSpiderCoal
+      count:
+        min: 100
+        max: 100
+      mask:
+      - !type:RoofedMask
+      - !type:NoEntityMask
+      - !type:TileMask
+        inverted: true
+        tiles:
+        - Space
+
+- type: entity
+  id: CEWildlandsModifierOreSpidersGold
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnEntities
+      entity: CEMobOreSpiderGold
+      count:
+        min: 80
+        max: 80
+      mask:
+      - !type:RoofedMask
+      - !type:NoEntityMask
+      - !type:TileMask
+        inverted: true
+        tiles:
+        - Space

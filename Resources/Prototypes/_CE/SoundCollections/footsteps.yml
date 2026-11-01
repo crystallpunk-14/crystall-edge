@@ -22,3 +22,10 @@
   - /Audio/_CE/Effects/Footsteps/heels3.ogg
   - /Audio/_CE/Effects/Footsteps/heels4.ogg
   - /Audio/_CE/Effects/Footsteps/heels5.ogg
+
+- type: soundCollection
+  id: CEStepOreSpider
+  files:
+  - /Audio/_CE/Effects/Footsteps/ore_spider_step1.ogg
+  - /Audio/_CE/Effects/Footsteps/ore_spider_step2.ogg
+  - /Audio/_CE/Effects/Footsteps/ore_spider_step3.ogg

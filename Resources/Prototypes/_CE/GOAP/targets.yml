@@ -18,3 +18,6 @@
 
 - type: GOAPTarget
   id: Home
+
+- type: GOAPTarget
+  id: Threat

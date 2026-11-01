@@ -1,0 +1,15 @@
+<Document>
+
+# Stone hearts
+
+<Box>
+  <GuideEntityEmbed Entity="CEMobOreCrabGold" Caption=""/>
+  <GuideEntityEmbed Entity="CEMobOreSpiderGold" Caption=""/>
+  <GuideEntityEmbed Entity="CEStoneHeart" Caption=""/>
+</Box>
+
+A stone heart beats inside every ore crab and ore spider: creatures of living stone overgrown with ore. Both live in the caves below the surface.
+
+Their stone bodies shrug off most weapons. A pickaxe is the right tool: it kills them fastest. The body stays behind after death; keep mining it with the pickaxe until it cracks open, spilling stone, ore and the stone heart.
+
+</Document>

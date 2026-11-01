@@ -951,3 +951,12 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingWristwatchGold
+
+- type: tradeOffer
+  id: BuyCompassLucson
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECompassLucson
