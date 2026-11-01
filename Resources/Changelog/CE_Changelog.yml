@@ -1662,3 +1662,20 @@
   id: 1141
   time: '2026-10-30T16:27:15.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/577
+- author: TheShuEd
+  changes:
+  - message: Added the ability to cut clothing into fabric
+    type: Add
+  - message: Wristwatches now display the time from pockets and even the belt, and
+      can now be worn on the belt.
+    type: Fix
+  - message: Fixed a bug where a small pool of blood prevented players from growing
+      plants
+    type: Fix
+  - message: Fixed the overlapping of murk and weather overlays
+    type: Fix
+  - message: Fixed a bug with broken mob collision
+    type: Fix
+  id: 1142
+  time: '2026-11-01T11:36:27.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/583
