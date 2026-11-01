@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEClothingHeadBase
+  parent: CEClothingHeadBaseButcherable
   id: CEClothingHeadBandanaAlchemist
   name: alchemist's bandana
   description: Hides your hair from chemical fumes

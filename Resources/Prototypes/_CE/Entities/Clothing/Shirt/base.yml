@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [Clothing, BaseSlicingRefinable]
   id: CEClothingShirtBase
   description: Pleasant to the touch material, in a comfortable loose shirt shape.
   categories: [ ForkFiltered ]
@@ -12,3 +12,10 @@
     - shirt
   - type: Sprite
     state: icon
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 20

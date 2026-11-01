@@ -21,6 +21,13 @@
     sprite: _CE/Clothing/Cloak/Generic/Cape/fur.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Generic/Cape/fur.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 20
 
 - type: entity
   parent:
@@ -33,3 +40,10 @@
     sprite: _CE/Clothing/Cloak/Generic/Cape/fur2.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Generic/Cape/fur2.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 20

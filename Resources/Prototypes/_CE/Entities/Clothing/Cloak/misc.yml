@@ -9,6 +9,13 @@
     sprite: _CE/Clothing/Cloak/Generic/leather_apron.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Generic/leather_apron.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 20
 
 - type: entity
   parent:
@@ -21,6 +28,13 @@
     sprite: _CE/Clothing/Cloak/Generic/cheetah_skin.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Generic/cheetah_skin.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CELeather1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 20
 
 - type: entity
   parent:

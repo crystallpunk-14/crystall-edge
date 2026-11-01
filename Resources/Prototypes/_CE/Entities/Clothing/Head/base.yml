@@ -15,3 +15,15 @@
   - type: Item
     size: Normal
     storedRotation: -90
+
+- type: entity
+  abstract: true
+  parent: [CEClothingHeadBase, BaseSlicingRefinable]
+  id: CEClothingHeadBaseButcherable
+  components:
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10

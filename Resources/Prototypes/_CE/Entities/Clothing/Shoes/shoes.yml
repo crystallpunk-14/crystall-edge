@@ -47,15 +47,6 @@
     sprite: _CE/Clothing/Shoes/Generic/long_leather_boots.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shoes/Generic/long_leather_boots.rsi
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    CELeather: 5
-  #    CECloth: 5
-  #- type: Butcherable
-  #  butcheringType: Knife
-  #  spawned:
-  #  - id: CEThinLeather1
-  #    amount: 1
 
 - type: entity
   parent: CEClothingShoesBase
@@ -72,6 +63,12 @@
       collection: FootstepJester
       params:
         variation: 0.07
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10
 
 - type: entity
   parent: CEClothingShoesBase
@@ -83,6 +80,12 @@
     sprite: _CE/Clothing/Shoes/Generic/pink_slippers.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shoes/Generic/pink_slippers.rsi
+  - type: ToolRefinable
+    refineResult:
+    - id: CECloth1
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 10
 
 - type: entity
   parent: CEClothingShoesBase
