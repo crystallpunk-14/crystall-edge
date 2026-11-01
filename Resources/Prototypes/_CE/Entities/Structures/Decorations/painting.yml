@@ -90,7 +90,7 @@
     state: fire_paiting
 
 - type: entity
-  id: CEWallmountPaintingFire
+  id: CEWallmountPaintingFishing
   name: painting of a fishing
   parent: CEBaseWallmountPainting
   description: A painting of a fishing scene capturing the moment of the catch.
