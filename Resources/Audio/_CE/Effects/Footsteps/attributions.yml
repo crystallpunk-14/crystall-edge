@@ -13,3 +13,8 @@
   license: "CC0-1.0"
   copyright: "Sound from viwright2112: https://freesound.org/people/viwright2112/"
   source: "https://freesound.org/people/viwright2112/sounds/630367/"
+
+- files: ["ore_spider_step1.ogg", "ore_spider_step2.ogg", "ore_spider_step3.ogg"]
+  license: "CC0-1.0"
+  copyright: "Made by Ed (CrystallEdge) from carrin_step1-3.ogg by 5ro4: three pitched-down layered taps"
+  source: "https://freesound.org/people/5ro4/sounds/611105/"

@@ -138,6 +138,18 @@
       state: gold
   - type: MovementSpeedModifier
     baseSprintSpeed: 3.4
+  # Stone tapping, audible from afar and through walls
+  - type: Tag
+    tags:
+    - FootstepSound
+  - type: MobMover
+    stepSoundMoveDistanceRunning: 1.4
+    stepSoundMoveDistanceWalking: 1.4
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: CEStepOreSpider
+      params:
+        maxDistance: 20
   - type: CEWeapon
     range: 0.5
     hitSound:
@@ -381,9 +393,15 @@
   id: OreSpiderLunge
   lockRotation: true
   movementSpeed: 0
-  duration: 1
+  duration: 1.2
   events:
     0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Items/unsheath.ogg
+        params:
+          variation: 0.1
+          pitch: 0.5
     - !type:UserAnimation
       scaleAnimation:
       - time: 0
@@ -394,7 +412,7 @@
         scale: 0.9, 1.1
       - time: 0.7
         scale: 1, 1
-    0.4:
+    0.8:
     - !type:Dash
       distance: 2.5
       speed: 8
@@ -406,7 +424,7 @@
         params:
           variation: 0.1
           pitch: 0.5
-    0.7:
+    1:
     - !type:WeaponArcAttack
       arcWidth: 190
       rangeMultiplier: 2
