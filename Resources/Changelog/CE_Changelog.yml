@@ -1600,3 +1600,23 @@
   id: 1136
   time: '2026-10-27T21:14:56.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/565
+- author: TheShuEd
+  changes:
+  - message: Key keeper job now have 1gp salary per day
+    type: Add
+  - message: "Added the hidden \u201CBodyguard\u201D role. Its objective is to protect\
+      \ one other player; it always knows where that player is."
+    type: Add
+  - message: "Added the hidden role of \u201CHelper.\u201D Their objective is to ensure\
+      \ that another player completes all of their objectives. They always know where\
+      \ that player is."
+    type: Add
+  - message: "Removed the hidden role of \u201CLover\u201D"
+    type: Remove
+  - message: Lockpicks no longer break
+    type: Tweak
+  - message: Lockpicking speed has been doubled
+    type: Tweak
+  id: 1137
+  time: '2026-10-28T14:01:56.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/567
