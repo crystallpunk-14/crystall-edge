@@ -1653,3 +1653,12 @@
   id: 1140
   time: '2026-10-30T12:14:51.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/576
+- author: TheShuEd
+  changes:
+  - message: Added Carrin emotes
+    type: Add
+  - message: Species selection design was improved
+    type: Add
+  id: 1141
+  time: '2026-10-30T16:27:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/577
