@@ -9,6 +9,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -31,6 +32,8 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
     [Dependency] private SharedStackSystem _stack = default!;
+
+    [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
     protected EntityQuery<CEPlantComponent> PlantQuery;
     protected EntityQuery<CEPlantProducingComponent> PlantProducingQuery;
