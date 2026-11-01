@@ -53,7 +53,15 @@ public sealed partial class MobCollisionComponent : Component
     /// Fixture to listen to for mob collisions.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public string FixtureId = "flammable";
+    public string FixtureId = "mobCollision"; // CrystallEdge: own sensor fixture instead of upstream's "flammable"
+
+    // CrystallEdge: mobs no longer have Flammable, so MobCollision creates its own sensor fixture
+    /// <summary>
+    /// Radius of the sensor fixture created on map init if <see cref="FixtureId"/> is missing.
+    /// </summary>
+    [DataField]
+    public float Radius = 0.35f;
+    // CrystallEdge end
 
     [DataField, AutoNetworkedField]
     public Vector2 Direction;
