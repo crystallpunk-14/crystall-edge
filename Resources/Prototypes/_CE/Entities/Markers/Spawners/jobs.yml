@@ -214,30 +214,6 @@
       state: equipped-HELMET
 
 - type: entity
-  id: CESpawnPointKeyKeeper
-  parent: CESpawnPointJobBase
-  name: key keeper
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEKeyKeeper
-  - type: Sprite
-    layers:
-    - sprite: _CE/Markers/jobs.rsi
-      state: green
-    - sprite: _CE/Mobs/Species/Human/parts.rsi
-      state: full
-    - sprite: _CE/Clothing/Pants/KeyKeeper/pants.rsi
-      state: equipped-PANTS
-    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
-      state: equipped-FEET
-    - sprite: _CE/Clothing/Shirt/KeyKeeper/shirt.rsi
-      state: equipped-SHIRT
-    - sprite: _CE/Clothing/Head/KeyKeeper/cap.rsi
-      state: equipped-HELMET
-
-- type: entity
   id: CESpawnPointTownfolk
   parent: CESpawnPointJobBase
   name: jobless

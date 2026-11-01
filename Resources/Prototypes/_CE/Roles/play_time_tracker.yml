@@ -40,6 +40,3 @@
 
 - type: playTimeTracker
   id: CEJobBard
-
-- type: playTimeTracker
-  id: CEJobKeyKeeper
