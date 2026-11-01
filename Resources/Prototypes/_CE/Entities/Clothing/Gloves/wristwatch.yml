@@ -9,6 +9,9 @@
     state: brass
   - type: Clothing
     sprite: _CE/Objects/Tools/wristwatch.rsi
+    slots:
+    - gloves
+    - belt
   - type: Item
     shape:
     - 0, 0, 0, 1

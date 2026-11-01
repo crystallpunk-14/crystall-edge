@@ -4,12 +4,12 @@ namespace Content.Shared._CE.DayCycle;
 
 /// <summary>
 /// Raised on an entity to determine whether it can currently sense the time of day.
-/// Relayed to worn clothing (except pockets) and to active status effects.
+/// Relayed to items in any inventory slot and to active status effects.
 /// </summary>
 [ByRefEvent]
 public record struct CECheckTimeSenseEvent : IInventoryRelayEvent
 {
-    public const SlotFlags Slots = SlotFlags.WITHOUT_POCKET;
+    public const SlotFlags Slots = SlotFlags.All;
 
     public SlotFlags TargetSlots => Slots;
 
