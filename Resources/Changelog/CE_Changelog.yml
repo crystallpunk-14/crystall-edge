@@ -1679,3 +1679,15 @@
   id: 1142
   time: '2026-11-01T11:36:27.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/583
+- author: TheShuEd
+  changes:
+  - message: Added orecrabs and orespiders into caves!
+    type: Add
+  - message: Added adventurers compass
+    type: Add
+  - message: New adventurers main quest - stone hearts, they are falling from ore
+      spiders
+    type: Add
+  id: 1143
+  time: '2026-11-01T14:32:14.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/584
