@@ -61,3 +61,201 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+
+- type: entity
+  id: CEWallmountPaintingAelyta
+  name: aelyta painting
+  parent: CEBaseWallmountPainting
+  description: A painting of a flower meadow, stretching to the horizon.
+  components:
+  - type: Sprite
+    state: aelyta_paiting
+
+- type: entity
+  id: CEWallmountPaintingCarcat
+  name: painting of a carcat
+  parent: CEBaseWallmountPainting
+  description: Portrait of a prosperous carcat
+  components:
+  - type: Sprite
+    state: carcat_paiting
+
+- type: entity
+  id: CEWallmountPaintingFire
+  name: fire painting
+  parent: CEBaseWallmountPainting
+  description: Abstract drawing of fire. Doesn't warm up.
+  components:
+  - type: Sprite
+    state: fire_paiting
+
+- type: entity
+  id: CEWallmountPaintingFire
+  name: painting of a fishing
+  parent: CEBaseWallmountPainting
+  description: A painting of a fishing scene capturing the moment of the catch.
+  components:
+  - type: Sprite
+    state: fishing_paiting
+
+- type: entity
+  id: CEWallmountPaintingFlem
+  name: flem painting
+  parent: CEBaseWallmountPainting
+  description: A painting of a two-legged fish. A fish of dreams.
+  components:
+  - type: Sprite
+    state: flem_paiting
+
+- type: entity
+  id: CEWallmountPaintingFroze
+  name: froze painting
+  parent: CEBaseWallmountPainting
+  description: Abstract drawing of freezing. Cool to the touch.
+  components:
+  - type: Sprite
+    state: froze_paiting
+
+- type: entity
+  id: CEWallmountPaintingLootgob
+  name: painting of a lootgob
+  parent: CEBaseWallmountPainting
+  description: A portrait of a goblin. A good goblin.
+  components:
+  - type: Sprite
+    state: lootgob_paiting
+
+- type: entity
+  id: CEWallmountPaintingLumera
+  name: painting of a lumera
+  parent: CEBaseWallmountPainting
+  description: A painting dedicated to Lumera. A free interpretation by an unknown artist.
+  components:
+  - type: Sprite
+    state: lumera_paiting
+
+- type: entity
+  id: CEWallmountPaintingArmorratus
+  name: painting of a armorattus
+  parent: CEBaseWallmountPainting
+  description: Portrait of Sir Armorratus. The envious call him a mouse.
+  components:
+  - type: Sprite
+    state: paiting_armorattus
+
+- type: entity
+  id: CEWallmountPaintingHedgehog
+  name: painting of a hedgehog
+  parent: CEBaseWallmountPainting
+  description: A drawing of a hedgehog in a chef's hat. An unusual combination.
+  components:
+  - type: Sprite
+    state: paiting_ezik
+
+- type: entity
+  id: CEWallmountPaintingFight
+  name: fight painting
+  parent: CEBaseWallmountPainting
+  description: A painting depicting a battle scene of pot warriors.
+  components:
+  - type: Sprite
+    state: paiting_fight
+
+- type: entity
+  id: CEWallmountPaintingGnome
+  name: painting of a gnome
+  parent: CEBaseWallmountPainting
+  description: A portrait of a gnome. Few have ever seen them in the flesh.
+  components:
+  - type: Sprite
+    state: paiting_gnome
+
+- type: entity
+  id: CEWallmountPaintingGoblin
+  name: painting of a goblin
+  parent: CEBaseWallmountPainting
+  description: A painting of a goblin with a stately nose.
+  components:
+  - type: Sprite
+    state: paiting_goblin
+
+- type: entity
+  id: CEWallmountPaintingLurker
+  name: painting of a lurker
+  parent: CEBaseWallmountPainting
+  description: A painting of a monster lurking in the shadows.
+  components:
+  - type: Sprite
+    state: paiting_lurker
+
+- type: entity
+  id: CEWallmountPaintingOmsoyk
+  name: painting of food
+  parent: CEBaseWallmountPainting
+  description: A drawing of a mouse made from food.
+  components:
+  - type: Sprite
+    state: paiting_omsoyk
+
+- type: entity
+  id: CEWallmountPaintingRain
+  name: rain painting
+  parent: CEBaseWallmountPainting
+  description: A painting of rain. One feels a sense of coziness.
+  components:
+  - type: Sprite
+    state: paiting_rain
+
+- type: entity
+  id: CEWallmountPaintingRich
+  name: rich painting
+  parent: CEBaseWallmountPainting
+  description: A painting of a goblin bathing in a mountain of gold.
+  components:
+  - type: Sprite
+    state: paiting_rich
+
+- type: entity
+  id: CEWallmountPaintingViator
+  name: silhouette painting
+  parent: CEBaseWallmountPainting
+  description: Portrait of one of the former architects of the city.
+  components:
+  - type: Sprite
+    state: paiting_viator
+
+- type: entity
+  id: CEWallmountPaintingPitchforks
+  name: painting of a pitchforks
+  parent: CEBaseWallmountPainting
+  description: A painting of a peasant with pitchforks.
+  components:
+  - type: Sprite
+    state: pitchforks_paiting
+
+- type: entity
+  id: CEWallmountPaintingPot
+  name: painting of a pot
+  parent: CEBaseWallmountPainting
+  description: A painting of a potted soldier.
+  components:
+  - type: Sprite
+    state: pot_paiting
+
+- type: entity
+  id: CEWallmountPaintingSquid
+  name: painting of a squid
+  parent: CEBaseWallmountPainting
+  description: The painting is likely a squid. A breath of the new movement.
+  components:
+  - type: Sprite
+    state: squid_paiting
+
+- type: entity
+  id: CEWallmountPaintingSunset
+  name: painting of a sunset
+  parent: CEBaseWallmountPainting
+  description: A painting of a sunset. Once, long ago, the sky was cloaked in blood.
+  components:
+  - type: Sprite
+    state: sunset_paiting
