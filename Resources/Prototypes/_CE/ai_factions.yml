@@ -2,9 +2,17 @@
   id: CEImperial
   hostile:
   - CEHostileEveryone
+  - CEStoneCrabs
 
 - type: npcFaction
   id: CEHostileEveryone
   hostile:
   - CEImperial
+  - CEStoneCrabs
 
+# Ore crabs and ore spiders: allies to each other, hostile to everyone else
+- type: npcFaction
+  id: CEStoneCrabs
+  hostile:
+  - CEImperial
+  - CEHostileEveryone

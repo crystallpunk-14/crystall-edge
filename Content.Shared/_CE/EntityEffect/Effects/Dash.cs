@@ -1,4 +1,5 @@
 ﻿using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Throwing;
 using Robust.Shared.Prototypes;
 
@@ -17,6 +18,13 @@ public sealed partial class Dash : CEEntityEffectBase<Dash>
     [DataField]
     public float Distance = 1f;
 
+    /// <summary>
+    /// Removes the mob's movement friction for the flight time, so the dash covers the whole <see cref="Distance"/>.
+    /// Without it mob friction eats most of a long dash.
+    /// </summary>
+    [DataField]
+    public bool IgnoreFriction;
+
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
         Loc.GetString("ce-entity-effect-guidebook-dash", ("distance", Distance));
 }
@@ -24,6 +32,7 @@ public sealed partial class Dash : CEEntityEffectBase<Dash>
 public sealed partial class CEDashEffectSystem : CEEntityEffectSystem<Dash>
 {
     [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     [Dependency] private EntityQuery<CEZPhysicsComponent> _zPhys = default!;
 
@@ -38,10 +47,16 @@ public sealed partial class CEDashEffectSystem : CEEntityEffectSystem<Dash>
                 return;
         }
 
+        var distance = args.Effect.Distance * args.Args.Power;
+        var speed = args.Effect.Speed * args.Args.Power;
+
+        if (args.Effect.IgnoreFriction && speed > 0)
+            _movementMod.TryAddFrictionModDuration(entity, TimeSpan.FromSeconds(distance / speed), 0f);
+
         _throwing.TryThrow(
             entity,
-            args.Args.Angle.ToWorldVec() * (args.Effect.Distance * args.Args.Power),
-            args.Effect.Speed * args.Args.Power,
+            args.Args.Angle.ToWorldVec() * distance,
+            speed,
             entity,
             animated: false,
             doSpin: false);

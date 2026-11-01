@@ -39,3 +39,7 @@
 
 - type: GOAPCondition
   id: WalkingAround
+
+# Coward
+- type: GOAPCondition
+  id: Safe

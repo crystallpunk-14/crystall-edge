@@ -1,0 +1,15 @@
+- type: entity
+  id: CEStoneHeart
+  parent: BaseItem
+  name: stone heart
+  description: The still-warm heart of a living stone creature.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Materials/stone_heart.rsi
+    layers:
+    - state: base
+    - state: light
+      shader: unshaded

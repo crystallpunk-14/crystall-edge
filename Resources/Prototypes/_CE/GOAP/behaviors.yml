@@ -172,3 +172,32 @@
     effects:
       ConversationContinued: true
     cost: 1
+
+# Runs away from the nearest conscious enemy while it is around, and bites it only when cornered.
+- type: GOAPBehavior
+  id: Coward
+  targets:
+    Threat: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:InEnemyFaction
+      - !type:Incapacitated
+        inverted: true
+  goals:
+  - desiredState:
+      Safe: true
+    priority: 1
+  actions:
+  - !type:CEGOAPFleeAction
+    target: Threat
+    effects:
+      Safe: true
+    cost: 1
+  # Flee can't execute while cornered, so this is the fallback.
+  - !type:CEGOAPMeleeAttackAction
+    target: Threat
+    range: 1
+    effects:
+      Safe: true
+    cost: 5
+    useType: Primary
+    angleVariation: 5
