@@ -12,4 +12,7 @@
     layers:
     - state: base
     - state: light
-      shader: unshaded
+  - type: PointLight
+    color: "#be368a"
+    radius: 1.4
+    energy: 5

@@ -9,6 +9,7 @@
   - CEGuideGoldEN
   - CEGuideDiamondsEN
   - CEGuideLumishroomsEN
+  - CEGuideStoneHeartEN
 
 - type: guideEntry
   hidden: false
@@ -21,6 +22,7 @@
   - CEGuideGoldRU
   - CEGuideDiamondsRU
   - CEGuideLumishroomsRU
+  - CEGuideStoneHeartRU
 
 - type: guideEntry
   hidden: false
@@ -73,5 +75,23 @@
   id: CEGuideLumishroomsRU
   name: Люмигрибы
   text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/Lumishrooms.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEGuideStoneHeartEN
+  name: Stone hearts
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/StoneHearts.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEGuideStoneHeartRU
+  name: Каменные сердца
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/StoneHearts.xml"
   filterEnabled: True
   children: []

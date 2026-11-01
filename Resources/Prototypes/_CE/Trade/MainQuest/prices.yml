@@ -43,6 +43,17 @@
   - CEGuideLumishroomsEN
   - CEGuideLumishroomsRU
 
+- type: mainQuestPrice
+  id: MainQuestStoneHearts
+  department: CEGuild
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEStoneHeart
+    count: 5
+  guidebook:
+  - CEGuideStoneHeartEN
+  - CEGuideStoneHeartRU
+
 #MARK: Tavern
 
 - type: mainQuestPrice

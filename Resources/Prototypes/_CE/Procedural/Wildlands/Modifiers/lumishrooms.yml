@@ -10,8 +10,8 @@
     - !type:SpawnEntities
       entity: CEPlantLumishroomGrown
       count:
-        min: 200
-        max: 200
+        min: 300
+        max: 300
       mask:
       - !type:RoofedMask
       - !type:NoEntityMask
