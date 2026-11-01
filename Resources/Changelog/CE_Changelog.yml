@@ -1620,3 +1620,20 @@
   id: 1137
   time: '2026-10-28T14:01:56.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/567
+- author: TheShuEd
+  changes:
+  - message: The weather is now always clear at the start of a round.
+    type: Tweak
+  - message: The number of lumishrooms around the city has been doubled, and several
+      are now guaranteed to spawn inside the city.
+    type: Tweak
+  - message: Diamond ore core resprited
+    type: Tweak
+  - message: The system where plants die from lack of watering has been removed.
+    type: Remove
+  - message: At the end of the round (city failure case), murk gradually engulfs the
+      city and no longer blocks the view for all players.
+    type: Fix
+  id: 1138
+  time: '2026-10-29T10:27:32.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/569
