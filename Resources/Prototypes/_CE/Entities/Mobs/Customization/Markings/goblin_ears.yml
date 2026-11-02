@@ -25,3 +25,13 @@
     - sprite: _CE/Mobs/Customization/goblin_ears.rsi
       state: ears3
 
+- type: marking
+  id: CEGoblinEars4
+  bodyPart: HeadTop
+  groupWhitelist:
+  - CEGoblin
+  forcedColoring: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/goblin_ears.rsi
+    state: ears4
+
