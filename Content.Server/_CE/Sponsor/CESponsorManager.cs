@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -57,6 +58,13 @@ public sealed partial class CESponsorSystem : ICESponsorManager
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
 
         var response = await _httpClient.SendAsync(request);
+
+        //NotFound is the normal answer for a player with no linked Discord / not in the guild
+        if (response.StatusCode == HttpStatusCode.NotFound)
+        {
+            _sawmill.Debug($"No roles found for user {userId}");
+            return null;
+        }
 
         if (!response.IsSuccessStatusCode)
         {

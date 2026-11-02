@@ -90,7 +90,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// <summary>
     /// Every collapse changes a tile and re-dirties the column, so recomputes are throttled.
     /// </summary>
-    private static readonly TimeSpan RecomputeInterval = TimeSpan.FromSeconds(1);
+    private static readonly TimeSpan RecomputeInterval = TimeSpan.FromSeconds(3);
 
     private const int SoundAreaSize = 8;
 

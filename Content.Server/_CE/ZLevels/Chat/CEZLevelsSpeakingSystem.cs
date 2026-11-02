@@ -83,6 +83,10 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
         Timer.Spawn(MessageDelayMilliseconds,
             () =>
             {
+                //Map or transmitter may be gone by now (round restart, z-level teardown)
+                if (TerminatingOrDeleted(transmit))
+                    return;
+
                 _chat.TrySendInGameICMessage(
                     transmit,
                     message,
