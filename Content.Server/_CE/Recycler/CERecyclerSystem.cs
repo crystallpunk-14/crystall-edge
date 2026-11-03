@@ -13,6 +13,7 @@ using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._CE.Recycler;
@@ -56,8 +57,14 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
         _audio.PlayPvs(ent.Comp.RecycleSound, xform.Coordinates);
         _damageable.TryChangeDamage(other, ent.Comp.Damage);
 
-        var spawnPos =
-            xform.Coordinates.Offset(xform.LocalRotation.ToWorldVec().Normalized() * ent.Comp.SpawnOffset);
+        // Eject on the side opposite to where the item came from, so it can't loop back on a conveyor
+        var ourPos = _transform.GetWorldPosition(xform);
+        var passDir = ourPos - _transform.GetWorldPosition(other);
+        if (passDir.LengthSquared() < 0.0001f)
+            passDir = -_transform.GetWorldRotation(xform).ToWorldVec();
+
+        var spawnPos = _transform.ToCoordinates(
+            new MapCoordinates(ourPos + passDir.Normalized() * MathF.Abs(ent.Comp.SpawnOffset), xform.MapID));
 
         if (TryComp<PhysicalCompositionComponent>(other, out var physComp))
         {

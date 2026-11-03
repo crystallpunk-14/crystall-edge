@@ -48,10 +48,16 @@
                 - !type:MachineFrameRegenerateProgress
 
         - to: start
+          conditions:
+            - !type:ContainerEmpty
+              container: machine_board
+            - !type:ContainerEmpty
+              container: machine_parts
           steps:
             - tool: CEMatterManipulation
               doAfter: 2
               completed:
+                - !type:EmptyAllContainers
                 - !type:SpawnPrototype
                   prototype: CEBrassBar1
                   amount: 2

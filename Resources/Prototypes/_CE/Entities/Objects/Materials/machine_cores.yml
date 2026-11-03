@@ -92,12 +92,22 @@
     prototype: CEHeater
 
 - type: entity
-  id: CEMachineCorePress
+  id: CEMachineCoreIndustrialPress
   parent: CEBaseMachineCore
-  name: press machine core
+  name: industrial press machine core
   components:
   - type: MachineBoard
-    prototype: CEPress
+    prototype: CEIndustrialPress
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  id: CEMachineCoreAssemblyShop
+  parent: CEBaseMachineCore
+  name: assembly shop machine core
+  components:
+  - type: MachineBoard
+    prototype: CEAssemblyShop
   - type: StaticPrice
     price: 150
 
@@ -167,7 +177,7 @@
   - type: MachineBoard
     prototype: CEMapProjector
   - type: StaticPrice
-    price: 180
+    price: 85
 
 - type: entity
   id: CEMachineCoreGridProjector
@@ -179,7 +189,7 @@
   - type: MachineBoard
     prototype: CEPowerGridProjector
   - type: StaticPrice
-    price: 250
+    price: 180
 
 # Guild
 

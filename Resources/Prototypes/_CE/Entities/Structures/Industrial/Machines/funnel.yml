@@ -4,7 +4,7 @@
   - CEConstructibleMachine
   - BaseMachine
   name: funnel
-  description: A device for placing items inside storage facilities or removing items from them. To extract items, attach a conveyor belt.
+  description: A device for placing items inside storage facilities or removing items from them. A conveyor belt running away from the storage makes it extract items, running across makes it grab items from the belt. Put sample items inside to filter what it lets through.
   categories: [ ForkFiltered ]
   placement:
     mode: SnapgridCenter
@@ -17,6 +17,14 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.3,0.45,0.3,0.5"
+        hard: true
+        layer:
+        - FullTileLayer
+        - ItemMask
+      side:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
         hard: false
         layer:
         - FullTileLayer
@@ -42,3 +50,19 @@
     - state: base
   - type: CEFunnel
   - type: Rotatable
+  # Filter samples
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    storageOpenSound: /Audio/Effects/closetopen.ogg
+    storageCloseSound: /Audio/Effects/closetclose.ogg
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+      machine_board: !type:Container
+      machine_parts: !type:Container

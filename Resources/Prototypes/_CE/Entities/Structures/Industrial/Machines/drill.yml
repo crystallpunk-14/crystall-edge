@@ -23,7 +23,7 @@
   - type: Fixtures
     fixtures:
       collision:
-        density: 800
+        density: 200
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"

@@ -18,11 +18,11 @@ max_connections = 100
 log_late_msg = false
 
 [game]
-hostname = "⚔️ CrystallEdge ⚔️ [MRP]"
-desc = "History of the Floating Island city of Sword and Magic. A social sandbox reinventing the Space Station 14 concept in fantasy style"
+hostname = "⚔️ CrystallEdge ⚔️"
+desc = "History of the Floating Island city of Sword and Magic. A social deductive sandbox reinventing the Space Station 14 concept in fantasy style"
 lobbyenabled = true
-soft_max_players = 50
-maxplayers = 60
+soft_max_players = 30
+maxplayers = 40
 lobbyduration = 18000
 role_timers = true
 closed_beta_test = true

@@ -21,19 +21,17 @@
     slots:
     - belt
   - type: UseDelay
-    delay: 1
+    delay: 0.5
   - type: Gun
-    fireRate: 1
-    minAngle: 15
-    maxAngle: 35
+    fireRate: 2
+    minAngle: 5
+    maxAngle: 15
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
       collection: BulletMiss
     soundEmpty: null
-  - type: StaticPrice
-    price: 100
   - type: ItemSlots
     slots:
       projectiles:
@@ -58,4 +56,4 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 40
-      CECloth: 5
+      CECloth: 10

@@ -42,8 +42,6 @@
     equipWhileMoving: true
     equipDelay: 1
     unequipDelay: 1
-  - type: StaticPrice
-    price: 25
 
 - type: entity
   parent: CEBaseWeaponStaff
@@ -56,5 +54,5 @@
     state: icon
   - type: PhysicalComposition
     materialComposition:
-      CEWood: 25
+      CEWood: 30
       CEIron: 5

@@ -3,6 +3,7 @@ using Content.Shared.Inventory.Events;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Waypointer;
 
@@ -16,6 +17,7 @@ namespace Content.Shared._CE.Waypointer;
 public abstract partial class CESharedWaypointerSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     [SubscribeLocalEvent]
     protected virtual void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
@@ -33,6 +35,10 @@ public abstract partial class CESharedWaypointerSystem : EntitySystem
     /// </summary>
     public void RefreshWaypointers(EntityUid mob)
     {
+        // Equip events are re-raised while the client applies/resets game state; the networked component arrives with that state anyway.
+        if (_timing.ApplyingState)
+            return;
+
         var ev = new CERefreshWaypointersEvent();
         RaiseLocalEvent(mob, ref ev);
 

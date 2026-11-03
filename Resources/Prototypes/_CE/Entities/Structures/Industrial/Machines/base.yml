@@ -18,6 +18,8 @@
     damageModifierSet: Metallic
   - type: Injurable
     damageContainer: Inorganic
+  - type: Anchorable
+    delay: 0.5
   - type: Destructible
     thresholds:
     - trigger:

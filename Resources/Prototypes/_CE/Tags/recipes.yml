@@ -5,7 +5,10 @@
   id: CERecipeMeltingFurnace
 
 - type: Tag
-  id: CERecipeEngineeringTable
+  id: CERecipePress
+
+- type: Tag
+  id: CERecipeAssemblyShop
 
 - type: Tag
   id: CERecipeKeyForge

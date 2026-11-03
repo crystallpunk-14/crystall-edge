@@ -37,7 +37,6 @@ ce-stack-bones-pile = pile of bones
 
 ce-stack-energy-line = energylines
 ce-stack-coal-diffusor = coal diffusors
-ce-stack-dimensional-matrix = dimensional matrices
 
 ce-stack-medium-brass-pipe = brass pipes
 ce-stack-big-brass-pipe = big brass pipes

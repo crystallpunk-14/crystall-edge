@@ -1,14 +1,14 @@
 - type: workbenchRecipe
-  id: BaseEngineeringTableRecipe
+  id: BaseAssemblyShopRecipe
   abstract: true
-  tag: CERecipeEngineeringTable
-  workbench: CEEngineeringTable
+  tag: CERecipeAssemblyShop
+  workbench: CEAssemblyShop
 
 #MARK: Materials
 
 - type: workbenchRecipe
   id: MachinePartCoalDiffuser
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Materials
   craftTime: 2.0
   requirements:
@@ -29,7 +29,7 @@
 
 - type: workbenchRecipe
   id: MachinePartEnergyLine1
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Materials
   craftTime: 2.0
   requirements:
@@ -47,7 +47,7 @@
 
 - type: workbenchRecipe
   id: EnergyCrystalCell
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Materials
   craftTime: 1.0
   requirements:
@@ -62,7 +62,7 @@
 
 - type: workbenchRecipe
   id: Nail
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Materials
   craftTime: 1.0
   requirements:
@@ -76,7 +76,7 @@
 
 - type: workbenchRecipe
   id: MediumBrassPipe15
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 0.5
   requirements:
@@ -88,7 +88,7 @@
 
 - type: workbenchRecipe
   id: BigBrassPipe15
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 0.5
   requirements:
@@ -100,7 +100,7 @@
 
 - type: workbenchRecipe
   id: PipeValve10
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -112,7 +112,7 @@
 
 - type: workbenchRecipe
   id: Wrench
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -127,7 +127,7 @@
 
 - type: workbenchRecipe
   id: Crowbar
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -142,7 +142,7 @@
 
 - type: workbenchRecipe
   id: Screwdriver
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -157,7 +157,7 @@
 
 - type: workbenchRecipe
   id: WeaponPickaxeIron
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -175,7 +175,7 @@
 
 - type: workbenchRecipe
   id: WeaponShovelIron
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -190,7 +190,7 @@
 
 - type: workbenchRecipe
   id: Lantern
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -208,7 +208,7 @@
 
 - type: workbenchRecipe
   id: ManaTransferGlove
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -226,7 +226,7 @@
 
 - type: workbenchRecipe
   id: ClothingEyesMiningGlasses
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -244,7 +244,7 @@
 
 - type: workbenchRecipe
   id: ClothingEyesEnergyScanner
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -262,7 +262,7 @@
 
 - type: workbenchRecipe
   id: VehicleHoverboard
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -280,7 +280,7 @@
 
 - type: workbenchRecipe
   id: ThirdArm
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -298,7 +298,7 @@
 
 - type: workbenchRecipe
   id: ThirdArmModuleLight
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 1.5
   requirements:
@@ -316,7 +316,7 @@
 
 - type: workbenchRecipe
   id: ThirdArmModuleManipulation
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -336,7 +336,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreMeltingFurnace
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -354,7 +354,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreKeyForge
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -369,7 +369,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreLockForge
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -384,7 +384,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreGeneratorMagicCapacitor
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -405,7 +405,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreEnergyExtractor
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -423,7 +423,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreRecycler
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -441,7 +441,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreDrill
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -458,8 +458,8 @@
   resultCount: 1
 
 - type: workbenchRecipe
-  id: MachineCorePress
-  parent: BaseEngineeringTableRecipe
+  id: MachineCoreIndustrialPress
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -472,12 +472,30 @@
   - !type:StackResource
     stack: CEIronBar
     count: 10
-  result: CEMachineCorePress
+  result: CEMachineCoreIndustrialPress
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: MachineCoreAssemblyShop
+  parent: BaseAssemblyShopRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronBar
+    count: 10
+  result: CEMachineCoreAssemblyShop
   resultCount: 1
 
 - type: workbenchRecipe
   id: MachineCoreDrillAdvanced
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 3.0
   requirements:
@@ -498,7 +516,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreCharger
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -513,7 +531,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreMurkShieldGenerator
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -528,7 +546,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreAccumulatorVessel
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -546,7 +564,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreDistributionUnit
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -564,7 +582,7 @@
 
 - type: workbenchRecipe
   id: MachineCoreFunnel
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -576,15 +594,15 @@
 
 - type: workbenchRecipe
   id: MachineCoreMapProjector
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
     count: 5
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
     count: 1
   - !type:StackResource
     stack: CEGlass
@@ -597,15 +615,15 @@
 
 - type: workbenchRecipe
   id: MachineCoreGridProjector
-  parent: BaseEngineeringTableRecipe
+  parent: BaseAssemblyShopRecipe
   category: MachineCore
   craftTime: 2.5
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
     count: 5
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
     count: 1
   - !type:StackResource
     stack: CEGlass
@@ -619,28 +637,28 @@
   result: CEMachineCoreGridProjector
   resultCount: 1
 
-- type: workbenchRecipe
-  id: SolutionNormalizer
-  parent: BaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 1
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CESolutionNormalizer
-  resultCount: 1
+#- type: workbenchRecipe
+#  id: SolutionNormalizer
+#  parent: BaseAssemblyShopRecipe
+#  category: Tools
+#  craftTime: 2.0
+#  requirements:
+#  - !type:StackResource
+#    stack: CEBrassSheet
+#    count: 5
+#  - !type:StackResource
+#    stack: CEMachinePartCoalDiffuser
+#    count: 1
+#  - !type:StackResource
+#    stack: CEGlass
+#    count: 5
+#  result: CESolutionNormalizer
+#  resultCount: 1
 
 - type: workbenchRecipe
   id: ConveyorBelt
-  parent: BaseEngineeringTableRecipe
-  category: MachineCore
+  parent: BaseAssemblyShopRecipe
+  category: Tools
   craftTime: 1.0
   requirements:
   - !type:StackResource
@@ -651,3 +669,243 @@
     count: 1
   result: CEConveyorBeltItem
   resultCount: 1
+
+#MARK: Melee
+
+- type: workbenchRecipe
+  id: WeaponDaggerIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponDaggerIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponDaggerHatchet
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponDaggerHatchet
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponDaggerSickle
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponDaggerSickle
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponHammerIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponHammerIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponSkimitarIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponSkimitarIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponSwordIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponSwordIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponSpearIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 2
+  result: CEWeaponSpearIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponTwoHandedSwordIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponTwoHandedSwordIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponWarAxeIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponWarAxeIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponClubWooden
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 3
+  result: CEWeaponClubWooden
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponStaffWooden
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CEWeaponStaffWooden
+  resultCount: 1
+
+#MARK: Ranged
+
+- type: workbenchRecipe
+  id: WeaponBowCombat
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 4
+  - !type:StackResource
+    stack: CECloth
+    count: 1
+  result: CEWeaponBowCombat
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponLightCrossbow
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 8
+  - !type:StackResource
+    stack: CECloth
+    count: 1
+  result: CEWeaponLightCrossbow
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: Bola
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CECloth
+    count: 2
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  result: CEBola
+  resultCount: 1
+
+#MARK: Ammunition
+
+- type: workbenchRecipe
+  id: ArrowIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 3
+  - !type:StackResource
+    stack: CEIronRod
+    count: 5
+  result: CEArrowIron
+  resultCount: 5
+
+- type: workbenchRecipe
+  id: CrossboltIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 5
+  result: CECrossboltIron
+  resultCount: 5

@@ -9,5 +9,7 @@ ce-workbench-reagent-req = {$count}u {$reagent} with {$purity}%+ purity
 
 ce-workbench-food-req = Plate with {$food}
 
+ce-workbench-material-req = {$name} material x{$count} (from any items)
+
 ce-autocrafter-ui-title = Automatic crafting
 ce-autocrafter-select-recipe = Select recipe

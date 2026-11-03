@@ -68,38 +68,6 @@
   result: CEDiamond1
   resultCount: 1
 
-#MARK: Sheet
-
-- type: workbenchRecipe
-  id: BrassSheet1
-  parent: BaseMeltingFurnaceRecipe
-  category: Materials
-  craftTime: 2.5
-  requirements:
-  - !type:MaterialResource
-    material: CEBrass
-    count: 10
-  - !type:StackResource
-    stack: CECoal
-    count: 1
-  result: CEBrassSheet1
-  resultCount: 2
-
-- type: workbenchRecipe
-  id: IronSheet1
-  parent: BaseMeltingFurnaceRecipe
-  category: Materials
-  craftTime: 2.5
-  requirements:
-  - !type:MaterialResource
-    material: CEIron
-    count: 10
-  - !type:StackResource
-    stack: CECoal
-    count: 1
-  result: CEIronSheet1
-  resultCount: 2
-
 #MARK: Rod
 
 - type: workbenchRecipe

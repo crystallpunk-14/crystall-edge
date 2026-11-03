@@ -422,6 +422,19 @@ CEClothingPantsKeyKeeper: null
 CEClothingCloakBlacksmithApron: CEClothingCloakLeatherApron
 CEClothingGlovesBlacksmith: CEClothingGlovesLeather
 
+# 2026-11-03
+# Dimensional matrix removed, crafts use energy crystal cells instead
+CEMachinePartDimensionalMatrix1: CEEnergyCrystalCell
+CEMachinePartDimensionalMatrix5: CEEnergyCrystalCell
+
+# Press reworked into an autocrafter, anvil platform removed
+CEPress: null
+CEMachineCorePress: CEMachineCoreIndustrialPress
+CEPressTargetAnvil: null
+
+# Engineering table replaced by automatic assembly shop
+CEEngineeringTable: CEAssemblyShop
+
 # CrystallEdge migration zone end
 
 
