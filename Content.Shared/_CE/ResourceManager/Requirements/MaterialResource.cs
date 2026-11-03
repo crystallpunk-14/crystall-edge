@@ -113,7 +113,9 @@ public sealed partial class MaterialResource : CEResourceRequirement
         if (!protoManager.TryIndex(Material, out var indexedMaterial))
             return "Error material";
 
-        return $"{Loc.GetString(indexedMaterial.Name)} x{Count}";
+        return Loc.GetString("ce-workbench-material-req",
+            ("name", Loc.GetString(indexedMaterial.Name)),
+            ("count", Count));
     }
 
     public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)

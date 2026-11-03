@@ -12,9 +12,9 @@
   category: Materials
   craftTime: 2.5
   requirements:
-  - !type:MaterialResource
-    material: CEBrass
-    count: 10
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 1
   result: CEBrassSheet1
   resultCount: 2
 
@@ -24,8 +24,8 @@
   category: Materials
   craftTime: 2.5
   requirements:
-  - !type:MaterialResource
-    material: CEIron
-    count: 10
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
   result: CEIronSheet1
   resultCount: 2

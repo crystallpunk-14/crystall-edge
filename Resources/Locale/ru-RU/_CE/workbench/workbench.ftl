@@ -9,5 +9,7 @@ ce-workbench-reagent-req = {$count}u {$reagent} с {$purity}%+ чистоты
 
 ce-workbench-food-req = Тарелка с {$food}
 
+ce-workbench-material-req = Материал «{$name}» x{$count} (из любых предметов)
+
 ce-autocrafter-ui-title = Автоматический крафт
 ce-autocrafter-select-recipe = Выбрать рецепт
