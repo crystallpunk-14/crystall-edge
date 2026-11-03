@@ -14,7 +14,6 @@ namespace Content.Shared._CE.OreVein;
 /// </summary>
 public sealed partial class CEOreVeinSystem : EntitySystem
 {
-    [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private EntityTableSystem _table = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -32,9 +31,6 @@ public sealed partial class CEOreVeinSystem : EntitySystem
         var gained = new DamageSpecifier(args.DamageDelta);
         gained.ClampMin(0);
         gained.TrimZeros();
-
-        // Progress lives in the component, the wall itself never keeps damage
-        _damageable.ClearAllDamage((ent.Owner, args.Damageable));
 
         foreach (var uid in ent.Comp.Progress.Keys)
         {
