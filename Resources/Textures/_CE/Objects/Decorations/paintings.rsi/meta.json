@@ -1,23 +1,89 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by Max Gab, icons cut from _CE/Structures/Decoration/wallmount_painting.rsi",
+  "copyright": "Icons cut from _CE/Structures/Decoration/wallmount_painting.rsi. Created by Max Gab (skull, ...saint), TTTomaTTT (github) (fire, ...pot), lucson1337 (pitchforks, fishing)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "skull_painting"
+      "name": "skull"
     },
     {
-      "name": "candle_painting"
+      "name": "candle"
     },
     {
-      "name": "painting_woman"
+      "name": "woman"
     },
     {
-      "name": "painting_saint"
+      "name": "saint"
+    },
+    {
+      "name": "fire"
+    },
+    {
+      "name": "froze"
+    },
+    {
+      "name": "flem"
+    },
+    {
+      "name": "lumera"
+    },
+    {
+      "name": "ezik"
+    },
+    {
+      "name": "gnome"
+    },
+    {
+      "name": "lurker"
+    },
+    {
+      "name": "omsoyk"
+    },
+    {
+      "name": "squid"
+    },
+    {
+      "name": "viator"
+    },
+    {
+      "name": "sunset"
+    },
+    {
+      "name": "aelyta"
+    },
+    {
+      "name": "goblin"
+    },
+    {
+      "name": "carcat"
+    },
+    {
+      "name": "lootgob"
+    },
+    {
+      "name": "armorattus"
+    },
+    {
+      "name": "fight"
+    },
+    {
+      "name": "rain"
+    },
+    {
+      "name": "rich"
+    },
+    {
+      "name": "pot"
+    },
+    {
+      "name": "pitchforks"
+    },
+    {
+      "name": "fishing"
     }
   ]
 }
