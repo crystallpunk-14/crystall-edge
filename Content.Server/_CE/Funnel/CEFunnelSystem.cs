@@ -22,6 +22,8 @@ public sealed partial class CEFunnelSystem : CESharedFunnelSystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
 
+    private static readonly Direction[] Cardinals = [Direction.North, Direction.South, Direction.East, Direction.West];
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -34,17 +36,11 @@ public sealed partial class CEFunnelSystem : CESharedFunnelSystem
 
             funnel.NextExtractionTime = _timing.CurTime + funnel.ExtractionFrequency;
 
-            var ent = (uid, funnel);
-            switch (GetMode(ent, out var conveyor))
-            {
-                case CEFunnelMode.Load:
-                    RetryBlocked(ent);
-                    break;
-                case CEFunnelMode.Unload:
-                    if (conveyor is { } conv && conv.Comp.Powered && conv.Comp.State != ConveyorState.Off)
-                        ExtractNext(ent);
-                    break;
-            }
+            Entity<CEFunnelComponent> ent = (uid, funnel);
+            if (GetMode(ent, out _) == CEFunnelMode.Load)
+                RetryBlocked(ent);
+            else
+                ExtractNext(ent);
         }
     }
 
@@ -125,9 +121,42 @@ public sealed partial class CEFunnelSystem : CESharedFunnelSystem
 
     private void ExtractNext(Entity<CEFunnelComponent> ent)
     {
+        if (!TryGetExtractable(ent, out var source, out var item))
+            return;
+
+        // Funnels on the same container take turns: the one idle for the longest goes first
+        if (HasOlderReadyPeer(ent, source))
+            return;
+
+        var coords = Transform(ent).Coordinates;
+        var extracted = TryComp<StackComponent>(item, out var stack) && stack.Count > 1
+            ? _stack.Split((item, stack), 1, coords) is not null
+            : Container.RemoveEntity(source, item, destination: coords);
+
+        if (!extracted)
+            return;
+
+        ent.Comp.LastExtractionTime = _timing.CurTime;
+        _audio.PlayPvs(ent.Comp.EjectSound, coords);
+    }
+
+    /// <summary>
+    /// Checks that the funnel unloads through a powered conveyor onto a free tile and finds the first item matching its filter.
+    /// </summary>
+    private bool TryGetExtractable(Entity<CEFunnelComponent> ent, out EntityUid source, out EntityUid item)
+    {
+        source = default;
+        item = default;
+
+        if (GetMode(ent, out var conveyor) != CEFunnelMode.Unload ||
+            conveyor is not { } conv ||
+            !conv.Comp.Powered ||
+            conv.Comp.State == ConveyorState.Off)
+            return false;
+
         var xform = Transform(ent);
         if (xform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
-            return;
+            return false;
 
         var tile = MapSystem.TileIndicesFor(gridUid, grid, xform.Coordinates);
 
@@ -135,7 +164,7 @@ public sealed partial class CEFunnelSystem : CESharedFunnelSystem
         var lying = new HashSet<Entity<ItemComponent>>();
         _lookup.GetLocalEntitiesIntersecting(gridUid, tile, lying, -0.05f, gridComp: grid);
         if (lying.Count > 0)
-            return;
+            return false;
 
         var targetTile = tile.Offset(xform.LocalRotation.RotateDir(Direction.North));
         var anchored = MapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, targetTile);
@@ -147,21 +176,46 @@ public sealed partial class CEFunnelSystem : CESharedFunnelSystem
             if (!Container.TryGetContainer(anchoredEntity.Value, ent.Comp.ContainerCheckId, out var container))
                 continue;
 
-            foreach (var item in container.ContainedEntities)
+            foreach (var contained in container.ContainedEntities)
             {
-                if (!PassesFilter(ent, item))
+                if (!PassesFilter(ent, contained))
                     continue;
 
-                var extracted = TryComp<StackComponent>(item, out var stack) && stack.Count > 1
-                    ? _stack.Split((item, stack), 1, xform.Coordinates) is not null
-                    : Container.RemoveEntity(anchoredEntity.Value, item, destination: xform.Coordinates);
-
-                if (!extracted)
-                    continue;
-
-                _audio.PlayPvs(ent.Comp.EjectSound, xform.Coordinates);
-                return;
+                source = anchoredEntity.Value;
+                item = contained;
+                return true;
             }
         }
+
+        return false;
+    }
+
+    /// <summary>
+    /// True if another funnel unloading the same container is ready and has been idle for longer.
+    /// </summary>
+    private bool HasOlderReadyPeer(Entity<CEFunnelComponent> ent, EntityUid source)
+    {
+        var sourceXform = Transform(source);
+        if (sourceXform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
+            return false;
+
+        var sourceTile = MapSystem.TileIndicesFor(gridUid, grid, sourceXform.Coordinates);
+        foreach (var dir in Cardinals)
+        {
+            var anchored = MapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, sourceTile.Offset(dir));
+            while (anchored.MoveNext(out var peerUid))
+            {
+                if (peerUid == ent.Owner || !TryComp<CEFunnelComponent>(peerUid, out var peer))
+                    continue;
+
+                if (peer.LastExtractionTime >= ent.Comp.LastExtractionTime)
+                    continue;
+
+                if (TryGetExtractable((peerUid.Value, peer), out var peerSource, out _) && peerSource == source)
+                    return true;
+            }
+        }
+
+        return false;
     }
 }

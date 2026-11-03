@@ -38,6 +38,12 @@ public sealed partial class CEFunnelComponent : Component
     public TimeSpan NextExtractionTime = TimeSpan.Zero;
 
     /// <summary>
+    /// When this funnel last extracted an item. Funnels on the same container take turns by it.
+    /// </summary>
+    [DataField, AutoPausedField]
+    public TimeSpan LastExtractionTime = TimeSpan.Zero;
+
+    /// <summary>
     /// Id of the container on the front tile the funnel works with.
     /// </summary>
     [DataField]
