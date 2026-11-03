@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -11,17 +12,19 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Placeable;
 
 /// <summary>
-/// Places entities from <see cref="CEPlaceableComponent"/> items onto the clicked tile, facing the direction the user
-/// picked in the preview. Validity is shared, so the client preview and the server agree on it.
+/// Places entities from <see cref="CEPlaceableComponent"/> items onto the clicked tile, facing the picked direction.
 /// </summary>
 public sealed partial class CEPlaceableSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -73,6 +76,15 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnExamined(Entity<CEPlaceableComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.ExamineText is not { } text || !_proto.Resolve(ent.Comp.Prototype, out var proto))
+            return;
+
+        args.PushMarkup(Loc.GetString(text, ("name", FormattedMessage.EscapeText(proto.Name))));
+    }
+
+    [SubscribeLocalEvent]
     private void OnPlaceDoAfter(Entity<CEPlaceableComponent> ent, ref CEPlaceableDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)
@@ -105,8 +117,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     }
 
     /// <summary>
-    /// A click on a loose entity (an item, a crate, another mob) belongs to that entity, so a full stack or crate
-    /// doesn't turn into a placement. Anchored structures and the user themselves don't count.
+    /// False when the click hit a loose entity other than the user, which keeps the click for itself.
     /// </summary>
     public bool IsPlacementClick(EntityUid user, EntityUid? clicked)
     {
@@ -114,8 +125,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     }
 
     /// <summary>
-    /// Finds the tile a click on <paramref name="clickLocation"/> places into. A tile with floor on the user's level
-    /// wins; otherwise, if allowed, an open tile next to the user leads to the same tile one level below.
+    /// Finds the tile a click places into: a floored tile on the user's level, else the same tile one level below.
     /// </summary>
     public bool TryGetTarget(Entity<CEPlaceableComponent> ent, EntityUid user, EntityCoordinates clickLocation, [NotNullWhen(true)] out CEPlacementTarget? target)
     {

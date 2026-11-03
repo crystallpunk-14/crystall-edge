@@ -1,18 +1,12 @@
 - type: entity
-  id: CEBaseSeed
-  parent: BaseItem
+  id: CEBasePlantable
   abstract: true
   categories: [ ForkFiltered ]
-  suffix: 1
   components:
-  - type: Item
-    size: Tiny
-  - type: Sprite
-    state: seeds
-  - type: CESeed
   - type: CEPlaceable
     delay: 1
     rotatable: false
+    examineText: ce-farming-seed-examine
     placeSound:
       collection: CEDigging
       params:
@@ -21,6 +15,18 @@
     conditions:
     - !type:PlantSoil
     - !type:PlantSpace
+
+- type: entity
+  id: CEBaseSeed
+  parent: [ BaseItem, CEBasePlantable ]
+  abstract: true
+  categories: [ ForkFiltered ]
+  suffix: 1
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    state: seeds
   - type: StackPrice
     price: 0.5
   - type: Stack

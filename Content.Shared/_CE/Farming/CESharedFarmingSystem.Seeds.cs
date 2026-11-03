@@ -1,7 +1,4 @@
 using Content.Shared._CE.Farming.Components;
-using Content.Shared._CE.Placeable;
-using Content.Shared.Construction.EntitySystems;
-using Content.Shared.Examine;
 using Content.Shared.Physics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -11,17 +8,8 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    [SubscribeLocalEvent]
-    private void OnSeedExamine(Entity<CESeedComponent> ent, ref ExaminedEvent args)
-    {
-        if (!TryComp<CEPlaceableComponent>(ent, out var placeable) || !_proto.Resolve(placeable.Prototype, out var plantProto))
-            return;
-
-        args.PushMarkup(Loc.GetString("ce-farming-seed-examine", ("name", plantProto.Name)));
-    }
-
     /// <summary>
-    /// The tile is a soil the plant can draw resources from. Plants that don't gather from soil grow anywhere.
+    /// The tile is a soil the plant can draw resources from, or the plant doesn't need soil.
     /// </summary>
     public bool IsSoilSuitable(EntityPrototype plant, Entity<MapGridComponent> grid, Vector2i tile)
     {
@@ -34,8 +22,7 @@ public abstract partial class CESharedFarmingSystem
     }
 
     /// <summary>
-    /// Mirrors <see cref="AnchorableSystem.TileFree(Entity{MapGridComponent}, Vector2i, int, int)"/> with MobMask,
-    /// but supports exclude and treats any other plant as an obstacle. Puddles, decals and cables don't block planting.
+    /// Another plant or a hard <see cref="CollisionGroup.MobMask"/> body takes the tile.
     /// </summary>
     public bool IsTileOccupied(Entity<MapGridComponent> grid, Vector2i tile, EntityUid? exclude = null)
     {

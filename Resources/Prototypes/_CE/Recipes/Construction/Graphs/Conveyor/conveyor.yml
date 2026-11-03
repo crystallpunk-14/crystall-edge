@@ -1,5 +1,4 @@
-# Placed from CEConveyorBeltItem; a screwdriver cycles belt -> stairs -> reverse stairs -> belt,
-# a crowbar takes any variant back into the item.
+# A screwdriver cycles the belt variants, a crowbar takes any variant back into the item.
 - type: constructionGraph
   id: CEConveyorBelt
   start: start

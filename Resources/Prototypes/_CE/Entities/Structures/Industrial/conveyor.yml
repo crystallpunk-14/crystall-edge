@@ -57,7 +57,7 @@
   - type: PowerProvider
     voltage: Apc
   - type: ExtensionCableProvider
-  # A receiver can't draw from its own provider, so the belt powers itself from a neighbouring pipe or belt.
+  # A receiver can't draw from its own provider, so the belt powers itself from a neighbouring pipe or belt. Hacky hacky :>
   - type: ExtensionCableReceiver
     receptionRange: 1
   - type: Construction

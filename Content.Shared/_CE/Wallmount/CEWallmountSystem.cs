@@ -20,8 +20,6 @@ public sealed partial class CEWallmountSystem : EntitySystem
     [Dependency] private EntityQuery<CEWallmountedComponent> _wallmountedQuery = default!;
     [Dependency] private EntityQuery<WallComponent> _wallQuery = default!;
 
-    private static readonly Direction[] CardinalDirections = { Direction.North, Direction.South, Direction.East, Direction.West };
-
     //Upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
     public static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -38,6 +36,13 @@ public sealed partial class CEWallmountSystem : EntitySystem
         ClearWallmounts(ent);
     }
 
+    [SubscribeLocalEvent]
+    private void OnAttachedShutdown(Entity<CEWallmountComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.Wall is { } wall && _wallmountedQuery.TryComp(wall, out var wallmounted))
+            wallmounted.Attached.Remove(ent);
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -48,7 +53,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
         var query = EntityQueryEnumerator<CEWallmountComponent>();
         while (query.MoveNext(out var uid, out var wallmount))
         {
-            if (!wallmount.Initialized)
+            if (!wallmount.Initialized || wallmount.Wall != null)
                 continue;
 
             if (_timing.CurTime < wallmount.NextAttachTime)
@@ -63,10 +68,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
             wallmount.NextAttachTime = _timing.CurTime + TimeSpan.FromSeconds(0.5f);
             wallmount.AttachAttempts--;
 
-            if (TryAttachWallmount((uid, wallmount)))
-            {
-                RemComp<CEWallmountComponent>(uid);
-            }
+            TryAttachWallmount((uid, wallmount));
         }
     }
 
@@ -75,10 +77,6 @@ public sealed partial class CEWallmountSystem : EntitySystem
         return _wallQuery.HasComp(uid) || _tag.HasTag(uid, WindowTag);
     }
 
-    /// <summary>
-    /// Wallmounts don't collide, so they are found through the walls around the tile they are attached to,
-    /// plus the ones that haven't attached yet.
-    /// </summary>
     public bool HasWallmountAt(Entity<MapGridComponent> grid, Vector2i tile)
     {
         var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, grid.Comp, tile);
@@ -86,23 +84,6 @@ public sealed partial class CEWallmountSystem : EntitySystem
         {
             if (_wallmountQuery.HasComp(uid.Value))
                 return true;
-        }
-
-        foreach (var dir in CardinalDirections)
-        {
-            var neighbours = _map.GetAnchoredEntitiesEnumerator(grid, grid.Comp, tile + dir.ToIntVec());
-            while (neighbours.MoveNext(out var neighbour))
-            {
-                if (!_wallmountedQuery.TryComp(neighbour.Value, out var wallmounted))
-                    continue;
-
-                foreach (var attached in wallmounted.Attached)
-                {
-                    if (!TerminatingOrDeleted(attached)
-                        && _map.TileIndicesFor(grid, grid.Comp, Transform(attached).Coordinates) == tile)
-                        return true;
-                }
-            }
         }
 
         return false;
@@ -138,6 +119,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
             EnsureComp<CEWallmountedComponent>(entityUid, out var wallmounted);
 
             wallmounted.Attached.Add(wallmount);
+            wallmount.Comp.Wall = entityUid;
 
             hasParent = true;
             break;

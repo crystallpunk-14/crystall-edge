@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Placeable.Conditions;
 
 /// <summary>
-/// No anchored entity on the tile matches the whitelist. Keeps duplicates like two conveyors out of one tile.
+/// No anchored entity on the tile matches the whitelist.
 /// </summary>
 public sealed partial class NoAnchored : CEPlacementCondition
 {

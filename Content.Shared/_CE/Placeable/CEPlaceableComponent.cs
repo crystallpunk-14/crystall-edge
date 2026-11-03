@@ -5,8 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Placeable;
 
 /// <summary>
-/// Item that places an entity on the clicked tile, consuming one item from the stack. While it is held,
-/// the client shows a preview of the entity, which can be rotated.
+/// Item that places an entity on the clicked tile, using up one item from the stack.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(CEPlaceableSystem))]
 public sealed partial class CEPlaceableComponent : Component
@@ -31,14 +30,19 @@ public sealed partial class CEPlaceableComponent : Component
     public List<CEPlacementCondition> Conditions = new();
 
     /// <summary>
-    /// Clicking an open tile next to the user targets the same tile one level below. Used by ladders leading down.
+    /// Clicking an open tile next to the user targets the same tile one level below.
     /// </summary>
     [DataField]
     public bool AllowPlaceBelow;
 
     /// <summary>
-    /// Whether the user can turn the preview. Entities that look the same from every side (carpets, pipes, plants)
-    /// are always placed facing south.
+    /// Examine line naming the placed entity through a <c>name</c> argument.
+    /// </summary>
+    [DataField]
+    public LocId? ExamineText;
+
+    /// <summary>
+    /// Whether the user can turn the preview; otherwise the entity always faces south.
     /// </summary>
     [DataField]
     public bool Rotatable = true;

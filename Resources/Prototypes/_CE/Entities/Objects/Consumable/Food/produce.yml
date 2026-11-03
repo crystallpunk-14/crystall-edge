@@ -233,7 +233,7 @@
 
 - type: entity
   id: CEFoodPotato
-  parent: FoodInjectableBase
+  parent: [ FoodInjectableBase, CEBasePlantable ]
   categories: [ ForkFiltered ]
   name: potato
   description: Cute potato.
@@ -262,19 +262,8 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 3.47
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantPotato #TODO sliceable potato
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -636,7 +625,7 @@
 
 - type: entity
   id: CEFoodGarlicClove
-  parent: FoodInjectableBase
+  parent: [ FoodInjectableBase, CEBasePlantable ]
   categories: [ ForkFiltered ]
   name: garlic clove
   description: A single clove of garlic, potent and aromatic.
@@ -659,19 +648,8 @@
         Quantity: 1
       - ReagentId: Allicin
         Quantity: 1
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantGarlic
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: CEFoodTag
     tags:
     - Vegetable
@@ -849,7 +827,7 @@
 
 - type: entity
   id: CEFoodOnion
-  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood, CEBasePlantable]
   categories: [ ForkFiltered ]
   name: onion
   description: If you eat too much, you can cry tears of joy.
@@ -884,19 +862,8 @@
     refineResult:
     - id: CEFoodOnionSlice
       amount: 4
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantOnion
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: CEFoodTag
     tags:
     - Vegetable
@@ -932,7 +899,7 @@
 
 - type: entity
   id: CEFoodChanterelle
-  parent: FoodInjectableBase
+  parent: [ FoodInjectableBase, CEBasePlantable ]
   categories: [ ForkFiltered ]
   name: chanterelle
   description: A delicious mushroom.
@@ -959,19 +926,8 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 3.47
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantChanterelle
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -979,7 +935,7 @@
 
 - type: entity
   id: CEFoodAgaric
-  parent: FoodInjectableBase
+  parent: [ FoodInjectableBase, CEBasePlantable ]
   categories: [ ForkFiltered ]
   name: fly agaric
   description: A bright red mushroom with white spots. Very pretty, and very poisonous.
@@ -1012,19 +968,8 @@
       reagents:
       - ReagentId: CEMuscimol
         Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantAgaric
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -1032,7 +977,7 @@
 
 - type: entity
   id: CEFoodLumishroom
-  parent: FoodInjectableBase
+  parent: [ FoodInjectableBase, CEBasePlantable ]
   categories: [ ForkFiltered ]
   name: lumishroom
   description: A glowing cave mushroom. It ferments right in the cap, so eating a few goes straight to your head.
@@ -1067,19 +1012,8 @@
         Quantity: 5
       - ReagentId: CENutriment
         Quantity: 2
-  - type: CESeed
   - type: CEPlaceable
     prototype: CEPlantLumishroom
-    delay: 1
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000

@@ -1,5 +1,6 @@
 using Content.Shared._CE.Placeable;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Farming.Placement;
 
@@ -21,6 +22,6 @@ public sealed partial class PlantSoil : CEPlacementCondition
     {
         var protoManager = IoCManager.Resolve<IPrototypeManager>();
         var name = protoManager.Resolve(target.Prototype, out var plant) ? plant.Name : target.Prototype.Id;
-        return Loc.GetString(Popup ?? DefaultPopup, ("seed", name));
+        return Loc.GetString(Popup ?? DefaultPopup, ("seed", FormattedMessage.RemoveMarkupPermissive(name)));
     }
 }

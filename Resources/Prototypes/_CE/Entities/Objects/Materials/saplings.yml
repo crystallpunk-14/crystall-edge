@@ -1,25 +1,15 @@
 - type: entity
   id: CESaplingBase
   abstract: true
-  parent: BaseItem
+  parent: [ BaseItem, CEBasePlantable ]
   categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Normal
   - type: StaticPrice
     price: 15
-  - type: CESeed
   - type: CEPlaceable
     delay: 4
-    rotatable: false
-    placeSound:
-      collection: CEDigging
-      params:
-        variation: 0.03
-        volume: 2
-    conditions:
-    - !type:PlantSoil
-    - !type:PlantSpace
 
 - type: entity
   id: CESeedAppleTree

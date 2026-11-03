@@ -17,8 +17,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._CE.Placeable;
 
 /// <summary>
-/// Draws a ghost of the entity the held <see cref="CEPlaceableComponent"/> item would place under the cursor,
-/// green when the tile is valid and red when it isn't. The placement-rotate key turns it.
+/// Draws a green or red ghost of what the held <see cref="CEPlaceableComponent"/> item would place under the cursor.
 /// </summary>
 public sealed partial class CEPlaceablePreviewSystem : EntitySystem
 {
@@ -136,7 +135,7 @@ public sealed partial class CEPlaceablePreviewSystem : EntitySystem
         var ghost = Spawn(null, MapCoordinates.Nullspace);
         var sprite = EnsureComp<SpriteComponent>(ghost);
 
-        // The prototype is spawned only to copy its sprite: its other components (fixtures, ladders) must not act.
+        // The prototype is spawned in nullspace only to copy its sprite.
         var dummy = Spawn(prototype, MapCoordinates.Nullspace);
         if (TryComp<SpriteComponent>(dummy, out var dummySprite))
             _sprite.CopySprite((dummy, dummySprite), (ghost, sprite));
