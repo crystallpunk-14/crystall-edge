@@ -26,10 +26,14 @@
     grid:
     - 0,0,7,3
     maxItemSize: Small
+    quickInsert: true
+    areaInsert: true
     whitelist:
       tags:
       - CEArrow
       - CECrossbowBolt
+  - type: UseDelay
+    delay: 0.25
   - type: Appearance
   - type: StorageContainerVisuals
     maxFillLevels: 3

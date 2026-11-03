@@ -6,7 +6,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCabbage
-    count: 15
+    count: 5
   receive:
     bonus: 10
 
@@ -17,7 +17,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodPumpkin
-    count: 10
+    count: 5
   receive:
     bonus: 10
 
@@ -28,7 +28,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCucumber
-    count: 20
+    count: 5
   receive:
     bonus: 10
 
@@ -39,7 +39,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodTomatoes
-    count: 20
+    count: 5
   receive:
     bonus: 10
 
@@ -50,7 +50,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodPepper
-    count: 15
+    count: 5
   receive:
     bonus: 10
 
@@ -61,7 +61,7 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCorn
-    count: 15
+    count: 5
   receive:
     bonus: 10
 
@@ -72,6 +72,28 @@
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCarrot
-    count: 20
+    count: 5
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellAgaric
+  weight: 0.7
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodAgaric
+    count: 5
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellChanterelle
+  weight: 0.5
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodChanterelle
+    count: 5
   receive:
     bonus: 10
