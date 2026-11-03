@@ -42,7 +42,7 @@
     anchored: true
     noRot: false
   - type: Sprite
-    drawdepth: OverMobs
+    drawdepth: Mobs
     offset: 0, 0
     sprite: _CE/Structures/Industrial/recycler.rsi
     layers:

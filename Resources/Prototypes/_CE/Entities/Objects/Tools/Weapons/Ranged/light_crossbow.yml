@@ -58,4 +58,4 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 40
-      CECloth: 5
+      CECloth: 10

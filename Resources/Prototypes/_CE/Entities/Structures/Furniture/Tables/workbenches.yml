@@ -113,24 +113,3 @@
           CEWoodenPlanks1:
             min: 1
             max: 2
-
-- type: entity
-  parent:
-  - CEBaseWorkbench
-  id: CEEngineeringTable
-  name: engineering table
-  description: A place for creating various engineering machine parts.
-  components:
-  - type: Sprite
-    state: filler
-    color: "#e2871f"
-  - type: Icon
-    state: workbench
-  #- type: Construction
-  #  graph: CEWorkbench
-  #  node: CEWorkbench
-  - type: CEWorkbench
-    recipeTags:
-    - CERecipeEngineeringTable
-    #craftSound:
-    #  collection: CEHammering

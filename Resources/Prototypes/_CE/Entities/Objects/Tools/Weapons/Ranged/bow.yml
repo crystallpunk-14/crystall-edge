@@ -85,4 +85,4 @@
   - type: PhysicalComposition
     materialComposition:
       CEWood: 40
-      CECloth: 5
+      CECloth: 10

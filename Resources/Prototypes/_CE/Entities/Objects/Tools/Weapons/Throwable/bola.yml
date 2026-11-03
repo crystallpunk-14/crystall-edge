@@ -54,3 +54,7 @@
         friction: 0.2
   - type: StaticPrice
     price: 40
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 20
+      CEIron: 10

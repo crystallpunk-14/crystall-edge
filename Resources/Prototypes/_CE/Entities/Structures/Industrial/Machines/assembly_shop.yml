@@ -1,0 +1,34 @@
+- type: entity
+  parent: CEBaseAutoCrafter
+  id: CEAssemblyShop
+  name: assembly shop
+  description: An automated workshop that assembles tools, machine parts and machine cores.
+  components:
+  - type: Machine
+    board: CEMachineCoreAssemblyShop
+  - type: Sprite
+    snapCardinals: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/assembly_shop.rsi
+    layers:
+    - state: base
+    - state: fire
+      visible: false
+      shader: unshaded
+      map: ["fire"]
+  - type: Icon
+    sprite: _CE/Structures/Industrial/assembly_shop.rsi
+    state: base
+  - type: CEWorkbench
+    recipeTags:
+    - CERecipeAssemblyShop
+    craftSound:
+      collection: CEHammering
+    vfx: CEOverchargeVFX
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        fire:
+          True: {visible: true}
+          False: {visible: false}

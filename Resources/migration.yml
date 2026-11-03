@@ -432,6 +432,9 @@ CEPress: null
 CEMachineCorePress: CEMachineCoreIndustrialPress
 CEPressTargetAnvil: null
 
+# Engineering table replaced by automatic assembly shop
+CEEngineeringTable: CEAssemblyShop
+
 # CrystallEdge migration zone end
 
 
