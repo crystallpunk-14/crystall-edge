@@ -42,8 +42,9 @@
   - type: CEPlaceable
     prototype: CEPipeBrassMedium
     delay: 0.5
+    rotatable: false
     conditions:
-    - !type:CENoReplacementKeyCondition
+    - !type:NoReplacementKey
       key: pipe_medium
 
 - type: entity
@@ -91,8 +92,9 @@
   - type: CEPlaceable
     prototype: CEPipeBrassBig
     delay: 0
+    rotatable: false
     conditions:
-    - !type:CENoReplacementKeyCondition
+    - !type:NoReplacementKey
       key: pipe_big
 
 - type: entity

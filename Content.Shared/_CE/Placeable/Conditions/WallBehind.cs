@@ -1,12 +1,15 @@
 using Content.Shared._CE.Wallmount;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Placeable.Conditions;
 
 /// <summary>
 /// There is a wall or a window right behind the entity, opposite to the direction it faces.
 /// </summary>
-public sealed partial class CEWallBehindCondition : CEPlacementCondition
+public sealed partial class WallBehind : CEPlacementCondition
 {
+    protected override LocId DefaultPopup => "ce-placeable-no-wall";
+
     public override bool Check(IEntityManager entManager, CEPlacementTarget target)
     {
         var map = entManager.System<SharedMapSystem>();

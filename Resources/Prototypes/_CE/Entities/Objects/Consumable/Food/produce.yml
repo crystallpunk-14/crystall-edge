@@ -263,7 +263,18 @@
       - ReagentId: CENutriment
         Quantity: 3.47
   - type: CESeed
-    plantProto: CEPlantPotato #TODO sliceable potato
+  - type: CEPlaceable
+    prototype: CEPlantPotato #TODO sliceable potato
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -649,7 +660,18 @@
       - ReagentId: Allicin
         Quantity: 1
   - type: CESeed
-    plantProto: CEPlantGarlic
+  - type: CEPlaceable
+    prototype: CEPlantGarlic
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: CEFoodTag
     tags:
     - Vegetable
@@ -863,7 +885,18 @@
     - id: CEFoodOnionSlice
       amount: 4
   - type: CESeed
-    plantProto: CEPlantOnion
+  - type: CEPlaceable
+    prototype: CEPlantOnion
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: CEFoodTag
     tags:
     - Vegetable
@@ -927,7 +960,18 @@
       - ReagentId: CENutriment
         Quantity: 3.47
   - type: CESeed
-    plantProto: CEPlantChanterelle
+  - type: CEPlaceable
+    prototype: CEPlantChanterelle
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -969,7 +1013,18 @@
       - ReagentId: CEMuscimol
         Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
   - type: CESeed
-    plantProto: CEPlantAgaric
+  - type: CEPlaceable
+    prototype: CEPlantAgaric
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -1013,7 +1068,18 @@
       - ReagentId: CENutriment
         Quantity: 2
   - type: CESeed
-    plantProto: CEPlantLumishroom
+  - type: CEPlaceable
+    prototype: CEPlantLumishroom
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
   - type: Temperature
     temperature: 290
     heatCapacity: 15000

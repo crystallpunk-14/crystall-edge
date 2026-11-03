@@ -16,9 +16,10 @@
     price: 0.5
   - type: CEPlaceable
     delay: 0.5
+    rotatable: false
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CENoAnchoredCondition
+    - !type:TileNotBlocked
+    - !type:NoAnchored
       whitelist:
         tags:
         - Carpet

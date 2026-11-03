@@ -28,8 +28,8 @@
     prototype: CEConveyorBelt
     delay: 0.2
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CENoAnchoredCondition
+    - !type:TileNotBlocked
+    - !type:NoAnchored
       whitelist:
         components:
         - Conveyor

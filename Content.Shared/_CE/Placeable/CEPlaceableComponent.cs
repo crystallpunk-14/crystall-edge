@@ -37,6 +37,13 @@ public sealed partial class CEPlaceableComponent : Component
     public bool AllowPlaceBelow;
 
     /// <summary>
+    /// Whether the user can turn the preview. Entities that look the same from every side (carpets, pipes, plants)
+    /// are always placed facing south.
+    /// </summary>
+    [DataField]
+    public bool Rotatable = true;
+
+    /// <summary>
     /// Grid-local direction the placed entity will face.
     /// </summary>
     [DataField, AutoNetworkedField]

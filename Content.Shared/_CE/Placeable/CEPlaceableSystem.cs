@@ -46,9 +46,10 @@ public sealed partial class CEPlaceableSystem : EntitySystem
 
         args.Handled = true;
 
-        if (!CanPlace(ent, target.Value))
+        if (!CanPlace(ent, target.Value, out var failed))
         {
-            _popup.PopupClient(Loc.GetString("ce-placeable-cannot-place"), args.User, args.User);
+            var popup = failed?.GetPopup(EntityManager, target.Value) ?? Loc.GetString("ce-placeable-cannot-place");
+            _popup.PopupClient(popup, args.User, args.User);
             return;
         }
 
@@ -81,7 +82,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
         if (!_gridQuery.TryComp(gridUid, out var grid))
             return;
 
-        var target = new CEPlacementTarget(args.User, (gridUid, grid), args.Tile, args.Direction);
+        var target = new CEPlacementTarget(args.User, ent.Comp.Prototype, (gridUid, grid), args.Tile, args.Direction);
         if (!CanPlace(ent, target))
             return;
 
@@ -95,7 +96,8 @@ public sealed partial class CEPlaceableSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not { } user
             || !TryGetEntity(ev.Item, out var item)
             || _hands.GetActiveItem(user) != item
-            || !_placeableQuery.TryComp(item, out var placeable))
+            || !_placeableQuery.TryComp(item, out var placeable)
+            || !placeable.Rotatable)
             return;
 
         placeable.Direction = ev.Direction;
@@ -127,7 +129,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
             && _map.TryGetTileRef(gridUid, grid, clickMap.Position, out var tileRef)
             && !tileRef.Tile.IsEmpty)
         {
-            target = new CEPlacementTarget(user, (gridUid, grid), tileRef.GridIndices, ent.Comp.Direction);
+            target = new CEPlacementTarget(user, ent.Comp.Prototype, (gridUid, grid), tileRef.GridIndices, GetDirection(ent));
             return true;
         }
 
@@ -143,7 +145,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
         if (Math.Abs(offset.X) + Math.Abs(offset.Y) != 1)
             return false;
 
-        target = new CEPlacementTarget(user, (belowGridUid, belowGrid), clickTile, ent.Comp.Direction);
+        target = new CEPlacementTarget(user, ent.Comp.Prototype, (belowGridUid, belowGrid), clickTile, GetDirection(ent));
         return true;
     }
 
@@ -152,21 +154,37 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     /// </summary>
     public bool CanPlace(Entity<CEPlaceableComponent> ent, CEPlacementTarget target)
     {
+        return CanPlace(ent, target, out _);
+    }
+
+    /// <param name="failed">The first condition that failed, or null if the tile has no floor.</param>
+    public bool CanPlace(Entity<CEPlaceableComponent> ent, CEPlacementTarget target, out CEPlacementCondition? failed)
+    {
+        failed = null;
+
         if (!_map.TryGetTileRef(target.Grid, target.Grid.Comp, target.Tile, out var tileRef) || tileRef.Tile.IsEmpty)
             return false;
 
         foreach (var condition in ent.Comp.Conditions)
         {
-            if (!condition.Check(EntityManager, target))
-                return false;
+            if (condition.Check(EntityManager, target))
+                continue;
+
+            failed = condition;
+            return false;
         }
 
         return true;
     }
 
+    private static Direction GetDirection(Entity<CEPlaceableComponent> ent)
+    {
+        return ent.Comp.Rotatable ? ent.Comp.Direction : Direction.South;
+    }
+
     private void Place(Entity<CEPlaceableComponent> ent, CEPlacementTarget target)
     {
-        var prototype = ent.Comp.Prototype;
+        var prototype = target.Prototype;
         var coords = _map.GridTileToLocal(target.Grid, target.Grid.Comp, target.Tile);
         _audio.PlayPredicted(ent.Comp.PlaceSound, coords, target.User);
 

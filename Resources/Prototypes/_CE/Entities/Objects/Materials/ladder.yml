@@ -29,9 +29,9 @@
     prototype: CEWoodenLadder
     allowPlaceBelow: true
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CEWallBehindCondition
-    - !type:CENoWallmountCondition
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
 
 - type: entity
   id: CEWoodenLadderItem5

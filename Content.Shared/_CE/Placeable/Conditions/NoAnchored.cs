@@ -1,14 +1,17 @@
 using Content.Shared.Whitelist;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Placeable.Conditions;
 
 /// <summary>
 /// No anchored entity on the tile matches the whitelist. Keeps duplicates like two conveyors out of one tile.
 /// </summary>
-public sealed partial class CENoAnchoredCondition : CEPlacementCondition
+public sealed partial class NoAnchored : CEPlacementCondition
 {
     [DataField(required: true)]
     public EntityWhitelist Whitelist = new();
+
+    protected override LocId DefaultPopup => "ce-placeable-occupied";
 
     public override bool Check(IEntityManager entManager, CEPlacementTarget target)
     {

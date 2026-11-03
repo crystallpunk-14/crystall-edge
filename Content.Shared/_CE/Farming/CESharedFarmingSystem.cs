@@ -3,8 +3,6 @@ using Content.Shared._CE.Light;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Maps;
-using Content.Shared.Popups;
-using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
@@ -23,7 +21,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     [Dependency] protected CELightLevelSystem LightLevel = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -31,7 +28,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
-    [Dependency] private SharedStackSystem _stack = default!;
 
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 

@@ -44,7 +44,7 @@ public sealed partial class CEFarmingSystem
         foreach (var neighbor in args.NeighborFreeTiles)
         {
             var position = MapSystem.GridTileToLocal(neighbor.Tile.GridUid, neighbor.Grid, neighbor.Tile.GridIndices);
-            if (!CanPlant(ent.Comp.Proto, position, null, ent))
+            if (!CanPlant(ent.Comp.Proto, position, ent))
                 continue;
 
             targetPositions.Add(position);

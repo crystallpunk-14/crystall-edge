@@ -93,7 +93,7 @@ public sealed partial class CEPlaceablePreviewSystem : EntitySystem
 
     private void Rotate()
     {
-        if (!TryGetHeldPlaceable(out _, out var item))
+        if (!TryGetHeldPlaceable(out _, out var item) || !item.Comp.Rotatable)
             return;
 
         var direction = item.Comp.Direction;

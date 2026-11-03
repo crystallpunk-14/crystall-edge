@@ -21,9 +21,9 @@
   - type: CEPlaceable
     prototype: CEWallmountPaintingSkull
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CEWallBehindCondition
-    - !type:CENoWallmountCondition
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
 
 - type: entity
   id: CEPaintingCandleItem
@@ -36,9 +36,9 @@
   - type: CEPlaceable
     prototype: CEWallmountPaintingCandle
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CEWallBehindCondition
-    - !type:CENoWallmountCondition
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
 
 - type: entity
   id: CEPaintingWomanItem
@@ -51,9 +51,9 @@
   - type: CEPlaceable
     prototype: CEWallmountPaintingWoman
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CEWallBehindCondition
-    - !type:CENoWallmountCondition
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
 
 - type: entity
   id: CEPaintingSaintItem
@@ -66,6 +66,6 @@
   - type: CEPlaceable
     prototype: CEWallmountPaintingSaint
     conditions:
-    - !type:CETileNotBlockedCondition
-    - !type:CEWallBehindCondition
-    - !type:CENoWallmountCondition
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount

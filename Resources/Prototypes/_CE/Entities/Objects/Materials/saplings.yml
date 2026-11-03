@@ -9,7 +9,17 @@
   - type: StaticPrice
     price: 15
   - type: CESeed
-    plantingTime: 4
+  - type: CEPlaceable
+    delay: 4
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
 
 - type: entity
   id: CESeedAppleTree
@@ -20,5 +30,5 @@
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/apple.rsi
     state: seeds
-  - type: CESeed
-    plantProto: CEPlantAppleTree
+  - type: CEPlaceable
+    prototype: CEPlantAppleTree
