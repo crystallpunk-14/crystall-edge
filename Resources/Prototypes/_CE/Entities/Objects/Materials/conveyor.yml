@@ -33,6 +33,8 @@
       whitelist:
         components:
         - Conveyor
+    - !type:NoReplacementKey
+      key: pipe_medium
 
 - type: entity
   id: CEConveyorBeltItem10

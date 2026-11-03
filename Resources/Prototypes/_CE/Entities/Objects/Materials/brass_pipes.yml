@@ -46,6 +46,10 @@
     conditions:
     - !type:NoReplacementKey
       key: pipe_medium
+    - !type:NoAnchored
+      whitelist:
+        components:
+        - Conveyor
 
 - type: entity
   parent: CEMediumBrassPipe1

@@ -1,4 +1,5 @@
-# Placed from CEConveyorBeltItem; a wrench takes any variant back into the item.
+# Placed from CEConveyorBeltItem; a screwdriver cycles belt -> stairs -> reverse stairs -> belt,
+# a crowbar takes any variant back into the item.
 - type: constructionGraph
   id: CEConveyorBelt
   start: start
@@ -10,9 +11,13 @@
     - node: CEConveyorBelt
       entity: CEConveyorBelt
       edges:
+        - to: CEConveyorStairs
+          steps:
+            - tool: Screwing
+              doAfter: 1
         - to: start
           steps:
-            - tool: Anchoring
+            - tool: Prying
               doAfter: 0.5
           completed:
             - !type:SpawnPrototype
@@ -22,9 +27,13 @@
     - node: CEConveyorStairs
       entity: CEConveyorStairs
       edges:
+        - to: CEConveyorStairsReverse
+          steps:
+            - tool: Screwing
+              doAfter: 1
         - to: start
           steps:
-            - tool: Anchoring
+            - tool: Prying
               doAfter: 0.5
           completed:
             - !type:SpawnPrototype
@@ -34,9 +43,13 @@
     - node: CEConveyorStairsReverse
       entity: CEConveyorStairsReverse
       edges:
+        - to: CEConveyorBelt
+          steps:
+            - tool: Screwing
+              doAfter: 1
         - to: start
           steps:
-            - tool: Anchoring
+            - tool: Prying
               doAfter: 0.5
           completed:
             - !type:SpawnPrototype

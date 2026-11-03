@@ -48,8 +48,18 @@
           Reverse: { state: moving_backward }
   - type: ApcPowerReceiver
     powerLoad: 0.1
+  # Works as a medium pipe: joins the Apc network of adjacent pipes and conveyors and passes energy along.
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: Apc
+  - type: PowerProvider
+    voltage: Apc
+  - type: ExtensionCableProvider
+  # A receiver can't draw from its own provider, so the belt powers itself from a neighbouring pipe or belt.
   - type: ExtensionCableReceiver
-    receptionRange: 0
+    receptionRange: 1
   - type: Construction
     graph: CEConveyorBelt
     node: CEConveyorBelt
