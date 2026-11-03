@@ -311,3 +311,48 @@
     item: CEPaintingSunsetItem
   - type: Sprite
     state: sunset
+
+- type: entity
+  id: CEWallmountPaintingRandomSpawner
+  parent: MarkerBase
+  name: random painting spawner
+  description: Hangs a random painting facing the same way as the marker.
+  categories: [ ForkFiltered ]
+  components:
+  # fixrotations must keep the marker's rotation: the spawned painting takes it to find its wall.
+  - type: Tag
+    tags:
+    - ForceNoFixRotations
+  - type: Sprite
+    sprite: _CE/Structures/Decoration/wallmount_painting.rsi
+    state: random
+    drawdepth: Mobs
+  - type: RandomSpawner
+    offset: 0
+    prototypes:
+    - CEWallmountPaintingSkull
+    - CEWallmountPaintingCandle
+    - CEWallmountPaintingWoman
+    - CEWallmountPaintingSaint
+    - CEWallmountPaintingAelyta
+    - CEWallmountPaintingCarcat
+    - CEWallmountPaintingFire
+    - CEWallmountPaintingFishing
+    - CEWallmountPaintingFlem
+    - CEWallmountPaintingFroze
+    - CEWallmountPaintingLootgob
+    - CEWallmountPaintingLumera
+    - CEWallmountPaintingArmorratus
+    - CEWallmountPaintingHedgehog
+    - CEWallmountPaintingFight
+    - CEWallmountPaintingGnome
+    - CEWallmountPaintingGoblin
+    - CEWallmountPaintingLurker
+    - CEWallmountPaintingOmsoyk
+    - CEWallmountPaintingRain
+    - CEWallmountPaintingRich
+    - CEWallmountPaintingViator
+    - CEWallmountPaintingPitchforks
+    - CEWallmountPaintingPot
+    - CEWallmountPaintingSquid
+    - CEWallmountPaintingSunset

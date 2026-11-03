@@ -110,6 +110,10 @@
     {
       "name": "fishing",
       "directions": 4
+    },
+    {
+      "name": "random",
+      "directions": 4
     }
   ]
 }
