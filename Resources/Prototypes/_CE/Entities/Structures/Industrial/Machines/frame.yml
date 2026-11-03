@@ -11,10 +11,10 @@
     sprite: _CE/Structures/Industrial/machine_frame.rsi
     noRot: true
   - type: Transform
-    anchored: false
+    anchored: true
     noRot: true
   - type: Physics
-    bodyType: Dynamic
+    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
