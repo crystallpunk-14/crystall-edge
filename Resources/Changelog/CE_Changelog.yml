@@ -1698,3 +1698,18 @@
   id: 1144
   time: '2026-11-02T09:18:10.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/582
+- author: TheShuEd
+  changes:
+  - message: Added 22 new paintings by TTTomaTTT!
+    type: Add
+  - message: Conveyors are now easier to install, and they carry power just like pipes,
+      which eliminates the need to run pipes underneath them.
+    type: Tweak
+  - message: Carpets can now be installed over pipes
+    type: Tweak
+  - message: Convenient previews for placing carpets, seeds, pipes, and other items
+      have been added
+    type: Tweak
+  id: 1145
+  time: '2026-11-03T12:49:00.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/585
