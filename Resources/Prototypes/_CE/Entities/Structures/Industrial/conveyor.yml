@@ -22,6 +22,7 @@
     bodyType: Static
   - type: Anchorable
     canAnchorOnOccupied: true
+  - type: PlaceableSurface
   - type: Pullable
   - type: Fixtures
     fixtures:

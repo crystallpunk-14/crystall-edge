@@ -96,7 +96,6 @@
         weight: 0.1
         children:
         - id: CEMachinePartEnergyLine1
-        - id: CEMachinePartDimensionalMatrix1
         - id: CEMachinePartCoalDiffuser1
       - !type:GroupSelector
         children:

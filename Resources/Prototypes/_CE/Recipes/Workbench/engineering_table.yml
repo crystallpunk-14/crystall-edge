@@ -583,8 +583,8 @@
   - !type:StackResource
     stack: CEBrassSheet
     count: 5
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
     count: 1
   - !type:StackResource
     stack: CEGlass
@@ -604,8 +604,8 @@
   - !type:StackResource
     stack: CEBrassSheet
     count: 5
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
     count: 1
   - !type:StackResource
     stack: CEGlass
@@ -619,28 +619,28 @@
   result: CEMachineCoreGridProjector
   resultCount: 1
 
-- type: workbenchRecipe
-  id: SolutionNormalizer
-  parent: BaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 1
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CESolutionNormalizer
-  resultCount: 1
+#- type: workbenchRecipe
+#  id: SolutionNormalizer
+#  parent: BaseEngineeringTableRecipe
+#  category: Tools
+#  craftTime: 2.0
+#  requirements:
+#  - !type:StackResource
+#    stack: CEBrassSheet
+#    count: 5
+#  - !type:StackResource
+#    stack: CEMachinePartCoalDiffuser
+#    count: 1
+#  - !type:StackResource
+#    stack: CEGlass
+#    count: 5
+#  result: CESolutionNormalizer
+#  resultCount: 1
 
 - type: workbenchRecipe
   id: ConveyorBelt
   parent: BaseEngineeringTableRecipe
-  category: MachineCore
+  category: Tools
   craftTime: 1.0
   requirements:
   - !type:StackResource

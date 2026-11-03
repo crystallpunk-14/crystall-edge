@@ -1986,14 +1986,6 @@ ent-CEMachinePartCoalDiffuser5 = { ent-CEMachinePartCoalDiffuser1 }
     .desc = { ent-CEMachinePartCoalDiffuser1.desc }
     .suffix = 5
 
-ent-CEMachinePartDimensionalMatrix1 = пространственная матрица
-    .desc = Фрагменты ядер полуплоскостей, наполненные пространственными искажениями, используются как ингредиенты для создания более сложных машин.
-    .suffix = 1
-
-ent-CEMachinePartDimensionalMatrix5 = { ent-CEMachinePartDimensionalMatrix1 }
-    .desc = { ent-CEMachinePartDimensionalMatrix1.desc }
-    .suffix = 5
-
 ent-CENail1 = гвозди
     .desc = Базовый инструмент плотника, позволяющий делать немыслимые вещи с деревом.
     .suffix = 1
