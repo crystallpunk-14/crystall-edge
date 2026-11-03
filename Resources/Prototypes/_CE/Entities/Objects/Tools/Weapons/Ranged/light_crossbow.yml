@@ -21,11 +21,11 @@
     slots:
     - belt
   - type: UseDelay
-    delay: 1
+    delay: 0.5
   - type: Gun
-    fireRate: 1
-    minAngle: 15
-    maxAngle: 35
+    fireRate: 2
+    minAngle: 5
+    maxAngle: 15
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
