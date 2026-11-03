@@ -24,6 +24,8 @@
   parent: CEBaseWallmountPainting
   description: A bizarre skull painting. Depressing.
   components:
+  - type: CETakeDown
+    item: CEPaintingSkullItem
   - type: Sprite
     state: skull_painting
 
@@ -33,6 +35,8 @@
   parent: CEBaseWallmountPainting
   description: A nicely drawn candle in a frame.
   components:
+  - type: CETakeDown
+    item: CEPaintingCandleItem
   - type: Sprite
     state: candle_painting
 
@@ -42,6 +46,8 @@
   parent: CEBaseWallmountPainting
   description: The painting depicts a woman with a mysterious smile.
   components:
+  - type: CETakeDown
+    item: CEPaintingWomanItem
   - type: Sprite
     state: painting_woman
 
@@ -51,6 +57,8 @@
   parent: CEBaseWallmountPainting
   description: A drawing of a nun with a halo over her head. This is how you can feel the holiness of the picture.
   components:
+  - type: CETakeDown
+    item: CEPaintingSaintItem
   - type: Sprite
     state: painting_saint
   - type: Destructible

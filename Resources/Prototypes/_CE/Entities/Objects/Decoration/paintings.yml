@@ -1,0 +1,71 @@
+- type: entity
+  id: CEBasePaintingItem
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  suffix: Item
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Decorations/paintings.rsi
+
+- type: entity
+  id: CEPaintingSkullItem
+  parent: CEBasePaintingItem
+  name: skull painting
+  description: A bizarre skull painting. Depressing. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: skull_painting
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSkull
+    conditions:
+    - !type:CETileNotBlockedCondition
+    - !type:CEWallBehindCondition
+    - !type:CENoWallmountCondition
+
+- type: entity
+  id: CEPaintingCandleItem
+  parent: CEBasePaintingItem
+  name: candle painting
+  description: A nicely drawn candle in a frame. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: candle_painting
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingCandle
+    conditions:
+    - !type:CETileNotBlockedCondition
+    - !type:CEWallBehindCondition
+    - !type:CENoWallmountCondition
+
+- type: entity
+  id: CEPaintingWomanItem
+  parent: CEBasePaintingItem
+  name: painting of a woman
+  description: The painting depicts a woman with a mysterious smile. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: painting_woman
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingWoman
+    conditions:
+    - !type:CETileNotBlockedCondition
+    - !type:CEWallBehindCondition
+    - !type:CENoWallmountCondition
+
+- type: entity
+  id: CEPaintingSaintItem
+  parent: CEBasePaintingItem
+  name: painting of a saint
+  description: A drawing of a nun with a halo over her head. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: painting_saint
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSaint
+    conditions:
+    - !type:CETileNotBlockedCondition
+    - !type:CEWallBehindCondition
+    - !type:CENoWallmountCondition

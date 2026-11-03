@@ -1,0 +1,6 @@
+- type: stack
+  id: CEConveyorBelt
+  name: ce-stack-conveyor-belt
+  spawn: CEConveyorBeltItem
+  icon: { sprite: _CE/Structures/Industrial/Conveyor/floor.rsi, state: stack_2 }
+  maxCount: 20

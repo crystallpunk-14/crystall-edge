@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Max Gab, icons cut from _CE/Structures/Decoration/wallmount_painting.rsi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "skull_painting"
+    },
+    {
+      "name": "candle_painting"
+    },
+    {
+      "name": "painting_woman"
+    },
+    {
+      "name": "painting_saint"
+    }
+  ]
+}

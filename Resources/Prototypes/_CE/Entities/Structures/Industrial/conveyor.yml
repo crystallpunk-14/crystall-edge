@@ -61,7 +61,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 40
+        damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -93,7 +93,7 @@
   - type: Conveyor
     speed: 3 # needed for stairs so that objects don't get stuck at the top, on the map above
   - type: Construction
-    graph: CEConveyorStairs
+    graph: CEConveyorBelt
     node: CEConveyorStairs
 
 - type: entity
@@ -113,5 +113,5 @@
     - 1.05
     - 1.05
   - type: Construction
-    graph: CEConveyorStairs
+    graph: CEConveyorBelt
     node: CEConveyorStairsReverse
