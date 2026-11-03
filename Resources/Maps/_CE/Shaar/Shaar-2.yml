@@ -10207,15 +10207,13 @@ entities:
           occludes: True
     - type: Fixtures
       fixtures: {}
-- proto: CEWallmountPaintingCandle
+- proto: CEWallmountPaintingRandomSpawner
   entities:
   - uid: 609
     components:
     - type: Transform
       parent: 1
       pos: -3.5,-5.5
-    - type: Fixtures
-      fixtures: {}
 - proto: CEWallmountTorchAlwaysPowered
   entities:
   - uid: 323

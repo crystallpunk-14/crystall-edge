@@ -2148,15 +2148,13 @@ entities:
       pos: 24.5,-10.5
     - type: Fixtures
       fixtures: {}
-- proto: CEWallmountPaintingSkull
+- proto: CEWallmountPaintingRandomSpawner
   entities:
   - uid: 159
     components:
     - type: Transform
       parent: 1
       pos: 21.5,-13.5
-    - type: Fixtures
-      fixtures: {}
 - proto: CEWallStoneBrick
   entities:
   - uid: 4
