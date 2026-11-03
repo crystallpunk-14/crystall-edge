@@ -7,7 +7,6 @@
   components:
   - type: Item
     size: Small
-  - type: CablePlacer
   - type: Stack
   - type: Appearance
 
@@ -40,10 +39,12 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 2
-  - type: CablePlacer
-    overTile: true
-    cablePrototypeID: CEPipeBrassMedium
-    blockingWireType: Apc
+  - type: CEPlaceable
+    prototype: CEPipeBrassMedium
+    delay: 0.5
+    conditions:
+    - !type:CENoReplacementKeyCondition
+      key: pipe_medium
 
 - type: entity
   parent: CEMediumBrassPipe1
@@ -87,10 +88,12 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 4
-  - type: CablePlacer
-    overTile: true
-    cablePrototypeID: CEPipeBrassBig
-    blockingWireType: HighVoltage
+  - type: CEPlaceable
+    prototype: CEPipeBrassBig
+    delay: 0
+    conditions:
+    - !type:CENoReplacementKeyCondition
+      key: pipe_big
 
 - type: entity
   parent: CEBigBrassPipe1

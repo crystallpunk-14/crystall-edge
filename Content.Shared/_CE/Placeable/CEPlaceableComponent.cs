@@ -1,3 +1,4 @@
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -18,6 +19,10 @@ public sealed partial class CEPlaceableComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan Delay = TimeSpan.FromSeconds(1);
+
+    [DataField]
+    public SoundSpecifier? PlaceSound = new SoundPathSpecifier("/Audio/Effects/woodenclosetclose.ogg",
+        AudioParams.Default.WithVariation(0.03f).WithVolume(2f));
 
     /// <summary>
     /// All of them must pass for the tile to be valid.

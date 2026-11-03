@@ -1,10 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -19,7 +22,9 @@ namespace Content.Shared._CE.Placeable;
 public sealed partial class CEPlaceableSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private CESharedZLevelsSystem _zLevel = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedMapSystem _map = default!;
@@ -33,7 +38,7 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEPlaceableComponent> ent, ref AfterInteractEvent args)
     {
-        if (args.Handled || !args.CanReach)
+        if (args.Handled || !args.CanReach || !IsPlacementClick(args.User, args.Target))
             return;
 
         if (!TryGetTarget(ent, args.User, args.ClickLocation, out var target))
@@ -98,6 +103,15 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     }
 
     /// <summary>
+    /// A click on a loose entity (an item, a crate, another mob) belongs to that entity, so a full stack or crate
+    /// doesn't turn into a placement. Anchored structures and the user themselves don't count.
+    /// </summary>
+    public bool IsPlacementClick(EntityUid user, EntityUid? clicked)
+    {
+        return clicked is not { } target || target == user || Transform(target).Anchored;
+    }
+
+    /// <summary>
     /// Finds the tile a click on <paramref name="clickLocation"/> places into. A tile with floor on the user's level
     /// wins; otherwise, if allowed, an open tile next to the user leads to the same tile one level below.
     /// </summary>
@@ -153,6 +167,9 @@ public sealed partial class CEPlaceableSystem : EntitySystem
     private void Place(Entity<CEPlaceableComponent> ent, CEPlacementTarget target)
     {
         var prototype = ent.Comp.Prototype;
+        var coords = _map.GridTileToLocal(target.Grid, target.Grid.Comp, target.Tile);
+        _audio.PlayPredicted(ent.Comp.PlaceSound, coords, target.User);
+
         if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
             _stack.SetCount((ent.Owner, stack), stack.Count - 1);
         else
@@ -162,8 +179,9 @@ public sealed partial class CEPlaceableSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var coords = _map.GridTileToLocal(target.Grid, target.Grid.Comp, target.Tile);
-        SpawnAttachedTo(prototype, coords, rotation: target.Direction.ToAngle());
+        var placed = SpawnAttachedTo(prototype, coords, rotation: target.Direction.ToAngle());
+        _adminLog.Add(LogType.Construction, LogImpact.Low,
+            $"{ToPrettyString(target.User):player} placed {ToPrettyString(placed):entity} at {coords}");
     }
 }
 

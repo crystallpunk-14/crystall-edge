@@ -1,10 +1,12 @@
 using System.Linq;
+using Content.Client.Gameplay;
 using Content.Shared._CE.Placeable;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Robust.Client.GameObjects;
 using Robust.Client.Input;
 using Robust.Client.Player;
+using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Input;
@@ -22,6 +24,7 @@ public sealed partial class CEPlaceablePreviewSystem : EntitySystem
 {
     [Dependency] private IInputManager _input = default!;
     [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IStateManager _state = default!;
     [Dependency] private IUserInterfaceManager _ui = default!;
     [Dependency] private CEPlaceableSystem _placeable = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
@@ -67,6 +70,8 @@ public sealed partial class CEPlaceablePreviewSystem : EntitySystem
         }
 
         if (!TryGetMouseCoordinates(out var mouse)
+            || _state.CurrentState is not GameplayStateBase gameplay
+            || !_placeable.IsPlacementClick(user, gameplay.GetClickedEntity(mouse))
             || !_interaction.InRangeUnobstructed(user, _transform.ToCoordinates(mouse))
             || !_placeable.TryGetTarget(item, user, _transform.ToCoordinates(mouse), out var target))
         {
