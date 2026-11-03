@@ -24,6 +24,8 @@
     - stack_1
     - stack_2
     - stack_3
+  - type: StackPrice
+    price: 7
   - type: CEPlaceable
     prototype: CEConveyorBelt
     delay: 0.2
