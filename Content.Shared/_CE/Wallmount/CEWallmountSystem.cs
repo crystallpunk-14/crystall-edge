@@ -16,6 +16,10 @@ public sealed partial class CEWallmountSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
 
+    [Dependency] private EntityQuery<CEWallmountComponent> _wallmountQuery = default!;
+    [Dependency] private EntityQuery<CEWallmountedComponent> _wallmountedQuery = default!;
+    [Dependency] private EntityQuery<WallComponent> _wallQuery = default!;
+
     //Upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
     public static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -32,6 +36,13 @@ public sealed partial class CEWallmountSystem : EntitySystem
         ClearWallmounts(ent);
     }
 
+    [SubscribeLocalEvent]
+    private void OnAttachedShutdown(Entity<CEWallmountComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.Wall is { } wall && _wallmountedQuery.TryComp(wall, out var wallmounted))
+            wallmounted.Attached.Remove(ent);
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -42,7 +53,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
         var query = EntityQueryEnumerator<CEWallmountComponent>();
         while (query.MoveNext(out var uid, out var wallmount))
         {
-            if (!wallmount.Initialized)
+            if (!wallmount.Initialized || wallmount.Wall != null)
                 continue;
 
             if (_timing.CurTime < wallmount.NextAttachTime)
@@ -57,11 +68,25 @@ public sealed partial class CEWallmountSystem : EntitySystem
             wallmount.NextAttachTime = _timing.CurTime + TimeSpan.FromSeconds(0.5f);
             wallmount.AttachAttempts--;
 
-            if (TryAttachWallmount((uid, wallmount)))
-            {
-                RemComp<CEWallmountComponent>(uid);
-            }
+            TryAttachWallmount((uid, wallmount));
         }
+    }
+
+    public bool IsWallSurface(EntityUid uid)
+    {
+        return _wallQuery.HasComp(uid) || _tag.HasTag(uid, WindowTag);
+    }
+
+    public bool HasWallmountAt(Entity<MapGridComponent> grid, Vector2i tile)
+    {
+        var enumerator = _map.GetAnchoredEntitiesEnumerator(grid, grid.Comp, tile);
+        while (enumerator.MoveNext(out var uid))
+        {
+            if (_wallmountQuery.HasComp(uid.Value))
+                return true;
+        }
+
+        return false;
     }
 
     private void ClearWallmounts(Entity<CEWallmountedComponent> ent)
@@ -88,12 +113,13 @@ public sealed partial class CEWallmountSystem : EntitySystem
         var hasParent = false;
         foreach (var entityUid in anchored)
         {
-            if (!HasComp<WallComponent>(entityUid) && !_tag.HasTag(entityUid, WindowTag))
+            if (!IsWallSurface(entityUid))
                 continue;
 
             EnsureComp<CEWallmountedComponent>(entityUid, out var wallmounted);
 
             wallmounted.Attached.Add(wallmount);
+            wallmount.Comp.Wall = entityUid;
 
             hasParent = true;
             break;

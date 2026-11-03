@@ -636,3 +636,18 @@
     count: 5
   result: CESolutionNormalizer
   resultCount: 1
+
+- type: workbenchRecipe
+  id: ConveyorBelt
+  parent: BaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 1
+  result: CEConveyorBeltItem
+  resultCount: 1

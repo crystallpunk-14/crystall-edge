@@ -1,0 +1,302 @@
+- type: entity
+  id: CEBasePaintingItem
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  suffix: Item
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Decorations/paintings.rsi
+  - type: CEPlaceable
+    conditions:
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
+
+- type: entity
+  id: CEPaintingSkullItem
+  parent: CEBasePaintingItem
+  name: skull painting
+  description: A bizarre skull painting. Depressing. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: skull
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSkull
+
+- type: entity
+  id: CEPaintingCandleItem
+  parent: CEBasePaintingItem
+  name: candle painting
+  description: A nicely drawn candle in a frame. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: candle
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingCandle
+
+- type: entity
+  id: CEPaintingWomanItem
+  parent: CEBasePaintingItem
+  name: painting of a woman
+  description: The painting depicts a woman with a mysterious smile. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: woman
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingWoman
+
+- type: entity
+  id: CEPaintingSaintItem
+  parent: CEBasePaintingItem
+  name: painting of a saint
+  description: A drawing of a nun with a halo over her head. This is how you can feel the holiness of the picture. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: saint
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSaint
+
+- type: entity
+  id: CEPaintingAelytaItem
+  parent: CEBasePaintingItem
+  name: aelyta painting
+  description: A painting of a flower meadow, stretching to the horizon. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: aelyta
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingAelyta
+
+- type: entity
+  id: CEPaintingCarcatItem
+  parent: CEBasePaintingItem
+  name: painting of a carcat
+  description: Portrait of a prosperous carcat. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: carcat
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingCarcat
+
+- type: entity
+  id: CEPaintingFireItem
+  parent: CEBasePaintingItem
+  name: fire painting
+  description: Abstract drawing of fire. Doesn't warm up. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: fire
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingFire
+
+- type: entity
+  id: CEPaintingFishingItem
+  parent: CEBasePaintingItem
+  name: painting of a fishing
+  description: A painting of a fishing scene capturing the moment of the catch. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: fishing
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingFishing
+
+- type: entity
+  id: CEPaintingFlemItem
+  parent: CEBasePaintingItem
+  name: flem painting
+  description: A painting of a two-legged fish. A fish of dreams. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: flem
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingFlem
+
+- type: entity
+  id: CEPaintingFrozeItem
+  parent: CEBasePaintingItem
+  name: froze painting
+  description: Abstract drawing of freezing. Cool to the touch. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: froze
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingFroze
+
+- type: entity
+  id: CEPaintingLootgobItem
+  parent: CEBasePaintingItem
+  name: painting of a lootgob
+  description: A portrait of a goblin. A good goblin. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: lootgob
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingLootgob
+
+- type: entity
+  id: CEPaintingLumeraItem
+  parent: CEBasePaintingItem
+  name: painting of a lumera
+  description: A painting dedicated to Lumera. A free interpretation by an unknown artist. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: lumera
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingLumera
+
+- type: entity
+  id: CEPaintingArmorratusItem
+  parent: CEBasePaintingItem
+  name: painting of a armorattus
+  description: Portrait of Sir Armorratus. The envious call him a mouse. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: armorattus
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingArmorratus
+
+- type: entity
+  id: CEPaintingHedgehogItem
+  parent: CEBasePaintingItem
+  name: painting of a hedgehog
+  description: A drawing of a hedgehog in a chef's hat. An unusual combination. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: ezik
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingHedgehog
+
+- type: entity
+  id: CEPaintingFightItem
+  parent: CEBasePaintingItem
+  name: fight painting
+  description: A painting depicting a battle scene of pot warriors. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: fight
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingFight
+
+- type: entity
+  id: CEPaintingGnomeItem
+  parent: CEBasePaintingItem
+  name: painting of a gnome
+  description: A portrait of a gnome. Few have ever seen them in the flesh. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: gnome
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingGnome
+
+- type: entity
+  id: CEPaintingGoblinItem
+  parent: CEBasePaintingItem
+  name: painting of a goblin
+  description: A painting of a goblin with a stately nose. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: goblin
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingGoblin
+
+- type: entity
+  id: CEPaintingLurkerItem
+  parent: CEBasePaintingItem
+  name: painting of a lurker
+  description: A painting of a monster lurking in the shadows. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: lurker
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingLurker
+
+- type: entity
+  id: CEPaintingOmsoykItem
+  parent: CEBasePaintingItem
+  name: painting of food
+  description: A drawing of a mouse made from food. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: omsoyk
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingOmsoyk
+
+- type: entity
+  id: CEPaintingRainItem
+  parent: CEBasePaintingItem
+  name: rain painting
+  description: A painting of rain. One feels a sense of coziness. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: rain
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingRain
+
+- type: entity
+  id: CEPaintingRichItem
+  parent: CEBasePaintingItem
+  name: rich painting
+  description: A painting of a goblin bathing in a mountain of gold. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: rich
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingRich
+
+- type: entity
+  id: CEPaintingViatorItem
+  parent: CEBasePaintingItem
+  name: silhouette painting
+  description: Portrait of one of the former architects of the city. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: viator
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingViator
+
+- type: entity
+  id: CEPaintingPitchforksItem
+  parent: CEBasePaintingItem
+  name: painting of a pitchforks
+  description: A painting of a peasant with pitchforks. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: pitchforks
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingPitchforks
+
+- type: entity
+  id: CEPaintingPotItem
+  parent: CEBasePaintingItem
+  name: painting of a pot
+  description: A painting of a potted soldier. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: pot
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingPot
+
+- type: entity
+  id: CEPaintingSquidItem
+  parent: CEBasePaintingItem
+  name: painting of a squid
+  description: The painting is likely a squid. A breath of the new movement. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: squid
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSquid
+
+- type: entity
+  id: CEPaintingSunsetItem
+  parent: CEBasePaintingItem
+  name: painting of a sunset
+  description: A painting of a sunset. Once, long ago, the sky was cloaked in blood. Can be hung on a wall.
+  components:
+  - type: Sprite
+    state: sunset
+  - type: CEPlaceable
+    prototype: CEWallmountPaintingSunset

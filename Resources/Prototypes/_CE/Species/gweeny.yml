@@ -12,7 +12,7 @@
   prototype: CEMobGweeny
   dollPrototype: CEAppearanceGweeny
   skinColoration: Hues
-  defaultSkinTone: "#ebf310"
+  defaultSkinTone: "#132334"
   maleFirstNames: CE_Names_Gweeny_Male_First
   femaleFirstNames: CE_Names_Gweeny_Female_First
   lastNames: CE_Names_Gweeny_Last

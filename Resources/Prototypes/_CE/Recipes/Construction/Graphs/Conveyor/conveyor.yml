@@ -1,3 +1,4 @@
+# A screwdriver cycles the belt variants, a crowbar takes any variant back into the item.
 - type: constructionGraph
   id: CEConveyorBelt
   start: start
@@ -5,27 +6,51 @@
     - node: start
       actions:
         - !type:DestroyEntity {}
-      edges:
-        - to: CEConveyorBelt
-          steps:
-            - material: CEIronSheet
-              amount: 1
-              doAfter: 1
-            - material: CEBrassRod
-              amount: 1
-              doAfter: 1
 
     - node: CEConveyorBelt
       entity: CEConveyorBelt
       edges:
+        - to: CEConveyorStairs
+          steps:
+            - tool: Screwing
+              doAfter: 1
         - to: start
           steps:
             - tool: Prying
-              doAfter: 1
+              doAfter: 0.5
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronSheet1
+              prototype: CEConveyorBeltItem
               amount: 1
+
+    - node: CEConveyorStairs
+      entity: CEConveyorStairs
+      edges:
+        - to: CEConveyorStairsReverse
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 0.5
+          completed:
             - !type:SpawnPrototype
-              prototype: CEBrassRod1
+              prototype: CEConveyorBeltItem
+              amount: 1
+
+    - node: CEConveyorStairsReverse
+      entity: CEConveyorStairsReverse
+      edges:
+        - to: CEConveyorBelt
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 0.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEConveyorBeltItem
               amount: 1

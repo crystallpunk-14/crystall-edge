@@ -2,7 +2,7 @@
   id: CEWoodenLadderItem
   parent: BaseItem
   name: wooden ladder
-  description: A folded wooden ladder. Use it on a wall to mount it, or on an open edge next to you to hang it down to the level below.
+  description: A folded wooden ladder. Mount it on a wall, or hang it down from an open edge next to you to the level below.
   categories: [ ForkFiltered ]
   suffix: 1
   components:
@@ -25,9 +25,13 @@
     - wooden1
     - wooden2
     - wooden3
-  - type: CEWallmountPlacer
+  - type: CEPlaceable
     prototype: CEWoodenLadder
     allowPlaceBelow: true
+    conditions:
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
 
 - type: entity
   id: CEWoodenLadderItem5

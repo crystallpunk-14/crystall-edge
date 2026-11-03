@@ -1,0 +1,55 @@
+- type: entity
+  id: CEConveyorBeltItem
+  parent: BaseItem
+  name: conveyor belt
+  description: A rolled-up conveyor belt section. Lay it on the floor.
+  categories: [ ForkFiltered ]
+  suffix: 1
+  components:
+  - type: Item
+    size: Large
+    shape:
+    - 0, 0, 2, 2
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Conveyor/floor.rsi
+    layers:
+      - state: stack_1
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEConveyorBelt
+    count: 1
+    baseLayer: base
+    layerStates:
+    - stack_1
+    - stack_2
+    - stack_3
+  - type: StackPrice
+    price: 7
+  - type: CEPlaceable
+    prototype: CEConveyorBelt
+    delay: 0.2
+    conditions:
+    - !type:TileNotBlocked
+    - !type:NoAnchored
+      whitelist:
+        components:
+        - Conveyor
+    - !type:NoReplacementKey
+      key: pipe_medium
+
+- type: entity
+  id: CEConveyorBeltItem10
+  parent: CEConveyorBeltItem
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  id: CEConveyorBeltItem20
+  parent: CEConveyorBeltItem
+  suffix: 20
+  components:
+  - type: Stack
+    count: 20

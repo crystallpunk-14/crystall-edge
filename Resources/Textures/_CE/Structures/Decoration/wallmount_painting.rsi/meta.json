@@ -1,26 +1,118 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by Max Gab ",
+  "copyright": "Created by Max Gab (skull, ...saint), TTTomaTTT (github) (fire, ...pot), lucson1337 (pitchforks, fishing)",
   "size": {
     "x": 32,
     "y": 96
   },
   "states": [
     {
-      "name": "skull_painting",
+      "name": "skull",
       "directions": 4
     },
     {
-      "name": "candle_painting",
+      "name": "candle",
       "directions": 4
     },
     {
-      "name": "painting_woman",
+      "name": "woman",
       "directions": 4
     },
     {
-      "name": "painting_saint",
+      "name": "saint",
+      "directions": 4
+    },
+    {
+      "name": "fire",
+      "directions": 4
+    },
+    {
+      "name": "froze",
+      "directions": 4
+    },
+    {
+      "name": "flem",
+      "directions": 4
+    },
+    {
+      "name": "lumera",
+      "directions": 4
+    },
+    {
+      "name": "ezik",
+      "directions": 4
+    },
+    {
+      "name": "gnome",
+      "directions": 4
+    },
+    {
+      "name": "lurker",
+      "directions": 4
+    },
+    {
+      "name": "omsoyk",
+      "directions": 4
+    },
+    {
+      "name": "squid",
+      "directions": 4
+    },
+    {
+      "name": "viator",
+      "directions": 4
+    },
+    {
+      "name": "sunset",
+      "directions": 4
+    },
+    {
+      "name": "aelyta",
+      "directions": 4
+    },
+    {
+      "name": "goblin",
+      "directions": 4
+    },
+    {
+      "name": "carcat",
+      "directions": 4
+    },
+    {
+      "name": "lootgob",
+      "directions": 4
+    },
+    {
+      "name": "armorattus",
+      "directions": 4
+    },
+    {
+      "name": "fight",
+      "directions": 4
+    },
+    {
+      "name": "rain",
+      "directions": 4
+    },
+    {
+      "name": "rich",
+      "directions": 4
+    },
+    {
+      "name": "pot",
+      "directions": 4
+    },
+    {
+      "name": "pitchforks",
+      "directions": 4
+    },
+    {
+      "name": "fishing",
+      "directions": 4
+    },
+    {
+      "name": "random",
       "directions": 4
     }
   ]

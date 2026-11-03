@@ -1,6 +1,24 @@
 - type: entity
+  id: CEBasePlantable
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEPlaceable
+    delay: 1
+    rotatable: false
+    examineText: ce-farming-seed-examine
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:PlantSoil
+    - !type:PlantSpace
+
+- type: entity
   id: CEBaseSeed
-  parent: BaseItem
+  parent: [ BaseItem, CEBasePlantable ]
   abstract: true
   categories: [ ForkFiltered ]
   suffix: 1
@@ -9,7 +27,6 @@
     size: Tiny
   - type: Sprite
     state: seeds
-  - type: CESeed
   - type: StackPrice
     price: 0.5
   - type: Stack
@@ -27,8 +44,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/wheat.rsi
-  - type: CESeed
-    plantProto: CEPlantWheat
+  - type: CEPlaceable
+    prototype: CEPlantWheat
   - type: Stack
     stackType: CESeedWheat
 
@@ -49,8 +66,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/pumpkin.rsi
-  - type: CESeed
-    plantProto: CEPlantPumpkin
+  - type: CEPlaceable
+    prototype: CEPlantPumpkin
   - type: Stack
     stackType: CESeedPumpkin
 
@@ -71,8 +88,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/cabbage.rsi
-  - type: CESeed
-    plantProto: CEPlantCabbage
+  - type: CEPlaceable
+    prototype: CEPlantCabbage
   - type: Stack
     stackType: CESeedCabbage
 
@@ -93,8 +110,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/cucumber.rsi
-  - type: CESeed
-    plantProto: CEPlantCucumber
+  - type: CEPlaceable
+    prototype: CEPlantCucumber
   - type: Stack
     stackType: CESeedCucumber
 
@@ -115,8 +132,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/tomato.rsi
-  - type: CESeed
-    plantProto: CEPlantTomatoes
+  - type: CEPlaceable
+    prototype: CEPlantTomatoes
   - type: Stack
     stackType: CESeedTomato
 
@@ -137,8 +154,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/pepper.rsi
-  - type: CESeed
-    plantProto: CEPlantPepper
+  - type: CEPlaceable
+    prototype: CEPlantPepper
   - type: Stack
     stackType: CESeedPepper
 
@@ -159,8 +176,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/cotton.rsi
-  - type: CESeed
-    plantProto: CEPlantCotton
+  - type: CEPlaceable
+    prototype: CEPlantCotton
   - type: Stack
     stackType: CESeedCotton
 
@@ -181,8 +198,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/sunflower.rsi
-  - type: CESeed
-    plantProto: CEPlantSunflower
+  - type: CEPlaceable
+    prototype: CEPlantSunflower
   - type: Stack
     stackType: CESeedSunflower
 
@@ -203,8 +220,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/corn.rsi
-  - type: CESeed
-    plantProto: CEPlantCorn
+  - type: CEPlaceable
+    prototype: CEPlantCorn
   - type: Stack
     stackType: CESeedCorn
 
@@ -225,8 +242,8 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/carrot.rsi
-  - type: CESeed
-    plantProto: CEPlantCarrot
+  - type: CEPlaceable
+    prototype: CEPlantCarrot
   - type: Stack
     stackType: CESeedCarrot
 

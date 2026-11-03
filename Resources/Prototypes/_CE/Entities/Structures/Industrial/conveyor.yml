@@ -48,8 +48,18 @@
           Reverse: { state: moving_backward }
   - type: ApcPowerReceiver
     powerLoad: 0.1
+  # Works as a medium pipe: joins the Apc network of adjacent pipes and conveyors and passes energy along.
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: Apc
+  - type: PowerProvider
+    voltage: Apc
+  - type: ExtensionCableProvider
+  # A receiver can't draw from its own provider, so the belt powers itself from a neighbouring pipe or belt. Hacky hacky :>
   - type: ExtensionCableReceiver
-    receptionRange: 0
+    receptionRange: 1
   - type: Construction
     graph: CEConveyorBelt
     node: CEConveyorBelt
@@ -61,7 +71,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 40
+        damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -93,7 +103,7 @@
   - type: Conveyor
     speed: 3 # needed for stairs so that objects don't get stuck at the top, on the map above
   - type: Construction
-    graph: CEConveyorStairs
+    graph: CEConveyorBelt
     node: CEConveyorStairs
 
 - type: entity
@@ -113,5 +123,5 @@
     - 1.05
     - 1.05
   - type: Construction
-    graph: CEConveyorStairs
+    graph: CEConveyorBelt
     node: CEConveyorStairsReverse

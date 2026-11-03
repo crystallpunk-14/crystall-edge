@@ -24,7 +24,7 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
         if (proto is null)
             return;
 
-        if (!CanPlant(proto, Transform(plant).Coordinates, null, plant))
+        if (!CanPlant(proto.ID, Transform(plant).Coordinates, plant))
         {
             QueueDel(plant);
             return;

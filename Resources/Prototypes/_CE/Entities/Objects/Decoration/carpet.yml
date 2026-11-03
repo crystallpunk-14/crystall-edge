@@ -14,12 +14,15 @@
     state: icon
   - type: StackPrice
     price: 0.5
-  - type: SpawnAfterInteract
-    doAfter: 0.5
-    removeOnInteract: true
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    CECloth: 15
+  - type: CEPlaceable
+    delay: 0.2
+    rotatable: false
+    conditions:
+    - !type:TileNotBlocked
+    - !type:NoAnchored
+      whitelist:
+        tags:
+        - Carpet
   - type: CEEntityGroupMember
     groups:
       Carpet: 1
@@ -36,7 +39,7 @@
     sprite: _CE/Structures/Furniture/Carpets/blue.rsi
   - type: Stack
     stackType: CEFloorCarpetBlue
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetBlue
 
 - type: entity
@@ -51,7 +54,7 @@
     heldPrefix: carpet-Red
   - type: Stack
     stackType: CEFloorCarpetRed
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetRed
 
 - type: entity
@@ -66,7 +69,7 @@
     heldPrefix: carpet-Purple
   - type: Stack
     stackType: CEFloorCarpetPurple
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetPurple
 
 - type: entity
@@ -79,7 +82,7 @@
     sprite: _CE/Structures/Furniture/Carpets/black.rsi
   - type: Stack
     stackType: CEFloorCarpetBlack
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetBlack
 
 - type: entity
@@ -92,7 +95,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/scarlet_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselScarletGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselScarletGold
 
 - type: entity
@@ -105,7 +108,7 @@
     sprite: _CE/Structures/Furniture/Carpets/crimson_copper.rsi
   - type: Stack
     stackType: CEFloorCarpetCrimsonCopper
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetCrimsonCopper
 
 - type: entity
@@ -118,7 +121,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/wine_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselWineTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselWineTonal
 
 - type: entity
@@ -131,7 +134,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/terracotta_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselTerracottaTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselTerracottaTonal
 
 - type: entity
@@ -144,7 +147,7 @@
     sprite: _CE/Structures/Furniture/Carpets/ochre_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetOchreTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetOchreTonal
 
 - type: entity
@@ -157,7 +160,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/olive_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselOliveTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselOliveTonal
 
 - type: entity
@@ -170,7 +173,7 @@
     sprite: _CE/Structures/Furniture/Carpets/moss_copper.rsi
   - type: Stack
     stackType: CEFloorCarpetMossCopper
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetMossCopper
 
 - type: entity
@@ -183,7 +186,7 @@
     sprite: _CE/Structures/Furniture/Carpets/moss_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetMossTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetMossTonal
 
 - type: entity
@@ -196,7 +199,7 @@
     sprite: _CE/Structures/Furniture/Carpets/emerald_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetEmeraldTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetEmeraldTonal
 
 - type: entity
@@ -209,7 +212,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/emerald_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselEmeraldGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselEmeraldGold
 
 - type: entity
@@ -222,7 +225,7 @@
     sprite: _CE/Structures/Furniture/Carpets/pine_copper.rsi
   - type: Stack
     stackType: CEFloorCarpetPineCopper
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetPineCopper
 
 - type: entity
@@ -235,7 +238,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/pine_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselPineTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselPineTonal
 
 - type: entity
@@ -248,7 +251,7 @@
     sprite: _CE/Structures/Furniture/Carpets/teal_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTealTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTealTonal
 
 - type: entity
@@ -261,7 +264,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/teal_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselTealGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselTealGold
 
 - type: entity
@@ -274,7 +277,7 @@
     sprite: _CE/Structures/Furniture/Carpets/sea_silver.rsi
   - type: Stack
     stackType: CEFloorCarpetSeaSilver
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetSeaSilver
 
 - type: entity
@@ -287,7 +290,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/sea_contrast.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselSeaContrast
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselSeaContrast
 
 - type: entity
@@ -300,7 +303,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/azure_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselAzureTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselAzureTonal
 
 - type: entity
@@ -313,7 +316,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/azure_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselAzureGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselAzureGold
 
 - type: entity
@@ -326,7 +329,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/royal_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselRoyalBlueTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselRoyalBlueTonal
 
 - type: entity
@@ -339,7 +342,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/indigo_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselIndigoTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselIndigoTonal
 
 - type: entity
@@ -352,7 +355,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/indigo_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselIndigoGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselIndigoGold
 
 - type: entity
@@ -365,7 +368,7 @@
     sprite: _CE/Structures/Furniture/Carpets/plum_copper.rsi
   - type: Stack
     stackType: CEFloorCarpetPlumCopper
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetPlumCopper
 
 - type: entity
@@ -378,7 +381,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/plum_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselPlumTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselPlumTonal
 
 - type: entity
@@ -391,7 +394,7 @@
     sprite: _CE/Structures/Furniture/Carpets/chocolate_gold.rsi
   - type: Stack
     stackType: CEFloorCarpetChocolateGold
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetChocolateGold
 
 - type: entity
@@ -404,7 +407,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/ivory_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselIvoryTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselIvoryTonal
 
 - type: entity
@@ -417,7 +420,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/ash_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselAshTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselAshTonal
 
 - type: entity
@@ -430,7 +433,7 @@
     sprite: _CE/Structures/Furniture/Carpets/coal_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetCoalTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetCoalTonal
 
 - type: entity
@@ -443,7 +446,7 @@
     sprite: _CE/Structures/Furniture/Carpets/Tassel/coal_tone.rsi
   - type: Stack
     stackType: CEFloorCarpetTasselCoalTonal
-  - type: SpawnAfterInteract
+  - type: CEPlaceable
     prototype: CECarpetTasselCoalTonal
 
 #MARK: Stack 10

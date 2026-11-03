@@ -1,7 +1,7 @@
 namespace Content.Shared._CE.Wallmount;
 
 /// <summary>
-/// Automatically attaches the entity to the wall when it appears, or removes it
+/// Attaches the entity to the wall behind it when it appears, or deletes it if there is none.
 /// </summary>
 [RegisterComponent, Access(typeof(CEWallmountSystem))]
 public sealed partial class CEWallmountComponent : Component
@@ -11,4 +11,10 @@ public sealed partial class CEWallmountComponent : Component
 
     [DataField]
     public TimeSpan NextAttachTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// The wall this entity hangs on, once attached.
+    /// </summary>
+    [DataField]
+    public EntityUid? Wall;
 }

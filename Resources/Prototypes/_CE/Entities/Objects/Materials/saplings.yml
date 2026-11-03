@@ -1,15 +1,15 @@
 - type: entity
   id: CESaplingBase
   abstract: true
-  parent: BaseItem
+  parent: [ BaseItem, CEBasePlantable ]
   categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Normal
   - type: StaticPrice
     price: 15
-  - type: CESeed
-    plantingTime: 4
+  - type: CEPlaceable
+    delay: 4
 
 - type: entity
   id: CESeedAppleTree
@@ -20,5 +20,5 @@
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/apple.rsi
     state: seeds
-  - type: CESeed
-    plantProto: CEPlantAppleTree
+  - type: CEPlaceable
+    prototype: CEPlantAppleTree
