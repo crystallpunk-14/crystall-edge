@@ -1713,3 +1713,24 @@
   id: 1145
   time: '2026-11-03T12:49:00.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/585
+- author: TheShuEd
+  changes:
+  - message: You can now place items in the Funnel, and this will act as a filter,
+      allowing you to retrieve only specific resources from the chest or place only
+      specific resources into the chest.
+    type: Add
+  - message: Reduced the chance of taking damage when falling from a ladder.
+    type: Tweak
+  - message: Crossbow buffed
+    type: Tweak
+  - message: When drills drill an ore core, loot will spawn evenly among all drills.
+    type: Fix
+  - message: Fixed a bug where resources would disappear when dismantling a machine
+      core.
+    type: Fix
+  - message: Engineering table was replaced with assebly shop, that allows automated
+      crating. Also, recipes for weapon crafting was added.
+    type: Add
+  id: 1146
+  time: '2026-11-03T20:08:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/586
