@@ -42,8 +42,6 @@
     equipWhileMoving: true
     equipDelay: 1
     unequipDelay: 1
-  - type: StaticPrice
-    price: 25
 
 - type: entity
   parent: CEBaseWeaponStaff

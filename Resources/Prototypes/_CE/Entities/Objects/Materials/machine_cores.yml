@@ -177,7 +177,7 @@
   - type: MachineBoard
     prototype: CEMapProjector
   - type: StaticPrice
-    price: 180
+    price: 85
 
 - type: entity
   id: CEMachineCoreGridProjector
@@ -189,7 +189,7 @@
   - type: MachineBoard
     prototype: CEPowerGridProjector
   - type: StaticPrice
-    price: 250
+    price: 180
 
 # Guild
 
