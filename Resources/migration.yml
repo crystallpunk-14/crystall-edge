@@ -427,6 +427,11 @@ CEClothingGlovesBlacksmith: CEClothingGlovesLeather
 CEMachinePartDimensionalMatrix1: CEEnergyCrystalCell
 CEMachinePartDimensionalMatrix5: CEEnergyCrystalCell
 
+# Press reworked into an autocrafter, anvil platform removed
+CEPress: null
+CEMachineCorePress: CEMachineCoreIndustrialPress
+CEPressTargetAnvil: null
+
 # CrystallEdge migration zone end
 
 

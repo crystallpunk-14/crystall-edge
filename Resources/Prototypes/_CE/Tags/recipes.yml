@@ -5,6 +5,9 @@
   id: CERecipeMeltingFurnace
 
 - type: Tag
+  id: CERecipePress
+
+- type: Tag
   id: CERecipeEngineeringTable
 
 - type: Tag

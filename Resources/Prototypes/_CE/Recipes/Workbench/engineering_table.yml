@@ -458,7 +458,7 @@
   resultCount: 1
 
 - type: workbenchRecipe
-  id: MachineCorePress
+  id: MachineCoreIndustrialPress
   parent: BaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
@@ -472,7 +472,7 @@
   - !type:StackResource
     stack: CEIronBar
     count: 10
-  result: CEMachineCorePress
+  result: CEMachineCoreIndustrialPress
   resultCount: 1
 
 - type: workbenchRecipe

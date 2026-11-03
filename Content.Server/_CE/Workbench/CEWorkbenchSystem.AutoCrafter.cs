@@ -18,13 +18,16 @@ public sealed partial class CEWorkbenchSystem
         ent.Comp.ActiveDoAfter = null;
 
         if (args.Cancelled || args.Handled)
+        {
+            RaiseCancelled(ent);
             return;
+        }
 
-        if (!_proto.Resolve(args.Recipe, out var recipe))
+        if (!_proto.Resolve(args.Recipe, out var recipe) || !_workbenchQuery.TryComp(ent, out var workbench))
+        {
+            RaiseCancelled(ent);
             return;
-
-        if (!_workbenchQuery.TryComp(ent, out var workbench))
-            return;
+        }
 
         var getResource = new CEWorkbenchGetResourcesEvent();
         RaiseLocalEvent(ent.Owner, getResource);
@@ -34,6 +37,7 @@ public sealed partial class CEWorkbenchSystem
         if (!CanCraftRecipe(recipe, resources))
         {
             _popup.PopupEntity(Loc.GetString("ce-workbench-cant-craft"), ent);
+            RaiseCancelled(ent);
             return;
         }
 
@@ -45,6 +49,9 @@ public sealed partial class CEWorkbenchSystem
         SpawnAtPosition(workbench.Vfx, Transform(ent).Coordinates);
         UpdateUIRecipes(ent.Owner);
         args.Handled = true;
+
+        var finished = new CEAutoCraftFinishedEvent();
+        RaiseLocalEvent(ent, ref finished);
     }
 
     public override void Update(float frameTime)
@@ -95,7 +102,12 @@ public sealed partial class CEWorkbenchSystem
                 NeedHand = false,
             };
 
-            _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+            if (_doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId))
+            {
+                var started = new CEAutoCraftStartedEvent(craftTime);
+                RaiseLocalEvent(uid, ref started);
+            }
+
             _audio.PlayPvs(recipe.OverrideCraftSound ?? workbench.CraftSound, uid);
             autoCrafter.ActiveDoAfter = doAfterId;
             autoCrafter.NextCraftTime = _timing.CurTime + autoCrafter.CraftDelay + craftTime;
@@ -121,5 +133,12 @@ public sealed partial class CEWorkbenchSystem
 
         _doAfter.Cancel(ent.Comp.ActiveDoAfter);
         ent.Comp.ActiveDoAfter = null;
+        RaiseCancelled(ent);
+    }
+
+    private void RaiseCancelled(EntityUid uid)
+    {
+        var cancelled = new CEAutoCraftCancelledEvent();
+        RaiseLocalEvent(uid, ref cancelled);
     }
 }

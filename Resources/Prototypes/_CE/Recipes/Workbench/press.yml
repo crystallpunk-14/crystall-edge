@@ -1,0 +1,31 @@
+- type: workbenchRecipe
+  id: BasePressRecipe
+  abstract: true
+  tag: CERecipePress
+  workbench: CEIndustrialPress
+
+#MARK: Sheet
+
+- type: workbenchRecipe
+  id: BrassSheet1
+  parent: BasePressRecipe
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEBrass
+    count: 10
+  result: CEBrassSheet1
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: IronSheet1
+  parent: BasePressRecipe
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEIron
+    count: 10
+  result: CEIronSheet1
+  resultCount: 2

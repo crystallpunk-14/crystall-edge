@@ -92,12 +92,12 @@
     prototype: CEHeater
 
 - type: entity
-  id: CEMachineCorePress
+  id: CEMachineCoreIndustrialPress
   parent: CEBaseMachineCore
-  name: press machine core
+  name: industrial press machine core
   components:
   - type: MachineBoard
-    prototype: CEPress
+    prototype: CEIndustrialPress
   - type: StaticPrice
     price: 150
 
