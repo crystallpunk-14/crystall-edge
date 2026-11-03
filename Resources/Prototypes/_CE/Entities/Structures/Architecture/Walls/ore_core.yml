@@ -126,3 +126,28 @@
     table: !type:AllSelector
       children:
       - id: CEGoldOre1
+
+- type: entity
+  id: CEWallBrassCore
+  name: brass debris
+  description: "A tangled heap of old brass hull plates, pipes and gears, fused together over time. Drilling it yields brass scrap and other junk."
+  parent: CEOreCoreBase
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/Ore/core_brass.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/Ore/core_brass.rsi
+  - type: IconSmooth
+    base: wall
+  - type: CEOreVein
+    table: !type:GroupSelector
+      children:
+      - id: CEScrapBrass1
+      - id: CEScrapIron1
+      - id: CEMediumBrassPipe1
+      - id: CEPipeValve1
+      - id: CECoal1
+      - id: CECoinCopper1
+      - id: CEBrassSheet1
+      - id: CEIronSheet1
+      - id: CEIronRod1
