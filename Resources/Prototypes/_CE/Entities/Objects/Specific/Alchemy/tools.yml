@@ -133,5 +133,5 @@
     - Syringe
   - type: PhysicalComposition
     materialComposition:
-      Glass: 10
-      Steel: 10
+      CEGlass: 5
+      CEIron: 5

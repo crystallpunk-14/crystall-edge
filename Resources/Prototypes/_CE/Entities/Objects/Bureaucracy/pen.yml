@@ -22,5 +22,4 @@
   - type: StaticPrice
     price: 3
   - type: PhysicalComposition
-    materialComposition:
-      Steel: 0 #Parenting from vanilla moment
+    materialComposition: {} #Parenting from vanilla moment

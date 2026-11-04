@@ -169,7 +169,7 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 10
+      CEGlass: 5
 
 - type: entity
   id: CEVialTinyReinforced
@@ -201,8 +201,8 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 10
-      Brass: 10
+      CEGlass: 5
+      CEBrass: 5
 
 - type: entity
   id: CEVialSmall
@@ -232,7 +232,7 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 20
+      CEGlass: 5
 
 - type: entity
   id: CEVialSmallReinforced
@@ -264,8 +264,8 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 20
-      Brass: 10
+      CEGlass: 5
+      CEBrass: 5
 
 - type: entity
   id: CEVialMedium
@@ -297,7 +297,7 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 40
+      CEGlass: 10
 
 - type: entity
   id: CEVialMediumReinforced
@@ -330,8 +330,8 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 40
-      Brass: 10
+      CEGlass: 10
+      CEBrass: 5
 
 - type: entity
   id: CEVialStar
@@ -361,7 +361,7 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 20
+      CEGlass: 5
 
 - type: entity
   id: CEVialStarReinforced
@@ -393,8 +393,8 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 20
-      Brass: 10
+      CEGlass: 5
+      CEBrass: 5
 
 - type: entity
   id: CEVialSkull
@@ -424,7 +424,7 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 25
+      CEGlass: 5
 
 - type: entity
   id: CEVialSkullReinforced
@@ -456,5 +456,5 @@
     fillBaseName: liq-
   - type: PhysicalComposition
     materialComposition:
-      Glass: 25
-      Brass: 10
+      CEGlass: 5
+      CEBrass: 5
