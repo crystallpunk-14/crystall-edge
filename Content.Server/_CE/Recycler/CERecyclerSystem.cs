@@ -48,6 +48,9 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
 
     private void Recycle(Entity<CERecyclerComponent> ent, EntityUid other)
     {
+        // An already recycled entity lives until the end of the tick and can hit the next recycler in a chain
+        if (TerminatingOrDeleted(other) || EntityManager.IsQueuedForDeletion(other))
+            return;
         if (!_whitelist.CheckBoth(other, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return;
         if (!TryComp<MaterialStorageComponent>(ent, out var materialStorage))
@@ -68,21 +71,20 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
 
         if (TryComp<PhysicalCompositionComponent>(other, out var physComp))
         {
-            if (TryComp<StackComponent>(other, out var stack))
+            var count = CompOrNull<StackComponent>(other)?.Count ?? 1;
+            var materialComposition = new Dictionary<string, int>();
+            foreach (var (s, value) in physComp.MaterialComposition)
             {
-                var count = stack.Count;
-                Dictionary<string,int> materialComposition = new();
-                foreach (var (s, value) in physComp.MaterialComposition)
-                {
-                    materialComposition[s] = value * count;
-                }
-                _material.TryChangeMaterialAmount((ent.Owner, materialStorage), materialComposition);
+                materialComposition[s] = value * count;
             }
-            else
-                _material.TryChangeMaterialAmount((ent.Owner, materialStorage), physComp.MaterialComposition);
 
-            _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
-            _destructible.DestroyEntity(other);
+            // Materials are granted only for an entity that is actually destroyed
+            if (_destructible.DestroyEntity(other))
+            {
+                _material.TryChangeMaterialAmount((ent.Owner, materialStorage), materialComposition);
+                _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
+                return;
+            }
         }
 
         _transform.SetCoordinates(other, spawnPos); //To prevent double reclaiming

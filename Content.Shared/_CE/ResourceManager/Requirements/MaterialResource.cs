@@ -53,42 +53,43 @@ public sealed partial class MaterialResource : CEResourceRequirement
     {
         var stackSystem = entManager.System<SharedStackSystem>();
 
-        var requiredCount = Count;
+        // Largest units first, so a partially used unit wastes as little material as possible
+        var candidates = new List<(EntityUid Uid, int UnitValue)>();
         foreach (var placedEntity in placedEntities)
         {
             if (!entManager.TryGetComponent<PhysicalCompositionComponent>(placedEntity, out var material))
                 continue;
+            if (!material.MaterialComposition.TryGetValue(Material, out var unitValue) || unitValue <= 0)
+                continue;
 
-            entManager.TryGetComponent<StackComponent>(placedEntity, out var stack);
+            candidates.Add((placedEntity, unitValue));
+        }
 
-            foreach (var mat in material.MaterialComposition)
+        candidates.Sort((a, b) => b.UnitValue.CompareTo(a.UnitValue));
+
+        var requiredCount = Count;
+        foreach (var (placedEntity, unitValue) in candidates)
+        {
+            if (requiredCount <= 0)
+                return;
+
+            if (!entManager.TryGetComponent<StackComponent>(placedEntity, out var stack))
             {
-                if (mat.Key != Material)
-                    continue;
-
-                if (requiredCount <= 0)
-                    return;
-
-                if (stack is null)
-                {
-                    var value = (int)MathF.Min(requiredCount, mat.Value);
-                    requiredCount -= value;
-                    entManager.DeleteEntity(placedEntity);
-                }
-                else
-                {
-                    var materialValue = mat.Value * stack.Count;
-                    var countToRemove = (int)MathF.Min(requiredCount, materialValue);
-                    var newStackCount = (int)MathF.Ceiling((materialValue - countToRemove) / (float)mat.Value);
-
-                    if (newStackCount <= 0)
-                        entManager.DeleteEntity(placedEntity);
-                    else
-                        stackSystem.SetCount((placedEntity, stack), newStackCount);
-
-                    requiredCount -= countToRemove;
-                }
+                requiredCount -= unitValue;
+                entManager.DeleteEntity(placedEntity);
+                continue;
             }
+
+            // A unit can't be split: a partially needed unit is consumed whole
+            var unitsToRemove = Math.Min(stack.Count, (requiredCount + unitValue - 1) / unitValue);
+            var newStackCount = stack.Count - unitsToRemove;
+
+            if (newStackCount <= 0)
+                entManager.DeleteEntity(placedEntity);
+            else
+                stackSystem.SetCount((placedEntity, stack), newStackCount);
+
+            requiredCount -= unitsToRemove * unitValue;
         }
     }
 

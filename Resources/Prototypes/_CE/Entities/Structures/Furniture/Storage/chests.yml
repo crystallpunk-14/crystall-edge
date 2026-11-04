@@ -95,9 +95,9 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CECoinGold1:
-            min: 2
-            max: 4
+          CEGoldBar1:
+            min: 0
+            max: 2
           CEScrapIron1:
             min: 1
             max: 1
