@@ -1,0 +1,278 @@
+- type: entity
+  id: CEBaseChessPiece
+  parent: BaseStructure
+  abstract: true
+  description: A chess piece. Your move.
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.1"
+        density: 60
+        hard: false
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Damageable
+    damageModifierSet: CERock
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -4
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+
+- type: entity
+  id: CEBaseChessMarble
+  parent: CEBaseChessPiece
+  abstract: true
+  suffix: Marble
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Fun/chess_pieces_marble.rsi
+
+- type: entity
+  id: CEChessMarblePawn
+  parent: CEBaseChessMarble
+  name: pawn
+  components:
+  - type: Sprite
+    state: pawn
+
+- type: entity
+  id: CEChessMarbleRook
+  parent: CEBaseChessMarble
+  name: rook
+  components:
+  - type: Sprite
+    state: rook
+
+- type: entity
+  id: CEChessMarbleKnight
+  parent: CEBaseChessMarble
+  name: knight
+  components:
+  - type: Sprite
+    state: knight
+
+- type: entity
+  id: CEChessMarbleBishop
+  parent: CEBaseChessMarble
+  name: bishop
+  components:
+  - type: Sprite
+    state: bishop
+
+- type: entity
+  id: CEChessMarbleQueen
+  parent: CEBaseChessMarble
+  name: queen
+  components:
+  - type: Sprite
+    state: queen
+
+- type: entity
+  id: CEChessMarbleKing
+  parent: CEBaseChessMarble
+  name: king
+  components:
+  - type: Sprite
+    state: king
+
+- type: entity
+  id: CEBaseChessCoal
+  parent: CEBaseChessPiece
+  abstract: true
+  suffix: Coal
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Fun/chess_pieces_coal.rsi
+
+- type: entity
+  id: CEChessCoalPawn
+  parent: CEBaseChessCoal
+  name: pawn
+  components:
+  - type: Sprite
+    state: pawn
+
+- type: entity
+  id: CEChessCoalRook
+  parent: CEBaseChessCoal
+  name: rook
+  components:
+  - type: Sprite
+    state: rook
+
+- type: entity
+  id: CEChessCoalKnight
+  parent: CEBaseChessCoal
+  name: knight
+  components:
+  - type: Sprite
+    state: knight
+
+- type: entity
+  id: CEChessCoalBishop
+  parent: CEBaseChessCoal
+  name: bishop
+  components:
+  - type: Sprite
+    state: bishop
+
+- type: entity
+  id: CEChessCoalQueen
+  parent: CEBaseChessCoal
+  name: queen
+  components:
+  - type: Sprite
+    state: queen
+
+- type: entity
+  id: CEChessCoalKing
+  parent: CEBaseChessCoal
+  name: king
+  components:
+  - type: Sprite
+    state: king
+
+- type: entity
+  id: CEBaseChessGold
+  parent: CEBaseChessPiece
+  abstract: true
+  suffix: Gold
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Fun/chess_pieces_gold.rsi
+
+- type: entity
+  id: CEChessGoldPawn
+  parent: CEBaseChessGold
+  name: pawn
+  components:
+  - type: Sprite
+    state: pawn
+
+- type: entity
+  id: CEChessGoldRook
+  parent: CEBaseChessGold
+  name: rook
+  components:
+  - type: Sprite
+    state: rook
+
+- type: entity
+  id: CEChessGoldKnight
+  parent: CEBaseChessGold
+  name: knight
+  components:
+  - type: Sprite
+    state: knight
+
+- type: entity
+  id: CEChessGoldBishop
+  parent: CEBaseChessGold
+  name: bishop
+  components:
+  - type: Sprite
+    state: bishop
+
+- type: entity
+  id: CEChessGoldQueen
+  parent: CEBaseChessGold
+  name: queen
+  components:
+  - type: Sprite
+    state: queen
+
+- type: entity
+  id: CEChessGoldKing
+  parent: CEBaseChessGold
+  name: king
+  components:
+  - type: Sprite
+    state: king
+
+- type: entity
+  id: CEBaseChessLapis
+  parent: CEBaseChessPiece
+  abstract: true
+  suffix: Lapis
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Fun/chess_pieces_lapis.rsi
+
+- type: entity
+  id: CEChessLapisPawn
+  parent: CEBaseChessLapis
+  name: pawn
+  components:
+  - type: Sprite
+    state: pawn
+
+- type: entity
+  id: CEChessLapisRook
+  parent: CEBaseChessLapis
+  name: rook
+  components:
+  - type: Sprite
+    state: rook
+
+- type: entity
+  id: CEChessLapisKnight
+  parent: CEBaseChessLapis
+  name: knight
+  components:
+  - type: Sprite
+    state: knight
+
+- type: entity
+  id: CEChessLapisBishop
+  parent: CEBaseChessLapis
+  name: bishop
+  components:
+  - type: Sprite
+    state: bishop
+
+- type: entity
+  id: CEChessLapisQueen
+  parent: CEBaseChessLapis
+  name: queen
+  components:
+  - type: Sprite
+    state: queen
+
+- type: entity
+  id: CEChessLapisKing
+  parent: CEBaseChessLapis
+  name: king
+  components:
+  - type: Sprite
+    state: king
