@@ -1734,3 +1734,16 @@
   id: 1146
   time: '2026-11-03T20:08:41.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/586
+- author: TheShuEd
+  changes:
+  - message: Walking on snow leaves footprints that disappear after 2 minutes.
+    type: Add
+  - message: Walking through blood and puddles leaves footprints that must either
+      be wiped up with a mop or will evaporate in the open air.
+    type: Add
+  - message: 'Footprint system: Different types of footprints have been added for
+      different races, footwear, and werewolves.'
+    type: Add
+  id: 1147
+  time: '2026-11-06T10:23:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/589
