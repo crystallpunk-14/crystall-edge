@@ -1,6 +1,9 @@
 - type: markingsGroup
   id: CEInfernal
   limits:
+    enum.HumanoidVisualLayers.Eyes: # heterochromia, one marking per eye
+      limit: 2
+      required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false

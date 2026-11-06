@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Split from eye sprites by TheShuEd (Github) and Omsoyk",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "human_r",
+      "directions": 4
+    },
+    {
+      "name": "human_l",
+      "directions": 4
+    },
+    {
+      "name": "goblin_r",
+      "directions": 4
+    },
+    {
+      "name": "goblin_l",
+      "directions": 4
+    },
+    {
+      "name": "silva_r",
+      "directions": 4
+    },
+    {
+      "name": "silva_l",
+      "directions": 4
+    },
+    {
+      "name": "gweeny_r",
+      "directions": 4
+    },
+    {
+      "name": "gweeny_l",
+      "directions": 4
+    }
+  ]
+}

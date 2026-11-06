@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Split from eye sprites by TheShuEd (Github) and Omsoyk",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "carcat_r",
+      "directions": 4
+    },
+    {
+      "name": "carcat_l",
+      "directions": 4
+    },
+    {
+      "name": "carrin_r",
+      "directions": 4
+    },
+    {
+      "name": "carrin_l",
+      "directions": 4
+    }
+  ]
+}
