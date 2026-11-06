@@ -127,7 +127,7 @@ namespace Content.Client.Administration.Managers
 
         public AdminData? GetAdminData(EntityUid uid, bool includeDeAdmin = false)
         {
-            if (uid == _player.LocalEntity && (_adminData?.Active ?? includeDeAdmin))
+            if (uid == _player.LocalEntity && _adminData != null && (_adminData.Active || includeDeAdmin)) // CrystallEdge: includeDeAdmin was ignored for de-adminned admins
                 return _adminData;
 
             return null;
@@ -135,7 +135,7 @@ namespace Content.Client.Administration.Managers
 
         public AdminData? GetAdminData(ICommonSession session, bool includeDeAdmin = false)
         {
-            if (_player.LocalUser == session.UserId && (_adminData?.Active ?? includeDeAdmin))
+            if (_player.LocalUser == session.UserId && _adminData != null && (_adminData.Active || includeDeAdmin)) // CrystallEdge: includeDeAdmin was ignored for de-adminned admins
                 return _adminData;
 
             return null;
