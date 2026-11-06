@@ -9,6 +9,10 @@
   description: A terrifying and extremely dangerous creature of the night. By day, it hides under the guise of your friendly neighbor.
   categories: [ HideSpawnMenu ]
   components:
+  - type: CEFootprintOwner
+    footSprite:
+      sprite: _CE/Effects/Footprints/feet.rsi
+      state: werewolf
   - type: CEUnpolymorphOnDawn
   - type: CERevertOnChasm
   - type: Sprite

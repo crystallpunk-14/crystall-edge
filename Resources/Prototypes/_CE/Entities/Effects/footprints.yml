@@ -1,0 +1,29 @@
+- type: entity
+  id: CEFootprint
+  name: trace
+  description: Someone has passed here, smearing something across the floor.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Sprite
+    drawdepth: FloorObjects
+    layers:
+    - sprite: _CE/Effects/Footprints/feet.rsi
+      state: human
+  - type: CEFootprint
+  - type: Solution
+    id: footprint
+    solution:
+      maxVol: 10
+  - type: CEOutdoorEvaporation
+    solution: footprint
+    speed: 0.01
+    interval: 10
+    deleteOnEmpty: true
+  - type: Tag
+    tags:
+    - HideContextMenu

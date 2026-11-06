@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Shared._CE.Fluids;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -20,11 +19,9 @@ using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.StepTrigger.Systems;
-using Content.Shared.Weather;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -48,13 +45,8 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private TurfSystem _turf = default!;
-    [Dependency] private SharedWeatherSystem _weather = default!; // CrystallEdge: outdoor evaporation
 
     [Dependency] private EntityQuery<StepTriggerComponent> _stepTriggerQuery = default!;
-    // CrystallEdge: outdoor evaporation
-    [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
-    [Dependency] private EntityQuery<CEOutdoorEvaporationComponent> _ceOutdoorEvaporationQuery = default!;
-    // CrystallEdge end
     [Dependency] private EntityQuery<ReactiveComponent> _reactiveQuery = default!;
     [Dependency] private EntityQuery<EvaporationComponent> _evaporationQuery = default!;
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
