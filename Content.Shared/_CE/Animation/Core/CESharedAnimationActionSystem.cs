@@ -6,7 +6,9 @@ using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Movement.Systems;
 using JetBrains.Annotations;
+using Content.Shared.Popups;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -18,6 +20,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _movement = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

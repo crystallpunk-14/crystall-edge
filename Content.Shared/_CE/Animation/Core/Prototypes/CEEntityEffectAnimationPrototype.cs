@@ -1,4 +1,5 @@
 using Content.Shared._CE.EntityEffect;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Animation.Core.Prototypes;
@@ -26,6 +27,13 @@ public sealed partial class CEEntityEffectAnimationPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool LockRotation = true;
+
+    /// <summary>
+    /// If set, the animation is cancelled when the entity takes at least this much damage in a single hit.
+    /// Null disables interruption by damage. Damage originating from the animated entity itself is ignored.
+    /// </summary>
+    [DataField]
+    public FixedPoint2? BreakOnDamage;
 
     [DataField]
     public Dictionary<TimeSpan, List<CEEntityEffect>> Events = new();

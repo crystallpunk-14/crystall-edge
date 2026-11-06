@@ -72,6 +72,7 @@
   id: EnterShadowRift
   movementSpeed: 0
   duration: 1
+  breakOnDamage: 1
   events:
     0:
     - !type:UserAnimation

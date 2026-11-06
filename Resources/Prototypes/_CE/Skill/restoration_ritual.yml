@@ -39,6 +39,7 @@
   id: RestorationRitual
   movementSpeed: 0
   duration: 5
+  breakOnDamage: 1
   events:
     0:
     - !type:PlaySound

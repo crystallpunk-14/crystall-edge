@@ -36,6 +36,7 @@
   id: LurkerShadowStep
   movementSpeed: 0.1
   duration: 1
+  breakOnDamage: 1
   events:
     0:
     - !type:SpawnEntity

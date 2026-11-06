@@ -40,6 +40,7 @@
   id: DivineShield
   movementSpeed: 0.5
   duration: 1.5
+  breakOnDamage: 1
   events:
     0:
     - !type:SayChat

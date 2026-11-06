@@ -43,6 +43,7 @@
   id: Resurrection
   movementSpeed: 0.5
   duration: 5
+  breakOnDamage: 1
   events:
     0:
     - !type:SpawnEntity

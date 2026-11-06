@@ -114,6 +114,7 @@
   id: ShadowEaterDevour
   movementSpeed: 0
   duration: 2
+  breakOnDamage: 1
   events:
     0:
     - !type:UserAnimation
