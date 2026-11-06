@@ -61,6 +61,7 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
+  ceFootprintColor: "#1e140c"
 
 - type: tile
   editorHidden: false
@@ -184,6 +185,7 @@
   footstepSounds:
     collection: FootstepSnow #TODO
   heatCapacity: 10000
+  ceFootprintColor: "#4a3520"
 
 - type: tile
   id: CESnowDeepDeep
@@ -215,6 +217,7 @@
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000
+  ceFootprintColor: "#3a4a5a"
 
 - type: tile
   id: CESnowDeep
@@ -246,6 +249,7 @@
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000
+  ceFootprintColor: "#3a4a5a"
 
 - type: tile
   id: CESnow
@@ -277,6 +281,7 @@
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000
+  ceFootprintColor: "#3a4a5a"
 
 - type: tile
   editorHidden: false

@@ -146,6 +146,12 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     [DataField]
     public ResPath VolumeSprite { get; private set; } = new("/Textures/_CE/Tiles/Volume/default.png");
 
+    /// <summary>
+    /// CrystallEdge: color of temporary footprints left by walking on this tile (snow, sand). Null - no footprints.
+    /// </summary>
+    [DataField("ceFootprintColor")]
+    public Color? CEFootprintColor;
+
     public void AssignTileId(ushort id)
     {
         TileId = id;

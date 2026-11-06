@@ -1,8 +1,8 @@
 - type: entity
   id: CEFootprint
   name: trace
-  description: Someone has passed here, smearing something across the floor.
-  categories: [ ForkFiltered ]
+  description: It walks.
+  categories: [ ForkFiltered, HideSpawnMenu ]
   placement:
     mode: SnapgridCenter
   components:
@@ -24,6 +24,31 @@
     speed: 0.01
     interval: 10
     deleteOnEmpty: true
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: CETileFootprint
+  name: trace
+  description: It walks.
+  categories: [ ForkFiltered, HideSpawnMenu ]
+  save: false
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: FloorObjects
+    layers:
+    - sprite: _CE/Effects/Footprints/feet.rsi
+      state: human
+  - type: CEFootprint
+  - type: CETileFootprint
+  - type: TimedDespawn
+    lifetime: 120
+  - type: CETimedDespawnFadeout
   - type: Tag
     tags:
     - HideContextMenu

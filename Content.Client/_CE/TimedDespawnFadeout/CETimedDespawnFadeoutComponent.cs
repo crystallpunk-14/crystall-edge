@@ -17,4 +17,9 @@ public sealed partial class CETimedDespawnFadeoutComponent : Component
     public float FadeOutStart;
 
     public float OriginalLifetime;
+
+    /// <summary>
+    /// Alpha of the sprite at full visibility. The fade multiplies it instead of overwriting.
+    /// </summary>
+    public float BaseAlpha = 1f;
 }

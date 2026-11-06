@@ -14,6 +14,9 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CETimedDespawnFadeoutComponent> entity, ref ComponentStartup args)
     {
+        if (TryComp<SpriteComponent>(entity, out var sprite))
+            entity.Comp.BaseAlpha = sprite.Color.A;
+
         if (HasComp<CERandomizedTimedDespawnComponent>(entity))
             return;
 
@@ -32,7 +35,18 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
         if (MetaData(entity).EntityLifeStage >= EntityLifeStage.Terminating || !TryComp<SpriteComponent>(entity, out var sprite))
             return;
 
-        _sprite.SetColor((entity.Owner, sprite), sprite.Color.WithAlpha(1f));
+        _sprite.SetColor((entity.Owner, sprite), sprite.Color.WithAlpha(entity.Comp.BaseAlpha));
+    }
+
+    /// <summary>
+    /// Sets the alpha the fade starts from, for sprites whose color is set after the component startup.
+    /// </summary>
+    public void SetBaseAlpha(Entity<CETimedDespawnFadeoutComponent?> entity, float alpha)
+    {
+        if (!Resolve(entity, ref entity.Comp, false))
+            return;
+
+        entity.Comp.BaseAlpha = alpha;
     }
 
     public override void FrameUpdate(float frameTime)
@@ -45,7 +59,7 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
             if (!TryGetElapsed(uid, fadeout, out var elapsed))
                 continue;
 
-            var alpha = GetFadeAlpha(elapsed, fadeout.FadeInEnd, fadeout.FadeOutStart);
+            var alpha = GetFadeAlpha(elapsed, fadeout.FadeInEnd, fadeout.FadeOutStart) * fadeout.BaseAlpha;
 
             if (!sprite.Color.A.Equals(alpha))
                 _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(alpha));

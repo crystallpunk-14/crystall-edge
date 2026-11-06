@@ -170,11 +170,67 @@ public sealed class CEFootprintTest
         await pair.CleanReturnAsync();
     }
 
-    private static void PreparePlatform(IEntityManager entMan, Entity<MapGridComponent> grid, bool roofed)
+    /// <summary>
+    /// Walking back and forth over snow leaves temporary prints, capped per tile.
+    /// </summary>
+    [Test]
+    public async Task WalkingOnSnowLeavesCappedTilePrints()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+        var entMan = server.EntMan;
+        var map = await pair.CreateTestMap();
+
+        var xformSystem = entMan.System<SharedTransformSystem>();
+        EntityUid human = default;
+
+        await server.WaitPost(() =>
+        {
+            PreparePlatform(entMan, map.Grid, roofed: true, Snow);
+            human = entMan.SpawnEntity(Human, new EntityCoordinates(map.Grid, 0.5f, 0.5f));
+        });
+
+        await server.WaitPost(() =>
+        {
+            for (var pass = 0; pass < 6; pass++)
+            {
+                var forward = pass % 2 == 0;
+                for (var i = 1; i <= (Width - 1) * 4; i++)
+                {
+                    var x = forward ? 0.5f + i * 0.25f : Width - 0.5f - i * 0.25f;
+                    xformSystem.SetCoordinates(human, new EntityCoordinates(map.Grid, x, 0.5f));
+                }
+            }
+        });
+
+        await server.WaitAssertion(() =>
+        {
+            var mapSystem = entMan.System<SharedMapSystem>();
+            var printedTiles = 0;
+            for (var x = 0; x < Width; x++)
+            {
+                var prints = mapSystem.GetAnchoredEntities(map.Grid, map.Grid.Comp, new Vector2i(x, 0))
+                    .Count(uid => entMan.HasComponent<CETileFootprintComponent>(uid));
+
+                Assert.That(prints, Is.LessThanOrEqualTo(3), $"Tile {x} has more tile prints than the limit");
+                if (prints > 0)
+                    printedTiles++;
+            }
+
+            Assert.That(printedTiles, Is.GreaterThan(0), "Walking on snow left no prints");
+        });
+
+        await pair.CleanReturnAsync();
+    }
+
+    private const string Plating = "Plating";
+    private const string Snow = "CESnow";
+
+    private static void PreparePlatform(IEntityManager entMan, Entity<MapGridComponent> grid, bool roofed, string tileId = Plating)
     {
         var mapSystem = entMan.System<SharedMapSystem>();
         var tileMan = IoCManager.Resolve<ITileDefinitionManager>();
-        var plating = new Tile(tileMan["Plating"].TileId);
+        var plating = new Tile(tileMan[tileId].TileId);
 
         // Gravity, so walking leaves prints instead of floating.
         var gravity = entMan.EnsureComponent<GravityComponent>(grid);

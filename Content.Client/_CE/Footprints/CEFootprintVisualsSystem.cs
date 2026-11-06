@@ -1,3 +1,4 @@
+using Content.Client._CE.TimedDespawnFadeout;
 using Content.Shared._CE.Footprints;
 using Robust.Client.GameObjects;
 
@@ -9,6 +10,7 @@ namespace Content.Client._CE.Footprints;
 public sealed partial class CEFootprintVisualsSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private CETimedDespawnFadeoutSystem _fadeout = default!;
 
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CEFootprintComponent> ent, ref ComponentStartup args)
@@ -33,6 +35,7 @@ public sealed partial class CEFootprintVisualsSystem : EntitySystem
             _sprite.LayerSetSprite(spriteEnt, 0, specifier);
 
         _sprite.SetColor(spriteEnt, ent.Comp.Color);
+        _fadeout.SetBaseAlpha(ent.Owner, ent.Comp.Color.A);
         _sprite.SetOffset(spriteEnt, ent.Comp.Offset);
         _sprite.SetRotation(spriteEnt, ent.Comp.Rotation);
     }

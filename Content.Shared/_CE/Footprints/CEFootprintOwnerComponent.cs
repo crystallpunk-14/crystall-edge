@@ -16,6 +16,12 @@ public sealed partial class CEFootprintOwnerComponent : Component
     public EntProtoId FootprintProto = "CEFootprint";
 
     /// <summary>
+    /// Temporary print left with clean feet on tiles with a footprint color (snow, sand).
+    /// </summary>
+    [DataField]
+    public EntProtoId TileFootprintProto = "CETileFootprint";
+
+    /// <summary>
     /// Barefoot print sprite of this species.
     /// </summary>
     [DataField]
