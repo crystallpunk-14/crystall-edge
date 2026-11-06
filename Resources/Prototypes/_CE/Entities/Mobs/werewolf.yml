@@ -86,6 +86,7 @@
     - Murkwalker
     - LurkerShadowStep
     - LurkerFear
+    - WerewolfDarkFeast
     - TimeSense
     descriptorName: ce-secret-role-name-werewolf
     descriptorColor: "#922525"

@@ -463,7 +463,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
 
     private string? GetSecretRoleName(ProtoId<CESecretRolePrototype>? roleId)
     {
-        return roleId is { } id && _prototype.TryIndex(id, out var role) ? role.LocalizedName : null;
+        return roleId is { } id && _prototype.TryIndex(id, out var role) ? Loc.GetString(role.Name) : null;
     }
     // CrystallEdge end
 

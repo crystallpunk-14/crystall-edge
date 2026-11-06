@@ -59,11 +59,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             if (_timing.ApplyingState)
                 continue;
 
-            if (controller.TargetEntity is { } target && TerminatingOrDeleted(target))
-            {
-                controller.TargetEntity = null;
+            if (ClearDeletedReferences(controller))
                 Dirty(uid, controller);
-            }
 
             // Rotate towards the target if LockRotation is active with a TargetEntity or TargetPosition.
             if (controller.LockRotation && controller.TargetEntity != uid)
@@ -131,16 +128,35 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                 if (TerminatingOrDeleted(uid))
                     continue;
 
-                if (controller.TargetEntity is { } postEventTarget && TerminatingOrDeleted(postEventTarget))
-                {
-                    controller.TargetEntity = null;
-                    anyEventFired = true;
-                }
-
-                if (anyEventFired)
+                // Effects like Gib only queue the deletion, so the uid must be dropped before this tick's state is sent.
+                if (ClearDeletedReferences(controller) || anyEventFired)
                     Dirty(uid, controller);
             }
         }
+    }
+
+    private bool ClearDeletedReferences(CEActiveAnimationActionComponent controller)
+    {
+        var changed = false;
+
+        if (controller.TargetEntity is { } target && IsDeleted(target))
+        {
+            controller.TargetEntity = null;
+            changed = true;
+        }
+
+        if (controller.Used is { } used && IsDeleted(used))
+        {
+            controller.Used = null;
+            changed = true;
+        }
+
+        return changed;
+    }
+
+    private bool IsDeleted(EntityUid uid)
+    {
+        return TerminatingOrDeleted(uid) || EntityManager.IsQueuedForDeletion(uid);
     }
 
     /// <summary>

@@ -1,0 +1,286 @@
+- type: skill
+  id: WerewolfDarkFeast
+  icon:
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    state: true_form
+  effect: !type:AddAction
+    action: CEActionWerewolfDarkFeast
+
+- type: entity
+  id: CEActionWerewolfDarkFeast
+  name: Dark Feast
+  description: Devour the fallen body of a mortal whose soul is still bound to this world. The feast feeds the murk that consumes the city - and its howl is heard from afar.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 60
+    startDelay: true
+  - type: Sprite
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    layers:
+    - state: true_form
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.2
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - HumanoidProfile
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: WerewolfDarkFeast
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:Incapacitated
+    - !type:HasComponents
+      components:
+      - type: HumanoidProfile
+    - !type:InSecretDepartment
+      department: Nightmares
+      inverted: true
+
+# Anchors (&name) are defined on first use and reused below as *name.
+- type: entityEffectAnimation
+  id: WerewolfDarkFeast
+  movementSpeed: 0
+  duration: 10.2
+  breakOnDamage: 1
+  events:
+    0:
+    - &biteSound !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+        params:
+          variation: 0.15
+    - &claw1 !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 1.2, -0.1
+      - time: 0.3
+        offset: 0, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 40
+      - time: 0.3
+        rotation: -40
+        easing: QuadOut
+      colorAnimation: &clawFade
+      - time: 0.0
+        color: "#ffffff00"
+        easing: QuadIn
+      - time: 0.2
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.3
+        color: "#ffffff00"
+      scaleAnimation: &clawScale
+      - time: 0.0
+        scale: 1.2, 1.2
+    - &biteDamage !type:Damage
+      damage:
+        types:
+          Slash: 20
+    - &splash1 !type:Radial
+      count: 3
+      spread: 40
+      effects:
+      - !type:SpawnEntity
+        rotate: true
+        spawns:
+        - CEBloodHitEffect1
+      - &splatterDecal !type:SpawnDecal
+        rotation: Direction
+        minDistance: 0.5
+        maxDistance: 3
+        color: &blood "#6b0a0a"
+        decals: &splatters
+        - CEBloodSplatter1
+        - CEBloodSplatter2
+        - CEBloodSplatter3
+        - CEBloodSplatter4
+        - CEBloodSplatter5
+        - CEBloodSplatter6
+        - CEBloodSplatter7
+        - CEBloodSplatter8
+        - CEBloodSplatter9
+        - CEBloodSplatter10
+    1:
+    - *biteSound
+    - &claw2 !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -1.2, -0.1
+      - time: 0.3
+        offset: 0, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 60
+      - time: 0.3
+        rotation: 140
+        easing: QuadOut
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - *biteDamage
+    - &splash2 !type:Radial
+      count: 3
+      spread: 40
+      effects:
+      - !type:SpawnEntity
+        rotate: true
+        spawns:
+        - CEBloodHitEffect2
+      - *splatterDecal
+    2:
+    - *biteSound
+    - &claw3a !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 1.2, 0.1
+      - time: 0.3
+        offset: -0.2, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 0
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - &claw3b !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -1.2, 0.1
+      - time: 0.3
+        offset: 0.2, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 90
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - *biteDamage
+    - &splash3 !type:Radial
+      count: 3
+      spread: 40
+      effects:
+      - !type:SpawnEntity
+        rotate: true
+        spawns:
+        - CEBloodHitEffect3
+      - *splatterDecal
+    3: [ *biteSound, *claw1, *biteDamage, *splash1 ]
+    4: [ *biteSound, *claw2, *biteDamage, *splash2 ]
+    5: [ *biteSound, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    6: [ *biteSound, *claw1, *biteDamage, *splash1 ]
+    7: [ *biteSound, *claw2, *biteDamage, *splash2 ]
+    8: [ *biteSound, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    9: [ *biteSound, *claw1, *biteDamage, *splash1 ]
+    10:
+    - !type:Radial
+      count: 8
+      spread: 15
+      effects:
+      - !type:SpawnEntity
+        rotate: true
+        spawns:
+        - CEBloodHitEffect2
+      - !type:SpawnDecal
+        count: 2
+        rotation: Direction
+        minDistance: 1
+        maxDistance: 3
+        spread: 10
+        color: *blood
+        decals: *splatters
+    - !type:SpawnDecal
+      count: 3
+      maxDistance: 0.6
+      color: *blood
+      decals:
+      - CEBloodFloor1
+      - CEBloodFloor2
+      - CEBloodFloor3
+      - CEBloodFloor4
+      - CEBloodFloor5
+      - CEBloodFloor6
+      - CEBloodFloor7
+    - !type:Radial
+      count: 4
+      spread: 45
+      effects:
+      - !type:SpawnDecal
+        minDistance: 0.3
+        maxDistance: 1.5
+        color: *blood
+        decals:
+        - CEBloodGiblet1
+        - CEBloodGiblet2
+        - CEBloodGiblet3
+        - CEBloodGiblet4
+        - CEBloodGiblet5
+    - !type:PlayFarSound
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+      minRange: 15
+      maxRange: 60
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/Screech/changeling_screech_weak.ogg
+        params:
+          variation: 0.2
+          maxDistance: 20
+          volume: 50
+    - !type:Undress
+    - !type:Gib
+    - !type:AddMurk
+      amount: 1
+      scaleWithPlayers: true
+
+- type: entity
+  abstract: true
+  id: CEBloodHitEffectBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/blood_hit.rsi
+    drawdepth: Effects
+    color: *blood
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect1
+  components:
+  - type: Sprite
+    layers:
+    - state: hit1
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect2
+  components:
+  - type: Sprite
+    layers:
+    - state: hit2
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect3
+  components:
+  - type: Sprite
+    layers:
+    - state: hit3

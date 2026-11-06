@@ -46,3 +46,8 @@ ce-entity-effect-guidebook-conditional-effect-group =
     { $effects }
 
 ce-revivable-required = Вернуть можно лишь мёртвое тело, которое душа не покинула окончательно.
+
+ce-player-online-required = Душа уже покинула этот мир.
+ce-player-online-forbidden = Душа всё ещё привязана к этому миру.
+ce-in-secret-department-required = Цель должна принадлежать к: { $department }.
+ce-in-secret-department-forbidden = Цель не должна принадлежать к: { $department }.

@@ -270,7 +270,7 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
 
     private string? GetRoleName(ProtoId<CESecretRolePrototype>? roleId)
     {
-        return roleId is { } id && _proto.TryIndex(id, out var role) ? role.LocalizedName : null;
+        return roleId is { } id && _proto.TryIndex(id, out var role) ? Loc.GetString(role.Name) : null;
     }
 
     private string? GetRoleMarkup(ProtoId<CESecretRolePrototype>? roleId)

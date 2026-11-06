@@ -120,7 +120,7 @@ public sealed partial class CEHumanoidProfileEditor
                 };
                 var roleIcon = _prototypeManager.Index(role.Icon);
                 icon.Texture = _sprite.Frame0(roleIcon.Icon);
-                selector.Setup(items, role.LocalizedName, 90, role.LocalizedDescription, icon);
+                selector.Setup(items, Loc.GetString(role.Name), 90, role.Description is { } description ? Loc.GetString(description) : null, icon);
 
                 if (!_requirements.IsAllowed(role, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
                 {
