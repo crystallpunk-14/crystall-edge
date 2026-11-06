@@ -1,0 +1,65 @@
+# Each design is split per body part: a marking is drawn right above its own part layer.
+
+- type: marking
+  id: CECarrinLFootPaws
+  bodyPart: LFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: paws_l_foot
+
+- type: marking
+  id: CECarrinRFootPaws
+  bodyPart: RFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: paws_r_foot
+
+- type: marking
+  id: CECarrinLFootToes
+  bodyPart: LFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: toes_l_foot
+
+- type: marking
+  id: CECarrinRFootToes
+  bodyPart: RFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: toes_r_foot
+
+- type: marking
+  id: CECarrinLFootDuckPaws
+  bodyPart: LFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: duck_paws_l_foot
+
+- type: marking
+  id: CECarrinRFootDuckPaws
+  bodyPart: RFoot
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: duck_paws_r_foot
+
+- type: marking
+  id: CECarrinLLegHips
+  bodyPart: LLeg
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: hips_l_leg
+
+- type: marking
+  id: CECarrinRLegHips
+  bodyPart: RLeg
+  groupWhitelist: [ CECarrin ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carrin_leg_markings.rsi
+      state: hips_r_leg

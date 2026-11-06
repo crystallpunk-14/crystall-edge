@@ -1,0 +1,8 @@
+marking-CECarrinLFootPaws = Лапы (левая)
+marking-CECarrinRFootPaws = Лапы (правая)
+marking-CECarrinLFootToes = Пальцы (левая)
+marking-CECarrinRFootToes = Пальцы (правая)
+marking-CECarrinLFootDuckPaws = Утиные лапы (левая)
+marking-CECarrinRFootDuckPaws = Утиные лапы (правая)
+marking-CECarrinLLegHips = Бёдра (левое)
+marking-CECarrinRLegHips = Бёдра (правое)
