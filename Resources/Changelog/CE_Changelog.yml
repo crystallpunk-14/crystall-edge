@@ -1747,3 +1747,14 @@
   id: 1147
   time: '2026-11-06T10:23:01.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/589
+- author: TheShuEd, D1nazewwr
+  changes:
+  - message: Gweeny species was added for active sponsorship players
+    type: Add
+  - message: Legs carrin markings added
+    type: Add
+  - message: Heterochromia eyes markings was added for all species.
+    type: Add
+  id: 1148
+  time: '2026-11-06T13:06:28.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/590
