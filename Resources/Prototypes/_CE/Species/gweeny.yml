@@ -13,8 +13,8 @@
   dollPrototype: CEAppearanceGweeny
   skinColoration: Hues
   defaultSkinTone: "#132334"
-  maleFirstNames: CE_Names_Gweeny_Male_First
-  femaleFirstNames: CE_Names_Gweeny_Female_First
+  maleFirstNames: CE_Names_Gweeny_First
+  femaleFirstNames: CE_Names_Gweeny_First
   lastNames: CE_Names_Gweeny_Last
   defaultSoundsBySex: [CEUnisexGweeny, CEUnisexGweeny, CEUnisexGweeny]
   voices: [CEUnisexGweeny]

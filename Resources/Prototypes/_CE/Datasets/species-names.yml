@@ -138,16 +138,10 @@
 # Gweeny
 
 - type: localizedDataset
-  id: CE_Names_Gweeny_Male_First
+  id: CE_Names_Gweeny_First
   values:
-    prefix: ce-species-name-gweeny-male-first-
-    count: 38
-
-- type: localizedDataset
-  id: CE_Names_Gweeny_Female_First
-  values:
-    prefix: ce-species-name-gweeny-female-first-
-    count: 39
+    prefix: ce-species-name-gweeny-first-
+    count: 49
 
 - type: localizedDataset
   id: CE_Names_Gweeny_Last
