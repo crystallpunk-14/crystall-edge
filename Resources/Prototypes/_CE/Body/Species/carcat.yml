@@ -243,6 +243,10 @@
   id: CEMobCarcat
   name: Mr. Cat
   components:
+  - type: CEFootprintOwner
+    footSprite:
+      sprite: _CE/Effects/Footprints/feet.rsi
+      state: wolf
   - type: Icon
     sprite: _CE/Mobs/Species/Carcat/parts.rsi
     state: full

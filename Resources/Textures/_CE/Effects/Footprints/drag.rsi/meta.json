@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-4.0",
+  "copyright": "body.png created by ko4erga (266899933632659456), taken from Goob-Station (https://github.com/Goob-Station/Goob-Station/tree/37cc2bce8eab7c7fd694da439532dcf5b5aa7f57/Resources/Textures/_CorvaxNext/Effects/footprint.rsi)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "body"
+    }
+  ]
+}

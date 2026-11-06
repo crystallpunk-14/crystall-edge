@@ -217,6 +217,10 @@
   id: CEMobCarrin
   name: Mr. Birb
   components:
+  - type: CEFootprintOwner
+    footSprite:
+      sprite: _CE/Effects/Footprints/feet.rsi
+      state: bird
   - type: Icon
     sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
