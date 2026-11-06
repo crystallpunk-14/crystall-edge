@@ -97,7 +97,9 @@ public sealed class CESecretRoleConnectionTest : GameTest
 
             await server.WaitPost(() =>
             {
-                if (Client.AttachedEntity is { } ent)
+                // Client.AttachedEntity is a client-side uid, delete the server-side body of the session instead.
+                var session = server.PlayerMan.GetSessionById(Client.Session!.UserId);
+                if (session.AttachedEntity is { } ent)
                     entMan.DeleteEntity(ent);
             });
             await pair.RunTicksSync(5);
