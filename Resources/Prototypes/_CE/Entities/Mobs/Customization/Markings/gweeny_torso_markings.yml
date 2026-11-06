@@ -1,0 +1,45 @@
+- type: marking
+  id: CEGweenyTorsoMain
+  bodyPart: Chest
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: main
+
+- type: marking
+  id: CEGweenyTorsoPoints
+  bodyPart: Chest
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: points
+
+- type: marking
+  id: CEGweenyTorsoArrow
+  bodyPart: Chest
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: arrow
+
+- type: marking
+  id: CEGweenyTorsoStandart
+  bodyPart: Chest
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: 1_standart
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: 2_standart
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: 3_standart
+
+- type: marking
+  id: CEGweenyTorsoTitmouse
+  bodyPart: Chest
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: 1_titmouse
+    - sprite: _CE/Mobs/Customization/gweeny_torso_markings.rsi
+      state: 2_titmouse

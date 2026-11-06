@@ -2,11 +2,20 @@
   id: CEGweeny
   onlyGroupWhitelisted: true
   limits:
+    enum.HumanoidVisualLayers.Eyes: # heterochromia, one marking per eye
+      limit: 2
+      required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
     enum.HumanoidVisualLayers.FacialHair:
       limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.Snout:
       limit: 1

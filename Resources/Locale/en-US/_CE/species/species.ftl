@@ -26,4 +26,4 @@ ce-species-name-carrin = Carrin
 ce-species-desc-carrin = Humanoid birds. With difficulty, but still able to fly. CAW!
 
 ce-species-name-gweeny = Gweeny
-ce-species-desc-gweeny = The next bone of contention. These cute little creatures are sure to spark quite a bit of debate about balance...
+ce-species-desc-gweeny = The cute little Gweeny bird. Meet the first sponsor-only content in CrystallEdge. Ew, we've sold out. Gameplay-wise it's a complete copy of the Carrin, so it's purely cosmetic. I'll probably rework this part later.

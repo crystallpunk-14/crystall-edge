@@ -1,0 +1,162 @@
+# Heterochromia: recolours a single eye, like upstream TattooEyeRight/TattooEyeLeft.
+# Sprites are the species eye sprite split into the right and left eye.
+
+- type: marking
+  id: CEEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CEHuman, CEDwarf, CEElf, CEInfernal ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: human_r
+
+- type: marking
+  id: CEEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CEHuman, CEDwarf, CEElf, CEInfernal ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: human_l
+
+- type: marking
+  id: CEGoblinEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CEGoblin ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: goblin_r
+
+- type: marking
+  id: CEGoblinEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CEGoblin ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: goblin_l
+
+- type: marking
+  id: CESilvaEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CESilva ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: silva_r
+  shaders: # Silva eyes glow
+    silva_r: unshaded
+
+- type: marking
+  id: CESilvaEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CESilva ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: silva_l
+  shaders:
+    silva_l: unshaded
+
+- type: marking
+  id: CEGweenyEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CEGweeny ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: gweeny_r
+
+- type: marking
+  id: CEGweenyEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CEGweeny ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia.rsi
+    state: gweeny_l
+
+- type: marking
+  id: CECarcatEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CECarcat ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia48.rsi
+    state: carcat_r
+
+- type: marking
+  id: CECarcatEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CECarcat ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia48.rsi
+    state: carcat_l
+
+- type: marking
+  id: CECarrinEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ CECarrin ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia48.rsi
+    state: carrin_r
+
+- type: marking
+  id: CECarrinEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ CECarrin ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _CE/Mobs/Customization/eyes_heterochromia48.rsi
+    state: carrin_l

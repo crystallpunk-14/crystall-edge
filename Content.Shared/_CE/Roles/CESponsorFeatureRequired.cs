@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.Sponsor;
+using Content.Shared.Administration.Managers;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -12,6 +14,7 @@ namespace Content.Shared._CE.Roles;
 
 /// <summary>
 /// Requires the player to have (via TypeAuth) a Discord sponsor role meeting a minimum priority.
+/// Admins always pass, including de-adminned ones.
 /// </summary>
 [UsedImplicitly]
 [Serializable, NetSerializable]
@@ -31,6 +34,11 @@ public sealed partial class CESponsorFeatureRequired : JobRequirement
 
         if (userId is null)
             return false;
+
+        var playerManager = IoCManager.Resolve<ISharedPlayerManager>();
+        if (playerManager.TryGetSessionById(userId.Value, out var session)
+            && IoCManager.Resolve<ISharedAdminManager>().IsAdmin(session, includeDeAdmin: true))
+            return true;
 
         var sponsorship = IoCManager.Resolve<ICESponsorManager>();
 

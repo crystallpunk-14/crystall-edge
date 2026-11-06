@@ -2,3 +2,8 @@
 - type: sponsorFeature
   id: PriorityJoin
   minPriority: 1
+
+# Unlocks the Gweeny species in character creation.
+- type: sponsorFeature
+  id: SpeciesGweeny
+  minPriority: 1.1

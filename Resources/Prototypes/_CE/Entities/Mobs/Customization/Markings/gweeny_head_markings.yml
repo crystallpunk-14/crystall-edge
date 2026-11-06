@@ -1,0 +1,39 @@
+- type: marking
+  id: CEGweenyHeadArrows
+  bodyPart: Head
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_head_markings.rsi
+      state: arrows
+
+- type: marking
+  id: CEGweenyHeadCheeks
+  bodyPart: Head
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_head_markings.rsi
+      state: cheeks
+
+- type: marking
+  id: CEGweenyHeadCheeks2
+  bodyPart: Head
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_head_markings.rsi
+      state: cheeks2
+
+- type: marking
+  id: CEGweenyHeadDuckStrip
+  bodyPart: Head
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_head_markings.rsi
+      state: duck_strip
+
+- type: marking
+  id: CEGweenyHeadFullHead
+  bodyPart: Head
+  groupWhitelist: [ CEGweeny ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/gweeny_head_markings.rsi
+      state: full_head

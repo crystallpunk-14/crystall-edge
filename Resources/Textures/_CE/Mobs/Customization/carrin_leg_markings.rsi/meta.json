@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Dinazewwr (Github)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "paws_l_foot",
+      "directions": 4
+    },
+    {
+      "name": "paws_r_foot",
+      "directions": 4
+    },
+    {
+      "name": "toes_l_foot",
+      "directions": 4
+    },
+    {
+      "name": "toes_r_foot",
+      "directions": 4
+    },
+    {
+      "name": "duck_paws_l_foot",
+      "directions": 4
+    },
+    {
+      "name": "duck_paws_r_foot",
+      "directions": 4
+    },
+    {
+      "name": "hips_r_leg",
+      "directions": 4
+    },
+    {
+      "name": "hips_l_leg",
+      "directions": 4
+    }
+  ]
+}

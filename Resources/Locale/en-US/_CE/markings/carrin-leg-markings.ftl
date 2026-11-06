@@ -1,0 +1,8 @@
+marking-CECarrinLFootPaws = Paws (left)
+marking-CECarrinRFootPaws = Paws (right)
+marking-CECarrinLFootToes = Toes (left)
+marking-CECarrinRFootToes = Toes (right)
+marking-CECarrinLFootDuckPaws = Duck paws (left)
+marking-CECarrinRFootDuckPaws = Duck paws (right)
+marking-CECarrinLLegHips = Hips (left)
+marking-CECarrinRLegHips = Hips (right)
