@@ -2,6 +2,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
@@ -22,6 +23,7 @@ public partial class MobStateSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!; // CrystallEdge: critical mobs crawl slowly
 
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
+    [Dependency] private EntityQuery<PullableComponent> _pullableQuery = default!; // CrystallEdge: pulled critical mobs can't move
 
     public override void Initialize()
     {
