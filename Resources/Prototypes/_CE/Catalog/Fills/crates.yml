@@ -104,7 +104,6 @@
         - id: CENail10
       - id: CEManaTransferGlove
       - id: CESafeFallingAmulet
-      - id: CEKeyFile
       - id: CEScissors
       - id: CEBaseLockpick
         weight: 0.1

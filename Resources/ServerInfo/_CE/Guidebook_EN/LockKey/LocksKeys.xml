@@ -47,19 +47,4 @@ Each key or lock costs [color=yellow]1 iron bar[/color].
 <Box>
   <GuideEntityEmbed Entity="CEIronBar1"/>
 </Box>
-
-## Manual tuning
-
-The second, alternative "underground" way to work with keys and locks is hand tools.
-
-<Box>
-  <GuideEntityEmbed Entity="CEKeyFile"/>
-  <GuideEntityEmbed Entity="CEScrewdriver"/>
-</Box>
-
-- The [color=yellow]key file[/color] grinds the chosen tooth of a key down by 1, letting you change the key's shape, but only in one direction.
-- The [color=yellow]screwdriver[/color] lowers the chosen tooth of a portable lock by 1. After 1 the tooth wraps back to 5, so any height can be set.
-
-Both tools are used through the action menu (right-click a key or lock with the tool in hand).
-The number of teeth cannot be changed by hand.
 </Document>
