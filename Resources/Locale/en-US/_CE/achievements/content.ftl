@@ -9,6 +9,10 @@ ce-achievement-bounty-hunter-win-name = A Reward for the Witcher
 ce-achievement-bounty-hunter-win-desc = Complete all objectives and finish the round as a Bounty Hunter
 ce-achievement-bounty-hunter-win-unlocks = Gold coin in loadout
 
+ce-achievement-sheriff-win-name = Defender of the City
+ce-achievement-sheriff-win-desc = Complete all objectives and finish the round as a Sheriff
+ce-achievement-sheriff-win-unlocks = Golden Peacekeeper in loadout
+
 ce-achievement-rounds-finished-alive-1-name = Things Get Tangled: Night Hunt
 ce-achievement-rounds-finished-alive-1-desc = Finish a round without dying
 ce-achievement-rounds-finished-alive-1-unlocks = Werewolf role and Sheriff job

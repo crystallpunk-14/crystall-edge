@@ -30,10 +30,13 @@
     proto: CEPeaceKeeperHitscan
     fireCost: 10
   - type: Battery
-    maxCharge: 50
-    startingCharge: 50
+    maxCharge: 80
+    startingCharge: 80
   - type: Gun
-    fireRate: 0.5
+    fireRate: 0.8
+    angleDecay: 10
+    angleIncrease: 2
+    maxAngle: 36
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
       params:
@@ -49,7 +52,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 35
+        Shock: 30
   - type: CEHitscanEntityEffect
     effects:
     - !type:SpawnEntity
@@ -57,9 +60,9 @@
       spawns:
       - CEOverchargeVFX
     - !type:ThrowFrom
-      distance: 1
+      distance: 0.75
     - !type:Irradiate
-      charge: 5
+      charge: 8
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -75,14 +78,7 @@
   parent: CEWeaponGunPeacekeeper
   id: CEWeaponGunPeacekeeperGolden
   name: golden Peacemaker
-  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the sheriff. It has a slightly higher ammunition capacity.
-  suffix: Theft Target
+  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the sheriff.
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
-  - type: Battery
-    maxCharge: 80
-    startingCharge: 80
-  - type: StaticPrice
-    price: 550
-

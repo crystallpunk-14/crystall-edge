@@ -15,3 +15,12 @@
   icon:
     sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
     state: coin10
+
+- type: achievement
+  id: SheriffWin
+  name: ce-achievement-sheriff-win-name
+  desc: ce-achievement-sheriff-win-desc
+  unlocks: ce-achievement-sheriff-win-unlocks
+  icon:
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    state: icon
