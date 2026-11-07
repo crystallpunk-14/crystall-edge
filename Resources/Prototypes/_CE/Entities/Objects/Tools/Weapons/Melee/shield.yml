@@ -1,0 +1,156 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponShield
+  parent: BaseItem
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Large
+  - type: Clothing
+    slots:
+    - neck
+    equipWhileMoving: true
+    equipDelay: 1
+    unequipDelay: 1
+    quickEquip: false
+
+#MARK: Buckler
+- type: entity
+  parent: CEBaseWeaponShield
+  id: CEWeaponBucklerIron
+  name: iron buckler
+  description: A small metallic shield, designed for quick parrying in close combat. A well-timed raise knocks the weapon out of the attacker's hands.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Buckler/iron.rsi
+    state: icon
+  - type: Clothing
+    equipDelay: 0.5
+    unequipDelay: 0.5
+  - type: CEWeapon
+    hitSound:
+      collection: MetalThud
+    animations:
+      Primary:
+      - anim: BucklerStance
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 15
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 20
+
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: CEStatusEffectBucklerStance
+  name: buckler stance
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+  - type: CEParryStatusEffect
+
+#MARK: Shield
+- type: entity
+  parent: CEBaseWeaponShield
+  id: CEWeaponShieldWooden
+  name: wooden shield
+  description: A wooden shield capable of withstanding multiple blows. Raise it to halve incoming damage.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Shield/wooden.rsi
+    state: icon
+  - type: CEWeapon
+    hitSound:
+      collection: MetalThud
+    animations:
+      Primary:
+      - anim: ShieldStance
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 15
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 30
+      CEIron: 20
+
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: CEStatusEffectShieldStance
+  name: shield stance
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+
+#MARK: Tower shield
+- type: entity
+  parent: CEBaseWeaponShield
+  id: CEWeaponTowerShieldWooden
+  name: wooden tower shield
+  description: A huge spiked wooden shield. Raised, it stops almost any blow, but its bearer barely moves.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/TowerShield/wooden.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+  - type: Clothing
+    equipDelay: 1.5
+    unequipDelay: 1.5
+  - type: CEWeapon
+    range: 0.6
+    hitSound:
+      collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Knockdown
+        duration: 0.5
+        dropItems: false
+      - !type:ThrowFrom
+        distance: 1
+        throwPower: 8
+      - !type:StaminaDamage
+        amount: 30
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 4
+            Piercing: 4
+    animations:
+      Primary:
+      - anim: TowerShieldStance
+      Secondary:
+      - anim: TowerShieldBash
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 15
+      Secondary: 25
+  - type: HeldSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 50
+      CEIron: 40
+
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: CEStatusEffectTowerShieldStance
+  name: tower shield stance
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1

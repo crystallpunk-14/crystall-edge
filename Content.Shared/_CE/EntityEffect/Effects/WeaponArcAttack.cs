@@ -194,6 +194,9 @@ public sealed partial class CEWeaponArcAttackEffectSystem : CEEntityEffectSystem
         // Runs on both peers via the shared animation system.
         if (effectSlot == null && args.Effect.Effects.Count > 0)
         {
+            // Slot attacks are filtered later, where their effects run (see CESharedWeaponSystem.FilterAttackTargets).
+            _melee.FilterAttackTargets(args.Args.Source, used, targets);
+
             foreach (var target in targets)
             {
                 var inlineArgs = args.Args with { Target = target };

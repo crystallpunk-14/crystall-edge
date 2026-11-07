@@ -145,6 +145,10 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         var targets = GetEntityList(ev.Targets);
         targets = ValidateArcTargets(user, weapon, targets, args.SenderSession);
 
+        // Inline-effect attacks were already filtered by the arc itself, before the effects ran.
+        if (ev.EffectSlot != null)
+            FilterAttackTargets(user, weapon.Owner, targets);
+
         TryAttack(user, weapon, targets);
         ApplyArcEffects(user, weapon, targets, ev.EffectSlot, ev.Power);
     }
@@ -218,7 +222,7 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         }
 
         if (animations.Count == 0)
-            return false;
+            return TryUseBodyFallback(user, used, useType, angle, cursorTarget);
 
         // Determine combo index.
         // Reset if: different use type, or combo deadline expired.
@@ -263,6 +267,30 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
     }
 
     /// <summary>
+    /// A held weapon without animations for this button falls back to the user's own body attack (e.g. a kick).
+    /// </summary>
+    private bool TryUseBodyFallback(
+        EntityUid user,
+        Entity<CEWeaponComponent> used,
+        CEUseType useType,
+        Angle angle,
+        EntityUid? cursorTarget)
+    {
+        if (used.Owner == user || !TryComp<CEWeaponComponent>(user, out var body))
+            return false;
+
+        if (!TryUse(user, (user, body), useType, angle, cursorTarget))
+            return false;
+
+        // The client reads the held weapon's Using flag to gate held-button attacks.
+        body.Using = false;
+        Dirty(user, body);
+        used.Comp.Using = true;
+        Dirty(used);
+        return true;
+    }
+
+    /// <summary>
     /// Whether a target at <paramref name="targetPos"/> lies inside an arc fanned around <paramref name="direction"/>.
     /// The target is a body, not a point, so the arc is widened by the angle half a tile subtends at its distance.
     /// </summary>
@@ -289,6 +317,22 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
 
         container = outer.Owner;
         return true;
+    }
+
+    /// <summary>
+    /// Removes targets that cancel <see cref="CEAttackAttemptEvent"/> (e.g. a raised parrying shield).
+    /// Call exactly once per attack per peer, right before its effects run: handlers may have side effects.
+    /// </summary>
+    public void FilterAttackTargets(EntityUid user, EntityUid weapon, List<EntityUid> targets)
+    {
+        for (var i = targets.Count - 1; i >= 0; i--)
+        {
+            var ev = new CEAttackAttemptEvent(user, weapon);
+            RaiseLocalEvent(targets[i], ev);
+
+            if (ev.Cancelled)
+                targets.RemoveAt(i);
+        }
     }
 
     /// <summary>
@@ -399,6 +443,20 @@ public sealed partial class CEAttackUsingEvent(EntityUid user, List<EntityUid> t
 {
     public EntityUid User = user;
     public List<EntityUid> Targets = targets;
+}
+
+/// <summary>
+/// Raised on a target before a CEWeaponComponent attack applies its effects to it. Cancel to make the attack miss it.
+/// Raised once per attack on each peer, so handlers may cause side effects on the server.
+/// </summary>
+public sealed partial class CEAttackAttemptEvent(EntityUid attacker, EntityUid weapon) : CancellableEntityEventArgs
+{
+    public EntityUid Attacker = attacker;
+
+    /// <summary>
+    /// The attacking weapon. Equals <see cref="Attacker"/> for unarmed attacks.
+    /// </summary>
+    public EntityUid Weapon = weapon;
 }
 
 /// <summary>
