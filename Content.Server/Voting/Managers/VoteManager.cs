@@ -8,6 +8,7 @@ using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -40,6 +41,7 @@ namespace Content.Server.Voting.Managers
         [Dependency] private IEntityManager _entityManager = default!;
         [Dependency] private IAdminLogManager _adminLogger = default!;
         [Dependency] private ISharedPlaytimeManager _playtimeManager = default!;
+        [Dependency] private PlayTimeTrackingManager _playtimeTracking = default!;
 
         private int _nextVoteId = 1;
 
@@ -437,7 +439,8 @@ namespace Content.Server.Voting.Managers
 
                 if (eligibility == VoterEligibility.GhostMinimumPlaytime)
                 {
-                    var playtime = _playtimeManager.GetPlayTimes(player);
+                    if (!_playtimeTracking.TryGetTrackerTimes(player, out var playtime)) //CrystallEdge: playtime not loaded yet for a just-connected player crashed the server on every tick during votekick
+                        return false;
                     if (!playtime.TryGetValue(PlayTimeTrackingShared.TrackerOverall, out TimeSpan overallTime) || overallTime < TimeSpan.FromHours(_cfg.GetCVar(CCVars.VotekickEligibleVoterPlaytime)))
                         return false;
 
@@ -448,7 +451,8 @@ namespace Content.Server.Voting.Managers
 
             if (eligibility == VoterEligibility.MinimumPlaytime)
             {
-                var playtime = _playtimeManager.GetPlayTimes(player);
+                if (!_playtimeTracking.TryGetTrackerTimes(player, out var playtime)) //CrystallEdge: playtime not loaded yet for a just-connected player crashed the server on every tick during votekick
+                    return false;
                 if (!playtime.TryGetValue(PlayTimeTrackingShared.TrackerOverall, out TimeSpan overallTime) || overallTime < TimeSpan.FromHours(_cfg.GetCVar(CCVars.VotekickEligibleVoterPlaytime)))
                     return false;
             }
