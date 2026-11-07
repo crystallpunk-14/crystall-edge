@@ -1796,3 +1796,40 @@
   id: 1151
   time: '2026-11-07T18:55:01.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/500
+- author: TheShuEd
+  changes:
+  - message: The werewolf transformation can now be used while the player is tied
+      up with a rope, and it breaks the ropes.
+    type: Add
+  - message: The engineers' isolation helmet now hides the player's identity and prevents
+      them from eating and drinking.
+    type: Add
+  - message: Receiving or changing a character's secret role automatically opens the
+      character menu in the objective tab.
+    type: Add
+  - message: When mobs have low stamina, they now try to run away and regenerate stamina
+      instead of continuing to attack the target, which would cause an endless stamina-crit
+      loop.
+    type: Add
+  - message: The key file has been removed, and the screwdriver can no longer rekey
+      locks.
+    type: Remove
+  - message: Conveyor belts have been resprited, and missing animations for vertical
+      conveyors have been added.
+    type: Tweak
+  - message: When a player is in critical state, they can no longer resist being pulled.
+    type: Tweak
+  - message: Fixed a bug that allowed players to move to a higher z-level while inside
+      a locked chest.
+    type: Fix
+  - message: Taking damage from a fall from a height now correctly causes the player
+      to turn red.
+    type: Fix
+  - message: Fixed a bug that prevented ghosts from passing through players.
+    type: Fix
+  - message: Fixed a bug that caused the Recycler to process players instantly, killing
+      them.
+    type: Fix
+  id: 1152
+  time: '2026-11-07T19:56:44.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/593
