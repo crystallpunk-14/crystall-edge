@@ -35,4 +35,10 @@ public abstract partial class CESharedActionSystem
     {
         args.PushMarkup(Loc.GetString("ce-magic-weapon-required"), 8);
     }
+
+    [SubscribeLocalEvent]
+    private void OnRequireNightExamined(Entity<CEActionRequireNightComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("ce-action-require-night"), 8);
+    }
 }

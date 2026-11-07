@@ -16,15 +16,20 @@ using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
 using Content.Shared.Gravity;
+using Content.Shared.Hands;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory.Events;
+using Content.Shared.Item;
 using Content.Shared.Medical;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Speech;
 using Content.Shared.Speech.EntitySystems;
+using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
@@ -52,6 +57,15 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckMagicVisionEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CERefreshWaypointersEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEAttackAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, InteractionAttemptEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, UseAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, ThrowAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, DropAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, PickupAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, PullAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, StandAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, IsEquippingAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, IsUnequippingAttemptEvent>(RelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);

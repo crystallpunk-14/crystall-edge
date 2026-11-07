@@ -4418,7 +4418,7 @@ ent-CEStatusEffectManaDrain = расход маны
 ent-CEActionMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость и страх. Переведите дух, чтобы мгновенно восстановить выносливость и стряхнуть первобытный ужас.
 
-ent-CEStatusEffectMurkwalker = Невосприимчивость ко мраку
+ent-CEStatusEffectMurkwalker = Иммунитет ко мраку
     .desc = Вы можете безопасно находиться во мраке, не растворяясь в небытии.
 
 ent-CEStatusEffectMurkResistance = Устойчивость к мраку
@@ -4507,7 +4507,7 @@ ent-CEEffectAreaHealingTelegraphyPlantGrowth = зелёный всплеск п�
     .suffix = VFX
 
 ent-CEActionWerewolfTransform = Истинная форма
-    .desc = Поддайтесь зверю и примите свою истинную, волчью форму. Работает только ночью.
+    .desc = Поддайтесь зверю и примите свою истинную, волчью форму.
 
 ent-CEMobCarcat = Мистер Кот
     .desc = { "" }

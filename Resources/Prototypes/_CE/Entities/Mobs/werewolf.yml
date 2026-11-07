@@ -81,13 +81,12 @@
     skills:
     - SoftLanding
     - NightVision
-    - Invisibility
     - LurkerJump
     - Murkwalker
+    - TimeSense
     - LurkerShadowStep
     - LurkerFear
     - WerewolfDarkFeast
-    - TimeSense
     descriptorName: ce-secret-role-name-werewolf
     descriptorColor: "#922525"
   - type: Puller

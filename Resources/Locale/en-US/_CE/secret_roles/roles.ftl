@@ -1,7 +1,10 @@
 # Nightmares
 
 ce-secret-role-name-werewolf = Werewolf
-ce-secret-role-description-werewolf = Turn into a wolf under cover of night. Kill your victims. Make sure this city does not survive.
+ce-secret-role-description-werewolf =  Transform into a wolf under the cover of night. Hunt and kill your prey.
+
+ce-secret-role-name-murkwalker = Murkwalker
+ce-secret-role-description-murkwalker = Roam the dark side, unseen by others, setting traps and shadow bombs.
 
 # City
 

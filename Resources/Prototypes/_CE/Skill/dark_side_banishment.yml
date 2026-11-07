@@ -29,6 +29,7 @@
   - type: TargetAction
     range: 1.5
     interactOnMiss: false
+  - type: CEActionRequireNight
   - type: EntityTargetAction
     canTargetSelf: true
     whitelist:
@@ -62,6 +63,7 @@
     layers:
     - state: todo
       map: ["enum.ActionVisuals.Icon"]
+  - type: CEActionRequireNight
   - type: InstantAction
     event: !type:CEToggleStatusEffectsActionEvent
       enabled: CEStatusEffectDarkSide
@@ -92,6 +94,14 @@
   - type: StatusEffectAlert
     alert: CEDarkSide
   - type: CEPacifismStatusEffect
+  - type: CEActionBlockerStatusEffect
+    blockInteract: true
+    blockUse: true
+    blockPickup: true
+    blockPull: true
+    blockEquip: true
+    blockUnequip: true
+  - type: CERemoveOnDawnStatusEffect
   - type: CEVisibilityLayerStatusEffect
     layers:
     - CEMagicVision
