@@ -140,6 +140,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Infernal/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Effects/brute_damage.rsi
+        color: "#FF6700"
+      Burn:
+        sprite: _CE/Mobs/Effects/burn_damage.rsi
   - type: Wagging
   - type: Bloodstream
     bloodReferenceSolution:

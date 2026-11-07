@@ -106,6 +106,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Dwarf/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Species/Dwarf/brute_damage.rsi
+        color: "#FF0000"
+      Burn:
+        sprite: _CE/Mobs/Species/Dwarf/burn_damage.rsi
 
 - type: entity
   parent: OrganBase

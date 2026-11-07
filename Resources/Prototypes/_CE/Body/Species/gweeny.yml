@@ -179,6 +179,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Gweeny/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Species/Gweeny/brute_damage.rsi
+        color: "#FF0000"
+      Burn:
+        sprite: _CE/Mobs/Species/Gweeny/burn_damage.rsi
   - type: Vocal
     emoteSounds: CEUnisexGweeny
   - type: CEWalkingAnimation

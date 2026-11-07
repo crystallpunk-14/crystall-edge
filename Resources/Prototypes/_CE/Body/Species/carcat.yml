@@ -253,6 +253,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Carcat/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Species/Carcat/brute_damage.rsi
+        color: "#FF7474"
+      Burn:
+        sprite: _CE/Mobs/Species/Carcat/burn_damage.rsi
   - type: Vocal
     emoteSounds: CEUnisexCarcat
   - type: Speech

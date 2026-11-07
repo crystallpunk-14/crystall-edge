@@ -216,6 +216,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Goblin/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Species/Goblin/brute_damage.rsi
+        color: "#C9FF7C"
+      Burn:
+        sprite: _CE/Mobs/Species/Goblin/burn_damage.rsi
   - type: Vocal
     emoteSounds: CEUnisexGoblin
   - type: Speech

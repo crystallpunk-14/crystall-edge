@@ -157,6 +157,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Elf/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Effects/brute_damage.rsi
+        color: "#FF007B"
+      Burn:
+        sprite: _CE/Mobs/Effects/burn_damage.rsi
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
