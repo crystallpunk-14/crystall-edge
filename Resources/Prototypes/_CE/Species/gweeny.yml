@@ -6,6 +6,9 @@
   icon:
     sprite: _CE/Interface/species.rsi
     state: gweeny
+  hoveredIcon:
+    sprite: _CE/Interface/species.rsi
+    state: gweeny_hovered
   skills:
   - Flight
   skillsBadgeColor: "#ebf310"
