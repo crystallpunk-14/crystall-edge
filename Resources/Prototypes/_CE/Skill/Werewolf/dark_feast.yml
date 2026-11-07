@@ -12,14 +12,15 @@
   description: Devour the fallen body of a mortal whose soul is still bound to this world. The feast feeds the murk that consumes the city - and its howl is heard from afar.
   components:
   - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 1
   - type: Action
     itemIconStyle: BigAction
     useDelay: 60
-    startDelay: true
   - type: Sprite
     sprite: /Textures/_CE/Actions/werewolf.rsi
     layers:
-    - state: true_form
+    - state: feast
       map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 1.2
@@ -41,7 +42,6 @@
       department: Nightmares
       inverted: true
 
-# Anchors (&name) are defined on first use and reused below as *name.
 - type: entityEffectAnimation
   id: WerewolfDarkFeast
   movementSpeed: 0
@@ -127,6 +127,8 @@
         easing: QuadOut
       colorAnimation: *clawFade
       scaleAnimation: *clawScale
+    - !type:ModifyStealthVisibility
+      amount: -1
     - *biteDamage
     - &splash2 !type:Radial
       count: 3
@@ -242,9 +244,15 @@
           volume: 50
     - !type:Undress
     - !type:Gib
+      dropGiblets: false
     - !type:AddMurk
       amount: 1
       scaleWithPlayers: true
+    - !type:SpawnEntity
+      effectTarget: Target
+      spawns:
+      - CELurkerFearScreamEffect
+    - !type:ShockWaveVFX
 
 - type: entity
   abstract: true

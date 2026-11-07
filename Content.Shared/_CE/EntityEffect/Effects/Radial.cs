@@ -40,7 +40,7 @@ public sealed partial class CERadialEffectSystem : CEEntityEffectSystem<Radial>
 
         var start = effect.RandomStart ? _random.NextAngle() : args.Args.Angle;
         var step = Math.Tau / effect.Count;
-        var spread = (float) effect.Spread.Theta;
+        var spread = (float)effect.Spread.Theta;
 
         for (var i = 0; i < effect.Count; i++)
         {

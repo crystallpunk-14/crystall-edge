@@ -26,7 +26,7 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     public float MurkLevel;
 
     /// <summary>
-    /// The highest number of active players seen this round. Only grows.
+    /// The highest number of active players seen this round.
     /// </summary>
     [DataField]
     public int MaxOnline;
