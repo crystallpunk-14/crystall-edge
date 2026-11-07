@@ -2,6 +2,7 @@ using Content.Server.Mind;
 using Content.Server.Roles;
 using Content.Shared._CE.Roles;
 using Content.Shared.Mind;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Roles;
@@ -34,6 +35,15 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
         TryGetSecretRole(entity, out var secretRole, out var originalSecretRole);
 
         RaiseNetworkEvent(new CESecretRoleInfoEvent(GetNetEntity(entity), secretRole, originalSecretRole), args.SenderSession);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnRoleGranted(ref CESecretRoleGrantedEvent args)
+    {
+        if (!TryComp<ActorComponent>(args.Body, out var actor))
+            return;
+
+        RaiseNetworkEvent(new CEOpenCharacterMenuEvent(), actor.PlayerSession);
     }
 
     /// <summary>
