@@ -242,6 +242,7 @@
 - type: entity
   parent: CEBloodHitEffectBase
   id: CEBloodHitEffect1
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -250,6 +251,7 @@
 - type: entity
   parent: CEBloodHitEffectBase
   id: CEBloodHitEffect2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
@@ -258,6 +260,7 @@
 - type: entity
   parent: CEBloodHitEffectBase
   id: CEBloodHitEffect3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:
