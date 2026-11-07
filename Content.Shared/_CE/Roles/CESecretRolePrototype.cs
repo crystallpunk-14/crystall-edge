@@ -32,19 +32,13 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     /// The name of this role as displayed to players.
     /// </summary>
     [DataField]
-    public string Name = string.Empty;
-
-    [ViewVariables(VVAccess.ReadOnly)]
-    public string LocalizedName => Loc.GetString(Name);
+    public LocId Name = string.Empty;
 
     /// <summary>
     /// The description of this role as displayed to players.
     /// </summary>
     [DataField]
-    public string? Description;
-
-    [ViewVariables(VVAccess.ReadOnly)]
-    public string? LocalizedDescription => Description is null ? null : Loc.GetString(Description);
+    public LocId? Description;
 
     [DataField]
     public ProtoId<JobIconPrototype> Icon = "JobIconUnknown";

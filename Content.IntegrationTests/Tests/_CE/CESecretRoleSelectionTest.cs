@@ -34,15 +34,19 @@ public sealed class CESecretRoleSelectionTest : GameTest
     private const string Prototypes = $@"
 - type: secretRole
   id: {Alpha}
+  name: ce-secret-department-city-name
 
 - type: secretRole
   id: {Beta}
+  name: ce-secret-department-city-name
 
 - type: secretRole
   id: {Gamma}
+  name: ce-secret-department-city-name
 
 - type: secretRole
   id: {Fallback}
+  name: ce-secret-department-city-name
 
 - type: secretDepartment
   id: {SmallDepartment}

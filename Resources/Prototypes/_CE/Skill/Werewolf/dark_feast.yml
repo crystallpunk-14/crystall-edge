@@ -1,0 +1,267 @@
+- type: skill
+  id: WerewolfDarkFeast
+  icon:
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    state: true_form
+  effect: !type:AddAction
+    action: CEActionWerewolfDarkFeast
+
+- type: entity
+  id: CEActionWerewolfDarkFeast
+  name: Dark Feast
+  description: Throw a feast in the name of murk, plunging the city deeper and deeper into trap of death.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 1
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 60
+  - type: Sprite
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    layers:
+    - state: feast
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.2
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - HumanoidProfile
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: WerewolfDarkFeast
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:Incapacitated
+    - !type:HasComponents
+      components:
+      - type: HumanoidProfile
+    - !type:InSecretDepartment
+      department: Nightmares
+      inverted: true
+
+# Anchors (&name) are defined on first use and reused below as *name.
+- type: entityEffectAnimation
+  id: WerewolfDarkFeast
+  movementSpeed: 0
+  duration: 10.2
+  breakOnDamage: 1
+  events:
+    0:
+    - &biteSound !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+        params:
+          variation: 0.15
+    - &reveal !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: 1
+    - &claw1 !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 1.2, -0.1
+      - time: 0.3
+        offset: 0, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 40
+      - time: 0.3
+        rotation: -40
+        easing: QuadOut
+      colorAnimation: &clawFade
+      - time: 0.0
+        color: "#ffffff00"
+        easing: QuadIn
+      - time: 0.2
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.3
+        color: "#ffffff00"
+      scaleAnimation: &clawScale
+      - time: 0.0
+        scale: 1.2, 1.2
+    - &biteDamage !type:Damage
+      damage:
+        types:
+          Slash: 20
+    # A single ray in a random direction around the body.
+    - &splash1 !type:Radial
+      count: 1
+      effects:
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect1
+        sprite: &bloodRsi /Textures/_CE/Decals/blood.rsi
+        states: &splatters
+        - splatter1
+        - splatter2
+        - splatter3
+        - splatter4
+        - splatter5
+        - splatter6
+        - splatter7
+        - splatter8
+        - splatter9
+        - splatter10
+    1:
+    - *biteSound
+    - *reveal
+    - &claw2 !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -1.2, -0.1
+      - time: 0.3
+        offset: 0, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 60
+      - time: 0.3
+        rotation: 140
+        easing: QuadOut
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - *biteDamage
+    - &splash2 !type:Radial
+      count: 1
+      effects:
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect2
+        sprite: *bloodRsi
+        states: *splatters
+    2:
+    - *biteSound
+    - *reveal
+    - &claw3a !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 1.2, 0.1
+      - time: 0.3
+        offset: -0.2, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 0
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - &claw3b !type:UsedEntityAnimation
+      dummyEntity: CEClawEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -1.2, 0.1
+      - time: 0.3
+        offset: 0.2, -1.2
+        easing: QuadOut
+      rotationAnimation:
+      - time: 0.0
+        rotation: 90
+      colorAnimation: *clawFade
+      scaleAnimation: *clawScale
+    - *biteDamage
+    - &splash3 !type:Radial
+      count: 1
+      effects:
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect3
+        sprite: *bloodRsi
+        states: *splatters
+    3: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
+    4: [ *biteSound, *reveal, *claw2, *biteDamage, *splash2 ]
+    5: [ *biteSound, *reveal, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    6: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
+    7: [ *biteSound, *reveal, *claw2, *biteDamage, *splash2 ]
+    8: [ *biteSound, *reveal, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    9: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
+    10:
+    - *reveal
+    - !type:Radial
+      count: 8
+      spread: 15
+      effects:
+      - !type:BloodSplatter
+        minDistance: 0.5
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect2
+        sprite: *bloodRsi
+        states: *splatters
+    - !type:PlayFarSound
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+      minRange: 15
+      maxRange: 60
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/Screech/changeling_screech_weak.ogg
+        params:
+          variation: 0.2
+          maxDistance: 20
+          volume: 50
+    - !type:Undress
+    - !type:Gib
+    - !type:AddMurk
+      amount: 1
+      scaleWithPlayers: true
+    - !type:SpawnEntity
+      effectTarget: Target
+      spawns:
+      - CELurkerFearScreamEffect
+    - !type:ShockWaveVFX
+
+# Painted the splattered blood's color by the server through SmokeVisuals.Color.
+- type: entity
+  abstract: true
+  id: CEBloodHitEffectBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/blood_hit.rsi
+    drawdepth: Effects
+  - type: Appearance
+  - type: SmokeVisuals
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit1
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit2
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect3
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit3

@@ -147,7 +147,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
             string? secretRoleTooltip = null;
             if (warp.SecretRole is { } secretRoleId && _prototype.TryIndex(secretRoleId, out var secretRoleProto))
             {
-                secretRoleName = secretRoleProto.LocalizedName;
+                secretRoleName = Loc.GetString(secretRoleProto.Name);
                 secretRoleIcon = GetRoleIcon(secretRoleProto);
 
                 (var secretDepartment, secretRoleDepartmentSearchText) = CEDepartmentResolver.ResolveSecretDepartment(_prototype, secretRoleId);
@@ -160,7 +160,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                     originalId != secretRoleId &&
                     _prototype.TryIndex(originalId, out var originalRoleProto))
                 {
-                    originalSecretRoleName = originalRoleProto.LocalizedName;
+                    originalSecretRoleName = Loc.GetString(originalRoleProto.Name);
                     originalSecretRoleIcon = GetRoleIcon(originalRoleProto);
 
                     var (originalDepartment, originalSearchText) = CEDepartmentResolver.ResolveSecretDepartment(_prototype, originalId);

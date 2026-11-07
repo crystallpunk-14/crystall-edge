@@ -46,3 +46,6 @@ ce-entity-effect-guidebook-conditional-effect-group =
     { $effects }
 
 ce-revivable-required = Only a dead body whose soul has not left it for good can be brought back.
+
+ce-in-secret-department-required = The target must belong to: { $department }.
+ce-in-secret-department-forbidden = The target must not belong to: { $department }.

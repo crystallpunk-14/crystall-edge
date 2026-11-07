@@ -43,6 +43,7 @@
   id: CureWounds
   movementSpeed: 0.5
   duration: 2
+  breakOnDamage: 1
   events:
     0:
     - !type:SpawnEntity

@@ -1,0 +1,162 @@
+- type: decal
+  id: CEBloodBase
+  abstract: true
+  tags: ["CEblood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  showMenu: true
+
+- type: decal
+  id: CEBloodSplatter1
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter1
+
+- type: decal
+  id: CEBloodSplatter2
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter2
+
+- type: decal
+  id: CEBloodSplatter3
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter3
+
+- type: decal
+  id: CEBloodSplatter4
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter4
+
+- type: decal
+  id: CEBloodSplatter5
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter5
+
+- type: decal
+  id: CEBloodSplatter6
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter6
+
+- type: decal
+  id: CEBloodSplatter7
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter7
+
+- type: decal
+  id: CEBloodSplatter8
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter8
+
+- type: decal
+  id: CEBloodSplatter9
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter9
+
+- type: decal
+  id: CEBloodSplatter10
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: splatter10
+
+- type: decal
+  id: CEBloodFloor1
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor1
+
+- type: decal
+  id: CEBloodFloor2
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor2
+
+- type: decal
+  id: CEBloodFloor3
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor3
+
+- type: decal
+  id: CEBloodFloor4
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor4
+
+- type: decal
+  id: CEBloodFloor5
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor5
+
+- type: decal
+  id: CEBloodFloor6
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor6
+
+- type: decal
+  id: CEBloodFloor7
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: floor7
+
+- type: decal
+  id: CEBloodGiblet1
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: giblet1
+
+- type: decal
+  id: CEBloodGiblet2
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: giblet2
+
+- type: decal
+  id: CEBloodGiblet3
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: giblet3
+
+- type: decal
+  id: CEBloodGiblet4
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: giblet4
+
+- type: decal
+  id: CEBloodGiblet5
+  parent: CEBloodBase
+  sprite:
+    sprite: _CE/Decals/blood.rsi
+    state: giblet5

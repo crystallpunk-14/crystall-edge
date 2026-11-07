@@ -1,17 +1,16 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server._CE.GameTicking.Components;
+using Content.Server._CE.Roles;
 using Content.Server.Destructible;
 using Content.Server.Destructible.Thresholds.Behaviors;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
-using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.RestorationRitual.Components;
 using Content.Shared._CE.Roundflow;
 using Content.Shared._CE.Trade.MainQuest;
-using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -20,8 +19,6 @@ using Content.Shared.Destructible.Thresholds.Triggers;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Light.Components;
-using Content.Shared.Station.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -42,14 +39,10 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPointLightSystem _pointLight = default!;
     [Dependency] private SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private CESecretRoleSelectionSystem _secretRoles = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
     private readonly EntProtoId _sphereFailureLightning = "CESkyLightning";
-
-    /// <summary>
-    /// Used for "days left" texts if no station map with a light cycle can be found.
-    /// </summary>
-    private static readonly TimeSpan FallbackDayDuration = TimeSpan.FromMinutes(15);
 
     protected override void Started(EntityUid uid, CEMurkConsumingRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -169,10 +162,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
                         StartRound(component, (sphereUid, sphere));
                     break;
                 case CEMurkSphereState.InGame:
-                    var shrink = MathHelper.Lerp(1f, component.ShrinkMultiplier, GetCollapseProgress(component));
+                    var shrink = MathHelper.Lerp(1f, component.ShrinkMultiplier, component.MurkLevel);
                     SetSphereIntensity((sphereUid, source), sphere, shrink, component.IntensityWriteThreshold);
-                    if (component.CrackTime is { } crackTime && Timing.CurTime >= crackTime + component.CollapseDelay)
-                        Collapse();
                     break;
                 case CEMurkSphereState.Ritual:
                     if (pulse)
@@ -201,22 +192,71 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
             return;
 
         component.NextBroadcast = Timing.CurTime + component.BroadcastInterval;
+        component.MaxOnline = Math.Max(component.MaxOnline, _secretRoles.GetActivePlayerCount());
         BroadcastProgress(component);
     }
 
     private void StartRound(CEMurkConsumingRuleComponent component, Entity<CEMurkLusconSphereComponent> sphere)
     {
-        component.CrackTime = Timing.CurTime;
+        component.MaxOnline = Math.Max(component.MaxOnline, _secretRoles.GetActivePlayerCount());
 
         SetSphereState(sphere, CEMurkSphereState.InGame);
         Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
 
         RaiseNetworkEvent(new CEScreenPopupShowEvent(
             Loc.GetString("ce-murk-sphere-cracked-title"),
-            Loc.GetString("ce-murk-sphere-cracked-desc", ("days", GetDaysLeft(component))),
+            Loc.GetString("ce-murk-sphere-cracked-desc"),
             new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")));
 
         RaiseLocalEvent(new CERoundStartEvent());
+    }
+
+    /// <summary>
+    /// Feeds the murk while the sphere is cracked. Ignored before the crack, during the ritual and after the round.
+    /// </summary>
+    /// <param name="amount">Fraction of the whole murk, or, if <paramref name="scaleWithPlayers"/>, one player-scaled
+    /// contribution: <see cref="CEMurkConsumingRuleComponent.PlayerShare"/> of the peak online fills the murk with them.</param>
+    public void AddMurk(float amount, bool scaleWithPlayers)
+    {
+        if (amount <= 0f || !IsSphereCracked())
+            return;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            if (scaleWithPlayers)
+            {
+                // The threshold is fixed at the moment of adding: later online growth doesn't devalue past contributions.
+                consuming.MaxOnline = Math.Max(consuming.MaxOnline, _secretRoles.GetActivePlayerCount());
+                var threshold = Math.Max(1, (int) MathF.Ceiling(consuming.PlayerShare * consuming.MaxOnline));
+                amount /= threshold;
+            }
+
+            consuming.MurkLevel = Math.Min(1f, consuming.MurkLevel + amount);
+            RaiseLocalEvent(new CEMurkLevelChangedEvent(consuming.MurkLevel));
+
+            if (consuming.MurkLevel >= 1f)
+                Collapse();
+
+            break;
+        }
+    }
+
+    /// <summary>
+    /// How much the murk has consumed the sphere, 0..1, if a rule is active.
+    /// </summary>
+    public bool TryGetMurkLevel(out float level)
+    {
+        level = 0f;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            level = consuming.MurkLevel;
+            return true;
+        }
+
+        return false;
     }
 
     private void Collapse()
@@ -321,7 +361,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         // Each accepted shard fills an equal share of the light bar; the ritual fills the last one.
         var share = 1f / (component.ShardCount + 1);
         var light = Math.Min(CountAcceptedShards(Transform(sphereUid).MapID), component.ShardCount) * share;
-        var murk = GetCollapseProgress(component);
+        var murk = component.MurkLevel;
 
         switch (sphere.State)
         {
@@ -406,36 +446,6 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         return Math.Clamp((float) ((Timing.CurTime - ritualStart) / component.RitualDuration), 0f, 1f);
     }
 
-    /// <summary>
-    /// How much of the time between the sphere cracking and collapsing has passed, 0..1.
-    /// Stops advancing once the sphere leaves the cracked state.
-    /// </summary>
-    public float GetCollapseProgress(CEMurkConsumingRuleComponent component)
-    {
-        if (component.CrackTime is not { } crackTime)
-            return 0f;
-
-        if (component.CollapseDelay <= TimeSpan.Zero)
-            return 1f;
-
-        var now = component.CrackEndTime ?? Timing.CurTime;
-        return Math.Clamp((float) ((now - crackTime) / component.CollapseDelay), 0f, 1f);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnSphereStateChanged(Entity<CEMurkLusconSphereComponent> ent, ref CEMurkSphereStateChangedEvent args)
-    {
-        if (args.OldState != CEMurkSphereState.InGame)
-            return;
-
-        // Freeze the collapse countdown (e.g. the ritual has started).
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out _, out var consuming, out _))
-        {
-            consuming.CrackEndTime ??= Timing.CurTime;
-        }
-    }
-
     [SubscribeLocalEvent]
     private void OnSpawnComplete(PlayerSpawnCompleteEvent ev)
     {
@@ -445,16 +455,10 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (!IsSphereCracked())
             return; //Sphere hasn't cracked yet, nothing to tell this player yet
 
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out _, out var consuming, out _))
-        {
-            RaiseNetworkEvent(new CEScreenPopupShowEvent(
-                Loc.GetString("ce-murk-sphere-cracked-title"),
-                Loc.GetString("ce-murk-sphere-cracked-desc", ("days", GetDaysLeft(consuming))),
-                new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), ev.Player);
-
-            break;
-        }
+        RaiseNetworkEvent(new CEScreenPopupShowEvent(
+            Loc.GetString("ce-murk-sphere-cracked-title"),
+            Loc.GetString("ce-murk-sphere-cracked-desc"),
+            new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), ev.Player);
     }
 
     private bool IsSphereCracked()
@@ -466,33 +470,6 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Remaining time until collapse, expressed in (rounded up) station day cycles.
-    /// </summary>
-    private int GetDaysLeft(CEMurkConsumingRuleComponent component)
-    {
-        var remaining = component.CollapseDelay * (1f - GetCollapseProgress(component));
-        var day = GetDayDuration();
-        if (day <= TimeSpan.Zero)
-            return 0;
-
-        return (int) Math.Ceiling(remaining / day - 0.001);
-    }
-
-    private TimeSpan GetDayDuration()
-    {
-        var query = EntityQueryEnumerator<LightCycleComponent, StationMemberComponent>();
-        while (query.MoveNext(out var uid, out var lightCycle, out _))
-        {
-            if (TryComp<CEZMapComponent>(uid, out var zlevelMap) && zlevelMap.Depth != 0)
-                continue;
-
-            return lightCycle.Duration;
-        }
-
-        return FallbackDayDuration;
     }
 
     [SubscribeLocalEvent]

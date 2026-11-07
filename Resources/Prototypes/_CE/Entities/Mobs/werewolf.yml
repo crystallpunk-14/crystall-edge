@@ -54,9 +54,9 @@
       - !type:Damage
         damage:
           types:
-            Slash: 4
+            Slash: 5
             Piercing: 2
-            Structural: 5
+            Structural: 10
     animations:
       Primary:
       - anim: ClawBigAttack1
@@ -86,6 +86,7 @@
     - Murkwalker
     - LurkerShadowStep
     - LurkerFear
+    - WerewolfDarkFeast
     - TimeSense
     descriptorName: ce-secret-role-name-werewolf
     descriptorColor: "#922525"

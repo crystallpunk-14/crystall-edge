@@ -17,6 +17,12 @@ public sealed partial class SpawnEntity : CEEntityEffectBase<SpawnEntity>
     [DataField]
     public Vector2 Offset = new(0, 0);
 
+    /// <summary>
+    /// Turns the spawned entities to face the effect angle (see <see cref="Radial"/>).
+    /// </summary>
+    [DataField]
+    public bool Rotate;
+
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         if (Spawns.Count == 0)
@@ -47,6 +53,9 @@ public sealed partial class CESpawnEntityEffectSystem : CEEntityEffectSystem<Spa
 
             if (args.Effect.Reparent && args.Args.Target != null)
                 _transform.SetParent(spawned, args.Args.Target.Value);
+
+            if (args.Effect.Rotate)
+                _transform.SetWorldRotation(spawned, args.Args.Angle);
         }
     }
 }

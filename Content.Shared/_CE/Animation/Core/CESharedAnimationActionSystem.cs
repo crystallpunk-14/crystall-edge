@@ -6,7 +6,9 @@ using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Movement.Systems;
 using JetBrains.Annotations;
+using Content.Shared.Popups;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -18,6 +20,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _movement = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -55,11 +59,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             if (_timing.ApplyingState)
                 continue;
 
-            if (controller.TargetEntity is { } target && TerminatingOrDeleted(target))
-            {
-                controller.TargetEntity = null;
+            if (ClearDeletedReferences(controller))
                 Dirty(uid, controller);
-            }
 
             // Rotate towards the target if LockRotation is active with a TargetEntity or TargetPosition.
             if (controller.LockRotation && controller.TargetEntity != uid)
@@ -127,16 +128,35 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                 if (TerminatingOrDeleted(uid))
                     continue;
 
-                if (controller.TargetEntity is { } postEventTarget && TerminatingOrDeleted(postEventTarget))
-                {
-                    controller.TargetEntity = null;
-                    anyEventFired = true;
-                }
-
-                if (anyEventFired)
+                // Effects like Gib only queue the deletion, so the uid must be dropped before this tick's state is sent.
+                if (ClearDeletedReferences(controller) || anyEventFired)
                     Dirty(uid, controller);
             }
         }
+    }
+
+    private bool ClearDeletedReferences(CEActiveAnimationActionComponent controller)
+    {
+        var changed = false;
+
+        if (controller.TargetEntity is { } target && IsDeleted(target))
+        {
+            controller.TargetEntity = null;
+            changed = true;
+        }
+
+        if (controller.Used is { } used && IsDeleted(used))
+        {
+            controller.Used = null;
+            changed = true;
+        }
+
+        return changed;
+    }
+
+    private bool IsDeleted(EntityUid uid)
+    {
+        return TerminatingOrDeleted(uid) || EntityManager.IsQueuedForDeletion(uid);
     }
 
     /// <summary>

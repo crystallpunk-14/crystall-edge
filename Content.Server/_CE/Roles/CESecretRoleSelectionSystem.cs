@@ -217,7 +217,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (roleEnt.Value.Comp2.Role is not { } roleId || !_proto.TryIndex(roleId, out var role))
             return;
 
-        RaiseNetworkEvent(new CEScreenPopupShowEvent(role.LocalizedName,
+        RaiseNetworkEvent(new CEScreenPopupShowEvent(Loc.GetString(role.Name),
             audioPath: new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
     }
 
@@ -390,7 +390,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// <summary>
     /// Mirrors AntagSelectionSystem.GetActivePlayerCount: connected sessions with a live, non-ghost body.
     /// </summary>
-    private int GetActivePlayerCount()
+    public int GetActivePlayerCount()
     {
         var count = 0;
         foreach (var session in _playerManager.Sessions)

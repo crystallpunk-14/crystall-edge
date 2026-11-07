@@ -16,3 +16,5 @@
     color: "#be368a"
     radius: 1.4
     energy: 5
+  - type: StaticPrice
+    price: 10

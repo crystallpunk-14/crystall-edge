@@ -182,7 +182,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         }
 
         _window.SecretRoleContainer.Visible = true;
-        _window.SecretRoleLabel.Text = secretRoleProto.LocalizedName;
+        _window.SecretRoleLabel.Text = Loc.GetString(secretRoleProto.Name);
         _window.SecretRoleLabel.FontColorOverride = null;
         _window.SecretRoleIcon.Texture = GetRoleIcon(secretRoleProto);
 
@@ -192,7 +192,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
             _prototypeManager.TryIndex(originalId, out var originalRoleProto))
         {
             _window.OriginalRoleContainer.Visible = true;
-            _window.OriginalRoleLabel.Text = originalRoleProto.LocalizedName;
+            _window.OriginalRoleLabel.Text = Loc.GetString(originalRoleProto.Name);
             _window.OriginalRoleIcon.Texture = GetRoleIcon(originalRoleProto);
         }
         else
