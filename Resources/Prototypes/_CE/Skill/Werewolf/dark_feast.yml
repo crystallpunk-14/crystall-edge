@@ -9,7 +9,7 @@
 - type: entity
   id: CEActionWerewolfDarkFeast
   name: Dark Feast
-  description: Devour the fallen body of a mortal whose soul is still bound to this world. The feast feeds the murk that consumes the city - and its howl is heard from afar.
+  description: Throw a feast in the name of murk, plunging the city deeper and deeper into trap of death.
   components:
   - type: CEVisualizeRadiusTargetAction
   - type: CEVisualizeAoEZoneAction
