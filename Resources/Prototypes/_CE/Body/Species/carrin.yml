@@ -227,6 +227,13 @@
   - type: Icon
     sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _CE/Mobs/Species/Carrin/brute_damage.rsi
+        color: "#FF0000"
+      Burn:
+        sprite: _CE/Mobs/Species/Carrin/burn_damage.rsi
   - type: Vocal
     emoteSounds: CEUnisexCarrin
   - type: Speech
