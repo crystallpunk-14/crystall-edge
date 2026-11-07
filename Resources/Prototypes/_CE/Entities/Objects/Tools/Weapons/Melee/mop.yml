@@ -65,6 +65,17 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/Weapons/Melee/Mop/mop.rsi
-    state: icon
+    layers:
+    - state: icon
+    - state: icon_liq1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    solutionName: absorbed
+    maxFillLevels: 2
+    fillBaseName: icon_liq
+    inHandsMaxFillLevels: 2
+    inHandsFillBaseName: _liq
   - type: StaticPrice
     price: 5
