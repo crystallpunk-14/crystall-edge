@@ -91,10 +91,10 @@
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
-        sprite: Mobs/Effects/brute_damage.rsi
+        sprite: _CE/Mobs/Effects/brute_damage.rsi
         color: "#555555AA"
       Burn:
-        sprite: Mobs/Effects/burn_damage.rsi
+        sprite: _CE/Mobs/Effects/burn_damage.rsi
   - type: MobState
     allowedStates:
     - Alive
