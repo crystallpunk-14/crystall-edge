@@ -1758,3 +1758,24 @@
   id: 1148
   time: '2026-11-06T13:06:28.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/590
+- author: TheShuEd
+  changes:
+  - message: "The werewolf has gained a new ability, \u201CDark Feast,\u201D which\
+      \ can be used in its true form. It destroys the body, adding a level of darkness\
+      \ to the entire city."
+    type: Add
+  - message: The damage dealt by a werewolf's melee attacks has been increased
+    type: Tweak
+  - message: Murk no longer accumulates automatically based on a timer.
+    type: Tweak
+  id: 1149
+  time: '2026-11-07T11:30:28.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/592
+- author: TheShuEd
+  changes:
+  - message: The damage sprite on the bodies of all races has been updated to match
+      each race's silhouette and blood color.
+    type: Add
+  id: 1150
+  time: '2026-11-07T09:56:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/591
