@@ -76,3 +76,9 @@
     - /Audio/_CE/Effects/Lurker/roar1.ogg
     - /Audio/_CE/Effects/Lurker/roar2.ogg
     - /Audio/_CE/Effects/Lurker/roar3.ogg
+
+- type: soundCollection
+  id: CEParry
+  files:
+  - /Audio/_CE/Effects/Weapon/parry1.ogg
+  - /Audio/_CE/Effects/Weapon/parry2.ogg

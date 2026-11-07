@@ -5,6 +5,7 @@ ce-entity-effect-guidebook-learn-skill = Обучает: [color=yellow]{ $name }
 ce-entity-effect-guidebook-add-z-velocity = Подбрасывает цель в воздух с силой [color=yellow]{ $speed }[/color]
 ce-entity-effect-guidebook-apply-status = Накладывает статус-эффект [color=yellow]{ $status }[/color] на [color=yellow]{ $duration }[/color] сек.
 ce-entity-effect-guidebook-apply-status-permanent = Накладывает статус-эффект [color=yellow]{ $status }[/color], пока он не будет снят.
+ce-entity-effect-guidebook-apply-animation-status = Накладывает статус-эффект [color=yellow]{ $status }[/color] до конца анимации.
 ce-entity-effect-guidebook-remove-status =Снимает статус-эффект [color=yellow]{ $status }[/color]
 ce-entity-effect-guidebook-dash = Совершает рывок вперёд на [color=yellow]{ $distance }[/color] м.
 ce-entity-effect-guidebook-delete = Уничтожает цель

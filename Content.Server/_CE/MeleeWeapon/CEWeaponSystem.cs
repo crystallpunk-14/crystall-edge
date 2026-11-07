@@ -38,6 +38,10 @@ public sealed partial class CEWeaponSystem : CESharedWeaponSystem
             return;
         }
 
+        // Inline-effect attacks were already filtered by the arc itself, before the effects ran.
+        if (effectSlot != null)
+            FilterAttackTargets(user, weapon.Owner, targets);
+
         TryAttack(user, weapon, targets);
         ApplyArcEffects(user, weapon, targets, effectSlot, power);
     }

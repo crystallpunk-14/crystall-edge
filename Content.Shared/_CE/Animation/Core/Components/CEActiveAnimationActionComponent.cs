@@ -45,4 +45,11 @@ public sealed partial class CEActiveAnimationActionComponent : Component
 
     [AutoNetworkedField]
     public TimeSpan LastEvent = TimeSpan.FromSeconds(-1);
+
+    /// <summary>
+    /// Status effects on the animated entity that live exactly as long as this animation.
+    /// Removed when the animation ends or is cancelled.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<EntProtoId> LinkedStatusEffects = new();
 }

@@ -1,0 +1,123 @@
+#MARK: Buckler stance
+- type: entityEffectAnimation
+  id: BucklerStance
+  duration: 1
+  events:
+    0:
+    - !type:ApplyAnimationStatusEffect
+      statusEffect: CEStatusEffectBucklerStance
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.2
+        easing: QuadOut
+      - time: 0.1
+        offset: 0, -0.5
+      - time: 0.9
+        offset: 0, -0.5
+      - time: 1.0
+        offset: 0, -0.2
+        easing: QuadIn
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.9
+        color: "#ffffff"
+      - time: 1.0
+        color: "#ffffff00"
+        easing: QuadIn
+
+#MARK: Shield stance
+- type: entityEffectAnimation
+  id: ShieldStance
+  movementSpeed: 0.5
+  duration: 2
+  events:
+    0:
+    - !type:ApplyAnimationStatusEffect
+      statusEffect: CEStatusEffectShieldStance
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.2
+        easing: QuadOut
+      - time: 0.15
+        offset: 0, -0.5
+      - time: 1.85
+        offset: 0, -0.5
+      - time: 2.0
+        offset: 0, -0.2
+        easing: QuadIn
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 1.85
+        color: "#ffffff"
+      - time: 2.0
+        color: "#ffffff00"
+        easing: QuadIn
+
+#MARK: Tower shield stance
+- type: entityEffectAnimation
+  id: TowerShieldStance
+  movementSpeed: 0.25
+  duration: 2
+  events:
+    0:
+    - !type:ApplyAnimationStatusEffect
+      statusEffect: CEStatusEffectTowerShieldStance
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.2
+        easing: QuadOut
+      - time: 0.2
+        offset: 0, -0.5
+      - time: 1.8
+        offset: 0, -0.5
+      - time: 2.0
+        offset: 0, -0.2
+        easing: QuadIn
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 1.8
+        color: "#ffffff"
+      - time: 2.0
+        color: "#ffffff00"
+        easing: QuadIn
+
+#MARK: Tower shield bash
+- type: entityEffectAnimation
+  id: TowerShieldBash
+  movementSpeed: 0.3
+  duration: 0.7
+  events:
+    0:
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.3
+        easing: QuadIn
+      - time: 0.4
+        offset: 0, -0.1
+        easing: QuadOut
+      - time: 0.5
+        offset: 0, -0.8
+        easing: QuadOut
+      - time: 0.65
+        offset: 0, -0.5
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.6
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.69
+        color: "#ffffff00"
+    0.5:
+    - !type:WeaponArcAttack
+      arcWidth: 60
+      effects:
+      - !type:WeaponEffectSlot
+        slot: OnHit

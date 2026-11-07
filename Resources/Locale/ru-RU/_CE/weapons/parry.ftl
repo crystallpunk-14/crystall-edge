@@ -1,0 +1,1 @@
+ce-parry-success = Парировал!

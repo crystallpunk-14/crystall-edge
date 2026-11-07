@@ -1,6 +1,7 @@
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared._CE.MagicVision.Events;
+using Content.Shared._CE.MeleeWeapon;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Damage;
@@ -50,6 +51,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckTimeSenseEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckMagicVisionEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CERefreshWaypointersEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CEAttackAttemptEvent>(RelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);
