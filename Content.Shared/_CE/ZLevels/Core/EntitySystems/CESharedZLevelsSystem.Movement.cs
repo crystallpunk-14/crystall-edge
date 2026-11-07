@@ -332,7 +332,13 @@ public abstract partial class CESharedZLevelsSystem
     [PublicAPI]
     public bool TryMove(EntityUid ent, int offset, Entity<CEZMapComponent?>? map = null)
     {
-        map ??= Transform(ent).MapUid;
+        var xform = Transform(ent);
+
+        // Nested entities (containers, buckled, vehicles) travel with their parent
+        if (xform.ParentUid != xform.GridUid)
+            return false;
+
+        map ??= xform.MapUid;
 
         if (map is null)
             return false;

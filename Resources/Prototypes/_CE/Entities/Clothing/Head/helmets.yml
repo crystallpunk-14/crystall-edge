@@ -48,3 +48,5 @@
         Shock: 0.9
   - type: StaticPrice
     price: 100
+  - type: IdentityBlocker
+  - type: IngestionBlocker

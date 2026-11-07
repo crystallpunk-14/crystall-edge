@@ -17,11 +17,22 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
     /// </summary>
     public event Action<EntityUid, ProtoId<CESecretRolePrototype>?, ProtoId<CESecretRolePrototype>?>? OnSecretRoleUpdate;
 
+    /// <summary>
+    /// Raised when the server asks to show the local player their objectives after a secret role grant.
+    /// </summary>
+    public event Action? OnOpenObjectivesMenu;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<CESecretRoleInfoEvent>(OnSecretRoleInfoEvent);
+    }
+
+    [SubscribeNetworkEvent]
+    private void OnOpenCharacterMenuEvent(CEOpenCharacterMenuEvent msg)
+    {
+        OnOpenObjectivesMenu?.Invoke();
     }
 
     public void RequestSecretRoleInfo()

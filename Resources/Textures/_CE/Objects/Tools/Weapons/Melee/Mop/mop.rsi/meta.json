@@ -11,7 +11,21 @@
       "name": "icon"
     },
     {
+      "name": "icon_liq1"
+    },
+    {
+      "name": "icon_liq2"
+    },
+    {
       "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left_liq1",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left_liq2",
       "directions": 4
     },
     {
@@ -23,11 +37,35 @@
       "directions": 4
     },
     {
+      "name": "inhand-right_liq1",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right_liq2",
+      "directions": 4
+    },
+    {
       "name": "wielded-inhand-left",
       "directions": 4
     },
     {
+      "name": "wielded-inhand-left_liq1",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left_liq2",
+      "directions": 4
+    },
+    {
       "name": "wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right_liq1",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right_liq2",
       "directions": 4
     }
   ]

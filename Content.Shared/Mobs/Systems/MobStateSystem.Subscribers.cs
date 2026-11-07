@@ -13,6 +13,7 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pointing;
 using Content.Shared.Pulling.Events;
@@ -40,11 +41,42 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, DropAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, PickupAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, StartPullAttemptEvent>(CheckAct);
-        SubscribeLocalEvent<MobStateComponent, UpdateCanMoveEvent>(CECheckActDead);
+        SubscribeLocalEvent<MobStateComponent, UpdateCanMoveEvent>(CEOnUpdateCanMove);
         SubscribeLocalEvent<MobStateComponent, StandAttemptEvent>(CheckAct);
         SubscribeLocalEvent<MobStateComponent, PointAttemptEvent>(CECheckActDead);
         // CrystallEdge end
     }
+
+    // CrystallEdge: a pulled critical mob is dragged like a tied body and can't break free on its own
+    private void CEOnUpdateCanMove(EntityUid uid, MobStateComponent component, UpdateCanMoveEvent args)
+    {
+        CECheckActDead(uid, component, args);
+
+        if (component.CurrentState == MobState.Critical && _pullableQuery.TryComp(uid, out var pullable) && pullable.BeingPulled)
+            args.Cancel();
+    }
+
+    [SubscribeLocalEvent]
+    private void CEOnAttemptStopPulling(Entity<MobStateComponent> ent, ref AttemptStopPullingEvent args)
+    {
+        if (args.User == ent.Owner && ent.Comp.CurrentState == MobState.Critical)
+            args.Cancelled = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void CEOnPullStarted(EntityUid uid, MobStateComponent component, PullStartedMessage args)
+    {
+        if (args.PulledUid == uid)
+            _blocker.UpdateCanMove(uid);
+    }
+
+    [SubscribeLocalEvent]
+    private void CEOnPullStopped(EntityUid uid, MobStateComponent component, PullStoppedMessage args)
+    {
+        if (args.PulledUid == uid)
+            _blocker.UpdateCanMove(uid);
+    }
+    // CrystallEdge end
 
     [SubscribeLocalEvent]
     private void OnUnbuckleAttempt(Entity<MobStateComponent> ent, ref UnbuckleAttemptEvent args)

@@ -54,6 +54,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
     private CECharacterWindow? _window;
     private EntityUid? _target;
+    private bool _openObjectivesPending;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.CharacterButton;
 
     private SlotButton? InlineCharacterMenuButton => UIManager.ActiveScreen switch
@@ -77,11 +78,32 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
     public void OnSystemLoaded(CESecretRoleInfoSystem system)
     {
         system.OnSecretRoleUpdate += SecretRoleUpdated;
+        system.OnOpenObjectivesMenu += OpenObjectivesMenu;
     }
 
     public void OnSystemUnloaded(CESecretRoleInfoSystem system)
     {
         system.OnSecretRoleUpdate -= SecretRoleUpdated;
+        system.OnOpenObjectivesMenu -= OpenObjectivesMenu;
+    }
+
+    // At round start the request can land while the client is still in the lobby - then it waits for the window.
+    private void OpenObjectivesMenu()
+    {
+        if (_window == null)
+        {
+            _openObjectivesPending = true;
+            return;
+        }
+
+        _openObjectivesPending = false;
+
+        if (_window.IsOpen)
+            return;
+
+        // Objectives arrive after the role grant, so the tab header stays hidden until UpdateCEObjectives shows it.
+        _window.Tabs.CurrentTab = ObjectivesTabIndex;
+        OpenWindow();
     }
 
     public void OnSystemLoaded(CEClientSkillSystem system)
@@ -289,6 +311,9 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
             .Bind(ContentKeyFunctions.OpenCharacterMenu,
                 InputCmdHandler.FromDelegate(_ => ToggleWindow()))
             .Register<CECharacterUIController>();
+
+        if (_openObjectivesPending)
+            OpenObjectivesMenu();
     }
 
     public void OnStateExited(GameplayState state)
@@ -359,15 +384,19 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         CharacterButton?.SetClickPressed(!_window.IsOpen);
 
         if (_window.IsOpen)
-        {
             _window.Close();
-        }
         else
-        {
-            _characterInfo.RequestCharacterInfo();
-            _secretRoleInfo.RequestSecretRoleInfo();
-            UIManager.GetUIController<InventoryUIController>().ReloadSlots();
-            _window.OpenToLeft();
-        }
+            OpenWindow();
+    }
+
+    private void OpenWindow()
+    {
+        if (_window == null)
+            return;
+
+        _characterInfo.RequestCharacterInfo();
+        _secretRoleInfo.RequestSecretRoleInfo();
+        UIManager.GetUIController<InventoryUIController>().ReloadSlots();
+        _window.OpenToLeft();
     }
 }

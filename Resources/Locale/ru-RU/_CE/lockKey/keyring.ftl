@@ -13,12 +13,6 @@ ce-lock-examine-lock-lockpicked = {$lock} выглядит потрепанны�
 
 ce-lock-examine-key = {$item} имеет зубцы следующей формы:
 
-ce-lock-key-file-use-hint = Сточить зубец: {$num}
-ce-lock-key-file-updated = Новая форма ключа:
-
-ce-lock-editor-use-hint = Настроить зубец: {$num}
-ce-lock-editor-updated = Новая форма замка:
-
 ce-lock-insert-start = {$player} начинает устанавливать замок в {$name}.
 ce-lock-insert-fail-have-lock = В {$name} уже установлен замок!
 ce-lock-insert-success = Новый замок успешно установлен в {$name}!

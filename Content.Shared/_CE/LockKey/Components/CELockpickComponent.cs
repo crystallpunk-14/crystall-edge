@@ -24,6 +24,11 @@ public sealed partial class CELockpickComponent : Component
     {
         Params = AudioParams.Default
         .WithVariation(0.05f)
-        .WithVolume(0.5f)
+        .WithVolume(0.25f)
     };
 }
+
+//    ／l、         meow
+//  （ﾟ､ ｡ ７
+//    l  ~ヽ
+//    じしf_,)ノ

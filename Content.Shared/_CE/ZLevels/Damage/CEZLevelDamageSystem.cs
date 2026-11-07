@@ -3,11 +3,13 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using Content.Shared._CE.ZLevels.Core;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Effects;
 using Content.Shared.Stunnable;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
@@ -27,6 +29,7 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedColorFlashEffectSystem _colorFlash = default!;
 
     public float BaseFallingDamage { get; private set; }
     public float BaseFallingOtherDamage { get; private set; }
@@ -54,6 +57,8 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
 
         var damageModifier = 1f;
         var stunModifier = 1f;
+
+        var flashTargets = new List<EntityUid>();
 
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent(args.ImpactPower);
         RaiseLocalEvent(ent, damageToOtherEv);
@@ -97,7 +102,8 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
             if (otherDamage > 0)
             {
                 var otherDmgSpec = new DamageSpecifier(damageType, otherDamage);
-                _damageable.ChangeDamage(victim, otherDmgSpec);
+                if (_damageable.TryChangeDamage(victim, otherDmgSpec))
+                    flashTargets.Add(victim);
             }
         }
 
@@ -108,8 +114,12 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
         if (damageAmount > 0)
         {
             var selfDmgSpec = new DamageSpecifier(damageType, damageAmount);
-            _damageable.ChangeDamage(ent.Owner, selfDmgSpec);
+            if (_damageable.TryChangeDamage(ent.Owner, selfDmgSpec))
+                flashTargets.Add(ent);
         }
+
+        if (flashTargets.Count > 0)
+            _colorFlash.RaiseEffect(Color.Red, flashTargets, CEFilter.ZPvsExcept(ent, EntityManager));
 
         var knockdownTime = MathF.Min(args.ImpactPower * args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);
         if (knockdownTime > 0)

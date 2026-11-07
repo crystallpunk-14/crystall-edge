@@ -141,7 +141,16 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         _status.TryRemoveStatusEffect(entity, StaminaLow);
         UpdateStaminaVisuals(entity);
         Dirty(entity);
+        RaiseStaminaChanged(entity); // CrystallEdge: notify stamina listeners (GOAP rest sensor)
     }
+
+    // CrystallEdge: post-change stamina notification
+    private void RaiseStaminaChanged(EntityUid uid)
+    {
+        var ev = new CEStaminaChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
+    }
+    // CrystallEdge end
 
     [SubscribeLocalEvent]
     private void OnIncapCuffCheck(Entity<StaminaComponent> ent, ref CheckIncapacitatedCuffEvent args)
@@ -394,6 +403,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
         EnsureComp<ActiveStaminaComponent>(uid);
         Dirty(uid, component);
+        RaiseStaminaChanged(uid); // CrystallEdge: notify stamina listeners (GOAP rest sensor)
 
         if (value <= 0)
             return;
@@ -495,6 +505,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
         UpdateStaminaVisuals((uid, component));
         Dirty(uid, component);
+        RaiseStaminaChanged(uid); // CrystallEdge: notify stamina listeners (GOAP rest sensor)
         _adminLogger.Add(LogType.Stamina, LogImpact.Low, $"{ToPrettyString(uid):user} recovered from stamina crit");
     }
 
@@ -532,3 +543,11 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         public NetEntity Entity = entity;
     }
 }
+
+// CrystallEdge: post-change stamina notification
+/// <summary>
+/// Raised on an entity after its stamina damage or stamina crit state changed, including passive recovery ticks.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CEStaminaChangedEvent;
+// CrystallEdge end
