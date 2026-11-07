@@ -121,6 +121,7 @@ CEMop: CEWeaponMop
 CEIronDoorGuardArmory: null
 CEIronDoorGuardArmoryMirrored: null
 CEKeyGuardArmory: null
+CEGunPeacekeeperGolden: CEWeaponGunArbiter
 CEWeaponGunPeacekeeperGolden: CEWeaponGunArbiter
 
 # 2026-10-06

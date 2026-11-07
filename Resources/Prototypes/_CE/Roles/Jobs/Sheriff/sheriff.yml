@@ -18,6 +18,7 @@
   equipment:
     belt: CEKeyRingSheriff
     pocket1: CEWalletFilledSheriff
+    neck: CEWeaponGunPeacekeeper
   storage:
     back:
     - CEWeaponGunJustice
