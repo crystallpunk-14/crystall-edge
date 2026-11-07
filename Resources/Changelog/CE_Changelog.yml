@@ -1833,3 +1833,11 @@
   id: 1152
   time: '2026-11-07T19:56:44.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/593
+- author: TheShuEd
+  changes:
+  - message: 'Three new shields have been added, along with their crafting recipes:
+      a tower shield, a standard shield, and a buckler for parrying.'
+    type: Add
+  id: 1153
+  time: '2026-11-07T21:10:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/594
