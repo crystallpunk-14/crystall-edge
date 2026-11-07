@@ -50,3 +50,10 @@ ce-revivable-required = Only a dead body whose soul has not left it for good can
 
 ce-in-secret-department-required = The target must belong to: { $department }.
 ce-in-secret-department-forbidden = The target must not belong to: { $department }.
+
+ce-mob-state-required = The target must be { $state }.
+ce-mob-state-forbidden = The target must not be { $state }.
+ce-mob-state-alive = alive
+ce-mob-state-critical = in critical condition
+ce-mob-state-dead = dead
+ce-mob-state-invalid = in an invalid state

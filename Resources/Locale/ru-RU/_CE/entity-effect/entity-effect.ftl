@@ -50,3 +50,10 @@ ce-revivable-required = Вернуть можно лишь мёртвое тел
 
 ce-in-secret-department-required = Цель должна принадлежать к: { $department }.
 ce-in-secret-department-forbidden = Цель не должна принадлежать к: { $department }.
+
+ce-mob-state-required = Цель должна быть { $state }.
+ce-mob-state-forbidden = Цель не должна быть { $state }.
+ce-mob-state-alive = живой
+ce-mob-state-critical = в критическом состоянии
+ce-mob-state-dead = мёртвой
+ce-mob-state-invalid = в неверном состоянии

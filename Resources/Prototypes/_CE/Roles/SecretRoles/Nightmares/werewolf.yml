@@ -6,7 +6,7 @@
   victoryAchievement: WerewolfWin
   requirements:
   - !type:CEAchievementRequirement
-    achievement: RoundsFinishedAlive1
+    achievement: RoundsFinishedAlive3
   skills:
   - Murkwalker
   - TimeSense

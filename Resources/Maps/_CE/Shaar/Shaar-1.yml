@@ -2839,7 +2839,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.6078434,-25.610691
-- proto: CEClothingMaskBoneHornedMask
+- proto: CEClothingMaskBoneMask
   entities:
   - uid: 1579
     components:

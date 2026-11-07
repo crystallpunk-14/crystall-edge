@@ -5,7 +5,7 @@
   icon: CESecretRoleIconThief
   requirements:
   - !type:CEAchievementRequirement
-    achievement: RoundsFinishedAlive3
+    achievement: RoundsFinishedAlive1
   skills:
   - Pickpocketing
   objectives: !type:EntSelector

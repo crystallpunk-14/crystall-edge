@@ -3534,7 +3534,7 @@ entities:
       inSlot: head
     - type: Physics
       canCollide: False
-- proto: CEClothingMaskBoneHornedMask
+- proto: CEClothingMaskBoneMask
   entities:
   - uid: 1140
     components:

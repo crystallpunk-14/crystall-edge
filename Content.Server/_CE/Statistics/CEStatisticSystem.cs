@@ -20,8 +20,9 @@ public sealed partial class CEStatisticSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IServerDbManager _db = default!;
-    [Dependency] private CECharacterSystem _character = default!;
     [Dependency] private SharedMindSystem _mind = default!;
+
+    [Dependency] private EntityQuery<CECharacterComponent> _characterQuery = default!;
 
     public void AddStatistic(NetUserId player, CEStatisticDef stat, long amount = 1)
     {
@@ -68,14 +69,14 @@ public sealed partial class CEStatisticSystem : EntitySystem
     }
 
     /// <summary>
-    /// Only a character's own player inside its body earns statistics, never a ghost role.
+    /// Statistics go to the player of the lobby character whose mind controls the entity,
+    /// whatever body it is in (e.g. a polymorph). Ghost role minds never earn them.
     /// </summary>
     private bool TryGetPlayer(EntityUid entity, out NetUserId player)
     {
         player = default;
-        if (!_character.TryGetCharacterByBody(entity, out var character) ||
-            !_mind.TryGetMind(entity, out var mindId, out var mind) ||
-            mindId != character.Value.Owner ||
+        if (!_mind.TryGetMind(entity, out var mindId, out var mind) ||
+            !_characterQuery.HasComp(mindId) ||
             mind.OriginalOwnerUserId is not { } owner)
             return false;
 

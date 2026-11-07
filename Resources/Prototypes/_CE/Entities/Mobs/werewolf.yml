@@ -25,7 +25,7 @@
     attributes:
       gender: epicene
   - type: Stamina
-    baseCritThreshold: 200
+    baseCritThreshold: 250
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -54,8 +54,8 @@
       - !type:Damage
         damage:
           types:
-            Slash: 5
-            Piercing: 2
+            Slash: 6
+            Piercing: 3
             Structural: 10
     animations:
       Primary:
@@ -79,12 +79,15 @@
     footstepSoundCollection: null # Silent footstep
   - type: CEInnateSkills
     skills:
+    # Passive
     - SoftLanding
     - NightVision
-    - LurkerJump
     - Murkwalker
     - TimeSense
+    - Invisibility
+    # Active
     - LurkerShadowStep
+    - LurkerJump
     - LurkerFear
     - WerewolfDarkFeast
     descriptorName: ce-secret-role-name-werewolf

@@ -5,7 +5,7 @@
   icon: CESecretRoleIconAssassin
   requirements:
   - !type:CEAchievementRequirement
-    achievement: RoundsFinishedAlive3
+    achievement: RoundsFinishedAlive1
   skills:
   - MilitaryTraining
   objectives: !type:EntSelector

@@ -2,3 +2,13 @@
   id: BetaTester
   name: ce-achievement-betatester-name
   desc: ce-achievement-betatester-desc
+
+- type: achievement
+  id: DarkFeasts5
+  name: ce-achievement-dark-feasts-5-name
+  desc: ce-achievement-dark-feasts-5-desc
+  unlocks: ce-achievement-dark-feasts-5-unlocks
+  secret: true
+  icon:
+    sprite: _CE/Clothing/Masks/Generic/horned_bone_mask.rsi
+    state: icon
