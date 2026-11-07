@@ -15,6 +15,7 @@
   - type: Action
     itemIconStyle: BigAction
     useDelay: 60
+    checkCanInteract: false
   - type: Sprite
     sprite: /Textures/_CE/Actions/werewolf.rsi
     layers:
@@ -49,5 +50,7 @@
       effectTarget: User
       spawns:
       - CELurkerShadowStepEffect
+    - !type:Uncuff
+      effectTarget: User
     - !type:CEPolymorph
       polymorphPrototype: CEWerewolfPolymorph
