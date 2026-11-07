@@ -54,10 +54,38 @@ public abstract partial class CESharedZLevelsSystem
             return;
         }
 
-        if (ZPhysicsQuery.HasComp(Transform(entity).ParentUid))
+        var xform = Transform(entity);
+        if (xform.ParentUid != xform.GridUid)
+            ResetZState(entity);
+    }
+
+    /// <summary>
+    /// Clears height and velocity without waking the body: nested bodies are moved by their parent.
+    /// </summary>
+    private void ResetZState(Entity<CEZPhysicsComponent> entity)
+    {
+        if (entity.Comp.LocalPosition != 0)
         {
-            SetZPosition((entity, entity), 0);
+            entity.Comp.LocalPosition = 0;
+            DirtyField(entity, entity.Comp, nameof(CEZPhysicsComponent.LocalPosition));
         }
+
+        if (entity.Comp.Velocity != 0)
+        {
+            entity.Comp.Velocity = 0;
+            DirtyField(entity, entity.Comp, nameof(CEZPhysicsComponent.Velocity));
+        }
+    }
+
+    /// <summary>
+    /// Only unanchored, non-static bodies parented directly to the grid simulate z-physics.
+    /// </summary>
+    private bool CanBeActive(EntityUid uid, TransformComponent xform)
+    {
+        if (xform.ParentUid != xform.GridUid || xform.Anchored)
+            return false;
+
+        return !_physicsQuery.TryComp(uid, out var physics) || physics.BodyType != BodyType.Static;
     }
 
     private void SyncCurrentZLevel(Entity<CEZPhysicsComponent> entity)
@@ -79,6 +107,9 @@ public abstract partial class CESharedZLevelsSystem
             return;
 
         if (_activeBodies.Contains(entity))
+            return;
+
+        if (!_transformQuery.TryComp(entity, out var xform) || !CanBeActive(entity, xform))
             return;
 
         entity.Comp.Sleeping = false;
@@ -108,15 +139,7 @@ public abstract partial class CESharedZLevelsSystem
             return;
         }
 
-        var transform = Transform(entity);
-        var parent = transform.ParentUid;
-
-        var onMap = parent == transform.GridUid || parent == transform.MapUid;
-
-        if (!onMap
-            || transform.Anchored
-            || _physicsQuery.TryComp(entity, out var physics)
-            && physics.BodyType == BodyType.Static)
+        if (!CanBeActive(entity, Transform(entity)))
         {
             SleepBody((entity, entity));
             return;
