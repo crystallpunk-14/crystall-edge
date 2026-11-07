@@ -54,9 +54,9 @@
       - !type:Damage
         damage:
           types:
-            Slash: 4
+            Slash: 5
             Piercing: 2
-            Structural: 5
+            Structural: 10
     animations:
       Primary:
       - anim: ClawBigAttack1
