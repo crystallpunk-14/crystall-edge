@@ -1779,3 +1779,20 @@
   id: 1150
   time: '2026-11-07T09:56:50.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/591
+- author: KittyCat432, Jetpackandres
+  changes:
+  - message: Added the arbiter a new burst fire sniper for the sheriff.
+    type: Add
+  - message: Golden peacekeeper is gone.
+    type: Remove
+  - message: Peacekeeper Ammo from 5 to 8, fire rate from 0.5 to 0.8, damage from
+      35 to 30, knockback from 1 to 0.75, and becomes more inaccurate if you spam
+      shots for long.
+    type: Tweak
+  - message: Sheriff will spawn with a Peacekeeper.
+    type: Add
+  - message: Peacekeepers should appear on your back now when storing them.
+    type: Fix
+  id: 1151
+  time: '2026-11-07T18:55:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/500
