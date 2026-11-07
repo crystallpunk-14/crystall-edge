@@ -77,7 +77,21 @@ public abstract partial class SharedMobCollisionSystem : EntitySystem
     // CrystallEdge: decoupled from the Flammable fixture, which CE mobs no longer have
     private void OnMapInit(Entity<MobCollisionComponent> ent, ref MapInitEvent args)
     {
-        if (!PhysicsQuery.TryComp(ent, out var body))
+        if (!PhysicsQuery.TryComp(ent, out var body) || !TryComp<FixturesComponent>(ent, out var fixtures))
+            return;
+
+        // Incorporeal entities (ghosts) inherit MobCollision from BaseMob but have no physical body to push
+        var hasBody = false;
+        foreach (var fixture in fixtures.Fixtures.Values)
+        {
+            if (!fixture.Hard || (fixture.CollisionLayer & (int) CollisionGroup.MobLayer) == 0)
+                continue;
+
+            hasBody = true;
+            break;
+        }
+
+        if (!hasBody)
             return;
 
         _fixture.TryCreateFixture(ent,
