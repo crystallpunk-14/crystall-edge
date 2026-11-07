@@ -116,12 +116,13 @@ CEFloraTreeSpruceLarge: CEFloraTreeSpruce
 # 2026-09-29
 CEGunJustice: CEWeaponGunJustice
 CEGunPeacekeeper: CEWeaponGunPeacekeeper
-CEGunPeacekeeperGolden: CEWeaponGunPeacekeeperGolden
 CEMop: CEWeaponMop
 
 CEIronDoorGuardArmory: null
 CEIronDoorGuardArmoryMirrored: null
 CEKeyGuardArmory: null
+CEGunPeacekeeperGolden: CEWeaponGunArbiter
+CEWeaponGunPeacekeeperGolden: CEWeaponGunArbiter
 
 # 2026-10-06
 CETradingPlatformEmpireGuard: null
