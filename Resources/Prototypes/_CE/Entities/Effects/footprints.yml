@@ -52,3 +52,15 @@
   - type: Tag
     tags:
     - HideContextMenu
+
+- type: entity
+  parent: CEFootprint
+  id: CEBloodSplatter
+  name: blood splatter
+  description: Someone bled here. A lot.
+  components:
+  - type: Sprite
+    drawdepth: FloorObjects
+    layers:
+    - sprite: _CE/Decals/blood.rsi
+      state: splatter1

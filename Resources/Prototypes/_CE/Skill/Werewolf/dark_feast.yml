@@ -42,6 +42,7 @@
       department: Nightmares
       inverted: true
 
+# Anchors (&name) are defined on first use and reused below as *name.
 - type: entityEffectAnimation
   id: WerewolfDarkFeast
   movementSpeed: 0
@@ -55,6 +56,9 @@
         path: /Audio/_CE/Effects/Weapon/slash.ogg
         params:
           variation: 0.15
+    - &reveal !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: 1
     - &claw1 !type:UsedEntityAnimation
       dummyEntity: CEClawEffect
       offsetAnimation:
@@ -85,32 +89,29 @@
       damage:
         types:
           Slash: 20
+    # A single ray in a random direction around the body.
     - &splash1 !type:Radial
-      count: 3
-      spread: 40
+      count: 1
       effects:
-      - !type:SpawnEntity
-        rotate: true
-        spawns:
-        - CEBloodHitEffect1
-      - &splatterDecal !type:SpawnDecal
-        rotation: Direction
-        minDistance: 0.5
-        maxDistance: 3
-        color: &blood "#6b0a0a"
-        decals: &splatters
-        - CEBloodSplatter1
-        - CEBloodSplatter2
-        - CEBloodSplatter3
-        - CEBloodSplatter4
-        - CEBloodSplatter5
-        - CEBloodSplatter6
-        - CEBloodSplatter7
-        - CEBloodSplatter8
-        - CEBloodSplatter9
-        - CEBloodSplatter10
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect1
+        sprite: &bloodRsi /Textures/_CE/Decals/blood.rsi
+        states: &splatters
+        - splatter1
+        - splatter2
+        - splatter3
+        - splatter4
+        - splatter5
+        - splatter6
+        - splatter7
+        - splatter8
+        - splatter9
+        - splatter10
     1:
     - *biteSound
+    - *reveal
     - &claw2 !type:UsedEntityAnimation
       dummyEntity: CEClawEffect
       offsetAnimation:
@@ -127,20 +128,19 @@
         easing: QuadOut
       colorAnimation: *clawFade
       scaleAnimation: *clawScale
-    - !type:ModifyStealthVisibility
-      amount: -1
     - *biteDamage
     - &splash2 !type:Radial
-      count: 3
-      spread: 40
+      count: 1
       effects:
-      - !type:SpawnEntity
-        rotate: true
-        spawns:
-        - CEBloodHitEffect2
-      - *splatterDecal
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect2
+        sprite: *bloodRsi
+        states: *splatters
     2:
     - *biteSound
+    - *reveal
     - &claw3a !type:UsedEntityAnimation
       dummyEntity: CEClawEffect
       offsetAnimation:
@@ -169,64 +169,33 @@
       scaleAnimation: *clawScale
     - *biteDamage
     - &splash3 !type:Radial
-      count: 3
-      spread: 40
+      count: 1
       effects:
-      - !type:SpawnEntity
-        rotate: true
-        spawns:
-        - CEBloodHitEffect3
-      - *splatterDecal
-    3: [ *biteSound, *claw1, *biteDamage, *splash1 ]
-    4: [ *biteSound, *claw2, *biteDamage, *splash2 ]
-    5: [ *biteSound, *claw3a, *claw3b, *biteDamage, *splash3 ]
-    6: [ *biteSound, *claw1, *biteDamage, *splash1 ]
-    7: [ *biteSound, *claw2, *biteDamage, *splash2 ]
-    8: [ *biteSound, *claw3a, *claw3b, *biteDamage, *splash3 ]
-    9: [ *biteSound, *claw1, *biteDamage, *splash1 ]
+      - !type:BloodSplatter
+        minDistance: 0.25
+        maxDistance: 1.5
+        vfx: CEBloodHitEffect3
+        sprite: *bloodRsi
+        states: *splatters
+    3: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
+    4: [ *biteSound, *reveal, *claw2, *biteDamage, *splash2 ]
+    5: [ *biteSound, *reveal, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    6: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
+    7: [ *biteSound, *reveal, *claw2, *biteDamage, *splash2 ]
+    8: [ *biteSound, *reveal, *claw3a, *claw3b, *biteDamage, *splash3 ]
+    9: [ *biteSound, *reveal, *claw1, *biteDamage, *splash1 ]
     10:
+    - *reveal
     - !type:Radial
       count: 8
       spread: 15
       effects:
-      - !type:SpawnEntity
-        rotate: true
-        spawns:
-        - CEBloodHitEffect2
-      - !type:SpawnDecal
-        count: 2
-        rotation: Direction
-        minDistance: 1
-        maxDistance: 3
-        spread: 10
-        color: *blood
-        decals: *splatters
-    - !type:SpawnDecal
-      count: 3
-      maxDistance: 0.6
-      color: *blood
-      decals:
-      - CEBloodFloor1
-      - CEBloodFloor2
-      - CEBloodFloor3
-      - CEBloodFloor4
-      - CEBloodFloor5
-      - CEBloodFloor6
-      - CEBloodFloor7
-    - !type:Radial
-      count: 4
-      spread: 45
-      effects:
-      - !type:SpawnDecal
-        minDistance: 0.3
+      - !type:BloodSplatter
+        minDistance: 0.5
         maxDistance: 1.5
-        color: *blood
-        decals:
-        - CEBloodGiblet1
-        - CEBloodGiblet2
-        - CEBloodGiblet3
-        - CEBloodGiblet4
-        - CEBloodGiblet5
+        vfx: CEBloodHitEffect2
+        sprite: *bloodRsi
+        states: *splatters
     - !type:PlayFarSound
       sound:
         collection: CELurkerRoar
@@ -244,7 +213,6 @@
           volume: 50
     - !type:Undress
     - !type:Gib
-      dropGiblets: false
     - !type:AddMurk
       amount: 1
       scaleWithPlayers: true
@@ -254,6 +222,7 @@
       - CELurkerFearScreamEffect
     - !type:ShockWaveVFX
 
+# Painted the splattered blood's color by the server through SmokeVisuals.Color.
 - type: entity
   abstract: true
   id: CEBloodHitEffectBase
@@ -262,7 +231,8 @@
   - type: Sprite
     sprite: _CE/Effects/blood_hit.rsi
     drawdepth: Effects
-    color: *blood
+  - type: Appearance
+  - type: SmokeVisuals
   - type: TimedDespawn
     lifetime: 1.1
   - type: Tag

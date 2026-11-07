@@ -59,3 +59,13 @@
     count: 10
   receive:
     bonus: 10
+
+- type: tradeOffer
+  id: SellStoneHeart
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEStoneHeart
+    count: 1
+  receive:
+    bonus: 5
