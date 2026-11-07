@@ -834,6 +834,48 @@
   result: CEWeaponStaffWooden
   resultCount: 1
 
+- type: workbenchRecipe
+  id: WeaponBucklerIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  result: CEWeaponBucklerIron
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponShieldWooden
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 3
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  result: CEWeaponShieldWooden
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: WeaponTowerShieldWooden
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 5
+  - !type:StackResource
+    stack: CEIronBar
+    count: 4
+  result: CEWeaponTowerShieldWooden
+  resultCount: 1
+
 #MARK: Ranged
 
 - type: workbenchRecipe
