@@ -60,6 +60,10 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
         _audio.PlayPvs(ent.Comp.RecycleSound, xform.Coordinates);
         _damageable.TryChangeDamage(other, ent.Comp.Damage);
 
+        // An entity that is not recycled keeps riding the conveyor
+        if (!TryComp<PhysicalCompositionComponent>(other, out var physComp))
+            return;
+
         // Eject on the side opposite to where the item came from, so it can't loop back on a conveyor
         var ourPos = _transform.GetWorldPosition(xform);
         var passDir = ourPos - _transform.GetWorldPosition(other);
@@ -69,24 +73,18 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
         var spawnPos = _transform.ToCoordinates(
             new MapCoordinates(ourPos + passDir.Normalized() * MathF.Abs(ent.Comp.SpawnOffset), xform.MapID));
 
-        if (TryComp<PhysicalCompositionComponent>(other, out var physComp))
+        var count = CompOrNull<StackComponent>(other)?.Count ?? 1;
+        var materialComposition = new Dictionary<string, int>();
+        foreach (var (s, value) in physComp.MaterialComposition)
         {
-            var count = CompOrNull<StackComponent>(other)?.Count ?? 1;
-            var materialComposition = new Dictionary<string, int>();
-            foreach (var (s, value) in physComp.MaterialComposition)
-            {
-                materialComposition[s] = value * count;
-            }
-
-            // Materials are granted only for an entity that is actually destroyed
-            if (_destructible.DestroyEntity(other))
-            {
-                _material.TryChangeMaterialAmount((ent.Owner, materialStorage), materialComposition);
-                _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
-                return;
-            }
+            materialComposition[s] = value * count;
         }
 
-        _transform.SetCoordinates(other, spawnPos); //To prevent double reclaiming
+        // Materials are granted only for an entity that is actually destroyed
+        if (!_destructible.DestroyEntity(other))
+            return;
+
+        _material.TryChangeMaterialAmount((ent.Owner, materialStorage), materialComposition);
+        _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
     }
 }
