@@ -122,6 +122,8 @@
       actionPrototype: CEActionOreSpiderLunge
       target: Enemy
       range: 2
+      preconditions:
+        Rested: true
       effects:
         EnemyDead: true
       cost: 0.5

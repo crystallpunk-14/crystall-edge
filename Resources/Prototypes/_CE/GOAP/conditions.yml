@@ -2,6 +2,12 @@
 - type: GOAPCondition
   id: EnemyDead
 
+- type: GOAPCondition
+  id: Rested
+
+- type: GOAPCondition
+  id: EnemyNear
+
 # Exploring
 - type: GOAPCondition
   id: Exploring

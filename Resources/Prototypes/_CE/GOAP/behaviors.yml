@@ -13,6 +13,8 @@
     exploreRadius: 8
 
 # Walks up to the nearest conscious enemy and attacks it in melee.
+# Attacks need Rested, so a tired agent can't plan EnemyDead and falls back to staying safe:
+# runs from the enemy while it is near, stands still to recover once away, and bites only when cornered.
 - type: GOAPBehavior
   id: MeleeAttacker
   targets:
@@ -21,17 +23,57 @@
       - !type:InEnemyFaction
       - !type:Incapacitated
         inverted: true
+  sensors:
+  - !type:CEGOAPRestedSensorEntry
+    conditionKey: Rested
+    useType: Primary
+    recoverThreshold: 0.5
+  - !type:CEGOAPRangeToTargetSensorEntry
+    conditionKey: EnemyNear
+    target: Enemy
+    range: 4
   goals:
   - desiredState:
       EnemyDead: true
     priority: 1
+  - desiredState:
+      Safe: true
+    priority: 0.9
   actions:
   - !type:CEGOAPMeleeAttackAction
     target: Enemy
     range: 1
+    preconditions:
+      Rested: true
     effects:
       EnemyDead: true
     cost: 1
+    useType: Primary
+    angleVariation: 5
+  - !type:CEGOAPFleeAction
+    target: Enemy
+    preconditions:
+      EnemyNear: true
+    effects:
+      Safe: true
+    cost: 1
+  # Resting in place: without the Rested gate a calm agent would idle instead of exploring.
+  - !type:CEGOAPIdleAction
+    preconditions:
+      EnemyNear: false
+      Rested: false
+    effects:
+      Safe: true
+    cost: 1
+  # Flee can't execute while cornered, so this is the fallback.
+  - !type:CEGOAPMeleeAttackAction
+    target: Enemy
+    range: 1
+    preconditions:
+      EnemyNear: true
+    effects:
+      Safe: true
+    cost: 5
     useType: Primary
     angleVariation: 5
 
