@@ -1,0 +1,27 @@
+- type: construction
+  hide: false
+  id: CEBookshelfWooden
+  graph: CEBookshelfWooden
+  startNode: start
+  targetNode: CEBookshelfWooden
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEBookshelfStone
+  graph: CEBookshelfStone
+  startNode: start
+  targetNode: CEBookshelfStone
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
