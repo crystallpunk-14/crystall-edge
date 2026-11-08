@@ -8,6 +8,15 @@
     proto: CEWeaponSkimitarIron
 
 - type: tradeOffer
+  id: BuyWeaponRapierIron
+  shop: HelsinWarHouse
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponRapierIron
+
+- type: tradeOffer
   id: BuyWeaponSpearIron
   shop: HelsinWarHouse
   pay:

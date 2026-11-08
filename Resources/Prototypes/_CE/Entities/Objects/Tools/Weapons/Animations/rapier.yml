@@ -1,0 +1,112 @@
+#MARK: Light
+- type: entityEffectAnimation
+  id: RapierAttackLight
+  movementSpeed: 0.4
+  duration: 0.4
+  events:
+    0:
+    - !type:Dash
+      distance: 0.1
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, 0
+        easing: QuadIn
+      - time: 0.06
+        offset: 0, -1.5
+        easing: QuadOut
+      - time: 0.2
+        offset: 0, -0.3
+        easing: QuadOut
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.12
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.2
+        color: "#ffffff00"
+
+      scaleAnimation:
+      - time: 0.0
+        scale: 1, -1
+    0.06:
+    - !type:WeaponEffectSlot
+      slot: OnSwing
+    - !type:WeaponArcAttack
+      arcWidth: 15
+      effects:
+      - !type:WeaponEffectSlot
+        slot: OnHit
+
+#MARK: Heavy
+# Dash in with a charged wind-up, long lunge, then hop back out of reach.
+- type: entityEffectAnimation
+  id: RapierAttackHeavy
+  movementSpeed: 0.2
+  duration: 0.9
+  events:
+    0:
+    - !type:Dash
+      distance: 1
+      ignoreFriction: true
+    - !type:UsedEntityAnimation
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, 0
+        easing: QuadIn
+      - time: 0.3
+        offset: 0, 0.4
+      - time: 0.35
+        offset: 0, -1.8
+        easing: QuadIn
+      - time: 0.6
+        offset: 0, -1.2
+        easing: QuadOut
+      - time: 0.85
+        offset: 0, -0.3
+        easing: QuadOut
+
+      rotationAnimation:
+      - time: 0.0
+        rotation: 0
+        easing: QuadIn
+      - time: 0.3
+        rotation: -10
+      - time: 0.35
+        rotation: 0
+        easing: QuadIn
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+      - time: 0.7
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.85
+        color: "#ffffff00"
+
+      scaleAnimation:
+      - time: 0.0
+        scale: 1, -1
+    0.1:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash_sword3.ogg
+    0.35:
+    - !type:WeaponEffectSlot
+      slot: OnSwing
+    - !type:WeaponArcAttack
+      arcWidth: 15
+      rangeMultiplier: 1.2
+      effects:
+      - !type:WeaponEffectSlot
+        slot: OnHeavyHit
+    0.55:
+    - !type:Dash
+      distance: -1
+      ignoreFriction: true

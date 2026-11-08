@@ -766,6 +766,21 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: WeaponRapierIron
+  parent: BaseAssemblyShopRecipe
+  category: Weapon
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 5
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEWeaponRapierIron
+  resultCount: 1
+
+- type: workbenchRecipe
   id: WeaponSwordIron
   parent: BaseAssemblyShopRecipe
   category: Weapon
