@@ -10,11 +10,10 @@
   components:
   - type: CEWildlandsModifier
     effects:
-    - !type:SpawnEntities
+    - !type:SpawnEntitiesPerTiles
       entity: CEMobOreCrabGold
-      count:
-        min: 100
-        max: 100
+      tilesPerSpawn: 70
+      tilesPerSpawnStdDev: 10
       mask:
       - !type:RoofedMask
       - !type:NoEntityMask
@@ -30,11 +29,10 @@
   components:
   - type: CEWildlandsModifier
     effects:
-    - !type:SpawnEntities
+    - !type:SpawnEntitiesPerTiles
       entity: CEMobOreSpiderCoal
-      count:
-        min: 100
-        max: 100
+      tilesPerSpawn: 150
+      tilesPerSpawnStdDev: 10
       mask:
       - !type:RoofedMask
       - !type:NoEntityMask
@@ -50,11 +48,10 @@
   components:
   - type: CEWildlandsModifier
     effects:
-    - !type:SpawnEntities
+    - !type:SpawnEntitiesPerTiles
       entity: CEMobOreSpiderGold
-      count:
-        min: 80
-        max: 80
+      tilesPerSpawn: 150
+      tilesPerSpawnStdDev: 10
       mask:
       - !type:RoofedMask
       - !type:NoEntityMask

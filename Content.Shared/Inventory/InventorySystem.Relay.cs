@@ -52,6 +52,8 @@ public partial class InventorySystem
         //CrystallEdge relays
         SubscribeLocalEvent<InventoryComponent, CEEnergyRadiationDefenceCalculateEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CEZLevelChasmAttempt>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CEGetZVelocityEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CERefreshVelocityRaiseEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckTimeSenseEvent>(RefRelayInventoryEvent);

@@ -1,14 +1,18 @@
 - type: loadoutGroup
   id: CEGeneralInstruments
   name: ce-loadout-instruments
-  minLimit: 2
-  maxLimit: 2
+  minLimit: 0
+  maxLimit: 3
   loadouts:
-  #- CESafeFallingAmulet
+  # Available always
   - CELantern
   - CEClothingWristwatch
   - CEManaTransferGlove
+  - CEBaseLockpick
+  - CESafeFallingAmulet
+  # Unlockable
   - CECoinGold1
+  - CEClothingMaskBoneHornedMask
 
 - type: loadout
   id: CESafeFallingAmulet
@@ -43,3 +47,20 @@
   storage:
     back:
     - CEManaTransferGlove
+
+- type: loadout
+  id: CEBaseLockpick
+  storage:
+    back:
+    - CEBaseLockpick
+
+- type: loadout
+  id: CEClothingMaskBoneHornedMask
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:CEAchievementRequirement
+      achievement: DarkFeasts5
+  storage:
+    back:
+    - CEClothingMaskBoneHornedMask

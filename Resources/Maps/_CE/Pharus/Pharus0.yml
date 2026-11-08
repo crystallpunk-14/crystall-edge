@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 11/03/2026 19:31:23
+  time: 11/08/2026 10:10:40
   entityCount: 1133
 maps:
 - 1
@@ -1403,7 +1403,7 @@ entities:
       inSlot: cloak
     - type: Physics
       canCollide: False
-- proto: CEClothingMaskBoneHornedMask
+- proto: CEClothingMaskBoneMask
   entities:
   - uid: 350
     components:
@@ -1419,8 +1419,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 27.422962,-10.526318
-- proto: CEClothingMaskBoneMask
-  entities:
   - uid: 964
     components:
     - type: Transform

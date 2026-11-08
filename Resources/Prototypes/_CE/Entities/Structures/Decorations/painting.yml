@@ -24,8 +24,9 @@
   parent: CEBaseWallmountPainting
   description: A bizarre skull painting. Depressing.
   components:
-  - type: CETakeDown
-    item: CEPaintingSkullItem
+  - type: Construction
+    graph: CEWallmountPaintingSkull
+    node: placed
   - type: Sprite
     state: skull
 
@@ -35,8 +36,9 @@
   parent: CEBaseWallmountPainting
   description: A nicely drawn candle in a frame.
   components:
-  - type: CETakeDown
-    item: CEPaintingCandleItem
+  - type: Construction
+    graph: CEWallmountPaintingCandle
+    node: placed
   - type: Sprite
     state: candle
 
@@ -46,8 +48,9 @@
   parent: CEBaseWallmountPainting
   description: The painting depicts a woman with a mysterious smile.
   components:
-  - type: CETakeDown
-    item: CEPaintingWomanItem
+  - type: Construction
+    graph: CEWallmountPaintingWoman
+    node: placed
   - type: Sprite
     state: woman
 
@@ -57,8 +60,9 @@
   parent: CEBaseWallmountPainting
   description: A drawing of a nun with a halo over her head. This is how you can feel the holiness of the picture.
   components:
-  - type: CETakeDown
-    item: CEPaintingSaintItem
+  - type: Construction
+    graph: CEWallmountPaintingSaint
+    node: placed
   - type: Sprite
     state: saint
   - type: Destructible
@@ -76,8 +80,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a flower meadow, stretching to the horizon.
   components:
-  - type: CETakeDown
-    item: CEPaintingAelytaItem
+  - type: Construction
+    graph: CEWallmountPaintingAelyta
+    node: placed
   - type: Sprite
     state: aelyta
 
@@ -87,8 +92,9 @@
   parent: CEBaseWallmountPainting
   description: Portrait of a prosperous carcat
   components:
-  - type: CETakeDown
-    item: CEPaintingCarcatItem
+  - type: Construction
+    graph: CEWallmountPaintingCarcat
+    node: placed
   - type: Sprite
     state: carcat
 
@@ -98,8 +104,9 @@
   parent: CEBaseWallmountPainting
   description: Abstract drawing of fire. Doesn't warm up.
   components:
-  - type: CETakeDown
-    item: CEPaintingFireItem
+  - type: Construction
+    graph: CEWallmountPaintingFire
+    node: placed
   - type: Sprite
     state: fire
 
@@ -109,8 +116,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a fishing scene capturing the moment of the catch.
   components:
-  - type: CETakeDown
-    item: CEPaintingFishingItem
+  - type: Construction
+    graph: CEWallmountPaintingFishing
+    node: placed
   - type: Sprite
     state: fishing
 
@@ -120,8 +128,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a two-legged fish. A fish of dreams.
   components:
-  - type: CETakeDown
-    item: CEPaintingFlemItem
+  - type: Construction
+    graph: CEWallmountPaintingFlem
+    node: placed
   - type: Sprite
     state: flem
 
@@ -131,8 +140,9 @@
   parent: CEBaseWallmountPainting
   description: Abstract drawing of freezing. Cool to the touch.
   components:
-  - type: CETakeDown
-    item: CEPaintingFrozeItem
+  - type: Construction
+    graph: CEWallmountPaintingFroze
+    node: placed
   - type: Sprite
     state: froze
 
@@ -142,8 +152,9 @@
   parent: CEBaseWallmountPainting
   description: A portrait of a goblin. A good goblin.
   components:
-  - type: CETakeDown
-    item: CEPaintingLootgobItem
+  - type: Construction
+    graph: CEWallmountPaintingLootgob
+    node: placed
   - type: Sprite
     state: lootgob
 
@@ -153,8 +164,9 @@
   parent: CEBaseWallmountPainting
   description: A painting dedicated to Lumera. A free interpretation by an unknown artist.
   components:
-  - type: CETakeDown
-    item: CEPaintingLumeraItem
+  - type: Construction
+    graph: CEWallmountPaintingLumera
+    node: placed
   - type: Sprite
     state: lumera
 
@@ -164,8 +176,9 @@
   parent: CEBaseWallmountPainting
   description: Portrait of Sir Armorratus. The envious call him a mouse.
   components:
-  - type: CETakeDown
-    item: CEPaintingArmorratusItem
+  - type: Construction
+    graph: CEWallmountPaintingArmorratus
+    node: placed
   - type: Sprite
     state: armorattus
 
@@ -175,8 +188,9 @@
   parent: CEBaseWallmountPainting
   description: A drawing of a hedgehog in a chef's hat. An unusual combination.
   components:
-  - type: CETakeDown
-    item: CEPaintingHedgehogItem
+  - type: Construction
+    graph: CEWallmountPaintingHedgehog
+    node: placed
   - type: Sprite
     state: ezik
 
@@ -186,8 +200,9 @@
   parent: CEBaseWallmountPainting
   description: A painting depicting a battle scene of pot warriors.
   components:
-  - type: CETakeDown
-    item: CEPaintingFightItem
+  - type: Construction
+    graph: CEWallmountPaintingFight
+    node: placed
   - type: Sprite
     state: fight
 
@@ -197,8 +212,9 @@
   parent: CEBaseWallmountPainting
   description: A portrait of a gnome. Few have ever seen them in the flesh.
   components:
-  - type: CETakeDown
-    item: CEPaintingGnomeItem
+  - type: Construction
+    graph: CEWallmountPaintingGnome
+    node: placed
   - type: Sprite
     state: gnome
 
@@ -208,8 +224,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a goblin with a stately nose.
   components:
-  - type: CETakeDown
-    item: CEPaintingGoblinItem
+  - type: Construction
+    graph: CEWallmountPaintingGoblin
+    node: placed
   - type: Sprite
     state: goblin
 
@@ -219,8 +236,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a monster lurking in the shadows.
   components:
-  - type: CETakeDown
-    item: CEPaintingLurkerItem
+  - type: Construction
+    graph: CEWallmountPaintingLurker
+    node: placed
   - type: Sprite
     state: lurker
 
@@ -230,8 +248,9 @@
   parent: CEBaseWallmountPainting
   description: A drawing of a mouse made from food.
   components:
-  - type: CETakeDown
-    item: CEPaintingOmsoykItem
+  - type: Construction
+    graph: CEWallmountPaintingOmsoyk
+    node: placed
   - type: Sprite
     state: omsoyk
 
@@ -241,8 +260,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of rain. One feels a sense of coziness.
   components:
-  - type: CETakeDown
-    item: CEPaintingRainItem
+  - type: Construction
+    graph: CEWallmountPaintingRain
+    node: placed
   - type: Sprite
     state: rain
 
@@ -252,8 +272,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a goblin bathing in a mountain of gold.
   components:
-  - type: CETakeDown
-    item: CEPaintingRichItem
+  - type: Construction
+    graph: CEWallmountPaintingRich
+    node: placed
   - type: Sprite
     state: rich
 
@@ -263,8 +284,9 @@
   parent: CEBaseWallmountPainting
   description: Portrait of one of the former architects of the city.
   components:
-  - type: CETakeDown
-    item: CEPaintingViatorItem
+  - type: Construction
+    graph: CEWallmountPaintingViator
+    node: placed
   - type: Sprite
     state: viator
 
@@ -274,8 +296,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a peasant with pitchforks.
   components:
-  - type: CETakeDown
-    item: CEPaintingPitchforksItem
+  - type: Construction
+    graph: CEWallmountPaintingPitchforks
+    node: placed
   - type: Sprite
     state: pitchforks
 
@@ -285,8 +308,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a potted soldier.
   components:
-  - type: CETakeDown
-    item: CEPaintingPotItem
+  - type: Construction
+    graph: CEWallmountPaintingPot
+    node: placed
   - type: Sprite
     state: pot
 
@@ -296,8 +320,9 @@
   parent: CEBaseWallmountPainting
   description: The painting is likely a squid. A breath of the new movement.
   components:
-  - type: CETakeDown
-    item: CEPaintingSquidItem
+  - type: Construction
+    graph: CEWallmountPaintingSquid
+    node: placed
   - type: Sprite
     state: squid
 
@@ -307,8 +332,9 @@
   parent: CEBaseWallmountPainting
   description: A painting of a sunset. Once, long ago, the sky was cloaked in blood.
   components:
-  - type: CETakeDown
-    item: CEPaintingSunsetItem
+  - type: Construction
+    graph: CEWallmountPaintingSunset
+    node: placed
   - type: Sprite
     state: sunset
 

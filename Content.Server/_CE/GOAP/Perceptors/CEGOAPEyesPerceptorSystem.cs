@@ -13,7 +13,7 @@ namespace Content.Server._CE.GOAP.Perceptors;
 
 /// <summary>
 /// Vision-based perception. Periodically remembers entities having any of <see cref="Components"/>
-/// that are within radius and line of sight. Classification is the responsibility of higher layers.
+/// that are within radius, line of sight and on a visibility layer the agent's eye can see. Classification is the responsibility of higher layers.
 /// Optionally extends scanning to adjacent Z-levels via tile-transparency gating.
 /// </summary>
 [RegisterComponent]
@@ -72,6 +72,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
+    [Dependency] private EntityQuery<EyeComponent> _eyeQuery = default!;
 
     private readonly HashSet<Entity<IComponent>> _lookupBuffer = new();
     private readonly HashSet<EntityUid> _nearbyBuffer = new();
@@ -141,6 +142,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
     {
         var (uid, eyes, goap) = ent;
         var radiusSquared = eyes.VisionRadius * eyes.VisionRadius;
+        var visMask = _eyeQuery.TryComp(uid, out var eye) ? eye.VisibilityMask : EyeComponent.DefaultVisibilityMask;
 
         // Per-type lookups walk only entities with the component instead of everything in range.
         _nearbyBuffer.Clear();
@@ -163,6 +165,14 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
             var targetPos = _transform.GetWorldPosition(targetXform);
             if (Vector2.DistanceSquared(selfPos, targetPos) > radiusSquared || Terminating(target))
                 continue;
+
+            // Same rule as PVS: our eye must cover every layer of the target, otherwise it is invisible and slips out of memory.
+            var targetLayers = MetaData(target).VisibilityMask;
+            if ((visMask & targetLayers) != targetLayers)
+            {
+                _goap.Forget((uid, goap), target);
+                continue;
+            }
 
             var visible = sameMap
                 ? _examine.InRangeUnOccluded(uid, target, eyes.VisionRadius + 0.5f)

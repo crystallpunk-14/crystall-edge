@@ -1,0 +1,35 @@
+- type: stack
+  id: CEWallLightOrange
+  name: ce-stack-wall-lamp-orange
+  spawn: CEWallLightOrangeItem
+  maxCount: 10
+
+- type: stack
+  id: CEWallLightPink
+  name: ce-stack-wall-lamp-pink
+  spawn: CEWallLightPinkItem
+  maxCount: 10
+
+- type: stack
+  id: CEWallLightCyan
+  name: ce-stack-wall-lamp-cyan
+  spawn: CEWallLightCyanItem
+  maxCount: 10
+
+- type: stack
+  id: CEWallLightGreen
+  name: ce-stack-wall-lamp-green
+  spawn: CEWallLightGreenItem
+  maxCount: 10
+
+- type: stack
+  id: CEWallLightPurple
+  name: ce-stack-wall-lamp-purple
+  spawn: CEWallLightPurpleItem
+  maxCount: 10
+
+- type: stack
+  id: CEWallLightRed
+  name: ce-stack-wall-lamp-red
+  spawn: CEWallLightRedItem
+  maxCount: 10

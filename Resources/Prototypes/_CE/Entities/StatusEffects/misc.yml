@@ -69,3 +69,26 @@
     effects:
     - !type:Vomit
       probability: 0.1
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectSafeFallAmulet
+  name: safe fall
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Effects/wind.rsi
+    layers:
+    - state: wind
+      unshaded: true
+      color: "#f9f28d"
+    drawdepth: Mobs
+  - type: StatusEffect
+    whitelist:
+      components:
+      - CEZPhysics
+  - type: CEGravityMultiplierStatusEffect
+    multiplier: 0.15
+  - type: CEChasmProtectionStatusEffect
+  - type: StatusEffectAlert
+    alert: CEFeatherFall

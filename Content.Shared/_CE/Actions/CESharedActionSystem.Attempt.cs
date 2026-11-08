@@ -95,10 +95,12 @@ public abstract partial class CESharedActionSystem
         if (args.Invalid)
             return;
 
-        if (GetEntity(args.Input.EntityTarget) is not { Valid: true } target)
+        var target = GetEntity(args.Input.EntityTarget) is { Valid: true } entityTarget ? entityTarget : (EntityUid?) null;
+        var position = GetCoordinates(args.Input.EntityCoordinatesTarget);
+        if (target is null && position is null)
             return;
 
-        var effectArgs = new CEEntityEffectArgs(EntityManager, args.User, null, Angle.Zero, 1f, target, null);
+        var effectArgs = new CEEntityEffectArgs(EntityManager, args.User, null, Angle.Zero, 1f, target, position);
         foreach (var condition in ent.Comp.Conditions)
         {
             if (condition.Passes(effectArgs))

@@ -9,7 +9,7 @@
 - type: entity
   id: CEActionWerewolfTransform
   name: True Form
-  description: Give in to the beast and take your true, wolf form. Only works at night.
+  description: Give in to the beast and take your true, wolf form.
   components:
   - type: CEActionRequireNight
   - type: Action

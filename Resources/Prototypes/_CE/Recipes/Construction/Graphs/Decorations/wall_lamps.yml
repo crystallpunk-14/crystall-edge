@@ -1,0 +1,107 @@
+- type: constructionGraph
+  id: CEWallLightOrange
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightOrange
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightOrangeItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallLightPink
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightPink
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightPinkItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallLightCyan
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightCyan
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightCyanItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallLightGreen
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightGreen
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightGreenItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallLightPurple
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightPurple
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightPurpleItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallLightRed
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallLightRed
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWallLightRedItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1

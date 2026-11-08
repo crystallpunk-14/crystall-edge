@@ -59,6 +59,15 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             if (_timing.ApplyingState)
                 continue;
 
+            // An entity-targeted animation is pointless once its target is gone, e.g. another werewolf finished the same feast first.
+            // The animation's own keyframes that delete the target clear the reference right after firing, so they don't land here.
+            // Server-only: the client may not know the target at all and would cancel a perfectly valid animation.
+            if (_net.IsServer && controller.TargetEntity is { } target && target != uid && IsDeleted(target))
+            {
+                InterruptAnimation((uid, controller), true);
+                continue;
+            }
+
             if (ClearDeletedReferences(controller))
                 Dirty(uid, controller);
 

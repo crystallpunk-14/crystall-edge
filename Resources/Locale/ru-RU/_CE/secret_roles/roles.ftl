@@ -1,7 +1,10 @@
 # Nighmares
 
 ce-secret-role-name-werewolf = Оборотень
-ce-secret-role-description-werewolf = Превращайтесь в волка под покровом ночи. Убивайте ваших жертв. Недопустите, чтобы этот город выжил.
+ce-secret-role-description-werewolf = Превращайтесь в волка под покровом ночи. Охотьтнсь и убивайте ваших жертв.
+
+ce-secret-role-name-murkwalker = Мракоходец
+ce-secret-role-description-murkwalker = Бродите по темной стороне, незамеченным для окружающих, расставляя западни и теневые бомбы.
 
 # City
 

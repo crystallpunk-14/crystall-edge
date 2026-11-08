@@ -9,6 +9,9 @@
   "states": [
     {
       "name": "werewolf"
+    },
+    {
+      "name": "murkwalker"
     }
   ]
 }

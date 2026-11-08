@@ -225,6 +225,24 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: SafeFallingAmulet
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  result: CESafeFallingAmulet
+  resultCount: 1
+
+- type: workbenchRecipe
   id: ClothingEyesMiningGlasses
   parent: BaseAssemblyShopRecipe
   category: Tools
@@ -951,3 +969,95 @@
     count: 5
   result: CECrossboltIron
   resultCount: 5
+
+#MARK: Decoration
+
+- type: workbenchRecipe
+  id: WallLightOrange
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightOrangeItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightPink
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightPinkItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightCyan
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightCyanItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightGreen
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightGreenItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightPurple
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightPurpleItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightRed
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightRedItem
+  resultCount: 2

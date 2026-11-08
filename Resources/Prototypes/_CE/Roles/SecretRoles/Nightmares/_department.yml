@@ -7,8 +7,11 @@
   membersRecognizeEachOther: true
   roles:
   - Werewolf
-  objectives: !type:EntSelector
-    id: CEObjectiveNightmareSphereCollapse
+  - Murkwalker
+  objectives: !type:AllSelector
+    children:
+    - id: CEObjectiveNightmareSphereCollapse
+    - id: CEObjectiveNightmareKillPriests
 
 - type: entity
   id: CEObjectiveNightmareSphereCollapse
@@ -20,3 +23,17 @@
     state: cracked
   - type: CEObjective
   - type: CEObjectiveMurkSphereCollapseCondition
+
+- type: entity
+  id: CEObjectiveNightmareKillPriests
+  name: Kill every priest
+  description: There are priests of light in this city whose very existence is repugnant to your nature. Find them out and kill them.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Skills/target.rsi
+    state: target
+  - type: CEObjective
+  - type: CEObjectiveRoleSurviveCondition
+    roles:
+    - Priest
+    invert: true

@@ -34,7 +34,8 @@
       animation: WerewolfDarkFeast
   - type: CEActionTargetConditions
     conditions:
-    - !type:Incapacitated
+    - !type:IsMobState
+      state: Dead
     - !type:HasComponents
       components:
       - type: HumanoidProfile
@@ -211,6 +212,9 @@
           variation: 0.2
           maxDistance: 20
           volume: 50
+    - !type:AddStatistic
+      effectTarget: User
+      statistic: DarkFeasts
     - !type:Undress
     - !type:Gib
     - !type:AddMurk

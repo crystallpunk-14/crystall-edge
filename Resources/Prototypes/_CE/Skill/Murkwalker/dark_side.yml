@@ -29,6 +29,7 @@
   - type: TargetAction
     range: 1.5
     interactOnMiss: false
+  - type: CEActionRequireNight
   - type: EntityTargetAction
     canTargetSelf: true
     whitelist:
@@ -62,6 +63,7 @@
     layers:
     - state: todo
       map: ["enum.ActionVisuals.Icon"]
+  - type: CEActionRequireNight
   - type: InstantAction
     event: !type:CEToggleStatusEffectsActionEvent
       enabled: CEStatusEffectDarkSide
@@ -78,11 +80,19 @@
       duration: 60
 
 - type: entity
-  parent: StatusEffectSlowdown
   id: CEStatusEffectDarkSide
   name: on the dark side
   description: You are outside the material world. Only those who perceive magic can see you.
   components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - MobState
+      - MovementSpeedModifier
+      requireAll: true
+    blacklist:
+      tags:
+      - SlowImmune
   - type: CEVFXStatusEffect
     appliedVfx: CELurkerShadowStepEffect
     removedVfx: CELurkerShadowStepEffect
@@ -92,6 +102,14 @@
   - type: StatusEffectAlert
     alert: CEDarkSide
   - type: CEPacifismStatusEffect
+  - type: CEActionBlockerStatusEffect
+    blockInteract: true
+    blockUse: true
+    blockPickup: true
+    blockPull: true
+    blockEquip: true
+    blockUnequip: true
+  - type: CEDeleteOnDawn
   - type: CEVisibilityLayerStatusEffect
     layers:
     - CEMagicVision
