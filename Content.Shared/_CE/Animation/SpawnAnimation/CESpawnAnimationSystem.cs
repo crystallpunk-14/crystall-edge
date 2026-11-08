@@ -10,6 +10,7 @@ public sealed partial class CESpawnAnimationSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CESpawnAnimationComponent> ent, ref MapInitEvent args)
     {
-        _animation.TryPlayAnimationToAngle(ent, ent.Comp.Animation, forceCancel: true);
+        // Start keyframes fire at once: otherwise clients may render the entity untouched for one tick before the animation arrives.
+        _animation.TryPlayAnimationToAngle(ent, ent.Comp.Animation, forceCancel: true, fireStartKeyframes: true);
     }
 }

@@ -30,13 +30,26 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
         InitMovement();
     }
 
+    // Scratch buffer: keyframe effects may spawn entities that start their own animation, which would break a live enumerator.
+    private readonly List<Entity<CEActiveAnimationActionComponent, TransformComponent>> _updateBuffer = new();
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
+        _updateBuffer.Clear();
         var query = EntityQueryEnumerator<CEActiveAnimationActionComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var controller, out var xform))
         {
+            _updateBuffer.Add((uid, controller, xform));
+        }
+
+        foreach (var (uid, controller, xform) in _updateBuffer)
+        {
+            // An earlier entity's keyframe may have deleted this one or stopped its animation.
+            if (TerminatingOrDeleted(uid) || controller.Deleted)
+                continue;
+
             if (!_proto.Resolve(controller.ActiveAnimation, out var animation))
             {
                 StopAnimation((uid, controller));
@@ -90,58 +103,66 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                 }
             }
 
-            //Processing animation events
-            if (animation.Events.Any() && controller.StartAnimationTime.HasValue)
-            {
-                var effectArgs = new CEEntityEffectArgs(
-                    EntityManager,
-                    uid,
-                    controller.Used,
-                    _transform.GetWorldRotation(uid),
-                    controller.AnimationSpeed,
-                    controller.TargetEntity,
-                    controller.TargetCoordinates);
-
-                var startTime = controller.StartAnimationTime.Value;
-                var anyEventFired = false;
-                foreach (var (keyFrame, actions) in animation.Events)
-                {
-                    var realKeyFrame = keyFrame * speedMultiplier;
-                    // Skip events already processed
-                    if (realKeyFrame <= controller.LastEvent)
-                        continue;
-
-                    var eventTime = startTime + realKeyFrame;
-                    // Only trigger if event time is within this frame
-                    if (eventTime > _timing.CurTime)
-                        continue;
-
-                    foreach (var action in actions)
-                    {
-                        // Only fire game-logic and visual effects on entities this peer should simulate.
-                        // On the client, only the locally-controlled player entity uses prediction;
-                        // NPCs and other players receive visual effects via CEEntityAnimationEvent instead.
-                        if (ShouldFireKeyframeEffects(uid))
-                            action.Effect(effectArgs);
-                    }
-
-                    // An effect may delete the animated entity itself.
-                    if (TerminatingOrDeleted(uid))
-                        break;
-
-                    controller.LastEvent = realKeyFrame;
-                    anyEventFired = true;
-                    OnKeyframeActions(uid, controller, keyFrame, actions);
-                }
-
-                if (TerminatingOrDeleted(uid))
-                    continue;
-
-                // Effects like Gib only queue the deletion, so the uid must be dropped before this tick's state is sent.
-                if (ClearDeletedReferences(controller) || anyEventFired)
-                    Dirty(uid, controller);
-            }
+            ProcessDueKeyframes(uid, controller, animation);
         }
+    }
+
+    /// <summary>
+    /// Fires every keyframe whose time has come and that has not been processed yet.
+    /// </summary>
+    private void ProcessDueKeyframes(
+        EntityUid uid,
+        CEActiveAnimationActionComponent controller,
+        CEEntityEffectAnimationPrototype animation)
+    {
+        if (!animation.Events.Any() || !controller.StartAnimationTime.HasValue)
+            return;
+
+        var speedMultiplier = 1f / controller.AnimationSpeed;
+        var effectArgs = new CEEntityEffectArgs(
+            EntityManager,
+            uid,
+            controller.Used,
+            _transform.GetWorldRotation(uid),
+            controller.AnimationSpeed,
+            controller.TargetEntity,
+            controller.TargetCoordinates);
+
+        var startTime = controller.StartAnimationTime.Value;
+        var anyEventFired = false;
+        foreach (var (keyFrame, actions) in animation.Events)
+        {
+            var realKeyFrame = keyFrame * speedMultiplier;
+            // Skip events already processed
+            if (realKeyFrame <= controller.LastEvent)
+                continue;
+
+            var eventTime = startTime + realKeyFrame;
+            // Only trigger if event time is within this frame
+            if (eventTime > _timing.CurTime)
+                continue;
+
+            foreach (var action in actions)
+            {
+                // Only fire game-logic and visual effects on entities this peer should simulate.
+                // On the client, only the locally-controlled player entity uses prediction;
+                // NPCs and other players receive visual effects via CEEntityAnimationEvent instead.
+                if (ShouldFireKeyframeEffects(uid))
+                    action.Effect(effectArgs);
+            }
+
+            // An effect may delete the animated entity itself.
+            if (TerminatingOrDeleted(uid))
+                return;
+
+            controller.LastEvent = realKeyFrame;
+            anyEventFired = true;
+            OnKeyframeActions(uid, controller, keyFrame, actions);
+        }
+
+        // Effects like Gib only queue the deletion, so the uid must be dropped before this tick's state is sent.
+        if (ClearDeletedReferences(controller) || anyEventFired)
+            Dirty(uid, controller);
     }
 
     private bool ClearDeletedReferences(CEActiveAnimationActionComponent controller)
@@ -177,6 +198,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
     /// <param name="used">The entity used for animation (object in hands?)</param>
     /// <param name="speed">The speed at which you need to start a new animation</param>
     /// <param name="forceCancel">Forcefully cancel the currently playing animation to start a new one</param>
+    /// <param name="fireStartKeyframes">Fire the time-zero keyframes right now instead of on the next update,
+    /// so their visuals reach clients in the same tick as the entity itself.</param>
     /// <returns></returns>
     [PublicAPI]
     public bool TryPlayAnimationToAngle(EntityUid entity,
@@ -184,7 +207,8 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
         Angle? angle = null,
         EntityUid? used = null,
         float speed = 1f,
-        bool forceCancel = false)
+        bool forceCancel = false,
+        bool fireStartKeyframes = false)
     {
         if (TryComp<CEActiveAnimationActionComponent>(entity, out var controller))
         {
@@ -198,6 +222,10 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             return false;
 
         StartAnimation(entity, indexedAnimation, used, angle ?? _transform.GetWorldRotation(entity), speed: speed, targetEntity: entity);
+
+        if (fireStartKeyframes && TryComp<CEActiveAnimationActionComponent>(entity, out var started))
+            ProcessDueKeyframes(entity, started, indexedAnimation);
+
         return true;
     }
 

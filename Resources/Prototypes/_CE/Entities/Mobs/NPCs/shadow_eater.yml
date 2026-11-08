@@ -83,6 +83,43 @@
         params:
           variation: 0.1
           pitch: 0.5
+  - type: CESpawnAnimation
+    animation: ShadowEaterSpawn
+
+# Descends from above while fading in, stretched until it lands
+- type: entityEffectAnimation
+  id: ShadowEaterSpawn
+  movementSpeed: 0
+  duration: 1.6
+  events:
+    0:
+    - !type:UserAnimation
+      offsetAnimation:
+      - time: 0
+        offset: 0, 3
+      - time: 1
+        offset: 0, -0.2
+        easing: QuadInOut
+      - time: 1.5
+        offset: 0, 0
+        easing: QuadOut
+      colorAnimation:
+      - time: 0
+        color: "#ffffff00"
+      - time: 0.9
+        color: "#ffffff"
+      scaleAnimation:
+      - time: 0
+        scale: 0.5, 1.5
+      - time: 0.7
+        scale: 0.85, 1.15
+      # Landing impact squash
+      - time: 1
+        scale: 1.2, 0.8
+        easing: QuadInOut
+      - time: 1.5
+        scale: 1, 1
+        easing: QuadOut
 
 - type: entity
   id: CEActionShadowEaterDevour
