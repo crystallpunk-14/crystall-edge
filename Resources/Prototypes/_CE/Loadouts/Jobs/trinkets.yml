@@ -5,11 +5,11 @@
   maxLimit: 3
   loadouts:
   # Available always
-  #- CESafeFallingAmulet
   - CELantern
   - CEClothingWristwatch
   - CEManaTransferGlove
   - CEBaseLockpick
+  - CESafeFallingAmulet
   # Unlockable
   - CECoinGold1
   - CEClothingMaskBoneHornedMask

@@ -478,8 +478,10 @@ public struct CEZLevelHitEvent(float impactPower)
 /// Is called every frame to calculate the current vertical velocity of the active zphysics entities.
 /// </summary>
 [ByRefEvent]
-public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target, float frameTime)
+public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target, float frameTime) : IInventoryRelayEvent
 {
+    public SlotFlags TargetSlots => SlotFlags.All;
+
     public Entity<CEZPhysicsComponent> Target = target;
 
     public float FrameTime = frameTime;
@@ -492,8 +494,10 @@ public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target, float fram
 /// entity currently needs <see cref="CEGetZVelocityEvent"/> every z-physics step.
 /// </summary>
 [ByRefEvent]
-public struct CERefreshVelocityRaiseEvent
+public struct CERefreshVelocityRaiseEvent : IInventoryRelayEvent
 {
+    public SlotFlags TargetSlots => SlotFlags.All;
+
     public bool Raise;
 }
 
