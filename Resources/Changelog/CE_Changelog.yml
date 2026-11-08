@@ -1841,3 +1841,16 @@
   id: 1153
   time: '2026-11-07T21:10:21.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/594
+- author: TheShuEd
+  changes:
+  - message: The Shaar map is playable again
+    type: Add
+  - message: The ability to craft and place wall lamps has been added.
+    type: Add
+  - message: 'The Fall Protection Amulet has been reworked: it now protects not only
+      from chasms but also from falls from great heights, and has 4 charges, after
+      which it must be recharged with magic.'
+    type: Tweak
+  id: 1154
+  time: '2026-11-08T13:09:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/595
