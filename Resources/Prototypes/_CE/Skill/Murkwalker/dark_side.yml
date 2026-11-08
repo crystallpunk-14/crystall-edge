@@ -80,11 +80,19 @@
       duration: 60
 
 - type: entity
-  parent: StatusEffectSlowdown
   id: CEStatusEffectDarkSide
   name: on the dark side
   description: You are outside the material world. Only those who perceive magic can see you.
   components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - MobState
+      - MovementSpeedModifier
+      requireAll: true
+    blacklist:
+      tags:
+      - SlowImmune
   - type: CEVFXStatusEffect
     appliedVfx: CELurkerShadowStepEffect
     removedVfx: CELurkerShadowStepEffect

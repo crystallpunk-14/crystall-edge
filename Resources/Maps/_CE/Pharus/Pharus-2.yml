@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.5
   forkId: ""
   forkVersion: ""
-  time: 11/03/2026 19:31:23
-  entityCount: 1489
+  time: 11/08/2026 10:10:41
+  entityCount: 1492
 maps:
 - 1
 grids:
@@ -5132,6 +5132,18 @@ entities:
     - type: Transform
       parent: 1
       pos: 30.5,-34.5
+- proto: CESpawnPointTechnician
+  entities:
+  - uid: 1169
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-19.5
+  - uid: 1171
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-21.5
 - proto: CESpawnPointTownfolk
   entities:
   - uid: 1243
@@ -8723,6 +8735,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 22.5,-39.5
+    - type: CEZPhysics
+      currentZLevel: -2
+  - uid: 1162
+    components:
+    - type: Transform
+      parent: 1
+      pos: 15.5,-13.5
     - type: CEZPhysics
       currentZLevel: -2
   - uid: 1163

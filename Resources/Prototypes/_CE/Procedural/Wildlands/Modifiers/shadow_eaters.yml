@@ -8,11 +8,10 @@
   components:
   - type: CEWildlandsModifier
     effects:
-    - !type:SpawnEntities
+    - !type:SpawnEntitiesPerTiles
       entity: CEMobShadowEater
-      count:
-        min: 150
-        max: 150
+      tilesPerSpawn: 200
+      tilesPerSpawnStdDev: 10
       mask:
       - !type:NoEntityMask
       - !type:TileMask
