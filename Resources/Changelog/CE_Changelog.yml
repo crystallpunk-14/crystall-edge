@@ -1854,3 +1854,10 @@
   id: 1154
   time: '2026-11-08T13:09:40.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/595
+- author: TheShuEd
+  changes:
+  - message: Added rapier!
+    type: Add
+  id: 1155
+  time: '2026-11-08T15:57:59.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/596
