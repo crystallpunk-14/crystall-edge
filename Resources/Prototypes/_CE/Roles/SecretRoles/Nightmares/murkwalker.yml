@@ -3,6 +3,8 @@
   name: ce-secret-role-name-murkwalker
   description: ce-secret-role-description-murkwalker
   icon: CESecretRoleIconMurkwalker
+  setPreference: false
   skills:
   - Murkwalker
   - DarkSideWalk
+  - CreateAbscess

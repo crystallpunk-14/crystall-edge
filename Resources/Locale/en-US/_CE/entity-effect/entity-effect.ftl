@@ -57,3 +57,6 @@ ce-mob-state-alive = alive
 ce-mob-state-critical = in critical condition
 ce-mob-state-dead = dead
 ce-mob-state-invalid = in an invalid state
+
+ce-in-murk-required = The target must be in the murk.
+ce-in-murk-forbidden = The target must be within the light of the Lucson Sphere.

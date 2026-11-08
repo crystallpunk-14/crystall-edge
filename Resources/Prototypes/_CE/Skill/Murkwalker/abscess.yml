@@ -1,0 +1,188 @@
+- type: skill
+  id: CreateAbscess
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddAction
+    action: CEActionCreateAbscess
+
+- type: entity
+  id: CEActionCreateAbscess
+  name: Create Abscess
+  description: Tear open an abscess of darkness inside the city. If it is not destroyed in time, it bursts, releasing shadow eaters and thickening the murk.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 420
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    layers:
+    - state: todo
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 2
+  - type: CEActionRequireNight
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:InMurk
+      inverted: true
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetActionAnimationEvent
+      animation: CreateAbscess
+
+- type: entityEffectAnimation
+  id: CreateAbscess
+  movementSpeed: 0.2
+  duration: 1
+  breakOnDamage: 1
+  events:
+    0.9:
+    - !type:SpawnEntity
+      spawns:
+      - CEMurkAbscess
+
+- type: entity
+  parent: BaseStructure
+  id: CEMurkAbscess
+  name: abscess of darkness
+  description: A festering wound in reality, pulsing with the murk. Destroy it before it bursts.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: _CE/Effects/lurker_shadow_step.rsi # TODO: own sprite
+    layers:
+    - state: effect
+      color: "#8b0a1a"
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#b01030"
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEMurkAbscessDestroyed:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: CESpawnAnimation
+    animation: MurkAbscessSpawn
+  - type: CEEntityEffectSpawner
+    firstDelay: 1
+    frequency: 1
+    effects:
+    - !type:ShockWaveVFX
+  - type: TimedDespawn
+    lifetime: 180
+  - type: SpawnOnDespawn
+    prototype: CEMurkAbscessBurst
+  - type: CEDeleteOnDawn
+
+- type: entityEffectAnimation
+  id: MurkAbscessSpawn
+  movementSpeed: 0
+  duration: 0.5
+  events:
+    0:
+    - !type:PlayFarSound
+      effectTarget: User
+      minRange: 0
+      maxRange: 300
+      sound:
+        path: /Audio/_CE/Effects/murk_abscess.ogg
+    - !type:ShockWaveVFX
+      effectTarget: User
+      width: 2
+    - !type:ZNetworkMessage
+      effectTarget: User
+      message: ce-murk-abscess-created
+      color: "#a3122a"
+
+# Spawned when the abscess outlives its timer.
+- type: entity
+  id: CEMurkAbscessBurst
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: TimedDespawn
+    lifetime: 1
+  - type: CEEntityEffectSpawner
+    firstDelay: 0
+    frequency: 999
+    effects:
+    - !type:SpawnEntity
+      spawns:
+      - CEMobShadowEater
+      - CEMobShadowEater
+      - CEMobShadowEater
+      - CEMobShadowEater
+      - CEMobShadowEater
+    - !type:AddMurk
+      amount: 2
+      scaleWithPlayers: true
+    - !type:ShockWaveVFX
+      width: 3
+    - !type:Radial
+      count: 8
+      spread: 15
+      effects:
+      - !type:BloodSplatter
+        minDistance: 0.5
+        maxDistance: 2
+        vfx: CEBloodHitEffect2
+        sprite: /Textures/_CE/Decals/blood.rsi
+        states:
+        - splatter1
+        - splatter4
+        - splatter7
+    - !type:PlayFarSound
+      minRange: 0
+      maxRange: 300
+      sound:
+        collection: CELurkerRoar
+        params:
+          pitch: 0.6
+    - !type:ZNetworkMessage
+      message: ce-murk-abscess-burst
+      color: "#a3122a"
+
+# Spawned when the abscess is destroyed before bursting.
+- type: entity
+  id: CEMurkAbscessDestroyed
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: TimedDespawn
+    lifetime: 1
+  - type: CEEntityEffectSpawner
+    firstDelay: 0
+    frequency: 999
+    effects:
+    - !type:ShockWaveVFX
+    - !type:SpawnEntity
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/heartbeat.ogg
+        params:
+          pitch: 0.5
+    - !type:ZNetworkMessage
+      message: ce-murk-abscess-destroyed
+      color: "#a3122a"

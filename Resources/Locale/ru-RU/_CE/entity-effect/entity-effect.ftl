@@ -57,3 +57,6 @@ ce-mob-state-alive = живой
 ce-mob-state-critical = в критическом состоянии
 ce-mob-state-dead = мёртвой
 ce-mob-state-invalid = в неверном состоянии
+
+ce-in-murk-required = Цель должна находиться во мраке.
+ce-in-murk-forbidden = Цель должна находиться в пределах света сферы люксона.

@@ -17,8 +17,8 @@
   description: The contract must be fulfilled - this person has to die.
   components:
   - type: Sprite
-    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
-    state: assassin
+    sprite: _CE/Interface/Skills/target.rsi
+    state: target
   - type: CEObjective
   - type: CETargetObjective
     title: ce-assassin-kill-objective-title

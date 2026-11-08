@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect;
@@ -19,19 +20,30 @@ public abstract partial class CEEntityCondition
 
     /// <summary>
     /// Resolves the target entity from args, dispatches the check, and applies <see cref="Inverted"/>.
-    /// Returns false (or true if Inverted) when the resolved entity is null.
+    /// Without an entity, a condition that <see cref="SupportsPosition"/> checks the targeted position instead;
+    /// otherwise returns false (or true if Inverted).
     /// </summary>
     public bool Passes(CEEntityEffectArgs args)
     {
-        var entity = args.Resolve(ConditionTarget);
-        if (entity is null)
+        bool result;
+        if (args.Resolve(ConditionTarget) is { } entity)
+            result = Check(entity, args);
+        else if (SupportsPosition && ConditionTarget == CEEffectTarget.Target && args.Position is { } position)
+            result = CheckPosition(position, args);
+        else
             return Inverted;
 
-        var result = Check(entity.Value, args);
         return Inverted ? !result : result;
     }
 
     protected abstract bool Check(EntityUid entity, CEEntityEffectArgs args);
+
+    /// <summary>
+    /// Whether this condition can check a bare position, e.g. the point of a world-targeted action.
+    /// </summary>
+    protected virtual bool SupportsPosition => false;
+
+    protected virtual bool CheckPosition(EntityCoordinates position, CEEntityEffectArgs args) => false;
 
     /// <summary>
     /// Human-readable explanation of what this condition requires, for UI.

@@ -101,7 +101,7 @@
     blockPull: true
     blockEquip: true
     blockUnequip: true
-  - type: CERemoveOnDawnStatusEffect
+  - type: CEDeleteOnDawn
   - type: CEVisibilityLayerStatusEffect
     layers:
     - CEMagicVision
