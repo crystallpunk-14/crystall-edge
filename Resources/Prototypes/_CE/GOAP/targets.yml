@@ -21,3 +21,6 @@
 
 - type: GOAPTarget
   id: Threat
+
+- type: GOAPTarget
+  id: LucsonSphere

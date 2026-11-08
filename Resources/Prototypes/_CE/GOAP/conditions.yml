@@ -49,3 +49,10 @@
 # Coward
 - type: GOAPCondition
   id: Safe
+
+# Ritual siege
+- type: GOAPCondition
+  id: SphereAttacked
+
+- type: GOAPCondition
+  id: NearSphere

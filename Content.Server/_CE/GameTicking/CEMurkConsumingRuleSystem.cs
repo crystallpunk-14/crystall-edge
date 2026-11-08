@@ -433,6 +433,41 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     }
 
     /// <summary>
+    /// How much of the Restoration Ritual has passed, 0..1, if a rule is active.
+    /// </summary>
+    public bool TryGetRitualProgress(out float progress)
+    {
+        progress = 0f;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            progress = GetRitualProgress(consuming);
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// The highest number of active players seen this round, if a rule is active.
+    /// </summary>
+    public bool TryGetMaxOnline(out int maxOnline)
+    {
+        maxOnline = 0;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            consuming.MaxOnline = Math.Max(consuming.MaxOnline, _secretRoles.GetActivePlayerCount());
+            maxOnline = consuming.MaxOnline;
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
     /// How much of the Restoration Ritual has passed, 0..1.
     /// </summary>
     private float GetRitualProgress(CEMurkConsumingRuleComponent component)

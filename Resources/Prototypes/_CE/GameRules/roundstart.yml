@@ -4,3 +4,10 @@
   components:
   - type: CEMurkConsumingRule
     crackDelay: 60s
+  - type: CERitualSiege
+    table: !type:GroupSelector
+      children:
+      - id: CEMobShadowEaterRitualTargetSphere
+        weight: 1
+      - id: CEMobShadowEaterRitualTargetPlayers
+        weight: 2
