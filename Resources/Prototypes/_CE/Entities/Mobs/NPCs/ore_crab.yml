@@ -50,6 +50,8 @@
     animations:
       Primary:
       - anim: RatBite
+  - type: CESpawnAnimation
+    animation: OreCreatureDigOut
 
 - type: entity
   parent: CEMobOreCrabBase
@@ -174,6 +176,91 @@
   - type: CEInnateSkills
     skills:
     - NightVision
+  - type: CESpawnAnimation
+    animation: OreCreatureDigOut
+
+#MARK: Dig out
+
+# Rises out of the ground while fading in, rocking side to side and kicking up dust
+- type: entityEffectAnimation
+  id: OreCreatureDigOut
+  movementSpeed: 0
+  duration: 2
+  events:
+    0:
+    - !type:UserAnimation
+      offsetAnimation:
+      - time: 0
+        offset: 0, -0.5
+      - time: 1.8
+        offset: 0, 0
+        easing: QuadOut
+      colorAnimation:
+      - time: 0
+        color: "#ffffff00"
+      - time: 1.2
+        color: "#ffffff"
+      rotationAnimation:
+      - time: 0
+        rotation: 0
+      - time: 0.25
+        rotation: 20
+        easing: QuadOut
+      - time: 0.55
+        rotation: -20
+        easing: QuadInOut
+      - time: 0.85
+        rotation: 16
+        easing: QuadInOut
+      - time: 1.15
+        rotation: -12
+        easing: QuadInOut
+      - time: 1.45
+        rotation: 8
+        easing: QuadInOut
+      - time: 1.7
+        rotation: -4
+        easing: QuadInOut
+      - time: 1.9
+        rotation: 0
+        easing: QuadOut
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/break_stone.ogg
+        params:
+          variation: 0.1
+          volume: -6
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CEDustTileEffect
+    0.6:
+    - !type:SpawnEntity
+      effectTarget: User
+      offset: 0.3, 0.1
+      spawns:
+      - CEDustTileEffect
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/break_stone.ogg
+        params:
+          variation: 0.1
+          volume: -6
+    1.2:
+    - !type:SpawnEntity
+      effectTarget: User
+      offset: -0.3, 0.1
+      spawns:
+      - CEDustTileEffect
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/break_stone.ogg
+        params:
+          variation: 0.1
+          volume: -6
 
 - type: entity
   parent: CEMobOreSpiderBase

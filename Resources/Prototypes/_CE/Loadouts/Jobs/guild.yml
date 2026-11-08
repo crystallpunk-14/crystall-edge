@@ -100,6 +100,7 @@
   loadouts:
   - CEWeaponSwordIron
   - CEWeaponSkimitarIron
+  - CEWeaponRapierIron
   - CEWeaponSpearIron
   - CEWeaponWarAxeIron
   - CEWeaponTwoHandedSwordIron
@@ -132,6 +133,11 @@
   id: CEWeaponSkimitarIron
   inhand:
   - CEWeaponSkimitarIron
+
+- type: loadout
+  id: CEWeaponRapierIron
+  inhand:
+  - CEWeaponRapierIron
 
 - type: loadout
   id: CEWeaponSpearIron

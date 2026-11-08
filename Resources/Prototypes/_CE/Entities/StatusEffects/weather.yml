@@ -94,3 +94,48 @@
       params:
         loop: true
         volume: -6
+
+#MARK: Murk storm
+
+# Set by the ritual siege for its calm phases: black rain with rare lightning around the Lucson Sphere.
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherMurkStorm
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/Weather/rain.rsi
+      state: base
+    color: "#000000"
+    sound:
+      collection: Rain
+      params:
+        loop: true
+        volume: -6
+  - type: CEWeatherSphereStrikes
+    minFrequency: 20s
+    maxFrequency: 40s
+  - type: CEWeatherTileEntityEffect
+    effects:
+    - !type:SpawnEntity
+      spawns:
+      - CESkyLightning
+
+# Set by the ritual siege for its danger phases: black storm with more frequent lightning.
+- type: entity
+  parent: CEWeatherMurkStorm
+  id: CEWeatherMurkStormStrong
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/Weather/storm.rsi
+      state: base
+    color: "#000000"
+    sound:
+      path: /Audio/Effects/Weather/rain.ogg
+      params:
+        loop: true
+        volume: -6
+  - type: CEWeatherSphereStrikes
+    minFrequency: 8s
+    maxFrequency: 15s

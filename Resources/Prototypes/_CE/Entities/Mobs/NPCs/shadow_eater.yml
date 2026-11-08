@@ -3,34 +3,11 @@
   - CEMobSimple
   - CEMobCombat
   - CEMobGOAPBase
-  id: CEMobShadowEater
+  id: CEMobShadowEaterBase
+  abstract: true
   name: shadow eater
   description: A being of darkness that feeds on the shadows of living creatures.
-  categories: [ ForkFiltered ]
   components:
-  - type: CEGOAP
-    behaviors:
-    - MeleeAttacker
-    - Explorer
-    targets:
-      DissolvedSoul: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
-    goals:
-    # Eating a dissolved soul beats everything else
-    - desiredState:
-        Fed: true
-      priority: 2
-
-    actions:
-    # Walk up to a dissolved soul and devour it
-    - !type:CEGOAPUseAction
-      actionPrototype: CEActionShadowEaterDevour
-      target: DissolvedSoul
-      range: 1
-      effects:
-        Fed: true
-      cost: 0.5
   - type: NpcFactionMember
     factions:
     - CEHostileEveryone
@@ -83,6 +60,145 @@
         params:
           variation: 0.1
           pitch: 0.5
+  - type: CESpawnAnimation
+    animation: ShadowEaterSpawn
+
+- type: entity
+  parent: CEMobShadowEaterBase
+  id: CEMobShadowEater
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEGOAP
+    behaviors:
+    - MeleeAttacker
+    - Explorer
+    targets:
+      DissolvedSoul: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
+    goals:
+    # Eating a dissolved soul beats everything else
+    - desiredState:
+        Fed: true
+      priority: 2
+
+    actions:
+    # Walk up to a dissolved soul and devour it
+    - !type:CEGOAPUseAction
+      actionPrototype: CEActionShadowEaterDevour
+      target: DissolvedSoul
+      range: 1
+      effects:
+        Fed: true
+      cost: 0.5
+
+#MARK: Ritual siege
+
+# Spawned by the ritual siege, which tells it where the sphere is: ignores everyone and gnaws at the exposed core.
+- type: entity
+  parent: CEMobShadowEaterBase
+  id: CEMobShadowEaterRitualTargetSphere
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  components:
+  - type: CEGOAP
+    dormant: false
+    targets:
+      LucsonSphere: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:HasComponents
+          components:
+          - type: CEMurkLusconSphere
+    goals:
+    - desiredState:
+        SphereAttacked: true
+      priority: 1
+    actions:
+    - !type:CEGOAPMeleeAttackAction
+      target: LucsonSphere
+      range: 1
+      effects:
+        SphereAttacked: true
+      cost: 1
+      useType: Primary
+      angleVariation: 5
+  - type: CEWeapon
+    range: 0.5
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Piercing: 3
+              Structural: 10
+    animations:
+      Primary:
+      - anim: ShadowEaterBite
+
+# Spawned by the ritual siege, which tells it where the sphere is: prowls around the sphere and attacks whoever it sees.
+- type: entity
+  parent: CEMobShadowEaterBase
+  id: CEMobShadowEaterRitualTargetPlayers
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  components:
+  - type: CEGOAP
+    dormant: false
+    behaviors:
+    - MeleeAttacker
+    targets:
+      LucsonSphere: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:HasComponents
+          components:
+          - type: CEMurkLusconSphere
+    goals:
+    - desiredState:
+        NearSphere: true
+      priority: 0.1
+    actions:
+    - !type:CEGOAPWalkAroundAction
+      target: LucsonSphere
+      radius: 4
+      effects:
+        NearSphere: true
+      cost: 1
+
+# Descends from above while fading in, stretched until it lands
+- type: entityEffectAnimation
+  id: ShadowEaterSpawn
+  movementSpeed: 0
+  duration: 1.6
+  events:
+    0:
+    - !type:UserAnimation
+      offsetAnimation:
+      - time: 0
+        offset: 0, 3
+      - time: 1
+        offset: 0, -0.2
+        easing: QuadInOut
+      - time: 1.5
+        offset: 0, 0
+        easing: QuadOut
+      colorAnimation:
+      - time: 0
+        color: "#ffffff00"
+      - time: 0.9
+        color: "#ffffff"
+      scaleAnimation:
+      - time: 0
+        scale: 0.5, 1.5
+      - time: 0.7
+        scale: 0.85, 1.15
+      # Landing impact squash
+      - time: 1
+        scale: 1.2, 0.8
+        easing: QuadInOut
+      - time: 1.5
+        scale: 1, 1
+        easing: QuadOut
 
 - type: entity
   id: CEActionShadowEaterDevour
