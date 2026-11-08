@@ -38,3 +38,7 @@
 - type: workbenchRecipeCategory
   id: Clothing
   name: ce-recipe-category-clothing
+
+- type: workbenchRecipeCategory
+  id: Decoration
+  name: ce-recipe-category-decoration

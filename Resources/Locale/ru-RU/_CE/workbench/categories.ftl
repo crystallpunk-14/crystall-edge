@@ -9,3 +9,4 @@ ce-recipe-category-carpet = Ковры
 ce-recipe-category-wallpaper = Обои
 ce-recipe-category-clothing = Одежда
 ce-recipe-category-machine-core = Машинные ядра
+ce-recipe-category-decoration = Декор

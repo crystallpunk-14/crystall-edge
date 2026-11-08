@@ -1,0 +1,467 @@
+- type: constructionGraph
+  id: CEWallmountPaintingSkull
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingSkull
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingSkullItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingCandle
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingCandle
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingCandleItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingWoman
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingWoman
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingWomanItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingSaint
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingSaint
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingSaintItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingAelyta
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingAelyta
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingAelytaItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingCarcat
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingCarcat
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingCarcatItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingFire
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingFire
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingFireItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingFishing
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingFishing
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingFishingItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingFlem
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingFlem
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingFlemItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingFroze
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingFroze
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingFrozeItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingLootgob
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingLootgob
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingLootgobItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingLumera
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingLumera
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingLumeraItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingArmorratus
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingArmorratus
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingArmorratusItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingHedgehog
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingHedgehog
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingHedgehogItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingFight
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingFight
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingFightItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingGnome
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingGnome
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingGnomeItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingGoblin
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingGoblin
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingGoblinItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingLurker
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingLurker
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingLurkerItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingOmsoyk
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingOmsoyk
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingOmsoykItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingRain
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingRain
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingRainItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingRich
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingRich
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingRichItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingViator
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingViator
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingViatorItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingPitchforks
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingPitchforks
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingPitchforksItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingPot
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingPot
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingPotItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingSquid
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingSquid
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingSquidItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+- type: constructionGraph
+  id: CEWallmountPaintingSunset
+  start: start
+  graph:
+    - node: start
+
+    - node: placed
+      entity: CEWallmountPaintingSunset
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEPaintingSunsetItem
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1

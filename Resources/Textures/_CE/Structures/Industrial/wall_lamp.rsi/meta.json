@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by TheShuEd (github)",
+  "copyright": "Created by TheShuEd (github), lamp layer split from base",
   "size": {
     "x": 34,
     "y": 96
@@ -9,6 +9,10 @@
   "states": [
     {
       "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "lamp",
       "directions": 4
     },
     {

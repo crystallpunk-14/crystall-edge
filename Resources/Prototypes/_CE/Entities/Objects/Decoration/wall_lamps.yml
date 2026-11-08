@@ -1,0 +1,112 @@
+- type: entity
+  id: CEWallLightItemBase
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: wall lamp
+  description: A light fixture. Can be mounted on a wall, where it draws power and produces light.
+  suffix: Item
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _CE/Objects/Decorations/wall_lamp.rsi
+  - type: Stack
+    count: 1
+  - type: StackPrice
+    price: 3.25
+  - type: CEPlaceable
+    conditions:
+    - !type:TileNotBlocked
+    - !type:WallBehind
+    - !type:NoWallmount
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightOrangeItem
+  suffix: Orange
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#f8ab58"
+  - type: Stack
+    stackType: CEWallLightOrange
+  - type: CEPlaceable
+    prototype: CEWallLightOrange
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightPinkItem
+  suffix: Pink
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#ff3cc8"
+  - type: Stack
+    stackType: CEWallLightPink
+  - type: CEPlaceable
+    prototype: CEWallLightPink
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightCyanItem
+  suffix: Cyan
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#3cf0ff"
+  - type: Stack
+    stackType: CEWallLightCyan
+  - type: CEPlaceable
+    prototype: CEWallLightCyan
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightGreenItem
+  suffix: Green
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#5cff6a"
+  - type: Stack
+    stackType: CEWallLightGreen
+  - type: CEPlaceable
+    prototype: CEWallLightGreen
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightPurpleItem
+  suffix: Purple
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#a050ff"
+  - type: Stack
+    stackType: CEWallLightPurple
+  - type: CEPlaceable
+    prototype: CEWallLightPurple
+
+- type: entity
+  parent: CEWallLightItemBase
+  id: CEWallLightRedItem
+  suffix: Red
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: lamp
+      color: "#ff3c3c"
+  - type: Stack
+    stackType: CEWallLightRed
+  - type: CEPlaceable
+    prototype: CEWallLightRed

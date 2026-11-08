@@ -969,3 +969,95 @@
     count: 5
   result: CECrossboltIron
   resultCount: 5
+
+#MARK: Decoration
+
+- type: workbenchRecipe
+  id: WallLightOrange
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightOrangeItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightPink
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightPinkItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightCyan
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightCyanItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightGreen
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightGreenItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightPurple
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightPurpleItem
+  resultCount: 2
+
+- type: workbenchRecipe
+  id: WallLightRed
+  parent: BaseAssemblyShopRecipe
+  category: Decoration
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEWallLightRedItem
+  resultCount: 2
