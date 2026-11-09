@@ -14,4 +14,12 @@ public sealed partial class ConveyedComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Conveying;
+
+    // CrystallEdge: stall detection so items stuck against obstacles can fall asleep
+    /// <summary>
+    /// How long the conveyor has been pushing this entity without it moving forward.
+    /// </summary>
+    [ViewVariables]
+    public float StallTime;
+    // CrystallEdge end
 }
