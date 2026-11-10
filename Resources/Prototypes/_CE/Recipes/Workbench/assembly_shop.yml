@@ -581,6 +581,24 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: MachineCoreRevivalTable
+  parent: BaseAssemblyShopRecipe
+  category: MachineCore
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 6
+  result: CEMachineCoreRevivalTable
+  resultCount: 1
+
+- type: workbenchRecipe
   id: MachineCoreDistributionUnit
   parent: BaseAssemblyShopRecipe
   category: MachineCore

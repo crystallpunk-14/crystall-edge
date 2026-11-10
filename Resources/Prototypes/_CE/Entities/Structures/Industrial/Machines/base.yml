@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: CEConstructibleMachine
+  categories: [ ForkFiltered ]
   components:
   - type: Animateable
   - type: Machine

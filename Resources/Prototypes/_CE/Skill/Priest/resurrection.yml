@@ -67,4 +67,11 @@
     - !type:SpawnEntity
       spawns:
       - CEEffectHealingGeneric
+    - !type:HealEvenly
+      groups:
+        Brute: 100
+        Burn: 100
+        Toxin: 100
     - !type:Revive
+    - !type:Jitter
+      duration: 2

@@ -232,3 +232,15 @@
     guides:
     - CELocksKeysGuideEN
     - CELocksKeysGuideRU
+
+# Hospital
+
+- type: entity
+  id: CEMachineCoreRevivalTable
+  parent: CEBaseMachineCore
+  name: revival table machine core
+  components:
+  - type: MachineBoard
+    prototype: CERevivalTable
+  - type: StaticPrice
+    price: 300
