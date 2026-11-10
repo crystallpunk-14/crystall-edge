@@ -13,24 +13,39 @@
     - Bloodpack
   - type: Sprite
     state: bloodpack
-  - type: Healing
-    damageContainers:
-    - CEBiological
-    damage:
-      types:
-        Bloodloss: -5 #lowers bloodloss damage
-    modifyBloodLevel: 60 #restores about 20% blood per use on standard humanoids.
+  - type: CEConsumable
     delay: 1
-    healingBeginSound:
+    repeat: true
+    whitelist:
+      components:
+      - MobState
+    failPopup: ce-consumable-nothing-to-heal
+    beginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
       params:
         volume: 1.0
         variation: 0.125
-    healingEndSound:
+    endSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
       params:
         volume: 1.0
         variation: 0.125
+    conditions:
+    - !type:DamageContainer
+      containers:
+      - CEBiological
+    - !type:AnyOf
+      conditions:
+      - !type:HasDamage
+        types:
+        - Bloodloss
+      - !type:BloodLevel
+    effects:
+    - !type:Heal
+      types:
+        Bloodloss: 5 #lowers bloodloss damage
+    - !type:ModifyBloodLevel
+      amount: 60 #restores about 20% blood per use on standard humanoids.
   - type: Stack
     stackType: CEBloodpack
     count: 10

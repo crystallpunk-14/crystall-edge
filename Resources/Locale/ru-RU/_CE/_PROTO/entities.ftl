@@ -1247,13 +1247,21 @@ ent-CEGauze1 = { ent-CEGauze }
     .desc = { ent-CEGauze.desc }
     .suffix = 1
 
-ent-CEPlastiseal = пластизин
-    .desc = Бандажная сетка, сплетённая издалека, достаточно мощная, чтобы удалить яд и вылечить ожоги.
+ent-CEHerbalOintment = растительная мазь
+    .desc = Густая мазь из толчёных трав. Успокаивает ожоги и вытягивает яд.
     .suffix = 5
 
-ent-CEPlastiseal1 = { ent-CEPlastiseal }
-    .desc = { ent-CEPlastiseal.desc }
+ent-CEHerbalOintment1 = { ent-CEHerbalOintment }
+    .desc = { ent-CEHerbalOintment.desc }
     .suffix = 1
+
+ent-CEFloraMaterial1 = растительный материал
+    .desc = Органический материал, используемый в лечебных или строительных целях.
+    .suffix = 1
+
+ent-CEFloraMaterial10 = { ent-CEFloraMaterial1 }
+    .desc = { ent-CEFloraMaterial1.desc }
+    .suffix = 10
 
 ent-CESmokingPipe = трубка
     .desc = Удобная и практичная курительная трубка, последний писк моды в Империи.

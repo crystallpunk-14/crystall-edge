@@ -6,3 +6,12 @@
   targetNode: cegauze
   category: construction-category-tools
   objectType: Item
+
+- type: construction
+  hide: false
+  id: CEHerbalOintment
+  graph: CEHerbalOintment
+  startNode: start
+  targetNode: ceherbalointment
+  category: construction-category-tools
+  objectType: Item

@@ -156,7 +156,9 @@ public abstract partial class SharedConveyorController : VirtualController
                 targetDir += wishDir;
             }
 
-            if (ent.Result)
+            var stalled = CEUpdateStall(ent.Entity.Owner, ent.Entity.Comp1, physics, ent.Direction, frameTime); // CrystallEdge: stuck entities can't be pushed forever
+
+            if (ent.Result && !stalled) // CrystallEdge: stalled entities are treated as blocked so they can sleep
             {
                 if (targetDir.LengthSquared() > 0f)
                 {

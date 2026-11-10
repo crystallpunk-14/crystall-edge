@@ -1,8 +1,8 @@
 - type: stack
-  id: CEPlastiseal
-  name: ce-stack-pack-plastiseal
+  id: CEHerbalOintment
+  name: ce-stack-pack-herbal-ointment
   icon: { sprite: "_CE/Objects/Consumable/medical.rsi", state: herbbandage_3 }
-  spawn: CEPlastiseal
+  spawn: CEHerbalOintment
   maxCount: 5
 
 - type: stack

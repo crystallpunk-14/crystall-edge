@@ -19,20 +19,37 @@
   - type: Construction
     graph: CEGauze
     node: cegauze
-  - type: Healing
-    damageContainers:
-      - CEBiological
-    damage:
-      types:
-        Slash: -10
-        Piercing: -10
-        Blunt: -10
-    bloodlossModifier: -10
+  - type: CEConsumable
     delay: 2
-    healingBeginSound:
+    repeat: true
+    whitelist:
+      components:
+      - MobState
+    failPopup: ce-consumable-nothing-to-heal
+    beginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    healingEndSound:
+    endSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
+    conditions:
+    - !type:DamageContainer
+      containers:
+      - CEBiological
+    - !type:AnyOf
+      conditions:
+      - !type:HasDamage
+        types:
+        - Slash
+        - Piercing
+        - Blunt
+      - !type:IsBleeding
+    effects:
+    - !type:Heal
+      types:
+        Slash: 10
+        Piercing: 10
+        Blunt: 10
+    - !type:ModifyBleeding
+      amount: -10
   - type: Stack
     stackType: CEGauze
     count: 5

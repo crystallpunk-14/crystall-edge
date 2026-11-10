@@ -63,11 +63,11 @@
             variation: 0.05
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      #- !type:SpawnEntitiesBehavior
-      #  spawn:
-      #    CEFloraMaterial1:
-      #      min: 0
-      #      max: 2
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloraMaterial1:
+            min: 0
+            max: 2
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
@@ -79,7 +79,7 @@
   - type: TriggerOnCollide
     fixtureID: fix1
   - type: CEPlantKudzu
-    energyCost: 20
+    energyCost: 4
     resourceCost: 0
     proto: CEHighBush
 

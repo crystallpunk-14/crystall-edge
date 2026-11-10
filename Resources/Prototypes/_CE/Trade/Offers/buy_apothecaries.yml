@@ -8,13 +8,13 @@
     proto: CEGauze
 
 - type: tradeOffer
-  id: BuyPlastiseal5
+  id: BuyHerbalOintment5
   shop: ApothecariesGuild
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CEPlastiseal
+    proto: CEHerbalOintment
 
 - type: tradeOffer
   id: BuyBloodpack10

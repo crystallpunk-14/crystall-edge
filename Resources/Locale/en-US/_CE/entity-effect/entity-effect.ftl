@@ -22,6 +22,10 @@ ce-entity-effect-guidebook-damage = Deals { $damages } damage
 ce-entity-effect-guidebook-damage-entry = [color=yellow]{ $amount }[/color] { $type }
 ce-entity-effect-guidebook-heal = Heals { $heals }
 ce-entity-effect-guidebook-heal-entry = [color=yellow]{ $amount }[/color] { $group }
+ce-entity-effect-guidebook-modify-bleeding-reduce = Reduces bleeding by [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-modify-bleeding-increase = Increases bleeding by [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-modify-blood-level-restore = Restores [color=yellow]{ $amount }[/color]u of blood
+ce-entity-effect-guidebook-modify-blood-level-drain = Drains [color=yellow]{ $amount }[/color]u of blood
 ce-entity-effect-guidebook-shoot-projectile = Fires [color=yellow]{ $count }[/color]x [color=yellow]{ $item }[/color]
 ce-entity-effect-guidebook-vomit = Has a [color=yellow]{ $chance }%[/color] chance of making the target vomit
 ce-entity-effect-guidebook-irradiate = Irradiates the area with [color=yellow]{ $charge }[/color] magical energy for [color=yellow]{ $duration }[/color] sec.
@@ -60,3 +64,5 @@ ce-mob-state-invalid = in an invalid state
 
 ce-in-murk-required = The target must be in the murk.
 ce-in-murk-forbidden = The target must be within the light of the Lucson Sphere.
+
+ce-modify-bleeding-stopped = The bleeding has stopped.

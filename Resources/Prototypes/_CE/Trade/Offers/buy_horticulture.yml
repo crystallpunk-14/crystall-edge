@@ -261,6 +261,16 @@
     proto: CESeedCotton10
 
 - type: tradeOffer
+  id: BuyFloraMaterial10
+  weight: 0.3
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloraMaterial10
+
+- type: tradeOffer
   id: BuySeedSunflower10
   weight: 0.3
   shop: Horticulture
