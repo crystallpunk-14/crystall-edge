@@ -12,22 +12,21 @@
   - type: Sprite
     snapCardinals: true
     drawdepth: BelowMobs
-    sprite: _CE/Structures/Industrial/assembly_shop.rsi
-    color: "#6fdc8c"
+    sprite: _CE/Structures/Industrial/revive_table.rsi
     layers:
     - state: base
-    - state: fire
+    - state: active
       visible: false
       shader: unshaded
-      map: ["fire"]
+      map: ["active"]
   - type: Icon
-    sprite: _CE/Structures/Industrial/assembly_shop.rsi
+    sprite: _CE/Structures/Industrial/revive_table.rsi
     state: base
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:
-        fire:
+        active:
           True: {visible: true}
           False: {visible: false}
   - type: Clickable
@@ -50,7 +49,7 @@
   - type: ApcPowerReceiver
     powerLoad: 5
   - type: CEStrapEffect
-    duration: 10
+    duration: 5
     cooldown: 5
     startSound:
       path: /Audio/Items/Defib/defib_charge.ogg
