@@ -56,18 +56,35 @@
     layers:
       - state: cloth_1
         map: ["base"]
-  - type: Healing
-    damageContainers:
-      - CEBiological
-    damage:
-      types:
-        Slash: -3
-        Piercing: -3
-    bloodlossModifier: -8
-    healingBeginSound:
+  - type: CEConsumable
+    delay: 3
+    repeat: true
+    whitelist:
+      components:
+      - MobState
+    failPopup: ce-consumable-nothing-to-heal
+    beginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    healingEndSound:
+    endSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
+    conditions:
+    - !type:DamageContainer
+      containers:
+      - CEBiological
+    - !type:AnyOf
+      conditions:
+      - !type:HasDamage
+        types:
+        - Slash
+        - Piercing
+      - !type:IsBleeding
+    effects:
+    - !type:Heal
+      types:
+        Slash: 3
+        Piercing: 3
+    - !type:ModifyBleeding
+      amount: -8
   - type: Appearance
   - type: Stack
     stackType: CECloth

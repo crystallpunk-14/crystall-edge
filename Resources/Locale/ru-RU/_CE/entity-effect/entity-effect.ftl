@@ -22,6 +22,10 @@ ce-entity-effect-guidebook-damage = Наносит { $damages } урона
 ce-entity-effect-guidebook-damage-entry = [color=yellow]{ $amount }[/color] { $type }
 ce-entity-effect-guidebook-heal = Лечит { $heals }
 ce-entity-effect-guidebook-heal-entry = [color=yellow]{ $amount }[/color] { $group }
+ce-entity-effect-guidebook-modify-bleeding-reduce = Ослабляет кровотечение на [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-modify-bleeding-increase = Усиливает кровотечение на [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-modify-blood-level-restore = Восполняет [color=yellow]{ $amount }[/color] ед. крови
+ce-entity-effect-guidebook-modify-blood-level-drain = Отнимает [color=yellow]{ $amount }[/color] ед. крови
 ce-entity-effect-guidebook-shoot-projectile = Выпускает [color=yellow]{ $count }[/color]x [color=yellow]{ $item }[/color]
 ce-entity-effect-guidebook-vomit = С вероятностью [color=yellow]{ $chance }%[/color] вызывает у цели рвоту
 ce-entity-effect-guidebook-irradiate = Облучает область [color=yellow]{ $charge }[/color] магической энергией в течение [color=yellow]{ $duration }[/color] сек.
@@ -60,3 +64,5 @@ ce-mob-state-invalid = в неверном состоянии
 
 ce-in-murk-required = Цель должна находиться во мраке.
 ce-in-murk-forbidden = Цель должна находиться в пределах света сферы люксона.
+
+ce-modify-bleeding-stopped = Кровотечение остановлено.

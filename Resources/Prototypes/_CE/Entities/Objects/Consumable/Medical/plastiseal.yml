@@ -19,23 +19,43 @@
 #  - type: Construction
 #    graph: CEPlastiseal
 #    node: CEPlastiseal
-  - type: Healing
-    damageContainers:
-      - CEBiological
-    damage:
-      types:
-        Heat: -10
-        Cold: -10
-        Caustic: -10
-        Shock: -10
-        Poison: -10
-        Radiation: -10
-    bloodlossModifier: -2
+  - type: CEConsumable
     delay: 2.5
-    healingBeginSound:
+    repeat: true
+    whitelist:
+      components:
+      - MobState
+    failPopup: ce-consumable-nothing-to-heal
+    beginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    healingEndSound:
+    endSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
+    conditions:
+    - !type:DamageContainer
+      containers:
+      - CEBiological
+    - !type:AnyOf
+      conditions:
+      - !type:HasDamage
+        types:
+        - Heat
+        - Cold
+        - Caustic
+        - Shock
+        - Poison
+        - Radiation
+      - !type:IsBleeding
+    effects:
+    - !type:Heal
+      types:
+        Heat: 10
+        Cold: 10
+        Caustic: 10
+        Shock: 10
+        Poison: 10
+        Radiation: 10
+    - !type:ModifyBleeding
+      amount: -2
   - type: Stack
     stackType: CEPlastiseal
     count: 5
