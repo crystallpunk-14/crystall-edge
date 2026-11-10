@@ -85,6 +85,32 @@
     state: technician
   jobName: ce-job-name-technician
 
+# Hospital
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconHospitalWarden
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/Jobs/hospital.rsi
+    state: hospital_warden
+  jobName: ce-job-name-hospital-warden
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconDoctor
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/Jobs/hospital.rsi
+    state: doctor
+  jobName: ce-job-name-doctor
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconOrderly
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/Jobs/hospital.rsi
+    state: orderly
+  jobName: ce-job-name-orderly
+
 # Citizens
 
 - type: jobIcon

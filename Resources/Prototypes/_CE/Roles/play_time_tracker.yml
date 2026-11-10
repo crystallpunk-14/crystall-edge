@@ -33,6 +33,17 @@
 - type: playTimeTracker
   id: CEJobTechnician
 
+# Hospital
+
+- type: playTimeTracker
+  id: CEJobHospitalWarden
+
+- type: playTimeTracker
+  id: CEJobDoctor
+
+- type: playTimeTracker
+  id: CEJobOrderly
+
 # Citizens
 
 - type: playTimeTracker

@@ -1,0 +1,40 @@
+- type: job
+  id: CEDoctor
+  setPreference: true
+  name: ce-job-name-doctor
+  description: ce-job-desc-doctor
+  playTimeTracker: CEJobDoctor
+  startingGear: CEDoctorGear
+  icon: CEJobIconDoctor
+  supervisors: ce-job-supervisors-hospital-warden
+
+- type: startingGear
+  id: CEDoctorGear
+  equipment:
+    eyes: CEClothingEyesAlchemyGlasses
+    belt: CEKeyRingHospital
+    pocket1: CEWalletFilledDoctor
+
+- type: entity
+  id: CEWalletFilledDoctor
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingHospital
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyHospitalHall
+    - id: CEKeyHospitalStaff

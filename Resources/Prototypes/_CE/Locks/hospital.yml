@@ -1,0 +1,19 @@
+# Hospital
+
+- type: lockType
+  id: HospitalHall
+  group: Hospital
+  complexity: 3
+  name: ce-lock-shape-hospital-hall
+
+- type: lockType
+  id: HospitalStaff
+  group: Hospital
+  complexity: 5
+  name: ce-lock-shape-hospital-staff
+
+- type: lockType
+  id: HospitalWarden
+  group: Hospital
+  complexity: 6
+  name: ce-lock-shape-hospital-warden

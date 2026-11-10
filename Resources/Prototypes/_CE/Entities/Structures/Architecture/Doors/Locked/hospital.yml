@@ -1,0 +1,50 @@
+- type: entity
+  parent: CEIronDoorWindowed
+  id: CEIronDoorHospitalHall
+  suffix: Hospital Hall
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+  - CEIronDoorHospitalHall
+  - CEIronDoorWindowedMirrored
+  id: CEIronDoorHospitalHallMirrored
+  suffix: Hospital Hall, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorHospitalStaff
+  suffix: Hospital Staff
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+  - CEIronDoorHospitalStaff
+  - CEIronDoorMirrored
+  id: CEIronDoorHospitalStaffMirrored
+  suffix: Hospital Staff, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorHospitalWarden
+  suffix: Hospital Warden
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalWarden
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+  - CEIronDoorHospitalWarden
+  - CEIronDoorMirrored
+  id: CEIronDoorHospitalWardenMirrored
+  suffix: Hospital Warden, Mirrored

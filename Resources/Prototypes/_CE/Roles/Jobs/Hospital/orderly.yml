@@ -1,0 +1,30 @@
+- type: job
+  id: CEOrderly
+  setPreference: true
+  name: ce-job-name-orderly
+  description: ce-job-desc-orderly
+  playTimeTracker: CEJobOrderly
+  startingGear: CEOrderlyGear
+  icon: CEJobIconOrderly
+  supervisors: ce-job-supervisors-hospital-warden
+
+- type: startingGear
+  id: CEOrderlyGear
+  equipment:
+    eyes: CEClothingEyesAlchemyGlasses
+    belt: CEKeyRingHospital
+    pocket1: CEWalletFilledOrderly
+
+- type: entity
+  id: CEWalletFilledOrderly
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10

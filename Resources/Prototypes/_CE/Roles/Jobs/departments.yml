@@ -11,6 +11,7 @@
   - CETavernmaster
   - CEBrigadier
   - CEGuildmaster
+  - CEHospitalWarden
 
 - type: department
   id: CETavern
@@ -57,3 +58,15 @@
   roles:
   - CEGuildmaster
   - CEAdventurer
+
+- type: department
+  id: CEHospital
+  name: department-CEHospital
+  description: department-CEHospital-desc
+  weight: 7
+  color: "#3ce895"
+  editorHidden: false
+  roles:
+  - CEHospitalWarden
+  - CEDoctor
+  - CEOrderly

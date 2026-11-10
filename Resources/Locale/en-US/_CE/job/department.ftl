@@ -12,3 +12,6 @@ department-CETavern-desc = Workers of the city's most important entertainment es
 
 department-CEGuild = Adventurers' Guild
 department-CEGuild-desc = Mercenaries, hunters and seekers of fortune. Take contracts, explore the wildlands and come back with the loot.
+
+department-CEHospital = Hospital
+department-CEHospital-desc = Heal the wounded, cure the sick and return the dead to life. Without healers, the city will not survive the murk.

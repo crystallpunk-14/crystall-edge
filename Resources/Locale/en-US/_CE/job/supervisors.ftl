@@ -4,3 +4,4 @@ ce-job-supervisors-empire = Empire and its authority
 ce-job-supervisors-command = all authority figures
 ce-job-supervisors-brigadier = the Brigadier
 ce-job-supervisors-guildmaster = guildmaster
+ce-job-supervisors-hospital-warden = the Hospital Warden
