@@ -9,11 +9,14 @@
     locked: false
 
 - type: entity
-  parent:
-  - CEIronDoorHospitalHall
-  - CEIronDoorWindowedMirrored
+  parent: CEIronDoorWindowedMirrored
   id: CEIronDoorHospitalHallMirrored
   suffix: Hospital Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalHall
+  - type: Lock
+    locked: false
 
 - type: entity
   parent: CEIronDoor
@@ -26,11 +29,14 @@
     locked: true
 
 - type: entity
-  parent:
-  - CEIronDoorHospitalStaff
-  - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorHospitalStaffMirrored
   suffix: Hospital Staff, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalStaff
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -43,8 +49,11 @@
     locked: true
 
 - type: entity
-  parent:
-  - CEIronDoorHospitalWarden
-  - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorHospitalWardenMirrored
   suffix: Hospital Warden, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: HospitalWarden
+  - type: Lock
+    locked: true
