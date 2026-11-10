@@ -80,7 +80,7 @@
         - id: CECrowbar
       - !type:GroupSelector
         children:
-        - id: CEPlastiseal
+        - id: CEHerbalOintment
         - id: CEGauze
       - !type:GroupSelector
         weight: 2
@@ -126,6 +126,7 @@
       - id: CESpoon
       - id: CESmokingPipe
       - id: CEGroundTobacco
+      - id: CEFloraMaterial10
       - id: CEFloorTileGrass30
       - id: CEFloorTileGrassAutumn30
       - id: CEFloorTileMycelium30

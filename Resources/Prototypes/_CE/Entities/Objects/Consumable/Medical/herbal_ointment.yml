@@ -1,8 +1,8 @@
 - type: entity
-  id: CEPlastiseal
+  id: CEHerbalOintment
   parent: BaseItem
-  name: plastiseal
-  description: A bandage net woven from afar powerful enough to remove poison and cure burn wounds.
+  name: herbal ointment
+  description: A thick salve of crushed herbs. Soothes burns and draws out poison.
   suffix: 5
   categories: [ ForkFiltered ]
   components:
@@ -16,9 +16,9 @@
       - state: herbbandage_3
         map: ["base"]
   - type: Appearance
-#  - type: Construction
-#    graph: CEPlastiseal
-#    node: CEPlastiseal
+  - type: Construction
+    graph: CEHerbalOintment
+    node: ceherbalointment
   - type: CEConsumable
     delay: 2.5
     repeat: true
@@ -57,7 +57,7 @@
     - !type:ModifyBleeding
       amount: -2
   - type: Stack
-    stackType: CEPlastiseal
+    stackType: CEHerbalOintment
     count: 5
     baseLayer: base
     layerStates:
@@ -68,8 +68,8 @@
     price: 2
 
 - type: entity
-  id: CEPlastiseal1
-  parent: CEPlastiseal
+  id: CEHerbalOintment1
+  parent: CEHerbalOintment
   suffix: 1
   components:
   - type: Sprite

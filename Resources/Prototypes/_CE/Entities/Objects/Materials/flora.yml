@@ -1,0 +1,38 @@
+- type: entity
+  id: CEFloraMaterial1
+  parent: [ BaseItem, CEBasePlantable ]
+  name: flora material
+  description: An organic material used for medicinal or construction purposes.
+  suffix: 1
+  categories: [ ForkFiltered ]
+  components:
+  - type: Appearance
+  - type: Item
+    size: Normal
+  - type: Stack
+    stackType: CEFloraMaterial
+    count: 1
+    baseLayer: base
+    layerStates:
+    - grass_material1
+    - grass_material2
+    - grass_material3
+  - type: Sprite
+    sprite: _CE/Objects/Materials/flora.rsi
+    layers:
+    - state: grass_material1
+      map: ["base"]
+  - type: CEPlaceable
+    prototype: CEHighBush
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      CEFloraMaterial: 10
+
+- type: entity
+  id: CEFloraMaterial10
+  parent: CEFloraMaterial1
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10

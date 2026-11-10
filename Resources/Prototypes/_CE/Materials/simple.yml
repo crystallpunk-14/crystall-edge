@@ -43,6 +43,15 @@
   price: 0.3
 
 - type: material
+  id: CEFloraMaterial
+  stackEntity: CEFloraMaterial1
+  name: ce-material-flora
+  unit: materials-unit-piece
+  icon: { sprite: _CE/Objects/Materials/flora.rsi, state: grass_material1 }
+  color: "#85903e"
+  price: 0.01
+
+- type: material
   id: CELeather
   stackEntity: CELeather1
   name: ce-material-leather

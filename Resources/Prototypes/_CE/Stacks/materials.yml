@@ -34,6 +34,13 @@
   maxCount: 10
 
 - type: stack
+  id: CEFloraMaterial
+  name: ce-stack-flora
+  spawn: CEFloraMaterial1
+  icon: { sprite: _CE/Objects/Materials/flora.rsi, state: grass_material1 }
+  maxCount: 10
+
+- type: stack
   id: CEIronBar
   name: ce-stack-iron-bars
   spawn: CEIronBar1

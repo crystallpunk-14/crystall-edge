@@ -1,0 +1,14 @@
+- type: constructionGraph
+  id: CEHerbalOintment
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: ceherbalointment
+      steps:
+      - material: CEFloraMaterial
+        amount: 3
+        doAfter: 3
+
+  - node: ceherbalointment
+    entity: CEHerbalOintment1
