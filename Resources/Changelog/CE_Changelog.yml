@@ -1861,3 +1861,24 @@
   id: 1155
   time: '2026-11-08T15:57:59.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/596
+- author: TheShuEd
+  changes:
+  - message: You can find various useful items in chests around the city!
+    type: Add
+  - message: Engineers can craft a resurrection table
+    type: Add
+  - message: New medical goggles have been added, allowing you to see other players'
+      health and stamina accurately when examining them.
+    type: Add
+  - message: "The Engineer\u2019s Energy Scanner goggles now also allow you to see\
+      \ the mana levels of other players and items."
+    type: Add
+  - message: Added the Pulse Amulet and the Pulse Projector. Amulet wearers and the
+      amulets themselves are visible on the projector. For now, only engineers have
+      the crafting recipes.
+    type: Add
+  - message: Fixed a bug that caused weapon attack animation dashing to not work correctly.
+    type: Fix
+  id: 1156
+  time: '2026-11-11T21:06:12.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/598
