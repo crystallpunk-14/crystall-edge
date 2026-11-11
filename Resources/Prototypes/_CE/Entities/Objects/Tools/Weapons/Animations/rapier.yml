@@ -52,8 +52,7 @@
   events:
     0:
     - !type:Dash
-      distance: 1
-      ignoreFriction: true
+      distance: 0.5
     - !type:UsedEntityAnimation
       offsetAnimation:
       - time: 0.0
@@ -108,5 +107,4 @@
         slot: OnHeavyHit
     0.55:
     - !type:Dash
-      distance: -1
-      ignoreFriction: true
+      distance: -0.5

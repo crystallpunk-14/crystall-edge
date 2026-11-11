@@ -24,3 +24,13 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEBloodpack
+
+- type: tradeOffer
+  id: BuyClothingEyesMedicalGlasses
+  shop: ApothecariesGuild
+  weight: 0.1
+  pay:
+    bonus: 5
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingEyesMedicalGlasses

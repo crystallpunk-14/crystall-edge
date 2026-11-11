@@ -107,6 +107,16 @@
       - id: CEScissors
       - id: CEBaseLockpick
         weight: 0.1
+      # Glasses and monocles with special properties
+      - !type:GroupSelector
+        weight: 0.3
+        children:
+        - id: CEClothingEyesAlchemyGlasses
+        - id: CEClothingEyesMedicalGlasses
+        - id: CEClothingEyesMiningGlasses
+        - id: CEClothingEyesEnergyScanner
+        - id: CEClothingEyesAlchemyMonocle
+        - id: CEClothingEyesMerchantMonocle
       - id: CEClothingWristwatch
         weight: 0.3
       - id: CEClothingWristwatchGold

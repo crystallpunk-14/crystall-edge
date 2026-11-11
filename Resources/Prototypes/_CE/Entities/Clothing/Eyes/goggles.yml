@@ -29,7 +29,7 @@
   parent: CEClothingEyesGogglesFoldableBase
   id: CEClothingEyesMedicalGlasses
   name: medical glasses
-  description: Glasses that show how wounded and exhausted a creature is. Examining health through them gives exact numbers.
+  description: Glasses that show how wounded and exhausted a creature is. Examining health through them gives more concrete information.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Eyes/Hospital/medical_glasses.rsi
