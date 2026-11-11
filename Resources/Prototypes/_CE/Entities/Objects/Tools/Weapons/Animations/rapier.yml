@@ -95,7 +95,7 @@
     0.1:
     - !type:PlaySound
       sound:
-        path: /Audio/_CE/Effects/Weapon/slash_sword3.ogg
+        path: /Audio/_CE/Effects/Weapon/slash_sword2.ogg
     0.35:
     - !type:WeaponEffectSlot
       slot: OnSwing
