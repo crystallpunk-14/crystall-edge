@@ -308,6 +308,12 @@
   - !type:StackResource
     stack: CEBrassRod
     count: 2
+  - !type:StackResource
+    stack: CEGoldBar
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEStoneHeart
+    count: 1
   result: CEClothingEyesAlchemyGlasses
   resultCount: 1
 
@@ -323,6 +329,12 @@
   - !type:StackResource
     stack: CEBrassRod
     count: 2
+  - !type:StackResource
+    stack: CEGoldBar
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEStoneHeart
+    count: 1
   result: CEClothingEyesMedicalGlasses
   resultCount: 1
 
