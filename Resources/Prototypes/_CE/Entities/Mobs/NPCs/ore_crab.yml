@@ -505,7 +505,6 @@
     - !type:Dash
       distance: 2.5
       speed: 8
-      ignoreFriction: true
     - !type:PlaySound
       positional: true
       sound:

@@ -1,6 +1,8 @@
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared._CE.MagicVision.Events;
+using Content.Shared._CE.ManaVision;
+using Content.Shared._CE.MedicalVision;
 using Content.Shared._CE.MeleeWeapon;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -54,9 +56,11 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, CEZFallingDamageCalculateEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEZLevelChasmAttempt>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEGetOutgoingDamageEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, CECheckTimeSenseEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckMagicVisionEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CERefreshWaypointersEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<CETimeSenseComponent>>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<CEMedicalVisionComponent>>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<CEManaVisionComponent>>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEAttackAttemptEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, InteractionAttemptEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, UseAttemptEvent>(RelayStatusEffectEvent);

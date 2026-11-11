@@ -18,13 +18,6 @@ public sealed partial class Dash : CEEntityEffectBase<Dash>
     [DataField]
     public float Distance = 1f;
 
-    /// <summary>
-    /// Removes the mob's movement friction for the flight time, so the dash covers the whole <see cref="Distance"/>.
-    /// Without it mob friction eats most of a long dash.
-    /// </summary>
-    [DataField]
-    public bool IgnoreFriction;
-
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
         Loc.GetString("ce-entity-effect-guidebook-dash", ("distance", Distance));
 }
@@ -50,8 +43,9 @@ public sealed partial class CEDashEffectSystem : CEEntityEffectSystem<Dash>
         var distance = args.Effect.Distance * args.Args.Power;
         var speed = args.Effect.Speed * args.Args.Power;
 
+        // Movement friction is removed for the flight time, otherwise it eats most of a long dash.
         // Negative distance dashes backwards, so the flight time uses its magnitude
-        if (args.Effect.IgnoreFriction && speed > 0)
+        if (speed > 0)
             _movementMod.TryAddFrictionModDuration(entity, TimeSpan.FromSeconds(MathF.Abs(distance) / speed), 0f);
 
         _throwing.TryThrow(

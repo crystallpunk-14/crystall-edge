@@ -1,0 +1,75 @@
+- type: job
+  id: CEHospitalWarden
+  setPreference: true
+  name: ce-job-name-hospital-warden
+  description: ce-job-desc-hospital-warden
+  playTimeTracker: CEJobHospitalWarden
+  startingGear: CEHospitalWardenGear
+  icon: CEJobIconHospitalWarden
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  supervisors: ce-job-supervisors-empire
+  requirements:
+    - !type:CEAchievementRequirement
+      achievement: RoundsFinishedAliveHospital2
+
+- type: startingGear
+  id: CEHospitalWardenGear
+  equipment:
+    belt: CEKeyRingHospitalWarden
+    pocket1: CEWalletFilledHospitalWarden
+
+- type: entity
+  id: CEWalletFilledHospitalWarden
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledHospitalWarden
+  parent: CEGoldChest
+  suffix: Filled, Hospital Warden
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+
+- type: entity
+  id: CEBedsideTableFilledHospitalWarden
+  parent: CEBedsideTableWooden
+  suffix: Filled, Hospital Warden
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingShirtWhite
+        - id: CEClothingShirtWhiteCollar
+        - id: CEClothingShirtDressWhiteCollar
+        - id: CEClothingCloakRaincoatWhite
+        - id: CEClothingCloakLeatherApron
+
+- type: entity
+  id: CEKeyRingHospitalWarden
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyHospitalHall
+    - id: CEKeyHospitalStaff
+    - id: CEKeyHospitalWarden

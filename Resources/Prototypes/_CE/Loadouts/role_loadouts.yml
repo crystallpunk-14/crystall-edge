@@ -95,6 +95,44 @@
   - CEGeneralShoes
   - CEGeneralInstruments
 
+# Hospital
+
+- type: roleLoadout
+  id: JobCEHospitalWarden
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEHospitalEyes
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEDoctor
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEHospitalEyes
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEOrderly
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEHospitalEyes
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
 # Citizens
 
 - type: roleLoadout

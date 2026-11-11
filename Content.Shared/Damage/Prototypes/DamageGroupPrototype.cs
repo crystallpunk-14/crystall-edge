@@ -1,5 +1,6 @@
 using Content.Shared.Damage.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Damage.Prototypes
 {
@@ -24,5 +25,11 @@ namespace Content.Shared.Damage.Prototypes
 
         [DataField(required: true)]
         public List<ProtoId<DamageTypePrototype>> DamageTypes { get; private set; } = default!;
+
+        /// <summary>
+        ///     Icon shown next to the group in health readouts
+        /// </summary>
+        [DataField]
+        public SpriteSpecifier? Icon { get; private set; }
     }
 }

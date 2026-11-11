@@ -1,0 +1,18 @@
+# Goggles / Eyes
+
+- type: loadoutGroup
+  id: CEHospitalEyes
+  name: ce-loadout-goggles
+  loadouts:
+  - CEClothingEyesAlchemyGlasses
+  - CEClothingEyesMedicalGlasses
+
+- type: loadout
+  id: CEClothingEyesAlchemyGlasses
+  equipment:
+    eyes: CEClothingEyesAlchemyGlasses
+
+- type: loadout
+  id: CEClothingEyesMedicalGlasses
+  equipment:
+    eyes: CEClothingEyesMedicalGlasses

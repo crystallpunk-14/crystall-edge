@@ -33,6 +33,17 @@ ce-job-desc-brigadier = Возглавляйте инженерные подра
 ce-job-name-technician = Техник
 ce-job-desc-technician = Выполняйте технические ремонтные и профилактические работы. Помогайте бригадиру поддерживать всё в рабочем состоянии.
 
+# Hospital
+
+ce-job-name-hospital-warden = Смотритель госпиталя
+ce-job-desc-hospital-warden = Руководите Госпиталем, храните его казну и ведите лекарей на службе городу.
+
+ce-job-name-doctor = Доктор
+ce-job-desc-doctor = Распознавайте и лечите болезни, варите лечебные зелья и возвращайте мёртвых к жизни.
+
+ce-job-name-orderly = Санитар
+ce-job-desc-orderly = Спешите к раненым, ищите павших и доставляйте их тела в Госпиталь.
+
 # Citizens
 
 ce-job-name-bard = Бард

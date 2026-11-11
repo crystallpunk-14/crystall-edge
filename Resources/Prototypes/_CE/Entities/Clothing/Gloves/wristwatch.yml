@@ -16,6 +16,7 @@
     shape:
     - 0, 0, 0, 1
   - type: CEClock
+  - type: CETimeSense
   - type: StaticPrice
     price: 40
   - type: PhysicalComposition

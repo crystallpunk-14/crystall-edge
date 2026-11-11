@@ -178,12 +178,13 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
                 Orientation = LayoutOrientation.Vertical,
             };
 
-            groupContainer.AddChild(CreateDiagnosticGroupTitle(groupTitleText, damageGroupId));
+            var group = _prototypes.Index<DamageGroupPrototype>(damageGroupId);
+
+            groupContainer.AddChild(CreateDiagnosticGroupTitle(groupTitleText, group));
 
             GroupsContainer.AddChild(groupContainer);
 
             // Show the damage for each type in that group.
-            var group = _prototypes.Index<DamageGroupPrototype>(damageGroupId);
 
             foreach (var type in group.DamageTypes)
             {
@@ -223,7 +224,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
         };
     }
 
-    private BoxContainer CreateDiagnosticGroupTitle(string text, string id)
+    private BoxContainer CreateDiagnosticGroupTitle(string text, DamageGroupPrototype group)
     {
         var rootContainer = new BoxContainer
         {
@@ -235,7 +236,7 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
         rootContainer.AddChild(new TextureRect
         {
             SetSize = new Vector2(30, 30),
-            Texture = GetTexture(id.ToLower())
+            Texture = group.Icon != null ? _spriteSystem.Frame0(group.Icon) : GetTexture("unknown")
         });
 
         rootContainer.AddChild(CreateDiagnosticItemLabel(text));

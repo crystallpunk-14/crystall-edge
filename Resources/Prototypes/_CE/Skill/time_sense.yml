@@ -12,4 +12,4 @@
   name: Sense of Time
   description: You intuitively feel what time of day it is.
   components:
-  - type: CETimeSenseStatusEffect
+  - type: CETimeSense

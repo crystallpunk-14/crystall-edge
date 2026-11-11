@@ -1,0 +1,74 @@
+- type: entity
+  id: CEPulseProjector
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: pulse projector
+  description: Projects the island and every charged pulse amulet on it. Flashes when one of the wearers is dying or dead.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCorePulseProjector
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.3
+    sprite: _CE/Structures/Industrial/pulse_projector.rsi
+    layers:
+    - state: base
+    - state: holo
+      shader: unshaded
+      map: ["holo"]
+      visible: false
+    - state: island
+      shader: unshaded
+      map: ["island"]
+      visible: false
+    - state: ok
+      shader: unshaded
+      map: ["status"]
+      visible: false
+  - type: Icon
+    sprite: _CE/Structures/Industrial/pulse_projector.rsi
+    state: base
+  - type: CEPulseProjector
+  - type: ActivatableUI
+    key: enum.CEPulseProjectorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: Clickable
+  - type: InteractionOutline
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: UserInterface
+    interfaces:
+      enum.CEPulseProjectorUiKey.Key:
+        type: CEPulseProjectorBoundUserInterface
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        status:
+          True: {visible: true}
+          False: {visible: false}
+        holo:
+          True: {visible: true}
+          False: {visible: false}
+        island:
+          True: {visible: true}
+          False: {visible: false}
+      enum.CEPulseProjectorVisuals.Alert:
+        status:
+          True: {state: error}
+          False: {state: ok}
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#fef6c9"
+    enabled: false

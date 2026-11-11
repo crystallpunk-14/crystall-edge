@@ -243,6 +243,24 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: PulseAmulet
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 4
+  result: CEPulseAmulet
+  resultCount: 1
+
+- type: workbenchRecipe
   id: ClothingEyesMiningGlasses
   parent: BaseAssemblyShopRecipe
   category: Tools
@@ -276,6 +294,36 @@
     stack: CEMachinePartEnergyLine
     count: 1
   result: CEClothingEyesEnergyScanner
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: ClothingEyesAlchemyGlasses
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  result: CEClothingEyesAlchemyGlasses
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: ClothingEyesMedicalGlasses
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 3
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  result: CEClothingEyesMedicalGlasses
   resultCount: 1
 
 - type: workbenchRecipe
@@ -581,6 +629,24 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: MachineCoreRevivalTable
+  parent: BaseAssemblyShopRecipe
+  category: MachineCore
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 6
+  result: CEMachineCoreRevivalTable
+  resultCount: 1
+
+- type: workbenchRecipe
   id: MachineCoreDistributionUnit
   parent: BaseAssemblyShopRecipe
   category: MachineCore
@@ -653,6 +719,27 @@
     stack: CEIronSheet
     count: 3
   result: CEMachineCoreGridProjector
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: MachineCorePulseProjector
+  parent: BaseAssemblyShopRecipe
+  category: MachineCore
+  craftTime: 2.5
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCorePulseProjector
   resultCount: 1
 
 #- type: workbenchRecipe

@@ -24,3 +24,12 @@
   icon:
     sprite: _CE/Achievements/heads.rsi
     state: tavernmaster
+
+- type: achievement
+  id: RoundsFinishedAliveHospital2
+  name: ce-achievement-rounds-finished-alive-hospital-2-name
+  desc: ce-achievement-rounds-finished-alive-hospital-2-desc
+  unlocks: ce-achievement-rounds-finished-alive-hospital-2-unlocks
+  icon:
+    sprite: _CE/Achievements/heads.rsi
+    state: hospital_warden

@@ -36,6 +36,12 @@ ce-lock-shape-engineering-tunnels = инженерные туннели
 ce-lock-shape-engineering-brigadier = кабинет бригадира
 ce-lock-shape-engineering-storage = инженерный склад
 
+# Hospital
+
+ce-lock-shape-hospital-hall = холл госпиталя
+ce-lock-shape-hospital-staff = служебные помещения госпиталя
+ce-lock-shape-hospital-warden = кабинет смотрителя госпиталя
+
 # Citizens
 
 ce-lock-shape-tailor-shop = магазин одежды

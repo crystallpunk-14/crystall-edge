@@ -1,0 +1,15 @@
+- type: skill
+  id: ManaVision
+  icon:
+    sprite: _CE/Clothing/Eyes/Engineering/energy_scanner.rsi
+    state: icon
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectManaVision
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectManaVision
+  name: Mana Vision
+  description: You see how much mana a creature or an item holds.
+  components:
+  - type: CEManaVision

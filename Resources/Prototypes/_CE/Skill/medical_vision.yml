@@ -1,0 +1,15 @@
+- type: skill
+  id: MedicalVision
+  icon:
+    sprite: _CE/Clothing/Eyes/Hospital/medical_glasses.rsi
+    state: icon
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectMedicalVision
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectMedicalVision
+  name: Medical Vision
+  description: You see how wounded and exhausted a creature is, and its health examine gives exact numbers.
+  components:
+  - type: CEMedicalVision

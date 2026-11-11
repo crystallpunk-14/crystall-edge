@@ -33,6 +33,17 @@ ce-job-desc-brigadier = Lead the engineering forces, oversee all technical opera
 ce-job-name-technician = Technician
 ce-job-desc-technician = Perform technical repairs and maintenance work. Assist the Brigadier in keeping everything operational.
 
+# Hospital
+
+ce-job-name-hospital-warden = Hospital Warden
+ce-job-desc-hospital-warden = Run the Hospital, keep its treasury and lead the healers in their service to the city.
+
+ce-job-name-doctor = Doctor
+ce-job-desc-doctor = Diagnose and cure diseases, brew healing potions and bring the dead back to life.
+
+ce-job-name-orderly = Orderly
+ce-job-desc-orderly = Rush to the wounded, search for the fallen and carry their bodies back to the Hospital.
+
 # Citizens
 
 ce-job-name-bard = Bard

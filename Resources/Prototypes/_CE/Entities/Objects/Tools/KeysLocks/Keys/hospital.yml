@@ -1,0 +1,23 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyHospitalHall
+  suffix: Hospital Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: HospitalHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyHospitalStaff
+  suffix: Hospital Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: HospitalStaff
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyHospitalWarden
+  suffix: Hospital Warden
+  components:
+  - type: CEKey
+    autoGenerateShape: HospitalWarden

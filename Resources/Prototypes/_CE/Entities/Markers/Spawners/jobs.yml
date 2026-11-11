@@ -288,3 +288,79 @@
       state: equipped-EYES
     - sprite: _CE/Clothing/Head/Townfolk/Fedoras/brown.rsi
       state: equipped-HELMET
+
+# Hospital
+
+- type: entity
+  id: CESpawnPointHospitalWarden
+  parent: CESpawnPointJobBase
+  name: hospital warden
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEHospitalWarden
+  - type: Sprite
+    layers:
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
+      state: equipped-EYES
+    - sprite: _CE/Clothing/Cloak/Generic/Raincoat/white.rsi
+      state: equipped-CLOAK
+
+- type: entity
+  id: CESpawnPointDoctor
+  parent: CESpawnPointJobBase
+  name: doctor
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEDoctor
+  - type: Sprite
+    layers:
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
+      state: equipped-EYES
+
+- type: entity
+  id: CESpawnPointOrderly
+  parent: CESpawnPointJobBase
+  name: orderly
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEOrderly
+  - type: Sprite
+    layers:
+    - sprite: _CE/Markers/jobs.rsi
+      state: green
+    - sprite: _CE/Mobs/Species/Human/parts.rsi
+      state: full
+    - sprite: _CE/Clothing/Pants/Generic/brown.rsi
+      state: equipped-PANTS
+    - sprite: _CE/Clothing/Shoes/Generic/black.rsi
+      state: equipped-FEET
+    - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
+      state: equipped-SHIRT
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
+      state: equipped-EYES

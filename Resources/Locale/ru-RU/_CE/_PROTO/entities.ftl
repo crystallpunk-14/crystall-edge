@@ -1972,6 +1972,9 @@ ent-CEMachineCoreGeneratorMagicCapacitor = ядро магического ко�
 ent-CEMachineCoreMapProjector = ядро проектора карты
     .desc = { ent-CEBaseMachineCore.desc }
 
+ent-CEMachineCorePulseProjector = ядро проектора пульса
+    .desc = { ent-CEBaseMachineCore.desc }
+
 ent-CEMachineCoreGridProjector = ядро проектора энергосети острова
     .desc = { ent-CEBaseMachineCore.desc }
 
@@ -2449,6 +2452,9 @@ ent-CESafeFallingAmulet = амулет экстренной левитации
 
 ent-CEVoiceDistortionAmulet = амулет искажения голоса
     .desc = Теневая безделушка из Мрака. Если надеть её на пояс, она искажает голос носителя до неузнаваемости.
+
+ent-CEPulseAmulet = амулет пульса
+    .desc = Надетый на пояс, он сообщает всем проекторам пульса, где вы и дышите ли ещё. Понемногу разряжается, пока его носят; заряжается на зарядной платформе.
 
 ent-CECrayonBase = мелок
     .desc = Разноцветный мелок.
@@ -5491,6 +5497,9 @@ ent-CEFunnel = воронка
 
 ent-CEMapProjector = проектор карты
     .desc = Проецирует трёхмерную вращающуюся модель острова.
+
+ent-CEPulseProjector = проектор пульса
+    .desc = Проецирует остров и все заряженные амулеты пульса на нём. Мигает, когда кто-то из носителей при смерти или мёртв.
 
 ent-CEMurkShieldGenerator = генератор щита от мрака
     .desc = Зажигает щит от мрака каждый рассвет, если подключён к питанию. Горит только один щит одновременно, независимо от количества генераторов.

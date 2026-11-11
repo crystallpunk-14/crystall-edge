@@ -78,3 +78,43 @@
     - BELT
   - type: StaticPrice
     price: 75
+
+- type: entity
+  id: CEPulseAmulet
+  parent: BaseItem
+  name: pulse amulet
+  description: Reports to every pulse projector where you are and whether you still breathe.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Tools/pulse_amulet.rsi
+    layers:
+    - state: icon
+    - state: unshaded
+      shader: unshaded
+      map: ["glow"]
+  - type: CEPulseAmulet
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: ExaminableBattery
+  - type: BatteryVisuals
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        glow:
+          Empty: {visible: false}
+          Neither: {visible: true}
+          Full: {visible: true}
+  - type: Clothing
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - BELT
+  - type: StaticPrice
+    price: 50

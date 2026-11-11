@@ -191,6 +191,18 @@
   - type: StaticPrice
     price: 180
 
+- type: entity
+  id: CEMachineCorePulseProjector
+  parent: CEBaseMachineCore
+  name: pulse projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEPulseProjector
+  - type: StaticPrice
+    price: 120
+
 # Guild
 
 - type: entity
@@ -232,3 +244,15 @@
     guides:
     - CELocksKeysGuideEN
     - CELocksKeysGuideRU
+
+# Hospital
+
+- type: entity
+  id: CEMachineCoreRevivalTable
+  parent: CEBaseMachineCore
+  name: revival table machine core
+  components:
+  - type: MachineBoard
+    prototype: CERevivalTable
+  - type: StaticPrice
+    price: 300

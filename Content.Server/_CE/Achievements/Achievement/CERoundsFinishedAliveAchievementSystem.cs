@@ -24,6 +24,7 @@ public sealed partial class CERoundsFinishedAliveAchievementSystem : EntitySyste
         ("CEEngineering", 2, "RoundsFinishedAliveEngineering2"),
         ("CEGuild", 2, "RoundsFinishedAliveGuild2"),
         ("CETavern", 2, "RoundsFinishedAliveTavern2"),
+        ("CEHospital", 2, "RoundsFinishedAliveHospital2"),
     ];
 
     [SubscribeLocalEvent]

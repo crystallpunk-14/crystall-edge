@@ -1,6 +1,9 @@
 - type: damageGroup
   id: Brute
   name: damage-group-brute
+  icon:
+    sprite: _CE/Interface/Medical/examine_icons.rsi
+    state: brute
   damageTypes:
     - Blunt
     - Slash
@@ -9,6 +12,9 @@
 - type: damageGroup
   id: Burn
   name: damage-group-burn
+  icon:
+    sprite: _CE/Interface/Medical/examine_icons.rsi
+    state: burn
   damageTypes:
     - Heat
     - Shock
@@ -22,6 +28,9 @@
 - type: damageGroup
   id: Airloss
   name: damage-group-airloss
+  icon:
+    sprite: _CE/Interface/Medical/examine_icons.rsi
+    state: airloss
   damageTypes:
     - Asphyxiation
     - Bloodloss
@@ -31,6 +40,9 @@
 - type: damageGroup
   id: Toxin
   name: damage-group-toxin
+  icon:
+    sprite: Objects/Devices/health_analyzer.rsi
+    state: toxin
   damageTypes:
     - Poison
     - Radiation
@@ -38,6 +50,9 @@
 - type: damageGroup
   id: Genetic
   name: damage-group-genetic
+  icon:
+    sprite: _CE/Interface/Medical/examine_icons.rsi
+    state: genetic
   damageTypes:
     - Cellular
 
@@ -46,5 +61,8 @@
 - type: damageGroup
   id: Metaphysical
   name: damage-group-metaphysical
+  icon:
+    sprite: _CE/Interface/Medical/examine_icons.rsi
+    state: metaphysical
   damageTypes:
   - Holy

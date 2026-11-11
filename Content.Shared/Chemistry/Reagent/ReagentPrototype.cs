@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Linq;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.FixedPoint;
 using System.Text.Json.Serialization;
 using Content.Shared.Chemistry.Reaction;
@@ -236,6 +237,23 @@ namespace Content.Shared.Chemistry.Reagent
                         effect.Conditions?.Select(x => x.EntityConditionGuidebookText(prototype)).ToList() ?? new List<string>()
                     )));
         }
+
+        // CrystallEdge: guidebook lines for CE effects (no chance or conditions; those live inside the effects)
+        public IEnumerable<string> CEGuidebookReagentEffectsDescription(IPrototypeManager prototype, IEntitySystemManager entSys, IEnumerable<CEEntityEffect> effects)
+        {
+            foreach (var effect in effects)
+            {
+                yield return Loc.GetString(
+                    "guidebook-reagent-effect-description",
+                    ("reagent", LocalizedName),
+                    ("quantity", 0),
+                    ("effect", effect.EntityEffectGuidebookText(prototype, entSys)),
+                    ("chance", 1),
+                    ("conditionCount", 0),
+                    ("conditions", string.Empty));
+            }
+        }
+        // CrystallEdge end
     }
 
     [Serializable, NetSerializable]
@@ -285,6 +303,15 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField]
         public EntityEffect[] Effects = Array.Empty<EntityEffect>();
 
+        // CrystallEdge: reagents can carry CE entity effects
+        /// <summary>
+        ///     CE effects applied to the metabolizing body each cycle, after <see cref="Effects"/>.
+        ///     <see cref="CEEntityEffectArgs.Power"/> is the same scale upstream effects get.
+        /// </summary>
+        [DataField]
+        public List<CEEntityEffect> CeEffects = new();
+        // CrystallEdge end
+
         /// <summary>
         ///     Ratio of this reagent to metabolites for transfer to the next solution by a metabolizer
         /// </summary>
@@ -295,7 +322,12 @@ namespace Content.Shared.Chemistry.Reagent
 
         public ReagentEffectsGuideEntry MakeGuideEntry(IPrototypeManager prototype, IEntitySystemManager entSys, ReagentPrototype proto)
         {
-            return new ReagentEffectsGuideEntry(MetabolismRate, proto.GuidebookReagentEffectsDescription(prototype, entSys, Effects, MetabolismRate).ToArray(), Metabolites);
+            // CrystallEdge: list CE effects next to upstream ones
+            var descriptions = proto.GuidebookReagentEffectsDescription(prototype, entSys, Effects, MetabolismRate)
+                .Concat(proto.CEGuidebookReagentEffectsDescription(prototype, entSys, CeEffects))
+                .ToArray();
+            return new ReagentEffectsGuideEntry(MetabolismRate, descriptions, Metabolites);
+            // CrystallEdge end
         }
     }
 

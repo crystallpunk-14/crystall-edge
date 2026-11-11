@@ -14,3 +14,6 @@
 
 - type: lockGroup
   id: Guild
+
+- type: lockGroup
+  id: Hospital

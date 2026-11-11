@@ -1,6 +1,7 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.StatusEffectNew;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 
@@ -33,6 +34,12 @@ public abstract partial class EquipmentHudSystem<T> : EntitySystem where T : ICo
 
         SubscribeLocalEvent<T, RefreshEquipmentHudEvent<T>>(OnRefreshComponentHud);
         SubscribeLocalEvent<T, InventoryRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshEquipmentHud);
+
+        // CrystallEdge: status effects grant HUDs too, so skills never put the component on the player
+        SubscribeLocalEvent<T, StatusEffectRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshStatusEffectHud);
+        SubscribeLocalEvent<T, StatusEffectAppliedEvent>(OnStatusEffectApplied);
+        SubscribeLocalEvent<T, StatusEffectRemovedEvent>(OnStatusEffectRemoved);
+        // CrystallEdge end
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
@@ -86,6 +93,25 @@ public abstract partial class EquipmentHudSystem<T> : EntitySystem where T : ICo
     {
         RefreshOverlay();
     }
+
+    // CrystallEdge: status effects grant HUDs too
+    private void OnStatusEffectApplied(Entity<T> ent, ref StatusEffectAppliedEvent args)
+    {
+        RefreshOverlay();
+    }
+
+    private void OnStatusEffectRemoved(Entity<T> ent, ref StatusEffectRemovedEvent args)
+    {
+        RefreshOverlay();
+    }
+
+    private void OnRefreshStatusEffectHud(Entity<T> ent, ref StatusEffectRelayedEvent<RefreshEquipmentHudEvent<T>> args)
+    {
+        var ev = args.Args;
+        OnRefreshComponentHud(ent, ref ev);
+        args.Args = ev;
+    }
+    // CrystallEdge end
 
     private void OnRoundRestart(RoundRestartCleanupEvent args)
     {

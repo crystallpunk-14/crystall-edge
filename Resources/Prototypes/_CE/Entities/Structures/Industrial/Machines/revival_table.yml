@@ -1,0 +1,73 @@
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CERevivalTable
+  name: revival table
+  description: A powered table that strikes whoever is strapped to it with a discharge. A healed enough corpse comes back to life, a living one gets burned.
+  components:
+  - type: Machine
+    board: CEMachineCoreRevivalTable
+  - type: Sprite
+    snapCardinals: true
+    drawdepth: BelowMobs
+    sprite: _CE/Structures/Industrial/revive_table.rsi
+    layers:
+    - state: base
+    - state: active
+      visible: false
+      shader: unshaded
+      map: ["active"]
+  - type: Icon
+    sprite: _CE/Structures/Industrial/revive_table.rsi
+    state: base
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        active:
+          True: {visible: true}
+          False: {visible: false}
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: DoAfter
+  - type: ApcPowerReceiver
+    powerLoad: 5
+  - type: CEStrapEffect
+    duration: 5
+    cooldown: 5
+    startSound:
+      path: /Audio/Items/Defib/defib_charge.ogg
+    finishSound:
+      path: /Audio/Items/Defib/defib_zap.ogg
+    vfx: CEOverchargeBrightVFX
+    effects:
+    - !type:Damage
+      damage:
+        types:
+          Heat: 30
+    - !type:ConditionalEffectGroup
+      conditions:
+      - !type:HasComponents
+        components:
+        - type: MobState
+      effects:
+      - !type:Revive
+      - !type:Jitter
+        duration: 2
+

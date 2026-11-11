@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.Body.Events;
 using Content.Shared.Body;
 using Content.Shared.Chemistry.Components;
@@ -217,6 +218,17 @@ public sealed partial class MetabolizerSystem : EntitySystem
                 ApplyEffect(effect);
 
             }
+
+            // CrystallEdge: CE effects get the same scale as upstream effects as Power; the organ is the source
+            if (entry.CeEffects.Count > 0)
+            {
+                var ceArgs = new CEEntityEffectArgs(EntityManager, ent, null, Angle.Zero, 0f, actualEntity, null, scale);
+                foreach (var ceEffect in entry.CeEffects)
+                {
+                    ceEffect.Effect(ceArgs);
+                }
+            }
+            // CrystallEdge end
 
             // TODO: We should have to do this with metabolism. ReagentEffect struct needs refactoring and so does metabolism!
             void ApplyEffect(EntityEffect effect)

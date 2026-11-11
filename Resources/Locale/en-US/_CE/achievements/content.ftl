@@ -33,6 +33,10 @@ ce-achievement-rounds-finished-alive-tavern-2-name = Tavernmaster
 ce-achievement-rounds-finished-alive-tavern-2-desc = Finish 2 rounds without dying while working in the Tavern
 ce-achievement-rounds-finished-alive-tavern-2-unlocks = Tavernmaster job
 
+ce-achievement-rounds-finished-alive-hospital-2-name = Hospital Warden
+ce-achievement-rounds-finished-alive-hospital-2-desc = Finish 2 rounds without dying while working in the Hospital
+ce-achievement-rounds-finished-alive-hospital-2-unlocks = Hospital Warden job
+
 ce-achievement-dark-feasts-5-name = Skulls of My Enemies
 ce-achievement-dark-feasts-5-desc = Hold 5 Dark Feasts
 ce-achievement-dark-feasts-5-unlocks = Horned bone mask in the loadout
