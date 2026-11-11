@@ -235,6 +235,14 @@
         prototype: NormalSatiationHunger
       Thirst:
         prototype: NormalSatiationThirst
+  - type: CESatiationBloodRefreshModifier
+    satiations:
+      Hunger:
+        thresholds:
+          Overfed: 1.5
+          Okay: 1
+          Peckish: 0.5
+          Starving: 0
   - type: StatusEffects
     allowed:
     - Stun

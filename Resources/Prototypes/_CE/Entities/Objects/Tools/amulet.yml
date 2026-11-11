@@ -39,7 +39,7 @@
     slots:
     - BELT
   - type: StaticPrice
-    price: 50
+    price: 30
 
 - type: entity
   id: CEVoiceDistortionAmulet

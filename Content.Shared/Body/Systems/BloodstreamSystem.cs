@@ -1,3 +1,4 @@
+using Content.Shared._CE.Nutrition;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
@@ -62,7 +63,11 @@ public sealed partial class BloodstreamSystem : EntitySystem
             // Blood level regulation. Must be alive.
             if (!_mobStateSystem.IsDead(uid))
             {
-                TryRegulateBloodLevel(uid, bloodstream.BloodRefreshAmount);
+                // CrystallEdge: natural blood regeneration scales with satiation
+                var refreshEv = new CEGetBloodRefreshModifierEvent(1f);
+                RaiseLocalEvent(uid, ref refreshEv);
+                TryRegulateBloodLevel(uid, bloodstream.BloodRefreshAmount * refreshEv.Multiplier);
+                // CrystallEdge end
 
                 // CrystallEdge: critical mobs keep bleeding out instead of suffocating
                 if (_mobStateSystem.IsCritical(uid))

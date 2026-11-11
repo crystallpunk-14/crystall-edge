@@ -11,4 +11,6 @@
       effects:
       - !type:Satiate
         satiationType: Hunger
+      - !type:ModifyBloodLevel
+        amount: 0.5 # +1 blood per digested unit at the default 0.5u/s metabolism rate
   pricePerUnit: 0.2
