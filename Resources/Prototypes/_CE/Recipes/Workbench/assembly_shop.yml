@@ -297,6 +297,36 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: ClothingEyesAlchemyGlasses
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  result: CEClothingEyesAlchemyGlasses
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: ClothingEyesMedicalGlasses
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 3
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  result: CEClothingEyesMedicalGlasses
+  resultCount: 1
+
+- type: workbenchRecipe
   id: VehicleHoverboard
   parent: BaseAssemblyShopRecipe
   category: Tools

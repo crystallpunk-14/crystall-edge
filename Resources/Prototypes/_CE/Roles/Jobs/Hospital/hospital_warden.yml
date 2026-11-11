@@ -16,7 +16,6 @@
 - type: startingGear
   id: CEHospitalWardenGear
   equipment:
-    eyes: CEClothingEyesAlchemyGlasses
     belt: CEKeyRingHospitalWarden
     pocket1: CEWalletFilledHospitalWarden
 

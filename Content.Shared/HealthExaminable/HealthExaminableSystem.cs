@@ -1,3 +1,4 @@
+using Content.Shared._CE.MedicalVision;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
@@ -12,6 +13,7 @@ public sealed partial class HealthExaminableSystem : EntitySystem
 {
     [Dependency] private ExamineSystemShared _examineSystem = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private CEMedicalExamineSystem _ceMedicalExamine = default!; // CrystallEdge: exact health examine with medical vision
 
     public override void Initialize()
     {
@@ -31,7 +33,10 @@ public sealed partial class HealthExaminableSystem : EntitySystem
         {
             Act = () =>
             {
-                var markup = CreateMarkup(uid, component, damage);
+                // CrystallEdge: medical vision replaces graded descriptions with exact numbers
+                if (!_ceMedicalExamine.TryCreateExactMarkup(args.User, (uid, damage), out var markup))
+                    markup = CreateMarkup(uid, component, damage);
+                // CrystallEdge end
                 _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
             },
             Text = Loc.GetString("health-examinable-verb-text"),

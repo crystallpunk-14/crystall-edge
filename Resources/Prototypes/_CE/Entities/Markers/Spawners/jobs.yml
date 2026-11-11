@@ -312,7 +312,7 @@
       state: equipped-FEET
     - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
       state: equipped-SHIRT
-    - sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
       state: equipped-EYES
     - sprite: _CE/Clothing/Cloak/Generic/Raincoat/white.rsi
       state: equipped-CLOAK
@@ -338,7 +338,7 @@
       state: equipped-FEET
     - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
       state: equipped-SHIRT
-    - sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
       state: equipped-EYES
 
 - type: entity
@@ -362,5 +362,5 @@
       state: equipped-FEET
     - sprite: _CE/Clothing/Shirt/Generic/Shirt/white.rsi
       state: equipped-SHIRT
-    - sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
+    - sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
       state: equipped-EYES
