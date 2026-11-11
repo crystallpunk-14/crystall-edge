@@ -14,7 +14,8 @@ namespace Content.Server._CE.CBT;
 /// Closed beta test launch schedule. Temporary system, will be removed after the closed beta test.
 /// While enabled: rounds can only be started inside of the scheduled windows (running rounds are never interrupted),
 /// the lobby countdown always shows the real time until the next window, the server language is switched to the
-/// language of the upcoming window and the Discord role of that language is pinged before the window opens.
+/// language of the upcoming window and the Discord role of that language is pinged before the window opens,
+/// and unanswered ahelps ping the admin role of the current language.
 /// Manual (open) launches are done by disabling <see cref="CCVars.CEClosedBetaTest"/>.
 /// The same schedule is duplicated by hand in the crystallpunk-docs schedule page.
 /// </summary>
@@ -37,8 +38,8 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
 
     private const ulong NotifyChannelId = 1289228845538345030;
 
-    private static readonly CELanguage Russian = new("ru-RU", 1231659870810406922);
-    private static readonly CELanguage English = new("en-US", 1231659924841566319);
+    private static readonly CELanguage Russian = new("ru-RU", 1231659870810406922, 1334476256825311252);
+    private static readonly CELanguage English = new("en-US", 1231659924841566319, 1356531986952622110);
 
     // Times are Moscow time (UTC+3, no DST).
     private static readonly CEWindow[] Windows =
@@ -143,6 +144,11 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
 
         if (target is not { } language)
             return;
+
+        // Unanswered ahelps ping the admins of the current server language.
+        var adminRole = language.Language.AdminRoleId.ToString();
+        if (_cfg.GetCVar(CCVars.DiscordAhelpMention) != adminRole)
+            _cfg.SetCVar(CCVars.DiscordAhelpMention, adminRole);
 
         var curLang = _cfg.GetCVar(CCVars.ServerLanguage);
         var newLang = language.Language.Code;
@@ -258,7 +264,10 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
         return start - MskOffset;
     }
 
-    private readonly record struct CELanguage(string Code, ulong RoleId);
+    /// <param name="Code">Culture name of the server language.</param>
+    /// <param name="RoleId">Discord role of the testers waiting for this language.</param>
+    /// <param name="AdminRoleId">Discord role of the admins of this language, pinged by unanswered ahelps.</param>
+    private readonly record struct CELanguage(string Code, ulong RoleId, ulong AdminRoleId);
 
     private readonly record struct CEWindow(DayOfWeek Day, int StartHour, int DurationHours, CELanguage Language);
 }
