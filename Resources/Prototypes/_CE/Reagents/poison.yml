@@ -9,12 +9,16 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 10
       - !type:PopupMessage
         type: Local
         visualType: MediumCaution
         messages: [ "generic-reagent-effect-burning-insides" ]
         probability: 0.1
+      ceEffects:
+      - !type:Damage
+        damage:
+          types:
+            Poison: 10
+        ignoreResistances: true # parity with upstream HealthChange
+        interruptDoAfters: false
+        colorFlash: false
