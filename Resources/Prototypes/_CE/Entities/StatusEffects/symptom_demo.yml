@@ -1,0 +1,51 @@
+# Symptom assembly demo: two sources share one symptom and have one own symptom each.
+# Apply with toolshed: `self statuseffect:add CEStatusEffectSymptomSourceDemoA 60`
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectSymptomSourceDemoA
+  name: symptom demo source A
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CESymptomSource
+    symptoms:
+    - CEStatusEffectSymptomDemoShared
+    - CEStatusEffectSymptomDemoA
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectSymptomSourceDemoB
+  name: symptom demo source B
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CESymptomSource
+    symptoms:
+    - CEStatusEffectSymptomDemoShared
+    - CEStatusEffectSymptomDemoB
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectSymptomDemoShared
+  name: shared demo symptom
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ExaminableStatusEffect
+    messageId: ce-symptom-demo-examine-shared
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectSymptomDemoA
+  name: demo symptom A
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ExaminableStatusEffect
+    messageId: ce-symptom-demo-examine-a
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectSymptomDemoB
+  name: demo symptom B
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ExaminableStatusEffect
+    messageId: ce-symptom-demo-examine-b
