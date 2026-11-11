@@ -362,6 +362,13 @@ namespace Content.Server.GameTicking
             if (DummyTicker || _startingRound)
                 return;
 
+            // CrystallEdge: closed beta schedule can forbid starting rounds
+            var startAttempt = new CERoundStartAttemptEvent();
+            RaiseLocalEvent(ref startAttempt);
+            if (startAttempt.Cancelled)
+                return;
+            // CrystallEdge end
+
             _startingRound = true;
 
             if (RoundId == 0)

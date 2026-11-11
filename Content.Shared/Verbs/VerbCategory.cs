@@ -9,7 +9,14 @@ namespace Content.Shared.Verbs
     [Serializable, NetSerializable]
     public sealed class VerbCategory
     {
-        public readonly string Text;
+        // CrystallEdge: category text is localized on every access instead of once in the constructor.
+        // Categories are static (live for the whole process) and the server language can change at runtime, so a cached
+        // text made client and server compare verbs with different category texts: duplicated, unclickable verbs.
+        // The loc id is what gets networked, so each side localizes it with its own current language.
+        private readonly string _textLocId;
+
+        public string Text => Loc.GetString(_textLocId);
+        // CrystallEdge end
 
         public readonly SpriteSpecifier? Icon;
 
@@ -30,7 +37,7 @@ namespace Content.Shared.Verbs
 
         public VerbCategory(string text, string? icon, bool iconsOnly = false)
         {
-            Text = Loc.GetString(text);
+            _textLocId = text; // CrystallEdge: see Text
             Icon = icon == null ? null : new SpriteSpecifier.Texture(new(icon));
             IconsOnly = iconsOnly;
         }

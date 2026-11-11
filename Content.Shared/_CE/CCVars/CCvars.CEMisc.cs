@@ -7,7 +7,7 @@ namespace Content.Shared.CCVar;
 public sealed partial class CCVars
 {
     /// <summary>
-    /// Automatically shuts down the server outside of the CBT plytime. Shitcoded enough, but it's temporary anyway
+    /// Closed beta test launch schedule: rounds can only start inside of the scheduled windows. Disable for manual open launches. Temporary.
     /// </summary>
     [CVarControl(AdminFlags.Admin)]
     public static readonly CVarDef<bool> CEClosedBetaTest =
