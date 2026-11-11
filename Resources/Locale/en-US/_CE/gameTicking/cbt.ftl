@@ -1,1 +1,1 @@
-ce-cbt-close-15m = ATTENTION: The server will automatically end the round in 15 minutes.
+ce-cbt-start-blocked = The round cannot be started right now because the automatic launch schedule is enabled.
