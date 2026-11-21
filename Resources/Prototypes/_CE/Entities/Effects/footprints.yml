@@ -10,7 +10,7 @@
     anchored: true
   - type: Clickable
   - type: Sprite
-    drawdepth: FloorObjects
+    drawdepth: ThickPipe
     layers:
     - sprite: _CE/Effects/Footprints/feet.rsi
       state: human
@@ -40,7 +40,7 @@
   - type: Transform
     anchored: true
   - type: Sprite
-    drawdepth: FloorObjects
+    drawdepth: ThickPipe
     layers:
     - sprite: _CE/Effects/Footprints/feet.rsi
       state: human
@@ -61,7 +61,7 @@
   description: Someone bled here. A lot.
   components:
   - type: Sprite
-    drawdepth: FloorObjects
+    drawdepth: ThickPipe
     layers:
     - sprite: _CE/Decals/blood.rsi
       state: splatter1
