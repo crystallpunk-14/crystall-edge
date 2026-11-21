@@ -15,9 +15,9 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      30: Dead
+      80: Dead
   - type: Damageable
-    damageModifierSet: CERockStructural
+    damageModifierSet: CERock
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: CEGOAP
@@ -109,9 +109,9 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      120: Dead
+      170: Dead
   - type: Damageable
-    damageModifierSet: CERockStructural
+    damageModifierSet: CERock
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: CEGOAP
