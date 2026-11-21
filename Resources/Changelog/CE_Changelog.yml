@@ -1882,3 +1882,16 @@
   id: 1156
   time: '2026-11-11T21:06:12.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/598
+- author: TheShuEd
+  changes:
+  - message: Shadow eaters now can fly above tables
+    type: Tweak
+  - message: Ore crabs and ore spider now vulnerable to swords and other default weapon.
+    type: Tweak
+  - message: Fixed bug when goblins can use human big head scars.
+    type: Fix
+  - message: Footprints and bloodtrails npow drawing under the pipes
+    type: Fix
+  id: 1157
+  time: '2026-11-21T14:26:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/604
