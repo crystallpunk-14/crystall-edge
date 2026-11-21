@@ -15,7 +15,7 @@ public sealed partial class CESymptomSystem : EntitySystem
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
     [Dependency] private EntityQuery<CESymptomSourceComponent> _sourceQuery = default!;
-    [Dependency] private EntityQuery<CEAssembledSymptomComponent> _assembledQuery = default!;
+    [Dependency] private EntityQuery<CEAutoSymptomComponent> _assembledQuery = default!;
 
     private static readonly TimeSpan UpdateFrequency = TimeSpan.FromSeconds(2);
 
@@ -23,18 +23,18 @@ public sealed partial class CESymptomSystem : EntitySystem
 
     private readonly List<EntityUid> _bearers = new();
     private readonly HashSet<EntProtoId> _needed = new();
-    private readonly List<EntityUid> _assembled = new();
+    private readonly List<EntityUid> _refreshed = new();
 
     [SubscribeLocalEvent]
     private void OnSourceApplied(Entity<CESymptomSourceComponent> ent, ref StatusEffectAppliedEvent args)
     {
-        MarkForRecalc(args.Target);
+        DirtySymptom(args.Target);
     }
 
     [SubscribeLocalEvent]
     private void OnSourceRemoved(Entity<CESymptomSourceComponent> ent, ref StatusEffectRemovedEvent args)
     {
-        MarkForRecalc(args.Target);
+        DirtySymptom(args.Target);
     }
 
     public override void Update(float frameTime)
@@ -47,7 +47,7 @@ public sealed partial class CESymptomSystem : EntitySystem
         _nextUpdate = _timing.CurTime + UpdateFrequency;
 
         _bearers.Clear();
-        var query = EntityQueryEnumerator<CESymptomRecalcComponent>();
+        var query = EntityQueryEnumerator<CESymptomDirtyComponent>();
         while (query.MoveNext(out var uid, out _))
         {
             _bearers.Add(uid);
@@ -55,29 +55,29 @@ public sealed partial class CESymptomSystem : EntitySystem
 
         foreach (var bearer in _bearers)
         {
-            RemComp<CESymptomRecalcComponent>(bearer);
-            AssembleSymptoms(bearer);
+            RemComp<CESymptomDirtyComponent>(bearer);
+            RefreshSymptoms(bearer);
         }
     }
 
-    private void MarkForRecalc(EntityUid bearer)
+    private void DirtySymptom(EntityUid bearer)
     {
         if (TerminatingOrDeleted(bearer))
             return;
 
-        EnsureComp<CESymptomRecalcComponent>(bearer);
+        EnsureComp<CESymptomDirtyComponent>(bearer);
     }
 
-    private void AssembleSymptoms(EntityUid bearer)
+    private void RefreshSymptoms(EntityUid bearer)
     {
         _needed.Clear();
-        _assembled.Clear();
+        _refreshed.Clear();
 
         foreach (var effect in _statusEffects.EnumerateStatusEffects(bearer))
         {
             if (_assembledQuery.HasComp(effect))
             {
-                _assembled.Add(effect);
+                _refreshed.Add(effect);
                 continue;
             }
 
@@ -91,7 +91,7 @@ public sealed partial class CESymptomSystem : EntitySystem
         }
 
         // Assembled symptoms still needed stay as they are, the rest are removed
-        foreach (var symptom in _assembled)
+        foreach (var symptom in _refreshed)
         {
             if (Prototype(symptom) is { } proto && _needed.Remove(proto.ID))
                 continue;
@@ -106,7 +106,7 @@ public sealed partial class CESymptomSystem : EntitySystem
                 continue;
 
             if (_statusEffects.TrySetStatusEffectDuration(bearer, symptom, out var effect))
-                EnsureComp<CEAssembledSymptomComponent>(effect.Value);
+                EnsureComp<CEAutoSymptomComponent>(effect.Value);
         }
     }
 }

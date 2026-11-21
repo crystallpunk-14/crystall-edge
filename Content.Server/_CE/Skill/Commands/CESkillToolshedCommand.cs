@@ -7,7 +7,7 @@ using Robust.Shared.Toolshed;
 namespace Content.Server._CE.Skill.Commands;
 
 /// <summary>
-/// Toolshed skill commands: <c>self skill:add Fireball</c>, <c>entities with MindContainer skill:remove Fireball</c>.
+/// Skill commands: <c>self skill:add Fireball</c>, <c>entities with MindContainer skill:remove Fireball</c>.
 /// </summary>
 [ToolshedCommand(Name = "skill"), AdminCommand(AdminFlags.Admin)]
 public sealed class CESkillToolshedCommand : ToolshedCommand

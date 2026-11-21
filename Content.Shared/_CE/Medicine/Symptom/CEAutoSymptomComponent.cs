@@ -5,4 +5,4 @@ namespace Content.Shared._CE.Medicine.Symptom;
 /// and their own <see cref="CESymptomSourceComponent"/> is ignored.
 /// </summary>
 [RegisterComponent]
-public sealed partial class CEAssembledSymptomComponent : Component;
+public sealed partial class CEAutoSymptomComponent : Component;
