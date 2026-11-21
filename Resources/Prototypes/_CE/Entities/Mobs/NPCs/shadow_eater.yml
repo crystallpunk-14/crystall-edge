@@ -22,6 +22,19 @@
     dissolved: 0.7
   - type: CEZPhysics
     gravityMultiplier: 0 # hovers, so it no longer wanders off into chasms
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - MobLayer
+  - type: CEGOAPSteering
+    climb: false
   - type: MovementSpeedModifier
     baseSprintSpeed: 2.5
     baseFriction: 0.5
