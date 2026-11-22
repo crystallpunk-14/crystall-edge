@@ -1895,3 +1895,15 @@
   id: 1157
   time: '2026-11-21T14:26:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/604
+- author: TheShuEd
+  changes:
+  - message: Removed dark feast werewolf ability. Murk works as timer again.
+    type: Remove
+  - message: 'Trading slots now have a rotation mechanism: items that have been listed
+      cannot be listed again until all other types of items have been listed.'
+    type: Tweak
+  - message: The price of diamonds has been reduced by a factor of 5
+    type: Tweak
+  id: 1158
+  time: '2026-11-22T14:47:55.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/605
