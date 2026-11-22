@@ -10,8 +10,23 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.CBT;
 
+public interface ICEClosedBetaTestManager
+{
+    void Initialize();
+
+    /// <summary>
+    /// Called every frame, including frames while the simulation is paused (an empty server auto-pauses).
+    /// </summary>
+    void Update();
+
+    /// <summary>
+    /// Whether a round is allowed to start right now. Announces the refusal when it is not.
+    /// </summary>
+    bool CanStartRound();
+}
+
 /// <summary>
-/// Closed beta test launch schedule. Temporary system, will be removed after the closed beta test.
+/// Closed beta test launch schedule. Temporary manager, will be removed after the closed beta test.
 /// While enabled: rounds can only be started inside of the scheduled windows (running rounds are never interrupted),
 /// the lobby countdown always shows the real time until the next window, the server language is switched to the
 /// language of the upcoming window and the Discord role of that language is pinged before the window opens,
@@ -19,14 +34,18 @@ namespace Content.Server._CE.CBT;
 /// Manual (open) launches are done by disabling <see cref="CCVars.CEClosedBetaTest"/>.
 /// The same schedule is duplicated by hand in the crystallpunk-docs schedule page.
 /// </summary>
-public sealed partial class CEClosedBetaTestSystem : EntitySystem
+/// <remarks>
+/// This is a manager and not an entity system on purpose: an empty server pauses the simulation and entity systems
+/// stop updating, while the schedule must keep working with nobody online.
+/// </remarks>
+public sealed partial class CEClosedBetaTestManager : ICEClosedBetaTestManager
 {
-    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private IEntitySystemManager _entSys = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private ChatSystem _chatSystem = default!;
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private DiscordLink _discordLink = default!;
+    [Dependency] private ILogManager _logManager = default!;
 
     private static readonly TimeSpan MskOffset = TimeSpan.FromHours(3);
     private static readonly TimeSpan LanguageSwitchLead = TimeSpan.FromHours(3);
@@ -47,26 +66,31 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
         new(DayOfWeek.Wednesday, 18, 4, Russian),
         new(DayOfWeek.Saturday, 16, 4, Russian),
         new(DayOfWeek.Thursday, 16, 4, English),
-        new(DayOfWeek.Sunday, 18, 4, English),
+        new(DayOfWeek.Sunday, 22, 4, English),
     ];
 
-    private readonly TimeSpan _updateFrequency = TimeSpan.FromSeconds(1f);
-    private TimeSpan _nextUpdateTime = TimeSpan.Zero;
+    private static readonly TimeSpan UpdateFrequency = TimeSpan.FromSeconds(1);
+
+    private ISawmill _sawmill = default!;
+
+    // Wall clock on purpose: IGameTiming.CurTime does not advance while the simulation is paused.
+    private DateTime _nextUpdateTime = DateTime.MinValue;
 
     private bool _enabled;
     private bool _timerSynced;
     private DateTime _lastNotifiedStart;
+    private DateTime _pendingNotifyStart;
 
-    public override void Initialize()
+    public void Initialize()
     {
-        base.Initialize();
+        _sawmill = _logManager.GetSawmill("cbt");
 
         _cfg.OnValueChanged(CCVars.CEClosedBetaTest, value => _enabled = value, true);
     }
 
-    public override void Update(float frameTime)
+    public void Update()
     {
-        base.Update(frameTime);
+        var now = DateTime.UtcNow;
 
         if (!_enabled)
         {
@@ -74,54 +98,57 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
             if (_timerSynced)
             {
                 _timerSynced = false;
-                _ticker.CEResetRoundStartTime();
+
+                if (_entSys.TryGetEntitySystem<GameTicker>(out var ticker))
+                    ticker.CEResetRoundStartTime();
             }
 
             return;
         }
 
-        if (_timing.CurTime < _nextUpdateTime)
+        if (now < _nextUpdateTime)
             return;
 
-        _nextUpdateTime = _timing.CurTime + _updateFrequency;
-        var now = DateTime.UtcNow;
+        _nextUpdateTime = now + UpdateFrequency;
 
         UpdateLanguage(now);
         SyncLobbyTimer(now);
         NotifyDiscord(now);
     }
 
-    [SubscribeLocalEvent]
-    private void OnRoundStartAttempt(ref CERoundStartAttemptEvent args)
+    public bool CanStartRound()
     {
         if (!_enabled)
-            return;
+            return true;
 
         var now = DateTime.UtcNow;
 
         if (IsWindowOpen(now + StartTolerance))
-            return;
+            return true;
 
-        args.Cancelled = true;
         _chatManager.DispatchServerAnnouncement(Loc.GetString("ce-cbt-start-blocked"));
 
         // Whoever tried to start the round, the countdown must not keep ticking on an expired value.
         SyncLobbyTimer(now);
+        return false;
     }
 
     private void SyncLobbyTimer(DateTime now)
     {
+        if (!_entSys.TryGetEntitySystem<GameTicker>(out var ticker))
+            return;
+
         if (!IsWindowOpen(now + StartTolerance))
         {
             var nextStart = GetNextStart(now);
-            _ticker.CESetRoundStartTime(_timing.CurTime + (nextStart - now));
+            ticker.CESetRoundStartTime(_timing.CurTime + (nextStart - now));
             _timerSynced = true;
         }
         else if (_timerSynced)
         {
             // The window just opened: the round starts right now.
             _timerSynced = false;
-            _ticker.CESetRoundStartTime(_timing.CurTime);
+            ticker.CESetRoundStartTime(_timing.CurTime);
         }
     }
 
@@ -158,11 +185,14 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
 
         _cfg.SetCVar(CCVars.ServerLanguage, newLang);
 
+        if (!_entSys.TryGetEntitySystem<ChatSystem>(out var chatSystem))
+            return;
+
         var message = language.Language == Russian
             ? "WARNING: The server changes its language to Russian. For the changes to apply to your device, reconnect to the server."
             : "WARNING: The server changes its language to English. For the changes to apply to your device, reconnect to the server.";
 
-        _chatSystem.DispatchGlobalAnnouncement(
+        chatSystem.DispatchGlobalAnnouncement(
             message,
             announcementSound: new SoundPathSpecifier("/Audio/Effects/beep1.ogg"),
             sender: "Server"
@@ -176,13 +206,14 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
             var start = GetNextStart(window, now);
             var remaining = start - now;
 
-            if (remaining > NotifyLead || remaining <= NotifyLead - TimeSpan.FromMinutes(1))
+            // Anywhere between the lead time and the start: a late or failed attempt is retried until the window opens.
+            if (remaining > NotifyLead || remaining <= TimeSpan.Zero)
                 continue;
 
-            if (start == _lastNotifiedStart)
+            if (start == _lastNotifiedStart || start == _pendingNotifyStart)
                 continue;
 
-            _lastNotifiedStart = start;
+            _pendingNotifyStart = start;
             SendDiscordNotification(window, start);
             return;
         }
@@ -209,10 +240,16 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
             };
 
             await _discordLink.SendMessageAsync(NotifyChannelId, text, mentions);
+            _lastNotifiedStart = startUtc;
         }
         catch (Exception e)
         {
-            Log.Error($"Failed to send closed beta test discord notification:\n{e}");
+            _sawmill.Error($"Failed to send closed beta test discord notification:\n{e}");
+        }
+        finally
+        {
+            // Not delivered (no connection or an error): the next update retries until the window opens.
+            _pendingNotifyStart = DateTime.MinValue;
         }
     }
 
