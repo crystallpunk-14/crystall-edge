@@ -196,7 +196,7 @@ public abstract partial class CESharedMurkSystem : EntitySystem
 
         sphere.Comp.State = newState;
         Dirty(sphere);
-        RaiseLocalEvent(sphere.Owner, new CEMurkSphereStateChangedEvent(oldState, newState), broadcast: true);
+        RaiseLocalEvent(sphere.Owner, new CEMurkSphereStateChangedEvent(sphere.Owner, oldState, newState), broadcast: true);
     }
 
     /// <summary>

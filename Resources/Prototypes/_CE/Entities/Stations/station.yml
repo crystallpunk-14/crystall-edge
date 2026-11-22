@@ -5,3 +5,5 @@
     - BaseStation
     - BaseStationJobsSpawning
     - BaseStationRecords
+  components:
+  - type: CETradeShopDecks

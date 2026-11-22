@@ -22,7 +22,7 @@
     sprite: _CE/Clothing/Eyes/Hospital/alchemy_glasses.rsi
   - type: SolutionScanner
   - type: StaticPrice
-    price: 50
+    price: 5
   - type: VisionCorrection
 
 - type: entity
@@ -37,7 +37,7 @@
     sprite: _CE/Clothing/Eyes/Hospital/medical_glasses.rsi
   - type: CEMedicalVision
   - type: StaticPrice
-    price: 50
+    price: 5
   - type: VisionCorrection
 
 - type: entity

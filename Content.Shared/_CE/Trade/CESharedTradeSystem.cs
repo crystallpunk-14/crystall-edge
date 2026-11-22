@@ -7,6 +7,7 @@ using Content.Shared.Examine;
 using Content.Shared.Guidebook;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
+using Content.Shared.Station;
 using Content.Shared.Storage;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -24,6 +25,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     [Dependency] private CEEconomySystem _economy = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedStationSystem _station = default!;
 
     [Dependency] private EntityQuery<StorageComponent> _storageQuery = default!;
     [Dependency] private EntityQuery<CETradeOfferComponent> _offerQuery = default!;
@@ -153,7 +155,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (PickOffer(ent.Comp.Shop) is not { } offer)
+        if (PickOffer(ent, ent.Comp.Shop) is not { } offer)
             return;
 
         FillOffer(args.Offer,
@@ -187,7 +189,61 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         return true;
     }
 
-    private CETradeOfferPrototype? PickOffer(ProtoId<CETradeShopPrototype> shop)
+    /// <summary>
+    /// Draws the next offer from the station's shop deck so offers rotate; falls back to a weighted
+    /// random pick when the table is not on a station.
+    /// </summary>
+    private CETradeOfferPrototype? PickOffer(EntityUid table, ProtoId<CETradeShopPrototype> shop)
+    {
+        if (_station.GetOwningStation(table) is not { } station)
+            return PickRandomOffer(shop);
+
+        var decks = EnsureComp<CETradeShopDecksComponent>(station);
+        if (!decks.Decks.TryGetValue(shop, out var deck))
+        {
+            deck = new List<ProtoId<CETradeOfferPrototype>>();
+            decks.Decks[shop] = deck;
+        }
+
+        // A rebuilt deck may still be empty if the shop has no offers, so try at most twice.
+        for (var attempt = 0; attempt < 2; attempt++)
+        {
+            while (deck.Count > 0)
+            {
+                var id = deck[^1];
+                deck.RemoveAt(deck.Count - 1);
+
+                // Stale entries (removed prototype or another shop) are skipped.
+                if (Proto.TryIndex(id, out var offer) && offer.Shop == shop)
+                    return offer;
+            }
+
+            RefillDeck(shop, deck);
+        }
+
+        return null;
+    }
+
+    private void RefillDeck(ProtoId<CETradeShopPrototype> shop, List<ProtoId<CETradeOfferPrototype>> deck)
+    {
+        deck.Clear();
+        foreach (var offer in Proto.EnumeratePrototypes<CETradeOfferPrototype>())
+        {
+            if (offer.Shop != shop)
+                continue;
+
+            // Weight is the number of copies in the deck.
+            var copies = Math.Max(1, (int) MathF.Ceiling(offer.Weight));
+            for (var i = 0; i < copies; i++)
+            {
+                deck.Add(offer.ID);
+            }
+        }
+
+        _random.Shuffle(deck);
+    }
+
+    private CETradeOfferPrototype? PickRandomOffer(ProtoId<CETradeShopPrototype> shop)
     {
         var total = 0f;
         foreach (var offer in Proto.EnumeratePrototypes<CETradeOfferPrototype>())

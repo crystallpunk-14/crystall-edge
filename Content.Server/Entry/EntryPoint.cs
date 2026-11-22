@@ -1,3 +1,4 @@
+using Content.Server._CE.CBT;
 using Content.Server._CE.Discord;
 using Content.Server._CE.DiscordAuth;
 using Content.Server._CE.Sponsor;
@@ -50,6 +51,7 @@ namespace Content.Server.Entry
         [Dependency] private DiscordChatLink _discordChatLink = default!;
         [Dependency] private DiscordLink _discordLink = default!;
         [Dependency] private CEDiscordBot _CEDiscordBot = default!; //CrystallEdge
+        [Dependency] private ICEClosedBetaTestManager _ceClosedBeta = default!; //CrystallEdge
         [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!; //CrystallEdge
         [Dependency] private ICESponsorManager _ceSponsor = default!; //CrystallEdge
         [Dependency] private EuiManager _euiManager = default!;
@@ -152,6 +154,7 @@ namespace Content.Server.Entry
             _discordLink.Initialize();
             _discordChatLink.Initialize();
             _CEDiscordBot.Initialize(); //CrystallEdge
+            _ceClosedBeta.Initialize(); //CrystallEdge
             _euiManager.Initialize();
             _gameMap.Initialize();
             _entSys.GetEntitySystem<GameTicker>().PostInitialize();
@@ -180,6 +183,7 @@ namespace Content.Server.Entry
                     _playTimeTracking.Update();
                     _watchlistWebhookManager.Update();
                     _connection.Update();
+                    _ceClosedBeta.Update(); //CrystallEdge: runs even while the empty server is auto-paused
                     break;
             }
         }

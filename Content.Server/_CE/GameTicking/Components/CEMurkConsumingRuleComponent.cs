@@ -19,24 +19,28 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     public TimeSpan CrackDelay = TimeSpan.FromMinutes(1);
 
     /// <summary>
-    /// How much the murk has consumed the sphere, 0..1. Nightmare roles raise it with their abilities;
-    /// the sphere collapses at 1.
+    /// Real time after the sphere cracks until it collapses.
     /// </summary>
     [DataField]
-    public float MurkLevel;
+    public TimeSpan CollapseDelay = TimeSpan.FromMinutes(90);
+
+    /// <summary>
+    /// When the sphere cracked. Null until it does.
+    /// </summary>
+    [DataField]
+    public TimeSpan? CrackTime;
+
+    /// <summary>
+    /// When the sphere left the cracked state (fixed or collapsed). Freezes the collapse progress.
+    /// </summary>
+    [DataField]
+    public TimeSpan? CrackEndTime;
 
     /// <summary>
     /// The highest number of active players seen this round.
     /// </summary>
     [DataField]
     public int MaxOnline;
-
-    /// <summary>
-    /// Share of <see cref="MaxOnline"/> a player-scaled murk contribution has to reach to collapse the sphere:
-    /// at 0.4 and 10 players, four player-scaled contributions of 1 fill the murk.
-    /// </summary>
-    [DataField]
-    public float PlayerShare = 0.4f;
 
     /// <summary>
     /// Music played to everyone during the Restoration Ritual. The ritual lasts exactly as long as the track.
@@ -74,7 +78,7 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
 
     /// <summary>
     /// Fraction of the sphere's base intensity left by the moment of collapse. After the crack the
-    /// safe zone shrinks linearly from 1 to this value with <see cref="MurkLevel"/>.
+    /// safe zone shrinks linearly from 1 to this value with the collapse progress.
     /// </summary>
     [DataField]
     public float ShrinkMultiplier = 0.7f;
