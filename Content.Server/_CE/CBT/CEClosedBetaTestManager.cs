@@ -65,7 +65,7 @@ public sealed partial class CEClosedBetaTestManager : ICEClosedBetaTestManager
     [
         new(DayOfWeek.Wednesday, 18, 4, Russian),
         new(DayOfWeek.Saturday, 16, 4, Russian),
-        new(DayOfWeek.Thursday, 16, 4, English),
+        new(DayOfWeek.Thursday, 6, 4, English),
         new(DayOfWeek.Sunday, 22, 4, English),
     ];
 
