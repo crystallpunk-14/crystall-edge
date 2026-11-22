@@ -461,7 +461,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     }
 
     [SubscribeLocalEvent]
-    private void OnSphereStateChanged(Entity<CEMurkLusconSphereComponent> ent, ref CEMurkSphereStateChangedEvent args)
+    private void OnSphereStateChanged(CEMurkSphereStateChangedEvent args)
     {
         if (args.OldState != CEMurkSphereState.InGame)
             return;

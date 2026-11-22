@@ -59,8 +59,9 @@ public enum CEMurkSphereVisuals : byte
 /// Raised on a <see cref="CEMurkLusconSphereComponent"/> entity whenever its
 /// <see cref="CEMurkLusconSphereComponent.State"/> changes.
 /// </summary>
-public sealed class CEMurkSphereStateChangedEvent(CEMurkSphereState oldState, CEMurkSphereState newState) : EntityEventArgs
+public sealed class CEMurkSphereStateChangedEvent(EntityUid sphere, CEMurkSphereState oldState, CEMurkSphereState newState) : EntityEventArgs
 {
+    public readonly EntityUid Sphere = sphere;
     public readonly CEMurkSphereState OldState = oldState;
     public readonly CEMurkSphereState NewState = newState;
 }
