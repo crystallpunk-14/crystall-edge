@@ -26,11 +26,6 @@ public static class CEStatistics
     /// </summary>
     public static readonly CEStatisticDef<ProtoId<DepartmentPrototype>> RoundsFinishedAliveDepartment = new("rounds_finished_alive.department");
 
-    /// <summary>
-    /// Dark feasts the player finished as a werewolf.
-    /// </summary>
-    public static readonly CEStatisticDef DarkFeasts = new("dark_feasts");
-
     private static readonly Dictionary<string, CEStatisticDef> ByName = typeof(CEStatistics)
         .GetFields(BindingFlags.Public | BindingFlags.Static)
         .Where(f => f.FieldType == typeof(CEStatisticDef))

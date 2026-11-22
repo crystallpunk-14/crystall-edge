@@ -37,6 +37,3 @@ ce-achievement-rounds-finished-alive-hospital-2-name = Смотритель го
 ce-achievement-rounds-finished-alive-hospital-2-desc = Закончите 2 раунда, не умерев, работая в Госпитале
 ce-achievement-rounds-finished-alive-hospital-2-unlocks = профессия Смотрителя госпиталя
 
-ce-achievement-dark-feasts-5-name = Черепа врагов моих
-ce-achievement-dark-feasts-5-desc = Устройте 5 тёмных пиршеств
-ce-achievement-dark-feasts-5-unlocks = рогатая костяная маска в снаряжении
