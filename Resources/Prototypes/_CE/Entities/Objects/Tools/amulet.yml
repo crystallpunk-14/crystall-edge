@@ -117,4 +117,4 @@
     slots:
     - BELT
   - type: StaticPrice
-    price: 50
+    price: 100

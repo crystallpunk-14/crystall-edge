@@ -59,7 +59,7 @@
         layer:
         - TableLayer
   - type: StaticPrice
-    price: 500
+    price: 250
   - type: AmbientSound
     enabled: false
     volume: 2
