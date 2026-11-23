@@ -1,6 +1,6 @@
 - type: entity
   id: CEFloraMaterial1
-  parent: [ BaseItem, CEBasePlantable ]
+  parent: BaseItem
   name: flora material
   description: An organic material used for medicinal or construction purposes.
   suffix: 1
@@ -23,7 +23,21 @@
     - state: grass_material1
       map: ["base"]
   - type: CEPlaceable
-    prototype: CEHighBush
+    prototype: CEMoss
+    delay: 1
+    rotatable: false
+    placeSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+    conditions:
+    - !type:TileNotBlocked
+    - !type:NoReplacementKey
+      key: moss
+  - type: CEWallpaper
+    proto: Moss
+    delay: 1
   - type: Material
   - type: PhysicalComposition
     materialComposition:

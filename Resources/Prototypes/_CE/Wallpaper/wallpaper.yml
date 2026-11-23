@@ -178,3 +178,12 @@
   states:
   - icon
   - icon2
+
+- type: wallpaper
+  id: Moss
+  rsiPath: /Textures/_CE/Structures/Wallpaper/moss.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+  - icon4

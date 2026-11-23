@@ -1256,7 +1256,7 @@ ent-CEHerbalOintment1 = { ent-CEHerbalOintment }
     .suffix = 1
 
 ent-CEFloraMaterial1 = растительный материал
-    .desc = Органический материал, используемый в лечебных или строительных целях.
+    .desc = Органический материал, используемый в лечебных или строительных целях. Из него можно разводить мох на земле или оклеивать им стены.
     .suffix = 1
 
 ent-CEFloraMaterial10 = { ent-CEFloraMaterial1 }
@@ -3820,6 +3820,9 @@ ent-CEOrderBoardRed = { ent-CEOrderBoard }
 ent-CEOrderBoardYellow = { ent-CEOrderBoard }
     .desc = { ent-CEOrderBoard.desc }
     .suffix = Yellow flag
+
+ent-CEMoss = мох
+    .desc = Мягкий зелёный мох, ползущий по стенам.
 
 ent-CEPot = глиняный горшок
     .desc = Хрупкий глиняный горшок. Кто знает, что внутри?

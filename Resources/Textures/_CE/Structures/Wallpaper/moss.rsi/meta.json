@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Jaraten",
+  "size": {
+    "x": 32,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "icon",
+      "directions": 4
+    },
+    {
+      "name": "icon2",
+      "directions": 4
+    },
+    {
+      "name": "icon3",
+      "directions": 4
+    },
+    {
+      "name": "icon4",
+      "directions": 4
+    }
+  ]
+}
