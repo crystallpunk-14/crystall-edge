@@ -78,3 +78,12 @@
   - type: CEKeyRackFill
     groups:
     - Guild
+
+- type: entity
+  parent: CEWallmountKeyRack
+  id: CEWallmountKeyRackHospital
+  suffix: Filled, Hospital
+  components:
+  - type: CEKeyRackFill
+    groups:
+    - Hospital

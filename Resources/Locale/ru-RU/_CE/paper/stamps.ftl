@@ -6,3 +6,4 @@ ce-stamp-component-stamped-name-empire = Империя
 ce-stamp-component-stamped-name-guildmaster = Гильдмастер
 ce-stamp-component-stamped-name-academy = Ректор академии
 ce-stamp-component-stamped-name-engineering = Бригадир
+ce-stamp-component-stamped-name-hospital = Смотритель госпиталя

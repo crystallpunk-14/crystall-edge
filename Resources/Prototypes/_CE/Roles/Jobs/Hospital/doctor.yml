@@ -37,3 +37,49 @@
     contents:
     - id: CEKeyHospitalHall
     - id: CEKeyHospitalStaff
+
+- type: entity
+  id: CEChestFilledDoctor
+  parent: CEWoodenChest
+  suffix: Filled, Doctor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEClothingEyesMedicalGlasses
+        - id: CEGauze
+        - id: CEGauze
+        - id: CEGauze
+        - id: CEHerbalOintment
+        - id: CEHerbalOintment
+        - id: CEBloodpack
+        - id: CEBloodpack
+
+- type: entity
+  id: CEBedsideTableFilledDoctor
+  parent: CEBedsideTableWooden
+  suffix: Filled, Doctor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadBeretDoctor
+        - id: CEClothingCloakRaincoatAlchemist
+        - id: CEClothingCloakMantleAlchemist
+        - id: CEClothingShirtDressWhiteTeal
+        - id: CEClothingShirtDressOpenGreen
+        - id: CEClothingShirtDressTealPanel
+        - id: CEClothingShirtDressMedicalGreenBelt
+        - id: CEClothingShirtDressTealCollar
+        - id: CEClothingShirtMedicalWhite
+        - id: CEClothingShirtMedicalGreenCollar
+        - id: CEClothingShirtMedicalOpenTeal
+        - id: CEClothingShirtMedicalOpenGreen
+        - id: CEClothingShirtMedicalWhiteTeal
+        - id: CEClothingPantsMedicalSkirt
+        - id: CEClothingGlovesMedical
+        - id: CEClothingShoesMedicalHeels

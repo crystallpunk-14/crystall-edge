@@ -45,6 +45,7 @@
         children:
         - id: CERubberStampApproved
         - id: CERubberStampDenied
+        - id: CERubberStampHospital
 
 - type: entity
   id: CEBedsideTableFilledHospitalWarden
@@ -57,11 +58,23 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingShirtWhite
-        - id: CEClothingShirtWhiteCollar
-        - id: CEClothingShirtDressWhiteCollar
-        - id: CEClothingCloakRaincoatWhite
-        - id: CEClothingCloakLeatherApron
+        - id: CEClothingHeadNurseHat
+        - id: CEClothingHeadMirrorHat
+        - id: CEClothingCloakHospitalWarden
+        - id: CEClothingShirtDressNurse
+        - id: CEClothingShirtDressWhiteTeal
+        - id: CEClothingShirtDressOpenGreen
+        - id: CEClothingShirtDressTealPanel
+        - id: CEClothingShirtDressMedicalGreenBelt
+        - id: CEClothingShirtDressTealCollar
+        - id: CEClothingShirtMedicalWhite
+        - id: CEClothingShirtMedicalGreenCollar
+        - id: CEClothingShirtMedicalOpenTeal
+        - id: CEClothingShirtMedicalOpenGreen
+        - id: CEClothingShirtMedicalWhiteTeal
+        - id: CEClothingPantsMedicalSkirt
+        - id: CEClothingGlovesMedical
+        - id: CEClothingShoesMedicalHeels
 
 - type: entity
   id: CEKeyRingHospitalWarden

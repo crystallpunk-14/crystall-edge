@@ -859,6 +859,9 @@ ent-CERubberStampAcademy = печать ректора академии
 ent-CERubberStampEngineering = печать бригадира
     .desc = Резиновая печать с оттиском бригадира.
 
+ent-CERubberStampHospital = печать смотрителя госпиталя
+    .desc = Резиновая печать с оттиском смотрителя госпиталя.
+
 ent-CEBookBase = книга
     .desc = Книга в твёрдом переплёте.
 
