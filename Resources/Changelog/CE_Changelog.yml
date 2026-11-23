@@ -1907,3 +1907,16 @@
   id: 1158
   time: '2026-11-22T14:47:55.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/605
+- author: TheShuEd, Jaraten
+  changes:
+  - message: Added marble tiles and walls!
+    type: Add
+  - message: Added brass walls, pots, crates!
+    type: Add
+  - message: Added bunch of new medical clothing!
+    type: Add
+  - message: Added hospital building into Pharus.
+    type: Add
+  id: 1159
+  time: '2026-11-23T17:36:24.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/606
