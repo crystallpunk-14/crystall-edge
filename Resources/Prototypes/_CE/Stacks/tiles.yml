@@ -146,3 +146,17 @@
   maxCount: 30
 
 
+
+- type: stack
+  id: CEFloorTileMarbleBricks
+  name: ce-tiles-marble-bricks
+  spawn: CEFloorTileMarbleBricks
+  icon: { sprite: _CE/Objects/tile.rsi, state: marble_bricks }
+  maxCount: 30
+
+- type: stack
+  id: CEFloorTileMarbleBig
+  name: ce-tiles-marble-big
+  spawn: CEFloorTileMarbleBig
+  icon: { sprite: _CE/Objects/tile.rsi, state: marble_big }
+  maxCount: 30

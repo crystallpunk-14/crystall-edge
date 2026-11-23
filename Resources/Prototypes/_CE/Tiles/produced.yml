@@ -364,3 +364,63 @@
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileGlass
   transparent: true
+
+- type: tile
+  editorHidden: false
+  id: CEMarbleBricks
+  name: ce-tiles-marble-bricks
+  sprite: /Textures/_CE/Tiles/Marble/marble_bricks.png
+  variants: 9
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Marble/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Marble/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Marble/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Marble/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Marble/double_edge_S.png
+    East: /Textures/_CE/Tiles/Marble/double_edge_E.png
+    North: /Textures/_CE/Tiles/Marble/double_edge_N.png
+    West: /Textures/_CE/Tiles/Marble/double_edge_W.png
+  baseTurf: CEPlanks
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepTile
+  heatCapacity: 10000
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileMarbleBricks
+
+- type: tile
+  editorHidden: false
+  id: CEMarbleBig
+  name: ce-tiles-marble-big
+  sprite: /Textures/_CE/Tiles/Marble/marble_big.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Marble/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Marble/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Marble/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Marble/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Marble/double_edge_S.png
+    East: /Textures/_CE/Tiles/Marble/double_edge_E.png
+    North: /Textures/_CE/Tiles/Marble/double_edge_N.png
+    West: /Textures/_CE/Tiles/Marble/double_edge_W.png
+  baseTurf: CEPlanks
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepTile
+  heatCapacity: 10000
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileMarbleBig
