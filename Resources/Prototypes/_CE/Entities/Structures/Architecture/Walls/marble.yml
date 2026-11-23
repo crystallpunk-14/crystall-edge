@@ -1,0 +1,79 @@
+# Marble brick
+
+- type: entity
+  id: CEWallFrameMarbleBrick
+  name: marble brick wall base
+  parent: CEBaseWallFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_marble.rsi
+    state: frame
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/bricks_marble.rsi
+    state: frame
+  - type: CEAutoTilePlacement
+    tile: CEMarbleBricks
+  - type: Damageable
+    damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 70
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: CEWallMarbleBrick
+    node: CEWallFrameMarbleBrick
+
+- type: entity
+  id: CEWallMarbleBrick
+  name: marble brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_marble.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/bricks_marble.rsi
+  - type: CEAutoTilePlacement
+    tile: CEMarbleBricks
+  - type: IconSmooth
+    base: stonebricks
+  - type: Damageable
+    damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 3
+            max: 4
+      - !type:ChangeConstructionNodeBehavior
+        node: CEWallFrameMarbleBrick
+  - type: Construction
+    graph: CEWallMarbleBrick
+    node: CEWallMarbleBrick

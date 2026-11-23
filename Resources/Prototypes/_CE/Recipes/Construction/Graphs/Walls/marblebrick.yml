@@ -1,0 +1,45 @@
+- type: constructionGraph
+  id: CEWallMarbleBrick
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEWallFrameMarbleBrick
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 3
+
+    - node: CEWallFrameMarbleBrick
+      entity: CEWallFrameMarbleBrick
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 4
+        - to: CEWallMarbleBrick
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 3
+
+    - node: CEWallMarbleBrick
+      entity: CEWallMarbleBrick
+      edges:
+        - to: CEWallFrameMarbleBrick
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+
