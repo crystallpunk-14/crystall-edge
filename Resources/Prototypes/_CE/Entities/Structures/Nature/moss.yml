@@ -1,0 +1,48 @@
+- type: entity
+  id: CEMoss
+  name: moss
+  categories: [ ForkFiltered ]
+  description: Soft green moss creeping along the walls.
+  placement:
+    mode: SnapgridCenter
+    snap:
+      - Wall
+  components:
+  - type: PlacementReplacement
+    key: moss
+  - type: Sprite
+    drawdepth: LowFloors
+    sprite: _CE/Structures/Nature/moss.rsi
+  - type: Icon
+    sprite: _CE/Structures/Nature/moss.rsi
+    state: full
+  - type: IconSmooth
+    key: moss
+    additionalKeys:
+    - CEwall
+    base: carpet_
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - MidImpassable
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Injurable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

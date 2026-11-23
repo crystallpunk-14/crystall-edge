@@ -1,0 +1,19 @@
+# No construction edge into the wall yet, it can only be deconstructed.
+- type: constructionGraph
+  id: CEWallBrass
+  start: start
+  graph:
+    - node: start
+
+    - node: CEWallBrass
+      entity: CEWallBrass
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 4
