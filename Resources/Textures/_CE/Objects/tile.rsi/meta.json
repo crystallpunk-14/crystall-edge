@@ -63,7 +63,12 @@
     },
     {
       "name": "stonebricks_small_circles"
+    },
+    {
+      "name": "marble_bricks"
+    },
+    {
+      "name": "marble_big"
     }
-
   ]
 }

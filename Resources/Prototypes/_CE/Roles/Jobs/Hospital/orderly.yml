@@ -27,3 +27,45 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledOrderly
+  parent: CEWoodenChest
+  suffix: Filled, Orderly
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEGauze
+        - id: CEGauze
+        - id: CEHerbalOintment
+        - id: CEBloodpack
+
+- type: entity
+  id: CEBedsideTableFilledOrderly
+  parent: CEBedsideTableWooden
+  suffix: Filled, Orderly
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadCapOrderly
+        - id: CEClothingCloakRaincoatAlchemist
+        - id: CEClothingCloakMantleAlchemist
+        - id: CEClothingShirtDressWhiteTeal
+        - id: CEClothingShirtDressOpenGreen
+        - id: CEClothingShirtDressTealPanel
+        - id: CEClothingShirtDressMedicalGreenBelt
+        - id: CEClothingShirtDressTealCollar
+        - id: CEClothingShirtMedicalWhite
+        - id: CEClothingShirtMedicalGreenCollar
+        - id: CEClothingShirtMedicalOpenTeal
+        - id: CEClothingShirtMedicalOpenGreen
+        - id: CEClothingShirtMedicalWhiteTeal
+        - id: CEClothingPantsMedicalSkirt
+        - id: CEClothingGlovesMedical
+        - id: CEClothingShoesMedicalHeels

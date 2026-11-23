@@ -261,3 +261,58 @@
     sprite: _CE/Clothing/Shirt/Academy/robe2.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Academy/robe2.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMedicalWhite
+  name: white medical shirt
+  description: A plain white shirt, easy to keep clean.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_white.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_white.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMedicalGreenCollar
+  name: green collar shirt
+  description: A green shirt with a high collar.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_green_collar.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_green_collar.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMedicalOpenTeal
+  name: open teal shirt
+  description: A teal shirt with an open collar.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_open_teal.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_open_teal.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMedicalOpenGreen
+  name: open green shirt
+  description: A green shirt with an open collar.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_open_green.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_open_green.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMedicalWhiteTeal
+  name: white and teal shirt
+  description: A white shirt with teal trim.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_white_teal.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/shirt_white_teal.rsi

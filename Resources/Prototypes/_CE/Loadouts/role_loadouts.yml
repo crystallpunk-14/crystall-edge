@@ -101,36 +101,39 @@
   id: JobCEHospitalWarden
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEHospitalWardenHead
+  - CEHospitalWardenCloak
   - CEHospitalEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
-  - CEGeneralShoes
+  - CEHospitalGloves
+  - CEHospitalWardenShirt
+  - CEHospitalPants
+  - CEHospitalShoes
   - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEDoctor
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEHospitalDoctorHead
+  - CEHospitalCloak
   - CEHospitalEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
-  - CEGeneralShoes
+  - CEHospitalGloves
+  - CEHospitalShirt
+  - CEHospitalPants
+  - CEHospitalShoes
   - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEOrderly
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEHospitalOrderlyHead
+  - CEHospitalCloak
   - CEHospitalEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
-  - CEGeneralShoes
+  - CEHospitalGloves
+  - CEHospitalShirt
+  - CEHospitalPants
+  - CEHospitalShoes
   - CEGeneralInstruments
 
 # Citizens

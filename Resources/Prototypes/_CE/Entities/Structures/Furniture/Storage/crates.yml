@@ -133,3 +133,35 @@
   - type: Construction
     graph: CESmallWoodenCrate
     node: CESmallWoodenCrate
+
+- type: entity
+  id: CESmallBrassCrate
+  name: small brass crate
+  description: Sturdy brass crate.
+  parent: CEBaseSmallCrate
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Storage/Crates/small_brass.rsi
+  - type: Damageable
+    damageModifierSet: CEMetallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapBrass1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CESmallBrassCrate
+    node: CESmallBrassCrate

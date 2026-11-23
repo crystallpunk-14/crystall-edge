@@ -51,3 +51,30 @@
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1
               amount: 5
+
+- type: constructionGraph
+  id: CESmallBrassCrate
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CESmallBrassCrate
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEBrassSheet
+              amount: 3
+              doAfter: 3
+    - node: CESmallBrassCrate
+      entity: CESmallBrassCrate
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassSheet1
+              amount: 3

@@ -348,3 +348,35 @@
   - type: PhysicalComposition
     materialComposition:
       CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileMarbleBricks
+  name: marble bricks
+  components:
+  - type: Sprite
+    state: marble_bricks
+  - type: FloorTile
+    outputs:
+      - CEMarbleBricks
+  - type: Stack
+    stackType: CEFloorTileMarbleBricks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileMarbleBig
+  name: big marble slabs
+  components:
+  - type: Sprite
+    state: marble_big
+  - type: FloorTile
+    outputs:
+      - CEMarbleBig
+  - type: Stack
+    stackType: CEFloorTileMarbleBig
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2

@@ -6,3 +6,4 @@ ce-stamp-component-stamped-name-empire = The Empire
 ce-stamp-component-stamped-name-guildmaster = Guildmaster
 ce-stamp-component-stamped-name-academy = Academy Rector
 ce-stamp-component-stamped-name-engineering = Brigadier
+ce-stamp-component-stamped-name-hospital = Hospital Warden

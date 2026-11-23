@@ -53,3 +53,17 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: true
+  id: CEWallMarbleBrick
+  graph: CEWallMarbleBrick
+  startNode: start
+  targetNode: CEWallMarbleBrick
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

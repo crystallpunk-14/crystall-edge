@@ -1,0 +1,41 @@
+- type: entity
+  id: CEWallBrass
+  name: brass wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/brass.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/brass.rsi
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
+  - type: IconSmooth
+    base: wall
+  - type: CEWallOverlap
+    rsi: /Textures/_CE/Structures/Architecture/Walls/brass_overlap.rsi
+    state: overlap
+  - type: Damageable
+    damageModifierSet: CEMetallicStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBrassBar1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: CEWallBrass
+    node: CEWallBrass

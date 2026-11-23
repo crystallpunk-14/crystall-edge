@@ -8,3 +8,14 @@
     sprite: _CE/Clothing/Head/Sheriff/cap.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Sheriff/cap.rsi
+
+- type: entity
+  parent: CEClothingHeadBaseButcherable
+  id: CEClothingHeadCapOrderly
+  name: orderly's cap
+  description: A neat cap worn by hospital orderlies.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Hospital/orderly_cap.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Hospital/orderly_cap.rsi

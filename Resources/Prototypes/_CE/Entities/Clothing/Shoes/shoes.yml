@@ -107,3 +107,14 @@
       params:
         variation: 0.07
         volume: 8
+
+- type: entity
+  parent: CEClothingShoesHeels
+  id: CEClothingShoesMedicalHeels
+  name: medical heels
+  description: Elegant heeled shoes in hospital colors.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shoes/Hospital/heels.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shoes/Hospital/heels.rsi

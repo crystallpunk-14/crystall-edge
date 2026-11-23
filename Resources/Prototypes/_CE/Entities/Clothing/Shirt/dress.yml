@@ -272,3 +272,69 @@
     sprite: _CE/Clothing/Shirt/Engineering/dress.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Engineering/dress.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressNurse
+  name: nurse's dress
+  description: A modest, immaculately kept dress worn by hospital staff.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/nurse_dress.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/nurse_dress.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressWhiteTeal
+  name: white and teal dress
+  description: A clean white dress with teal accents, favored by hospital staff.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/dress_white_teal.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/dress_white_teal.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressOpenGreen
+  name: open green dress
+  description: A light green dress with an open front, easy to move in during long shifts.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/dress_open_green.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/dress_open_green.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressTealPanel
+  name: dress with teal panel
+  description: A white bodice over a dark skirt with a teal panel.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/dress_teal_panel.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/dress_teal_panel.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressMedicalGreenBelt
+  name: green belted dress
+  description: A deep green dress cinched with a brown belt.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/dress_green_belt.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/dress_green_belt.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressTealCollar
+  name: teal collar dress
+  description: A teal dress with a neat collar.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Hospital/dress_teal_collar.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Hospital/dress_teal_collar.rsi

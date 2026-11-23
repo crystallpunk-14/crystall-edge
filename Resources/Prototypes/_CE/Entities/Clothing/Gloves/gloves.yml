@@ -33,3 +33,14 @@
     sprite: _CE/Clothing/Gloves/Generic/leather_gloves.rsi
   - type: Clothing
     sprite: _CE/Clothing/Gloves/Generic/leather_gloves.rsi
+
+- type: entity
+  parent: CEClothingGlovesBase
+  id: CEClothingGlovesMedical
+  name: medical gloves
+  description: Thin white gloves that keep the hands clean during treatment.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Gloves/Hospital/medical_gloves.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Gloves/Hospital/medical_gloves.rsi

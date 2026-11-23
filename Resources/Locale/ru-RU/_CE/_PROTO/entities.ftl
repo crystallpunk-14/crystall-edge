@@ -859,6 +859,9 @@ ent-CERubberStampAcademy = печать ректора академии
 ent-CERubberStampEngineering = печать бригадира
     .desc = Резиновая печать с оттиском бригадира.
 
+ent-CERubberStampHospital = печать смотрителя госпиталя
+    .desc = Резиновая печать с оттиском смотрителя госпиталя.
+
 ent-CEBookBase = книга
     .desc = Книга в твёрдом переплёте.
 
@@ -1256,7 +1259,7 @@ ent-CEHerbalOintment1 = { ent-CEHerbalOintment }
     .suffix = 1
 
 ent-CEFloraMaterial1 = растительный материал
-    .desc = Органический материал, используемый в лечебных или строительных целях.
+    .desc = Органический материал, используемый в лечебных или строительных целях. Из него можно разводить мох на земле или оклеивать им стены.
     .suffix = 1
 
 ent-CEFloraMaterial10 = { ent-CEFloraMaterial1 }
@@ -3821,8 +3824,14 @@ ent-CEOrderBoardYellow = { ent-CEOrderBoard }
     .desc = { ent-CEOrderBoard.desc }
     .suffix = Yellow flag
 
+ent-CEMoss = мох
+    .desc = Мягкий зелёный мох, ползущий по стенам.
+
 ent-CEPot = глиняный горшок
     .desc = Хрупкий глиняный горшок. Кто знает, что внутри?
+
+ent-CEBrassPot = латунный горшок
+    .desc = Латунный горшок. Кто знает, что внутри?
 
 ent-CEPottedPlantBase = растение в горшке
     .desc = Одомашненное растение в глиняном горшке, ещё растения.
@@ -5457,6 +5466,9 @@ ent-CELargeWoodenCrate = большой деревянный ящик
 
 ent-CESmallWoodenCrate = малый деревянный ящик
     .desc = Прочный деревянный ящик.
+
+ent-CESmallBrassCrate = малый латунный ящик
+    .desc = Прочный латунный ящик.
 
 ent-CEWorkbench = верстак
     .desc = Стол для производства различных базовых инструментов.

@@ -63,3 +63,14 @@
     sprite: _CE/Clothing/Head/Bard/mercenary.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Bard/mercenary.rsi
+
+- type: entity
+  parent: CEClothingHeadBaseButcherable
+  id: CEClothingHeadBeretDoctor
+  name: doctor's beret
+  description: A soft beret worn by hospital doctors.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Hospital/doctor_beret.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Hospital/doctor_beret.rsi

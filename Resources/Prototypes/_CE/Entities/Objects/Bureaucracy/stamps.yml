@@ -95,3 +95,16 @@
     stampState: "red_on_paper" #TODO
   - type: Sprite
     state: engineering
+
+- type: entity
+  name: hospital warden's stamp
+  parent: CERubberStampBase
+  id: CERubberStampHospital
+  description: A rubber stamp bearing the seal of the hospital warden.
+  components:
+  - type: Stamp
+    stampedName: ce-stamp-component-stamped-name-hospital
+    stampedColor: "#3f8f81"
+    stampState: "red_on_paper" #TODO
+  - type: Sprite
+    state: hospital

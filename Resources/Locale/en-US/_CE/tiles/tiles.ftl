@@ -69,6 +69,9 @@ ce-tiles-stonebricks-square-pattern = square-pattern stone floor
 ce-tiles-stonebricks-medium-circles = medium-circle stone floor
 ce-tiles-stonebricks-small-circles = small-circle stone floor
 
+ce-tiles-marble-bricks = marble brick floor
+ce-tiles-marble-big = big marble slab floor
+
 ce-floor-tile-examine = Can be placed as [color=#FFFF00]{$tileName}[/color] over [color=#FFFF00]{$baseName}[/color]
 ce-floor-tile-wrong-turf = Cannot be placed here.
 ce-floor-tile-wrong-tool = Need here: {$toolNames}

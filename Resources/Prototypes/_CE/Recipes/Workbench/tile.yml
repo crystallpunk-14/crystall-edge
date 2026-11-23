@@ -219,3 +219,27 @@
     count: 1
   result: CEFloorTileRoofBlue
   resultCount: 5
+
+- type: workbenchRecipe
+  id: FloorTileMarbleBricks
+  parent: BaseWorkbenchRecipe
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileMarbleBricks
+  resultCount: 5
+
+- type: workbenchRecipe
+  id: FloorTileMarbleBig
+  parent: BaseWorkbenchRecipe
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileMarbleBig
+  resultCount: 5
