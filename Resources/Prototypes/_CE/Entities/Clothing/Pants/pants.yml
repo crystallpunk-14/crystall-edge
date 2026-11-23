@@ -118,3 +118,14 @@
     sprite: _CE/Clothing/Pants/Engineering/pants.rsi
   - type: Clothing
     sprite: _CE/Clothing/Pants/Engineering/pants.rsi
+
+- type: entity
+  parent: CEClothingPantsBase
+  id: CEClothingPantsMedicalSkirt
+  name: medical skirt
+  description: A practical skirt in hospital colors.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Pants/Hospital/skirt.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Pants/Hospital/skirt.rsi
