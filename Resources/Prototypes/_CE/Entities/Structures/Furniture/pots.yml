@@ -65,3 +65,21 @@
         - SmallMobMask
         layer:
         - MachineLayer
+
+- type: entity
+  parent: CEPot
+  id: CEBrassPot
+  categories: [ ForkFiltered ]
+  name: brass pot
+  description: A brass pot. Who knows what is hidden inside?
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/brass_pot.rsi
+    layers:
+    - state: pot1
+      map: [ "random" ]
+  - type: RandomSprite
+    available:
+    - random:
+        pot1: ""
+        pot2: ""

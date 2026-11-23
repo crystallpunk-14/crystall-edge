@@ -3824,6 +3824,9 @@ ent-CEOrderBoardYellow = { ent-CEOrderBoard }
 ent-CEPot = глиняный горшок
     .desc = Хрупкий глиняный горшок. Кто знает, что внутри?
 
+ent-CEBrassPot = латунный горшок
+    .desc = Латунный горшок. Кто знает, что внутри?
+
 ent-CEPottedPlantBase = растение в горшке
     .desc = Одомашненное растение в глиняном горшке, ещё растения.
 
