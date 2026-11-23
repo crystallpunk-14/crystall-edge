@@ -167,7 +167,7 @@ public sealed partial class CEClientWallpaperSystem : EntitySystem
         }
     }
 
-    private static string LayerKey(Direction side) => $"ce-wallpaper-{side}";
+    public static string LayerKey(Direction side) => $"ce-wallpaper-{side}";
 
     /// <summary>
     /// The base art is authored facing south (the default/front side). Every other side reuses the exact

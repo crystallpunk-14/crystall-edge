@@ -11,6 +11,9 @@
     tile: CEStonebricks
   - type: IconSmooth
     base: wall
+  - type: CEWallOverlap
+    rsi: /Textures/_CE/Structures/Architecture/Walls/brass_overlap.rsi
+    state: overlap
   - type: Damageable
     damageModifierSet: CEMetallicStructural
   - type: Injurable

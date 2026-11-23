@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Jaraten (Github/discord)",
+  "size": {
+    "x": 32,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "overlap",
+      "directions": 4
+    }
+  ]
+}
