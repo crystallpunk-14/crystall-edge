@@ -59,3 +59,14 @@
     sprite: _CE/Clothing/Cloak/Generic/maid_apron.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Generic/maid_apron.rsi
+
+- type: entity
+  parent: CEClothingCloakBase
+  id: CEClothingCloakHospitalWarden
+  name: hospital warden's cloak
+  description: A clean white cloak worn over the dress by the head of the hospital.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Hospital/hospital_warden_cloak.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Hospital/hospital_warden_cloak.rsi

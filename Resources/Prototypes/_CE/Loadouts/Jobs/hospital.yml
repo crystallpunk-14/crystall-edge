@@ -16,3 +16,56 @@
   id: CEClothingEyesMedicalGlasses
   equipment:
     eyes: CEClothingEyesMedicalGlasses
+
+# Hospital Warden clothing
+
+- type: loadoutGroup
+  id: CEHospitalWardenHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadNurseHat
+  - CEClothingHeadMirrorHat
+
+- type: loadout
+  id: CEClothingHeadNurseHat
+  equipment:
+    head: CEClothingHeadNurseHat
+
+- type: loadout
+  id: CEClothingHeadMirrorHat
+  equipment:
+    head: CEClothingHeadMirrorHat
+
+- type: loadoutGroup
+  id: CEHospitalWardenCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakHospitalWarden
+
+- type: loadout
+  id: CEClothingCloakHospitalWarden
+  equipment:
+    cloak: CEClothingCloakHospitalWarden
+
+- type: loadoutGroup
+  id: CEHospitalWardenShirt
+  name: ce-loadout-shirt
+  loadouts:
+  - CEClothingShirtDressNurse
+
+- type: loadout
+  id: CEClothingShirtDressNurse
+  equipment:
+    shirt: CEClothingShirtDressNurse
+
+- type: loadoutGroup
+  id: CEHospitalWardenGloves
+  name: ce-loadout-gloves
+  minLimit: 0
+  loadouts:
+  - CEClothingGlovesMedical
+
+- type: loadout
+  id: CEClothingGlovesMedical
+  equipment:
+    gloves: CEClothingGlovesMedical

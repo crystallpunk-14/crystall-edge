@@ -111,3 +111,25 @@
   - type: PhysicalComposition
     materialComposition:
       CELeather: 10
+
+- type: entity
+  parent: CEClothingHeadBaseButcherable
+  id: CEClothingHeadNurseHat
+  name: nurse's cap
+  description: A starched white cap worn by the head of the hospital.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Hospital/nurse_hat.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Hospital/nurse_hat.rsi
+
+- type: entity
+  parent: CEClothingHeadBaseButcherable
+  id: CEClothingHeadMirrorHat
+  name: head mirror
+  description: A concave mirror strapped to the forehead to focus light on whatever the physician is examining.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Hospital/mirror_hat.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Hospital/mirror_hat.rsi

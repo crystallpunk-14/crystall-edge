@@ -101,10 +101,11 @@
   id: JobCEHospitalWarden
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEHospitalWardenHead
+  - CEHospitalWardenCloak
   - CEHospitalEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
+  - CEHospitalWardenGloves
+  - CEHospitalWardenShirt
   - CEGeneralPants
   - CEGeneralShoes
   - CEGeneralInstruments
