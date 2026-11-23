@@ -89,7 +89,6 @@
     - LurkerShadowStep
     - LurkerJump
     - LurkerFear
-    - WerewolfDarkFeast
     descriptorName: ce-secret-role-name-werewolf
     descriptorColor: "#922525"
   - type: Puller

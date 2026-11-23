@@ -1,9 +1,12 @@
+using Content.Server._CE.CBT;
 using Content.Shared.GameTicking;
 
 namespace Content.Server.GameTicking;
 
 public sealed partial class GameTicker
 {
+    [Dependency] private ICEClosedBetaTestManager _ceClosedBeta = default!;
+
     /// <summary>
     /// Moves the lobby countdown to the specified time (in <see cref="IGameTiming.CurTime"/> terms) and syncs it to clients.
     /// Does nothing outside of the pre-round lobby or when the countdown is already that close to the target.
@@ -28,9 +31,3 @@ public sealed partial class GameTicker
         CESetRoundStartTime(_gameTiming.CurTime + LobbyDuration);
     }
 }
-
-/// <summary>
-/// Raised by <see cref="GameTicker.StartRound"/> before the round starts. Set <see cref="Cancelled"/> to forbid it.
-/// </summary>
-[ByRefEvent]
-public record struct CERoundStartAttemptEvent(bool Cancelled = false);

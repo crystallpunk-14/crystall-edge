@@ -11,6 +11,10 @@
       limit: 1
       required: false
       onlyGroupWhitelisted: true
+    enum.HumanoidVisualLayers.Head:
+      limit: 1
+      required: false
+      onlyGroupWhitelisted: true
     enum.HumanoidVisualLayers.Snout:
       limit: 1
       required: true

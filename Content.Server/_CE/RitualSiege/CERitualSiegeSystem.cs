@@ -35,14 +35,14 @@ public sealed partial class CERitualSiegeSystem : GameRuleSystem<CERitualSiegeCo
     [Dependency] private TurfSystem _turf = default!;
 
     [SubscribeLocalEvent]
-    private void OnSphereStateChanged(EntityUid uid, CEMurkLusconSphereComponent component, CEMurkSphereStateChangedEvent args)
+    private void OnSphereStateChanged(CEMurkSphereStateChangedEvent args)
     {
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var siege, out _))
         {
             if (args.NewState == CEMurkSphereState.Ritual && siege.Sphere is null)
-                StartSiege(siege, uid);
-            else if (args.OldState == CEMurkSphereState.Ritual && siege.Sphere == uid)
+                StartSiege(siege, args.Sphere);
+            else if (args.OldState == CEMurkSphereState.Ritual && siege.Sphere == args.Sphere)
                 EndSiege(siege);
         }
     }

@@ -1,0 +1,43 @@
+# Painted the splattered blood's color by the server through SmokeVisuals.Color.
+- type: entity
+  abstract: true
+  id: CEBloodHitEffectBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/blood_hit.rsi
+    drawdepth: Effects
+  - type: Appearance
+  - type: SmokeVisuals
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit1
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit2
+
+- type: entity
+  parent: CEBloodHitEffectBase
+  id: CEBloodHitEffect3
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: hit3

@@ -363,9 +363,7 @@ namespace Content.Server.GameTicking
                 return;
 
             // CrystallEdge: closed beta schedule can forbid starting rounds
-            var startAttempt = new CERoundStartAttemptEvent();
-            RaiseLocalEvent(ref startAttempt);
-            if (startAttempt.Cancelled)
+            if (!_ceClosedBeta.CanStartRound())
                 return;
             // CrystallEdge end
 

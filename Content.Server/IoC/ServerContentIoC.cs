@@ -1,4 +1,5 @@
 using Content.Server._CE.Achievements;
+using Content.Server._CE.CBT;
 using Content.Server._CE.Discord;
 using Content.Server._CE.DiscordAuth;
 using Content.Server._CE.Sponsor;
@@ -92,6 +93,7 @@ internal static class ServerContentIoC
         
         //CrystallEdge zone
         deps.Register<CEDiscordBot>();
+        deps.Register<ICEClosedBetaTestManager, CEClosedBetaTestManager>();
         deps.Register<CEDiscordAuthManager>();
         deps.Register<ICESponsorManager, CESponsorSystem>();
         deps.Register<ICEAchievementsRequirementManager, CEAchievementsRequirementManager>();
