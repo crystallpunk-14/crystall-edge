@@ -5458,6 +5458,9 @@ ent-CELargeWoodenCrate = большой деревянный ящик
 ent-CESmallWoodenCrate = малый деревянный ящик
     .desc = Прочный деревянный ящик.
 
+ent-CESmallBrassCrate = малый латунный ящик
+    .desc = Прочный латунный ящик.
+
 ent-CEWorkbench = верстак
     .desc = Стол для производства различных базовых инструментов.
 

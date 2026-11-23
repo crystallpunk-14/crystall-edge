@@ -23,3 +23,16 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CESmallBrassCrate
+  graph: CESmallBrassCrate
+  startNode: start
+  targetNode: CESmallBrassCrate
+  category: construction-category-storage
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
