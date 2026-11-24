@@ -18,7 +18,7 @@ ce-guidebook-alchemy-copy-header = [bold]Рецепт раствора на {$ba
 ce-guidebook-alchemy-copy-line = {$index}. [bold]{$reagent}[/bold] — {$amount} ед.
 ce-guidebook-alchemy-copy-tune = [bold]Настройка прибора:[/bold] T = {$tune}
 ce-guidebook-alchemy-effect-line = {$effect} каждую секунду на протяжении [color=#1fa383]{$duration}[/color].
-ce-guidebook-alchemy-effect-line-status = {$effect} Действует [color=#1fa383]{$duration}[/color].
+ce-guidebook-alchemy-effect-line-status = Накладывает статус-эффект [color=#1fa383]{$status}[/color] на [color=#1fa383]{$duration}[/color].
 ce-guidebook-alchemy-duration-seconds = {$value} сек.
 ce-guidebook-alchemy-duration-minutes = {$value} мин.
 ce-guidebook-alchemy-dose = Принято:

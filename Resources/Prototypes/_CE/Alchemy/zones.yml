@@ -6,8 +6,7 @@
   id: HealBrute
   name: ce-alchemy-zone-heal-brute
   color: "#d94f4f"
-  position: -0.069, -0.485
-  radius: 0.168
+  weight: 1.5
   gain: 0.9
   effects:
   - !type:Heal
@@ -20,8 +19,7 @@
   id: HealBurn
   name: ce-alchemy-zone-heal-burn
   color: "#e8913a"
-  position: -0.531, 0.418
-  radius: 0.14
+  weight: 1.25
   gain: 1.0
   effects:
   - !type:Heal
@@ -32,12 +30,21 @@
   id: RestoreBlood
   name: ce-alchemy-zone-restore-blood
   color: "#9e1b32"
-  position: 0.582, -0.546
-  radius: 0.112
+  weight: 1
   gain: 1.6
   effects:
   - !type:ModifyBloodLevel
     amount: 15
+
+- type: alchemyZone
+  id: RestoreStamina
+  name: ce-alchemy-zone-restore-stamina
+  color: "#e0c24a"
+  weight: 1.25
+  gain: 1.0
+  effects:
+  - !type:StaminaRestore
+    amount: 5
 
 # --- Movement ---
 
@@ -45,8 +52,7 @@
   id: Haste
   name: ce-alchemy-zone-haste
   color: "#f0d84a"
-  position: 0.656, 0.136
-  radius: 0.14
+  weight: 1.25
   gain: 1.2
   effects:
   - !type:ApplyStatusEffect
@@ -57,8 +63,7 @@
   id: Slowdown
   name: ce-alchemy-zone-slowdown
   color: "#5a7fb5"
-  position: 0.492, 0.629
-  radius: 0.112
+  weight: 1
   gain: 1.7
   dangerous: true
   effects:
@@ -66,14 +71,35 @@
     statusEffect: CEStatusEffectAlchemySlowdown
     duration: 10
 
+- type: alchemyZone
+  id: Adrenaline
+  name: ce-alchemy-zone-adrenaline
+  color: "#e0553a"
+  weight: 1
+  gain: 1.5
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectAdrenaline
+    duration: 10
+
+- type: alchemyZone
+  id: MurkResistance
+  name: ce-alchemy-zone-murk-resistance
+  color: "#7a5fb0"
+  weight: 1
+  gain: 1.5
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectMurkResistance
+    duration: 15
+
 # --- Mana ---
 
 - type: alchemyZone
   id: RestoreMana
   name: ce-alchemy-zone-restore-mana
   color: "#3fa7ff"
-  position: -0.422, 0.021
-  radius: 0.182
+  weight: 1.625
   gain: 0.8
   effects:
   - !type:ChangeMana
@@ -85,8 +111,7 @@
   id: PoisonToxin
   name: ce-alchemy-zone-poison-toxin
   color: "#5fbf3a"
-  position: -0.003, 0.692
-  radius: 0.154
+  weight: 1.375
   gain: 1.0
   dangerous: true
   effects:
@@ -102,8 +127,7 @@
   id: PoisonManaBurn
   name: ce-alchemy-zone-poison-mana-burn
   color: "#b23fd1"
-  position: -0.358, 0.713
-  radius: 0.112
+  weight: 1
   gain: 1.7
   dangerous: true
   effects:
@@ -116,8 +140,7 @@
   id: ShakeAndSlur
   name: ce-alchemy-zone-shake-and-slur
   color: "#7ad9c9"
-  position: 0.22, -0.078
-  radius: 0.113
+  weight: 1
   dangerous: true
   effects:
   - !type:ApplyStatusEffect
@@ -128,8 +151,7 @@
   id: Nausea
   name: ce-alchemy-zone-nausea
   color: "#9aab4e"
-  position: -0.692, -0.395
-  radius: 0.113
+  weight: 1
   dangerous: true
   effects:
   - !type:ApplyStatusEffect
@@ -137,23 +159,10 @@
     duration: 30
 
 - type: alchemyZone
-  id: Hunger
-  name: ce-alchemy-zone-hunger
-  color: "#c98f5a"
-  position: -0.777, 0.178
-  radius: 0.113
-  dangerous: true
-  effects:
-  - !type:ApplyStatusEffect
-    statusEffect: CEStatusEffectAlchemyHunger
-    duration: 60
-
-- type: alchemyZone
   id: Drowsiness
   name: ce-alchemy-zone-drowsiness
   color: "#6a6fb8"
-  position: 0.153, -0.782
-  radius: 0.113
+  weight: 1
   dangerous: true
   effects:
   - !type:ApplyStatusEffect
@@ -164,8 +173,7 @@
   id: WeakHands
   name: ce-alchemy-zone-weak-hands
   color: "#b5a58a"
-  position: 0.775, -0.186
-  radius: 0.113
+  weight: 1
   dangerous: true
   effects:
   - !type:ApplyStatusEffect
@@ -176,8 +184,7 @@
   id: Fatigue
   name: ce-alchemy-zone-fatigue
   color: "#8a8f99"
-  position: 0.223, 0.269
-  radius: 0.113
+  weight: 1
   dangerous: true
   effects:
   - !type:ApplyStatusEffect

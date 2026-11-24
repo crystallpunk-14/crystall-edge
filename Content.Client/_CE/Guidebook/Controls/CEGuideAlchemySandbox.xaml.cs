@@ -326,7 +326,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             zones.Add(new CEAlchemyMapControl.MapZone(
                 Loc.GetString(zone.Name),
                 _alchemy.GetZonePosition(zone),
-                zone.Radius,
+                _alchemy.GetZoneRadius(zone),
                 zone.Dangerous));
         }
 
@@ -483,21 +483,10 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             FontColorOverride = color,
         });
 
-        var placeholder = Loc.GetString("ce-entity-effect-guidebook-none");
-        var durationText = FormatDuration(duration);
         foreach (var effect in hit.Zone.Effects)
         {
-            var text = effect.EntityEffectGuidebookText(_prototype, _entSys, hit.Strength);
-            if (string.IsNullOrWhiteSpace(text) || text == placeholder)
+            if (_alchemy.DescribeEffect(effect, hit.Strength, duration) is not { } line)
                 continue;
-
-            // A status effect is refreshed every second and has its own duration, the rest works every second.
-            text = text.TrimEnd('.', ' ');
-            var line = Loc.GetString(effect is ApplyStatusEffect
-                    ? "ce-guidebook-alchemy-effect-line-status"
-                    : "ce-guidebook-alchemy-effect-line",
-                ("effect", text),
-                ("duration", durationText));
 
             var label = new RichTextLabel { Margin = new Thickness(0, 2, 0, 0) };
             label.SetMarkup(line);
@@ -559,24 +548,15 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         }
 
         var data = BuildData();
-        var duration = FormatDuration(GetDuration(data));
-        var placeholder = Loc.GetString("ce-entity-effect-guidebook-none");
+        var duration = GetDuration(data);
         var effectsHeader = false;
         foreach (var hit in _alchemy.Analyze(data))
         {
             var lines = new List<string>();
             foreach (var effect in hit.Zone.Effects)
             {
-                var text = effect.EntityEffectGuidebookText(_prototype, _entSys, hit.Strength);
-                if (string.IsNullOrWhiteSpace(text) || text == placeholder)
-                    continue;
-
-                text = text.TrimEnd('.', ' ');
-                lines.Add(Loc.GetString(effect is ApplyStatusEffect
-                        ? "ce-guidebook-alchemy-effect-line-status"
-                        : "ce-guidebook-alchemy-effect-line",
-                    ("effect", text),
-                    ("duration", duration)));
+                if (_alchemy.DescribeEffect(effect, hit.Strength, duration) is { } line)
+                    lines.Add(line);
             }
 
             if (lines.Count == 0)

@@ -39,7 +39,6 @@ ce-entity-effect-guidebook-throw-to = Отбрасывает цель с сил�
 ce-entity-effect-guidebook-use-item = Применяет предмет на цель, как при клике им
 ce-entity-effect-guidebook-stamina-damage = Наносит [color=#1fa383]{ $amount }[/color] урона по выносливости
 ce-entity-effect-guidebook-stamina-restore = Восстанавливает [color=#1fa383]{ $amount }[/color] выносливости
-ce-entity-effect-guidebook-modify-satiation = Изменяет [color=#1fa383]{ $type }[/color] на [color=#1fa383]{ $amount }[/color]
 ce-entity-effect-guidebook-drop-held-items = Заставляет цель выронить то, что она держит в руках
 ce-entity-effect-guidebook-affect-plant-energy = Дает растению [color=#1fa383]{ $amount }[/color] энергии
 ce-entity-effect-guidebook-affect-plant-resource = Дает растению [color=#1fa383]{ $amount }[/color] ресурса

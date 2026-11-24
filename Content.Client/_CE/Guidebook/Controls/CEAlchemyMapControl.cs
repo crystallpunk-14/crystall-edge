@@ -45,6 +45,11 @@ public sealed partial class CEAlchemyMapControl : Control
     private const string IconRsi = "_CE/Interface/Science/thaum_essense.rsi";
     private const float IconScale = 2f;
 
+    /// <summary>
+    /// Opacity of zones the path has not crossed and the cursor does not point at.
+    /// </summary>
+    private const float DimmedZoneOpacity = 0.3f;
+
     private readonly Font _font;
     private readonly Texture[] _icons = new Texture[CornerIcons.Length];
 
@@ -160,11 +165,15 @@ public sealed partial class CEAlchemyMapControl : Control
             var color = zone.Dangerous ? DangerousZone : UsefulZone;
             var pos = ToPixel(zone.Pos, center, radius);
             var r = zone.Radius * radius;
-            handle.DrawCircle(pos, r, color.WithAlpha(0.16f));
-            handle.DrawCircle(pos, r * 0.55f, color.WithAlpha(0.14f));
-            handle.DrawCircle(pos, r, color.WithAlpha(0.85f), false);
+            var hovered = (cursor - pos).LengthSquared() <= r * r;
 
-            if ((cursor - pos).LengthSquared() <= r * r)
+            // Zones the path crossed or the cursor points at are fully bright, the rest are dimmed.
+            var fade = hovered || IsCrossed(zone, center, radius) ? 1f : DimmedZoneOpacity;
+            handle.DrawCircle(pos, r, color.WithAlpha(0.16f * fade));
+            handle.DrawCircle(pos, r * 0.55f, color.WithAlpha(0.14f * fade));
+            handle.DrawCircle(pos, r, color.WithAlpha(0.85f * fade), false);
+
+            if (hovered)
                 hover = zone.Label;
         }
 
@@ -223,6 +232,25 @@ public sealed partial class CEAlchemyMapControl : Control
 
         if (hover != string.Empty)
             DrawTooltip(handle, cursor, hover);
+    }
+
+    /// <summary>
+    /// Whether any piece of the marker path passes through the zone circle.
+    /// </summary>
+    private bool IsCrossed(MapZone zone, Vector2 center, float radius)
+    {
+        for (var i = 0; i + 1 < _trail.Count; i++)
+        {
+            var a = _trail[i];
+            var b = _trail[i + 1];
+            var ab = b - a;
+            var lengthSquared = ab.LengthSquared();
+            var t = lengthSquared < 1e-8f ? 0f : Math.Clamp(Vector2.Dot(zone.Pos - a, ab) / lengthSquared, 0f, 1f);
+            if (Vector2.DistanceSquared(a + ab * t, zone.Pos) <= zone.Radius * zone.Radius)
+                return true;
+        }
+
+        return false;
     }
 
     private void DrawTooltip(DrawingHandleScreen handle, Vector2 cursor, string text)

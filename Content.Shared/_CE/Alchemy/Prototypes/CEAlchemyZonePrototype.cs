@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared._CE.EntityEffect;
 using Robust.Shared.Prototypes;
 
@@ -34,13 +33,11 @@ public sealed partial class CEAlchemyZonePrototype : IPrototype
     public Color Color;
 
     /// <summary>
-    /// Base center of the circle. The round seed shifts it, the shifted value lives in the round world.
+    /// Relative size of the zone in the round layout: zones grow in proportion to their weights until the map is full.
+    /// Position and radius are not stored, the layout of the round places and sizes every zone.
     /// </summary>
-    [DataField(required: true)]
-    public Vector2 Position;
-
-    [DataField(required: true)]
-    public float Radius;
+    [DataField]
+    public float Weight = 1f;
 
     /// <summary>
     /// Strength multiplier of the zone.

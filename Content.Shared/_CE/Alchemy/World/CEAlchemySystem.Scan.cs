@@ -1,5 +1,6 @@
 using System.Globalization;
 using Content.Shared._CE.Alchemy.Data;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -53,25 +54,42 @@ public sealed partial class CEAlchemySystem
     public List<string> DescribeHit(CEAlchemyHit hit, TimeSpan duration)
     {
         var lines = new List<string>();
-        var placeholder = Loc.GetString("ce-entity-effect-guidebook-none");
-        var durationText = FormatDuration(duration);
 
         foreach (var effect in hit.Zone.Effects)
         {
-            var text = effect.EntityEffectGuidebookText(_proto, _entSys, hit.Strength);
-            if (string.IsNullOrWhiteSpace(text) || text == placeholder)
-                continue;
-
-            // A status effect is refreshed every second and has its own duration, the rest works every second.
-            text = text.TrimEnd('.', ' ');
-            lines.Add(Loc.GetString(effect is ApplyStatusEffect
-                    ? "ce-guidebook-alchemy-effect-line-status"
-                    : "ce-guidebook-alchemy-effect-line",
-                ("effect", text),
-                ("duration", durationText)));
+            if (DescribeEffect(effect, hit.Strength, duration) is { } line)
+                lines.Add(line);
         }
 
         return lines;
+    }
+
+    /// <summary>
+    /// One player-facing line for a zone effect, or null when the effect has no description.
+    /// A status is refreshed every second while the mixture works and then lasts its own duration,
+    /// so its line shows only the total: the working time of the mixture plus the status duration.
+    /// Every other effect works every second while the mixture works.
+    /// </summary>
+    public string? DescribeEffect(CEEntityEffect effect, float strength, TimeSpan duration)
+    {
+        if (effect is ApplyStatusEffect { Duration: { } statusDuration } status)
+        {
+            var statusName = _proto.TryIndex(status.StatusEffect, out var statusProto)
+                ? statusProto.Name
+                : status.StatusEffect.Id;
+
+            return Loc.GetString("ce-guidebook-alchemy-effect-line-status",
+                ("status", statusName),
+                ("duration", FormatDuration(duration + statusDuration)));
+        }
+
+        var text = effect.EntityEffectGuidebookText(_proto, _entSys, strength);
+        if (string.IsNullOrWhiteSpace(text) || text == Loc.GetString("ce-entity-effect-guidebook-none"))
+            return null;
+
+        return Loc.GetString("ce-guidebook-alchemy-effect-line",
+            ("effect", text.TrimEnd('.', ' ')),
+            ("duration", FormatDuration(duration)));
     }
 
     [SubscribeLocalEvent]

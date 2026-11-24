@@ -45,19 +45,6 @@
     - !type:Vomit
       probability: 0.6
 
-# Hunger drains much faster than normal.
-- type: entity
-  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
-  id: CEStatusEffectAlchemyHunger
-  name: alchemical hunger
-  components:
-  - type: CEStatusEffectApplyEntityEffect
-    frequency: 3
-    effects:
-    - !type:ModifySatiation
-      satiationType: Hunger
-      amount: -1.5
-
 # Hands go limp: whatever you hold falls out from time to time.
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
