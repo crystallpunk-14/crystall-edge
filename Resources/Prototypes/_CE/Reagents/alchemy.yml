@@ -16,3 +16,26 @@
   physicalDesc: reagent-physical-desc-opaque
   color: "#3d3a2a"
   pricePerUnit: 0
+
+- type: reagent
+  id: CESilverNeedle
+  name: ce-reagent-name-silver-needle
+  group: Elements
+  desc: ce-reagent-desc-silver-needle
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#c7d1d9"
+  alchemyEffects:
+  - !type:CoordinatePoint
+    pos: -0.45, -0.26
+    stock: 1.5
+
+- type: reagent
+  id: CEStoneHeart
+  name: ce-reagent-name-stone-heart
+  group: Elements
+  desc: ce-reagent-desc-stone-heart
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#be368a"
+  alchemyEffects:
+  - !type:Scale
+    perUnit: 0.2, 0.2
