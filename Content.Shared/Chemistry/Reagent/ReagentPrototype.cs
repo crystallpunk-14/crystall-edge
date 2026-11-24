@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Linq;
+using Content.Shared._CE.Alchemy.Effects;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared.FixedPoint;
 using System.Text.Json.Serialization;
@@ -184,6 +185,11 @@ namespace Content.Shared.Chemistry.Reagent
 
         [DataField]
         public float PricePerUnit;
+
+        // CrystallEdge: alchemy effects of the reagent; an empty list means the reagent is inert for alchemy
+        [DataField]
+        public List<CEAlchemyEffect> AlchemyEffects = new();
+        // CrystallEdge end
 
         [DataField]
         public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepPuddle");
