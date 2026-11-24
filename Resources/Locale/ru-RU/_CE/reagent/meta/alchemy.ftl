@@ -9,3 +9,6 @@ ce-reagent-desc-silver-needle = Сок растений, растущих в с�
 
 ce-reagent-name-stone-heart = каменное сердце
 ce-reagent-desc-stone-heart = Измельчённое сердце каменного существа.
+
+ce-reagent-name-chromium-slime = хромиевая слизь
+ce-reagent-desc-chromium-slime = Редкая субстанция, которую можно встретить в водных потоках. Инвертирует эффекты раствора, но при неправильной дозировке может полностью испортить его.

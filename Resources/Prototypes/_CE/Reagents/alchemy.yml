@@ -45,3 +45,14 @@
   alchemyEffects:
   - !type:Scale
     perUnit: 0.2, 0.2
+
+- type: reagent
+  id: CEChromiumSlime
+  name: ce-reagent-name-chromium-slime
+  group: Elements
+  desc: ce-reagent-desc-chromium-slime
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#3b4872"
+  alchemyEffects:
+  - !type:Scale # 5 units fully invert the marker through the center of the map
+    perUnit: -0.4, -0.4
