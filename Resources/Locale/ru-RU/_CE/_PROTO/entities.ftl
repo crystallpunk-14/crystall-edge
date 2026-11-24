@@ -1234,14 +1234,6 @@ ent-CEFoodAgaric = мухомор
 ent-CEFoodLumishroom = люмигриб
     .desc = Светящийся пещерный гриб. Он бродит прямо в шляпке, так что пара штук сразу ударяет в голову.
 
-ent-CEBloodpack = пакет крови
-    .desc = Содержит магическую кровь, которая определённо не из космоса.
-    .suffix = Полный
-
-ent-CEBloodpack10 = { ent-CEBloodpack }
-    .desc = { ent-CEBloodpack.desc }
-    .suffix = Одиночный
-
 ent-CEGauze = марля
     .desc = Плотная тканевая марля, чтобы предотвратить вытекание ценной крови из тела.
     .suffix = 5

@@ -1156,22 +1156,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 26.5,-16.5
-- proto: CEBloodpack
-  entities:
-  - uid: 1336
-    components:
-    - type: Transform
-      parent: 1
-      pos: 16.358883,-40.20248
-    - type: CEZPhysics
-      currentZLevel: -1
-  - uid: 1338
-    components:
-    - type: Transform
-      parent: 1
-      pos: 16.681355,-40.307426
-    - type: CEZPhysics
-      currentZLevel: -1
 - proto: CECarpetChocolateGold
   entities:
   - uid: 30

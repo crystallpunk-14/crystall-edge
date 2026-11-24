@@ -10,6 +10,10 @@
 
 # CrystallEdge migration zone
 
+# 2026-11-24
+CEBloodpack: null
+CEBloodpack10: null
+
 # 2025-11-08
 CEWallFrameStonebrick: CEWallFrameStoneBrick
 CEWallStonebrick: CEWallStoneBrick
