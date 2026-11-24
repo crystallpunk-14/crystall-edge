@@ -40,8 +40,8 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private const string MixtureReagent = "CEAlchemyMixture";
     private static readonly FixedPoint2 BaseAmount = FixedPoint2.New(1);
 
-    private static readonly Color PositionColor = Color.FromHex("#4fb59a");
-    private static readonly Color PathColor = Color.FromHex("#e08a4a");
+    private static readonly Color UsefulColor = CEAlchemyZonePrototype.UsefulColor;
+    private static readonly Color DangerousColor = CEAlchemyZonePrototype.DangerousColor;
     private static readonly Color ModifierColor = Color.FromHex("#b58cf0");
     private static readonly Color MutedColor = Color.FromHex("#8e9a9a");
 
@@ -185,7 +185,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             var kind = new Label
             {
                 Text = Loc.GetString(isCarrier ? "ce-guidebook-alchemy-kind-ingredient" : "ce-guidebook-alchemy-kind-modifier"),
-                FontColorOverride = isCarrier ? PositionColor : ModifierColor,
+                FontColorOverride = isCarrier ? UsefulColor : ModifierColor,
                 MinWidth = 90,
                 Align = Label.AlignMode.Right,
                 VerticalAlignment = VAlignment.Center,
@@ -327,15 +327,13 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                 Loc.GetString(zone.Name),
                 _alchemy.GetZonePosition(zone),
                 zone.Radius,
-                zone.ByPath));
+                zone.Dangerous));
         }
 
         Map.SetStatic(dots, zones);
         Map.SetPath(trail, state.Carriers > 0 ? state.Pos : null);
 
-        MapLegend.SetMarkup(Loc.GetString("ce-guidebook-alchemy-legend",
-            ("position", PositionColor.ToHex()),
-            ("path", PathColor.ToHex())));
+        MapLegend.SetMarkup(Loc.GetString("ce-guidebook-alchemy-legend"));
     }
 
     private void RefreshSteps()
@@ -460,7 +458,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
     private Control MakeHitCard(CEAlchemyHit hit, TimeSpan duration)
     {
-        var color = hit.Zone.ByPath ? PathColor : PositionColor;
+        var color = hit.Zone.Dangerous ? DangerousColor : UsefulColor;
 
         var card = new PanelContainer
         {

@@ -18,14 +18,9 @@ public sealed partial class CEAlchemySystem : EntitySystem
     private const float StrengthNorm = 3f;
 
     /// <summary>
-    /// Path length inside a by-path zone that gives its full strength.
+    /// Path length inside a zone that gives its full strength.
     /// </summary>
     private const float FullPathLength = 0.15f;
-
-    /// <summary>
-    /// A by-position zone works only above this purity.
-    /// </summary>
-    private const float MinPurity = 0.02f;
 
     [Dependency] private IPrototypeManager _proto = default!;
 
@@ -69,13 +64,13 @@ public sealed partial class CEAlchemySystem : EntitySystem
 
     /// <summary>
     /// Replays the recipe step by step: effects of every reagent move the marker, and every move
-    /// adds its length inside the <see cref="CEAlchemyZonePrototype.ByPath"/> zones.
+    /// adds its length inside the zones.
     /// </summary>
     /// <param name="trail">If given, receives the marker position at the start and after every step (for drawing the path).</param>
     public CEAlchemyState Replay(CEAlchemyData data, List<Vector2>? trail = null)
     {
         var state = new CEAlchemyState { ZoneLengths = new Dictionary<ProtoId<CEAlchemyZonePrototype>, float>() };
-        List<(CEAlchemyZonePrototype Zone, Vector2 Center)>? pathZones = null;
+        List<(CEAlchemyZonePrototype Zone, Vector2 Center)>? zones = null;
         trail?.Add(state.Pos);
 
         foreach (var step in data.Steps)
@@ -94,8 +89,8 @@ public sealed partial class CEAlchemySystem : EntitySystem
                 var before = state.Pos;
                 effect.Apply(ref state, new CEAlchemyApplyArgs(mix.Reagent, amount, this));
 
-                pathZones ??= GetPathZones();
-                foreach (var (zone, center) in pathZones)
+                zones ??= GetZones();
+                foreach (var (zone, center) in zones)
                 {
                     var length = Chord(before, state.Pos, center, zone.Radius);
                     if (length > 0)
@@ -111,8 +106,8 @@ public sealed partial class CEAlchemySystem : EntitySystem
 
     /// <summary>
     /// Finds which zones the recipe works through and how strongly, strongest first.
-    /// A by-position zone depends on where the marker stopped, the stock density and the tuning;
-    /// a by-path zone depends only on the path length inside it. Both are multiplied by the zone gain.
+    /// The strength is the share of the full path length the marker walked inside the zone,
+    /// multiplied by the zone gain, the stock density and the tuning.
     /// </summary>
     public List<CEAlchemyHit> Analyze(CEAlchemyData data)
     {
@@ -126,23 +121,10 @@ public sealed partial class CEAlchemySystem : EntitySystem
 
         foreach (var zone in _proto.EnumeratePrototypes<CEAlchemyZonePrototype>())
         {
-            float strength;
-            if (zone.ByPath)
-            {
-                if (!state.ZoneLengths.TryGetValue(zone.ID, out var length) || length <= 0)
-                    continue;
+            if (!state.ZoneLengths.TryGetValue(zone.ID, out var length) || length <= 0)
+                continue;
 
-                strength = MathF.Min(1, length / FullPathLength) * zone.Gain;
-            }
-            else
-            {
-                var distance = Vector2.Distance(state.Pos, GetZonePosition(zone)) / zone.Radius;
-                var purity = MathF.Max(0, 1 - distance * distance);
-                if (purity <= MinPurity)
-                    continue;
-
-                strength = purity * zone.Gain * density / StrengthNorm * multiplier;
-            }
+            var strength = MathF.Min(1, length / FullPathLength) * zone.Gain * density / StrengthNorm * multiplier;
 
             hits.Add(new CEAlchemyHit(zone, strength));
         }
@@ -151,13 +133,12 @@ public sealed partial class CEAlchemySystem : EntitySystem
         return hits;
     }
 
-    private List<(CEAlchemyZonePrototype Zone, Vector2 Center)> GetPathZones()
+    private List<(CEAlchemyZonePrototype Zone, Vector2 Center)> GetZones()
     {
         var zones = new List<(CEAlchemyZonePrototype, Vector2)>();
         foreach (var zone in _proto.EnumeratePrototypes<CEAlchemyZonePrototype>())
         {
-            if (zone.ByPath)
-                zones.Add((zone, GetZonePosition(zone)));
+            zones.Add((zone, GetZonePosition(zone)));
         }
 
         return zones;

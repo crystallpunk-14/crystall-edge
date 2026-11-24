@@ -11,7 +11,7 @@ ce-guidebook-alchemy-kind-modifier = модификатор
 ce-guidebook-alchemy-copy = Скопировать рецепт
 ce-guidebook-alchemy-tune = Настройка:
 ce-guidebook-alchemy-tune-value = [color=#8e9a9a]T = {$tune}, сила ×{$multiplier}[/color]
-ce-guidebook-alchemy-legend = [color={$position}]●[/color] зона эффекта  [color={$path}]●[/color] зона побочки  [color=#ffd86b]●[/color] маркер раствора
+ce-guidebook-alchemy-legend = [color=#ffd86b]●[/color] маркер раствора
 ce-guidebook-alchemy-result = Результат
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]нет[/color]
 ce-guidebook-alchemy-copy-header = [bold]Рецепт раствора на {$batch} ед.:[/bold]
@@ -26,5 +26,5 @@ ce-guidebook-alchemy-dose-value = {$value} ед.
 ce-guidebook-alchemy-copy-effects = [bold]Эффекты:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
 ce-alchemy-scan-header = [bold]Алхимический раствор, [color=#1fa383]{$amount}[/color] ед.:[/bold]
-ce-alchemy-scan-zone = • [bold]{$zone}[/bold]: {$effects}
+ce-alchemy-scan-zone = • [color={$color}][bold]{$zone}[/bold][/color]: {$effects}
 ce-alchemy-scan-none = • Эффектов нет.

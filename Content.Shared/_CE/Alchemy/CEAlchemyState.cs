@@ -32,7 +32,7 @@ public struct CEAlchemyState
     public float Stock;
 
     /// <summary>
-    /// Length of the marker path inside every <see cref="CEAlchemyZonePrototype.ByPath"/> zone.
+    /// Length of the marker path inside every zone.
     /// </summary>
     public Dictionary<ProtoId<CEAlchemyZonePrototype>, float> ZoneLengths;
 }

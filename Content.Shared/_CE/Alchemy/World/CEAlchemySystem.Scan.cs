@@ -114,6 +114,7 @@ public sealed partial class CEAlchemySystem
             any = true;
             message.PushNewline();
             message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-zone",
+                ("color", hit.Zone.HarmColor.ToHex()),
                 ("zone", Loc.GetString(hit.Zone.Name)),
                 ("effects", string.Join(" ", DescribeHit(hit, duration)))));
         }

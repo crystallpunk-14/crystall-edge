@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._CE.Alchemy.Prototypes;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -24,8 +25,8 @@ public sealed partial class CEAlchemyMapControl : Control
     private static readonly float[] RingRatios = [0.25f, 0.5f, 0.75f];
     private static readonly Color RingColor = Color.FromHex("#4a565e").WithAlpha(0.7f);
     private static readonly Color Grid = Color.FromHex("#252d32");
-    private static readonly Color PositionZone = Color.FromHex("#4fb59a");
-    private static readonly Color PathZone = Color.FromHex("#e08a4a");
+    private static readonly Color UsefulZone = CEAlchemyZonePrototype.UsefulColor;
+    private static readonly Color DangerousZone = CEAlchemyZonePrototype.DangerousColor;
     private static readonly Color PathLine = Color.FromHex("#e3e1da");
     private static readonly Color MarkerColor = Color.FromHex("#ffd86b");
     private static readonly Color TooltipBack = Color.FromHex("#0c0f11");
@@ -156,7 +157,7 @@ public sealed partial class CEAlchemyMapControl : Control
         var hover = string.Empty;
         foreach (var zone in _zones)
         {
-            var color = zone.ByPath ? PathZone : PositionZone;
+            var color = zone.Dangerous ? DangerousZone : UsefulZone;
             var pos = ToPixel(zone.Pos, center, radius);
             var r = zone.Radius * radius;
             handle.DrawCircle(pos, r, color.WithAlpha(0.16f));
@@ -294,5 +295,5 @@ public sealed partial class CEAlchemyMapControl : Control
     /// <summary>
     /// A zone circle on the map.
     /// </summary>
-    public readonly record struct MapZone(string Label, Vector2 Pos, float Radius, bool ByPath);
+    public readonly record struct MapZone(string Label, Vector2 Pos, float Radius, bool Dangerous);
 }
