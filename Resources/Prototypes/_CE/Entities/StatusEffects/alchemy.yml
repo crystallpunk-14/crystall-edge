@@ -1,7 +1,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemyHaste
-  name: alchemical haste
+  name: haste
   components:
   - type: CESpeedModifyStatusEffect
     walk: 1.2
@@ -10,7 +10,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemySlowdown
-  name: alchemical slowdown
+  name: slowdown
   components:
   - type: CESpeedModifyStatusEffect
     walk: 0.7
@@ -20,7 +20,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemyShake
-  name: alchemical tremor
+  name: tremor
   components:
   - type: StutteringAccent
   - type: DrunkStatusEffect
@@ -37,7 +37,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemyNausea
-  name: alchemical nausea
+  name: nausea
   components:
   - type: CEStatusEffectApplyEntityEffect
     frequency: 15
@@ -49,7 +49,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemyWeakHands
-  name: alchemical weak hands
+  name: weak hands
   components:
   - type: CEStatusEffectApplyEntityEffect
     frequency: 25
@@ -60,7 +60,7 @@
 - type: entity
   parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
   id: CEStatusEffectAlchemyFatigue
-  name: alchemical fatigue
+  name: fatigue
   components:
   - type: CEStatusEffectApplyEntityEffect
     frequency: 2

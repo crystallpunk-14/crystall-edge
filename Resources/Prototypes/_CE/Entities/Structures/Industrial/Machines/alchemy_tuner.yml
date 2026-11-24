@@ -63,6 +63,7 @@
     solution: tuner
   - type: DumpableSolution
     solution: tuner
+  - type: DoAfter
   - type: CEAlchemyTuner
     solutionName: tuner
   - type: Appearance

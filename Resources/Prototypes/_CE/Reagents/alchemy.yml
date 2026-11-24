@@ -70,6 +70,6 @@
       metabolites:
         Ethanol: 0.6 # the sap ferments: whoever drinks it gets drunk
   alchemyEffects:
-  - !type:Rotate # clockwise, a pour never turns the marker by more than 15 degrees
-    degreesPerUnit: 3
-    maxDegrees: 30
+  - !type:Rotate
+    degreesPerUnit: -3
+    maxDegrees: -30
