@@ -27,6 +27,12 @@ public sealed partial class CEAlchemyData : ReagentData
     public FixedPoint2 Tune;
 
     /// <summary>
+    /// Strength multiplier of the tuning, 2^(3 * Tune). Aged solutions are weaker and last longer,
+    /// distilled ones are stronger and shorter: strength times duration stays constant.
+    /// </summary>
+    public float Multiplier => MathF.Pow(2f, 3f * Tune.Float());
+
+    /// <summary>
     /// Sum of all poured amounts: the volume of the recipe in recipe units.
     /// </summary>
     public FixedPoint2 TotalAmount

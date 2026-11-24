@@ -12,6 +12,21 @@ namespace Content.Shared._CE.Alchemy.World;
 /// </summary>
 public sealed partial class CEAlchemySystem : EntitySystem
 {
+    /// <summary>
+    /// Divides the stock density so that a pure carrier solution gives a strength around one half.
+    /// </summary>
+    private const float StrengthNorm = 3f;
+
+    /// <summary>
+    /// Path length inside a by-path zone that gives its full strength.
+    /// </summary>
+    private const float FullPathLength = 0.15f;
+
+    /// <summary>
+    /// A by-position zone works only above this purity.
+    /// </summary>
+    private const float MinPurity = 0.02f;
+
     [Dependency] private IPrototypeManager _proto = default!;
 
     /// <summary>
@@ -88,6 +103,48 @@ public sealed partial class CEAlchemySystem : EntitySystem
         }
 
         return state;
+    }
+
+    /// <summary>
+    /// Finds which zones the recipe works through and how strongly, strongest first.
+    /// A by-position zone depends on where the marker stopped, the stock density and the tuning;
+    /// a by-path zone depends only on the path length inside it. Both are multiplied by the zone gain.
+    /// </summary>
+    public List<CEAlchemyHit> Analyze(CEAlchemyData data)
+    {
+        var hits = new List<CEAlchemyHit>();
+        var state = Replay(data);
+        if (state.Carriers <= 0 || state.Volume <= 0)
+            return hits;
+
+        var density = state.Stock / state.Volume;
+        var multiplier = data.Multiplier;
+
+        foreach (var zone in _proto.EnumeratePrototypes<CEAlchemyZonePrototype>())
+        {
+            float strength;
+            if (zone.ByPath)
+            {
+                if (!state.ZoneLengths.TryGetValue(zone.ID, out var length) || length <= 0)
+                    continue;
+
+                strength = MathF.Min(1, length / FullPathLength) * zone.Gain;
+            }
+            else
+            {
+                var distance = Vector2.Distance(state.Pos, GetZonePosition(zone)) / zone.Radius;
+                var purity = MathF.Max(0, 1 - distance * distance);
+                if (purity <= MinPurity)
+                    continue;
+
+                strength = purity * zone.Gain * density / StrengthNorm * multiplier;
+            }
+
+            hits.Add(new CEAlchemyHit(zone, strength));
+        }
+
+        hits.Sort((a, b) => b.Strength.CompareTo(a.Strength));
+        return hits;
     }
 
     private List<(CEAlchemyZonePrototype Zone, Vector2 Center)> GetPathZones()
