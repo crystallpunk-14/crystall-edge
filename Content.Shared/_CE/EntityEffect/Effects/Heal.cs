@@ -23,7 +23,10 @@ public sealed partial class Heal : CEEntityEffectBase<Heal>
     [DataField("types")]
     public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> Types = new();
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         var parts = new List<string>();
         foreach (var (group, amount) in Groups)
@@ -32,7 +35,7 @@ public sealed partial class Heal : CEEntityEffectBase<Heal>
                 continue;
 
             var groupName = prototype.TryIndex(group, out var groupProto) ? groupProto.LocalizedName : group.Id;
-            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", amount.Float()), ("group", groupName)));
+            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", Math.Round((double) (amount.Float() * power), 1)), ("group", groupName)));
         }
 
         foreach (var (type, amount) in Types)
@@ -41,7 +44,7 @@ public sealed partial class Heal : CEEntityEffectBase<Heal>
                 continue;
 
             var typeName = prototype.TryIndex(type, out var typeProto) ? typeProto.LocalizedName : type.Id;
-            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", amount.Float()), ("group", typeName)));
+            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", Math.Round((double) (amount.Float() * power), 1)), ("group", typeName)));
         }
 
         if (parts.Count == 0)

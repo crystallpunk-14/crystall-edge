@@ -12,7 +12,10 @@ public sealed partial class AddZVelocity : CEEntityEffectBase<AddZVelocity>
     public bool RequiresGround = false;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-add-z-velocity", ("speed", Speed));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-add-z-velocity", ("speed", Math.Round((double) (Speed * power), 1)));
 }
 
 public sealed partial class CEAddZVelocitySystem : CEEntityEffectSystem<AddZVelocity>

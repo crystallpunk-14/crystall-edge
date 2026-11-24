@@ -66,3 +66,6 @@ ce-in-murk-required = Цель должна находиться во мраке
 ce-in-murk-forbidden = Цель должна находиться в пределах света сферы люксона.
 
 ce-modify-bleeding-stopped = Кровотечение остановлено.
+ce-entity-effect-guidebook-knockdown = Сбивает с ног на [color=yellow]{ $amount }[/color] сек.
+ce-entity-effect-guidebook-modify-stealth-visibility = Меняет заметность скрытой цели на [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-murk-dissolve = Рассеивает [color=yellow]{ $amount }[/color] мглы

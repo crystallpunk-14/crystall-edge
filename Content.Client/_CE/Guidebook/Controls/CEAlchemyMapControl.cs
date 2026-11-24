@@ -21,6 +21,8 @@ public sealed partial class CEAlchemyMapControl : Control
 
     private static readonly Color Background = Color.FromHex("#14181b");
     private static readonly Color Rim = Color.FromHex("#3c464c");
+    private static readonly float[] RingRatios = [0.25f, 0.5f, 0.75f];
+    private static readonly Color RingColor = Color.FromHex("#4a565e").WithAlpha(0.7f);
     private static readonly Color Grid = Color.FromHex("#252d32");
     private static readonly Color PositionZone = Color.FromHex("#4fb59a");
     private static readonly Color PathZone = Color.FromHex("#e08a4a");
@@ -120,9 +122,13 @@ public sealed partial class CEAlchemyMapControl : Control
 
         var cursor = UserInterfaceManager.MousePositionScaled.Position * UIScale - GlobalPixelPosition;
 
-        // Board.
         handle.DrawCircle(center, radius, Background);
-        handle.DrawCircle(center, radius * 0.5f, Grid, false);
+
+        foreach (var ring in RingRatios)
+        {
+            DrawRing(handle, center, radius * ring);
+        }
+
         handle.DrawLine(center - new Vector2(radius, 0), center + new Vector2(radius, 0), Grid);
         handle.DrawLine(center - new Vector2(0, radius), center + new Vector2(0, radius), Grid);
 
@@ -239,6 +245,19 @@ public sealed partial class CEAlchemyMapControl : Control
         handle.DrawRect(box, TooltipBack.WithAlpha(0.92f));
         handle.DrawRect(box, Rim, false);
         handle.DrawString(_font, topLeft + new Vector2(pad, pad), text, Color.FromHex("#e3e1da"));
+    }
+
+    private void DrawRing(DrawingHandleScreen handle, Vector2 center, float radius)
+    {
+        const int segments = 72;
+        var previous = center + new Vector2(radius, 0);
+        for (var i = 1; i <= segments; i++)
+        {
+            var angle = MathHelper.TwoPi * i / segments;
+            var next = center + new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * radius;
+            DrawThickLine(handle, previous, next, 1.3f * UIScale, RingColor);
+            previous = next;
+        }
     }
 
     private static void DrawThickLine(DrawingHandleScreen handle, Vector2 from, Vector2 to, float width, Color color)

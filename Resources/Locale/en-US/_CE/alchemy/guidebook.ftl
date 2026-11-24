@@ -15,7 +15,12 @@ ce-guidebook-alchemy-tune-value = [color=#8e9a9a]T = {$tune}, strength ×{$multi
 ce-guidebook-alchemy-legend = [color={$position}]●[/color] effect zone  [color={$path}]●[/color] side effect zone  [color=#ffd86b]●[/color] solution marker
 ce-guidebook-alchemy-result = Result
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]none[/color]
-ce-guidebook-alchemy-strength = strength {$percent}%
 ce-guidebook-alchemy-copy-header = Solution recipe for {$batch} u:
 ce-guidebook-alchemy-copy-line = {$index}. {$reagent} — {$amount} u
 ce-guidebook-alchemy-copy-tune = Device tuning: T = {$tune}
+ce-guidebook-alchemy-effect-line = {$effect} every second for {$duration}.
+ce-guidebook-alchemy-effect-line-status = {$effect} Works for {$duration}.
+ce-guidebook-alchemy-duration-seconds = {$value} sec.
+ce-guidebook-alchemy-duration-minutes = {$value} min.
+ce-guidebook-alchemy-dose = Dose:
+ce-guidebook-alchemy-dose-value = {$value} u

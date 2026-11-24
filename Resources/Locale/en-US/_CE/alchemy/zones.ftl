@@ -1,0 +1,9 @@
+ce-alchemy-zone-heal-brute = Wound healing
+ce-alchemy-zone-heal-burn = Burn healing
+ce-alchemy-zone-restore-blood = Blood restoration
+ce-alchemy-zone-haste = Haste
+ce-alchemy-zone-slowdown = Slowdown
+ce-alchemy-zone-restore-mana = Mana restoration
+ce-alchemy-zone-poison-toxin = Poison: toxin
+ce-alchemy-zone-poison-mana-burn = Poison: mana burn
+ce-alchemy-zone-shake-and-slur = Tremor and slurred speech

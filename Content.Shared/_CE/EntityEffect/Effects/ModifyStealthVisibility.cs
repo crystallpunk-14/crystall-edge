@@ -1,5 +1,6 @@
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -16,6 +17,12 @@ public sealed partial class ModifyStealthVisibility : CEEntityEffectBase<ModifyS
     /// </summary>
     [DataField]
     public float Amount = 0.5f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-modify-stealth-visibility", ("amount", Math.Round((double) (Amount * power), 1)));
 }
 
 public sealed partial class CEModifyStealthVisibilitySystem : CEEntityEffectSystem<ModifyStealthVisibility>

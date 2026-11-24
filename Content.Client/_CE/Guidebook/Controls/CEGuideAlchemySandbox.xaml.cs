@@ -11,6 +11,7 @@ using Content.Shared._CE.Alchemy.Data;
 using Content.Shared._CE.Alchemy.Effects;
 using Content.Shared._CE.Alchemy.Prototypes;
 using Content.Shared._CE.Alchemy.World;
+using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
@@ -41,6 +42,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     /// </summary>
     private const float TuneStep = 0.05f;
 
+    private const string MixtureReagent = "CEAlchemyMixture";
+    private const string MixtureStage = "Bloodstream";
+
     private static readonly Color PositionColor = Color.FromHex("#4fb59a");
     private static readonly Color PathColor = Color.FromHex("#e08a4a");
     private static readonly Color ModifierColor = Color.FromHex("#b58cf0");
@@ -58,6 +62,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private readonly Dictionary<ProtoId<ReagentPrototype>, Button> _paletteButtons = new();
     private ProtoId<ReagentPrototype>? _selected;
     private float _amount = 5f;
+    private float _dose;
+    private bool _doseFollowsMax = true;
+    private bool _updatingDose;
     private float _tune;
 
     public CEGuideAlchemySandbox()
@@ -101,6 +108,15 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             UpdatePreview();
         };
         AmountLabel.Text = FormatAmount(_amount);
+        DoseSlider.OnValueChanged += _ =>
+        {
+            if (_updatingDose)
+                return;
+
+            _dose = MathF.Round(DoseSlider.Value * 10f) / 10f;
+            _doseFollowsMax = DoseSlider.Value >= DoseSlider.MaxValue - 0.05f;
+            Rebuild();
+        };
         AddButton.Disabled = true;
         AddButton.OnPressed += _ =>
         {
@@ -253,9 +269,10 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         var state = _alchemy.Replay(data, trail);
         var hits = _alchemy.Analyze(data);
 
+        UpdateDoseSlider(data);
         RefreshMap(trail, state);
         RefreshSteps();
-        RefreshHits(hits, state);
+        RefreshHits(hits, state, data);
         RefreshTune(data);
 
         UpdatePreview();
@@ -372,7 +389,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         }
     }
 
-    private void RefreshHits(List<CEAlchemyHit> hits, CEAlchemyState state)
+    private void RefreshHits(List<CEAlchemyHit> hits, CEAlchemyState state, CEAlchemyData data)
     {
         HitsBox.RemoveAllChildren();
 
@@ -385,12 +402,55 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
         foreach (var hit in hits)
         {
-            HitsBox.AddChild(MakeHitCard(hit));
+            HitsBox.AddChild(MakeHitCard(hit, GetDuration(data)));
         }
 
     }
 
-    private Control MakeHitCard(CEAlchemyHit hit)
+    /// <summary>
+    /// The dose can be anything from nothing to the whole recipe volume. By default it follows the whole volume.
+    /// </summary>
+    private void UpdateDoseSlider(CEAlchemyData data)
+    {
+        var total = data.TotalAmount.Float();
+        if (_doseFollowsMax || _dose > total)
+            _dose = total;
+
+        _updatingDose = true;
+        DoseSlider.MaxValue = MathF.Max(total, 0.1f);
+        DoseSlider.Value = _dose;
+        DoseSlider.Disabled = total <= 0;
+        _updatingDose = false;
+
+        DoseLabel.Text = Loc.GetString("ce-guidebook-alchemy-dose-value", ("value", FormatAmount(_dose)));
+    }
+
+    /// <summary>
+    /// How long the accepted dose of this mixture works: it is metabolized at a fixed rate multiplied by the tuning.
+    /// </summary>
+    private TimeSpan GetDuration(CEAlchemyData data)
+    {
+        var rate = 0.5f;
+        if (_prototype.TryIndex<ReagentPrototype>(MixtureReagent, out var mixture)
+            && mixture.Metabolisms is { } metabolisms
+            && metabolisms.Metabolisms.TryGetValue(MixtureStage, out var entry))
+        {
+            rate = entry.MetabolismRate.Float();
+        }
+
+        rate *= data.Multiplier;
+        return rate <= 0 ? TimeSpan.Zero : TimeSpan.FromSeconds(_dose / rate);
+    }
+
+    private static string FormatDuration(TimeSpan duration)
+    {
+        var seconds = duration.TotalSeconds;
+        return seconds >= 60
+            ? Loc.GetString("ce-guidebook-alchemy-duration-minutes", ("value", Math.Round(seconds / 60, 1)))
+            : Loc.GetString("ce-guidebook-alchemy-duration-seconds", ("value", (int) Math.Round(seconds)));
+    }
+
+    private Control MakeHitCard(CEAlchemyHit hit, TimeSpan duration)
     {
         var color = hit.Zone.ByPath ? PathColor : PositionColor;
 
@@ -411,39 +471,30 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         };
         card.AddChild(box);
 
-        var header = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal };
-        header.AddChild(new Label
+        box.AddChild(new Label
         {
             Text = Loc.GetString(hit.Zone.Name),
             FontColorOverride = color,
-            HorizontalExpand = true,
         });
-        header.AddChild(new Label
-        {
-            Text = Loc.GetString("ce-guidebook-alchemy-strength", ("percent", (int) MathF.Round(hit.Strength * 100))),
-        });
-        box.AddChild(header);
-
-        var bar = new ProgressBar
-        {
-            MinValue = 0,
-            MaxValue = 1,
-            Value = MathF.Min(1f, hit.Strength),
-            MinHeight = 6,
-            BackgroundStyleBoxOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#14181b") },
-            ForegroundStyleBoxOverride = new StyleBoxFlat { BackgroundColor = color },
-        };
-        box.AddChild(bar);
 
         var placeholder = Loc.GetString("ce-entity-effect-guidebook-none");
+        var durationText = FormatDuration(duration);
         foreach (var effect in hit.Zone.Effects)
         {
-            var text = effect.EntityEffectGuidebookText(_prototype, _entSys);
+            var text = effect.EntityEffectGuidebookText(_prototype, _entSys, hit.Strength);
             if (string.IsNullOrWhiteSpace(text) || text == placeholder)
                 continue;
 
+            // A status effect is refreshed every second and has its own duration, the rest works every second.
+            text = text.TrimEnd('.', ' ');
+            var line = Loc.GetString(effect is ApplyStatusEffect
+                    ? "ce-guidebook-alchemy-effect-line-status"
+                    : "ce-guidebook-alchemy-effect-line",
+                ("effect", text),
+                ("duration", durationText));
+
             var label = new RichTextLabel { Margin = new Thickness(0, 2, 0, 0) };
-            label.SetMarkup(text);
+            label.SetMarkup(line);
             box.AddChild(label);
         }
 

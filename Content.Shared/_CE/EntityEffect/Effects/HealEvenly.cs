@@ -17,7 +17,10 @@ public sealed partial class HealEvenly : CEEntityEffectBase<HealEvenly>
     [DataField("groups", required: true)]
     public Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2> Groups = new();
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         var parts = new List<string>();
         foreach (var (group, amount) in Groups)
@@ -26,7 +29,7 @@ public sealed partial class HealEvenly : CEEntityEffectBase<HealEvenly>
                 continue;
 
             var groupName = prototype.TryIndex(group, out var groupProto) ? groupProto.LocalizedName : group.Id;
-            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", amount.Float()), ("group", groupName)));
+            parts.Add(Loc.GetString("ce-entity-effect-guidebook-heal-entry", ("amount", Math.Round((double) (amount.Float() * power), 1)), ("group", groupName)));
         }
 
         if (parts.Count == 0)

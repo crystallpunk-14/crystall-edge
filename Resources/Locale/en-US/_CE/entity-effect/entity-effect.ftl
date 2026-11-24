@@ -66,3 +66,6 @@ ce-in-murk-required = The target must be in the murk.
 ce-in-murk-forbidden = The target must be within the light of the Lucson Sphere.
 
 ce-modify-bleeding-stopped = The bleeding has stopped.
+ce-entity-effect-guidebook-knockdown = Knocks down for [color=yellow]{ $amount }[/color] sec.
+ce-entity-effect-guidebook-modify-stealth-visibility = Changes the visibility of a cloaked target by [color=yellow]{ $amount }[/color]
+ce-entity-effect-guidebook-murk-dissolve = Dissolves [color=yellow]{ $amount }[/color] of murk

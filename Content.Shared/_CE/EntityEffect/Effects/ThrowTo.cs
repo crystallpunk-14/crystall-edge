@@ -16,7 +16,10 @@ public sealed partial class ThrowTo : CEEntityEffectBase<ThrowTo>
     public float ThrowPower = 10f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-throw-to", ("power", ThrowPower));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-throw-to", ("power", Math.Round((double) (ThrowPower * power), 1)));
 }
 
 public sealed partial class CEThrowToEffectSystem : CEEntityEffectSystem<ThrowTo>

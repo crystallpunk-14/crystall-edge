@@ -1,0 +1,9 @@
+ce-alchemy-zone-heal-brute = Лечение ран
+ce-alchemy-zone-heal-burn = Лечение ожогов
+ce-alchemy-zone-restore-blood = Восполнение крови
+ce-alchemy-zone-haste = Ускорение
+ce-alchemy-zone-slowdown = Замедление
+ce-alchemy-zone-restore-mana = Восстановление маны
+ce-alchemy-zone-poison-toxin = Яд: отравление
+ce-alchemy-zone-poison-mana-burn = Яд: выжигание маны
+ce-alchemy-zone-shake-and-slur = Дрожь и запинающаяся речь

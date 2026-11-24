@@ -77,6 +77,11 @@
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="4">
                 <Label Text="{Loc 'ce-guidebook-alchemy-result'}" FontColorOverride="#4fb59a"/>
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <Label Text="{Loc 'ce-guidebook-alchemy-dose'}" FontColorOverride="#8e9a9a"/>
+                    <Slider Name="DoseSlider" HorizontalExpand="True" MinValue="0" MaxValue="1" Value="1"/>
+                    <Label Name="DoseLabel" MinWidth="64" Align="Right"/>
+                </BoxContainer>
                 <BoxContainer Name="HitsBox" Orientation="Vertical" SeparationOverride="4"/>
             </BoxContainer>
         </PanelContainer>

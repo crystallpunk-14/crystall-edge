@@ -42,6 +42,13 @@ public abstract partial class CEEntityEffect
     /// </summary>
     public virtual string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
         Loc.GetString("ce-entity-effect-guidebook-none");
+
+    /// <summary>
+    /// Description for an effect that is applied with the given power. Effects whose magnitude scales with
+    /// <see cref="CEEntityEffectArgs.Power"/> override this to show the scaled numbers.
+    /// </summary>
+    public virtual string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        EntityEffectGuidebookText(prototype, entSys);
 }
 
 /// <summary>

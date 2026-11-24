@@ -1,0 +1,111 @@
+# --- Targets: medicine ---
+
+- type: alchemyZone
+  id: HealBrute
+  name: ce-alchemy-zone-heal-brute
+  position: -0.114, -0.445
+  radius: 0.12
+  gain: 0.9
+  effects:
+  - !type:Heal
+    groups:
+      Brute: 10
+  - !type:ModifyBleeding
+    amount: -2
+
+- type: alchemyZone
+  id: HealBurn
+  name: ce-alchemy-zone-heal-burn
+  position: -0.431, 0.254
+  radius: 0.10
+  gain: 1.0
+  effects:
+  - !type:Heal
+    groups:
+      Burn: 10
+
+- type: alchemyZone
+  id: RestoreBlood
+  name: ce-alchemy-zone-restore-blood
+  position: 0.639, -0.575
+  radius: 0.08
+  gain: 1.6
+  effects:
+  - !type:ModifyBloodLevel
+    amount: 15
+
+# --- Targets: movement ---
+
+- type: alchemyZone
+  id: Haste
+  name: ce-alchemy-zone-haste
+  position: 0.657, 0.132
+  radius: 0.10
+  gain: 1.2
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyHaste
+    duration: 10
+
+- type: alchemyZone
+  id: Slowdown
+  name: ce-alchemy-zone-slowdown
+  position: 0.542, 0.693 # the spot freed by the dropped levitation target
+  radius: 0.08
+  gain: 1.7
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemySlowdown
+    duration: 10
+
+# --- Targets: mana ---
+
+- type: alchemyZone
+  id: RestoreMana
+  name: ce-alchemy-zone-restore-mana
+  position: -0.279, -0.169
+  radius: 0.13
+  gain: 0.8
+  effects:
+  - !type:ChangeMana
+    amount: 5
+
+# --- Targets: poisons ---
+
+- type: alchemyZone
+  id: PoisonToxin
+  name: ce-alchemy-zone-poison-toxin
+  position: -0.065, 0.617
+  radius: 0.11
+  gain: 1.0
+  effects:
+  - !type:Damage
+    ignoreResistances: true
+    interruptDoAfters: false
+    colorFlash: false
+    damage:
+      types:
+        Poison: 2.5
+
+- type: alchemyZone
+  id: PoisonManaBurn
+  name: ce-alchemy-zone-poison-mana-burn
+  position: -0.408, 0.768
+  radius: 0.08
+  gain: 1.7
+  effects:
+  - !type:ChangeMana
+    amount: -5
+
+# --- Side effects ---
+
+- type: alchemyZone
+  id: ShakeAndSlur
+  name: ce-alchemy-zone-shake-and-slur
+  position: 0.22, -0.078
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyShake
+    duration: 10

@@ -20,7 +20,10 @@ public sealed partial class ThrowFrom : CEEntityEffectBase<ThrowFrom>
     public float Distance = 2.5f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-throw-from", ("power", ThrowPower));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-throw-from", ("power", Math.Round((double) (ThrowPower * power), 1)));
 }
 
 public sealed partial class CEThrowFromEffectSystem : CEEntityEffectSystem<ThrowFrom>

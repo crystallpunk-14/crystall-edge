@@ -15,7 +15,12 @@ ce-guidebook-alchemy-tune-value = [color=#8e9a9a]T = {$tune}, сила ×{$multi
 ce-guidebook-alchemy-legend = [color={$position}]●[/color] зона эффекта  [color={$path}]●[/color] зона побочки  [color=#ffd86b]●[/color] маркер раствора
 ce-guidebook-alchemy-result = Результат
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]нет[/color]
-ce-guidebook-alchemy-strength = сила {$percent}%
 ce-guidebook-alchemy-copy-header = Рецепт раствора на {$batch} ед.:
 ce-guidebook-alchemy-copy-line = {$index}. {$reagent} — {$amount} ед.
 ce-guidebook-alchemy-copy-tune = Настройка прибора: T = {$tune}
+ce-guidebook-alchemy-effect-line = {$effect} каждую секунду на протяжении {$duration}.
+ce-guidebook-alchemy-effect-line-status = {$effect} Действует {$duration}.
+ce-guidebook-alchemy-duration-seconds = {$value} сек.
+ce-guidebook-alchemy-duration-minutes = {$value} мин.
+ce-guidebook-alchemy-dose = Принято:
+ce-guidebook-alchemy-dose-value = {$value} ед.
