@@ -46,3 +46,16 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: FlavorProfile
+    flavors:
+      - CEMoss
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 3
+  - type: Edible
