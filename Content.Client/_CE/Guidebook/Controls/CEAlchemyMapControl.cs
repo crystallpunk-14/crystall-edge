@@ -1,9 +1,11 @@
 using System.Numerics;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Guidebook.Controls;
 
@@ -15,6 +17,7 @@ public sealed partial class CEAlchemyMapControl : Control
 {
     [Dependency] private IResourceCache _cache = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     private static readonly Color Background = Color.FromHex("#14181b");
     private static readonly Color Rim = Color.FromHex("#3c464c");
@@ -30,7 +33,17 @@ public sealed partial class CEAlchemyMapControl : Control
     /// </summary>
     private static readonly float[] CornerAngles = [-90, -30, 30, 90, 150, 210];
 
+    /// <summary>
+    /// Icons of the six sides, in the same order as <see cref="CornerAngles"/>: Ordo on top, Perditio at the bottom,
+    /// Aer opposite Terra and Aqua opposite Ignis. Pure graphics, they have no gameplay meaning.
+    /// </summary>
+    private static readonly string[] CornerIcons = ["ordo", "aqua", "aer", "perditio", "ignis", "terra"];
+
+    private const string IconRsi = "_CE/Interface/Science/thaum_essense.rsi";
+    private const float IconScale = 2f;
+
     private readonly Font _font;
+    private readonly Texture[] _icons = new Texture[CornerIcons.Length];
 
     private readonly List<MapDot> _dots = new();
     private readonly List<MapZone> _zones = new();
@@ -50,7 +63,13 @@ public sealed partial class CEAlchemyMapControl : Control
 
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 11);
 
-        MinSize = new Vector2(340, 340);
+        var sprite = _entMan.System<SpriteSystem>();
+        for (var i = 0; i < CornerIcons.Length; i++)
+        {
+            _icons[i] = sprite.Frame0(new SpriteSpecifier.Rsi(new ResPath(IconRsi), CornerIcons[i]));
+        }
+
+        MinSize = new Vector2(380, 380);
         RectClipContent = true;
         MouseFilter = MouseFilterMode.Stop;
     }
@@ -95,7 +114,7 @@ public sealed partial class CEAlchemyMapControl : Control
         base.Draw(handle);
 
         var center = PixelSize / 2;
-        var radius = MathF.Min(PixelSize.X, PixelSize.Y) / 2 - 8 * UIScale;
+        var radius = MathF.Min(PixelSize.X, PixelSize.Y) / 2 - 24 * UIScale;
         if (radius <= 0)
             return;
 
@@ -117,6 +136,15 @@ public sealed partial class CEAlchemyMapControl : Control
         }
 
         handle.DrawCircle(center, radius, Rim, false);
+
+        // Icons of the six sides around the perimeter.
+        for (var i = 0; i < CornerAngles.Length; i++)
+        {
+            var icon = _icons[i];
+            var size = new Vector2(icon.Width, icon.Height) * IconScale * UIScale;
+            var pos = ToPixel(Corner(CornerAngles[i]), center, radius + 6 * UIScale);
+            handle.DrawTextureRect(icon, new UIBox2(pos - size / 2, pos + size / 2));
+        }
 
         // Zones.
         var hover = string.Empty;
