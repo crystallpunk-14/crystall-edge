@@ -87,6 +87,10 @@
   - type: ReactionMixer
     mixMessage: "spoon-mixing-success"
     timeToMix: 0.5
+    mixingSound:
+      path: /Audio/Effects/waterswirl.ogg
+      params:
+        volume: -4
     reactionTypes:
     - Stir
   - type: PhysicalComposition

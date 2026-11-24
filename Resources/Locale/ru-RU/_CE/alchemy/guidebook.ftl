@@ -25,3 +25,6 @@ ce-guidebook-alchemy-dose = Принято:
 ce-guidebook-alchemy-dose-value = {$value} ед.
 ce-guidebook-alchemy-copy-effects = [bold]Эффекты:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
+ce-alchemy-scan-header = [bold]Алхимический раствор, {$amount} ед.:[/bold]
+ce-alchemy-scan-zone = • [bold]{$zone}[/bold]: {$effects}
+ce-alchemy-scan-none = • Эффектов нет.

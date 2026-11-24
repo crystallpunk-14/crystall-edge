@@ -429,27 +429,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     /// <summary>
     /// How long the accepted dose of this mixture works: it is metabolized at a fixed rate multiplied by the tuning.
     /// </summary>
-    private TimeSpan GetDuration(CEAlchemyData data)
-    {
-        var rate = 0.5f;
-        if (_prototype.TryIndex<ReagentPrototype>(MixtureReagent, out var mixture)
-            && mixture.Metabolisms is { } metabolisms
-            && metabolisms.Metabolisms.TryGetValue(MixtureStage, out var entry))
-        {
-            rate = entry.MetabolismRate.Float();
-        }
+    private TimeSpan GetDuration(CEAlchemyData data) => _alchemy.GetDuration(data, FixedPoint2.New(_dose));
 
-        rate *= data.Multiplier;
-        return rate <= 0 ? TimeSpan.Zero : TimeSpan.FromSeconds(_dose / rate);
-    }
-
-    private static string FormatDuration(TimeSpan duration)
-    {
-        var seconds = duration.TotalSeconds;
-        return seconds >= 60
-            ? Loc.GetString("ce-guidebook-alchemy-duration-minutes", ("value", Math.Round(seconds / 60, 1)))
-            : Loc.GetString("ce-guidebook-alchemy-duration-seconds", ("value", (int) Math.Round(seconds)));
-    }
+    private string FormatDuration(TimeSpan duration) => _alchemy.FormatDuration(duration);
 
     private Control MakeHitCard(CEAlchemyHit hit, TimeSpan duration)
     {

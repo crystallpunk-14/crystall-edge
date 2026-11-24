@@ -25,3 +25,6 @@ ce-guidebook-alchemy-dose = Dose:
 ce-guidebook-alchemy-dose-value = {$value} u
 ce-guidebook-alchemy-copy-effects = [bold]Effects:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
+ce-alchemy-scan-header = [bold]Alchemical mixture, {$amount}u:[/bold]
+ce-alchemy-scan-zone = • [bold]{$zone}[/bold]: {$effects}
+ce-alchemy-scan-none = • No effects.

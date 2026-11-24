@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Content.Shared._CE.Alchemy.World;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reaction;
@@ -1042,6 +1043,11 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-temperature", ("temperature", Math.Round(solution.Temperature))));
+
+        // CrystallEdge: alchemy mixtures show their predicted effects in the same scan window
+        var scanEv = new CESolutionScanEvent(solution, msg);
+        RaiseLocalEvent(ref scanEv);
+        // CrystallEdge end
 
         return msg;
     }
