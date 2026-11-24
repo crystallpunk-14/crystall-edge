@@ -41,6 +41,7 @@
         - id: CEGauze
         - id: CEHerbalOintment
         - id: CEBloodpack
+        - id: CEGuidebookAlchemy
 
 - type: entity
   id: CEBedsideTableFilledOrderly

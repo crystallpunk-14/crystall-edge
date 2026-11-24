@@ -38,7 +38,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private const float TuneStep = 0.05f;
 
     private const string MixtureReagent = "CEAlchemyMixture";
-    private const string MixtureStage = "Bloodstream";
+    private static readonly FixedPoint2 BaseAmount = FixedPoint2.New(1);
 
     private static readonly Color PositionColor = Color.FromHex("#4fb59a");
     private static readonly Color PathColor = Color.FromHex("#e08a4a");
@@ -142,7 +142,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                 reagents.Add(reagent);
         }
 
-        // Ingredients first, then modifiers, by name inside the groups; the base is inserted before them
+        // Ingredients first, then modifiers, by name inside the groups
         reagents.Sort((a, b) =>
         {
             var byKind = HasCarrier(b).CompareTo(HasCarrier(a));
@@ -159,14 +159,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             return;
         }
 
-        // The blank alchemy mixture comes first: the real recipe always starts from it
-        if (_prototype.TryIndex<ReagentPrototype>(MixtureReagent, out var mixture))
-            reagents.Insert(0, mixture);
-
         foreach (var reagent in reagents)
         {
             var id = new ProtoId<ReagentPrototype>(reagent.ID);
-            var isBase = reagent.ID == MixtureReagent;
             var isCarrier = HasCarrier(reagent);
 
             var row = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal };
@@ -184,15 +179,13 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             _paletteButtons[id] = button;
             row.AddChild(button);
 
-            if (isBase)
+            if (_selected == null)
                 Select(id);
 
             var kind = new Label
             {
-                Text = Loc.GetString(isBase
-                    ? "ce-guidebook-alchemy-kind-base"
-                    : isCarrier ? "ce-guidebook-alchemy-kind-ingredient" : "ce-guidebook-alchemy-kind-modifier"),
-                FontColorOverride = isBase ? MutedColor : isCarrier ? PositionColor : ModifierColor,
+                Text = Loc.GetString(isCarrier ? "ce-guidebook-alchemy-kind-ingredient" : "ce-guidebook-alchemy-kind-modifier"),
+                FontColorOverride = isCarrier ? PositionColor : ModifierColor,
                 MinWidth = 90,
                 Align = Label.AlignMode.Right,
                 VerticalAlignment = VAlignment.Center,
@@ -247,7 +240,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
     private void AddStep(ProtoId<ReagentPrototype> reagent)
     {
-        if (_steps.Count >= CEAlchemyData.MaxSteps)
+        if (_steps.Count + 1 >= CEAlchemyData.MaxSteps)
             return;
 
         _steps.Add((reagent, FixedPoint2.New(_amount)));
@@ -257,6 +250,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private CEAlchemyData BuildData()
     {
         var data = new CEAlchemyData { Tune = FixedPoint2.New(_tune) };
+
+        // The recipe always starts from the blank alchemy mixture: without it nothing can be brewed in the game
+        data.Steps.Add(new CEAlchemyMixStep { Reagent = MixtureReagent, Amount = BaseAmount });
         foreach (var (reagent, amount) in _steps)
         {
             data.Steps.Add(new CEAlchemyMixStep { Reagent = reagent, Amount = amount });
@@ -288,7 +284,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     /// </summary>
     private void UpdatePreview()
     {
-        if (_selected is not { } selected || _steps.Count >= CEAlchemyData.MaxSteps)
+        if (_selected is not { } selected || _steps.Count + 1 >= CEAlchemyData.MaxSteps)
         {
             Map.SetPreview(null);
             return;
@@ -346,6 +342,35 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     {
         StepsBox.RemoveAllChildren();
 
+        // The pinned first step: the base cannot be removed or moved
+        if (_prototype.TryIndex<ReagentPrototype>(MixtureReagent, out var baseReagent))
+        {
+            var baseRow = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal };
+            baseRow.AddChild(new Label
+            {
+                Text = "1.",
+                FontColorOverride = MutedColor,
+                MinWidth = 26,
+                Align = Label.AlignMode.Right,
+                Margin = new Thickness(0, 0, 6, 0),
+            });
+            baseRow.AddChild(MakeSwatch(baseReagent.SubstanceColor));
+            baseRow.AddChild(new Label
+            {
+                Text = $"{baseReagent.LocalizedName} × {FormatAmount(BaseAmount.Float())}",
+                HorizontalExpand = true,
+                ClipText = true,
+            });
+            baseRow.AddChild(new Label
+            {
+                Text = Loc.GetString("ce-guidebook-alchemy-kind-base"),
+                FontColorOverride = MutedColor,
+                MinWidth = 90,
+                Align = Label.AlignMode.Right,
+            });
+            StepsBox.AddChild(baseRow);
+        }
+
         if (_steps.Count == 0)
         {
             var hint = new RichTextLabel { Margin = new Thickness(2) };
@@ -364,7 +389,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             var row = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal };
             row.AddChild(new Label
             {
-                Text = $"{i + 1}.",
+                Text = $"{i + 2}.",
                 FontColorOverride = MutedColor,
                 MinWidth = 26,
                 Align = Label.AlignMode.Right,
@@ -494,8 +519,12 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
     private string BuildRecipeText()
     {
+        // The base is the pinned first line of the recipe
+        var steps = new List<(ProtoId<ReagentPrototype> Reagent, FixedPoint2 Amount)> { (MixtureReagent, BaseAmount) };
+        steps.AddRange(_steps);
+
         var total = 0f;
-        foreach (var (_, amount) in _steps)
+        foreach (var (_, amount) in steps)
         {
             total += amount.Float();
         }
@@ -508,9 +537,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         if (total <= 0)
             return builder.ToString().TrimEnd();
 
-        for (var i = 0; i < _steps.Count; i++)
+        for (var i = 0; i < steps.Count; i++)
         {
-            var (reagentId, amount) = _steps[i];
+            var (reagentId, amount) = steps[i];
             if (!_prototype.TryIndex(reagentId, out var reagent))
             {
                 _sawmill.Warning($"Unknown reagent {reagentId} in the sandbox recipe");

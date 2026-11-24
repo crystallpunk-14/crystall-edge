@@ -24,3 +24,11 @@
   components:
   - type: StutteringAccent
   - type: DrunkStatusEffect
+  # Periodic jitter on top of the shaking drunk walk
+  - type: CEStatusEffectApplyEntityEffect
+    frequency: 6
+    effects:
+    - !type:Jitter
+      duration: 2
+      amplitude: 8
+      frequency: 6

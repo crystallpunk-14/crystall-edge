@@ -42,3 +42,24 @@
     guides:
     - CECookingRecipesRU
     - CECookingRecipesEN
+
+- type: entity
+  id: CEGuidebookAlchemy
+  parent: CEGuidebookBase
+  name: young alchemist's guide
+  description: A detailed guide on how to turn gold into beer, without losing your mind.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#7a3fb5"
+    - state: decor_frame
+      color: "#d9b8ff"
+    - state: bookmark_short
+    - state: icon_thaum
+      color: "#7ad9c9"
+  - type: GuideHelp
+    guides:
+    - CEAlchemyGuideRU
+    - CEAlchemyGuideEN

@@ -59,6 +59,7 @@
         - id: CEAlchemyInjector
         - id: CEAlchemyInjector
         - id: CEAlchemyInjector
+        - id: CEGuidebookAlchemy
 
 - type: entity
   id: CEBedsideTableFilledDoctor
