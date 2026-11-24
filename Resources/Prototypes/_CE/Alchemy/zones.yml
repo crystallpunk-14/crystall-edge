@@ -74,7 +74,7 @@
   gain: 0.8
   effects:
   - !type:ChangeMana
-    amount: 5
+    amount: 10
 
 # --- Targets: poisons ---
 
@@ -103,7 +103,7 @@
   gain: 1.7
   effects:
   - !type:ChangeMana
-    amount: -5
+    amount: -10
 
 # --- Side effects ---
 

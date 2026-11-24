@@ -56,6 +56,9 @@
         - id: CEBloodpack
         - id: CEBloodpack
         - id: CEHandLabeler
+        - id: CEAlchemyInjector
+        - id: CEAlchemyInjector
+        - id: CEAlchemyInjector
 
 - type: entity
   id: CEBedsideTableFilledDoctor

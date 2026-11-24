@@ -312,6 +312,21 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: AlchemyInjector
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CEAlchemyInjector
+  resultCount: 1
+
+- type: workbenchRecipe
   id: ClothingEyesMedicalGlasses
   parent: BaseAssemblyShopRecipe
   category: Tools
