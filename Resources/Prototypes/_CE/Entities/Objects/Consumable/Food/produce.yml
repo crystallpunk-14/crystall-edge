@@ -1020,6 +1020,47 @@
   - type: InternalTemperature
 
 - type: entity
+  id: CEFoodSilverNeedle
+  parent: [ FoodInjectableBase, CEBasePlantable, BaseSlicingRefinableFood ]
+  categories: [ ForkFiltered ]
+  name: silver needle
+  description: Bright orange berries of a frost-resistant plant. Widely used in medicine.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/silver_needle.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: CESilverNeedle
+        Quantity: 4
+      - ReagentId: CENutriment
+        Quantity: 1
+  - type: CEPlaceable
+    prototype: CEPlantSilverNeedle
+  - type: ToolRefinable
+    refineTime: 1
+    refineResult:
+    - id: CESeedSilverNeedle
+      amount: 1
+      maxAmount: 3 # the upper bound is exclusive: 1-2 seeds
+  - type: Temperature
+    temperature: 290
+    heatCapacity: 15000
+  - type: InternalTemperature
+
+- type: entity
   id: CEFoodSunflowerHead
   parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]

@@ -9,3 +9,4 @@ ce-stack-cotton-seeds = семена хлопка
 ce-stack-sunflower-seeds = семена подсолнуха
 ce-stack-corn-seeds = семена кукурузы
 ce-stack-carrot-seeds = семена моркови
+ce-stack-silver-needle-seeds = семена серебряной иглы

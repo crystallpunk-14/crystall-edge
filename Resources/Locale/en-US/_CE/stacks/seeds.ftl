@@ -9,3 +9,4 @@ ce-stack-cotton-seeds = cotton seeds
 ce-stack-sunflower-seeds = sunflower seeds
 ce-stack-corn-seeds = corn seeds
 ce-stack-carrot-seeds = carrot seeds
+ce-stack-silver-needle-seeds = silver needle seeds

@@ -140,6 +140,7 @@
     - id: CEWildlandsModifierOreSpidersCoal
     - id: CEWildlandsModifierOreSpidersGold
     - id: CEWildlandsModifierLumishrooms
+    - id: CEWildlandsModifierSilverNeedles
   layersByDepth:
   #MARK: 2 Hills top
     2:
