@@ -1,0 +1,18 @@
+- type: entity
+  parent: BaseFoam
+  id: CEAlchemyMist
+  name: mist
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/mist.rsi
+    state: chemmist
+  - type: TimedDespawn
+    lifetime: 10 # must equal SmokeCloud.Duration: the client fade counts down from this value, the server overrides it with the duration
+  - type: CETimedDespawnFadeout
+    fadeInEnd: 0.3
+    fadeOutStart: 0.5
+  - type: Tag
+    tags:
+    - HideContextMenu

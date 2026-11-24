@@ -461,3 +461,46 @@
     materialComposition:
       CEGlass: 5
       CEBrass: 5
+
+# Thrown vial that bursts into a cloud of its contents
+- type: entity
+  id: CEVialAlchemyBomb
+  parent: CEVialSmall
+  name: alchemical bomb
+  description: A vial of liquid that bursts into a cloud of its contents when thrown.
+  components:
+  - type: Spillable
+    solution: none # no spilling, the cloud takes everything
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEGlassShard: { min: 1, max: 1 }
+        transferForensics: true
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: CEDestructionEffect
+    effects:
+    - !type:SmokeCloud
+      effectTarget: User
+      solution: vial
+    - !type:PlaySound
+      positional: true
+      sound:
+        collection: GlassBreak
+        params:
+          volume: -4
+  - type: Sprite
+    layers:
+      - state: vial
+      - state: liq-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: bomb
+      - state: label
+        visible: false
+        map: ["enum.PaperLabelVisuals.Layer"]

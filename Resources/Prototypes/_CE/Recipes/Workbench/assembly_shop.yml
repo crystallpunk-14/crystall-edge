@@ -1178,3 +1178,21 @@
     count: 1
   result: CEWallLightRedItem
   resultCount: 2
+
+- type: workbenchRecipe
+  id: AlchemyBomb
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEVialAlchemyBomb
+  resultCount: 1
