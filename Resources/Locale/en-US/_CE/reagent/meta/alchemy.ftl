@@ -12,3 +12,6 @@ ce-reagent-desc-stone-heart = Ground heart of a stone creature.
 
 ce-reagent-name-chromium-slime = chromium slime
 ce-reagent-desc-chromium-slime = A rare substance found in water streams. It inverts the effects of a solution, but can completely ruin it if dosed incorrectly.
+
+ce-reagent-name-lumishroom-sap = lumishroom sap
+ce-reagent-desc-lumishroom-sap = A faintly shimmering slurry extracted from lumishroom. Often used by alchemists as a means of concentrating solutions.

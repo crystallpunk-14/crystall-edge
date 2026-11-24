@@ -966,8 +966,8 @@
     solution:
       maxVol: 11
       reagents:
-      - ReagentId: CEMuscimol
-        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
+      - ReagentId: CEAmanitaJuice
+        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEAmanitaJuice
   - type: CEPlaceable
     prototype: CEPlantAgaric
   - type: Temperature
@@ -1008,7 +1008,7 @@
     solution:
       maxVol: 11
       reagents:
-      - ReagentId: Ethanol
+      - ReagentId: CELumishroomSap
         Quantity: 5
       - ReagentId: CENutriment
         Quantity: 2

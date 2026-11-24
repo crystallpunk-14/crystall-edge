@@ -34,3 +34,12 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingEyesMedicalGlasses
+
+- type: tradeOffer
+  id: BuyAlchemyMixture
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumAlchemyMixture

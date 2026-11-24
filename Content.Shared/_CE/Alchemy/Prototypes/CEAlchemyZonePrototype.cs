@@ -18,6 +18,12 @@ public sealed partial class CEAlchemyZonePrototype : IPrototype
     public LocId Name;
 
     /// <summary>
+    /// Color of the effect. The mixture is painted with the colors of its active zones.
+    /// </summary>
+    [DataField(required: true)]
+    public Color Color;
+
+    /// <summary>
     /// Base center of the circle. The round seed shifts it, the shifted value lives in the round world.
     /// </summary>
     [DataField(required: true)]

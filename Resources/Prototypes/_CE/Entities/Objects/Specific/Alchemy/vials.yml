@@ -40,6 +40,9 @@
     solution: vial
   - type: MixableSolution
     solution: vial
+  - type: CEAlchemyVessel # raw reagents are absorbed into an alchemy mixture when shaken or stirred
+  - type: Shakeable
+    requireInHand: true
   - type: FitsInDispenser
     solution: vial
   - type: RefillableSolution

@@ -33,11 +33,6 @@ namespace Content.Client._CE.Guidebook.Controls;
 public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag, ISearchableControl
 {
     /// <summary>
-    /// Recipe amounts are scaled to this volume when copied.
-    /// </summary>
-    private const float BaseBatch = 30f;
-
-    /// <summary>
     /// Tuning step of the devices.
     /// </summary>
     private const float TuneStep = 0.05f;
@@ -88,19 +83,6 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             Select(id);
         };
 
-        UndoButton.OnPressed += _ =>
-        {
-            if (_steps.Count == 0)
-                return;
-
-            _steps.RemoveAt(_steps.Count - 1);
-            Rebuild();
-        };
-        ClearButton.OnPressed += _ =>
-        {
-            _steps.Clear();
-            Rebuild();
-        };
         AmountSlider.OnValueChanged += _ =>
         {
             _amount = MathF.Round(AmountSlider.Value * 10f) / 10f;
@@ -117,7 +99,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             _doseFollowsMax = DoseSlider.Value >= DoseSlider.MaxValue - 0.05f;
             Rebuild();
         };
-        AddButton.Disabled = true;
+        AddButton.Disabled = _selected == null;
         AddButton.OnPressed += _ =>
         {
             if (_selected is { } selected)
@@ -158,11 +140,18 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         var reagents = new List<ReagentPrototype>();
         foreach (var reagent in _prototype.EnumeratePrototypes<ReagentPrototype>())
         {
-            if (reagent.AlchemyEffects.Count > 0)
+            if (reagent.AlchemyEffects.Count > 0 && reagent.ID != MixtureReagent)
                 reagents.Add(reagent);
         }
 
-        reagents.Sort((a, b) => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.CurrentCulture));
+        // Ingredients first, then modifiers, by name inside the groups; the base is inserted before them
+        reagents.Sort((a, b) =>
+        {
+            var byKind = HasCarrier(b).CompareTo(HasCarrier(a));
+            return byKind != 0
+                ? byKind
+                : string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.CurrentCulture);
+        });
 
         if (reagents.Count == 0)
         {
@@ -172,9 +161,14 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             return;
         }
 
+        // The blank alchemy mixture comes first: the real recipe always starts from it
+        if (_prototype.TryIndex<ReagentPrototype>(MixtureReagent, out var mixture))
+            reagents.Insert(0, mixture);
+
         foreach (var reagent in reagents)
         {
             var id = new ProtoId<ReagentPrototype>(reagent.ID);
+            var isBase = reagent.ID == MixtureReagent;
             var isCarrier = HasCarrier(reagent);
 
             var row = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Horizontal };
@@ -193,10 +187,18 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             _paletteButtons[id] = button;
             row.AddChild(button);
 
+            if (isBase)
+            {
+                button.Pressed = true;
+                Select(id);
+            }
+
             var kind = new Label
             {
-                Text = Loc.GetString(isCarrier ? "ce-guidebook-alchemy-kind-ingredient" : "ce-guidebook-alchemy-kind-modifier"),
-                FontColorOverride = isCarrier ? PositionColor : ModifierColor,
+                Text = Loc.GetString(isBase
+                    ? "ce-guidebook-alchemy-kind-base"
+                    : isCarrier ? "ce-guidebook-alchemy-kind-ingredient" : "ce-guidebook-alchemy-kind-modifier"),
+                FontColorOverride = isBase ? MutedColor : isCarrier ? PositionColor : ModifierColor,
                 MinWidth = 90,
                 Align = Label.AlignMode.Right,
                 VerticalAlignment = VAlignment.Center,
@@ -277,8 +279,6 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
         UpdatePreview();
 
-        UndoButton.Disabled = _steps.Count == 0;
-        ClearButton.Disabled = _steps.Count == 0;
         CopyButton.Disabled = _steps.Count == 0;
     }
 
@@ -517,8 +517,10 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             total += amount.Float();
         }
 
+        // The recipe is scaled to the dose chosen by the user
+        var batch = _dose > 0 ? _dose : total;
         var builder = new StringBuilder();
-        builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-header", ("batch", FormatAmount(BaseBatch))));
+        builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-header", ("batch", FormatAmount(batch))));
 
         if (total <= 0)
             return builder.ToString().TrimEnd();
@@ -532,7 +534,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                 continue;
             }
 
-            var scaled = amount.Float() / total * BaseBatch;
+            var scaled = amount.Float() / total * batch;
             builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-line",
                 ("index", i + 1),
                 ("reagent", reagent.LocalizedName),
@@ -544,6 +546,42 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             var sign = _tune > 0 ? "+" : string.Empty;
             builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-tune",
                 ("tune", sign + _tune.ToString("0.00", CultureInfo.InvariantCulture))));
+        }
+
+        var data = BuildData();
+        var duration = FormatDuration(GetDuration(data));
+        var placeholder = Loc.GetString("ce-entity-effect-guidebook-none");
+        var effectsHeader = false;
+        foreach (var hit in _alchemy.Analyze(data))
+        {
+            var lines = new List<string>();
+            foreach (var effect in hit.Zone.Effects)
+            {
+                var text = effect.EntityEffectGuidebookText(_prototype, _entSys, hit.Strength);
+                if (string.IsNullOrWhiteSpace(text) || text == placeholder)
+                    continue;
+
+                text = text.TrimEnd('.', ' ');
+                lines.Add(Loc.GetString(effect is ApplyStatusEffect
+                        ? "ce-guidebook-alchemy-effect-line-status"
+                        : "ce-guidebook-alchemy-effect-line",
+                    ("effect", text),
+                    ("duration", duration)));
+            }
+
+            if (lines.Count == 0)
+                continue;
+
+            if (!effectsHeader)
+            {
+                builder.AppendLine();
+                builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-effects"));
+                effectsHeader = true;
+            }
+
+            builder.AppendLine(Loc.GetString("ce-guidebook-alchemy-copy-effect",
+                ("zone", Loc.GetString(hit.Zone.Name)),
+                ("effects", string.Join(" ", lines))));
         }
 
         return builder.ToString().TrimEnd();

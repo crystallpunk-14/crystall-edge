@@ -1,3 +1,4 @@
+using Content.Shared._CE.Alchemy.World;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
@@ -69,25 +70,24 @@ public sealed partial class CEAlchemyData : ReagentData
     public override float MetabolismRateMultiplier => Multiplier;
 
     /// <summary>
-    /// Color of the mixture: the colors of the poured reagents blended by their amounts.
-    /// It shows only what was poured, never the effects, so it cannot give false hints.
+    /// Color of the mixture: the colors of its active zones blended by their strength.
+    /// Without effects it stays the default color of the reagent.
     /// </summary>
     public override Color? GetColor(IPrototypeManager protoMan)
     {
+        var alchemy = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<CEAlchemySystem>();
+
         Color? result = null;
         var total = 0f;
-        foreach (var step in Steps)
+        foreach (var hit in alchemy.Analyze(this))
         {
-            if (step is not CEAlchemyMixStep mix || mix.Amount <= FixedPoint2.Zero)
+            if (hit.Strength <= 0)
                 continue;
 
-            if (!protoMan.TryIndex(mix.Reagent, out var reagent))
-                continue;
-
-            total += mix.Amount.Float();
+            total += hit.Strength;
             result = result is { } current
-                ? Color.InterpolateBetween(current, reagent.SubstanceColor, mix.Amount.Float() / total)
-                : reagent.SubstanceColor;
+                ? Color.InterpolateBetween(current, hit.Zone.Color, hit.Strength / total)
+                : hit.Zone.Color;
         }
 
         return result;

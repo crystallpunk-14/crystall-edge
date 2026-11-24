@@ -56,3 +56,20 @@
   alchemyEffects:
   - !type:Scale # 5 units fully invert the marker through the center of the map
     perUnit: -0.4, -0.4
+
+- type: reagent
+  id: CELumishroomSap
+  parent: BaseAlcohol
+  name: ce-reagent-name-lumishroom-sap
+  desc: ce-reagent-desc-lumishroom-sap
+  flavor: alcohol
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#36c98f"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6 # the sap ferments: whoever drinks it gets drunk
+  alchemyEffects:
+  - !type:Rotate # clockwise, a pour never turns the marker by more than 15 degrees
+    degreesPerUnit: 3
+    maxDegrees: 30

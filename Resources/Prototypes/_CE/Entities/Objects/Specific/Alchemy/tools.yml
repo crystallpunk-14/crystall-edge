@@ -4,9 +4,11 @@
   abstract: true
   id: CEAlchemyDropperMode
   transferAmounts:
+  - 0.1
   - 0.25
   - 0.5
   - 1
+  - 2
 
 - type: injectorMode
   parent: [ CEAlchemyDropperMode, BaseInjectMode ]

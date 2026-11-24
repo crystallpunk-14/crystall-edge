@@ -55,8 +55,6 @@
                     </ScrollContainer>
                 </PanelContainer>
                 <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-                    <Button Name="UndoButton" Text="{Loc 'ce-guidebook-alchemy-undo'}"/>
-                    <Button Name="ClearButton" Text="{Loc 'ce-guidebook-alchemy-clear'}"/>
                     <Control HorizontalExpand="True"/>
                     <Button Name="CopyButton" Text="{Loc 'ce-guidebook-alchemy-copy'}"/>
                 </BoxContainer>

@@ -3,6 +3,7 @@
 - type: alchemyZone
   id: HealBrute
   name: ce-alchemy-zone-heal-brute
+  color: "#d94f4f"
   position: -0.114, -0.445
   radius: 0.12
   gain: 0.9
@@ -16,6 +17,7 @@
 - type: alchemyZone
   id: HealBurn
   name: ce-alchemy-zone-heal-burn
+  color: "#e8913a"
   position: -0.431, 0.254
   radius: 0.10
   gain: 1.0
@@ -27,6 +29,7 @@
 - type: alchemyZone
   id: RestoreBlood
   name: ce-alchemy-zone-restore-blood
+  color: "#9e1b32"
   position: 0.639, -0.575
   radius: 0.08
   gain: 1.6
@@ -39,6 +42,7 @@
 - type: alchemyZone
   id: Haste
   name: ce-alchemy-zone-haste
+  color: "#f0d84a"
   position: 0.657, 0.132
   radius: 0.10
   gain: 1.2
@@ -50,6 +54,7 @@
 - type: alchemyZone
   id: Slowdown
   name: ce-alchemy-zone-slowdown
+  color: "#5a7fb5"
   position: 0.542, 0.693 # the spot freed by the dropped levitation target
   radius: 0.08
   gain: 1.7
@@ -63,6 +68,7 @@
 - type: alchemyZone
   id: RestoreMana
   name: ce-alchemy-zone-restore-mana
+  color: "#3fa7ff"
   position: -0.279, -0.169
   radius: 0.13
   gain: 0.8
@@ -75,6 +81,7 @@
 - type: alchemyZone
   id: PoisonToxin
   name: ce-alchemy-zone-poison-toxin
+  color: "#5fbf3a"
   position: -0.065, 0.617
   radius: 0.11
   gain: 1.0
@@ -90,6 +97,7 @@
 - type: alchemyZone
   id: PoisonManaBurn
   name: ce-alchemy-zone-poison-mana-burn
+  color: "#b23fd1"
   position: -0.408, 0.768
   radius: 0.08
   gain: 1.7
@@ -102,6 +110,7 @@
 - type: alchemyZone
   id: ShakeAndSlur
   name: ce-alchemy-zone-shake-and-slur
+  color: "#7ad9c9"
   position: 0.22, -0.078
   radius: 0.081
   byPath: true

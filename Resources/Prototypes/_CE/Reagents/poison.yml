@@ -1,8 +1,8 @@
 - type: reagent
-  id: CEMuscimol
-  name: ce-reagent-name-muscimol
+  id: CEAmanitaJuice
+  name: ce-reagent-name-amanita-juice
   group: Toxins
-  desc: ce-reagent-desc-muscimol
+  desc: ce-reagent-desc-amanita-juice
   flavor: bitter
   color: "#b3282d"
   physicalDesc: reagent-physical-desc-opaque
