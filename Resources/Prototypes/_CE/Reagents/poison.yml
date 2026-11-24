@@ -6,6 +6,10 @@
   flavor: bitter
   color: "#b3282d"
   physicalDesc: reagent-physical-desc-opaque
+  alchemyEffects:
+  - !type:CoordinatePoint
+    pos: 0.25, 0.48
+    stock: 1.5
   metabolisms:
     Bloodstream:
       effects:

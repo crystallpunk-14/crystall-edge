@@ -71,10 +71,12 @@ public sealed partial class CEAlchemySystem : EntitySystem
     /// Replays the recipe step by step: effects of every reagent move the marker, and every move
     /// adds its length inside the <see cref="CEAlchemyZonePrototype.ByPath"/> zones.
     /// </summary>
-    public CEAlchemyState Replay(CEAlchemyData data)
+    /// <param name="trail">If given, receives the marker position at the start and after every step (for drawing the path).</param>
+    public CEAlchemyState Replay(CEAlchemyData data, List<Vector2>? trail = null)
     {
         var state = new CEAlchemyState { ZoneLengths = new Dictionary<ProtoId<CEAlchemyZonePrototype>, float>() };
         List<(CEAlchemyZonePrototype Zone, Vector2 Center)>? pathZones = null;
+        trail?.Add(state.Pos);
 
         foreach (var step in data.Steps)
         {
@@ -100,6 +102,8 @@ public sealed partial class CEAlchemySystem : EntitySystem
                         state.ZoneLengths[zone.ID] = state.ZoneLengths.GetValueOrDefault(zone.ID) + length;
                 }
             }
+
+            trail?.Add(state.Pos);
         }
 
         return state;
