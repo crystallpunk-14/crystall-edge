@@ -17,14 +17,14 @@ ce-guidebook-alchemy-result-none = [color=#8e9a9a]none[/color]
 ce-guidebook-alchemy-copy-header = [bold]Solution recipe for {$batch} u:[/bold]
 ce-guidebook-alchemy-copy-line = {$index}. [bold]{$reagent}[/bold] — {$amount} u
 ce-guidebook-alchemy-copy-tune = [bold]Device tuning:[/bold] T = {$tune}
-ce-guidebook-alchemy-effect-line = {$effect} every second for {$duration}.
-ce-guidebook-alchemy-effect-line-status = {$effect} Works for {$duration}.
+ce-guidebook-alchemy-effect-line = {$effect} every second for [color=#1fa383]{$duration}[/color].
+ce-guidebook-alchemy-effect-line-status = {$effect} Works for [color=#1fa383]{$duration}[/color].
 ce-guidebook-alchemy-duration-seconds = {$value} sec.
 ce-guidebook-alchemy-duration-minutes = {$value} min.
 ce-guidebook-alchemy-dose = Dose:
 ce-guidebook-alchemy-dose-value = {$value} u
 ce-guidebook-alchemy-copy-effects = [bold]Effects:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
-ce-alchemy-scan-header = [bold]Alchemical mixture, {$amount}u:[/bold]
+ce-alchemy-scan-header = [bold]Alchemical mixture, [color=#1fa383]{$amount}[/color]u:[/bold]
 ce-alchemy-scan-zone = • [bold]{$zone}[/bold]: {$effects}
 ce-alchemy-scan-none = • No effects.

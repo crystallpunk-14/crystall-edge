@@ -17,14 +17,14 @@ ce-guidebook-alchemy-result-none = [color=#8e9a9a]нет[/color]
 ce-guidebook-alchemy-copy-header = [bold]Рецепт раствора на {$batch} ед.:[/bold]
 ce-guidebook-alchemy-copy-line = {$index}. [bold]{$reagent}[/bold] — {$amount} ед.
 ce-guidebook-alchemy-copy-tune = [bold]Настройка прибора:[/bold] T = {$tune}
-ce-guidebook-alchemy-effect-line = {$effect} каждую секунду на протяжении {$duration}.
-ce-guidebook-alchemy-effect-line-status = {$effect} Действует {$duration}.
+ce-guidebook-alchemy-effect-line = {$effect} каждую секунду на протяжении [color=#1fa383]{$duration}[/color].
+ce-guidebook-alchemy-effect-line-status = {$effect} Действует [color=#1fa383]{$duration}[/color].
 ce-guidebook-alchemy-duration-seconds = {$value} сек.
 ce-guidebook-alchemy-duration-minutes = {$value} мин.
 ce-guidebook-alchemy-dose = Принято:
 ce-guidebook-alchemy-dose-value = {$value} ед.
 ce-guidebook-alchemy-copy-effects = [bold]Эффекты:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
-ce-alchemy-scan-header = [bold]Алхимический раствор, {$amount} ед.:[/bold]
+ce-alchemy-scan-header = [bold]Алхимический раствор, [color=#1fa383]{$amount}[/color] ед.:[/bold]
 ce-alchemy-scan-zone = • [bold]{$zone}[/bold]: {$effects}
 ce-alchemy-scan-none = • Эффектов нет.
