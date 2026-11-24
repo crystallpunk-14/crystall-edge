@@ -66,6 +66,33 @@ public sealed partial class CEAlchemyData : ReagentData
         Steps.Add(new CEAlchemyMixStep { Reagent = reagent, Amount = amount });
     }
 
+    public override float MetabolismRateMultiplier => Multiplier;
+
+    /// <summary>
+    /// Color of the mixture: the colors of the poured reagents blended by their amounts.
+    /// It shows only what was poured, never the effects, so it cannot give false hints.
+    /// </summary>
+    public override Color? GetColor(IPrototypeManager protoMan)
+    {
+        Color? result = null;
+        var total = 0f;
+        foreach (var step in Steps)
+        {
+            if (step is not CEAlchemyMixStep mix || mix.Amount <= FixedPoint2.Zero)
+                continue;
+
+            if (!protoMan.TryIndex(mix.Reagent, out var reagent))
+                continue;
+
+            total += mix.Amount.Float();
+            result = result is { } current
+                ? Color.InterpolateBetween(current, reagent.SubstanceColor, mix.Amount.Float() / total)
+                : reagent.SubstanceColor;
+        }
+
+        return result;
+    }
+
     public override ReagentData Clone()
     {
         var steps = new List<CEAlchemyStep>(Steps.Count);

@@ -181,7 +181,7 @@ public sealed partial class MetabolizerSystem : EntitySystem
                 continue;
             }
 
-            var rate = solutionData.MetabolizeAll ? quantity : entry.MetabolismRate;
+            var rate = solutionData.MetabolizeAll ? quantity : entry.MetabolismRate * GetDataRateMultiplier(reagent.Data); // CrystallEdge: reagent data can speed up or slow down consumption
 
             // Remove $rate, as long as there's enough reagent there to actually remove that much
             var mostToRemove = FixedPoint2.Clamp(rate, 0, quantity);
@@ -222,7 +222,7 @@ public sealed partial class MetabolizerSystem : EntitySystem
             // CrystallEdge: CE effects get the same scale as upstream effects as Power; the organ is the source
             if (entry.CeEffects.Count > 0)
             {
-                var ceArgs = new CEEntityEffectArgs(EntityManager, ent, null, Angle.Zero, 0f, actualEntity, null, scale);
+                var ceArgs = new CEEntityEffectArgs(EntityManager, ent, null, Angle.Zero, 0f, actualEntity, null, scale, reagent.Data);
                 foreach (var ceEffect in entry.CeEffects)
                 {
                     ceEffect.Effect(ceArgs);
@@ -271,6 +271,22 @@ public sealed partial class MetabolizerSystem : EntitySystem
             _solutionContainerSystem.UpdateChemicals(transferSolutionEntity.Value);
         }
     }
+
+    // CrystallEdge: product of the rate multipliers of all data entries of a reagent
+    private static float GetDataRateMultiplier(List<ReagentData>? data)
+    {
+        var multiplier = 1f;
+        if (data is null)
+            return multiplier;
+
+        foreach (var entry in data)
+        {
+            multiplier *= entry.MetabolismRateMultiplier;
+        }
+
+        return multiplier;
+    }
+    // CrystallEdge end
 
     private void TryMetabolize(Entity<MetabolizerComponent, OrganComponent?, SolutionManagerComponent?> ent)
     {

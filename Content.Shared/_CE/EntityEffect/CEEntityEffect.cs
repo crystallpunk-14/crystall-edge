@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Chemistry.Reagent;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -70,7 +71,8 @@ public record struct CEEntityEffectArgs(
     float Speed,
     EntityUid? Target,
     EntityCoordinates? Position,
-    float Power = 1f)
+    float Power = 1f,
+    List<ReagentData>? Data = null)
 {
     /// <summary>
     /// Resolves which entity of these args the given <see cref="CEEffectTarget"/> refers to.

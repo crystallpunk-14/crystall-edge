@@ -1,4 +1,5 @@
 ﻿using Content.Shared.FixedPoint;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Chemistry.Reagent;
@@ -23,6 +24,18 @@ public abstract partial class ReagentData : IEquatable<ReagentData>
     {
         return $"{prototype}:{GetType().Name}";
     }
+
+    // CrystallEdge: data can change how fast the reagent is metabolized and what color it has
+    /// <summary>
+    /// Multiplier of the metabolism rate of a reagent carrying this data. Metabolism strength per unit scales with it.
+    /// </summary>
+    public virtual float MetabolismRateMultiplier => 1f;
+
+    /// <summary>
+    /// Color of a reagent carrying this data, or null to use the color of the reagent prototype.
+    /// </summary>
+    public virtual Color? GetColor(IPrototypeManager protoMan) => null;
+    // CrystallEdge end
 
     public abstract bool Equals(ReagentData? other);
 

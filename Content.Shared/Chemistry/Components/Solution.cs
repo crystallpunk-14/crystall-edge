@@ -903,18 +903,35 @@ namespace Content.Shared.Chemistry.Components
                     continue;
                 }
 
+                var reagentColor = GetReagentColor(reagent, proto, protoMan); // CrystallEdge: reagent data can override the color
                 if (first)
                 {
                     first = false;
-                    mixColor = proto.SubstanceColor;
+                    mixColor = reagentColor;
                     continue;
                 }
 
                 var interpolateValue = quantity.Float() / runningTotalQuantity.Float();
-                mixColor = Color.InterpolateBetween(mixColor, proto.SubstanceColor, interpolateValue);
+                mixColor = Color.InterpolateBetween(mixColor, reagentColor, interpolateValue);
             }
             return mixColor;
         }
+
+        // CrystallEdge: color of a single reagent, taking reagent data into account
+        private static Color GetReagentColor(ReagentId reagent, ReagentPrototype proto, IPrototypeManager protoMan)
+        {
+            if (reagent.Data is { } data)
+            {
+                foreach (var entry in data)
+                {
+                    if (entry.GetColor(protoMan) is { } color)
+                        return color;
+                }
+            }
+
+            return proto.SubstanceColor;
+        }
+        // CrystallEdge end
 
         public Color GetColor(IPrototypeManager? protoMan)
         {
@@ -946,15 +963,16 @@ namespace Content.Shared.Chemistry.Components
                     continue;
                 }
 
+                var reagentColor = GetReagentColor(reagent, proto, protoMan); // CrystallEdge: reagent data can override the color
                 if (first)
                 {
                     first = false;
-                    mixColor = proto.SubstanceColor;
+                    mixColor = reagentColor;
                     continue;
                 }
 
                 var interpolateValue = quantity.Float() / runningTotalQuantity.Float();
-                mixColor = Color.InterpolateBetween(mixColor, proto.SubstanceColor, interpolateValue);
+                mixColor = Color.InterpolateBetween(mixColor, reagentColor, interpolateValue);
             }
             return mixColor;
         }

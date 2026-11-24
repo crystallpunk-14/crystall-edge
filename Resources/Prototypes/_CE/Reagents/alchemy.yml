@@ -6,6 +6,12 @@
   physicalDesc: reagent-physical-desc-opaque
   color: "#7a5a9a"
   pricePerUnit: 0.5
+  metabolisms:
+    # Only the bloodstream works: a drunk mixture passes the digestion stage with losses and delay, the injected one acts at once
+    Bloodstream:
+      rate: 0.5 # multiplied by the tuning of the mixture, see CEAlchemyData.Multiplier
+      ceEffects:
+      - !type:CEAlchemyApply
 
 - type: reagent
   id: CEAlchemySludge
