@@ -55,6 +55,7 @@
         - id: CEHerbalOintment
         - id: CEBloodpack
         - id: CEBloodpack
+        - id: CEHandLabeler
 
 - type: entity
   id: CEBedsideTableFilledDoctor

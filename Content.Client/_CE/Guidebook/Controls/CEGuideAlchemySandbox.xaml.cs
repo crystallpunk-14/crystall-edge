@@ -79,7 +79,6 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
             if (!_paletteButtons.TryGetValue(id, out var button))
                 return;
 
-            button.Pressed = true;
             Select(id);
         };
 
@@ -135,7 +134,6 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     {
         Palette.RemoveAllChildren();
         _paletteButtons.Clear();
-        var group = new ButtonGroup();
 
         var reagents = new List<ReagentPrototype>();
         foreach (var reagent in _prototype.EnumeratePrototypes<ReagentPrototype>())
@@ -181,17 +179,13 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                 ToolTip = reagent.LocalizedDescription,
                 ClipText = true,
                 ToggleMode = true,
-                Group = group,
             };
             button.OnPressed += _ => Select(id);
             _paletteButtons[id] = button;
             row.AddChild(button);
 
             if (isBase)
-            {
-                button.Pressed = true;
                 Select(id);
-            }
 
             var kind = new Label
             {
@@ -212,6 +206,13 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private void Select(ProtoId<ReagentPrototype> id)
     {
         _selected = id;
+
+        // Only the selected button looks pressed
+        foreach (var (reagent, button) in _paletteButtons)
+        {
+            button.Pressed = reagent == id;
+        }
+
         AddButton.Disabled = false;
         UpdatePreview();
     }
