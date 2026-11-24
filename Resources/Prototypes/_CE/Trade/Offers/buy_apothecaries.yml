@@ -156,7 +156,7 @@
   id: BuyAlchemyBomb
   shop: ApothecariesGuild
   pay:
-    bonus: 5
+    bonus: 25
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialAlchemyBomb
