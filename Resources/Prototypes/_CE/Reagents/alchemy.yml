@@ -1,0 +1,18 @@
+- type: reagent
+  id: CEAlchemyMixture
+  name: ce-reagent-name-alchemy-mixture
+  group: Medicine
+  desc: ce-reagent-desc-alchemy-mixture
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#7a5a9a"
+  pricePerUnit: 0.5
+
+- type: reagent
+  id: CEAlchemySludge
+  name: ce-reagent-name-alchemy-sludge
+  group: Toxins
+  desc: ce-reagent-desc-alchemy-sludge
+  flavor: bitter
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#3d3a2a"
+  pricePerUnit: 0
