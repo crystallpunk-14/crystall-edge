@@ -19,4 +19,14 @@ public sealed partial class Scale : CEAlchemyEffect
     /// </summary>
     [DataField]
     public float Min = -1f;
+
+    public override void Apply(ref CEAlchemyState state, CEAlchemyApplyArgs args)
+    {
+        if (state.Carriers <= 0)
+            return;
+
+        var factorX = MathF.Max(Min, 1 + PerUnit.X * args.Amount);
+        var factorY = MathF.Max(Min, 1 + PerUnit.Y * args.Amount);
+        state.Pos = new Vector2(state.Pos.X * factorX, state.Pos.Y * factorY);
+    }
 }

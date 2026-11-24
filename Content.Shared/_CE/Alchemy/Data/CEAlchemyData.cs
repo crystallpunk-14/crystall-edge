@@ -1,5 +1,6 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.Alchemy.Data;
@@ -24,6 +25,40 @@ public sealed partial class CEAlchemyData : ReagentData
     /// </summary>
     [DataField]
     public FixedPoint2 Tune;
+
+    /// <summary>
+    /// Sum of all poured amounts: the volume of the recipe in recipe units.
+    /// </summary>
+    public FixedPoint2 TotalAmount
+    {
+        get
+        {
+            var total = FixedPoint2.Zero;
+            foreach (var step in Steps)
+            {
+                if (step is CEAlchemyMixStep mix)
+                    total += mix.Amount;
+            }
+
+            return total;
+        }
+    }
+
+    /// <summary>
+    /// Appends a pour to the end of the recipe. If the solution was partly drunk, the poured amount is
+    /// converted to recipe units: the recipe volume stays the reference, old steps are not touched.
+    /// </summary>
+    /// <param name="poured">Amount poured into the container.</param>
+    /// <param name="currentQuantity">Amount of this solution in the container before the pour.</param>
+    public void AddStep(ProtoId<ReagentPrototype> reagent, FixedPoint2 poured, FixedPoint2 currentQuantity)
+    {
+        var amount = poured;
+        var total = TotalAmount;
+        if (total > FixedPoint2.Zero && currentQuantity > FixedPoint2.Zero)
+            amount = FixedPoint2.New(poured.Float() * total.Float() / currentQuantity.Float());
+
+        Steps.Add(new CEAlchemyMixStep { Reagent = reagent, Amount = amount });
+    }
 
     public override ReagentData Clone()
     {

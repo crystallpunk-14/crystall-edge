@@ -18,4 +18,16 @@ public sealed partial class CoordinatePoint : CEAlchemyEffect
     /// </summary>
     [DataField]
     public float Stock = 1f;
+
+    public override void Apply(ref CEAlchemyState state, CEAlchemyApplyArgs args)
+    {
+        var total = state.Carriers + args.Amount;
+        if (total <= 0)
+            return;
+
+        var point = args.System.GetCarrierPosition(args.Reagent, this);
+        state.Pos = (state.Pos * state.Carriers + point * args.Amount) / total;
+        state.Carriers = total;
+        state.Stock += args.Amount * Stock;
+    }
 }

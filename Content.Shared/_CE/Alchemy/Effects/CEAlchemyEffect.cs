@@ -10,4 +10,8 @@ namespace Content.Shared._CE.Alchemy.Effects;
 [MeansImplicitUse]
 public abstract partial class CEAlchemyEffect
 {
+    /// <summary>
+    /// Changes the replay state for one recipe step. Volume, path and zones are tracked by the replay itself.
+    /// </summary>
+    public abstract void Apply(ref CEAlchemyState state, CEAlchemyApplyArgs args);
 }
