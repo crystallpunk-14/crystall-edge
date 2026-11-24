@@ -13,6 +13,7 @@
 # 2026-11-24
 CEBloodpack: null
 CEBloodpack10: null
+CESolutionNormalizer: CEAlchemyTuner
 
 # 2025-11-08
 CEWallFrameStonebrick: CEWallFrameStoneBrick

@@ -2,10 +2,10 @@
   parent:
   - CEBaseMachinePowered
   - BaseMachine
-  id: CESolutionNormalizer
+  id: CEAlchemyTuner
   categories: [ ForkFiltered ]
-  name: solution normalizer
-  description: An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.
+  name: alchemy tuner
+  description: A powered device that slowly tunes the alchemical mixture poured into it. Its mode is switched through the context menu, to concentrate the effect or to stretch it in time.
   components:
   - type: StaticPrice
     price: 65
@@ -31,7 +31,7 @@
     state: base
   - type: GenericVisualizer
     visuals:
-      enum.PowerDeviceVisuals.Powered:
+      enum.CEAlchemyTunerVisuals.Working:
         poweredFront:
           True: { state: rotate_front }
           False: { state: rotate_front_stop }
@@ -48,28 +48,27 @@
         mask:
         - TabletopMachineMask
   - type: Solution
-    id: normalizer
+    id: tuner
     solution:
       maxVol: 50
   - type: DrainableSolution
-    solution: normalizer
+    solution: tuner
   - type: ExaminableSolution
-    solution: normalizer
+    solution: tuner
   - type: MixableSolution
-    solution: normalizer
+    solution: tuner
   - type: RefillableSolution
-    solution: normalizer
+    solution: tuner
   - type: DrawableSolution
-    solution: normalizer
+    solution: tuner
   - type: DumpableSolution
-    solution: normalizer
-  - type: CESolutionNormalizer
-    solutionName: normalizer
+    solution: tuner
+  - type: CEAlchemyTuner
+    solutionName: tuner
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 5
     fillBaseName: liq-
-  - type: AmbientOnPowered
   - type: AmbientSound
     enabled: false
     range: 6

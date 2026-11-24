@@ -757,23 +757,23 @@
   result: CEMachineCorePulseProjector
   resultCount: 1
 
-#- type: workbenchRecipe
-#  id: SolutionNormalizer
-#  parent: BaseAssemblyShopRecipe
-#  category: Tools
-#  craftTime: 2.0
-#  requirements:
-#  - !type:StackResource
-#    stack: CEBrassSheet
-#    count: 5
-#  - !type:StackResource
-#    stack: CEMachinePartCoalDiffuser
-#    count: 1
-#  - !type:StackResource
-#    stack: CEGlass
-#    count: 5
-#  result: CESolutionNormalizer
-#  resultCount: 1
+- type: workbenchRecipe
+  id: AlchemyTuner
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEAlchemyTuner
+  resultCount: 1
 
 - type: workbenchRecipe
   id: ConveyorBelt

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Content.Shared._CE.Alchemy.Data;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Chemistry.Components;
@@ -100,6 +101,12 @@ public sealed partial class CEAlchemySystem
         var duration = GetDuration(data, quantity);
         message.PushNewline();
         message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-header", ("amount", quantity)));
+
+        var sign = data.Tune > FixedPoint2.Zero ? "+" : string.Empty;
+        message.PushNewline();
+        message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-tune",
+            ("tune", sign + data.Tune.Float().ToString("0.00", CultureInfo.InvariantCulture)),
+            ("multiplier", data.Multiplier.ToString("0.00", CultureInfo.InvariantCulture))));
 
         var any = false;
         foreach (var hit in Analyze(data))

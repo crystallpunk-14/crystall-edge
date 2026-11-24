@@ -118,3 +118,63 @@
   - !type:ApplyStatusEffect
     statusEffect: CEStatusEffectAlchemyShake
     duration: 10
+
+- type: alchemyZone
+  id: Nausea
+  name: ce-alchemy-zone-nausea
+  color: "#9aab4e"
+  position: -0.70, -0.40
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyNausea
+    duration: 30
+
+- type: alchemyZone
+  id: Hunger
+  name: ce-alchemy-zone-hunger
+  color: "#c98f5a"
+  position: -0.75, 0.30
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyHunger
+    duration: 60
+
+- type: alchemyZone
+  id: Drowsiness
+  name: ce-alchemy-zone-drowsiness
+  color: "#6a6fb8"
+  position: 0.30, -0.80
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectDrowsiness
+    duration: 20
+
+- type: alchemyZone
+  id: WeakHands
+  name: ce-alchemy-zone-weak-hands
+  color: "#b5a58a"
+  position: 0.85, -0.20
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyWeakHands
+    duration: 60
+
+- type: alchemyZone
+  id: Fatigue
+  name: ce-alchemy-zone-fatigue
+  color: "#8a8f99"
+  position: 0.20, 0.35
+  radius: 0.081
+  byPath: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyFatigue
+    duration: 40
