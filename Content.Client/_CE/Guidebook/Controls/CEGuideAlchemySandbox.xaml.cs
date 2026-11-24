@@ -55,6 +55,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private readonly ISawmill _sawmill;
 
     private readonly List<(ProtoId<ReagentPrototype> Reagent, FixedPoint2 Amount)> _steps = new();
+    private readonly Dictionary<ProtoId<ReagentPrototype>, Button> _paletteButtons = new();
     private ProtoId<ReagentPrototype>? _selected;
     private float _amount = 5f;
     private float _tune;
@@ -69,6 +70,16 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         _sawmill = _logManager.GetSawmill("guidebook.ce_alchemy_sandbox");
 
         BuildPalette();
+
+        Map.OnDotClicked += reagent =>
+        {
+            var id = new ProtoId<ReagentPrototype>(reagent);
+            if (!_paletteButtons.TryGetValue(id, out var button))
+                return;
+
+            button.Pressed = true;
+            Select(id);
+        };
 
         UndoButton.OnPressed += _ =>
         {
@@ -125,6 +136,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     private void BuildPalette()
     {
         Palette.RemoveAllChildren();
+        _paletteButtons.Clear();
         var group = new ButtonGroup();
 
         var reagents = new List<ReagentPrototype>();
@@ -161,12 +173,8 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                 ToggleMode = true,
                 Group = group,
             };
-            button.OnPressed += _ =>
-            {
-                _selected = id;
-                AddButton.Disabled = false;
-                UpdatePreview();
-            };
+            button.OnPressed += _ => Select(id);
+            _paletteButtons[id] = button;
             row.AddChild(button);
 
             var kind = new Label
@@ -181,6 +189,13 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
             Palette.AddChild(row);
         }
+    }
+
+    private void Select(ProtoId<ReagentPrototype> id)
+    {
+        _selected = id;
+        AddButton.Disabled = false;
+        UpdatePreview();
     }
 
     private static bool HasCarrier(ReagentPrototype reagent)
@@ -287,7 +302,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
                     continue;
 
                 var pos = _alchemy.GetCarrierPosition(new ProtoId<ReagentPrototype>(reagent.ID), point);
-                dots.Add(new CEAlchemyMapControl.MapDot(reagent.LocalizedName, pos, reagent.SubstanceColor));
+                dots.Add(new CEAlchemyMapControl.MapDot(reagent.ID, reagent.LocalizedName, pos, reagent.SubstanceColor));
             }
         }
 

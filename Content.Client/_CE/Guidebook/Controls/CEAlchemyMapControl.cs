@@ -2,6 +2,7 @@ using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
+using Robust.Shared.Input;
 using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Guidebook.Controls;
@@ -36,6 +37,12 @@ public sealed partial class CEAlchemyMapControl : Control
     private readonly List<Vector2> _trail = new();
     private Vector2? _marker;
     private (Vector2 From, Vector2 To)? _preview;
+    private string? _hoverDotId;
+
+    /// <summary>
+    /// Raised with the reagent id when the player clicks a carrier dot.
+    /// </summary>
+    public event Action<string>? OnDotClicked;
 
     public CEAlchemyMapControl()
     {
@@ -45,6 +52,7 @@ public sealed partial class CEAlchemyMapControl : Control
 
         MinSize = new Vector2(340, 340);
         RectClipContent = true;
+        MouseFilter = MouseFilterMode.Stop;
     }
 
     public void SetStatic(IEnumerable<MapDot> dots, IEnumerable<MapZone> zones)
@@ -68,6 +76,18 @@ public sealed partial class CEAlchemyMapControl : Control
     public void SetPreview((Vector2 From, Vector2 To)? preview)
     {
         _preview = preview;
+    }
+
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (args.Handled || args.Function != EngineKeyFunctions.UIClick || _hoverDotId is not { } id)
+            return;
+
+        OnDotClicked?.Invoke(id);
+        UserInterfaceManager.ClickSound();
+        args.Handle();
     }
 
     protected override void Draw(DrawingHandleScreen handle)
@@ -138,6 +158,7 @@ public sealed partial class CEAlchemyMapControl : Control
 
         // Carriers.
         var hoverDot = float.MaxValue;
+        _hoverDotId = null;
         foreach (var dot in _dots)
         {
             var pos = ToPixel(dot.Pos, center, radius);
@@ -150,6 +171,7 @@ public sealed partial class CEAlchemyMapControl : Control
             {
                 hoverDot = distance;
                 hover = dot.Label;
+                _hoverDotId = dot.ReagentId;
             }
         }
 
@@ -220,7 +242,7 @@ public sealed partial class CEAlchemyMapControl : Control
     /// <summary>
     /// A carrier reagent on the map.
     /// </summary>
-    public readonly record struct MapDot(string Label, Vector2 Pos, Color Color);
+    public readonly record struct MapDot(string ReagentId, string Label, Vector2 Pos, Color Color);
 
     /// <summary>
     /// A zone circle on the map.
