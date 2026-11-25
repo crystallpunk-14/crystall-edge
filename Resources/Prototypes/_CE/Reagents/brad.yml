@@ -10,7 +10,7 @@
   color: "#a8605a"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:Heal
         groups:
@@ -30,7 +30,7 @@
   color: "#b88452"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:Heal
         groups:
@@ -48,7 +48,7 @@
   color: "#7a3a44"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:ModifyBloodLevel
         amount: 3.75
@@ -65,7 +65,7 @@
   color: "#6bb35c"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:StaminaRestore
         amount: 1.25
@@ -82,7 +82,7 @@
   color: "#bec46a"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:ApplyStatusEffect
         statusEffect: CEStatusEffectBradHaste
@@ -100,7 +100,7 @@
   color: "#589ad8"
   metabolisms:
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:ChangeMana
         amount: 2

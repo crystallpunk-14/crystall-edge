@@ -9,7 +9,7 @@
   metabolisms:
     # Only the bloodstream works: a drunk mixture passes the digestion stage with losses and delay, the injected one acts at once
     Bloodstream:
-      rate: 0.5
+      metabolismRate: 0.5
       ceEffects:
       - !type:CEAlchemyApply
 
