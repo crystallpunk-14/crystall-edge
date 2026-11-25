@@ -1,0 +1,109 @@
+# Brad's mixtures: shop-bought single reagents, roughly a brewed mixture of strength 0.25 (zone numbers x 0.25)
+# with a side effect that always fires. They are not alchemy mixtures and have no alchemy effects.
+
+- type: reagent
+  id: CEBradHealingMixture
+  name: ce-reagent-name-brad-healing
+  group: Medicine
+  desc: ce-reagent-desc-brad-healing
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#a8605a"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:Heal
+        groups:
+          Brute: 2.5
+      - !type:ModifyBleeding
+        amount: -0.5
+      - !type:ApplyStatusEffect
+        statusEffect: StatusEffectDrowsiness
+        duration: 20
+
+- type: reagent
+  id: CEBradBurnMixture
+  name: ce-reagent-name-brad-burn
+  group: Medicine
+  desc: ce-reagent-desc-brad-burn
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#b88452"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:Heal
+        groups:
+          Burn: 2.5
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectAlchemyWeakHands
+        duration: 60
+
+- type: reagent
+  id: CEBradBloodMixture
+  name: ce-reagent-name-brad-blood
+  group: Medicine
+  desc: ce-reagent-desc-brad-blood
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#7a3a44"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:ModifyBloodLevel
+        amount: 3.75
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectAlchemyNausea
+        duration: 30
+
+- type: reagent
+  id: CEBradStaminaMixture
+  name: ce-reagent-name-brad-stamina
+  group: Medicine
+  desc: ce-reagent-desc-brad-stamina
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#6bb35c"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:StaminaRestore
+        amount: 1.25
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectAlchemyShake
+        duration: 10
+
+- type: reagent
+  id: CEBradHasteMixture
+  name: ce-reagent-name-brad-haste
+  group: Medicine
+  desc: ce-reagent-desc-brad-haste
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#bec46a"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectBradHaste
+        duration: 10
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectAlchemyFatigue
+        duration: 40
+
+- type: reagent
+  id: CEBradManaMixture
+  name: ce-reagent-name-brad-mana
+  group: Medicine
+  desc: ce-reagent-desc-brad-mana
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#589ad8"
+  metabolisms:
+    Bloodstream:
+      rate: 0.5
+      ceEffects:
+      - !type:ChangeMana
+        amount: 2
+      - !type:ApplyStatusEffect
+        statusEffect: CEStatusEffectAlchemySlowdown
+        duration: 10

@@ -67,3 +67,13 @@
     effects:
     - !type:StaminaDamage
       amount: 4
+
+# Weaker haste of Brad's haste mixture
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectBradHaste
+  name: haste
+  components:
+  - type: CESpeedModifyStatusEffect
+    walk: 1.1
+    sprint: 1.15

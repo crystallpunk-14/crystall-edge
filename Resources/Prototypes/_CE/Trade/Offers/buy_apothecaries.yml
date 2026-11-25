@@ -144,15 +144,6 @@
     proto: CEVialSkullReinforced
 
 - type: tradeOffer
-  id: BuyAlchemyInjector
-  shop: ApothecariesGuild
-  pay:
-    bonus: 3
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEAlchemyInjector
-
-- type: tradeOffer
   id: BuyAlchemyBomb
   shop: ApothecariesGuild
   pay:
@@ -160,3 +151,179 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialAlchemyBomb
+
+# Brad's mixtures
+
+- type: tradeOffer
+  id: BuyBradHealingMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-healing
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradHealing
+
+- type: tradeOffer
+  id: BuyBradBurnMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-burn
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradBurn
+
+- type: tradeOffer
+  id: BuyBradBloodMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-blood
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradBlood
+
+- type: tradeOffer
+  id: BuyBradStaminaMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-stamina
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradStamina
+
+- type: tradeOffer
+  id: BuyBradHasteMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-haste
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradHaste
+
+- type: tradeOffer
+  id: BuyBradManaMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-mana
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradMana
+
+# Alchemy ingredients
+
+- type: tradeOffer
+  id: BuySilverNeedle
+  shop: ApothecariesGuild
+  name: ce-reagent-name-silver-needle
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumSilverNeedle
+
+- type: tradeOffer
+  id: BuyAmanitaJuice
+  shop: ApothecariesGuild
+  name: ce-reagent-name-amanita-juice
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumAmanitaJuice
+
+- type: tradeOffer
+  id: BuyLumishroomSap
+  shop: ApothecariesGuild
+  name: ce-reagent-name-lumishroom-sap
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallLumishroomSap
+
+- type: tradeOffer
+  id: BuyStoneHeartReagent
+  shop: ApothecariesGuild
+  name: ce-reagent-name-stone-heart
+  pay:
+    amount: 100
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallStoneHeart
+
+- type: tradeOffer
+  id: BuyChromiumSlime
+  shop: ApothecariesGuild
+  name: ce-reagent-name-chromium-slime
+  pay:
+    amount: 100
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallChromiumSlime
+
+# Blood
+
+- type: tradeOffer
+  id: BuyBloodHuman
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodHuman
+
+- type: tradeOffer
+  id: BuyBloodInfernal
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-infernal
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodInfernal
+
+- type: tradeOffer
+  id: BuyBloodElf
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-elf
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodElf
+
+- type: tradeOffer
+  id: BuyBloodGoblin
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-goblin
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodGoblin
+
+- type: tradeOffer
+  id: BuyBloodCarcat
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-carcat
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodCarcat
+
+- type: tradeOffer
+  id: BuyBloodSilva
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-silva
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodSilva

@@ -55,7 +55,7 @@
   - CEGuideStoneHeartRU
 
 - type: mainQuestPrice
-  id: MainQuestStoneHearts
+  id: MainQuestChromiumSlime
   department: CEGuild
   cost:
   - !type:ProtoIdResource
@@ -234,7 +234,7 @@
   pay: 500
 
 - type: mainQuestPrice
-  id: MainQuestDiamonds
+  id: MainQuestCoal
   department: CECitizens
   cost:
   - !type:StackResource
