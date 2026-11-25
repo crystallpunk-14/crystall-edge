@@ -18,7 +18,7 @@ public sealed partial class CEAlchemyWorldComponent : Component
     public int Seed;
 
     /// <summary>
-    /// Final position of a reagent's <c>CoordinatePoint</c>. One carrier point per reagent is supported.
+    /// Final position of a reagent's <c>MoveToPoint</c>. One carrier point per reagent is supported.
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<ProtoId<ReagentPrototype>, Vector2> Carriers = new();

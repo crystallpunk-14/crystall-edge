@@ -113,7 +113,7 @@
   - !type:CEAlchemyMixtureResource
     zone: HealBrute
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -125,7 +125,7 @@
   - !type:CEAlchemyMixtureResource
     zone: HealBurn
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -137,7 +137,7 @@
   - !type:CEAlchemyMixtureResource
     zone: RestoreBlood
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -149,7 +149,7 @@
   - !type:CEAlchemyMixtureResource
     zone: RestoreStamina
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -161,7 +161,7 @@
   - !type:CEAlchemyMixtureResource
     zone: Haste
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -173,7 +173,7 @@
   - !type:CEAlchemyMixtureResource
     zone: Adrenaline
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -185,7 +185,7 @@
   - !type:CEAlchemyMixtureResource
     zone: MurkResistance
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -197,7 +197,7 @@
   - !type:CEAlchemyMixtureResource
     zone: RestoreMana
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -209,7 +209,7 @@
   - !type:CEAlchemyMixtureResource
     zone: PoisonToxin
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU
@@ -221,7 +221,7 @@
   - !type:CEAlchemyMixtureResource
     zone: PoisonManaBurn
     amount: 30
-    minStrength: 0.3
+    minStrength: 0.8
   guidebook:
   - CEAlchemyGuideEN
   - CEAlchemyGuideRU

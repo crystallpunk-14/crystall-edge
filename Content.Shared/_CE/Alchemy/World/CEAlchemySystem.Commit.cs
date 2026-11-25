@@ -251,7 +251,7 @@ public sealed partial class CEAlchemySystem
 
         foreach (var effect in proto.AlchemyEffects)
         {
-            if (effect is CoordinatePoint)
+            if (effect is MoveToPoint)
                 return true;
         }
 

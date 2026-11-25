@@ -214,7 +214,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
     {
         foreach (var effect in reagent.AlchemyEffects)
         {
-            if (effect is CoordinatePoint)
+            if (effect is MoveToPoint)
                 return true;
         }
 
@@ -312,7 +312,7 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
         {
             foreach (var effect in reagent.AlchemyEffects)
             {
-                if (effect is not CoordinatePoint point)
+                if (effect is not MoveToPoint point)
                     continue;
 
                 var pos = _alchemy.GetCarrierPosition(new ProtoId<ReagentPrototype>(reagent.ID), point);

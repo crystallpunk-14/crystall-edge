@@ -12,6 +12,7 @@ ce-guidebook-alchemy-copy = Скопировать рецепт
 ce-guidebook-alchemy-tune = Настройка:
 ce-guidebook-alchemy-tune-value = [color=#8e9a9a]{$tune}, сила ×{$multiplier}[/color]
 ce-guidebook-alchemy-legend = [color=#ffd86b]●[/color] маркер раствора
+ce-guidebook-alchemy-map-zone-hover = {$zone} — {$percent}%
 ce-guidebook-alchemy-result = Результат
 ce-guidebook-alchemy-result-zone = {$zone} — сила {$strength}
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]нет[/color]

@@ -12,6 +12,7 @@ ce-guidebook-alchemy-copy = Copy recipe
 ce-guidebook-alchemy-tune = Tuning:
 ce-guidebook-alchemy-tune-value = [color=#8e9a9a]{$tune}, strength ×{$multiplier}[/color]
 ce-guidebook-alchemy-legend = [color=#ffd86b]●[/color] solution marker
+ce-guidebook-alchemy-map-zone-hover = {$zone} — {$percent}%
 ce-guidebook-alchemy-result = Result
 ce-guidebook-alchemy-result-zone = {$zone} — strength {$strength}
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]none[/color]

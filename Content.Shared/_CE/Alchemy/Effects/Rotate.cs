@@ -15,7 +15,7 @@ public sealed partial class Rotate : CEAlchemyEffect
     public float DegreesPerUnit;
 
     /// <summary>
-    /// Largest rotation of one pour in degrees, in the direction of <see cref="DegreesPerUnit"/>. Zero means no limit.
+    /// Largest rotation of one pour in degrees, in either direction: the sign is ignored. Zero means no limit.
     /// </summary>
     [DataField]
     public float MaxDegrees;
@@ -26,8 +26,9 @@ public sealed partial class Rotate : CEAlchemyEffect
             return;
 
         var degrees = DegreesPerUnit * args.Amount;
-        if (MaxDegrees > 0)
-            degrees = Math.Clamp(degrees, -MaxDegrees, MaxDegrees);
+        var limit = MathF.Abs(MaxDegrees);
+        if (limit > 0)
+            degrees = Math.Clamp(degrees, -limit, limit);
 
         var angle = MathHelper.DegreesToRadians(degrees);
         var cos = MathF.Cos(angle);

@@ -191,6 +191,11 @@ namespace Content.Shared.Chemistry.Reagent
         public List<CEAlchemyEffect> AlchemyEffects = new();
         // CrystallEdge end
 
+        // CrystallEdge: how strong an alchemy mixture gets from a unit of the reagent
+        [DataField]
+        public float AlchemyPower;
+        // CrystallEdge end
+
         [DataField]
         public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepPuddle");
 

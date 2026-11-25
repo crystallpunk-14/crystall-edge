@@ -27,14 +27,15 @@ public struct CEAlchemyState
     public float Volume;
 
     /// <summary>
-    /// Sum of amount * stock over all carriers.
+    /// Sum of amount * alchemy power over all poured reagents.
     /// </summary>
-    public float Stock;
+    public float Power;
 
     /// <summary>
-    /// Length of the marker path inside every zone.
+    /// Distance from every zone center to the closest point of the marker path.
+    /// Empty while the marker has not been touched by any alchemy effect.
     /// </summary>
-    public Dictionary<ProtoId<CEAlchemyZonePrototype>, float> ZoneLengths;
+    public Dictionary<ProtoId<CEAlchemyZonePrototype>, float> ZoneDistances;
 }
 
 /// <summary>

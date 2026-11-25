@@ -1,5 +1,3 @@
-# Every zone works by the length of the marker path inside its circle. dangerous: true paints it orange, false green.
-
 # --- Medicine ---
 
 - type: alchemyZone
@@ -7,44 +5,40 @@
   name: ce-alchemy-zone-heal-brute
   color: "#d94f4f"
   weight: 1.5
-  gain: 0.9
   effects:
   - !type:Heal
     groups:
-      Brute: 10
+      Brute: 5
   - !type:ModifyBleeding
-    amount: -2
+    amount: -1
 
 - type: alchemyZone
   id: HealBurn
   name: ce-alchemy-zone-heal-burn
   color: "#e8913a"
   weight: 1.25
-  gain: 1.0
   effects:
   - !type:Heal
     groups:
-      Burn: 10
+      Burn: 5
 
 - type: alchemyZone
   id: RestoreBlood
   name: ce-alchemy-zone-restore-blood
   color: "#9e1b32"
   weight: 1
-  gain: 1.6
   effects:
   - !type:ModifyBloodLevel
-    amount: 15
+    amount: 8
 
 - type: alchemyZone
   id: RestoreStamina
   name: ce-alchemy-zone-restore-stamina
   color: "#e0c24a"
   weight: 1.25
-  gain: 1.0
   effects:
   - !type:StaminaRestore
-    amount: 5
+    amount: 2.5
 
 # --- Movement ---
 
@@ -53,7 +47,6 @@
   name: ce-alchemy-zone-haste
   color: "#f0d84a"
   weight: 1.25
-  gain: 1.2
   effects:
   - !type:ApplyStatusEffect
     statusEffect: CEStatusEffectAlchemyHaste
@@ -64,7 +57,6 @@
   name: ce-alchemy-zone-slowdown
   color: "#5a7fb5"
   weight: 1
-  gain: 1.7
   dangerous: true
   effects:
   - !type:ApplyStatusEffect
@@ -76,7 +68,6 @@
   name: ce-alchemy-zone-adrenaline
   color: "#e0553a"
   weight: 1
-  gain: 1.5
   effects:
   - !type:ApplyStatusEffect
     statusEffect: StatusEffectAdrenaline
@@ -87,7 +78,6 @@
   name: ce-alchemy-zone-murk-resistance
   color: "#7a5fb0"
   weight: 1
-  gain: 1.5
   effects:
   - !type:ApplyStatusEffect
     statusEffect: CEStatusEffectMurkResistance
@@ -100,10 +90,9 @@
   name: ce-alchemy-zone-restore-mana
   color: "#3fa7ff"
   weight: 1.625
-  gain: 0.8
   effects:
   - !type:ChangeMana
-    amount: 10
+    amount: 5
 
 # --- Poisons ---
 
@@ -112,7 +101,6 @@
   name: ce-alchemy-zone-poison-toxin
   color: "#5fbf3a"
   weight: 1.375
-  gain: 1.0
   dangerous: true
   effects:
   - !type:Damage
@@ -121,18 +109,17 @@
     colorFlash: false
     damage:
       types:
-        Poison: 2.5
+        Poison: 1
 
 - type: alchemyZone
   id: PoisonManaBurn
   name: ce-alchemy-zone-poison-mana-burn
   color: "#b23fd1"
   weight: 1
-  gain: 1.7
   dangerous: true
   effects:
   - !type:ChangeMana
-    amount: -10
+    amount: -5
 
 # --- Unpleasant effects ---
 

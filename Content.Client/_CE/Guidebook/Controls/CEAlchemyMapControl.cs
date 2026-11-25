@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared._CE.Alchemy.Prototypes;
+using Content.Shared._CE.Alchemy.World;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -168,13 +169,21 @@ public sealed partial class CEAlchemyMapControl : Control
             var hovered = (cursor - pos).LengthSquared() <= r * r;
 
             // Zones the path crossed or the cursor points at are fully bright, the rest are dimmed.
-            var fade = hovered || IsCrossed(zone, center, radius) ? 1f : DimmedZoneOpacity;
+            // The core lights up only when the path goes through it.
+            var distance = PathDistance(zone.Pos);
+            var fade = hovered || distance < zone.Radius ? 1f : DimmedZoneOpacity;
+            var core = r * CEAlchemySystem.CoreRatio;
+            var coreHit = distance <= zone.Radius * CEAlchemySystem.CoreRatio;
             handle.DrawCircle(pos, r, color.WithAlpha(0.16f * fade));
-            handle.DrawCircle(pos, r * 0.55f, color.WithAlpha(0.14f * fade));
+            handle.DrawCircle(pos, core, color.WithAlpha(coreHit ? 0.9f : 0.14f * fade));
+            handle.DrawCircle(pos, core, color.WithAlpha(0.85f * fade), false);
             handle.DrawCircle(pos, r, color.WithAlpha(0.85f * fade), false);
 
             if (hovered)
-                hover = zone.Label;
+            {
+                var percent = (int) MathF.Round(CEAlchemySystem.GetProximityShare(distance, zone.Radius) * 100);
+                hover = Loc.GetString("ce-guidebook-alchemy-map-zone-hover", ("zone", zone.Label), ("percent", percent));
+            }
         }
 
         // Path of the marker.
@@ -235,22 +244,17 @@ public sealed partial class CEAlchemyMapControl : Control
     }
 
     /// <summary>
-    /// Whether any piece of the marker path passes through the zone circle.
+    /// Distance from the point to the closest piece of the marker path, infinite without a path.
     /// </summary>
-    private bool IsCrossed(MapZone zone, Vector2 center, float radius)
+    private float PathDistance(Vector2 point)
     {
+        var closest = float.PositiveInfinity;
         for (var i = 0; i + 1 < _trail.Count; i++)
         {
-            var a = _trail[i];
-            var b = _trail[i + 1];
-            var ab = b - a;
-            var lengthSquared = ab.LengthSquared();
-            var t = lengthSquared < 1e-8f ? 0f : Math.Clamp(Vector2.Dot(zone.Pos - a, ab) / lengthSquared, 0f, 1f);
-            if (Vector2.DistanceSquared(a + ab * t, zone.Pos) <= zone.Radius * zone.Radius)
-                return true;
+            closest = MathF.Min(closest, CEAlchemySystem.DistanceToSegment(_trail[i], _trail[i + 1], point));
         }
 
-        return false;
+        return closest;
     }
 
     private void DrawTooltip(DrawingHandleScreen handle, Vector2 cursor, string text)

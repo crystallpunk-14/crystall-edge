@@ -14,14 +14,19 @@ namespace Content.Shared._CE.Alchemy.World;
 public sealed partial class CEAlchemySystem : EntitySystem
 {
     /// <summary>
-    /// Divides the stock density so that a pure carrier solution gives a strength around one half.
+    /// Share of the zone radius taken by its core: a path through the core gives the full effect.
     /// </summary>
-    private const float StrengthNorm = 3f;
+    public const float CoreRatio = 0.25f;
 
     /// <summary>
-    /// Path length inside a zone that gives its full strength.
+    /// Effect share in the outer ring next to the core.
     /// </summary>
-    private const float FullPathLength = 0.15f;
+    private const float RingInnerShare = 0.5f;
+
+    /// <summary>
+    /// Effect share in the outer ring at the edge of the zone.
+    /// </summary>
+    private const float RingOuterShare = 0.2f;
 
     [Dependency] private IPrototypeManager _proto = default!;
 
@@ -82,7 +87,7 @@ public sealed partial class CEAlchemySystem : EntitySystem
         var carriers = new List<Vector2>();
         foreach (var reagent in SortedById(_proto.EnumeratePrototypes<ReagentPrototype>()))
         {
-            var point = reagent.AlchemyEffects.OfType<CoordinatePoint>().FirstOrDefault();
+            var point = reagent.AlchemyEffects.OfType<MoveToPoint>().FirstOrDefault();
             if (point == null)
                 continue;
 
@@ -120,7 +125,7 @@ public sealed partial class CEAlchemySystem : EntitySystem
     /// <summary>
     /// Position of a carrier on the map of the round.
     /// </summary>
-    public Vector2 GetCarrierPosition(ProtoId<ReagentPrototype> reagent, CoordinatePoint point)
+    public Vector2 GetCarrierPosition(ProtoId<ReagentPrototype> reagent, MoveToPoint point)
     {
         return GetLayout().Carriers.GetValueOrDefault(reagent, point.Pos);
     }
@@ -143,12 +148,12 @@ public sealed partial class CEAlchemySystem : EntitySystem
 
     /// <summary>
     /// Replays the recipe step by step: effects of every reagent move the marker, and every move
-    /// adds its length inside the zones.
+    /// may bring the path closer to the zone centers.
     /// </summary>
     /// <param name="trail">If given, receives the marker position at the start and after every step (for drawing the path).</param>
     public CEAlchemyState Replay(CEAlchemyData data, List<Vector2>? trail = null)
     {
-        var state = new CEAlchemyState { ZoneLengths = new Dictionary<ProtoId<CEAlchemyZonePrototype>, float>() };
+        var state = new CEAlchemyState { ZoneDistances = new Dictionary<ProtoId<CEAlchemyZonePrototype>, float>() };
         List<(CEAlchemyZonePrototype Zone, Vector2 Center, float Radius)>? zones = null;
         trail?.Add(state.Pos);
 
@@ -163,17 +168,19 @@ public sealed partial class CEAlchemySystem : EntitySystem
             if (!_proto.Resolve(mix.Reagent, out var reagent))
                 continue;
 
+            state.Power += amount * reagent.AlchemyPower;
+
             foreach (var effect in reagent.AlchemyEffects)
             {
                 var before = state.Pos;
                 effect.Apply(ref state, new CEAlchemyApplyArgs(mix.Reagent, amount, this));
 
                 zones ??= GetZones();
-                foreach (var (zone, center, radius) in zones)
+                foreach (var (zone, center, _) in zones)
                 {
-                    var length = Chord(before, state.Pos, center, radius);
-                    if (length > 0)
-                        state.ZoneLengths[zone.ID] = state.ZoneLengths.GetValueOrDefault(zone.ID) + length;
+                    var distance = DistanceToSegment(before, state.Pos, center);
+                    if (!state.ZoneDistances.TryGetValue(zone.ID, out var closest) || distance < closest)
+                        state.ZoneDistances[zone.ID] = distance;
                 }
             }
 
@@ -185,25 +192,30 @@ public sealed partial class CEAlchemySystem : EntitySystem
 
     /// <summary>
     /// Finds which zones the recipe works through and how strongly, strongest first.
-    /// The strength is the share of the full path length the marker walked inside the zone,
-    /// multiplied by the zone gain, the stock density and the tuning.
+    /// The strength is the share given by how close the marker path came to the zone center
+    /// (see <see cref="GetProximityShare"/>), multiplied by the power density and the tuning.
     /// </summary>
     public List<CEAlchemyHit> Analyze(CEAlchemyData data)
     {
         var hits = new List<CEAlchemyHit>();
         var state = Replay(data);
-        if (state.Carriers <= 0 || state.Volume <= 0)
+
+        if (state.Carriers <= 0 || state.Volume <= 0 || state.Power <= 0)
             return hits;
 
-        var density = state.Stock / state.Volume;
+        var density = state.Power / state.Volume;
         var multiplier = data.Multiplier;
 
         foreach (var zone in _proto.EnumeratePrototypes<CEAlchemyZonePrototype>())
         {
-            if (!state.ZoneLengths.TryGetValue(zone.ID, out var length) || length <= 0)
+            if (!state.ZoneDistances.TryGetValue(zone.ID, out var distance))
                 continue;
 
-            var strength = MathF.Min(1, length / FullPathLength) * zone.Gain * density / StrengthNorm * multiplier;
+            var share = GetProximityShare(distance, GetZoneRadius(zone));
+            if (share <= 0)
+                continue;
+
+            var strength = share * density * multiplier;
 
             hits.Add(new CEAlchemyHit(zone, strength));
         }
@@ -224,25 +236,29 @@ public sealed partial class CEAlchemySystem : EntitySystem
     }
 
     /// <summary>
-    /// Length of the part of the segment a-b inside the circle.
+    /// Share of the zone effect for a path that came this close to the center: full inside the core,
+    /// falling from the core to the edge in the outer ring, nothing outside the zone.
     /// </summary>
-    private static float Chord(Vector2 a, Vector2 b, Vector2 center, float radius)
+    public static float GetProximityShare(float distance, float radius)
     {
-        var d = b - a;
-        var f = a - center;
-        var aa = d.LengthSquared();
-        if (aa < 1e-12f)
+        if (distance >= radius)
             return 0;
 
-        var bb = 2 * Vector2.Dot(f, d);
-        var cc = f.LengthSquared() - radius * radius;
-        var discriminant = bb * bb - 4 * aa * cc;
-        if (discriminant <= 0)
-            return 0;
+        var core = radius * CoreRatio;
+        if (distance <= core)
+            return 1;
 
-        var root = MathF.Sqrt(discriminant);
-        var t1 = MathF.Max(0, (-bb - root) / (2 * aa));
-        var t2 = MathF.Min(1, (-bb + root) / (2 * aa));
-        return t2 > t1 ? (t2 - t1) * MathF.Sqrt(aa) : 0;
+        return MathHelper.Lerp(RingInnerShare, RingOuterShare, (distance - core) / (radius - core));
+    }
+
+    /// <summary>
+    /// Distance from the point to the closest point of the segment a-b.
+    /// </summary>
+    public static float DistanceToSegment(Vector2 a, Vector2 b, Vector2 point)
+    {
+        var ab = b - a;
+        var lengthSquared = ab.LengthSquared();
+        var t = lengthSquared < 1e-12f ? 0f : Math.Clamp(Vector2.Dot(point - a, ab) / lengthSquared, 0f, 1f);
+        return Vector2.Distance(a + ab * t, point);
     }
 }

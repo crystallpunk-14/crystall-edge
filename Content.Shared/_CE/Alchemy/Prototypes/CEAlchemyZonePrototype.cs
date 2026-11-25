@@ -40,14 +40,8 @@ public sealed partial class CEAlchemyZonePrototype : IPrototype
     public float Weight = 1f;
 
     /// <summary>
-    /// Strength multiplier of the zone.
-    /// </summary>
-    [DataField]
-    public float Gain = 1f;
-
-    /// <summary>
     /// Harm of the zone: false is painted green (useful), true is painted orange (dangerous).
-    /// The strength of a zone always comes from the length of the marker path inside its circle.
+    /// The strength of a zone always comes from how close the marker path came to its center.
     /// </summary>
     [DataField]
     public bool Dangerous;

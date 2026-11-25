@@ -17,10 +17,10 @@
         reagent: UncookedAnimalProteins
         amount: 0.1
   pricePerUnit: 0.2
+  alchemyPower: 1.0
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: 0.45, -0.38
-    stock: 1.0
 
 - type: reagent
   id: CEBloodAnimal
@@ -28,6 +28,7 @@
   name: ce-reagent-name-blood-animal
   desc: ce-reagent-desc-blood-animal
   color: "#4d1313"
+  alchemyPower: 0
   alchemyEffects: []
 
 - type: reagent
@@ -36,10 +37,10 @@
   desc: ce-reagent-desc-blood-infernal
   name: ce-reagent-name-blood-infernal
   color: "#4d1f00"
+  alchemyPower: 1.2
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: -0.46, 0.43
-    stock: 1.2
 
 - type: reagent
   id: CEBloodElf
@@ -47,10 +48,10 @@
   desc: ce-reagent-desc-blood-elf
   name: ce-reagent-name-blood-elf
   color: "#4d0025"
+  alchemyPower: 1.2
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: -0.14, 0.03
-    stock: 1.2
 
 - type: reagent
   id: CEBloodGoblin
@@ -58,10 +59,10 @@
   desc: ce-reagent-desc-blood-goblin
   name: ce-reagent-name-blood-goblin
   color: "#344220"
+  alchemyPower: 1.0
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: 0.10, 0.46
-    stock: 1.0
 
 - type: reagent
   id: CEBloodCarcat
@@ -69,10 +70,10 @@
   desc: ce-reagent-desc-blood-carcat
   name: ce-reagent-name-blood-carcat
   color: "#4d2323"
+  alchemyPower: 1.0
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: 0.44, 0.30
-    stock: 1.0
 
 - type: reagent
   id: CEBloodSilva
@@ -80,7 +81,7 @@
   desc: ce-reagent-desc-blood-silva
   name: ce-reagent-name-blood-silva
   color: "#1c5637"
+  alchemyPower: 1.2
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: -0.30, -0.62
-    stock: 1.2

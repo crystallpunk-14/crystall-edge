@@ -30,10 +30,10 @@
   desc: ce-reagent-desc-silver-needle
   physicalDesc: reagent-physical-desc-opaque
   color: "#c7d1d9"
+  alchemyPower: 1.5
   alchemyEffects:
-  - !type:CoordinatePoint
+  - !type:MoveToPoint
     pos: -0.45, -0.26
-    stock: 1.5
 
 - type: reagent
   id: CEStoneHeart
@@ -42,6 +42,7 @@
   desc: ce-reagent-desc-stone-heart
   physicalDesc: reagent-physical-desc-opaque
   color: "#be368a"
+  alchemyPower: 0.5
   alchemyEffects:
   - !type:Scale
     perUnit: 0.2, 0.2
@@ -73,3 +74,32 @@
   - !type:Rotate
     degreesPerUnit: -3
     maxDegrees: -30
+
+- type: reagent
+  id: CEAmanitaJuice
+  name: ce-reagent-name-amanita-juice
+  group: Toxins
+  desc: ce-reagent-desc-amanita-juice
+  flavor: bitter
+  color: "#b3282d"
+  physicalDesc: reagent-physical-desc-opaque
+  alchemyPower: 1.5
+  alchemyEffects:
+  - !type:MoveToPoint
+    pos: 0.25, 0.48
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-burning-insides" ]
+        probability: 0.1
+      ceEffects:
+      - !type:Damage
+        damage:
+          types:
+            Poison: 10
+        ignoreResistances: true # parity with upstream HealthChange
+        interruptDoAfters: false
+        colorFlash: false
