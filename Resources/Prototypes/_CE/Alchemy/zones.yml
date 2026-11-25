@@ -181,6 +181,17 @@
     duration: 60
 
 - type: alchemyZone
+  id: SeeingRainbow
+  name: ce-alchemy-zone-seeing-rainbow
+  color: "#ff6ec7"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectSeeingRainbow
+    duration: 150 # the overlay strength grows with the time left and is invisible under 10 seconds
+
+- type: alchemyZone
   id: Fatigue
   name: ce-alchemy-zone-fatigue
   color: "#8a8f99"

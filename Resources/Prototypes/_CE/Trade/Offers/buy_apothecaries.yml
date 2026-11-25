@@ -36,6 +36,17 @@
     proto: CEVialMediumAlchemyMixture
 
 - type: tradeOffer
+  id: BuyMortarAndPestle
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEMortar
+  - !type:CETradeSpawnReward
+    proto: CEPestle
+
+- type: tradeOffer
   id: BuyDropper
   shop: ApothecariesGuild
   pay:

@@ -36,6 +36,90 @@
 ## Entities
 
 - type: entity
+  id: CEPestle
+  parent: BaseItem
+  name: pestle
+  description: A device for conveniently grinding various materials into liquid
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Alchemy/mortar_pestle.rsi
+    state: pestle
+  - type: CEPestle
+  - type: Tag
+    tags:
+    - CEPestle
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  id: CEMortar
+  parent: BaseStorageItem
+  name: mortar
+  description: Alchemical sturdy plate for grinding reagents
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Alchemy/mortar_pestle.rsi
+    layers:
+    - state: mortar_base
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: Solution
+    id: mortar
+    solution:
+      maxVol: 30
+  - type: Spillable
+    solution: mortar
+  - type: DrainableSolution
+    solution: mortar
+  - type: ExaminableSolution
+    solution: mortar
+  - type: RefillableSolution
+    solution: mortar
+  - type: DrawableSolution
+    solution: mortar
+  - type: SolutionItemStatus
+    solution: mortar
+  - type: SolutionTransfer # pour into vials and other containers by clicking them with the mortar
+    transferAmount: 5
+    minTransferAmount: 1
+    maxTransferAmount: 30
+    canChangeTransferAmount: true
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: liq-
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,1,1
+    whitelist:
+      components:
+      - Extractable
+    ignorelist: # these are used on the mortar instead of being put inside
+      components:
+      - Injector
+      tags:
+      - CEPestle
+  - type: CEMortar
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 10
+
+- type: entity
   parent: BaseItem
   id: CEDropper
   name: dropper

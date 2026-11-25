@@ -14,3 +14,4 @@ ce-alchemy-zone-fatigue = Усталость
 ce-alchemy-zone-restore-stamina = Восстановление выносливости
 ce-alchemy-zone-adrenaline = Адреналин
 ce-alchemy-zone-murk-resistance = Стойкость к мраку
+ce-alchemy-zone-seeing-rainbow = Галлюцинации

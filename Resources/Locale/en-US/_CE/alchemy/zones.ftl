@@ -14,3 +14,4 @@ ce-alchemy-zone-fatigue = Fatigue
 ce-alchemy-zone-restore-stamina = Stamina restoration
 ce-alchemy-zone-adrenaline = Adrenaline
 ce-alchemy-zone-murk-resistance = Murk resistance
+ce-alchemy-zone-seeing-rainbow = Hallucinations

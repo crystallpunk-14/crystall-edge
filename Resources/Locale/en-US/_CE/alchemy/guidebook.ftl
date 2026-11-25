@@ -18,8 +18,8 @@ ce-guidebook-alchemy-result-none = [color=#8e9a9a]none[/color]
 ce-guidebook-alchemy-copy-header = [bold]Solution recipe for {$batch} u:[/bold]
 ce-guidebook-alchemy-copy-line = {$index}. [bold]{$reagent}[/bold] — {$amount} u
 ce-guidebook-alchemy-copy-tune = [bold]Device tuning:[/bold] {$tune}
-ce-guidebook-alchemy-effect-line = {$effect} every second for [color=#1fa383]{$duration}[/color].
-ce-guidebook-alchemy-effect-line-status = Applies the [color=#1fa383]{$status}[/color] status effect for [color=#1fa383]{$duration}[/color].
+ce-guidebook-alchemy-effect-line = {$effect} every second for [color=#1fa383]{$duration}[/color]
+ce-guidebook-alchemy-effect-line-status = Applies the [color=#1fa383]{$status}[/color] status effect for [color=#1fa383]{$duration}[/color]
 ce-guidebook-alchemy-duration-seconds = {$value} sec.
 ce-guidebook-alchemy-duration-minutes = {$value} min.
 ce-guidebook-alchemy-dose = Dose:

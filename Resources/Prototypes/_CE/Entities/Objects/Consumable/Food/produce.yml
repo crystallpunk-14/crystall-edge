@@ -968,6 +968,8 @@
       reagents:
       - ReagentId: CEAmanitaJuice
         Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEAmanitaJuice
+  - type: Extractable
+    grindableSolutionName: food
   - type: CEPlaceable
     prototype: CEPlantAgaric
   - type: Temperature
@@ -1012,6 +1014,8 @@
         Quantity: 5
       - ReagentId: CENutriment
         Quantity: 2
+  - type: Extractable
+    grindableSolutionName: food
   - type: CEPlaceable
     prototype: CEPlantLumishroom
   - type: Temperature
@@ -1047,6 +1051,8 @@
         Quantity: 4
       - ReagentId: CENutriment
         Quantity: 1
+  - type: Extractable
+    grindableSolutionName: food
   - type: CEPlaceable
     prototype: CEPlantSilverNeedle
   - type: ToolRefinable

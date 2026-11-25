@@ -75,5 +75,5 @@
   name: haste
   components:
   - type: CESpeedModifyStatusEffect
-    walk: 1.1
-    sprint: 1.15
+    walk: 1.2
+    sprint: 1.3

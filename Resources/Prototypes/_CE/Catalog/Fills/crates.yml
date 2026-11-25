@@ -102,6 +102,11 @@
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10
+      - !type:AllSelector
+        weight: 0.5
+        children:
+        - id: CEMortar
+        - id: CEPestle
       - id: CEManaTransferGlove
       - id: CESafeFallingAmulet
       - id: CEScissors
