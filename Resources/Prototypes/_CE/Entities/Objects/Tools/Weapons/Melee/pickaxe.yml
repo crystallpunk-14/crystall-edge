@@ -3,7 +3,6 @@
   id: CEBaseWeaponPickaxe
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
   components:
   - type: Item
     size: Ginormous

@@ -3,7 +3,6 @@
   id: CEBaseWeaponMaceTwoHanded
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
   components:
   - type: Item
     size: Ginormous

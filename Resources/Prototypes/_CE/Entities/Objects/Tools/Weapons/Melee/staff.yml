@@ -3,7 +3,6 @@
   id: CEBaseWeaponStaff
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
   components:
   - type: Item
     size: Normal

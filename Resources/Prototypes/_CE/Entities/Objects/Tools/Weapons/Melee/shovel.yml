@@ -3,7 +3,6 @@
   id: CEBaseWeaponShovel
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
   components:
   - type: Item
     size: Ginormous

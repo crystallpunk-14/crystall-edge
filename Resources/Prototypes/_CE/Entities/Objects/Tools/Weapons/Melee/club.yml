@@ -3,7 +3,6 @@
   id: CEBaseWeaponClub
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
   components:
   - type: Item
     size: Normal
