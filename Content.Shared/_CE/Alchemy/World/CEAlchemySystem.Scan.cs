@@ -49,6 +49,14 @@ public sealed partial class CEAlchemySystem
     }
 
     /// <summary>
+    /// Player-facing number of a zone strength. Rounded down, so a shown value never overstates a requirement check.
+    /// </summary>
+    public static string FormatStrength(float strength)
+    {
+        return (MathF.Floor(strength * 100f + 0.001f) / 100f).ToString("0.00", CultureInfo.InvariantCulture);
+    }
+
+    /// <summary>
     /// Player-facing lines of what a hit zone does to whoever takes the mixture. Effects without a description are skipped.
     /// </summary>
     public List<string> DescribeHit(CEAlchemyHit hit, TimeSpan duration)
@@ -134,6 +142,7 @@ public sealed partial class CEAlchemySystem
             message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-zone",
                 ("color", hit.Zone.HarmColor.ToHex()),
                 ("zone", Loc.GetString(hit.Zone.Name)),
+                ("strength", FormatStrength(hit.Strength)),
                 ("effects", string.Join(" ", DescribeHit(hit, duration)))));
         }
 

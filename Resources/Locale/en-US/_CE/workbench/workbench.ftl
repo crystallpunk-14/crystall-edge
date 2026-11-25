@@ -13,3 +13,4 @@ ce-workbench-material-req = {$name} material x{$count} (from any items)
 
 ce-autocrafter-ui-title = Automatic crafting
 ce-autocrafter-select-recipe = Select recipe
+ce-workbench-alchemy-mixture-req = {$count}u of a "{$zone}" alchemical mixture, strength {$strength} or higher

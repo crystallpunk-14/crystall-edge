@@ -13,6 +13,7 @@ ce-guidebook-alchemy-tune = Настройка:
 ce-guidebook-alchemy-tune-value = [color=#8e9a9a]{$tune}, сила ×{$multiplier}[/color]
 ce-guidebook-alchemy-legend = [color=#ffd86b]●[/color] маркер раствора
 ce-guidebook-alchemy-result = Результат
+ce-guidebook-alchemy-result-zone = {$zone} — сила {$strength}
 ce-guidebook-alchemy-result-none = [color=#8e9a9a]нет[/color]
 ce-guidebook-alchemy-copy-header = [bold]Рецепт раствора на {$batch} ед.:[/bold]
 ce-guidebook-alchemy-copy-line = {$index}. [bold]{$reagent}[/bold] — {$amount} ед.
@@ -26,5 +27,5 @@ ce-guidebook-alchemy-dose-value = {$value} ед.
 ce-guidebook-alchemy-copy-effects = [bold]Эффекты:[/bold]
 ce-guidebook-alchemy-copy-effect = • [bold]{$zone}[/bold]: {$effects}
 ce-alchemy-scan-header = [bold]Алхимический раствор, [color=#1fa383]{$amount}[/color] ед.:[/bold]
-ce-alchemy-scan-zone = • [color={$color}][bold]{$zone}[/bold][/color]: {$effects}
+ce-alchemy-scan-zone = • [color={$color}][bold]{$zone}[/bold][/color] (сила {$strength}): {$effects}
 ce-alchemy-scan-none = • Эффектов нет.

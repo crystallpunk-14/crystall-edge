@@ -14,6 +14,10 @@
             #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 4, 4 ]
+            #Hospital
+            CEHospitalWarden: [ 1, 1 ]
+            CEDoctor: [ 2, 2 ]
+            CEOrderly: [ 2, 2 ]
             #Tavern
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 4, 4 ]

@@ -54,6 +54,22 @@
   - CEGuideStoneHeartEN
   - CEGuideStoneHeartRU
 
+- type: mainQuestPrice
+  id: MainQuestStoneHearts
+  department: CEGuild
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEChromiumSlime
+    count: 10
+
+- type: mainQuestPrice
+  id: MainQuestSilverNeedles
+  department: CEGuild
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodSilverNeedle
+    count: 25
+
 #MARK: Tavern
 
 - type: mainQuestPrice
@@ -80,8 +96,6 @@
     recipe: CarrotPatties
     count: 20
 
-#MARK: General
-
 - type: mainQuestPrice
   id: MainQuestLumishroomCreamSoup
   department: CETavern
@@ -90,7 +104,139 @@
     recipe: LumishroomCreamSoup
     count: 20
 
+#MARK: Hospital
+
+- type: mainQuestPrice
+  id: MainQuestHealBrute
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: HealBrute
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestHealBurn
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: HealBurn
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestRestoreBlood
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: RestoreBlood
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestRestoreStamina
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: RestoreStamina
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestHaste
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: Haste
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestAdrenaline
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: Adrenaline
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestMurkResistance
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: MurkResistance
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestRestoreMana
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: RestoreMana
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestPoisonToxin
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: PoisonToxin
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+- type: mainQuestPrice
+  id: MainQuestPoisonManaBurn
+  department: CEHospital
+  cost:
+  - !type:CEAlchemyMixtureResource
+    zone: PoisonManaBurn
+    amount: 30
+    minStrength: 0.3
+  guidebook:
+  - CEAlchemyGuideEN
+  - CEAlchemyGuideRU
+
+#MARK: General
+
 - type: mainQuestPrice
   id: MainQuestCoins
   department: CECitizens
   pay: 500
+
+- type: mainQuestPrice
+  id: MainQuestDiamonds
+  department: CECitizens
+  cost:
+  - !type:StackResource
+    stack: CECoal
+    count: 100

@@ -31,7 +31,7 @@
     state: base
   - type: GenericVisualizer
     visuals:
-      enum.CEAlchemyTunerVisuals.Working:
+      enum.PowerDeviceVisuals.Powered:
         poweredFront:
           True: { state: rotate_front }
           False: { state: rotate_front_stop }

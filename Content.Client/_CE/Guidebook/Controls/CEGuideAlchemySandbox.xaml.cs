@@ -479,7 +479,9 @@ public sealed partial class CEGuideAlchemySandbox : PanelContainer, IDocumentTag
 
         box.AddChild(new Label
         {
-            Text = Loc.GetString(hit.Zone.Name),
+            Text = Loc.GetString("ce-guidebook-alchemy-result-zone",
+                ("zone", Loc.GetString(hit.Zone.Name)),
+                ("strength", CEAlchemySystem.FormatStrength(hit.Strength))),
             FontColorOverride = color,
         });
 

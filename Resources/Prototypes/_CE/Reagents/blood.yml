@@ -28,10 +28,7 @@
   name: ce-reagent-name-blood-animal
   desc: ce-reagent-desc-blood-animal
   color: "#4d1313"
-  alchemyEffects:
-  - !type:CoordinatePoint
-    pos: 0.22, -0.58
-    stock: 0.8 # weaker than sapient blood
+  alchemyEffects: []
 
 - type: reagent
   id: CEBloodInfernal
@@ -41,7 +38,7 @@
   color: "#4d1f00"
   alchemyEffects:
   - !type:CoordinatePoint
-    pos: -0.26, 0.43
+    pos: -0.46, 0.43
     stock: 1.2
 
 - type: reagent

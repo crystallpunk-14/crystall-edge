@@ -20,7 +20,6 @@ public sealed partial class CEAlchemyTunerSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
     [Dependency] private INetManager _net = default!;
@@ -171,7 +170,6 @@ public sealed partial class CEAlchemyTunerSystem : EntitySystem
     /// </summary>
     private void Reevaluate(Entity<CEAlchemyTunerComponent> ent)
     {
-        // The cycle is driven by the server, clients get the result through the appearance and the solution state
         if (_net.IsClient)
             return;
 
@@ -219,7 +217,6 @@ public sealed partial class CEAlchemyTunerSystem : EntitySystem
         _doAfter.TryStartDoAfter(args, out var id);
         ent.Comp.DoAfterId = id;
 
-        _appearance.SetData(ent, CEAlchemyTunerVisuals.Working, true);
         _ambient.SetAmbience(ent, true);
     }
 
@@ -230,7 +227,6 @@ public sealed partial class CEAlchemyTunerSystem : EntitySystem
 
         ent.Comp.DoAfterId = null;
 
-        _appearance.SetData(ent, CEAlchemyTunerVisuals.Working, false);
         _ambient.SetAmbience(ent, false);
     }
 

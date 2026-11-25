@@ -17,3 +17,11 @@
     sprite: _CE/Interface/guidebook.rsi
     layers:
     - state: trading
+
+- type: entity
+  id: CELiquidDropDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Misc/liquid_drop.rsi
+    state: liq-1

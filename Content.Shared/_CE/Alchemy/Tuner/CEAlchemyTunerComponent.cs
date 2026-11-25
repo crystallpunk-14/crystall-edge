@@ -27,7 +27,7 @@ public sealed partial class CEAlchemyTunerComponent : Component
     /// Tune shift per cycle.
     /// </summary>
     [DataField]
-    public FixedPoint2 Step = FixedPoint2.New(0.05f);
+    public FixedPoint2 Step = FixedPoint2.New(0.1f);
 
     [DataField]
     public TimeSpan CycleTime = TimeSpan.FromSeconds(5);
@@ -50,12 +50,6 @@ public enum CEAlchemyTunerMode : byte
     /// Towards -1: weaker and longer effects.
     /// </summary>
     Extend,
-}
-
-[Serializable, NetSerializable]
-public enum CEAlchemyTunerVisuals : byte
-{
-    Working,
 }
 
 [Serializable, NetSerializable]
