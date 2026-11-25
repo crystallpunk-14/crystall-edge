@@ -1920,3 +1920,16 @@
   id: 1159
   time: '2026-11-23T17:36:24.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/606
+- author: TheShuEd
+  changes:
+  - message: Added alchemy!
+    type: Add
+  - message: Added injectors, chemical bombs
+    type: Add
+  - message: You can now coat weapons & crossbolts with reagents
+    type: Add
+  - message: Added hospital roles onto Pharus game map
+    type: Add
+  id: 1160
+  time: '2026-11-25T14:04:05.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/610
