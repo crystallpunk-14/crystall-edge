@@ -13,12 +13,15 @@ public sealed partial class ModifyBleeding : CEEntityEffectBase<ModifyBleeding>
     [DataField(required: true)]
     public float Amount;
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         return Loc.GetString(Amount < 0
                 ? "ce-entity-effect-guidebook-modify-bleeding-reduce"
                 : "ce-entity-effect-guidebook-modify-bleeding-increase",
-            ("amount", MathF.Abs(Amount)));
+            ("amount", Math.Round((double) (MathF.Abs(Amount) * power), 1)));
     }
 }
 

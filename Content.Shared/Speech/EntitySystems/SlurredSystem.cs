@@ -38,6 +38,14 @@ public sealed partial class SlurredSystem : RelayAccentSystem<SlurredAccentCompo
                     'a' => "ah",
                     'u' => "oo",
                     'c' => "k",
+                    // CrystallEdge: Russian slur
+                    'а' => "аа",
+                    'о' => "у",
+                    'у' => "уу",
+                    'с' => "ш",
+                    'з' => "ж",
+                    'ц' => "к",
+                    // CrystallEdge end
                     _ => $"{character}",
                 };
 

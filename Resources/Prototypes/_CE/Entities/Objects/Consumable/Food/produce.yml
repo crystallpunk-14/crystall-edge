@@ -966,8 +966,10 @@
     solution:
       maxVol: 11
       reagents:
-      - ReagentId: CEMuscimol
-        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
+      - ReagentId: CEAmanitaJuice
+        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEAmanitaJuice
+  - type: Extractable
+    grindableSolutionName: food
   - type: CEPlaceable
     prototype: CEPlantAgaric
   - type: Temperature
@@ -1008,12 +1010,57 @@
     solution:
       maxVol: 11
       reagents:
-      - ReagentId: Ethanol
+      - ReagentId: CELumishroomSap
         Quantity: 5
       - ReagentId: CENutriment
         Quantity: 2
+  - type: Extractable
+    grindableSolutionName: food
   - type: CEPlaceable
     prototype: CEPlantLumishroom
+  - type: Temperature
+    temperature: 290
+    heatCapacity: 15000
+  - type: InternalTemperature
+
+- type: entity
+  id: CEFoodSilverNeedle
+  parent: [ FoodInjectableBase, CEBasePlantable, BaseSlicingRefinableFood ]
+  categories: [ ForkFiltered ]
+  name: silver needle
+  description: Bright orange berries of a frost-resistant plant. Widely used in medicine.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/silver_needle.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: CESilverNeedle
+        Quantity: 4
+      - ReagentId: CENutriment
+        Quantity: 1
+  - type: Extractable
+    grindableSolutionName: food
+  - type: CEPlaceable
+    prototype: CEPlantSilverNeedle
+  - type: ToolRefinable
+    refineTime: 1
+    refineResult:
+    - id: CESeedSilverNeedle
+      amount: 1
+      maxAmount: 3 # the upper bound is exclusive: 1-2 seeds
   - type: Temperature
     temperature: 290
     heatCapacity: 15000
@@ -1056,3 +1103,37 @@
     temperature: 290
     heatCapacity: 15000
   - type: InternalTemperature
+
+- type: entity
+  id: CEChromiumSlime
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: chromium slime
+  description: This rare thick substance can be found in a stream of water as if it has a mind of its own. When trying to change the slime itself - the slime changes the reagent it interacts with.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/chromium_slime.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: CEChromiumSlime
+        Quantity: 4
+  - type: Extractable
+    grindableSolutionName: food
+    juiceSolution:
+      reagents:
+      - ReagentId: CEChromiumSlime
+        Quantity: 4

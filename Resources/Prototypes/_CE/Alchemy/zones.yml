@@ -1,0 +1,190 @@
+# --- Medicine ---
+
+- type: alchemyZone
+  id: HealBrute
+  name: ce-alchemy-zone-heal-brute
+  color: "#d94f4f"
+  weight: 1.5
+  effects:
+  - !type:Heal
+    groups:
+      Brute: 5
+  - !type:ModifyBleeding
+    amount: -1
+
+- type: alchemyZone
+  id: HealBurn
+  name: ce-alchemy-zone-heal-burn
+  color: "#e8913a"
+  weight: 1.25
+  effects:
+  - !type:Heal
+    groups:
+      Burn: 5
+
+- type: alchemyZone
+  id: RestoreBlood
+  name: ce-alchemy-zone-restore-blood
+  color: "#9e1b32"
+  weight: 1
+  effects:
+  - !type:ModifyBloodLevel
+    amount: 8
+
+- type: alchemyZone
+  id: RestoreStamina
+  name: ce-alchemy-zone-restore-stamina
+  color: "#e0c24a"
+  weight: 1.25
+  effects:
+  - !type:StaminaRestore
+    amount: 2.5
+
+# --- Movement ---
+
+- type: alchemyZone
+  id: Haste
+  name: ce-alchemy-zone-haste
+  color: "#f0d84a"
+  weight: 1.25
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyHaste
+    duration: 10
+
+- type: alchemyZone
+  id: Slowdown
+  name: ce-alchemy-zone-slowdown
+  color: "#5a7fb5"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemySlowdown
+    duration: 10
+
+- type: alchemyZone
+  id: Adrenaline
+  name: ce-alchemy-zone-adrenaline
+  color: "#e0553a"
+  weight: 1
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectAdrenaline
+    duration: 10
+
+- type: alchemyZone
+  id: MurkResistance
+  name: ce-alchemy-zone-murk-resistance
+  color: "#7a5fb0"
+  weight: 1
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectMurkResistance
+    duration: 15
+
+# --- Mana ---
+
+- type: alchemyZone
+  id: RestoreMana
+  name: ce-alchemy-zone-restore-mana
+  color: "#3fa7ff"
+  weight: 1.625
+  effects:
+  - !type:ChangeMana
+    amount: 5
+
+# --- Poisons ---
+
+- type: alchemyZone
+  id: PoisonToxin
+  name: ce-alchemy-zone-poison-toxin
+  color: "#5fbf3a"
+  weight: 1.375
+  dangerous: true
+  effects:
+  - !type:Damage
+    ignoreResistances: true
+    interruptDoAfters: false
+    colorFlash: false
+    damage:
+      types:
+        Poison: 1
+
+- type: alchemyZone
+  id: PoisonManaBurn
+  name: ce-alchemy-zone-poison-mana-burn
+  color: "#b23fd1"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ChangeMana
+    amount: -5
+
+# --- Unpleasant effects ---
+
+- type: alchemyZone
+  id: ShakeAndSlur
+  name: ce-alchemy-zone-shake-and-slur
+  color: "#7ad9c9"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyShake
+    duration: 10
+
+- type: alchemyZone
+  id: Nausea
+  name: ce-alchemy-zone-nausea
+  color: "#9aab4e"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyNausea
+    duration: 30
+
+- type: alchemyZone
+  id: Drowsiness
+  name: ce-alchemy-zone-drowsiness
+  color: "#6a6fb8"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectDrowsiness
+    duration: 20
+
+- type: alchemyZone
+  id: WeakHands
+  name: ce-alchemy-zone-weak-hands
+  color: "#b5a58a"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyWeakHands
+    duration: 60
+
+- type: alchemyZone
+  id: SeeingRainbow
+  name: ce-alchemy-zone-seeing-rainbow
+  color: "#ff6ec7"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: StatusEffectSeeingRainbow
+    duration: 150 # the overlay strength grows with the time left and is invisible under 10 seconds
+
+- type: alchemyZone
+  id: Fatigue
+  name: ce-alchemy-zone-fatigue
+  color: "#8a8f99"
+  weight: 1
+  dangerous: true
+  effects:
+  - !type:ApplyStatusEffect
+    statusEffect: CEStatusEffectAlchemyFatigue
+    duration: 40

@@ -12,12 +12,15 @@ public sealed partial class ModifyBloodLevel : CEEntityEffectBase<ModifyBloodLev
     [DataField(required: true)]
     public FixedPoint2 Amount;
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         return Loc.GetString(Amount < 0
                 ? "ce-entity-effect-guidebook-modify-blood-level-drain"
                 : "ce-entity-effect-guidebook-modify-blood-level-restore",
-            ("amount", FixedPoint2.Abs(Amount).Float()));
+            ("amount", Math.Round((double) (FixedPoint2.Abs(Amount).Float() * power), 1)));
     }
 }
 

@@ -9,6 +9,17 @@
       CEMycelium: 0.1
       CEMyceliumLight: 0.2
 
+# Frost plants feed on snow only
+- type: entity
+  id: CEPlantBaseFrostType
+  abstract: true
+  components:
+  - type: CEPlant
+    soilResourceGathering:
+      CESnow: 0.2
+      CESnowDeep: 0.2
+      CESnowDeepDeep: 0.2
+
 - type: entity
   id: CEPlantBaseFloralWildType # For undemanding plants or trees that can grow equally effectively anywhere
   abstract: true

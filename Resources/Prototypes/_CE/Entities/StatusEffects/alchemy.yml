@@ -1,0 +1,79 @@
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemyHaste
+  name: haste
+  components:
+  - type: CESpeedModifyStatusEffect
+    walk: 1.2
+    sprint: 1.3
+
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemySlowdown
+  name: slowdown
+  components:
+  - type: CESpeedModifyStatusEffect
+    walk: 0.7
+    sprint: 0.6
+
+# Same symptoms as heavy bloodloss (stutter + drunk shaking), but not tied to the bloodstream, so it is not cleared every tick.
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemyShake
+  name: tremor
+  components:
+  - type: StutteringAccent
+  - type: DrunkStatusEffect
+  # Periodic jitter on top of the shaking drunk walk
+  - type: CEStatusEffectApplyEntityEffect
+    frequency: 6
+    effects:
+    - !type:Jitter
+      duration: 2
+      amplitude: 8
+      frequency: 6
+
+# Periodic vomiting, which also drains hunger and thirst.
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemyNausea
+  name: nausea
+  components:
+  - type: CEStatusEffectApplyEntityEffect
+    frequency: 15
+    effects:
+    - !type:Vomit
+      probability: 0.6
+
+# Hands go limp: whatever you hold falls out from time to time.
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemyWeakHands
+  name: weak hands
+  components:
+  - type: CEStatusEffectApplyEntityEffect
+    frequency: 25
+    effects:
+    - !type:DropHeldItems
+
+# Stamina bleeds away on its own.
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectAlchemyFatigue
+  name: fatigue
+  components:
+  - type: CEStatusEffectApplyEntityEffect
+    frequency: 2
+    effects:
+    - !type:StaminaDamage
+      amount: 4
+
+# Weaker haste of Brad's haste mixture
+- type: entity
+  parent: [ MobStatusEffectBase, MobStatusEffectDebuff ]
+  id: CEStatusEffectBradHaste
+  name: haste
+  components:
+  - type: CESpeedModifyStatusEffect
+    walk: 1.2
+    sprint: 1.3

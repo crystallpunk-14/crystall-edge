@@ -1,0 +1,6 @@
+- type: entity
+  id: CEAlchemyWorld
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEAlchemyWorld
+  - type: CEPvsOverride

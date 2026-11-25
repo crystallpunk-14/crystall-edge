@@ -17,15 +17,6 @@
     proto: CEHerbalOintment
 
 - type: tradeOffer
-  id: BuyBloodpack10
-  shop: ApothecariesGuild
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEBloodpack
-
-- type: tradeOffer
   id: BuyClothingEyesMedicalGlasses
   shop: ApothecariesGuild
   weight: 0.1
@@ -34,3 +25,316 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingEyesMedicalGlasses
+
+- type: tradeOffer
+  id: BuyAlchemyMixture
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumAlchemyMixture
+
+- type: tradeOffer
+  id: BuyMortarAndPestle
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEMortar
+  - !type:CETradeSpawnReward
+    proto: CEPestle
+
+- type: tradeOffer
+  id: BuyDropper
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEDropper
+
+- type: tradeOffer
+  id: BuySyringe
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESyringe
+
+- type: tradeOffer
+  id: BuyVialTiny
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialTiny
+
+- type: tradeOffer
+  id: BuyVialTinyReinforced
+  shop: ApothecariesGuild
+  pay:
+    bonus: 2
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialTinyReinforced
+
+- type: tradeOffer
+  id: BuyVialSmall
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmall
+
+- type: tradeOffer
+  id: BuyVialSmallReinforced
+  shop: ApothecariesGuild
+  pay:
+    bonus: 2
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallReinforced
+
+- type: tradeOffer
+  id: BuyVialMedium
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMedium
+
+- type: tradeOffer
+  id: BuyVialMediumReinforced
+  shop: ApothecariesGuild
+  pay:
+    bonus: 2
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumReinforced
+
+- type: tradeOffer
+  id: BuyVialStar
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialStar
+
+- type: tradeOffer
+  id: BuyVialStarReinforced
+  shop: ApothecariesGuild
+  pay:
+    bonus: 2
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialStarReinforced
+
+- type: tradeOffer
+  id: BuyVialSkull
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkull
+
+- type: tradeOffer
+  id: BuyVialSkullReinforced
+  shop: ApothecariesGuild
+  pay:
+    bonus: 2
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullReinforced
+
+- type: tradeOffer
+  id: BuyAlchemyBomb
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialAlchemyBomb
+
+# Brad's mixtures
+
+- type: tradeOffer
+  id: BuyBradHealingMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-healing
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradHealing
+
+- type: tradeOffer
+  id: BuyBradBurnMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-burn
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradBurn
+
+- type: tradeOffer
+  id: BuyBradBloodMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-blood
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradBlood
+
+- type: tradeOffer
+  id: BuyBradStaminaMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-stamina
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradStamina
+
+- type: tradeOffer
+  id: BuyBradHasteMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-haste
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradHaste
+
+- type: tradeOffer
+  id: BuyBradManaMixture
+  shop: ApothecariesGuild
+  name: ce-reagent-name-brad-mana
+  pay:
+    amount: 50
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEAlchemyInjectorBradMana
+
+# Alchemy ingredients
+
+- type: tradeOffer
+  id: BuySilverNeedle
+  shop: ApothecariesGuild
+  name: ce-reagent-name-silver-needle
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumSilverNeedle
+
+- type: tradeOffer
+  id: BuyAmanitaJuice
+  shop: ApothecariesGuild
+  name: ce-reagent-name-amanita-juice
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumAmanitaJuice
+
+- type: tradeOffer
+  id: BuyLumishroomSap
+  shop: ApothecariesGuild
+  name: ce-reagent-name-lumishroom-sap
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallLumishroomSap
+
+- type: tradeOffer
+  id: BuyStoneHeartReagent
+  shop: ApothecariesGuild
+  name: ce-reagent-name-stone-heart
+  pay:
+    amount: 100
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallStoneHeart
+
+- type: tradeOffer
+  id: BuyChromiumSlime
+  shop: ApothecariesGuild
+  name: ce-reagent-name-chromium-slime
+  pay:
+    amount: 100
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallChromiumSlime
+
+# Blood
+
+- type: tradeOffer
+  id: BuyBloodHuman
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodHuman
+
+- type: tradeOffer
+  id: BuyBloodInfernal
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-infernal
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodInfernal
+
+- type: tradeOffer
+  id: BuyBloodElf
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-elf
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodElf
+
+- type: tradeOffer
+  id: BuyBloodGoblin
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-goblin
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodGoblin
+
+- type: tradeOffer
+  id: BuyBloodCarcat
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-carcat
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodCarcat
+
+- type: tradeOffer
+  id: BuyBloodSilva
+  shop: ApothecariesGuild
+  name: ce-reagent-name-blood-silva
+  pay:
+    amount: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullBloodSilva

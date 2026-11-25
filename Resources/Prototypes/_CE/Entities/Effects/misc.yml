@@ -349,3 +349,34 @@
           types:
             Blunt: 10
             Heat: 5
+
+- type: entity
+  id: CEAlchemyTransmuteVFX
+  categories: [ ForkFiltered ]
+  save: false
+  suffix: VFX
+  name: alchemy transmutation
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/essence_consume.rsi
+    drawdepth: Effects
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: Appearance
+  - type: CEAlchemyTransmuteVFX
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight # flash like the treasure sparks, the color is set by the appearance
+    enabled: true
+    radius: 2
+    energy: 4
+    netsync: false
+    castShadows: false
+  - type: LightFade
+    duration: 0.9
+  - type: TimedDespawn
+    lifetime: 2

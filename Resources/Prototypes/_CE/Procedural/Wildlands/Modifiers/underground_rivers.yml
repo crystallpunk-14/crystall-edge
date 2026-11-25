@@ -1,0 +1,40 @@
+# Underground rivers: winding water streams cut through floor and rock of the deepest caves.
+# List it before other modifiers: it deletes whatever is anchored on its way.
+
+- type: entity
+  id: CEWildlandsModifierUndergroundRivers
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:GenerationLayers
+      maxDepth: -2
+      layers:
+      - !type:FillEntityLayer
+        entity: CEWaterFloorEntity
+        mask:
+        - !type:NoiseMask
+          threshold: 0.85 # lower = wider rivers
+          noise:
+            frequency: 0.012 # higher = more rivers
+            noiseType: OpenSimplex2
+            fractalType: Ridged
+            octaves: 1
+
+# Chromium slime: sits in the water, list it after the rivers.
+- type: entity
+  id: CEWildlandsModifierRiverChromiumSlime
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnEntitiesPerTiles
+      entity: CEGatherableChromiumSlime
+      tilesPerSpawn: 50
+      tilesPerSpawnStdDev: 10
+      mask:
+      - !type:EntityMask
+        entities:
+        - CEWaterFloorEntity

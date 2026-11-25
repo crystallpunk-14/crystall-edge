@@ -6,18 +6,22 @@
   - type: Solution
     id: melee
     solution:
-      maxVol: 4
-  - type: MeleeChemicalInjector
+      maxVol: 10
+  - type: CEWeaponInjector
     solution: melee
   - type: RefillableSolution
     solution: melee
   - type: InjectableSolution
     solution: melee
-  - type: SolutionInjectOnEmbed
-    transferAmount: 2
+  - type: ExaminableSolution
     solution: melee
-  - type: SolutionTransfer
-    maxTransferAmount: 2
+    exactVolume: true
+  - type: Spillable
+    solution: melee
+    spillWhenThrown: false
+  - type: SolutionInjectOnEmbed
+    transferAmount: 5
+    solution: melee
 
 - type: entity
   abstract: true

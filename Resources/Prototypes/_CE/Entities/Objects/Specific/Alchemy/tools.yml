@@ -4,9 +4,11 @@
   abstract: true
   id: CEAlchemyDropperMode
   transferAmounts:
+  - 0.1
   - 0.25
   - 0.5
   - 1
+  - 2
 
 - type: injectorMode
   parent: [ CEAlchemyDropperMode, BaseInjectMode ]
@@ -32,6 +34,90 @@
   id: CEAlchemySyringeDrawMode
 
 ## Entities
+
+- type: entity
+  id: CEPestle
+  parent: BaseItem
+  name: pestle
+  description: A device for conveniently grinding various materials into liquid
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Alchemy/mortar_pestle.rsi
+    state: pestle
+  - type: CEPestle
+  - type: Tag
+    tags:
+    - CEPestle
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  id: CEMortar
+  parent: BaseStorageItem
+  name: mortar
+  description: Alchemical sturdy plate for grinding reagents
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Alchemy/mortar_pestle.rsi
+    layers:
+    - state: mortar_base
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: Solution
+    id: mortar
+    solution:
+      maxVol: 30
+  - type: Spillable
+    solution: mortar
+  - type: DrainableSolution
+    solution: mortar
+  - type: ExaminableSolution
+    solution: mortar
+  - type: RefillableSolution
+    solution: mortar
+  - type: DrawableSolution
+    solution: mortar
+  - type: SolutionItemStatus
+    solution: mortar
+  - type: SolutionTransfer # pour into vials and other containers by clicking them with the mortar
+    transferAmount: 5
+    minTransferAmount: 1
+    maxTransferAmount: 30
+    canChangeTransferAmount: true
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: liq-
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,1,1
+    whitelist:
+      components:
+      - Extractable
+    ignorelist: # these are used on the mortar instead of being put inside
+      components:
+      - Injector
+      tags:
+      - CEPestle
+  - type: CEMortar
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 10
 
 - type: entity
   parent: BaseItem
@@ -131,6 +217,54 @@
   - type: Tag
     tags:
     - Syringe
+  - type: PhysicalComposition
+    materialComposition:
+      CEGlass: 5
+      CEIron: 5
+
+- type: entity
+  id: CEAlchemyInjector
+  parent: BaseItem
+  name: injector
+  description: An injector for quickly injecting chemical solutions directly into your bloodstream. Most alchemical solutions aren't as effective if you just drink them instead of injecting them.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Alchemy/injector.rsi
+    layers:
+      - state: syringe1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+        shader: unshaded
+      - state: base
+        map: ["enum.SolutionContainerLayers.Base"]
+  - type: Icon
+    sprite: _CE/Objects/Specific/Alchemy/injector.rsi
+    state: base
+  - type: Item
+    size: Tiny
+    sprite: _CE/Objects/Specific/Alchemy/injector.rsi
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+  - type: RefillableSolution
+    solution: injector
+  - type: InjectableSolution
+    solution: injector
+  - type: ExaminableSolution
+    solution: injector
+  - type: Spillable
+    solution: injector
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: syringe
+  - type: CEAlchemyInjector
+    beginSound:
+      path: /Audio/Items/Medical/jet_injector.ogg
+      params:
+        volume: -6
   - type: PhysicalComposition
     materialComposition:
       CEGlass: 5

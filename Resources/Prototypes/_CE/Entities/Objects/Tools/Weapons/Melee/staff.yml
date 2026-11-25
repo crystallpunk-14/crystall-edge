@@ -3,7 +3,7 @@
   id: CEBaseWeaponStaff
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Normal

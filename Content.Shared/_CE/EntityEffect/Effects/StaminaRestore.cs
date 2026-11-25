@@ -15,7 +15,10 @@ public sealed partial class StaminaRestore : CEEntityEffectBase<StaminaRestore>
     public float Amount = 10f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-stamina-restore", ("amount", Amount));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-stamina-restore", ("amount", Math.Round((double) (Amount * power), 1)));
 }
 
 public sealed partial class CEStaminaRestoreEffectSystem : CEEntityEffectSystem<StaminaRestore>

@@ -1,0 +1,74 @@
+# Vials filled with one alchemy reagent. The blank mixture and ingredients (carriers) come in medium vials,
+# modifiers in small ones: they work per unit and are needed in smaller amounts.
+
+- type: entity
+  id: CEVialMediumAlchemyMixture
+  parent: CEVialMedium
+  suffix: Alchemy mixture
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CEAlchemyMixture
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumSilverNeedle
+  parent: CEVialMedium
+  suffix: Silver needle
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CESilverNeedle
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumAmanitaJuice
+  parent: CEVialMedium
+  suffix: Fly agaric juice
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CEAmanitaJuice
+        Quantity: 50
+
+- type: entity
+  id: CEVialSmallStoneHeart
+  parent: CEVialSmall
+  suffix: Stone heart
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CEStoneHeart
+        Quantity: 10
+
+- type: entity
+  id: CEVialSmallChromiumSlime
+  parent: CEVialSmall
+  suffix: Chromium slime
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CEChromiumSlime
+        Quantity: 10
+
+- type: entity
+  id: CEVialSmallLumishroomSap
+  parent: CEVialSmall
+  suffix: Lumishroom sap
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      reagents:
+      - ReagentId: CELumishroomSap
+        Quantity: 10
