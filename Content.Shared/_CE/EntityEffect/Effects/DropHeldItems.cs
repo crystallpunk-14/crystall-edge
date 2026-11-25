@@ -19,7 +19,7 @@ public sealed partial class DropHeldItems : CEEntityEffectBase<DropHeldItems>
     public float ThrowPower = 5f;
 
     [DataField]
-    public float Distance = 1.5f;
+    public float Distance = 0.5f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
         Loc.GetString("ce-entity-effect-guidebook-drop-held-items");
