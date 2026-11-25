@@ -5,6 +5,7 @@
   - BaseItem
   - CEBaseWeaponChemical
   - CEBaseWeaponSharp
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Large

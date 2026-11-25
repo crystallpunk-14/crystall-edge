@@ -3,6 +3,7 @@
   id: CEBaseWeaponMaceTwoHanded
   parent:
   - BaseItem
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Ginormous

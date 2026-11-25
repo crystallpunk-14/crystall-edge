@@ -4,6 +4,7 @@
   parent:
   - BaseItem
   - CEBaseWeaponThrowable
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Normal

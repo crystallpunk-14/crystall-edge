@@ -3,6 +3,7 @@
   id: CEBaseWeaponClub
   parent:
   - BaseItem
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Normal
