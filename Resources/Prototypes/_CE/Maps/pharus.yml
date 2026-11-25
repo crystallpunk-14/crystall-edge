@@ -125,6 +125,8 @@
     - id: CEWildlandsModifierLumishroomsConstant3
   wildlandsModifiers: !type:AllSelector
     children:
+    - id: CEWildlandsModifierUndergroundRivers
+    - id: CEWildlandsModifierRiverChromiumSlime
     - id: CEWildlandsModifierOreCoalNoise
     - id: CEWildlandsModifierOreIronNoise
     - id: CEWildlandsModifierOreCrystalNoise

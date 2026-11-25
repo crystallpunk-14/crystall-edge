@@ -9,7 +9,7 @@
   metabolisms:
     # Only the bloodstream works: a drunk mixture passes the digestion stage with losses and delay, the injected one acts at once
     Bloodstream:
-      rate: 0.5 # multiplied by the tuning of the mixture, see CEAlchemyData.Multiplier
+      rate: 0.5
       ceEffects:
       - !type:CEAlchemyApply
 
@@ -54,7 +54,7 @@
   physicalDesc: reagent-physical-desc-opaque
   color: "#3b4872"
   alchemyEffects:
-  - !type:Scale # 5 units fully invert the marker through the center of the map
+  - !type:Scale
     perUnit: -0.4, -0.4
 
 - type: reagent
@@ -68,7 +68,7 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.6 # the sap ferments: whoever drinks it gets drunk
+        Ethanol: 0.6
   alchemyEffects:
   - !type:Rotate
     degreesPerUnit: -3

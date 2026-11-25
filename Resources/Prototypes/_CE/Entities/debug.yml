@@ -27,3 +27,9 @@
     edible: Drink
   - type: DrawableSolution
     solution: pool
+  - type: IconSmooth
+    key: water
+    base: water
+    additionalKeys:
+    - walls
+    - CEwall

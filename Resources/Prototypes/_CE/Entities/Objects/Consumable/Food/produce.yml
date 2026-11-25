@@ -1097,3 +1097,37 @@
     temperature: 290
     heatCapacity: 15000
   - type: InternalTemperature
+
+- type: entity
+  id: CEChromiumSlime
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: chromium slime
+  description: This rare thick substance can be found in a stream of water as if it has a mind of its own. When trying to change the slime itself - the slime changes the reagent it interacts with.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/chromium_slime.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: CEChromiumSlime
+        Quantity: 4
+  - type: Extractable
+    grindableSolutionName: food
+    juiceSolution:
+      reagents:
+      - ReagentId: CEChromiumSlime
+        Quantity: 4
