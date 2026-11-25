@@ -40,6 +40,7 @@ ce-entity-effect-guidebook-use-item = Uses the item on the target, as if clicked
 ce-entity-effect-guidebook-stamina-damage = Deals [color=#1fa383]{ $amount }[/color] stamina damage
 ce-entity-effect-guidebook-stamina-restore = Restores [color=#1fa383]{ $amount }[/color] stamina
 ce-entity-effect-guidebook-drop-held-items = Makes the target drop what it holds in its hands
+ce-drop-held-items-popup = Things slip out of your hands!
 ce-entity-effect-guidebook-affect-plant-energy = Gives a plant [color=#1fa383]{ $amount }[/color] energy
 ce-entity-effect-guidebook-affect-plant-resource = Gives a plant [color=#1fa383]{ $amount }[/color] resource
 ce-entity-effect-guidebook-affect-plant-growth = Gives a plant [color=#1fa383]{ $amount }[/color] growth

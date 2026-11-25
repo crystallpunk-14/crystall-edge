@@ -40,6 +40,7 @@ ce-entity-effect-guidebook-use-item = Применяет предмет на ц�
 ce-entity-effect-guidebook-stamina-damage = Наносит [color=#1fa383]{ $amount }[/color] урона по выносливости
 ce-entity-effect-guidebook-stamina-restore = Восстанавливает [color=#1fa383]{ $amount }[/color] выносливости
 ce-entity-effect-guidebook-drop-held-items = Заставляет цель выронить то, что она держит в руках
+ce-drop-held-items-popup = Предметы выскальзывают у вас из рук!
 ce-entity-effect-guidebook-affect-plant-energy = Дает растению [color=#1fa383]{ $amount }[/color] энергии
 ce-entity-effect-guidebook-affect-plant-resource = Дает растению [color=#1fa383]{ $amount }[/color] ресурса
 ce-entity-effect-guidebook-affect-plant-growth = Дает растению [color=#1fa383]{ $amount }[/color] роста
