@@ -14,7 +14,7 @@
     drawdepth: LowFloors
     sprite: _CE/Structures/Nature/moss.rsi
   - type: Icon
-    sprite: _CE/Structures/Nature/moss.rsi
+    sprite: _CE/Structures/Nature/moss.rsi 
     state: full
   - type: IconSmooth
     key: moss
