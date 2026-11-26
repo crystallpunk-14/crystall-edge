@@ -1933,3 +1933,31 @@
   id: 1160
   time: '2026-11-25T14:04:05.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/610
+- author: TheShuEd
+  changes:
+  - message: Detailed information about the solution in the containers is now visible
+      upon direct examination without having to press an additional "solution examine"
+      button.
+    type: Tweak
+  - message: The visibility of the reagents inside the alchemical flasks has been
+      improved.
+    type: Tweak
+  - message: "Target actions can now be triggered by clicking outside the target area\
+      \ or outside the FOV \u2014 the ability will be used at the maximum possible\
+      \ distance in that direction."
+    type: Tweak
+  - message: Funnel is no longer assembled via the machine core; instead, it is placed
+      as a conveyor using the Placeable system and a stack item.
+    type: Tweak
+  - message: Blood Regeneration Potions now heal damage from Bleeding
+    type: Fix
+  - message: The conveyors can no longer be unscrewed with a wrench
+    type: Fix
+  - message: The bleeding has subsided significantly and shouldn't be a problem anymore.
+    type: Fix
+  - message: Fixed a bug that prevented machine cores from being extracted from assembled
+      machines
+    type: Fix
+  id: 1161
+  time: '2026-11-26T08:43:19.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/611
