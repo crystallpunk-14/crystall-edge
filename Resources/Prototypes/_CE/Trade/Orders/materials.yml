@@ -6,8 +6,7 @@
   - !type:StackResource
     stack: CEIronBar
     count: 5
-  receive:
-    bonus: 1
+  bonus: 1
 
 - type: tradeOffer
   id: SellCoal
@@ -16,8 +15,7 @@
   - !type:StackResource
     stack: CECoal
     count: 5
-  receive:
-    bonus: 1
+  bonus: 1
 
 - type: tradeOffer
   id: SellDiamond
@@ -27,8 +25,7 @@
   - !type:StackResource
     stack: CEDiamond
     count: 1
-  receive:
-    bonus: 1
+  bonus: 1
 
 - type: tradeOffer
   id: SellEnergyCrystalShard
@@ -37,8 +34,7 @@
   - !type:ProtoIdResource
     protoId: CEEnergyCrystalShard
     count: 10
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellEnergyCrystalCell
@@ -47,8 +43,7 @@
   - !type:ProtoIdResource
     protoId: CEEnergyCrystalCell
     count: 10
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellBone
@@ -57,8 +52,7 @@
   - !type:StackResource
     stack: CEBone
     count: 10
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellStoneHeart
@@ -67,5 +61,4 @@
   - !type:ProtoIdResource
     protoId: CEStoneHeart
     count: 1
-  receive:
-    bonus: 5
+  bonus: 5

@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyCrowbar
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CECrowbar
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyWeaponHammerIron
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponHammerIron
@@ -19,8 +17,7 @@
 - type: tradeOffer
   id: BuyWrench
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWrench
@@ -28,8 +25,7 @@
 - type: tradeOffer
   id: BuyWeaponPickaxeIron
   shop: DwarfMiners
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponPickaxeIron
@@ -38,8 +34,7 @@
   id: BuyBrassBar10
   weight: 2
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBrassBar10
@@ -47,8 +42,7 @@
 - type: tradeOffer
   id: BuyIronBar10
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEIronBar10
@@ -56,8 +50,7 @@
 - type: tradeOffer
   id: BuyCoal10
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CECoal10
@@ -65,8 +58,7 @@
 - type: tradeOffer
   id: BuyLantern
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CELantern
@@ -74,8 +66,7 @@
 - type: tradeOffer
   id: BuySafeFallingAmulet
   shop: DwarfMiners
-  pay:
-    bonus: 5
+  bonus: 5
   reward:
   - !type:CETradeSpawnReward
     proto: CESafeFallingAmulet
@@ -83,8 +74,7 @@
 - type: tradeOffer
   id: BuyStoneBlock10
   shop: DwarfMiners
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEStoneBlock10
@@ -92,8 +82,7 @@
 - type: tradeOffer
   id: BuyDirtBlock10
   shop: DwarfMiners
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEDirtBlock10
@@ -101,8 +90,7 @@
 - type: tradeOffer
   id: BuySnowBlock10
   shop: DwarfMiners
-  pay:
-    bonus: 5
+  bonus: 5
   reward:
   - !type:CETradeSpawnReward
     proto: CESnowBlock10
@@ -110,8 +98,7 @@
 - type: tradeOffer
   id: BuyClothingHeadHelmetBrassInsulator
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadHelmetBrassInsulator
@@ -119,8 +106,7 @@
 - type: tradeOffer
   id: BuyClothingOuterClothingBrassInsulator
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingOuterClothingBrassInsulator
@@ -128,8 +114,7 @@
 - type: tradeOffer
   id: BuyScrewdriver
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEScrewdriver
@@ -137,8 +122,7 @@
 - type: tradeOffer
   id: BuyBaseLockpick
   shop: DwarfMiners
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBaseLockpick

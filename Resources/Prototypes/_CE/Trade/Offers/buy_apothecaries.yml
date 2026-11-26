@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyGauze5
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEGauze
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyHerbalOintment5
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEHerbalOintment
@@ -20,8 +18,7 @@
   id: BuyClothingEyesMedicalGlasses
   shop: ApothecariesGuild
   weight: 0.1
-  pay:
-    bonus: 5
+  bonus: 5
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingEyesMedicalGlasses
@@ -29,8 +26,7 @@
 - type: tradeOffer
   id: BuyAlchemyMixture
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumAlchemyMixture
@@ -38,8 +34,7 @@
 - type: tradeOffer
   id: BuyMortarAndPestle
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEMortar
@@ -49,8 +44,7 @@
 - type: tradeOffer
   id: BuyDropper
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEDropper
@@ -58,8 +52,7 @@
 - type: tradeOffer
   id: BuySyringe
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CESyringe
@@ -67,8 +60,7 @@
 - type: tradeOffer
   id: BuyVialTiny
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialTiny
@@ -76,8 +68,7 @@
 - type: tradeOffer
   id: BuyVialTinyReinforced
   shop: ApothecariesGuild
-  pay:
-    bonus: 2
+  bonus: 2
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialTinyReinforced
@@ -85,8 +76,7 @@
 - type: tradeOffer
   id: BuyVialSmall
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmall
@@ -94,8 +84,7 @@
 - type: tradeOffer
   id: BuyVialSmallReinforced
   shop: ApothecariesGuild
-  pay:
-    bonus: 2
+  bonus: 2
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallReinforced
@@ -103,8 +92,7 @@
 - type: tradeOffer
   id: BuyVialMedium
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMedium
@@ -112,8 +100,7 @@
 - type: tradeOffer
   id: BuyVialMediumReinforced
   shop: ApothecariesGuild
-  pay:
-    bonus: 2
+  bonus: 2
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumReinforced
@@ -121,8 +108,7 @@
 - type: tradeOffer
   id: BuyVialStar
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialStar
@@ -130,8 +116,7 @@
 - type: tradeOffer
   id: BuyVialStarReinforced
   shop: ApothecariesGuild
-  pay:
-    bonus: 2
+  bonus: 2
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialStarReinforced
@@ -139,8 +124,7 @@
 - type: tradeOffer
   id: BuyVialSkull
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkull
@@ -148,8 +132,7 @@
 - type: tradeOffer
   id: BuyVialSkullReinforced
   shop: ApothecariesGuild
-  pay:
-    bonus: 2
+  bonus: 2
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullReinforced
@@ -157,8 +140,7 @@
 - type: tradeOffer
   id: BuyAlchemyBomb
   shop: ApothecariesGuild
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialAlchemyBomb
@@ -169,8 +151,7 @@
   id: BuyBradHealingMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-healing
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradHealing
@@ -179,8 +160,7 @@
   id: BuyBradBurnMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-burn
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradBurn
@@ -189,8 +169,7 @@
   id: BuyBradBloodMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-blood
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradBlood
@@ -199,8 +178,7 @@
   id: BuyBradStaminaMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-stamina
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradStamina
@@ -209,8 +187,7 @@
   id: BuyBradHasteMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-haste
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradHaste
@@ -219,8 +196,7 @@
   id: BuyBradManaMixture
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-mana
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradMana
@@ -231,8 +207,7 @@
   id: BuySilverNeedle
   shop: ApothecariesGuild
   name: ce-reagent-name-silver-needle
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumSilverNeedle
@@ -241,8 +216,7 @@
   id: BuyAmanitaJuice
   shop: ApothecariesGuild
   name: ce-reagent-name-amanita-juice
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumAmanitaJuice
@@ -251,8 +225,7 @@
   id: BuyLumishroomSap
   shop: ApothecariesGuild
   name: ce-reagent-name-lumishroom-sap
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallLumishroomSap
@@ -261,8 +234,7 @@
   id: BuyStoneHeartReagent
   shop: ApothecariesGuild
   name: ce-reagent-name-stone-heart
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallStoneHeart
@@ -271,8 +243,7 @@
   id: BuyChromiumSlime
   shop: ApothecariesGuild
   name: ce-reagent-name-chromium-slime
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallChromiumSlime
@@ -283,8 +254,7 @@
   id: BuyBloodHuman
   shop: ApothecariesGuild
   name: ce-reagent-name-blood
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodHuman
@@ -293,8 +263,7 @@
   id: BuyBloodInfernal
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-infernal
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodInfernal
@@ -303,8 +272,7 @@
   id: BuyBloodElf
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-elf
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodElf
@@ -313,8 +281,7 @@
   id: BuyBloodGoblin
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-goblin
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodGoblin
@@ -323,8 +290,7 @@
   id: BuyBloodCarcat
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-carcat
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodCarcat
@@ -333,8 +299,7 @@
   id: BuyBloodSilva
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-silva
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodSilva

@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyPenFeather
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPenFeather
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyPaper
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPaper
@@ -20,8 +18,7 @@
 - type: tradeOffer
   id: BuyPaperFolderBlue
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPaperFolderBlue
@@ -29,8 +26,7 @@
 - type: tradeOffer
   id: BuyPaperFolderRed
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPaperFolderRed
@@ -38,8 +34,7 @@
 - type: tradeOffer
   id: BuyPaperFolderGreen
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPaperFolderGreen
@@ -47,8 +42,7 @@
 - type: tradeOffer
   id: BuyPaperFolderPurple
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEPaperFolderPurple
@@ -56,8 +50,7 @@
 - type: tradeOffer
   id: BuyBookEmpty
   shop: ImperialChancellery
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBookEmpty
@@ -65,8 +58,7 @@
 - type: tradeOffer
   id: BuyVoiceDistortionAmulet
   shop: ImperialChancellery
-  pay:
-    bonus: 20
+  bonus: 20
   reward:
   - !type:CETradeSpawnReward
     proto: CEVoiceDistortionAmulet

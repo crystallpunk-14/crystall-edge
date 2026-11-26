@@ -46,7 +46,7 @@ public sealed partial class CETradeSystem
         if (ent.Comp.Prices.TryGetValue(offer.ID, out var prices))
             return prices;
 
-        prices = (GetFixedPrice(offer.Pay, offer, pay: true), GetFixedPrice(offer.Receive, offer, pay: false));
+        prices = GetPrices(offer);
         ent.Comp.Prices[offer.ID] = prices;
         return prices;
     }

@@ -7,8 +7,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodCabbage
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellPumpkin
@@ -18,8 +17,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodPumpkin
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellCucumber
@@ -29,8 +27,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodCucumber
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellTomatoes
@@ -40,8 +37,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodTomatoes
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellPepper
@@ -51,8 +47,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodPepper
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellCorn
@@ -62,8 +57,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodCorn
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellCarrot
@@ -73,8 +67,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodCarrot
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellAgaric
@@ -84,8 +77,7 @@
   - !type:ProtoIdResource
     protoId: CEFoodAgaric
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
 
 - type: tradeOffer
   id: SellChanterelle
@@ -95,5 +87,4 @@
   - !type:ProtoIdResource
     protoId: CEFoodChanterelle
     count: 5
-  receive:
-    bonus: 10
+  bonus: 10
