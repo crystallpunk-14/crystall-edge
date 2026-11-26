@@ -10,6 +10,9 @@
         {
             "name": "base",
             "directions": 4
+        },
+        {
+            "name": "icon"
         }
     ]
 }

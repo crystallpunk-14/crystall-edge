@@ -1,0 +1,38 @@
+- type: entity
+  id: CEFunnelItem
+  parent: BaseItem
+  name: funnel
+  description: A dismantled funnel. Set it up on the floor or over a conveyor belt.
+  categories: [ ForkFiltered ]
+  suffix: 1
+  components:
+  - type: Item
+    size: Large
+    shape:
+    - 0, 0, 2, 2
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/funnel.rsi
+    state: icon
+  - type: Stack
+    stackType: CEFunnel
+    count: 1
+  - type: StackPrice
+    price: 20
+  - type: CEPlaceable
+    prototype: CEFunnel
+    delay: 1
+    conditions:
+    - !type:TileNotBlocked
+    - !type:NoAnchored
+      sameDirection: true # several funnels fit one tile if they face different ways
+      whitelist:
+        components:
+        - CEFunnel
+
+- type: entity
+  id: CEFunnelItem5
+  parent: CEFunnelItem
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
