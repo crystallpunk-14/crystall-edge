@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Systems.Actions;
+using Content.Shared._CE.Actions;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
@@ -35,6 +36,7 @@ public sealed partial class CEActionTargetingOverlay : Overlay
 
     private readonly SharedTransformSystem _transform;
     private readonly SharedActionsSystem _actions;
+    private readonly SharedMapSystem _map;
 
     // Cached textures per RSI path+state — loaded lazily.
     private readonly Dictionary<(string path, string state), Texture> _textureCache = new();
@@ -44,6 +46,7 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         IoCManager.InjectDependencies(this);
         _transform = _entManager.System<SharedTransformSystem>();
         _actions = _entManager.System<SharedActionsSystem>();
+        _map = _entManager.System<SharedMapSystem>();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -80,6 +83,17 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         var hasEntityTarget = _entManager.HasComponent<EntityTargetActionComponent>(actionUid);
         var hasWorldTarget = _entManager.HasComponent<WorldTargetActionComponent>(actionUid);
 
+        // World-target visuals point exactly where the cast will land.
+        if (hasWorldTarget)
+        {
+            var clicked = _transform.ToCoordinates(mouseMapPos);
+            var aim = _entManager.System<CEActionAimSystem>().GetAimPoint(playerUid, clicked, actionUid);
+            mousePos = _transform.ToMapCoordinates(aim).Position;
+        }
+
+        // Lines and cones snap to the hovered entity only for pure entity targeting.
+        var snapToEntity = hasEntityTarget && !hasWorldTarget;
+
         // 1) Cast-radius ring.
         if (_entManager.TryGetComponent<CEVisualizeRadiusTargetActionComponent>(actionUid, out var radiusVis))
         {
@@ -97,13 +111,13 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         // 2) Wide-line trajectory.
         if (_entManager.TryGetComponent<CEVisualizeWideLineActionComponent>(actionUid, out var lineVis))
         {
-            DrawWideLine(handle, playerUid, actionUid, playerPos, mousePos, range, hasEntityTarget, lineVis);
+            DrawWideLine(handle, playerUid, actionUid, playerPos, mousePos, range, snapToEntity, lineVis);
         }
 
         // 3) Cone.
         if (_entManager.TryGetComponent<CEVisualizeConeActionComponent>(actionUid, out var coneVis))
         {
-            DrawCone(handle, playerUid, actionUid, playerPos, mousePos, range, hasEntityTarget, coneVis);
+            DrawCone(handle, playerUid, actionUid, playerPos, mousePos, range, snapToEntity, coneVis);
         }
 
         // 4) AoE zone.
@@ -123,7 +137,7 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         // 5) Tile highlight.
         if (_entManager.TryGetComponent<CEVisualizeTileActionComponent>(actionUid, out var tileVis))
         {
-            DrawTile(handle, playerPos, mousePos, range, tileVis);
+            DrawTile(handle, new MapCoordinates(mousePos, args.MapId), tileVis);
         }
     }
 
@@ -234,6 +248,10 @@ public sealed partial class CEActionTargetingOverlay : Overlay
             return null;
 
         if (!_actions.ValidateEntityTarget(playerUid, target, (actionUid, entityTargetComp)))
+            return null;
+
+        var coords = _entManager.GetComponent<TransformComponent>(target).Coordinates;
+        if (!_entManager.System<CEActionAimSystem>().PassesLineOfSight(playerUid, coords, actionUid))
             return null;
 
         return _transform.GetWorldPosition(target);
@@ -421,7 +439,7 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         if (distance < 0.01f || vis.Width <= 0.01f)
             return;
 
-        var coneRange = vis.Range > 0f ? vis.Range : actionRange > 0f ? actionRange : distance;
+        var coneRange = actionRange > 0f ? actionRange : distance;
         if (coneRange < 0.01f)
             return;
 
@@ -574,38 +592,17 @@ public sealed partial class CEActionTargetingOverlay : Overlay
         float range,
         CEVisualizeAoEZoneActionComponent vis)
     {
-        var offset = mousePos - playerPos;
-        var dist = offset.Length();
-
-        Vector2 zoneCenter;
-        bool inRange;
+        var zoneCenter = mousePos;
 
         if (vis.ProjectileMode)
         {
             // In projectile mode, the zone is always at max range in the cursor direction.
-            if (dist < 0.01f)
-            {
-                zoneCenter = playerPos;
-            }
-            else
-            {
-                zoneCenter = playerPos + (offset / dist) * (range > 0f ? range : dist);
-            }
-            inRange = true;
+            var offset = mousePos - playerPos;
+            var dist = offset.Length();
+            zoneCenter = dist < 0.01f
+                ? playerPos
+                : playerPos + (offset / dist) * (range > 0f ? range : dist);
         }
-        else if (dist <= range || range <= 0f)
-        {
-            zoneCenter = mousePos;
-            inRange = true;
-        }
-        else
-        {
-            // Clamp to range.
-            zoneCenter = playerPos + (offset / dist) * range;
-            inRange = false;
-        }
-
-        var color = inRange ? Color.White : Color.Red;
 
         DrawRing(handle,
             zoneCenter,
@@ -614,7 +611,7 @@ public sealed partial class CEActionTargetingOverlay : Overlay
             vis.State,
             vis.SpriteSize,
             vis.SpriteSpacing,
-            color,
+            Color.White,
             vis.FillAlpha);
     }
 
@@ -666,46 +663,32 @@ public sealed partial class CEActionTargetingOverlay : Overlay
 
     #region Tile highlight
 
-    private static void DrawTile(
+    private void DrawTile(
         DrawingHandleWorld handle,
-        Vector2 playerPos,
-        Vector2 mousePos,
-        float range,
+        MapCoordinates aim,
         CEVisualizeTileActionComponent vis)
     {
-        var offset = mousePos - playerPos;
-        var dist = offset.Length();
+        // Off-grid points fall back to a world-aligned tile.
+        var matrix = Matrix3x2.Identity;
+        var localPos = aim.Position;
+        var size = 1f;
 
-        Vector2 samplePos;
-        bool inRange;
-
-        if (range <= 0f || dist <= range)
+        if (_map.TryFindGridAt(aim, out var gridUid, out var grid))
         {
-            // Cursor is within range — highlight tile under cursor.
-            samplePos = mousePos;
-            inRange = true;
-        }
-        else
-        {
-            // Cursor is outside range — clamp to the range boundary (same pattern as AoE zone),
-            // so the highlight slides along the cast-radius edge instead of jumping to red at cursor.
-            samplePos = playerPos + (offset / dist) * range;
-            inRange = false;
+            matrix = _transform.GetWorldMatrix(gridUid);
+            localPos = Vector2.Transform(aim.Position, _transform.GetInvWorldMatrix(gridUid));
+            size = grid.TileSize;
         }
 
-        // Snap sample point to the centre of its tile (tiles are 1×1 world units).
-        var tileCenter = new Vector2(
-            MathF.Floor(samplePos.X) + 0.5f,
-            MathF.Floor(samplePos.Y) + 0.5f);
+        var corner = new Vector2(
+            MathF.Floor(localPos.X / size),
+            MathF.Floor(localPos.Y / size)) * size;
+        var box = new Box2(corner, corner + new Vector2(size, size));
 
-        var fillColor = (inRange ? Color.White : Color.Red).WithAlpha(vis.FillAlpha);
-        var borderColor = (inRange ? Color.White : Color.Red).WithAlpha(vis.BorderAlpha);
-
-        const float half = 0.5f;
-        var box = new Box2(tileCenter.X - half, tileCenter.Y - half, tileCenter.X + half, tileCenter.Y + half);
-
-        handle.DrawRect(box, fillColor);
-        handle.DrawRect(box, borderColor, filled: false);
+        handle.SetTransform(matrix);
+        handle.DrawRect(box, Color.White.WithAlpha(vis.FillAlpha));
+        handle.DrawRect(box, Color.White.WithAlpha(vis.BorderAlpha), filled: false);
+        handle.SetTransform(Matrix3x2.Identity);
     }
 
     #endregion

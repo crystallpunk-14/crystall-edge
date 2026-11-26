@@ -56,6 +56,9 @@
   description: Steps back into the shadow rift.
   categories: [ HideSpawnMenu ]
   components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
   - type: Action
     useDelay: 1
   - type: TargetAction
