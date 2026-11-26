@@ -17,7 +17,6 @@
         reagent: UncookedAnimalProteins
         amount: 0.1
   pricePerUnit: 0.2
-  pricePerUnit: 0.217
   alchemyPower: 1.0
   alchemyEffects:
   - !type:MoveToPoint

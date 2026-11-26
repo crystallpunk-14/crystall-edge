@@ -101,7 +101,7 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBlood
-        Quantity: 15
+        Quantity: 20
 
 - type: entity
   id: CEVialSkullBloodInfernal
@@ -114,7 +114,7 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBloodInfernal
-        Quantity: 15
+        Quantity: 20
 
 - type: entity
   id: CEVialSkullBloodElf
@@ -127,7 +127,7 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBloodElf
-        Quantity: 15
+        Quantity: 20
 
 - type: entity
   id: CEVialSkullBloodGoblin
@@ -140,7 +140,7 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBloodGoblin
-        Quantity: 15
+        Quantity: 20
 
 - type: entity
   id: CEVialSkullBloodCarcat
@@ -153,7 +153,7 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBloodCarcat
-        Quantity: 15
+        Quantity: 20
 
 - type: entity
   id: CEVialSkullBloodSilva
@@ -166,4 +166,4 @@
       maxVol: 20
       reagents:
       - ReagentId: CEBloodSilva
-        Quantity: 15
+        Quantity: 20
