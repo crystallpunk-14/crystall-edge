@@ -170,7 +170,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-healing
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradHealing
@@ -180,7 +180,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-burn
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradBurn
@@ -190,7 +190,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-blood
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradBlood
@@ -200,7 +200,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-stamina
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradStamina
@@ -210,7 +210,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-haste
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradHaste
@@ -220,7 +220,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-brad-mana
   pay:
-    amount: 50
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEAlchemyInjectorBradMana
@@ -232,7 +232,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-silver-needle
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumSilverNeedle
@@ -242,7 +242,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-amanita-juice
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialMediumAmanitaJuice
@@ -252,7 +252,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-lumishroom-sap
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallLumishroomSap
@@ -262,7 +262,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-stone-heart
   pay:
-    amount: 100
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallStoneHeart
@@ -272,7 +272,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-chromium-slime
   pay:
-    amount: 100
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSmallChromiumSlime
@@ -284,7 +284,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodHuman
@@ -294,7 +294,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-infernal
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodInfernal
@@ -304,7 +304,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-elf
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodElf
@@ -314,7 +314,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-goblin
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodGoblin
@@ -324,7 +324,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-carcat
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodCarcat
@@ -334,7 +334,7 @@
   shop: ApothecariesGuild
   name: ce-reagent-name-blood-silva
   pay:
-    amount: 30
+    bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullBloodSilva

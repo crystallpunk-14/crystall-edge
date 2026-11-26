@@ -30,6 +30,7 @@
   desc: ce-reagent-desc-silver-needle
   physicalDesc: reagent-physical-desc-opaque
   color: "#c7d1d9"
+  pricePerUnit: 0.05
   alchemyPower: 1.5
   alchemyEffects:
   - !type:MoveToPoint
@@ -42,6 +43,7 @@
   desc: ce-reagent-desc-stone-heart
   physicalDesc: reagent-physical-desc-opaque
   color: "#be368a"
+  pricePerUnit: 0.825
   alchemyPower: 0.5
   alchemyEffects:
   - !type:Scale
@@ -54,6 +56,7 @@
   desc: ce-reagent-desc-chromium-slime
   physicalDesc: reagent-physical-desc-opaque
   color: "#3b4872"
+  pricePerUnit: 1.825
   alchemyEffects:
   - !type:Scale
     perUnit: -0.4, -0.4
@@ -66,6 +69,7 @@
   flavor: alcohol
   physicalDesc: reagent-physical-desc-opaque
   color: "#36c98f"
+  pricePerUnit: 0.325
   metabolisms:
     Digestion:
       metabolites:
@@ -82,6 +86,7 @@
   desc: ce-reagent-desc-amanita-juice
   flavor: bitter
   color: "#b3282d"
+  pricePerUnit: 0.05
   physicalDesc: reagent-physical-desc-opaque
   alchemyPower: 1.5
   alchemyEffects:

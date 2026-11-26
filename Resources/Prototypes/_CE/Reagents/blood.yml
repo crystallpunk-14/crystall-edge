@@ -17,6 +17,7 @@
         reagent: UncookedAnimalProteins
         amount: 0.1
   pricePerUnit: 0.2
+  pricePerUnit: 0.217
   alchemyPower: 1.0
   alchemyEffects:
   - !type:MoveToPoint
@@ -28,6 +29,7 @@
   name: ce-reagent-name-blood-animal
   desc: ce-reagent-desc-blood-animal
   color: "#4d1313"
+  pricePerUnit: 0.2
   alchemyPower: 0
   alchemyEffects: []
 
