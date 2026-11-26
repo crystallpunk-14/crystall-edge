@@ -1,0 +1,21 @@
+# A crowbar takes the funnel back into the item, spilling the filter samples.
+- type: constructionGraph
+  id: CEFunnel
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+
+    - node: CEFunnel
+      entity: CEFunnel
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 1.5
+          completed:
+            - !type:EmptyAllContainers
+            - !type:SpawnPrototype
+              prototype: CEFunnelItem
+              amount: 1

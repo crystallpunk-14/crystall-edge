@@ -30,6 +30,9 @@
   effects:
   - !type:ModifyBloodLevel
     amount: 8
+  - !type:Heal
+    groups:
+      Airloss: 5
 
 - type: alchemyZone
   id: RestoreStamina

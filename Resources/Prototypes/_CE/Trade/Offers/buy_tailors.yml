@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyCloth5
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CECloth5
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCapeFur
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCapeFur
@@ -19,8 +17,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCapeFur2
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCapeFur2
@@ -28,8 +25,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCapeBarbarian
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCapeBarbarian
@@ -37,8 +33,7 @@
 - type: tradeOffer
   id: BuyClothingCloakBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakBlue
@@ -46,8 +41,7 @@
 - type: tradeOffer
   id: BuyClothingCloakInsulatedMantle
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakInsulatedMantle
@@ -55,8 +49,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCoatFur
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCoatFur
@@ -64,8 +57,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCoatFurBrown
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCoatFurBrown
@@ -73,8 +65,7 @@
 - type: tradeOffer
   id: BuyClothingCloakCheetahSkin
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakCheetahSkin
@@ -82,8 +73,7 @@
 - type: tradeOffer
   id: BuyClothingCloakHaori
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakHaori
@@ -91,8 +81,7 @@
 - type: tradeOffer
   id: BuyClothingCloakMaidApron
   shop: Tailors
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakMaidApron
@@ -100,8 +89,7 @@
 - type: tradeOffer
   id: BuyClothingCloakRaincoatGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakRaincoatGreen
@@ -109,8 +97,7 @@
 - type: tradeOffer
   id: BuyClothingCloakRaincoatWhite
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakRaincoatWhite
@@ -118,8 +105,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoBlack
@@ -127,8 +113,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoBlue
@@ -136,8 +121,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoGreen
@@ -145,8 +129,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoRed
@@ -154,8 +137,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoWhite
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoWhite
@@ -163,8 +145,7 @@
 - type: tradeOffer
   id: BuyClothingShirtSyurkoYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoYellow
@@ -172,8 +153,7 @@
 - type: tradeOffer
   id: BuyClothingHeadBeretMercenary
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadBeretMercenary
@@ -181,8 +161,7 @@
 - type: tradeOffer
   id: BuyClothingHeadFedoraBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraBlack
@@ -190,8 +169,7 @@
 - type: tradeOffer
   id: BuyClothingHeadFedoraBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraBlue
@@ -199,8 +177,7 @@
 - type: tradeOffer
   id: BuyClothingHeadFedoraGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraGreen
@@ -208,8 +185,7 @@
 - type: tradeOffer
   id: BuyClothingHeadFedoraRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraRed
@@ -217,8 +193,7 @@
 - type: tradeOffer
   id: BuyClothingHeadFedoraBrown
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraBrown
@@ -226,8 +201,7 @@
 - type: tradeOffer
   id: BuyClothingHeadBowlerHat
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadBowlerHat
@@ -235,8 +209,7 @@
 - type: tradeOffer
   id: BuyClothingHeadBowlerGoldenHat
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadBowlerGoldenHat
@@ -244,8 +217,7 @@
 - type: tradeOffer
   id: BuyClothingHeadJestersCap
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadJestersCap
@@ -253,8 +225,7 @@
 - type: tradeOffer
   id: BuyClothingHeadKasaHat
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadKasaHat
@@ -262,8 +233,7 @@
 - type: tradeOffer
   id: BuyClothingHeadStrawHat
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadStrawHat
@@ -271,8 +241,7 @@
 - type: tradeOffer
   id: BuyClothingPantsAristocratic
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsAristocratic
@@ -280,8 +249,7 @@
 - type: tradeOffer
   id: BuyClothingPantsBrown
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsBrown
@@ -289,8 +257,7 @@
 - type: tradeOffer
   id: BuyClothingPantsGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsGreen
@@ -298,8 +265,7 @@
 - type: tradeOffer
   id: BuyClothingPantsHakama
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsHakama
@@ -307,8 +273,7 @@
 - type: tradeOffer
   id: BuyClothingPantsHunter
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsHunter
@@ -316,8 +281,7 @@
 - type: tradeOffer
   id: BuyClothingPantsJesters
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsJesters
@@ -325,8 +289,7 @@
 - type: tradeOffer
   id: BuyClothingPantsLoincloth
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsLoincloth
@@ -334,8 +297,7 @@
 - type: tradeOffer
   id: BuyClothingPantsMercenary
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsMercenary
@@ -343,8 +305,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressBlack
@@ -352,8 +313,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressBlue
@@ -361,8 +321,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressBlueOpen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressBlueOpen
@@ -370,8 +329,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressBlueYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressBlueYellow
@@ -379,8 +337,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressGreenBelt
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressGreenBelt
@@ -388,8 +345,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressGreenBelt2
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressGreenBelt2
@@ -397,8 +353,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressLightGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressLightGreen
@@ -406,8 +361,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressMaid
   shop: Tailors
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressMaid
@@ -415,8 +369,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressOpenRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressOpenRed
@@ -424,8 +377,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressOpenYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressOpenYellow
@@ -433,8 +385,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressRed
@@ -442,8 +393,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteBlue
@@ -451,8 +401,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteBlue2
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteBlue2
@@ -460,8 +409,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteBrown
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteBrown
@@ -469,8 +417,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteBrown2
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteBrown2
@@ -478,8 +425,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteBrown3
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteBrown3
@@ -487,8 +433,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteCollar
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteCollar
@@ -496,8 +441,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteGreen
@@ -505,8 +449,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteGreenYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteGreenYellow
@@ -514,8 +457,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressWhiteRedBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressWhiteRedBlue
@@ -523,8 +465,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressYellowBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressYellowBlue
@@ -532,8 +473,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressYellowCollar
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressYellowCollar
@@ -541,8 +481,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressYellowWizard
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressYellowWizard
@@ -550,8 +489,7 @@
 - type: tradeOffer
   id: BuyClothingShirtWarriorGarb
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtWarriorGarb
@@ -559,8 +497,7 @@
 - type: tradeOffer
   id: BuyClothingShirtBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtBlack
@@ -568,8 +505,7 @@
 - type: tradeOffer
   id: BuyClothingShirtBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtBlue
@@ -577,8 +513,7 @@
 - type: tradeOffer
   id: BuyClothingShirtBlueCollar
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtBlueCollar
@@ -586,8 +521,7 @@
 - type: tradeOffer
   id: BuyClothingShirtBlueGreen
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtBlueGreen
@@ -595,8 +529,7 @@
 - type: tradeOffer
   id: BuyClothingShirtGray
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtGray
@@ -604,8 +537,7 @@
 - type: tradeOffer
   id: BuyClothingShirtGreenYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtGreenYellow
@@ -613,8 +545,7 @@
 - type: tradeOffer
   id: BuyClothingShirtJestersAttire
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtJestersAttire
@@ -622,8 +553,7 @@
 - type: tradeOffer
   id: BuyClothingShirtMercenary
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtMercenary
@@ -631,8 +561,7 @@
 - type: tradeOffer
   id: BuyClothingShirtOpenBlue
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtOpenBlue
@@ -640,8 +569,7 @@
 - type: tradeOffer
   id: BuyClothingShirtOpenRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtOpenRed
@@ -649,8 +577,7 @@
 - type: tradeOffer
   id: BuyClothingShirtOpenYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtOpenYellow
@@ -658,8 +585,7 @@
 - type: tradeOffer
   id: BuyClothingShirtPurple
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtPurple
@@ -667,8 +593,7 @@
 - type: tradeOffer
   id: BuyClothingShirtRed
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtRed
@@ -676,8 +601,7 @@
 - type: tradeOffer
   id: BuyClothingShirtWhite
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtWhite
@@ -685,8 +609,7 @@
 - type: tradeOffer
   id: BuyClothingShirtWhiteBrown
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtWhiteBrown
@@ -694,8 +617,7 @@
 - type: tradeOffer
   id: BuyClothingShirtWhiteCollar
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtWhiteCollar
@@ -703,8 +625,7 @@
 - type: tradeOffer
   id: BuyClothingShirtYellow
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtYellow
@@ -712,8 +633,7 @@
 - type: tradeOffer
   id: BuyClothingShirtYellowCollar
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtYellowCollar
@@ -721,8 +641,7 @@
 - type: tradeOffer
   id: BuyClothingShoesBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesBlack
@@ -730,8 +649,7 @@
 - type: tradeOffer
   id: BuyClothingShoesAristocraticBlack
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesAristocraticBlack
@@ -739,8 +657,7 @@
 - type: tradeOffer
   id: BuyClothingShoesSandals
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesSandals
@@ -748,8 +665,7 @@
 - type: tradeOffer
   id: BuyClothingShoesLongLeatherBoots
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesLongLeatherBoots
@@ -757,8 +673,7 @@
 - type: tradeOffer
   id: BuyClothingShoesJestersRingers
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesJestersRingers
@@ -766,8 +681,7 @@
 - type: tradeOffer
   id: BuyClothingShoesPinkSlippers
   shop: Tailors
-  pay:
-    bonus: 100
+  bonus: 100
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesPinkSlippers
@@ -775,8 +689,7 @@
 - type: tradeOffer
   id: BuyClothingShoesHeels
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShoesHeels
@@ -784,8 +697,7 @@
 - type: tradeOffer
   id: BuyClothingShirtDressMerchant
   shop: Tailors
-  pay:
-    bonus: 50
+  bonus: 50
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtDressMerchant
@@ -793,8 +705,7 @@
 - type: tradeOffer
   id: BuyClothingShirtMerchant
   shop: Tailors
-  pay:
-    bonus: 50
+  bonus: 50
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtMerchant
@@ -802,8 +713,7 @@
 - type: tradeOffer
   id: BuyClothingGlovesJagermeister
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingGlovesJagermeister
@@ -811,8 +721,7 @@
 - type: tradeOffer
   id: BuyClothingGlovesLeather
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingGlovesLeather
@@ -820,8 +729,7 @@
 - type: tradeOffer
   id: BuyClothingMaskNeckerchief
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingMaskNeckerchief
@@ -829,8 +737,7 @@
 - type: tradeOffer
   id: BuyClothingMaskRedNeckerchief
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingMaskRedNeckerchief
@@ -838,8 +745,7 @@
 - type: tradeOffer
   id: BuyClothingMaskGreenNeckerchief
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingMaskGreenNeckerchief
@@ -847,8 +753,7 @@
 - type: tradeOffer
   id: BuyClothingMaskMime
   shop: Tailors
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingMaskMime
@@ -856,8 +761,7 @@
 - type: tradeOffer
   id: BuyClothingBeltPouch
   shop: Tailors
-  pay:
-    bonus: 25
+  bonus: 25
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingBeltPouch
@@ -865,8 +769,7 @@
 - type: tradeOffer
   id: BuyClothingBackBackpack
   shop: Tailors
-  pay:
-    bonus: 25
+  bonus: 25
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingBackBackpack
@@ -874,8 +777,7 @@
 - type: tradeOffer
   id: BuyClothingBackSatchel
   shop: Tailors
-  pay:
-    bonus: 25
+  bonus: 25
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingBackSatchel
@@ -883,8 +785,7 @@
 - type: tradeOffer
   id: BuyScissors
   shop: Tailors
-  pay:
-    bonus: 25
+  bonus: 25
   reward:
   - !type:CETradeSpawnReward
     proto: CEScissors

@@ -1,6 +1,6 @@
 ce-medical-examine-state = Состояние: [color={$color}]{$state}[/color]
 ce-medical-examine-state-alive = Жив
-ce-medical-examine-state-critical = Крит
+ce-medical-examine-state-critical = Критическое
 ce-medical-examine-state-dead = Мёртв
 ce-medical-examine-total = Всего урона: [bold]{$damage}[/bold]
 ce-medical-examine-total-thresholds = Всего урона: [bold]{$damage}[/bold] (крит при {$crit}, смерть при {$dead})

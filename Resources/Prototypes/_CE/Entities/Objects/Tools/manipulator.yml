@@ -127,6 +127,7 @@
   description: Allows you to build and take apart complex structures.
   components:
   - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeTileAction
   - type: Action
     useDelay: 1
     itemIconStyle: BigItem
@@ -214,9 +215,9 @@
   name: mining laser
   description: Fire a series of precise laser beams capable of destroying structures.
   components:
+  - type: CEVisualizeRadiusTargetAction
   - type: CEVisualizeConeAction
     width: 10
-    range: 15
   - type: Action
     useDelay: 1
     itemIconStyle: BigAction
@@ -228,7 +229,7 @@
       map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     repeat: true
-    range: 10
+    range: 15
     checkCanAccess: false
   - type: CEThirdArmActionManaCost
     manaCost: 5
@@ -274,6 +275,8 @@
   id: CEThirdArmMiningHitscan
   categories: [ HideSpawnMenu ]
   components:
+  - type: HitscanBasicRaycast
+    maxDistance: 15
   - type: HitscanBasicDamage
     damage:
       types:

@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyBottleWine
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleWineFull
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyBottleWhiskey
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleWhiskeyFull
@@ -19,8 +17,7 @@
 - type: tradeOffer
   id: BuyBottleVodka
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleVodkaFull
@@ -28,8 +25,7 @@
 - type: tradeOffer
   id: BuyBottleRum
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleRumFull
@@ -37,8 +33,7 @@
 - type: tradeOffer
   id: BuyBottleSyrupGrenadineine
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleSyrupGrenadineineFull
@@ -46,8 +41,7 @@
 - type: tradeOffer
   id: BuyBottleSyrupSugar
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleSyrupSugarFull
@@ -55,8 +49,7 @@
 - type: tradeOffer
   id: BuyBottleGin
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleGinFull
@@ -64,8 +57,7 @@
 - type: tradeOffer
   id: BuyBottleAbsinthe
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleAbsintheFull
@@ -73,8 +65,7 @@
 - type: tradeOffer
   id: BuyBottleBrandy
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleBrandyFull
@@ -82,8 +73,7 @@
 - type: tradeOffer
   id: BuyBottleBlueCuracao
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleBlueCuracaoFull
@@ -91,8 +81,7 @@
 - type: tradeOffer
   id: BuyBottleCherryLiqueur
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleCherryLiqueurFull
@@ -100,8 +89,7 @@
 - type: tradeOffer
   id: BuyBottleCitrusJuice
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleCitrusJuiceFull
@@ -109,8 +97,7 @@
 - type: tradeOffer
   id: BuyBottlePineBitter
   shop: Alcohol
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottlePineBitterFull
@@ -118,8 +105,7 @@
 - type: tradeOffer
   id: BuySmokingPipe
   shop: Alcohol
-  pay:
-    bonus: 15
+  bonus: 15
   reward:
   - !type:CETradeSpawnReward
     proto: CESmokingPipe
@@ -127,8 +113,7 @@
 - type: tradeOffer
   id: BuyGroundTobacco
   shop: Alcohol
-  pay:
-    bonus: 12
+  bonus: 12
   reward:
   - !type:CETradeSpawnReward
     proto: CEGroundTobacco
@@ -136,8 +121,7 @@
 - type: tradeOffer
   id: BuyFlippoLighter #TODO delete vanilla lighter
   shop: Alcohol
-  pay:
-    bonus: 40
+  bonus: 40
   reward:
   - !type:CETradeSpawnReward
     proto: FlippoLighter

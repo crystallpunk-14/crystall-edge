@@ -1,8 +1,7 @@
 - type: tradeOffer
   id: BuyWeaponSkimitarIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponSkimitarIron
@@ -10,8 +9,7 @@
 - type: tradeOffer
   id: BuyWeaponRapierIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponRapierIron
@@ -19,8 +17,7 @@
 - type: tradeOffer
   id: BuyWeaponSpearIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponSpearIron
@@ -28,8 +25,7 @@
 - type: tradeOffer
   id: BuyWeaponStaffWooden
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponStaffWooden
@@ -37,8 +33,7 @@
 - type: tradeOffer
   id: BuyWeaponSwordIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponSwordIron
@@ -46,8 +41,7 @@
 - type: tradeOffer
   id: BuyWeaponTwoHandedSwordIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponTwoHandedSwordIron
@@ -55,8 +49,7 @@
 - type: tradeOffer
   id: BuyWeaponWarAxeIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponWarAxeIron
@@ -64,8 +57,7 @@
 - type: tradeOffer
   id: BuyWeaponBowCombat
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponBowCombat
@@ -73,8 +65,7 @@
 - type: tradeOffer
   id: BuyWeaponLightCrossbow
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponLightCrossbow
@@ -82,8 +73,7 @@
 - type: tradeOffer
   id: BuyArrowIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEArrowIron
@@ -92,8 +82,7 @@
 - type: tradeOffer
   id: BuyCrossboltIron
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CECrossboltIron
@@ -102,8 +91,7 @@
 - type: tradeOffer
   id: BuyClothingBeltQuiver
   shop: HelsinWarHouse
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingBeltQuiver

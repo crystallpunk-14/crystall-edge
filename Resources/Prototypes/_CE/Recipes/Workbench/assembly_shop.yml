@@ -680,18 +680,6 @@
   resultCount: 1
 
 - type: workbenchRecipe
-  id: MachineCoreFunnel
-  parent: BaseAssemblyShopRecipe
-  category: MachineCore
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  result: CEMachineCoreFunnel
-  resultCount: 1
-
-- type: workbenchRecipe
   id: MachineCoreMapProjector
   parent: BaseAssemblyShopRecipe
   category: MachineCore
@@ -788,6 +776,18 @@
     stack: CEBrassRod
     count: 1
   result: CEConveyorBeltItem
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: Funnel
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  result: CEFunnelItem
   resultCount: 1
 
 #MARK: Melee

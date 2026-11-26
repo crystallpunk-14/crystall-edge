@@ -279,10 +279,10 @@
   - type: Sprite
     sprite: _CE/Objects/Specific/Alchemy/vial_medium.rsi
     layers:
+      - state: vial
       - state: liq-1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
-      - state: vial
       - state: label
         visible: false
         map: ["enum.PaperLabelVisuals.Layer"]
@@ -311,10 +311,10 @@
   - type: Sprite
     sprite: _CE/Objects/Specific/Alchemy/vial_medium.rsi
     layers:
+      - state: vial
       - state: liq-1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
-      - state: vial
       - state: reinforcement
       - state: label
         visible: false

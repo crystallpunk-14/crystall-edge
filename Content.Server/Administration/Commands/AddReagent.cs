@@ -20,7 +20,7 @@ namespace Content.Server.Administration.Commands
 
         public string Command => "addreagent";
         public string Description => "Add (or remove) some amount of reagent from some solution.";
-        public string Help => $"Usage: {Command} <target> <solution> <reagent> <quantity>";
+        public string Help => $"Usage: {Command} <target> <solution> <reagent> <quantity> [entry index]"; // CrystallEdge: optional entry index
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
@@ -64,10 +64,39 @@ namespace Content.Server.Administration.Commands
             }
             var quantity = FixedPoint2.New(MathF.Abs(quantityFloat));
 
+            // CrystallEdge: reagents with data (alchemy mixtures, blood) don't match a bare prototype id
+            var contents = solution.Value.Comp.Solution.Contents;
+
+            // The entry index targets one exact entry, keeping its data.
+            if (args.Length > 4)
+            {
+                if (!int.TryParse(args[4], out var index) ||
+                    index < 0 ||
+                    index >= contents.Count ||
+                    contents[index].Reagent.Prototype != args[2])
+                {
+                    shell.WriteLine($"No \"{args[2]}\" entry with index {args[4]}");
+                    return;
+                }
+
+                var reagent = contents[index].Reagent;
+                if (quantityFloat > 0)
+                    solutionContainerSystem.TryAddReagent(solution.Value, reagent, quantity, out _);
+                else
+                    solutionContainerSystem.RemoveReagent(solution.Value, reagent, quantity);
+
+                return;
+            }
+
             if (quantityFloat > 0)
+            {
                 solutionContainerSystem.TryAddReagent(solution.Value, args[2], quantity, out _);
-            else
-                solutionContainerSystem.RemoveReagent(solution.Value, args[2], quantity);
+                return;
+            }
+
+            solution.Value.Comp.Solution.RemoveReagent(args[2], quantity, ignoreReagentData: true);
+            solutionContainerSystem.UpdateChemicals(solution.Value);
+            // CrystallEdge end
         }
     }
 }

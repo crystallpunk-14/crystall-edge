@@ -1,0 +1,1 @@
+ce-stack-funnel = воронки

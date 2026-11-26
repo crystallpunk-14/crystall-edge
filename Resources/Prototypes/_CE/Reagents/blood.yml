@@ -28,6 +28,7 @@
   name: ce-reagent-name-blood-animal
   desc: ce-reagent-desc-blood-animal
   color: "#4d1313"
+  pricePerUnit: 0.2
   alchemyPower: 0
   alchemyEffects: []
 

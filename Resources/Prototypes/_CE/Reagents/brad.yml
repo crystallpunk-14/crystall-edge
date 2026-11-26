@@ -8,6 +8,7 @@
   desc: ce-reagent-desc-brad-healing
   physicalDesc: reagent-physical-desc-opaque
   color: "#a8605a"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
@@ -28,6 +29,7 @@
   desc: ce-reagent-desc-brad-burn
   physicalDesc: reagent-physical-desc-opaque
   color: "#b88452"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
@@ -46,12 +48,16 @@
   desc: ce-reagent-desc-brad-blood
   physicalDesc: reagent-physical-desc-opaque
   color: "#7a3a44"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
       ceEffects:
       - !type:ModifyBloodLevel
         amount: 3.75
+      - !type:Heal
+        groups:
+          Airloss: 2.5
       - !type:ApplyStatusEffect
         statusEffect: CEStatusEffectAlchemyNausea
         duration: 30
@@ -63,6 +69,7 @@
   desc: ce-reagent-desc-brad-stamina
   physicalDesc: reagent-physical-desc-opaque
   color: "#6bb35c"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
@@ -80,6 +87,7 @@
   desc: ce-reagent-desc-brad-haste
   physicalDesc: reagent-physical-desc-opaque
   color: "#bec46a"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
@@ -98,6 +106,7 @@
   desc: ce-reagent-desc-brad-mana
   physicalDesc: reagent-physical-desc-opaque
   color: "#589ad8"
+  pricePerUnit: 0.325
   metabolisms:
     Bloodstream:
       metabolismRate: 0.5
