@@ -52,6 +52,9 @@
       ceEffects:
       - !type:ModifyBloodLevel
         amount: 3.75
+      - !type:Heal
+        groups:
+          Airloss: 2.5
       - !type:ApplyStatusEffect
         statusEffect: CEStatusEffectAlchemyNausea
         duration: 30
