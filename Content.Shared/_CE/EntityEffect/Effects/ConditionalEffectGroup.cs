@@ -24,12 +24,15 @@ public sealed partial class ConditionalEffectGroup : CEEntityEffectBase<Conditio
     [DataField]
     public bool RequireAll = true;
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         if (Effects.Count == 0)
             return base.EntityEffectGuidebookText(prototype, entSys);
 
-        var nested = string.Join("\n", Effects.Select(e => e.EntityEffectGuidebookText(prototype, entSys)));
+        var nested = string.Join("\n", Effects.Select(e => e.EntityEffectGuidebookText(prototype, entSys, power)));
         return Loc.GetString("ce-entity-effect-guidebook-conditional-effect-group", ("effects", nested));
     }
 }

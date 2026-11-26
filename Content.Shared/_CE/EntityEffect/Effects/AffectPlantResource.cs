@@ -13,7 +13,10 @@ public sealed partial class AffectPlantResource : CEEntityEffectBase<AffectPlant
     public float Amount;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-affect-plant-resource", ("amount", Amount));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-affect-plant-resource", ("amount", Math.Round((double) (Amount * power), 1)));
 }
 
 public sealed partial class CEAffectPlantResourceEffectSystem : CEEntityEffectSystem<AffectPlantResource>

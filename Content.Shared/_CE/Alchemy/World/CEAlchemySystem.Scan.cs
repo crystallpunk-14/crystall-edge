@@ -1,0 +1,155 @@
+using System.Globalization;
+using Content.Shared._CE.Alchemy.Data;
+using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.EntityEffect.Effects;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.FixedPoint;
+using Robust.Shared.Utility;
+
+namespace Content.Shared._CE.Alchemy.World;
+
+/// <summary>
+/// Raised by the solution scan (alchemy glasses) once the chemical list is written,
+/// so that CE can append its own lines to the same examine text.
+/// </summary>
+[ByRefEvent]
+public record struct CESolutionScanEvent(Solution Solution, FormattedMessage Message);
+
+public sealed partial class CEAlchemySystem
+{
+    private const string MixtureStage = "Bloodstream";
+    private const float DefaultMetabolismRate = 0.5f;
+
+    [Dependency] private IEntitySystemManager _entSys = default!;
+
+    /// <summary>
+    /// How long a dose of this mixture works: it is metabolized at a fixed rate multiplied by the tuning.
+    /// </summary>
+    public TimeSpan GetDuration(CEAlchemyData data, FixedPoint2 dose)
+    {
+        var rate = DefaultMetabolismRate;
+        if (_proto.TryIndex<ReagentPrototype>(MixtureReagent, out var mixture)
+            && mixture.Metabolisms is { } metabolisms
+            && metabolisms.Metabolisms.TryGetValue(MixtureStage, out var entry))
+        {
+            rate = entry.MetabolismRate.Float();
+        }
+
+        rate *= data.Multiplier;
+        return rate <= 0 ? TimeSpan.Zero : TimeSpan.FromSeconds(dose.Float() / rate);
+    }
+
+    public string FormatDuration(TimeSpan duration)
+    {
+        var seconds = duration.TotalSeconds;
+        return seconds >= 60
+            ? Loc.GetString("ce-guidebook-alchemy-duration-minutes", ("value", Math.Round(seconds / 60, 1)))
+            : Loc.GetString("ce-guidebook-alchemy-duration-seconds", ("value", (int) Math.Round(seconds)));
+    }
+
+    /// <summary>
+    /// Player-facing number of a zone strength. Rounded down, so a shown value never overstates a requirement check.
+    /// </summary>
+    public static string FormatStrength(float strength)
+    {
+        return (MathF.Floor(strength * 100f + 0.001f) / 100f).ToString("0.00", CultureInfo.InvariantCulture);
+    }
+
+    /// <summary>
+    /// Player-facing lines of what a hit zone does to whoever takes the mixture. Effects without a description are skipped.
+    /// </summary>
+    public List<string> DescribeHit(CEAlchemyHit hit, TimeSpan duration)
+    {
+        var lines = new List<string>();
+
+        foreach (var effect in hit.Zone.Effects)
+        {
+            if (DescribeEffect(effect, hit.Strength, duration) is { } line)
+                lines.Add(line);
+        }
+
+        return lines;
+    }
+
+    /// <summary>
+    /// One player-facing line for a zone effect, or null when the effect has no description.
+    /// A status is refreshed every second while the mixture works and then lasts its own duration,
+    /// so its line shows only the total: the working time of the mixture plus the status duration.
+    /// Every other effect works every second while the mixture works.
+    /// </summary>
+    public string? DescribeEffect(CEEntityEffect effect, float strength, TimeSpan duration)
+    {
+        if (effect is ApplyStatusEffect { Duration: { } statusDuration } status)
+        {
+            var statusName = _proto.TryIndex(status.StatusEffect, out var statusProto)
+                ? statusProto.Name
+                : status.StatusEffect.Id;
+
+            return Loc.GetString("ce-guidebook-alchemy-effect-line-status",
+                ("status", statusName),
+                ("duration", FormatDuration(duration + statusDuration)));
+        }
+
+        var text = effect.EntityEffectGuidebookText(_proto, _entSys, strength);
+        if (string.IsNullOrWhiteSpace(text) || text == Loc.GetString("ce-entity-effect-guidebook-none"))
+            return null;
+
+        return Loc.GetString("ce-guidebook-alchemy-effect-line",
+            ("effect", text.TrimEnd('.', ' ')),
+            ("duration", FormatDuration(duration)));
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSolutionScan(ref CESolutionScanEvent args)
+    {
+        // Without the round world the zones would be read at their base positions, which is a false hint.
+        if (!TryGetWorld(out _))
+            return;
+
+        foreach (var quantity in args.Solution.Contents)
+        {
+            if (quantity.Reagent.Data is not { } dataList)
+                continue;
+
+            foreach (var data in dataList)
+            {
+                if (data is not CEAlchemyData alchemy)
+                    continue;
+
+                AppendScan(args.Message, alchemy, quantity.Quantity);
+            }
+        }
+    }
+
+    private void AppendScan(FormattedMessage message, CEAlchemyData data, FixedPoint2 quantity)
+    {
+        var duration = GetDuration(data, quantity);
+        message.PushNewline();
+        message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-header", ("amount", quantity)));
+
+        var sign = data.Tune > FixedPoint2.Zero ? "+" : string.Empty;
+        message.PushNewline();
+        message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-tune",
+            ("tune", sign + data.Tune.Float().ToString("0.00", CultureInfo.InvariantCulture)),
+            ("multiplier", data.Multiplier.ToString("0.00", CultureInfo.InvariantCulture))));
+
+        var any = false;
+        foreach (var hit in Analyze(data))
+        {
+            any = true;
+            message.PushNewline();
+            message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-zone",
+                ("color", hit.Zone.HarmColor.ToHex()),
+                ("zone", Loc.GetString(hit.Zone.Name)),
+                ("strength", FormatStrength(hit.Strength)),
+                ("effects", string.Join(" ", DescribeHit(hit, duration)))));
+        }
+
+        if (any)
+            return;
+
+        message.PushNewline();
+        message.AddMarkupOrThrow(Loc.GetString("ce-alchemy-scan-none"));
+    }
+}

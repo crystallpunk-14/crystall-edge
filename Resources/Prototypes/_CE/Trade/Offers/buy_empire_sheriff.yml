@@ -2,8 +2,7 @@
   id: BuyClothingCloakRaincoatSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakRaincoatSheriff
@@ -12,8 +11,7 @@
   id: BuyClothingShirtSyurkoSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSyurkoSheriff
@@ -22,8 +20,7 @@
   id: BuyClothingHeadHelmetSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadHelmetSheriff
@@ -32,8 +29,7 @@
   id: BuyClothingHeadHelmetSheriffCorinthian
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadHelmetSheriffCorinthian
@@ -42,8 +38,7 @@
   id: BuyClothingHeadCapSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadCapSheriff
@@ -52,8 +47,7 @@
   id: BuyClothingHeadFedoraSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingHeadFedoraSheriff
@@ -62,8 +56,7 @@
   id: BuyClothingPantsSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingPantsSheriff
@@ -72,8 +65,7 @@
   id: BuyClothingShirtSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingShirtSheriff
@@ -82,8 +74,7 @@
   id: BuyClothingCloakSheriff
   shop: EmpireSheriff
   category: Clothing
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingCloakSheriff
@@ -92,8 +83,7 @@
   id: BuyRope
   shop: EmpireSheriff
   category: Tools
-  pay:
-    bonus: 10
+  bonus: 10
   reward:
   - !type:CETradeSpawnReward
     proto: CERope
@@ -102,8 +92,7 @@
   id: BuyBola
   shop: EmpireSheriff
   category: Weapon
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEBola
@@ -112,8 +101,7 @@
   id: BuyGunJustice
   shop: EmpireSheriff
   category: Weapon
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponGunJustice
@@ -122,8 +110,7 @@
   id: BuyGunPeacekeeper
   shop: EmpireSheriff
   category: Weapon
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponGunPeacekeeper
@@ -132,8 +119,7 @@
   id: BuyWeaponMaceTwoHandedSheriff
   shop: EmpireSheriff
   category: Weapon
-  pay:
-    bonus: 1
+  bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEWeaponMaceTwoHandedSheriff

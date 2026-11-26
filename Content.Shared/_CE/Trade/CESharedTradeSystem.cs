@@ -38,6 +38,9 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         ("CECoinPlatinum1", 1000),
     ];
 
+    // Offer prices placed on trade tables are rolled within +-this fraction.
+    private const float PriceVariation = 0.1f;
+
     private readonly List<int> _freeSlots = new();
     private readonly List<EntityUid> _offers = new();
 
@@ -158,11 +161,12 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (PickOffer(ent, ent.Comp.Shop) is not { } offer)
             return;
 
+        var (pay, receive) = GetPrices(offer, 1 + _random.NextFloat(-PriceVariation, PriceVariation));
         FillOffer(args.Offer,
             offer.Cost,
             offer.Reward,
-            RollPrice(offer.Pay, offer, pay: true),
-            RollPrice(offer.Receive, offer, pay: false),
+            pay,
+            receive,
             offer.Preview,
             GetOfferName(offer));
 
@@ -271,56 +275,29 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         return last;
     }
 
-    private int RollPrice(CETradeMoney? money, CETradeOfferPrototype offer, bool pay)
-    {
-        if (money is null)
-            return 0;
-
-        var price = GetBasePrice(money, offer, pay);
-        price *= 1 + _random.NextFloat(-money.Variation, money.Variation);
-        return Math.Max(1, (int) Math.Round(price));
-    }
-
     /// <summary>
-    /// Price of one side of the offer without the random variation; 0 when that side pays no coins.
+    /// Coins the player pays and receives for the offer. At most one of the two is non-zero,
+    /// see <see cref="CETradeOfferPrototype"/>.
     /// </summary>
-    public int GetFixedPrice(CETradeMoney? money, CETradeOfferPrototype offer, bool pay)
+    public (int Pay, int Receive) GetPrices(CETradeOfferPrototype offer, float multiplier = 1f)
     {
-        if (money is null)
-            return 0;
+        var sells = offer.Reward.Count > 0;
+        if (sells == offer.Cost.Count > 0)
+            return (0, 0);
 
-        return Math.Max(1, (int) Math.Round(GetBasePrice(money, offer, pay)));
-    }
-
-    private double GetBasePrice(CETradeMoney money, CETradeOfferPrototype offer, bool pay)
-    {
-        double price;
-        if (money.Amount is { } amount)
+        double price = offer.Bonus;
+        foreach (var reward in offer.Reward)
         {
-            price = amount;
-        }
-        else
-        {
-            price = 0;
-            if (pay)
-            {
-                foreach (var reward in offer.Reward)
-                {
-                    price += reward.GetPrice(EntityManager);
-                }
-            }
-            else
-            {
-                foreach (var cost in offer.Cost)
-                {
-                    price += cost.GetPrice(EntityManager, Proto);
-                }
-            }
-
-            price = price * money.Markup + money.Bonus;
+            price += reward.GetPrice(EntityManager);
         }
 
-        return price;
+        foreach (var cost in offer.Cost)
+        {
+            price += cost.GetPrice(EntityManager, Proto);
+        }
+
+        var coins = Math.Max(1, (int) Math.Round(price * multiplier));
+        return sells ? (coins, 0) : (0, coins);
     }
 
     /// <summary>

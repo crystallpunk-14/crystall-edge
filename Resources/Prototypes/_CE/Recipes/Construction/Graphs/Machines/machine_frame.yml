@@ -41,7 +41,7 @@
             - !type:ContainerNotEmpty
               container: machine_board
           steps:
-            - tool: CEMatterManipulation
+            - tool: Prying
               doAfter: 2
               completed:
                 - !type:EmptyAllContainers

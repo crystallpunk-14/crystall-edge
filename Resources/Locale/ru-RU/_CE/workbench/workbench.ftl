@@ -13,3 +13,4 @@ ce-workbench-material-req = Материал «{$name}» x{$count} (из люб�
 
 ce-autocrafter-ui-title = Автоматический крафт
 ce-autocrafter-select-recipe = Выбрать рецепт
+ce-workbench-alchemy-mixture-req = {$count}u эликсира «{$zone}» силой от {$strength}

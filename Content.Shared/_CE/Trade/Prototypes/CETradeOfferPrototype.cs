@@ -6,7 +6,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Trade.Prototypes;
 
 /// <summary>
-/// An exchange: <see cref="Cost"/> and <see cref="Pay"/> coins for <see cref="Reward"/> and <see cref="Receive"/> coins.
+/// An exchange of <see cref="Cost"/> for <see cref="Reward"/>. An offer with only a reward is bought for coins,
+/// an offer with only a cost is paid for in coins, an offer with both is a barter without coins.
 /// </summary>
 [Prototype("tradeOffer")]
 public sealed partial class CETradeOfferPrototype : IPrototype
@@ -33,16 +34,10 @@ public sealed partial class CETradeOfferPrototype : IPrototype
     public List<CETradeReward> Reward = new();
 
     /// <summary>
-    /// Coins the player pays. Auto-priced from <see cref="Reward"/> when no amount is set.
+    /// Coins added to the cost price of the items on the priced side of the exchange.
     /// </summary>
     [DataField]
-    public CETradeMoney? Pay;
-
-    /// <summary>
-    /// Coins the player receives. Auto-priced from <see cref="Cost"/> when no amount is set.
-    /// </summary>
-    [DataField]
-    public CETradeMoney? Receive;
+    public int Bonus;
 
     /// <summary>
     /// Entity whose sprite represents the offer. Optional.
@@ -58,29 +53,4 @@ public sealed partial class CETradeOfferPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<CEWorkbenchRecipeCategoryPrototype>? Category;
-}
-
-[DataDefinition]
-public sealed partial class CETradeMoney
-{
-    /// <summary>
-    /// Fixed amount before variation. Null means auto-priced from the other side of the exchange.
-    /// </summary>
-    [DataField]
-    public int? Amount;
-
-    [DataField]
-    public float Markup = 1f;
-
-    /// <summary>
-    /// Flat amount added to the auto-priced value after <see cref="Markup"/>.
-    /// </summary>
-    [DataField]
-    public int Bonus;
-
-    /// <summary>
-    /// Price is rolled within +-this fraction when the offer is placed.
-    /// </summary>
-    [DataField]
-    public float Variation = 0.1f;
 }

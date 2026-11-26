@@ -178,6 +178,11 @@
   copyright: 'by Kinoton of Freesound.org. Cropped by TheShuEd.'
   source: "https://freesound.org/people/Kinoton/sounds/399080/"
 
+- files: ["pestle_grinding.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'Australopithecusman of Freesound.org. Cropped, mixed from stereo to mono, pitched and combined into one grinding sound.'
+  source: "https://freesound.org/people/Australopithecusman/sounds/388900/"
+
 - files: ["ritual_insert_far.ogg"]
   license: "CC0-1.0"
   copyright: 'by Vrymaa of Freesound.org. Cropped by TheShuEd.'

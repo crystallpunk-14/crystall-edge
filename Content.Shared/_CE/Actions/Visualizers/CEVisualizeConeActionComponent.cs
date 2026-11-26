@@ -17,13 +17,6 @@ public sealed partial class CEVisualizeConeActionComponent : Component
     public float Width = 45f;
 
     /// <summary>
-    /// Visual range of the cone in world units.
-    /// If left at 0, the action's TargetAction range is used instead.
-    /// </summary>
-    [DataField]
-    public float Range;
-
-    /// <summary>
     /// RSI for the border sprite (start cap of each cone side).
     /// </summary>
     [DataField]

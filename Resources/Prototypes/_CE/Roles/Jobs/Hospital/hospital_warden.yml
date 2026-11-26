@@ -46,6 +46,7 @@
         - id: CERubberStampApproved
         - id: CERubberStampDenied
         - id: CERubberStampHospital
+        - id: CEGuidebookAlchemy
 
 - type: entity
   id: CEBedsideTableFilledHospitalWarden

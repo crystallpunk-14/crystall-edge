@@ -1,2 +1,2 @@
-ce-reagent-name-muscimol = Мусцимол
-ce-reagent-desc-muscimol = Яд мухомора. Медленно отключает организм того, кто съел его слишком много.
+ce-reagent-name-amanita-juice = Сок мухомора
+ce-reagent-desc-amanita-juice = Яд мухомора. Медленно отключает организм того, кто съел его слишком много.

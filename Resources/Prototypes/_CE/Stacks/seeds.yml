@@ -74,3 +74,10 @@
   spawn: CESeedCarrot
   icon: { sprite: _CE/Objects/Consumable/Food/carrot.rsi, state: seeds }
   maxCount: 10
+
+- type: stack
+  id: CESeedSilverNeedle
+  name: ce-stack-silver-needle-seeds
+  spawn: CESeedSilverNeedle
+  icon: { sprite: _CE/Objects/Consumable/Food/silver_needle.rsi, state: seeds }
+  maxCount: 10

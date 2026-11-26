@@ -40,6 +40,7 @@
 - type: entity
   id: CEMachineFrame
   parent: CEMachineFrameBase
+  description: The skeleton of a machine, waiting for a machine core and parts. A crowbar pries them back out.
   components:
   - type: Sprite
     state: box

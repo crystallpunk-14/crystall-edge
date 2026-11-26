@@ -1,0 +1,169 @@
+# Injectors and vials sold by the Apothecaries Guild
+
+- type: entity
+  id: CEAlchemyInjectorBradHealing
+  parent: CEAlchemyInjector
+  suffix: Brad healing
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-healing
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradHealingMixture
+        Quantity: 10
+
+- type: entity
+  id: CEAlchemyInjectorBradBurn
+  parent: CEAlchemyInjector
+  suffix: Brad burn
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-burn
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradBurnMixture
+        Quantity: 10
+
+- type: entity
+  id: CEAlchemyInjectorBradBlood
+  parent: CEAlchemyInjector
+  suffix: Brad blood
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-blood
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradBloodMixture
+        Quantity: 10
+
+- type: entity
+  id: CEAlchemyInjectorBradStamina
+  parent: CEAlchemyInjector
+  suffix: Brad stamina
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-stamina
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradStaminaMixture
+        Quantity: 10
+
+- type: entity
+  id: CEAlchemyInjectorBradHaste
+  parent: CEAlchemyInjector
+  suffix: Brad haste
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-haste
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradHasteMixture
+        Quantity: 10
+
+- type: entity
+  id: CEAlchemyInjectorBradMana
+  parent: CEAlchemyInjector
+  suffix: Brad mana
+  components:
+  - type: Label
+    localizedLabel: ce-reagent-name-brad-mana
+  - type: Solution
+    id: injector
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: CEBradManaMixture
+        Quantity: 10
+
+- type: entity
+  id: CEVialSkullBloodHuman
+  parent: CEVialSkull
+  suffix: Human blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBlood
+        Quantity: 20
+
+- type: entity
+  id: CEVialSkullBloodInfernal
+  parent: CEVialSkull
+  suffix: Infernal blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBloodInfernal
+        Quantity: 20
+
+- type: entity
+  id: CEVialSkullBloodElf
+  parent: CEVialSkull
+  suffix: Elf blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBloodElf
+        Quantity: 20
+
+- type: entity
+  id: CEVialSkullBloodGoblin
+  parent: CEVialSkull
+  suffix: Goblin blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBloodGoblin
+        Quantity: 20
+
+- type: entity
+  id: CEVialSkullBloodCarcat
+  parent: CEVialSkull
+  suffix: Carcat blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBloodCarcat
+        Quantity: 20
+
+- type: entity
+  id: CEVialSkullBloodSilva
+  parent: CEVialSkull
+  suffix: Silva blood
+  components:
+  - type: Solution
+    id: vial
+    solution:
+      maxVol: 20
+      reagents:
+      - ReagentId: CEBloodSilva
+        Quantity: 20

@@ -12,7 +12,10 @@ public sealed partial class StaminaDamage : CEEntityEffectBase<StaminaDamage>
     public float Amount = 10f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-stamina-damage", ("amount", Amount));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-stamina-damage", ("amount", Math.Round((double) (Amount * power), 1)));
 }
 
 public sealed partial class CEStaminaDamageEffectSystem : CEEntityEffectSystem<StaminaDamage>

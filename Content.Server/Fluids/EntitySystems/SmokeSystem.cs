@@ -133,8 +133,6 @@ public sealed partial class SmokeSystem : EntitySystem
         if (args.NeighborFreeTiles.Count == 0)
             return;
 
-        TryComp<TimedDespawnComponent>(entity, out var timer);
-
         // wtf is the logic behind any of this.
         var smokePerSpread = entity.Comp.SpreadAmount / Math.Max(1, args.NeighborFreeTiles.Count);
         foreach (var neighbor in args.NeighborFreeTiles)
@@ -144,7 +142,9 @@ public sealed partial class SmokeSystem : EntitySystem
             var spreadAmount = Math.Max(0, smokePerSpread);
             entity.Comp.SpreadAmount -= args.NeighborFreeTiles.Count;
 
-            StartSmoke(ent, solution.Clone(), timer?.Lifetime ?? entity.Comp.Duration, spreadAmount);
+            // CrystallEdge: every tile lives its full duration, TimedDespawn is not networked so the client fade (CETimedDespawnFadeout) assumes the prototype lifetime
+            StartSmoke(ent, solution.Clone(), entity.Comp.Duration, spreadAmount);
+            // CrystallEdge end
 
             if (entity.Comp.SpreadAmount == 0)
             {

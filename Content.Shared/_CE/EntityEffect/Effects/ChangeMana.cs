@@ -13,9 +13,12 @@ public sealed partial class ChangeMana : CEEntityEffectBase<ChangeMana>
     public int Amount = 1;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
         Amount >= 0
-            ? Loc.GetString("ce-entity-effect-guidebook-change-mana-restore", ("amount", Amount))
-            : Loc.GetString("ce-entity-effect-guidebook-change-mana-drain", ("amount", -Amount));
+            ? Loc.GetString("ce-entity-effect-guidebook-change-mana-restore", ("amount", Math.Round((double) (Amount * power), 1)))
+            : Loc.GetString("ce-entity-effect-guidebook-change-mana-drain", ("amount", Math.Round((double) (-Amount * power), 1)));
 }
 
 public sealed partial class CEChangeManaEffectSystem : CEEntityEffectSystem<ChangeMana>

@@ -1,0 +1,17 @@
+ce-alchemy-zone-heal-brute = Wound healing
+ce-alchemy-zone-heal-burn = Burn healing
+ce-alchemy-zone-restore-blood = Blood restoration
+ce-alchemy-zone-haste = Haste
+ce-alchemy-zone-slowdown = Slowdown
+ce-alchemy-zone-restore-mana = Mana restoration
+ce-alchemy-zone-poison-toxin = Poison: toxin
+ce-alchemy-zone-poison-mana-burn = Poison: mana burn
+ce-alchemy-zone-shake-and-slur = Tremor and slurred speech
+ce-alchemy-zone-nausea = Nausea
+ce-alchemy-zone-drowsiness = Drowsiness
+ce-alchemy-zone-weak-hands = Weak hands
+ce-alchemy-zone-fatigue = Fatigue
+ce-alchemy-zone-restore-stamina = Stamina restoration
+ce-alchemy-zone-adrenaline = Adrenaline
+ce-alchemy-zone-murk-resistance = Murk resistance
+ce-alchemy-zone-seeing-rainbow = Hallucinations

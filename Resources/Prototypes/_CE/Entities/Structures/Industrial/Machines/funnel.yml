@@ -1,16 +1,14 @@
 - type: entity
   id: CEFunnel
-  parent:
-  - CEConstructibleMachine
-  - BaseMachine
+  parent: BaseStructure
   name: funnel
   description: A device for placing items inside storage facilities or removing items from them. A conveyor belt running away from the storage makes it extract items, running across makes it grab items from the belt. Put sample items inside to filter what it lets through.
   categories: [ ForkFiltered ]
   placement:
     mode: SnapgridCenter
   components:
-  - type: Machine
-    board: CEMachineCoreFunnel
+  - type: Animateable
+  - type: InteractionOutline
   - type: Fixtures
     fixtures:
       collect:
@@ -39,9 +37,6 @@
         - TableMask
         layer:
         - TableLayer
-  - type: Transform
-    anchored: true
-    noRot: false
   - type: Sprite
     drawdepth: Mobs
     offset: 0, 0
@@ -49,11 +44,14 @@
     layers:
     - state: base
   - type: CEFunnel
-  - type: Rotatable
   # Filter samples
   - type: Storage
     grid:
     - 0,0,3,3
+    ignorelist: # these are used on the funnel instead of being put inside
+      components:
+      - Prying
+      - CEPlaceable
     storageOpenSound: /Audio/Effects/closetopen.ogg
     storageCloseSound: /Audio/Effects/closetclose.ogg
   - type: UserInterface
@@ -64,5 +62,22 @@
     containers:
       storagebase: !type:Container
         ents: [ ]
-      machine_board: !type:Container
-      machine_parts: !type:Container
+  - type: Construction
+    graph: CEFunnel
+    node: CEFunnel
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

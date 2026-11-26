@@ -198,7 +198,7 @@ namespace Content.Client.Administration.UI.ManageSolutions
             var spin = new FloatSpinBox(1, 2);
 
             spin.Value = reagentQuantity.Quantity.Float();
-            spin.OnValueChanged += (args) => SetReagent(args, reagentQuantity.Reagent.Prototype);
+            spin.OnValueChanged += (args) => SetReagent(args, reagentQuantity.Reagent); // CrystallEdge: reagent data matters
             spin.HorizontalExpand = true;
 
             box.AddChild(new Label() { Text = reagentQuantity.Reagent.Prototype , HorizontalExpand = true});
@@ -210,7 +210,7 @@ namespace Content.Client.Administration.UI.ManageSolutions
         /// <summary>
         ///     Execute a command to modify the reagents in the solution.
         /// </summary>
-        private void SetReagent(FloatSpinBox.FloatSpinBoxEventArgs args, string prototype)
+        private void SetReagent(FloatSpinBox.FloatSpinBoxEventArgs args, ReagentId reagent) // CrystallEdge: reagent data matters
         {
             if (_solutions == null || _selectedSolution == null ||
                 !_solutions.TryGetValue(_selectedSolution, out var solutionId) ||
@@ -218,13 +218,18 @@ namespace Content.Client.Administration.UI.ManageSolutions
                 return;
 
             var solution = solutionComp.Solution;
-            var current = solution.GetTotalPrototypeQuantity(prototype);
-            var delta = args.Value - current.Float();
+            // CrystallEdge: edit the exact entry, one solution can hold several entries of a prototype with different data
+            var index = solution.Contents.FindIndex(entry => entry.Reagent == reagent);
+            if (index < 0)
+                return;
+
+            var delta = args.Value - solution.Contents[index].Quantity.Float();
 
             if (MathF.Abs(delta) < 0.01)
                 return;
 
-            var command = $"addreagent {_target} {_selectedSolution} {prototype} {delta}";
+            var command = $"addreagent {_target} {_selectedSolution} {reagent.Prototype} {delta} {index}";
+            // CrystallEdge end
             _consoleHost.ExecuteCommand(command);
         }
 

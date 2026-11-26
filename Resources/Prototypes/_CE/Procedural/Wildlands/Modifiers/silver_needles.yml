@@ -1,0 +1,44 @@
+# Silver needles: one patch of frost-hardy berry bushes breaking through the snow, shaped by noise.
+# Snow tiles only, so only snowy maps grow them.
+
+- type: entity
+  id: CEWildlandsModifierSilverNeedles
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    points:
+    - id: needleField
+      minDistance: 0
+      area: !type:RingArea
+        minRadius: 40
+        maxRadius: 100
+    effects:
+    - !type:GenerationLayers
+      layers:
+      - !type:FillEntityLayer
+        entity: CEPlantSilverNeedleGrown
+        mask:
+        - !type:RadiusMask
+          point: needleField
+          radius: 35
+          noiseAmplitude: 6
+          noise:
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            frequency: 0.1
+            octaves: 2
+        - !type:NoiseMask
+          seed: 303
+          threshold: 0.62
+          noise:
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            frequency: 0.12
+            octaves: 2
+        - !type:TileMask
+          tiles:
+          - CESnow
+          - CESnowDeep
+          - CESnowDeepDeep
+        - !type:NoEntityMask
