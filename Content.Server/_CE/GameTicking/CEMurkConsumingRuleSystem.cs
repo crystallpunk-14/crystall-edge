@@ -317,16 +317,51 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
 
     private void BroadcastProgress(CEMurkConsumingRuleComponent component)
     {
+        if (!TryGetSphereProgress(component, out var state, out var light, out var murk))
+            return;
+
+        RaiseNetworkEvent(new CERoundProgressStateEvent(state != CEMurkSphereState.PreRound, light, murk));
+    }
+
+    /// <summary>
+    /// The sphere's state and the light and murk bar values (0..1), if a rule is active and the sphere exists.
+    /// </summary>
+    public bool TryGetRoundProgress(out CEMurkSphereState state, out float light, out float murk)
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            return TryGetSphereProgress(consuming, out state, out light, out murk);
+        }
+
+        state = default;
+        light = 0f;
+        murk = 0f;
+        return false;
+    }
+
+    private bool TryGetSphereProgress(
+        CEMurkConsumingRuleComponent component,
+        out CEMurkSphereState state,
+        out float light,
+        out float murk)
+    {
+        state = default;
+        light = 0f;
+        murk = 0f;
+
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
         if (!sphereQuery.MoveNext(out var sphereUid, out var sphere))
-            return;
+            return false;
+
+        state = sphere.State;
 
         // Each accepted shard fills an equal share of the light bar; the ritual fills the last one.
         var share = 1f / (component.ShardCount + 1);
-        var light = Math.Min(CountAcceptedShards(Transform(sphereUid).MapID), component.ShardCount) * share;
-        var murk = GetCollapseProgress(component);
+        light = Math.Min(CountAcceptedShards(Transform(sphereUid).MapID), component.ShardCount) * share;
+        murk = GetCollapseProgress(component);
 
-        switch (sphere.State)
+        switch (state)
         {
             case CEMurkSphereState.Ritual:
                 light += GetRitualProgress(component) * share;
@@ -342,10 +377,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
                 break;
         }
 
-        RaiseNetworkEvent(new CERoundProgressStateEvent(
-            sphere.State != CEMurkSphereState.PreRound,
-            Math.Clamp(light, 0f, 1f),
-            murk));
+        light = Math.Clamp(light, 0f, 1f);
+        return true;
     }
 
     /// <summary>

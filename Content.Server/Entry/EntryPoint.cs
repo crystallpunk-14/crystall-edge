@@ -184,6 +184,7 @@ namespace Content.Server.Entry
                     _watchlistWebhookManager.Update();
                     _connection.Update();
                     _ceClosedBeta.Update(); //CrystallEdge: runs even while the empty server is auto-paused
+                    _CEDiscordBot.Update(); //CrystallEdge: bot status, also updated while auto-paused
                     break;
             }
         }
