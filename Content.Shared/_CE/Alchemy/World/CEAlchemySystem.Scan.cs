@@ -10,8 +10,8 @@ using Robust.Shared.Utility;
 namespace Content.Shared._CE.Alchemy.World;
 
 /// <summary>
-/// Raised by the solution scan (alchemy glasses, the Solution examine verb) once the chemical list is written,
-/// so that CE can append its own lines to the same examine window.
+/// Raised by the solution scan (alchemy glasses) once the chemical list is written,
+/// so that CE can append its own lines to the same examine text.
 /// </summary>
 [ByRefEvent]
 public record struct CESolutionScanEvent(Solution Solution, FormattedMessage Message);
