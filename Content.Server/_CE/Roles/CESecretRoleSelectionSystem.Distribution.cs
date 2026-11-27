@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.Roles;
-using Content.Shared.Database;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
@@ -16,6 +15,7 @@ public sealed partial class CESecretRoleSelectionSystem
     /// Decides which secret role, if any, each player should receive this round. Touches no
     /// minds/components, so it's directly testable without spinning up a round. Players with a High
     /// role pick first, then Medium, then everyone else - see <see cref="TryPickRole"/> for the draw itself.
+    /// Players left without a role get <see cref="CESecretRoleSelectionComponent.OverflowRole"/>.
     /// </summary>
     public Dictionary<NetUserId, ProtoId<CESecretRolePrototype>> DecideSecretRoles(
         Entity<CESecretRoleSelectionComponent> rule,
@@ -44,6 +44,15 @@ public sealed partial class CESecretRoleSelectionSystem
             result[session.UserId] = role.ID;
         }
 
+        // Overflow goes last so it never takes a slot from someone still waiting for their draw.
+        if (rule.Comp.OverflowRole is { } overflow)
+        {
+            foreach (var session in ordered)
+            {
+                result.TryAdd(session.UserId, overflow);
+            }
+        }
+
         return result;
     }
 
@@ -53,7 +62,8 @@ public sealed partial class CESecretRoleSelectionSystem
         HumanoidCharacterProfile profile,
         int playerCount)
     {
-        if (!TryPickRole(rule, rule.Comp.AssignedCounts, session, profile, playerCount, out var role))
+        if (!TryPickRole(rule, rule.Comp.AssignedCounts, session, profile, playerCount, out var role)
+            && !_proto.TryIndex(rule.Comp.OverflowRole, out role))
             return false;
 
         if (GrantSecretRole(rule, session, role) is { } granted)
@@ -64,8 +74,8 @@ public sealed partial class CESecretRoleSelectionSystem
 
     /// <summary>
     /// Draws a department for the player weighted by its free slots times the player's best priority
-    /// among its available roles, then a role inside it weighted by role weight times priority. If no
-    /// department the player can join has free slots, the draw falls back to share times priority.
+    /// among its available roles, then a role inside it weighted by role weight times priority. The draw
+    /// fails if no department the player can join has free slots.
     /// </summary>
     private bool TryPickRole(
         Entity<CESecretRoleSelectionComponent> rule,
@@ -80,7 +90,7 @@ public sealed partial class CESecretRoleSelectionSystem
         var options = new List<(CESecretDepartmentSelectorEntry Department, List<(CESecretRoleSelectorEntry Entry, CESecretRolePrototype Role, JobPriority Priority)> Roles, float Multiplier)>();
         foreach (var department in rule.Comp.Departments)
         {
-            // A department with no slots this round is closed, even for the over-quota draw below.
+            // A department with no slots this round is closed.
             if (department.GetTargetCount(playerCount) <= 0)
                 continue;
 
@@ -91,20 +101,12 @@ public sealed partial class CESecretRoleSelectionSystem
             options.Add((department, roles, GetPriorityMultiplier(roles.Max(r => r.Priority))));
         }
 
-        if (options.Count == 0)
-            return false;
-
         var weights = options
             .Select(o => Math.Max(0, o.Department.GetTargetCount(playerCount) - GetDepartmentCount(o.Department, assignedCounts)) * o.Multiplier)
             .ToList();
 
         if (weights.Sum() <= 0)
-        {
-            weights = options.Select(o => o.Department.Share * o.Multiplier).ToList();
-            _adminLog.Add(LogType.AntagSelection,
-                LogImpact.Low,
-                $"{session:player} found no free secret department slot and was drawn over the quotas");
-        }
+            return false;
 
         var picked = options[PickWeightedIndex(weights)];
 
@@ -119,7 +121,7 @@ public sealed partial class CESecretRoleSelectionSystem
     }
 
     /// <summary>
-    /// Roles of a department the player could receive right now: eligible and below their cap.
+    /// Roles of a department the player could receive right now: allowed, eligible and below their cap.
     /// </summary>
     private List<(CESecretRoleSelectorEntry Entry, CESecretRolePrototype Role, JobPriority Priority)> GetAvailableRoles(
         CESecretDepartmentSelectorEntry department,
@@ -136,10 +138,11 @@ public sealed partial class CESecretRoleSelectionSystem
             if (entry.Max is { } max && assignedCounts.GetValueOrDefault(entry.Role) >= max)
                 continue;
 
-            if (!IsEligible(session, profile, role))
+            var priority = GetPriority(profile, entry.Role);
+            if (priority == JobPriority.Never || !IsEligible(session, profile, role))
                 continue;
 
-            result.Add((entry, role, GetPriority(profile, entry.Role)));
+            result.Add((entry, role, priority));
         }
 
         return result;
@@ -188,12 +191,10 @@ public sealed partial class CESecretRoleSelectionSystem
         return best;
     }
 
-    // "Never" no longer exists in the UI, but old data or an untouched role should still be treated
-    // as the Low floor rather than excluded.
+    // A role the player never touched is allowed at the lowest priority.
     private static JobPriority GetPriority(HumanoidCharacterProfile profile, ProtoId<CESecretRolePrototype> role)
     {
-        var priority = profile.SecretRolePriorities.GetValueOrDefault(role, JobPriority.Low);
-        return priority < JobPriority.Low ? JobPriority.Low : priority;
+        return profile.SecretRolePriorities.GetValueOrDefault(role, JobPriority.Low);
     }
 
     private static float GetPriorityMultiplier(JobPriority priority)

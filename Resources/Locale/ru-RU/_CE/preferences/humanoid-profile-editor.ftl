@@ -9,6 +9,7 @@ ce-humanoid-profile-editor-jobs-header-description = Официальная об
 
 ce-humanoid-profile-editor-secret-roles-header-title = Скрытая роль
 ce-humanoid-profile-editor-secret-roles-header-description = Секретная роль вашего персонажа. Определяет цели и возможности вашего персонажа.
+    {"[color=yellow]"}Вы получите роль мирного гражданина, если ни одна из желаемых ролей не окажется доступна.[/color]
 
 ce-humanoid-profile-editor-preference-unavailable-label = Если недоступно:
 ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button = Получить должность "{ $overflowJob }"

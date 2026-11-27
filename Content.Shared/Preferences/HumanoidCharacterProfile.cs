@@ -564,9 +564,8 @@ namespace Content.Shared.Preferences
 
             foreach (var (key, value) in dictionary)
             {
-                if (value == JobPriority.Never)
-                    dictionary.Remove(key);
-                else if (value != JobPriority.High)
+                // Never is stored, a missing role counts as Low.
+                if (value != JobPriority.High)
                     continue;
 
                 if (hasHighPrio)
@@ -584,11 +583,7 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithSecretRolePriority(ProtoId<CESecretRolePrototype> roleId, JobPriority priority)
         {
             var dictionary = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(_secretRolePriorities);
-            if (priority == JobPriority.Never)
-            {
-                dictionary.Remove(roleId);
-            }
-            else if (priority == JobPriority.High)
+            if (priority == JobPriority.High)
             {
                 // There can only ever be one high priority secret role, independent of jobs.
                 foreach (var (role, value) in dictionary)
@@ -596,13 +591,9 @@ namespace Content.Shared.Preferences
                     if (value == JobPriority.High)
                         dictionary[role] = JobPriority.Medium;
                 }
+            }
 
-                dictionary[roleId] = priority;
-            }
-            else
-            {
-                dictionary[roleId] = priority;
-            }
+            dictionary[roleId] = priority;
 
             return new(this)
             {
@@ -856,14 +847,9 @@ namespace Content.Shared.Preferences
 
             // CrystallEdge: validate secret role priorities, independent "one High" enforcement
             var secretRolePriorities = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(SecretRolePriorities
-                .Where(p => prototypeManager.HasIndex<CESecretRolePrototype>(p.Key) && p.Value switch
-                {
-                    JobPriority.Never => false, // Drop never since that's assumed default.
-                    JobPriority.Low => true,
-                    JobPriority.Medium => true,
-                    JobPriority.High => true,
-                    _ => false
-                }));
+                // Never is kept, a missing secret role counts as Low.
+                .Where(p => prototypeManager.HasIndex<CESecretRolePrototype>(p.Key)
+                            && p.Value is >= JobPriority.Never and <= JobPriority.High));
 
             var hasHighSecretRolePrio = false;
             foreach (var (key, value) in secretRolePriorities)

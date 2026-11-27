@@ -4,6 +4,7 @@
   components:
   - type: GameRule
   - type: CESecretRoleSelection
+    overflowRole: Civilian
     departments:
     - department: Nightmares
       share: 0.10

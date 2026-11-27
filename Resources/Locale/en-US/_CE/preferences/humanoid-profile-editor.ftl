@@ -7,6 +7,7 @@ ce-humanoid-profile-editor-jobs-header-title = Job
 ce-humanoid-profile-editor-jobs-header-description = An official, commonly known job in the city. Determines which areas of the map and which equipment will be more accessible to your character.
 ce-humanoid-profile-editor-secret-roles-header-title = Hidden Role
 ce-humanoid-profile-editor-secret-roles-header-description = Your character's secret role. Determines your character's goals and capabilities.
+    {"[color=yellow]"}You will become a civilian if none of the roles you want is available.[/color]
 ce-humanoid-profile-editor-preference-unavailable-label = If preference unavailable:
 ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button = Be {INDEFINITE($overflowJob)} {$overflowJob}
 ce-humanoid-profile-editor-preference-unavailable-stay-in-lobby-button = Stay in lobby

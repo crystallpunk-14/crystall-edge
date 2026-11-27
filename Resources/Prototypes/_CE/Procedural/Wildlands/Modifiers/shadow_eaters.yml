@@ -10,7 +10,7 @@
     effects:
     - !type:SpawnEntitiesPerTiles
       entity: CEMobShadowEater
-      tilesPerSpawn: 200
+      tilesPerSpawn: 300
       tilesPerSpawnStdDev: 10
       mask:
       - !type:NoEntityMask

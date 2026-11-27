@@ -257,7 +257,6 @@ namespace Content.Server.Database
             profile.SecretRoles.Clear();
             profile.SecretRoles.AddRange(
                 humanoid.SecretRolePriorities
-                    .Where(r => r.Value != JobPriority.Never)
                     .Select(r => new SecretRole {SecretRoleName = r.Key, Priority = (DbJobPriority) r.Value})
             );
             // CrystallEdge end

@@ -77,6 +77,7 @@ public sealed class CESecretRoleSelectionTest : GameTest
   id: {RuleProtoId}
   components:
   - type: CESecretRoleSelection
+    overflowRole: {Fallback}
     departments:
     - department: {SmallDepartment}
       share: 0.10
@@ -98,6 +99,7 @@ public sealed class CESecretRoleSelectionTest : GameTest
   id: {MinPlayersRuleProtoId}
   components:
   - type: CESecretRoleSelection
+    overflowRole: {Fallback}
     departments:
     - department: {SmallDepartment}
       share: 0.10
