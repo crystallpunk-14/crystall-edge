@@ -513,3 +513,333 @@
   charsPerSyllable: 2
   audioParams:
     volume: 10
+
+- type: barkSpeech
+  id: phantomru_Aah
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/aah.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/aah_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/aah_e.ogg
+  syllableInterval: 0.18
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.82
+  commaPauseMultiplier: 3.12
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Augh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/augh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/augh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/augh_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Beloh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/beloh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/beloh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/beloh_e.ogg
+  syllableInterval: 0.22
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.31
+  commaPauseMultiplier: 2.55
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Een
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/een.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/een_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/een_e.ogg
+  syllableInterval: 0.18
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.82
+  commaPauseMultiplier: 3.12
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Eeugh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/eeugh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/eeugh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/eeugh_e.ogg
+  syllableInterval: 0.16
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Eu
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/eu.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/eu_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/eu_e.ogg
+  syllableInterval: 0.15
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Eui
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/eui.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/eui_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/eui_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Goba1
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/goba1.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/goba1_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/goba1_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Goba2
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/goba2.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/goba2_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/goba2_e.ogg
+  syllableInterval: 0.18
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.82
+  commaPauseMultiplier: 3.12
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Heejh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/heejh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/heejh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/heejh_e.ogg
+  syllableInterval: 0.22
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.31
+  commaPauseMultiplier: 2.55
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Hiu
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/hiu.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/hiu_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/hiu_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Hmm
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/hmm.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/hmm_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/hmm_e.ogg
+  syllableInterval: 0.16
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Hoh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/hoh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/hoh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/hoh_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Hoogh
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/hoogh.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/hoogh_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/hoogh_e.ogg
+  syllableInterval: 0.22
+  charsPerSyllable: 2
+  wordPauseMultiplier: 1.31
+  commaPauseMultiplier: 2.55
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Hu
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/hu.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/hu_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/hu_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Ke
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/ke.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/ke_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/ke_e.ogg
+  syllableInterval: 0.13
+  charsPerSyllable: 2
+  wordPauseMultiplier: 3.03
+  commaPauseMultiplier: 4.31
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Kri
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/kri.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/kri_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/kri_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Mrza
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/mrza.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/mrza_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/mrza_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Pa
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/pa.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/pa_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/pa_e.ogg
+  syllableInterval: 0.13
+  charsPerSyllable: 2
+  wordPauseMultiplier: 3.03
+  commaPauseMultiplier: 4.31
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Paaah
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/paaah.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/paaah_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/paaah_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Pu
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/pu.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/pu_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/pu_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Si
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/si.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/si_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/si_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_Wak
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/wak.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/wak_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/wak_e.ogg
+  syllableInterval: 0.13
+  charsPerSyllable: 2
+  wordPauseMultiplier: 3.03
+  commaPauseMultiplier: 4.31
+  audioParams:
+    volume: 3
+
+- type: barkSpeech
+  id: phantomru_We
+  saySound:
+    path: /Audio/_CE/Voice/PhantomRU/we.ogg
+  askSound:
+    path: /Audio/_CE/Voice/PhantomRU/we_a.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/PhantomRU/we_e.ogg
+  syllableInterval: 0.14
+  charsPerSyllable: 2
+  audioParams:
+    volume: 3
