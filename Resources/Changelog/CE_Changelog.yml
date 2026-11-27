@@ -1978,3 +1978,11 @@
   id: 1163
   time: '2026-11-27T14:38:09.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/613
+- author: Viator-MV
+  changes:
+  - message: Now you can eat moss and perpetuate the cycle of existence by consuming
+      it!
+    type: Tweak
+  id: 1164
+  time: '2026-11-27T16:39:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/609
