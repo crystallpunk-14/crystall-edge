@@ -14,6 +14,12 @@ public sealed partial class CESecretRoleSelectionComponent : Component
     public List<CESecretDepartmentSelectorEntry> Departments = new();
 
     /// <summary>
+    /// Given to a player who got nothing from the draw, regardless of their priority and the department quotas.
+    /// </summary>
+    [DataField]
+    public ProtoId<CESecretRolePrototype>? OverflowRole;
+
+    /// <summary>
     /// How many of each role have been granted so far this round. Lets late joiners top up
     /// whatever's left without re-running the whole round-start draw.
     /// </summary>

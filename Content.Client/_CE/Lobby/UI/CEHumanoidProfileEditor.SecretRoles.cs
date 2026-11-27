@@ -43,6 +43,7 @@ public sealed partial class CEHumanoidProfileEditor
 
         var items = new[]
         {
+            ("humanoid-profile-editor-job-priority-never-button", (int) JobPriority.Never),
             ("humanoid-profile-editor-job-priority-low-button", (int) JobPriority.Low),
             ("humanoid-profile-editor-job-priority-medium-button", (int) JobPriority.Medium),
             ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
