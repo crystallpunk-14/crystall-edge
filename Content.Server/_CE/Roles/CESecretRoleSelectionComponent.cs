@@ -14,7 +14,8 @@ public sealed partial class CESecretRoleSelectionComponent : Component
     public List<CESecretDepartmentSelectorEntry> Departments = new();
 
     /// <summary>
-    /// Given to a player who got nothing from the draw, regardless of their priority and the department quotas.
+    /// Given to a player who got nothing from the draw. Ignores their priority, the role's requirements,
+    /// prohibited jobs and cap, and the department's quota and minimum players.
     /// </summary>
     [DataField]
     public ProtoId<CESecretRolePrototype>? OverflowRole;
@@ -93,7 +94,7 @@ public sealed partial class CESecretRoleSelectorEntry
     public int? Max;
 
     /// <summary>
-    /// If true, the role is only handed out when no other role of the department is available to the
+    /// If true, the draw only hands the role out when no other role of the department is available to the
     /// player - unless the player set it to a priority above Low themselves.
     /// </summary>
     [DataField]

@@ -101,9 +101,6 @@ public sealed partial class CESecretRoleSelectionSystem
             options.Add((department, roles, GetPriorityMultiplier(roles.Max(r => r.Priority))));
         }
 
-        if (options.Count == 0)
-            return false;
-
         var weights = options
             .Select(o => Math.Max(0, o.Department.GetTargetCount(playerCount) - GetDepartmentCount(o.Department, assignedCounts)) * o.Multiplier)
             .ToList();

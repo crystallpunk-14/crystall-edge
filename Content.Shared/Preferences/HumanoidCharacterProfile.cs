@@ -591,13 +591,9 @@ namespace Content.Shared.Preferences
                     if (value == JobPriority.High)
                         dictionary[role] = JobPriority.Medium;
                 }
+            }
 
-                dictionary[roleId] = priority;
-            }
-            else
-            {
-                dictionary[roleId] = priority;
-            }
+            dictionary[roleId] = priority;
 
             return new(this)
             {
@@ -851,14 +847,9 @@ namespace Content.Shared.Preferences
 
             // CrystallEdge: validate secret role priorities, independent "one High" enforcement
             var secretRolePriorities = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(SecretRolePriorities
-                .Where(p => prototypeManager.HasIndex<CESecretRolePrototype>(p.Key) && p.Value switch
-                {
-                    JobPriority.Never => true, // Kept, a missing secret role counts as Low.
-                    JobPriority.Low => true,
-                    JobPriority.Medium => true,
-                    JobPriority.High => true,
-                    _ => false
-                }));
+                // Never is kept, a missing secret role counts as Low.
+                .Where(p => prototypeManager.HasIndex<CESecretRolePrototype>(p.Key)
+                            && p.Value is >= JobPriority.Never and <= JobPriority.High));
 
             var hasHighSecretRolePrio = false;
             foreach (var (key, value) in secretRolePriorities)
