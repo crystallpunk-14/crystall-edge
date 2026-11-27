@@ -1961,3 +1961,12 @@
   id: 1161
   time: '2026-11-26T08:43:19.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/611
+- author: TheShuEd
+  changes:
+  - message: Added lover secret role back!
+    type: Add
+  - message: Removed bodyguard & helper secret roles!
+    type: Remove
+  id: 1162
+  time: '2026-11-27T13:07:27.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/612
