@@ -21,12 +21,17 @@
   - type: CEObjective
   - type: CETargetObjective
     title: ce-lover-assist-objective-title
+  - type: CEManualTargetObjective
+    duration: 600
+    action: CEActionChooseBeloved
+    statusEffect: CEStatusEffectChooseBeloved
+    message: ce-lover-target-selected
   - type: CETargetPlayersObjective
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
       components: # avoid an infinite loop if this ever targets another lover
       - CETargetCompleteOwnedObjective
-  - type: CETargetSecretRoleBlacklist
+  - type: CETargetSecretRoleBlacklist # only limits the random pick, not choosing by hand
     secretRoleBlacklist:
     - Lover
     - DarkVessel # its body is meant to die, which would fail the lover's survive objective
@@ -47,3 +52,40 @@
       components:
       - CETargetCompleteOwnedObjective
   - type: CETargetSurviveCondition
+
+- type: entity
+  parent: BaseAction
+  id: CEActionChooseBeloved
+  name: Choose your beloved
+  description: Click on a person you can see to give them your heart. There is no taking it back. If you don't choose within 10 minutes of becoming a lover, your heart will choose at random.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _CE/Actions/lover.rsi
+    layers:
+    - state: choose
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:CESelectManualTargetActionEvent
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectChooseBeloved
+  name: choosing a beloved
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StatusEffectAlert
+    alert: CEChooseBeloved

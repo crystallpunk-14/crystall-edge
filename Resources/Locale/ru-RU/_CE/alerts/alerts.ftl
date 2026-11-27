@@ -21,3 +21,6 @@ ce-alerts-murk-dissolving-desc = Ваша плоть начинает дымит
 
 ce-alerts-dark-side-name = На тёмной стороне
 ce-alerts-dark-side-desc = Вы находитесь вне материального мира. Видеть вас могут лишь те, кто воспринимает магию.
+
+ce-alerts-choose-beloved-name = Выберите возлюбленного
+ce-alerts-choose-beloved-desc = Используйте способность, чтобы выбрать того, кого любите. Когда время выйдет, сердце выберет случайно.

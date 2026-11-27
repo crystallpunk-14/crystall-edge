@@ -29,3 +29,6 @@ ce-objective-city-restore-reward-shard = {$index ->
     *[other] Осколок светсердца №{$index}
 }
 ce-objective-city-restore-reward-book = Книга «Восстановление сферы»
+
+ce-lover-target-selected = Теперь ваше сердце принадлежит { $targetName }.
+ce-manual-target-invalid = Этот выбор невозможен.

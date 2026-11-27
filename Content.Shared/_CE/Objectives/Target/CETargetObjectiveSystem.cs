@@ -27,10 +27,7 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnInitializeObjective(Entity<CETargetObjectiveComponent> ent, ref CEInitializeObjectiveEvent args)
     {
-        if (!TryGetCandidate(args.Holder, ent, out var candidate))
-            return;
-
-        SetTarget(ent.AsNullable(), candidate);
+        TryAutoTarget(args.Holder, ent);
     }
 
     // Objectives follow the target's body, not its mind: whoever ends up controlling the body, it's
@@ -69,10 +66,22 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
                     continue;
                 }
 
-                if (TryGetCandidate((holderUid, holderComp), (objective, targetComp), out var candidate))
-                    SetTarget((objective, targetComp), candidate);
+                TryAutoTarget((holderUid, holderComp), (objective, targetComp));
             }
         }
+    }
+
+    /// <summary>
+    /// Gives an objective a random valid target, unless something is holding automatic selection back
+    /// (see <see cref="CEAttemptAutoTargetEvent"/>).
+    /// </summary>
+    public void TryAutoTarget(Entity<CEObjectiveHolderComponent> holder, Entity<CETargetObjectiveComponent> ent)
+    {
+        var ev = new CEAttemptAutoTargetEvent();
+        RaiseLocalEvent(ent.Owner, ref ev);
+
+        if (!ev.Cancelled && TryGetCandidate(holder, ent, out var candidate))
+            SetTarget(ent.AsNullable(), candidate);
     }
 
     /// <summary>
@@ -93,7 +102,13 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
         return true;
     }
 
-    public IEnumerable<EntityUid> GetTargetCandidates(Entity<CEObjectiveHolderComponent> holder, Entity<CETargetObjectiveComponent> ent)
+    /// <param name="validate">
+    /// False skips <see cref="CEValidateObjectiveTargetCandidateEvent"/>, leaving everyone who could be targeted at all.
+    /// </param>
+    public IEnumerable<EntityUid> GetTargetCandidates(
+        Entity<CEObjectiveHolderComponent> holder,
+        Entity<CETargetObjectiveComponent> ent,
+        bool validate = true)
     {
         var otherTargets = new HashSet<EntityUid>();
         foreach (var objective in _objective.GetObjectives(holder.AsNullable()))
@@ -110,6 +125,12 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
             // Don't share targets between multiple targeted objectives of the same holder.
             if (otherTargets.Contains(candidate))
                 continue;
+
+            if (!validate)
+            {
+                yield return candidate;
+                continue;
+            }
 
             var checkEv = new CEValidateObjectiveTargetCandidateEvent(holder, candidate);
             RaiseLocalEvent(ent.Owner, ref checkEv);
