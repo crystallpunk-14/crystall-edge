@@ -1,0 +1,31 @@
+- type: constructionGraph
+  id: CEBookshelfWooden
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEBookshelfWooden
+          steps:
+            - material: CEWood
+              amount: 6
+              doAfter: 3
+    - node: CEBookshelfWooden
+      entity: CEBookshelfWooden
+
+- type: constructionGraph
+  id: CEBookshelfStone
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEBookshelfStone
+          steps:
+            - material: CEStone
+              amount: 6
+              doAfter: 3
+    - node: CEBookshelfStone
+      entity: CEBookshelfStone
