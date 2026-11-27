@@ -27,14 +27,14 @@
     - department: City
       share: 0.70
       roles:
-      - role: Bodyguard
+      - role: Lover
         weight: 2
-      - role: Helper
-        weight: 2
+        max: 3
       - role: DarkVessel
         max: 1
         weight: 0.25
       - role: BountyHunter
+        max: 1
       - role: Priest
         max: 2
       - role: Immortal
