@@ -54,6 +54,12 @@ public record struct CEValidateObjectiveTargetCandidateEvent(Entity<CEObjectiveH
 }
 
 /// <summary>
+/// Raised on an objective before a random target is picked for it. Cancel to leave it without one for now.
+/// </summary>
+[ByRefEvent]
+public record struct CEAttemptAutoTargetEvent(bool Cancelled = false);
+
+/// <summary>
 /// Raised on a <see cref="CETargetObjectiveComponent"/> when its target changes.
 /// </summary>
 [ByRefEvent]

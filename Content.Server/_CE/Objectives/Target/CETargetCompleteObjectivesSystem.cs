@@ -96,9 +96,16 @@ public sealed partial class CETargetCompleteObjectivesSystem : CEBaseTargetObjec
             objective.Comp.TargetMind = args.Mind;
     }
 
+    // Broadcast because the holder is the target's mind, while the marker sits on the target's body. A target
+    // picked by hand may have no objectives at first, so getting some has to be noticed right away.
     [SubscribeLocalEvent]
-    private void OnObjectivesChanged(Entity<CETargetCompleteOwnedObjectiveMarkerComponent> ent, ref CEObjectivesChangedEvent args)
+    private void OnObjectivesChanged(ref CEObjectivesChangedEvent args)
     {
-        RefreshTargetingObjectives(ent);
+        var query = EntityQueryEnumerator<CETargetCompleteOwnedObjectiveComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.TargetMind == args.Holder)
+                ObjectivesSys.RefreshObjectiveProgress(uid);
+        }
     }
 }

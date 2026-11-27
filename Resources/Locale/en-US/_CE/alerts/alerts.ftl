@@ -21,3 +21,6 @@ ce-alerts-murk-dissolving-desc = Your flesh is starting to smoke and evaporate. 
 
 ce-alerts-dark-side-name = On the dark side
 ce-alerts-dark-side-desc = You are outside the material world. Only those who perceive magic can see you.
+
+ce-alerts-choose-beloved-name = Choose your beloved
+ce-alerts-choose-beloved-desc = Use the action to pick the person you love. When the time runs out, your heart will choose at random.

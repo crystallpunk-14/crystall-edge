@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "First frame of Effects/hearts.rsi, created by TheShuEd (github) for ss14",
+    "states": [
+        {
+            "name": "choose"
+        }
+    ]
+}

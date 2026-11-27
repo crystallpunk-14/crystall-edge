@@ -5,3 +5,11 @@
     state: wing
   name: ce-alerts-aircaught-name
   description: ce-alerts-aircaught-desc
+
+- type: alert
+  id: CEChooseBeloved
+  icons:
+  - sprite: /Textures/Effects/hearts.rsi
+    state: hearts
+  name: ce-alerts-choose-beloved-name
+  description: ce-alerts-choose-beloved-desc
