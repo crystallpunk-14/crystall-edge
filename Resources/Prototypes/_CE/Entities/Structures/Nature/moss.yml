@@ -14,7 +14,7 @@
     drawdepth: LowFloors
     sprite: _CE/Structures/Nature/moss.rsi
   - type: Icon
-    sprite: _CE/Structures/Nature/moss.rsi
+    sprite: _CE/Structures/Nature/moss.rsi 
     state: full
   - type: IconSmooth
     key: moss
@@ -46,3 +46,16 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: FlavorProfile
+    flavors:
+      - CEMoss
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 3
+  - type: Edible
