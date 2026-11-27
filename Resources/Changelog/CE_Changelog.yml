@@ -1970,3 +1970,11 @@
   id: 1162
   time: '2026-11-27T13:07:27.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/612
+- author: TheShuEd
+  changes:
+  - message: Lover now can manually select their love target for first 10 minutes
+      of round.
+    type: Add
+  id: 1163
+  time: '2026-11-27T14:38:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/613
