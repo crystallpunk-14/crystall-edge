@@ -1986,3 +1986,14 @@
   id: 1164
   time: '2026-11-27T16:39:08.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/609
+- author: TheShuEd
+  changes:
+  - message: "The \u201CNever\u201D option has been added for selecting hidden roles."
+    type: Add
+  - message: The number of Shadow Eaters in the world has been significantly reduced.
+    type: Tweak
+  - message: The Shadow Eater's health has been significantly reduced.
+    type: Tweak
+  id: 1165
+  time: '2026-11-27T21:12:25.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/614
