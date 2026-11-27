@@ -82,6 +82,15 @@
         children:
         - id: CEHerbalOintment
         - id: CEGauze
+      # Brad mixture injectors
+      - !type:GroupSelector
+        children:
+        - id: CEAlchemyInjectorBradHealing
+        - id: CEAlchemyInjectorBradBurn
+        - id: CEAlchemyInjectorBradBlood
+        - id: CEAlchemyInjectorBradStamina
+        - id: CEAlchemyInjectorBradHaste
+        - id: CEAlchemyInjectorBradMana
       - !type:GroupSelector
         weight: 2
         children:
@@ -102,6 +111,11 @@
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10
+      - !type:AllSelector
+        weight: 0.5
+        children:
+        - id: CEMortar
+        - id: CEPestle
       - id: CEManaTransferGlove
       - id: CESafeFallingAmulet
       - id: CEScissors

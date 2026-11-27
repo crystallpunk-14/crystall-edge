@@ -312,6 +312,21 @@
   resultCount: 1
 
 - type: workbenchRecipe
+  id: AlchemyInjector
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CEAlchemyInjector
+  resultCount: 1
+
+- type: workbenchRecipe
   id: ClothingEyesMedicalGlasses
   parent: BaseAssemblyShopRecipe
   category: Tools
@@ -665,18 +680,6 @@
   resultCount: 1
 
 - type: workbenchRecipe
-  id: MachineCoreFunnel
-  parent: BaseAssemblyShopRecipe
-  category: MachineCore
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  result: CEMachineCoreFunnel
-  resultCount: 1
-
-- type: workbenchRecipe
   id: MachineCoreMapProjector
   parent: BaseAssemblyShopRecipe
   category: MachineCore
@@ -742,23 +745,23 @@
   result: CEMachineCorePulseProjector
   resultCount: 1
 
-#- type: workbenchRecipe
-#  id: SolutionNormalizer
-#  parent: BaseAssemblyShopRecipe
-#  category: Tools
-#  craftTime: 2.0
-#  requirements:
-#  - !type:StackResource
-#    stack: CEBrassSheet
-#    count: 5
-#  - !type:StackResource
-#    stack: CEMachinePartCoalDiffuser
-#    count: 1
-#  - !type:StackResource
-#    stack: CEGlass
-#    count: 5
-#  result: CESolutionNormalizer
-#  resultCount: 1
+- type: workbenchRecipe
+  id: AlchemyTuner
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEAlchemyTuner
+  resultCount: 1
 
 - type: workbenchRecipe
   id: ConveyorBelt
@@ -773,6 +776,18 @@
     stack: CEBrassRod
     count: 1
   result: CEConveyorBeltItem
+  resultCount: 1
+
+- type: workbenchRecipe
+  id: Funnel
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  result: CEFunnelItem
   resultCount: 1
 
 #MARK: Melee
@@ -1163,3 +1178,21 @@
     count: 1
   result: CEWallLightRedItem
   resultCount: 2
+
+- type: workbenchRecipe
+  id: AlchemyBomb
+  parent: BaseAssemblyShopRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 1
+  result: CEVialAlchemyBomb
+  resultCount: 1

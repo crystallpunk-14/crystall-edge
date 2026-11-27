@@ -1,0 +1,110 @@
+- type: reagent
+  id: CEAlchemyMixture
+  name: ce-reagent-name-alchemy-mixture
+  group: Medicine
+  desc: ce-reagent-desc-alchemy-mixture
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#7a5a9a"
+  pricePerUnit: 0.5
+  metabolisms:
+    # Only the bloodstream works: a drunk mixture passes the digestion stage with losses and delay, the injected one acts at once
+    Bloodstream:
+      metabolismRate: 0.5
+      ceEffects:
+      - !type:CEAlchemyApply
+
+- type: reagent
+  id: CEAlchemySludge
+  name: ce-reagent-name-alchemy-sludge
+  group: Toxins
+  desc: ce-reagent-desc-alchemy-sludge
+  flavor: bitter
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#3d3a2a"
+  pricePerUnit: 0
+
+- type: reagent
+  id: CESilverNeedle
+  name: ce-reagent-name-silver-needle
+  group: Elements
+  desc: ce-reagent-desc-silver-needle
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#c7d1d9"
+  pricePerUnit: 0.05
+  alchemyPower: 1.5
+  alchemyEffects:
+  - !type:MoveToPoint
+    pos: -0.45, -0.26
+
+- type: reagent
+  id: CEStoneHeart
+  name: ce-reagent-name-stone-heart
+  group: Elements
+  desc: ce-reagent-desc-stone-heart
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#be368a"
+  pricePerUnit: 0.825
+  alchemyPower: 0.5
+  alchemyEffects:
+  - !type:Scale
+    perUnit: 0.2, 0.2
+
+- type: reagent
+  id: CEChromiumSlime
+  name: ce-reagent-name-chromium-slime
+  group: Elements
+  desc: ce-reagent-desc-chromium-slime
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#3b4872"
+  pricePerUnit: 1.825
+  alchemyEffects:
+  - !type:Scale
+    perUnit: -0.4, -0.4
+
+- type: reagent
+  id: CELumishroomSap
+  parent: BaseAlcohol
+  name: ce-reagent-name-lumishroom-sap
+  desc: ce-reagent-desc-lumishroom-sap
+  flavor: alcohol
+  physicalDesc: reagent-physical-desc-opaque
+  color: "#36c98f"
+  pricePerUnit: 0.325
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+  alchemyEffects:
+  - !type:Rotate
+    degreesPerUnit: -3
+    maxDegrees: -30
+
+- type: reagent
+  id: CEAmanitaJuice
+  name: ce-reagent-name-amanita-juice
+  group: Toxins
+  desc: ce-reagent-desc-amanita-juice
+  flavor: bitter
+  color: "#b3282d"
+  pricePerUnit: 0.05
+  physicalDesc: reagent-physical-desc-opaque
+  alchemyPower: 1.5
+  alchemyEffects:
+  - !type:MoveToPoint
+    pos: 0.25, 0.48
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "generic-reagent-effect-burning-insides" ]
+        probability: 0.1
+      ceEffects:
+      - !type:Damage
+        damage:
+          types:
+            Poison: 10
+        ignoreResistances: true # parity with upstream HealthChange
+        interruptDoAfters: false
+        colorFlash: false

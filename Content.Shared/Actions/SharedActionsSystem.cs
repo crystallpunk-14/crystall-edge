@@ -39,6 +39,7 @@ public abstract partial class SharedActionsSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private MobStateSystem _mobState = default!; // CrystallEdge: some actions can be used while critical
+    [Dependency] protected CEActionAimSystem CEAim = default!; // CrystallEdge: out of range clicks are clamped
 
     [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
     [Dependency] private EntityQuery<ActionsComponent> _actionsQuery = default!;
@@ -308,6 +309,8 @@ public abstract partial class SharedActionsSystem : EntitySystem
         var curTime = GameTiming.CurTime;
         if (IsCooldownActive(action, curTime))
             return false;
+
+        ev = CEAim.ClampRequest(user, action, ev); // CrystallEdge: must happen before any validator reads the target
 
         // check for action use prevention
         var attemptEv = new ActionAttemptEvent(user);

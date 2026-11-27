@@ -11,10 +11,3 @@
   icon: { sprite: "_CE/Objects/Consumable/medical.rsi", state: bandage_3 }
   spawn: CEGauze
   maxCount: 5
-
-- type: stack
-  parent: BaseSmallStack
-  id: CEBloodpack
-  name: ce-stack-bloodpack
-  icon: { sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: bloodpack }
-  spawn: CEBloodpack

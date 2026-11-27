@@ -255,3 +255,25 @@
   - type: Stack
     stackType: CESeedCarrot
     count: 10
+
+- type: entity
+  id: CESeedSilverNeedle
+  name: silver needle seeds
+  description: Tiny seeds of a frost-resistant berry. They sprout only in the snow.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/silver_needle.rsi
+  - type: CEPlaceable
+    prototype: CEPlantSilverNeedle
+  - type: Stack
+    stackType: CESeedSilverNeedle
+
+- type: entity
+  id: CESeedSilverNeedle10
+  parent: CESeedSilverNeedle
+  suffix: 10
+  components:
+  - type: Stack
+    stackType: CESeedSilverNeedle
+    count: 10

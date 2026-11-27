@@ -1,0 +1,6 @@
+- type: stack
+  id: CEFunnel
+  name: ce-stack-funnel
+  spawn: CEFunnelItem
+  icon: { sprite: _CE/Structures/Industrial/funnel.rsi, state: icon }
+  maxCount: 5

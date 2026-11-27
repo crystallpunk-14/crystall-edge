@@ -12,6 +12,8 @@
   name: Soul gaze
   description: Look into someone's soul and see their true nature. They will feel it.
   components:
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
   - type: CEVisualizeRadiusTargetAction
   - type: CEActionRequireLineOfSight
   - type: CEActionTargetRequireMind

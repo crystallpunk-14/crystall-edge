@@ -32,6 +32,10 @@
     - 0,0,7,7
     openOnActivate: false
     maxItemSize: Ginormous
+    ignorelist: # these are used on the machine instead of being put inside
+      components:
+      - Prying
+      - CEPlaceable
     storageOpenSound: /Audio/Effects/closetopen.ogg
     storageCloseSound: /Audio/Effects/closetclose.ogg
   - type: ContainerContainer

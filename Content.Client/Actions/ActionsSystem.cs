@@ -325,8 +325,8 @@ namespace Content.Client.Actions
 
             var (uid, comp) = ent;
             var action = args.Action;
-            var coords = args.Input.Coordinates;
             var user = args.User;
+            var coords = CEAim.GetAimPoint(user, args.Input.Coordinates, uid); // CrystallEdge: clamp out of range clicks
 
             if (!ValidateWorldTarget(user, coords, ent))
                 return;

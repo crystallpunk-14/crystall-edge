@@ -7,3 +7,8 @@
   id: CECucumber
   flavorType: Complex
   description: flavor-complex-ce-cucumber
+
+- type: flavor
+  id: CEMoss
+  flavorType: Complex
+  description: flavor-complex-ce-moss

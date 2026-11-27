@@ -1920,3 +1920,69 @@
   id: 1159
   time: '2026-11-23T17:36:24.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/606
+- author: TheShuEd
+  changes:
+  - message: Added alchemy!
+    type: Add
+  - message: Added injectors, chemical bombs
+    type: Add
+  - message: You can now coat weapons & crossbolts with reagents
+    type: Add
+  - message: Added hospital roles onto Pharus game map
+    type: Add
+  id: 1160
+  time: '2026-11-25T14:04:05.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/610
+- author: TheShuEd
+  changes:
+  - message: Detailed information about the solution in the containers is now visible
+      upon direct examination without having to press an additional "solution examine"
+      button.
+    type: Tweak
+  - message: The visibility of the reagents inside the alchemical flasks has been
+      improved.
+    type: Tweak
+  - message: "Target actions can now be triggered by clicking outside the target area\
+      \ or outside the FOV \u2014 the ability will be used at the maximum possible\
+      \ distance in that direction."
+    type: Tweak
+  - message: Funnel is no longer assembled via the machine core; instead, it is placed
+      as a conveyor using the Placeable system and a stack item.
+    type: Tweak
+  - message: Blood Regeneration Potions now heal damage from Bleeding
+    type: Fix
+  - message: The conveyors can no longer be unscrewed with a wrench
+    type: Fix
+  - message: The bleeding has subsided significantly and shouldn't be a problem anymore.
+    type: Fix
+  - message: Fixed a bug that prevented machine cores from being extracted from assembled
+      machines
+    type: Fix
+  id: 1161
+  time: '2026-11-26T08:43:19.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/611
+- author: TheShuEd
+  changes:
+  - message: Added lover secret role back!
+    type: Add
+  - message: Removed bodyguard & helper secret roles!
+    type: Remove
+  id: 1162
+  time: '2026-11-27T13:07:27.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/612
+- author: TheShuEd
+  changes:
+  - message: Lover now can manually select their love target for first 10 minutes
+      of round.
+    type: Add
+  id: 1163
+  time: '2026-11-27T14:38:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/613
+- author: Viator-MV
+  changes:
+  - message: Now you can eat moss and perpetuate the cycle of existence by consuming
+      it!
+    type: Tweak
+  id: 1164
+  time: '2026-11-27T16:39:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/609

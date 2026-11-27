@@ -235,14 +235,6 @@
         prototype: NormalSatiationHunger
       Thirst:
         prototype: NormalSatiationThirst
-  - type: CESatiationBloodRefreshModifier
-    satiations:
-      Hunger:
-        thresholds:
-          Overfed: 1.5
-          Okay: 1
-          Peckish: 0.5
-          Starving: 0
   - type: StatusEffects
     allowed:
     - Stun
@@ -266,6 +258,7 @@
     - Adrenaline
   - type: Blindable
   - type: Bloodstream
+    bloodRefreshAmount: 3 # per 3s update: from 50% to 90% of 300u in 2 minutes
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBlood

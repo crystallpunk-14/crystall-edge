@@ -72,16 +72,6 @@
     price: 150
 
 - type: entity
-  id: CEMachineCoreFunnel
-  parent: CEBaseMachineCore
-  name: funnel machine core
-  components:
-  - type: MachineBoard
-    prototype: CEFunnel
-  - type: StaticPrice
-    price: 30
-
-- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core

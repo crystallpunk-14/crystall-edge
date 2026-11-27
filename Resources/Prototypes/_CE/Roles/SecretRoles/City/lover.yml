@@ -1,0 +1,91 @@
+- type: secretRole
+  id: Lover
+  name: ce-secret-role-name-lover
+  description: ce-secret-role-description-lover
+  icon: CESecretRoleIconLover
+  skills:
+  - Attachment
+  objectives: !type:AllSelector
+    children:
+    - id: CEObjectiveLoverAssist
+    - id: CEObjectiveLoverSurvive
+
+- type: entity
+  id: CEObjectiveLoverAssist
+  name: Help your beloved
+  description: Do whatever it takes to help the person you secretly love complete every one of their personal objectives.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-lover-assist-objective-title
+  - type: CEManualTargetObjective
+    duration: 600
+    action: CEActionChooseBeloved
+    statusEffect: CEStatusEffectChooseBeloved
+    message: ce-lover-target-selected
+  - type: CETargetPlayersObjective
+  - type: CETargetCompleteOwnedObjective
+    objectiveBlacklist:
+      components: # avoid an infinite loop if this ever targets another lover
+      - CETargetCompleteOwnedObjective
+  - type: CETargetSecretRoleBlacklist # only limits the random pick, not choosing by hand
+    secretRoleBlacklist:
+    - Lover
+    - DarkVessel # its body is meant to die, which would fail the lover's survive objective
+
+- type: entity
+  id: CEObjectiveLoverSurvive
+  name: Keep your beloved alive
+  description: The person you secretly love must survive.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-lover-survive-objective-title
+  - type: CEShareTargetObjective
+    objectiveWhitelist:
+      components:
+      - CETargetCompleteOwnedObjective
+  - type: CETargetSurviveCondition
+
+- type: entity
+  parent: BaseAction
+  id: CEActionChooseBeloved
+  name: Choose your beloved
+  description: Click on a person you can see to give them your heart. There is no taking it back. If you don't choose within 10 minutes of becoming a lover, your heart will choose at random.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _CE/Actions/lover.rsi
+    layers:
+    - state: choose
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:CESelectManualTargetActionEvent
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectChooseBeloved
+  name: choosing a beloved
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StatusEffectAlert
+    alert: CEChooseBeloved

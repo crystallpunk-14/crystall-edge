@@ -4,6 +4,9 @@
   description: Says something to someone nearby and waits for an answer.
   categories: [ HideSpawnMenu ]
   components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
   - type: Action
   - type: CEActionRandomCooldown
     min: 40

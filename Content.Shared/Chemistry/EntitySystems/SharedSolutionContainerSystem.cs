@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Content.Shared._CE.Alchemy.World;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reaction;
@@ -95,7 +96,6 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         SubscribeLocalEvent<SolutionComponent, ComponentShutdown>(OnSolutionShutdown);
 
         SubscribeLocalEvent<ExaminableSolutionComponent, ExaminedEvent>(OnExamineSolution);
-        SubscribeLocalEvent<ExaminableSolutionComponent, GetVerbsEvent<ExamineVerb>>(OnSolutionExaminableVerb);
 
         SubscribeLocalEvent<SolutionManagerComponent, MapInitEvent>(OnManagerInit);
         SubscribeLocalEvent<SolutionManagerComponent, ComponentShutdown>(OnManagerShutdown);
@@ -927,14 +927,23 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
                                             ("chemical", proto.LocalizedName)));
             }
 
-            if (recognized.Count == 0)
-                return;
+            // CrystallEdge: no early return, the scan below must follow the recognized reagents
+            if (recognized.Count > 0)
+            {
+                var msg = ContentLocalizationManager.FormatList(recognized);
 
-            var msg = ContentLocalizationManager.FormatList(recognized);
+                // Finally push the full message
+                args.PushMarkup(Loc.GetString(entity.Comp.LocRecognizableReagents,
+                    ("recognizedString", msg)));
+            }
+            // CrystallEdge end
 
-            // Finally push the full message
-            args.PushMarkup(Loc.GetString(entity.Comp.LocRecognizableReagents,
-                ("recognizedString", msg)));
+            // CrystallEdge: solution scanners write the full reagent list straight into the examine text
+            var scanEvent = new SolutionScanEvent();
+            RaiseLocalEvent(args.Examiner, scanEvent);
+            if (scanEvent.CanScan)
+                args.PushMessage(GetSolutionExamine(solution));
+            // CrystallEdge end
         }
     }
 
@@ -974,53 +983,9 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     /// <summary>
     ///     Full reagent scan, such as with chemical analysis goggles.
     /// </summary>
-    private void OnSolutionExaminableVerb(Entity<ExaminableSolutionComponent> entity, ref GetVerbsEvent<ExamineVerb> args)
-    {
-        if (!args.CanInteract || !args.CanAccess)
-            return;
-
-        var scanEvent = new SolutionScanEvent();
-        RaiseLocalEvent(args.User, scanEvent);
-        if (!scanEvent.CanScan)
-        {
-            return;
-        }
-
-        if (!TryGetSolution(args.Target, entity.Comp.Solution, out _, out var solutionHolder))
-        {
-            return;
-        }
-
-        if (!CanSeeHiddenSolution(entity, args.User))
-            return;
-
-        var target = args.Target;
-        var user = args.User;
-        var verb = new ExamineVerb()
-        {
-            Act = () =>
-            {
-                var markup = GetSolutionExamine(solutionHolder);
-                ExamineSystem.SendExamineTooltip(user, target, markup, false, false);
-            },
-            Text = Loc.GetString("scannable-solution-verb-text"),
-            Message = Loc.GetString("scannable-solution-verb-message"),
-            Category = VerbCategory.Examine,
-            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/drink.svg.192dpi.png")),
-        };
-
-        args.Verbs.Add(verb);
-    }
-
     private FormattedMessage GetSolutionExamine(Solution solution)
     {
         var msg = new FormattedMessage();
-
-        if (solution.Volume == 0)
-        {
-            msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-empty-container"));
-            return msg;
-        }
 
         msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-main-text"));
 
@@ -1042,6 +1007,11 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("scannable-solution-temperature", ("temperature", Math.Round(solution.Temperature))));
+
+        // CrystallEdge: alchemy mixtures show their predicted effects in the same scan text
+        var scanEv = new CESolutionScanEvent(solution, msg);
+        RaiseLocalEvent(ref scanEv);
+        // CrystallEdge end
 
         return msg;
     }

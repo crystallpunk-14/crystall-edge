@@ -14,6 +14,10 @@
             #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 4, 4 ]
+            #Hospital
+            CEHospitalWarden: [ 1, 1 ]
+            CEDoctor: [ 2, 2 ]
+            CEOrderly: [ 2, 2 ]
             #Tavern
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 4, 4 ]
@@ -125,6 +129,8 @@
     - id: CEWildlandsModifierLumishroomsConstant3
   wildlandsModifiers: !type:AllSelector
     children:
+    - id: CEWildlandsModifierUndergroundRivers
+    - id: CEWildlandsModifierRiverChromiumSlime
     - id: CEWildlandsModifierOreCoalNoise
     - id: CEWildlandsModifierOreIronNoise
     - id: CEWildlandsModifierOreCrystalNoise
@@ -140,6 +146,7 @@
     - id: CEWildlandsModifierOreSpidersCoal
     - id: CEWildlandsModifierOreSpidersGold
     - id: CEWildlandsModifierLumishrooms
+    - id: CEWildlandsModifierSilverNeedles
   layersByDepth:
   #MARK: 2 Hills top
     2:

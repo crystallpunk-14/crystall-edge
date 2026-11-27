@@ -218,6 +218,9 @@
   name: Devour shadow
   description: Devour a fully dissolved creature, restoring your health and birthing a new shadow eater from its remains.
   components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
   - type: Action
     itemIconStyle: BigAction
     useDelay: 20

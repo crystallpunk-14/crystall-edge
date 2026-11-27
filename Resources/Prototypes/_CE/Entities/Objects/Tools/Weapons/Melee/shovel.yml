@@ -3,7 +3,7 @@
   id: CEBaseWeaponShovel
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
+  categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Ginormous

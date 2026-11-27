@@ -18,3 +18,12 @@
     energy: 5
   - type: StaticPrice
     price: 10
+  - type: Solution
+    id: heart
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: CEStoneHeart
+        Quantity: 5
+  - type: Extractable
+    grindableSolutionName: heart

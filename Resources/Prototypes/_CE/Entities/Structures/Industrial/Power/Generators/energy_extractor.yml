@@ -54,6 +54,10 @@
     grid:
     - 0,0,7,7
     maxItemSize: Huge
+    ignorelist: # these are used on the machine instead of being put inside
+      components:
+      - Prying
+      - CEPlaceable
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

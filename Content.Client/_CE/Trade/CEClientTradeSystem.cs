@@ -5,7 +5,6 @@ using Content.Shared._CE.Trade;
 using Content.Shared._CE.Trade.Components;
 using Content.Shared.Stacks;
 using Robust.Client.GameObjects;
-using Robust.Shared.Map;
 
 namespace Content.Client._CE.Trade;
 
@@ -14,6 +13,11 @@ public sealed partial class CEClientTradeSystem : CESharedTradeSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private ItemCounterSystem _counter = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+
+    [Dependency] private EntityQuery<CETradeOfferComponent> _offers = default!;
+
+    private readonly HashSet<EntityUid> _outdatedOffers = new();
 
     [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CETradeOfferComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -21,13 +25,37 @@ public sealed partial class CEClientTradeSystem : CESharedTradeSystem
         if (ent.Comp.Guides.Count > 0)
             EnsureComp<GuideHelpComponent>(ent).Guides = new(ent.Comp.Guides);
 
+        // Redrawn next frame: while a server state is being applied, a freshly spawned preview gets no appearance data
+        _outdatedOffers.Add(ent);
+    }
+
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        foreach (var uid in _outdatedOffers)
+        {
+            if (_offers.TryComp(uid, out var offer))
+                DrawOffer((uid, offer));
+        }
+
+        _outdatedOffers.Clear();
+    }
+
+    /// <summary>
+    /// Copies the sprite of the offer preview, with its visuals applied, onto the offer.
+    /// </summary>
+    private void DrawOffer(Entity<CETradeOfferComponent> ent)
+    {
         if (GetPreview(ent.Comp, out var stackCount) is not { } preview)
         {
             _sprite.SetVisible(ent.Owner, false);
             return;
         }
 
-        var temp = Spawn(preview, MapCoordinates.Nullspace);
+        // Map init fills the appearance data, which is normally drawn only on the next frame
+        var temp = Spawn(preview);
+        _appearance.OnChangeData(temp, CompOrNull<SpriteComponent>(temp));
         _sprite.CopySprite(temp, ent.Owner);
 
         if (TryComp<StackComponent>(temp, out var stack) && stack.LayerStates.Count > 0)

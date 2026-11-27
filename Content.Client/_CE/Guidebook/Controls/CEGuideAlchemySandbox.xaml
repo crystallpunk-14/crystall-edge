@@ -1,0 +1,87 @@
+<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                xmlns:ce="clr-namespace:Content.Client._CE.Guidebook.Controls"
+                Margin="5 5 5 5">
+    <PanelContainer.PanelOverride>
+        <gfx:StyleBoxFlat BackgroundColor="#1d2226" BorderThickness="1" BorderColor="#3c464c"/>
+    </PanelContainer.PanelOverride>
+
+    <BoxContainer Orientation="Vertical">
+        <!-- Title -->
+        <PanelContainer HorizontalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="6 4 6 4">
+                <Label Text="{Loc 'ce-guidebook-alchemy-title'}" FontColorOverride="#4fb59a"/>
+            </BoxContainer>
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#262d31"/>
+            </PanelContainer.PanelOverride>
+        </PanelContainer>
+
+        <BoxContainer Orientation="Horizontal" Margin="10" SeparationOverride="12">
+            <!-- Map -->
+            <BoxContainer Orientation="Vertical" SeparationOverride="6">
+                <ce:CEAlchemyMapControl Name="Map"/>
+                <RichTextLabel Name="MapLegend" HorizontalExpand="True"/>
+            </BoxContainer>
+
+            <!-- Controls -->
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" MinWidth="330" SeparationOverride="8">
+                <!-- Ingredients -->
+                <Label Text="{Loc 'ce-guidebook-alchemy-ingredients'}" FontColorOverride="#8e9a9a"/>
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#181c1f" BorderThickness="1" BorderColor="#343b40"/>
+                    </PanelContainer.PanelOverride>
+                    <ScrollContainer MinHeight="110" MaxHeight="150" HScrollEnabled="False">
+                        <BoxContainer Name="Palette" Orientation="Vertical" Margin="4" SeparationOverride="2"/>
+                    </ScrollContainer>
+                </PanelContainer>
+
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <Label Text="{Loc 'ce-guidebook-alchemy-amount'}" FontColorOverride="#8e9a9a"/>
+                    <Slider Name="AmountSlider" HorizontalExpand="True" MinValue="0.1" MaxValue="10" Value="5"/>
+                    <Label Name="AmountLabel" MinWidth="32" Align="Right"/>
+                    <Button Name="AddButton" Text="{Loc 'ce-guidebook-alchemy-add'}"/>
+                </BoxContainer>
+
+                <!-- Recipe -->
+                <Label Text="{Loc 'ce-guidebook-alchemy-recipe'}" FontColorOverride="#8e9a9a"/>
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#181c1f" BorderThickness="1" BorderColor="#343b40"/>
+                    </PanelContainer.PanelOverride>
+                    <ScrollContainer MinHeight="90" MaxHeight="130" HScrollEnabled="False">
+                        <BoxContainer Name="StepsBox" Orientation="Vertical" Margin="4" SeparationOverride="2"/>
+                    </ScrollContainer>
+                </PanelContainer>
+                <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                    <Control HorizontalExpand="True"/>
+                    <Button Name="CopyButton" Text="{Loc 'ce-guidebook-alchemy-copy'}"/>
+                </BoxContainer>
+
+                <!-- Tuning -->
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <Label Text="{Loc 'ce-guidebook-alchemy-tune'}" FontColorOverride="#8e9a9a"/>
+                    <Slider Name="TuneSlider" HorizontalExpand="True" MinValue="-1" MaxValue="1" Value="0"/>
+                </BoxContainer>
+                <RichTextLabel Name="TuneLabel"/>
+            </BoxContainer>
+        </BoxContainer>
+
+        <!-- Result -->
+        <PanelContainer Margin="10 0 10 10">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1a2023" BorderThickness="1" BorderColor="#343b40"/>
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="4">
+                <Label Text="{Loc 'ce-guidebook-alchemy-result'}" FontColorOverride="#4fb59a"/>
+                <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                    <Label Text="{Loc 'ce-guidebook-alchemy-dose'}" FontColorOverride="#8e9a9a"/>
+                    <Slider Name="DoseSlider" HorizontalExpand="True" MinValue="0" MaxValue="1" Value="1"/>
+                    <Label Name="DoseLabel" MinWidth="64" Align="Right"/>
+                </BoxContainer>
+                <BoxContainer Name="HitsBox" Orientation="Vertical" SeparationOverride="4"/>
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</PanelContainer>

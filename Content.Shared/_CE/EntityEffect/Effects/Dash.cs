@@ -19,7 +19,10 @@ public sealed partial class Dash : CEEntityEffectBase<Dash>
     public float Distance = 1f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
-        Loc.GetString("ce-entity-effect-guidebook-dash", ("distance", Distance));
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power) =>
+        Loc.GetString("ce-entity-effect-guidebook-dash", ("distance", Math.Round((double) (Distance * power), 1)));
 }
 
 public sealed partial class CEDashEffectSystem : CEEntityEffectSystem<Dash>

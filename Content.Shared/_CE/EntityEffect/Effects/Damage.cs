@@ -27,7 +27,10 @@ public sealed partial class Damage : CEEntityEffectBase<Damage>
     [DataField]
     public bool ColorFlash = true;
 
-    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        EntityEffectGuidebookText(prototype, entSys, 1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys, float power)
     {
         var parts = new List<string>();
         foreach (var (type, amount) in DamageSpec.DamageDict)
@@ -36,7 +39,7 @@ public sealed partial class Damage : CEEntityEffectBase<Damage>
                 continue;
 
             var typeName = prototype.TryIndex(type, out var typeProto) ? typeProto.LocalizedName : type.Id;
-            parts.Add(Loc.GetString("ce-entity-effect-guidebook-damage-entry", ("amount", MathF.Abs(amount.Float())), ("type", typeName)));
+            parts.Add(Loc.GetString("ce-entity-effect-guidebook-damage-entry", ("amount", Math.Round((double) (MathF.Abs(amount.Float()) * power), 1)), ("type", typeName)));
         }
 
         if (parts.Count == 0)
