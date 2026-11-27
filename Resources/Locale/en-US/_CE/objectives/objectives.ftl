@@ -29,3 +29,6 @@ ce-objective-city-restore-reward-shard = {$index ->
     *[other] Lightheart shard #{$index}
 }
 ce-objective-city-restore-reward-book = Restoration of the sphere book
+
+ce-lover-target-selected = Your heart now belongs to {$targetName}.
+ce-manual-target-invalid = I can't choose them.
